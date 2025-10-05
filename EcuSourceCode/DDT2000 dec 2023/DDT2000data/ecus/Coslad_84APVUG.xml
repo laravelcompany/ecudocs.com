@@ -1,0 +1,2399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<ddt:Target Name="Coslad 84APVUG" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" upload="8/8/03" href="Coslad_84APVUG.xml" email=""><Description><![CDATA[Diagnostic du système de correction des LAD pour X84 : BALLAST A GAUCHE (adresse 71)
+Edité par : Mohamed WAHBI - Sce 65620 - 55962
+Pilote: Brigitte SAVARIAULT - Sce 65620 - 57587
+Création : 18 février 2002 pour versions PPP3 et vagues suivantes]]></Description><Projects xmlns=""><x84/><x84bugABS/></Projects>
+<Function Name="Lampes à décharge à gauche 84" Address="113"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>28/06/2002 13:31:11</DateOfficialisation>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<K BaudRate="10400">
+<KWP Multipoint="0">
+<FastInit><KW1 Value="208"/>
+<KW2 Value="143"/></FastInit>
+</KWP>
+<InterByte Delay="5"/>
+<ReplyToRequest Delay="10"/>
+<RequestToReply Timeout="300"/>
+<TesterPresent Delay="3000"/>
+<OnError Delay="300"/>
+</K>
+<AutoIdents>
+<AutoIdent DiagVersion="4" Supplier="T93" Soft="0022" Version="0007"/><AutoIdent DiagVersion="4" Supplier="T93" Soft="0022" Version="0011"/></AutoIdents>
+<Datas>
+
+<Data Name="Adresse ballast non-définie">
+<Mnemonic>DATA</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Défaut absent"/>
+<Item Value="1" Text="Défaut présent"/></List>
+</Bits>
+</Data>
+<Data Name="Adresse du Ballast">
+<Mnemonic>DATA</Mnemonic>
+<Bits>
+<List>
+<Item Value="112" Text="Par défaut (70)"/>
+<Item Value="113" Text="Ballast gauche (71)"/>
+<Item Value="114" Text="Ballast droit (72)"/></List>
+</Bits>
+</Data>
+<Data Name="Année APV">
+<Comment><![CDATA[Lecture de la date de la dernière intervention en Après-Vente]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Ann\'e9e de la derni\'e8re intervention Apr\'e8s-Vente:
+\par 
+\par format des Donn\'e9es-Requ\'eate:
+\par \tab 
+\par \tab 21 D2
+\par \tab   |    |______octet requ\'eate "ReadDataByLocalIdentifier"
+\par                   |________Demande Lecture Dates
+\par 
+\par format des Donn\'e9es-R\'e9ponse:
+\par 
+\par 61 D2 ZZ ZZ ZZ YY YY YY XX XX XX
+\par  |     |     |     |     |     |     |     |     |     |     |____Ann\'e9e APV $aa
+\par  |     |     |     |     |     |     |     |     |     |_______Mois APV    $mm
+\par  |     |     |     |     |     |     |     |     |__________Jour APV     $jj
+\par  |     |     |     |     |     |     |     |
+\par  |     |     |     |     |     |__ |__ |_____________Date construction
+\par  |     |     |__ |__ |______________________Date fabrication UCE
+\par  |     |
+\par  |     |______________________________octet de commande "Lecture Date"
+\par  |_________________________________octet r\'e9ponse "ReadDataByLocal
+\par \tab \tab \tab \tab \tab \tab            IdentifierOK"
+\par 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="0" Text="2000"/>
+<Item Value="1" Text="2001"/>
+<Item Value="2" Text="2002"/>
+<Item Value="3" Text="2003"/>
+<Item Value="4" Text="2004"/>
+<Item Value="5" Text="2005"/>
+<Item Value="6" Text="2006"/>
+<Item Value="7" Text="2007"/>
+<Item Value="8" Text="2008"/>
+<Item Value="9" Text="2009"/>
+<Item Value="10" Text="2010"/>
+<Item Value="11" Text="2011"/>
+<Item Value="12" Text="2012"/>
+<Item Value="13" Text="2013"/>
+<Item Value="14" Text="2014"/>
+<Item Value="15" Text="2015"/>
+<Item Value="16" Text="2016"/>
+<Item Value="17" Text="2017"/>
+<Item Value="18" Text="2018"/>
+<Item Value="19" Text="2019"/>
+<Item Value="20" Text="2020"/></List>
+</Bits>
+</Data>
+<Data Name="Assiette véhicule brute">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="% rad" DivideBy=" 512" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Assiette véhicule brute (digits)">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16">
+<Scaled Format="0"/>
+</Bits>
+</Data>
+<Data Name="Assiette véhicule filtrée">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="% rad" DivideBy=" 512" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Assiette véhicule filtrée (digits)">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16">
+<Scaled Format="0"/>
+</Bits>
+</Data>
+<Data Name="Bruit de roulement">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled DivideBy=" 512" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Capteurs hors-plage">
+<Mnemonic>DATA</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Défaut absent"/>
+<Item Value="1" Text="Défaut présent"/></List>
+</Bits>
+</Data>
+<Data Name="Choix du type de diag">
+<Comment><![CDATA[choix du type de diagnostic]]></Comment>
+<Mnemonic>DIAGMODE</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Certains services sont interdits dans certains modes de diagnostics 
+\par (ex:ReadMemoryByAddress interdit au SAV)
+\par 
+\par Le mode de fonctionnement par d\'e9faut avant l'envoi d'une requ\'eate 
+\par "StartDiagnosticSession" est le mode Apr\'e8s Vente
+\par 
+\par format donn\'e9es:
+\par 
+\par \tab 10 00
+\par \tab   |    |_______ A0 pour le mode Diagnostic Etudes
+\par                   |                   B0 pour le mode Diagnostic Contr\'f4les en cha\'eene
+\par \tab   |\tab       C0 pour le mode Diagnostic Apr\'e8s Vente
+\par                   |                   80 pour le mode Diag Fournisseur
+\par \tab   |
+\par                   |_________octet requ\'eate "StartDiagnosticSession"
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="128" Text="Constructeur"/>
+<Item Value="192" Text="Après-Vente"/></List>
+</Bits>
+</Data>
+<Data Name="Code Identification diagnostic">
+<Comment><![CDATA[Trame Identification système (TR_ID_COSLAD)]]></Comment>
+<Mnemonic>ROM</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Code ITG fournisseur">
+<Comment><![CDATA[Trame Identification système (TR_ID_COSLAD)]]></Comment>
+<Mnemonic>ROM</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Code pièce MPR">
+<Comment><![CDATA[Trame Identification système (TR_ID_COSLAD)]]></Comment>
+<Mnemonic>ROM</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Commande">
+<Comment><![CDATA[I/O control]]></Comment>
+<Mnemonic>PARAPIL1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Démarrer"/>
+<Item Value="1" Text="Etat?"/>
+<Item Value="17" Text="Arrêter"/></List>
+</Bits>
+</Data>
+<Data Name="Défaillance capteurs">
+<Mnemonic>DATA</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Défaut absent"/>
+<Item Value="1" Text="Défaut présent"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 1">
+<Comment><![CDATA[lieu de la panne n°1]]></Comment>
+<Mnemonic>DTC1-DATAi</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="39936" Text="Capteur arrière"/>
+<Item Value="39937" Text="Capteur avant"/>
+<Item Value="39938" Text="Signal Vitesse"/>
+<Item Value="39939" Text="Actionneur"/>
+<Item Value="39940" Text="Lampe Xénon"/>
+<Item Value="39941" Text="ECU"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 2">
+<Comment><![CDATA[lieu de la panne n°2]]></Comment>
+<Mnemonic>DTC2-DATAi</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="39936" Text="Capteur arrière"/>
+<Item Value="39937" Text="Capteur avant"/>
+<Item Value="39938" Text="Signal Vitesse"/>
+<Item Value="39939" Text="Actionneur"/>
+<Item Value="39940" Text="Lampe Xénon"/>
+<Item Value="39941" Text="ECU"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 3">
+<Comment><![CDATA[lieu de la panne n°3]]></Comment>
+<Mnemonic>DTC3-DATAi</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="39936" Text="Capteur arrière"/>
+<Item Value="39937" Text="Capteur avant"/>
+<Item Value="39938" Text="Signal Vitesse"/>
+<Item Value="39939" Text="Actionneur"/>
+<Item Value="39940" Text="Lampe Xénon"/>
+<Item Value="39941" Text="ECU"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 4">
+<Comment><![CDATA[lieu de la panne n°4]]></Comment>
+<Mnemonic>DTC4-DATAi</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="39936" Text="Capteur arrière"/>
+<Item Value="39937" Text="Capteur avant"/>
+<Item Value="39938" Text="Signal Vitesse"/>
+<Item Value="39939" Text="Actionneur"/>
+<Item Value="39940" Text="Lampe Xénon"/>
+<Item Value="39941" Text="ECU"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 5">
+<Comment><![CDATA[lieu de la panne n°5]]></Comment>
+<Mnemonic>DTC5-DATAi</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="39936" Text="Capteur arrière"/>
+<Item Value="39937" Text="Capteur avant"/>
+<Item Value="39938" Text="Signal Vitesse"/>
+<Item Value="39939" Text="Actionneur"/>
+<Item Value="39940" Text="Lampe Xénon"/>
+<Item Value="39941" Text="ECU"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 6">
+<Comment><![CDATA[lieu de la panne n°6]]></Comment>
+<Mnemonic>DTC6-DATAi</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="39936" Text="Capteur arrière"/>
+<Item Value="39937" Text="Capteur avant"/>
+<Item Value="39938" Text="Signal Vitesse"/>
+<Item Value="39939" Text="Actionneur"/>
+<Item Value="39940" Text="Lampe Xénon"/>
+<Item Value="39941" Text="ECU"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 7">
+<Comment><![CDATA[lieu de la panne n°7]]></Comment>
+<Mnemonic>DTC7-DATAi</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="39936" Text="Capteur arrière"/>
+<Item Value="39937" Text="Capteur avant"/>
+<Item Value="39938" Text="Signal Vitesse"/>
+<Item Value="39939" Text="Actionneur"/>
+<Item Value="39940" Text="Lampe Xénon"/>
+<Item Value="39941" Text="ECU"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 8">
+<Comment><![CDATA[lieu de la panne n°8]]></Comment>
+<Mnemonic>DTC8-DATAi</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="39936" Text="Capteur arrière"/>
+<Item Value="39937" Text="Capteur avant"/>
+<Item Value="39938" Text="Signal Vitesse"/>
+<Item Value="39939" Text="Actionneur"/>
+<Item Value="39940" Text="Lampe Xénon"/>
+<Item Value="39941" Text="ECU"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 9">
+<Comment><![CDATA[lieu de la panne n°9]]></Comment>
+<Mnemonic>DTC9-DATAi</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="39936" Text="Capteur arrière"/>
+<Item Value="39937" Text="Capteur avant"/>
+<Item Value="39938" Text="Signal Vitesse"/>
+<Item Value="39939" Text="Actionneur"/>
+<Item Value="39940" Text="Lampe Xénon"/>
+<Item Value="39941" Text="ECU"/></List>
+</Bits>
+</Data>
+<Data Name="Etat">
+<Comment><![CDATA[Paramètres de la LAD]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="En cours"/>
+<Item Value="2" Text="Effectué"/>
+<Item Value="17" Text="Arrêté"/></List>
+</Bits>
+</Data>
+<Data Name="Etat de l'initialisation">
+<Comment><![CDATA[calibration status (0 : not done / 1 : done)]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Non-effectuée"/>
+<Item Value="1" Text="Effectuée"/></List>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Comment><![CDATA[DDT2000]]></Comment>
+<Mnemonic>FirstDTC</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Localisation de la panne
+\par }
+]]></Description>
+<Bits count="16">
+<List>
+<Item Value="39936" Text="Capteur arrière"/>
+<Item Value="39937" Text="Capteur avant"/>
+<Item Value="39938" Text="Signal Vitesse"/>
+<Item Value="39939" Text="Actionneur"/>
+<Item Value="39940" Text="Lampe Xénon"/>
+<Item Value="39941" Text="ECU"/></List>
+</Bits>
+</Data>
+<Data Name="Flag 1">
+<Comment><![CDATA[Type de panne:               3bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne Standard présente"/>
+<Item Value="2" Text="Panne Standard mémorisée"/>
+<Item Value="3" Text="Panne standard présente et mémorisée"/>
+<Item Value="5" Text="Panne spécifique présente"/>
+<Item Value="6" Text="Panne spécifique mémorisée"/>
+<Item Value="7" Text="Panne spécifique présente et mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Flag 2">
+<Comment><![CDATA[Type de panne:               3bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne Standard présente"/>
+<Item Value="2" Text="Panne Standard mémorisée"/>
+<Item Value="3" Text="Panne standard présente et mémorisée"/>
+<Item Value="5" Text="Panne spécifique présente"/>
+<Item Value="6" Text="Panne spécifique mémorisée"/>
+<Item Value="7" Text="Panne spécifique présente et mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Flag 3">
+<Comment><![CDATA[Type de panne:               3bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne Standard présente"/>
+<Item Value="2" Text="Panne Standard mémorisée"/>
+<Item Value="3" Text="Panne standard présente et mémorisée"/>
+<Item Value="5" Text="Panne spécifique présente"/>
+<Item Value="6" Text="Panne spécifique mémorisée"/>
+<Item Value="7" Text="Panne spécifique présente et mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Flag 4">
+<Comment><![CDATA[Type de panne:               3bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne Standard présente"/>
+<Item Value="2" Text="Panne Standard mémorisée"/>
+<Item Value="3" Text="Panne standard présente et mémorisée"/>
+<Item Value="5" Text="Panne spécifique présente"/>
+<Item Value="6" Text="Panne spécifique mémorisée"/>
+<Item Value="7" Text="Panne spécifique présente et mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Flag 5">
+<Comment><![CDATA[Type de panne:               3bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne Standard présente"/>
+<Item Value="2" Text="Panne Standard mémorisée"/>
+<Item Value="3" Text="Panne standard présente et mémorisée"/>
+<Item Value="5" Text="Panne spécifique présente"/>
+<Item Value="6" Text="Panne spécifique mémorisée"/>
+<Item Value="7" Text="Panne spécifique présente et mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Flag 6">
+<Comment><![CDATA[Type de panne:               3bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne Standard présente"/>
+<Item Value="2" Text="Panne Standard mémorisée"/>
+<Item Value="3" Text="Panne standard présente et mémorisée"/>
+<Item Value="5" Text="Panne spécifique présente"/>
+<Item Value="6" Text="Panne spécifique mémorisée"/>
+<Item Value="7" Text="Panne spécifique présente et mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Flag 7">
+<Comment><![CDATA[Type de panne:               3bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne Standard présente"/>
+<Item Value="2" Text="Panne Standard mémorisée"/>
+<Item Value="3" Text="Panne standard présente et mémorisée"/>
+<Item Value="5" Text="Panne spécifique présente"/>
+<Item Value="6" Text="Panne spécifique mémorisée"/>
+<Item Value="7" Text="Panne spécifique présente et mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Flag 8">
+<Comment><![CDATA[Type de panne:               3bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne Standard présente"/>
+<Item Value="2" Text="Panne Standard mémorisée"/>
+<Item Value="3" Text="Panne standard présente et mémorisée"/>
+<Item Value="5" Text="Panne spécifique présente"/>
+<Item Value="6" Text="Panne spécifique mémorisée"/>
+<Item Value="7" Text="Panne spécifique présente et mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Flag 9">
+<Comment><![CDATA[Type de panne:               3bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne Standard présente"/>
+<Item Value="2" Text="Panne Standard mémorisée"/>
+<Item Value="3" Text="Panne standard présente et mémorisée"/>
+<Item Value="5" Text="Panne spécifique présente"/>
+<Item Value="6" Text="Panne spécifique mémorisée"/>
+<Item Value="7" Text="Panne spécifique présente et mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="FlagDTC">
+<Comment><![CDATA[Type de panne:               3bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne Standard présente"/>
+<Item Value="2" Text="Panne Standard mémorisée"/>
+<Item Value="3" Text="Panne standard présente et mémorisée"/>
+<Item Value="5" Text="Panne spécifique présente"/>
+<Item Value="6" Text="Panne spécifique mémorisée"/>
+<Item Value="7" Text="Panne spécifique présente et mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Jour APV">
+<Comment><![CDATA[Lecture de la date de la dernière intervention en Après-Vente]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Ann\'e9e de la derni\'e8re intervention Apr\'e8s-Vente:
+\par 
+\par format des Donn\'e9es-Requ\'eate:
+\par \tab 
+\par \tab 21 D2
+\par \tab   |    |______octet requ\'eate "ReadDataByLocalIdentifier"
+\par                   |________Demande Lecture Dates
+\par 
+\par format des Donn\'e9es-R\'e9ponse:
+\par 
+\par 61 D2 ZZ ZZ ZZ YY YY YY XX XX XX
+\par  |     |     |     |     |     |     |     |     |     |     |____Ann\'e9e APV $aa
+\par  |     |     |     |     |     |     |     |     |     |_______Mois APV    $mm
+\par  |     |     |     |     |     |     |     |     |__________Jour APV     $jj
+\par  |     |     |     |     |     |     |     |
+\par  |     |     |     |     |     |__ |__ |_____________Date construction
+\par  |     |     |__ |__ |______________________Date fabrication UCE
+\par  |     |
+\par  |     |______________________________octet de commande "Lecture Date"
+\par  |_________________________________octet r\'e9ponse "ReadDataByLocal
+\par \tab \tab \tab \tab \tab \tab            IdentifierOK"
+\par 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/></List>
+</Bits>
+</Data>
+<Data Name="Mois APV">
+<Comment><![CDATA[Lecture de la date de la dernière intervention en Après-Vente]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Ann\'e9e de la derni\'e8re intervention Apr\'e8s-Vente:
+\par 
+\par format des Donn\'e9es-Requ\'eate:
+\par \tab 
+\par \tab 21 D2
+\par \tab   |    |______octet requ\'eate "ReadDataByLocalIdentifier"
+\par                   |________Demande Lecture Dates
+\par 
+\par format des Donn\'e9es-R\'e9ponse:
+\par 
+\par 61 D2 ZZ ZZ ZZ YY YY YY XX XX XX
+\par  |     |     |     |     |     |     |     |     |     |     |____Ann\'e9e APV $aa
+\par  |     |     |     |     |     |     |     |     |     |_______Mois APV    $mm
+\par  |     |     |     |     |     |     |     |     |__________Jour APV     $jj
+\par  |     |     |     |     |     |     |     |
+\par  |     |     |     |     |     |__ |__ |_____________Date construction
+\par  |     |     |__ |__ |______________________Date fabrication UCE
+\par  |     |
+\par  |     |______________________________octet de commande "Lecture Date"
+\par  |_________________________________octet r\'e9ponse "ReadDataByLocal
+\par \tab \tab \tab \tab \tab \tab            IdentifierOK"
+\par \plain\f0\fs17 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="Janvier"/>
+<Item Value="2" Text="Février"/>
+<Item Value="3" Text="Mars"/>
+<Item Value="4" Text="Avril"/>
+<Item Value="5" Text="Mai"/>
+<Item Value="6" Text="Juin"/>
+<Item Value="7" Text="Juillet"/>
+<Item Value="8" Text="Août"/>
+<Item Value="9" Text="Septembre"/>
+<Item Value="10" Text="Octobre"/>
+<Item Value="11" Text="Novembre"/>
+<Item Value="12" Text="Décembre"/></List>
+</Bits>
+</Data>
+<Data Name="MoreDTC">
+<Mnemonic>MOREDTC</Mnemonic>
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="NDTC">
+<Mnemonic>#DTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Nombre de défauts">
+<Comment><![CDATA[Nombre de DTC detectés et enregistrés]]></Comment>
+<Mnemonic>NbDTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Offset de rabattement">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="% rad" DivideBy=" 512" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Output Control Command">
+<Comment><![CDATA[Testing output : Command enumeration]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="Start Temporary"/>
+<Item Value="1" Text="Status"/>
+<Item Value="17" Text="Stop"/></List>
+</Bits>
+</Data>
+<Data Name="Output Control Status">
+<Bits>
+<List>
+<Item Value="1" Text="Running"/>
+<Item Value="2" Text="Stopped"/>
+<Item Value="17" Text="Manually Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Output Driving">
+<Comment><![CDATA[Ecriture des calibrations]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Output Temporary Control List">
+<Bits>
+<List>
+<Item Value="129" Text="Moteur"/></List>
+</Bits>
+</Data>
+<Data Name="Padding">
+<Mnemonic>DATAi</Mnemonic>
+<Bytes count="8"/>
+</Data>
+<Data Name="Panne1">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="initialisation non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="37" Text="défaillance : Présente"/>
+<Item Value="38" Text="signal incohérent : Présente"/>
+<Item Value="39" Text="pas de signal : Présente"/>
+<Item Value="42" Text="niveau bas permanent : Présente"/>
+<Item Value="43" Text="niveau haut permanent : Présente"/>
+<Item Value="45" Text="anomalie électronique : Présente"/>
+<Item Value="51" Text="valeur hors limites : Présente"/>
+<Item Value="54" Text="configuration non valide : Présente"/>
+<Item Value="55" Text="initialisation non effectuée : Présente"/>
+<Item Value="69" Text="défaillance : Mémorisée"/>
+<Item Value="70" Text="signal incohérent  : Mémorisée"/>
+<Item Value="71" Text="pas de signal : Mémorisée"/>
+<Item Value="74" Text="niveau bas permanent : Mémorisée"/>
+<Item Value="75" Text="niveau haut permanent : Mémorisée"/>
+<Item Value="77" Text="anomalie électronique : Mémorisée"/>
+<Item Value="83" Text="valeur hors limites : Mémorisée"/>
+<Item Value="86" Text="configuration non valide : Mémorisée"/>
+<Item Value="87" Text="initialisation non effectuée : Mémorisée"/>
+<Item Value="101" Text="défaillance : Présente et Mémorisée"/>
+<Item Value="102" Text="signal incohérent : Présente et Mémorisée"/>
+<Item Value="103" Text="pas de signal : Présente et Mémorisée"/>
+<Item Value="106" Text="niveau bas permanent : Présente et Mémorisée"/>
+<Item Value="107" Text="niveau haut permanent : Présente et Mémorisée"/>
+<Item Value="109" Text="anomalie électronique : Présente et Mémorisée"/>
+<Item Value="115" Text="valeur hors limites : Présente et Mémorisée"/>
+<Item Value="118" Text="configuration non valide : Présente et Mémorisée"/>
+<Item Value="119" Text="initialisation non effectuée : Présente et Mémorisée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/>
+<Item Value="161" Text="défaillance actionneur : Présente"/>
+<Item Value="162" Text="défaillance lampe : Présente"/>
+<Item Value="163" Text="adresse ballast non configurée : Présente"/>
+<Item Value="193" Text="défaillance actionneur : Mémorisée"/>
+<Item Value="194" Text="défaillance lampe : Mémorisée"/>
+<Item Value="195" Text="adresse ballast non configurée : Mémorisée"/>
+<Item Value="225" Text="défaillance actionneur : Présente et Mémorisée"/>
+<Item Value="226" Text="défaillance lampe : Présente et Mémorisée"/>
+<Item Value="227" Text="adresse ballast non configurée : Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Panne2">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="initialisation non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="37" Text="défaillance : Présente"/>
+<Item Value="38" Text="signal incohérent : Présente"/>
+<Item Value="39" Text="pas de signal : Présente"/>
+<Item Value="42" Text="niveau bas permanent : Présente"/>
+<Item Value="43" Text="niveau haut permanent : Présente"/>
+<Item Value="45" Text="anomalie électronique : Présente"/>
+<Item Value="51" Text="valeur hors limites : Présente"/>
+<Item Value="54" Text="configuration non valide : Présente"/>
+<Item Value="55" Text="initialisation non effectuée : Présente"/>
+<Item Value="69" Text="défaillance : Mémorisée"/>
+<Item Value="70" Text="signal incohérent  : Mémorisée"/>
+<Item Value="71" Text="pas de signal : Mémorisée"/>
+<Item Value="74" Text="niveau bas permanent : Mémorisée"/>
+<Item Value="75" Text="niveau haut permanent : Mémorisée"/>
+<Item Value="77" Text="anomalie électronique : Mémorisée"/>
+<Item Value="83" Text="valeur hors limites : Mémorisée"/>
+<Item Value="86" Text="configuration non valide : Mémorisée"/>
+<Item Value="87" Text="initialisation non effectuée : Mémorisée"/>
+<Item Value="101" Text="défaillance : Présente et Mémorisée"/>
+<Item Value="102" Text="signal incohérent : Présente et Mémorisée"/>
+<Item Value="103" Text="pas de signal : Présente et Mémorisée"/>
+<Item Value="106" Text="niveau bas permanent : Présente et Mémorisée"/>
+<Item Value="107" Text="niveau haut permanent : Présente et Mémorisée"/>
+<Item Value="109" Text="anomalie électronique : Présente et Mémorisée"/>
+<Item Value="115" Text="valeur hors limites : Présente et Mémorisée"/>
+<Item Value="118" Text="configuration non valide : Présente et Mémorisée"/>
+<Item Value="119" Text="initialisation non effectuée : Présente et Mémorisée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/>
+<Item Value="161" Text="défaillance actionneur : Présente"/>
+<Item Value="162" Text="défaillance lampe : Présente"/>
+<Item Value="163" Text="adresse ballast non configurée : Présente"/>
+<Item Value="193" Text="défaillance actionneur : Mémorisée"/>
+<Item Value="194" Text="défaillance lampe : Mémorisée"/>
+<Item Value="195" Text="adresse ballast non configurée : Mémorisée"/>
+<Item Value="225" Text="défaillance actionneur : Présente et Mémorisée"/>
+<Item Value="226" Text="défaillance lampe : Présente et Mémorisée"/>
+<Item Value="227" Text="adresse ballast non configurée : Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Panne3">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="initialisation non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="37" Text="défaillance : Présente"/>
+<Item Value="38" Text="signal incohérent : Présente"/>
+<Item Value="39" Text="pas de signal : Présente"/>
+<Item Value="42" Text="niveau bas permanent : Présente"/>
+<Item Value="43" Text="niveau haut permanent : Présente"/>
+<Item Value="45" Text="anomalie électronique : Présente"/>
+<Item Value="51" Text="valeur hors limites : Présente"/>
+<Item Value="54" Text="configuration non valide : Présente"/>
+<Item Value="55" Text="initialisation non effectuée : Présente"/>
+<Item Value="69" Text="défaillance : Mémorisée"/>
+<Item Value="70" Text="signal incohérent  : Mémorisée"/>
+<Item Value="71" Text="pas de signal : Mémorisée"/>
+<Item Value="74" Text="niveau bas permanent : Mémorisée"/>
+<Item Value="75" Text="niveau haut permanent : Mémorisée"/>
+<Item Value="77" Text="anomalie électronique : Mémorisée"/>
+<Item Value="83" Text="valeur hors limites : Mémorisée"/>
+<Item Value="86" Text="configuration non valide : Mémorisée"/>
+<Item Value="87" Text="initialisation non effectuée : Mémorisée"/>
+<Item Value="101" Text="défaillance : Présente et Mémorisée"/>
+<Item Value="102" Text="signal incohérent : Présente et Mémorisée"/>
+<Item Value="103" Text="pas de signal : Présente et Mémorisée"/>
+<Item Value="106" Text="niveau bas permanent : Présente et Mémorisée"/>
+<Item Value="107" Text="niveau haut permanent : Présente et Mémorisée"/>
+<Item Value="109" Text="anomalie électronique : Présente et Mémorisée"/>
+<Item Value="115" Text="valeur hors limites : Présente et Mémorisée"/>
+<Item Value="118" Text="configuration non valide : Présente et Mémorisée"/>
+<Item Value="119" Text="initialisation non effectuée : Présente et Mémorisée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/>
+<Item Value="161" Text="défaillance actionneur : Présente"/>
+<Item Value="162" Text="défaillance lampe : Présente"/>
+<Item Value="163" Text="adresse ballast non configurée : Présente"/>
+<Item Value="193" Text="défaillance actionneur : Mémorisée"/>
+<Item Value="194" Text="défaillance lampe : Mémorisée"/>
+<Item Value="195" Text="adresse ballast non configurée : Mémorisée"/>
+<Item Value="225" Text="défaillance actionneur : Présente et Mémorisée"/>
+<Item Value="226" Text="défaillance lampe : Présente et Mémorisée"/>
+<Item Value="227" Text="adresse ballast non configurée : Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Panne4">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="initialisation non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="37" Text="défaillance : Présente"/>
+<Item Value="38" Text="signal incohérent : Présente"/>
+<Item Value="39" Text="pas de signal : Présente"/>
+<Item Value="42" Text="niveau bas permanent : Présente"/>
+<Item Value="43" Text="niveau haut permanent : Présente"/>
+<Item Value="45" Text="anomalie électronique : Présente"/>
+<Item Value="51" Text="valeur hors limites : Présente"/>
+<Item Value="54" Text="configuration non valide : Présente"/>
+<Item Value="55" Text="initialisation non effectuée : Présente"/>
+<Item Value="69" Text="défaillance : Mémorisée"/>
+<Item Value="70" Text="signal incohérent  : Mémorisée"/>
+<Item Value="71" Text="pas de signal : Mémorisée"/>
+<Item Value="74" Text="niveau bas permanent : Mémorisée"/>
+<Item Value="75" Text="niveau haut permanent : Mémorisée"/>
+<Item Value="77" Text="anomalie électronique : Mémorisée"/>
+<Item Value="83" Text="valeur hors limites : Mémorisée"/>
+<Item Value="86" Text="configuration non valide : Mémorisée"/>
+<Item Value="87" Text="initialisation non effectuée : Mémorisée"/>
+<Item Value="101" Text="défaillance : Présente et Mémorisée"/>
+<Item Value="102" Text="signal incohérent : Présente et Mémorisée"/>
+<Item Value="103" Text="pas de signal : Présente et Mémorisée"/>
+<Item Value="106" Text="niveau bas permanent : Présente et Mémorisée"/>
+<Item Value="107" Text="niveau haut permanent : Présente et Mémorisée"/>
+<Item Value="109" Text="anomalie électronique : Présente et Mémorisée"/>
+<Item Value="115" Text="valeur hors limites : Présente et Mémorisée"/>
+<Item Value="118" Text="configuration non valide : Présente et Mémorisée"/>
+<Item Value="119" Text="initialisation non effectuée : Présente et Mémorisée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/>
+<Item Value="161" Text="défaillance actionneur : Présente"/>
+<Item Value="162" Text="défaillance lampe : Présente"/>
+<Item Value="163" Text="adresse ballast non configurée : Présente"/>
+<Item Value="193" Text="défaillance actionneur : Mémorisée"/>
+<Item Value="194" Text="défaillance lampe : Mémorisée"/>
+<Item Value="195" Text="adresse ballast non configurée : Mémorisée"/>
+<Item Value="225" Text="défaillance actionneur : Présente et Mémorisée"/>
+<Item Value="226" Text="défaillance lampe : Présente et Mémorisée"/>
+<Item Value="227" Text="adresse ballast non configurée : Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Panne5">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="initialisation non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="37" Text="défaillance : Présente"/>
+<Item Value="38" Text="signal incohérent : Présente"/>
+<Item Value="39" Text="pas de signal : Présente"/>
+<Item Value="42" Text="niveau bas permanent : Présente"/>
+<Item Value="43" Text="niveau haut permanent : Présente"/>
+<Item Value="45" Text="anomalie électronique : Présente"/>
+<Item Value="51" Text="valeur hors limites : Présente"/>
+<Item Value="54" Text="configuration non valide : Présente"/>
+<Item Value="55" Text="initialisation non effectuée : Présente"/>
+<Item Value="69" Text="défaillance : Mémorisée"/>
+<Item Value="70" Text="signal incohérent  : Mémorisée"/>
+<Item Value="71" Text="pas de signal : Mémorisée"/>
+<Item Value="74" Text="niveau bas permanent : Mémorisée"/>
+<Item Value="75" Text="niveau haut permanent : Mémorisée"/>
+<Item Value="77" Text="anomalie électronique : Mémorisée"/>
+<Item Value="83" Text="valeur hors limites : Mémorisée"/>
+<Item Value="86" Text="configuration non valide : Mémorisée"/>
+<Item Value="87" Text="initialisation non effectuée : Mémorisée"/>
+<Item Value="101" Text="défaillance : Présente et Mémorisée"/>
+<Item Value="102" Text="signal incohérent : Présente et Mémorisée"/>
+<Item Value="103" Text="pas de signal : Présente et Mémorisée"/>
+<Item Value="106" Text="niveau bas permanent : Présente et Mémorisée"/>
+<Item Value="107" Text="niveau haut permanent : Présente et Mémorisée"/>
+<Item Value="109" Text="anomalie électronique : Présente et Mémorisée"/>
+<Item Value="115" Text="valeur hors limites : Présente et Mémorisée"/>
+<Item Value="118" Text="configuration non valide : Présente et Mémorisée"/>
+<Item Value="119" Text="initialisation non effectuée : Présente et Mémorisée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/>
+<Item Value="161" Text="défaillance actionneur : Présente"/>
+<Item Value="162" Text="défaillance lampe : Présente"/>
+<Item Value="163" Text="adresse ballast non configurée : Présente"/>
+<Item Value="193" Text="défaillance actionneur : Mémorisée"/>
+<Item Value="194" Text="défaillance lampe : Mémorisée"/>
+<Item Value="195" Text="adresse ballast non configurée : Mémorisée"/>
+<Item Value="225" Text="défaillance actionneur : Présente et Mémorisée"/>
+<Item Value="226" Text="défaillance lampe : Présente et Mémorisée"/>
+<Item Value="227" Text="adresse ballast non configurée : Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Panne6">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="initialisation non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="37" Text="défaillance : Présente"/>
+<Item Value="38" Text="signal incohérent : Présente"/>
+<Item Value="39" Text="pas de signal : Présente"/>
+<Item Value="42" Text="niveau bas permanent : Présente"/>
+<Item Value="43" Text="niveau haut permanent : Présente"/>
+<Item Value="45" Text="anomalie électronique : Présente"/>
+<Item Value="51" Text="valeur hors limites : Présente"/>
+<Item Value="54" Text="configuration non valide : Présente"/>
+<Item Value="55" Text="initialisation non effectuée : Présente"/>
+<Item Value="69" Text="défaillance : Mémorisée"/>
+<Item Value="70" Text="signal incohérent  : Mémorisée"/>
+<Item Value="71" Text="pas de signal : Mémorisée"/>
+<Item Value="74" Text="niveau bas permanent : Mémorisée"/>
+<Item Value="75" Text="niveau haut permanent : Mémorisée"/>
+<Item Value="77" Text="anomalie électronique : Mémorisée"/>
+<Item Value="83" Text="valeur hors limites : Mémorisée"/>
+<Item Value="86" Text="configuration non valide : Mémorisée"/>
+<Item Value="87" Text="initialisation non effectuée : Mémorisée"/>
+<Item Value="101" Text="défaillance : Présente et Mémorisée"/>
+<Item Value="102" Text="signal incohérent : Présente et Mémorisée"/>
+<Item Value="103" Text="pas de signal : Présente et Mémorisée"/>
+<Item Value="106" Text="niveau bas permanent : Présente et Mémorisée"/>
+<Item Value="107" Text="niveau haut permanent : Présente et Mémorisée"/>
+<Item Value="109" Text="anomalie électronique : Présente et Mémorisée"/>
+<Item Value="115" Text="valeur hors limites : Présente et Mémorisée"/>
+<Item Value="118" Text="configuration non valide : Présente et Mémorisée"/>
+<Item Value="119" Text="initialisation non effectuée : Présente et Mémorisée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/>
+<Item Value="161" Text="défaillance actionneur : Présente"/>
+<Item Value="162" Text="défaillance lampe : Présente"/>
+<Item Value="163" Text="adresse ballast non configurée : Présente"/>
+<Item Value="193" Text="défaillance actionneur : Mémorisée"/>
+<Item Value="194" Text="défaillance lampe : Mémorisée"/>
+<Item Value="195" Text="adresse ballast non configurée : Mémorisée"/>
+<Item Value="225" Text="défaillance actionneur : Présente et Mémorisée"/>
+<Item Value="226" Text="défaillance lampe : Présente et Mémorisée"/>
+<Item Value="227" Text="adresse ballast non configurée : Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Panne7">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="initialisation non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="37" Text="défaillance : Présente"/>
+<Item Value="38" Text="signal incohérent : Présente"/>
+<Item Value="39" Text="pas de signal : Présente"/>
+<Item Value="42" Text="niveau bas permanent : Présente"/>
+<Item Value="43" Text="niveau haut permanent : Présente"/>
+<Item Value="45" Text="anomalie électronique : Présente"/>
+<Item Value="51" Text="valeur hors limites : Présente"/>
+<Item Value="54" Text="configuration non valide : Présente"/>
+<Item Value="55" Text="initialisation non effectuée : Présente"/>
+<Item Value="69" Text="défaillance : Mémorisée"/>
+<Item Value="70" Text="signal incohérent  : Mémorisée"/>
+<Item Value="71" Text="pas de signal : Mémorisée"/>
+<Item Value="74" Text="niveau bas permanent : Mémorisée"/>
+<Item Value="75" Text="niveau haut permanent : Mémorisée"/>
+<Item Value="77" Text="anomalie électronique : Mémorisée"/>
+<Item Value="83" Text="valeur hors limites : Mémorisée"/>
+<Item Value="86" Text="configuration non valide : Mémorisée"/>
+<Item Value="87" Text="initialisation non effectuée : Mémorisée"/>
+<Item Value="101" Text="défaillance : Présente et Mémorisée"/>
+<Item Value="102" Text="signal incohérent : Présente et Mémorisée"/>
+<Item Value="103" Text="pas de signal : Présente et Mémorisée"/>
+<Item Value="106" Text="niveau bas permanent : Présente et Mémorisée"/>
+<Item Value="107" Text="niveau haut permanent : Présente et Mémorisée"/>
+<Item Value="109" Text="anomalie électronique : Présente et Mémorisée"/>
+<Item Value="115" Text="valeur hors limites : Présente et Mémorisée"/>
+<Item Value="118" Text="configuration non valide : Présente et Mémorisée"/>
+<Item Value="119" Text="initialisation non effectuée : Présente et Mémorisée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/>
+<Item Value="161" Text="défaillance actionneur : Présente"/>
+<Item Value="162" Text="défaillance lampe : Présente"/>
+<Item Value="163" Text="adresse ballast non configurée : Présente"/>
+<Item Value="193" Text="défaillance actionneur : Mémorisée"/>
+<Item Value="194" Text="défaillance lampe : Mémorisée"/>
+<Item Value="195" Text="adresse ballast non configurée : Mémorisée"/>
+<Item Value="225" Text="défaillance actionneur : Présente et Mémorisée"/>
+<Item Value="226" Text="défaillance lampe : Présente et Mémorisée"/>
+<Item Value="227" Text="adresse ballast non configurée : Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Panne8">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="initialisation non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="37" Text="défaillance : Présente"/>
+<Item Value="38" Text="signal incohérent : Présente"/>
+<Item Value="39" Text="pas de signal : Présente"/>
+<Item Value="42" Text="niveau bas permanent : Présente"/>
+<Item Value="43" Text="niveau haut permanent : Présente"/>
+<Item Value="45" Text="anomalie électronique : Présente"/>
+<Item Value="51" Text="valeur hors limites : Présente"/>
+<Item Value="54" Text="configuration non valide : Présente"/>
+<Item Value="55" Text="initialisation non effectuée : Présente"/>
+<Item Value="69" Text="défaillance : Mémorisée"/>
+<Item Value="70" Text="signal incohérent  : Mémorisée"/>
+<Item Value="71" Text="pas de signal : Mémorisée"/>
+<Item Value="74" Text="niveau bas permanent : Mémorisée"/>
+<Item Value="75" Text="niveau haut permanent : Mémorisée"/>
+<Item Value="77" Text="anomalie électronique : Mémorisée"/>
+<Item Value="83" Text="valeur hors limites : Mémorisée"/>
+<Item Value="86" Text="configuration non valide : Mémorisée"/>
+<Item Value="87" Text="initialisation non effectuée : Mémorisée"/>
+<Item Value="101" Text="défaillance : Présente et Mémorisée"/>
+<Item Value="102" Text="signal incohérent : Présente et Mémorisée"/>
+<Item Value="103" Text="pas de signal : Présente et Mémorisée"/>
+<Item Value="106" Text="niveau bas permanent : Présente et Mémorisée"/>
+<Item Value="107" Text="niveau haut permanent : Présente et Mémorisée"/>
+<Item Value="109" Text="anomalie électronique : Présente et Mémorisée"/>
+<Item Value="115" Text="valeur hors limites : Présente et Mémorisée"/>
+<Item Value="118" Text="configuration non valide : Présente et Mémorisée"/>
+<Item Value="119" Text="initialisation non effectuée : Présente et Mémorisée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/>
+<Item Value="161" Text="défaillance actionneur : Présente"/>
+<Item Value="162" Text="défaillance lampe : Présente"/>
+<Item Value="163" Text="adresse ballast non configurée : Présente"/>
+<Item Value="193" Text="défaillance actionneur : Mémorisée"/>
+<Item Value="194" Text="défaillance lampe : Mémorisée"/>
+<Item Value="195" Text="adresse ballast non configurée : Mémorisée"/>
+<Item Value="225" Text="défaillance actionneur : Présente et Mémorisée"/>
+<Item Value="226" Text="défaillance lampe : Présente et Mémorisée"/>
+<Item Value="227" Text="adresse ballast non configurée : Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Panne9">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="initialisation non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="37" Text="défaillance : Présente"/>
+<Item Value="38" Text="signal incohérent : Présente"/>
+<Item Value="39" Text="pas de signal : Présente"/>
+<Item Value="42" Text="niveau bas permanent : Présente"/>
+<Item Value="43" Text="niveau haut permanent : Présente"/>
+<Item Value="45" Text="anomalie électronique : Présente"/>
+<Item Value="51" Text="valeur hors limites : Présente"/>
+<Item Value="54" Text="configuration non valide : Présente"/>
+<Item Value="55" Text="initialisation non effectuée : Présente"/>
+<Item Value="69" Text="défaillance : Mémorisée"/>
+<Item Value="70" Text="signal incohérent  : Mémorisée"/>
+<Item Value="71" Text="pas de signal : Mémorisée"/>
+<Item Value="74" Text="niveau bas permanent : Mémorisée"/>
+<Item Value="75" Text="niveau haut permanent : Mémorisée"/>
+<Item Value="77" Text="anomalie électronique : Mémorisée"/>
+<Item Value="83" Text="valeur hors limites : Mémorisée"/>
+<Item Value="86" Text="configuration non valide : Mémorisée"/>
+<Item Value="87" Text="initialisation non effectuée : Mémorisée"/>
+<Item Value="101" Text="défaillance : Présente et Mémorisée"/>
+<Item Value="102" Text="signal incohérent : Présente et Mémorisée"/>
+<Item Value="103" Text="pas de signal : Présente et Mémorisée"/>
+<Item Value="106" Text="niveau bas permanent : Présente et Mémorisée"/>
+<Item Value="107" Text="niveau haut permanent : Présente et Mémorisée"/>
+<Item Value="109" Text="anomalie électronique : Présente et Mémorisée"/>
+<Item Value="115" Text="valeur hors limites : Présente et Mémorisée"/>
+<Item Value="118" Text="configuration non valide : Présente et Mémorisée"/>
+<Item Value="119" Text="initialisation non effectuée : Présente et Mémorisée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/>
+<Item Value="161" Text="défaillance actionneur : Présente"/>
+<Item Value="162" Text="défaillance lampe : Présente"/>
+<Item Value="163" Text="adresse ballast non configurée : Présente"/>
+<Item Value="193" Text="défaillance actionneur : Mémorisée"/>
+<Item Value="194" Text="défaillance lampe : Mémorisée"/>
+<Item Value="195" Text="adresse ballast non configurée : Mémorisée"/>
+<Item Value="225" Text="défaillance actionneur : Présente et Mémorisée"/>
+<Item Value="226" Text="défaillance lampe : Présente et Mémorisée"/>
+<Item Value="227" Text="adresse ballast non configurée : Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Position du capteur Arrière">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16">
+<Scaled Unit="%" Step=" 100" DivideBy=" 65535" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Position du capteur Arrière (digits)">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16">
+<Scaled Format="0"/>
+</Bits>
+</Data>
+<Data Name="Position du capteur Avant">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16">
+<Scaled Unit="%" Step=" 100" DivideBy=" 65535" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Position du capteur Avant (digits)">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16">
+<Scaled Format="0"/>
+</Bits>
+</Data>
+<Data Name="Position du moteur">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16">
+<Scaled Unit="pas"/>
+</Bits>
+</Data>
+<Data Name="Position finale de l'actionneur">
+<Comment><![CDATA[Ecriture des calibrations]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16">
+<Scaled Unit="pas"/>
+</Bits>
+</Data>
+<Data Name="Référence Hardware">
+<Comment><![CDATA[Trame Identification système (TR_ID_COSLAD)]]></Comment>
+<Mnemonic>ROM</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Session Name">
+<Comment><![CDATA[choix du type de diagnostic]]></Comment>
+<Mnemonic>DIAGMODE</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Constructeur"/>
+<Item Value="192" Text="Après-Vente"/></List>
+</Bits>
+</Data>
+<Data Name="Seuil de référence Arrière">
+<Comment><![CDATA[RCcapt_AR_0]]></Comment>
+<Mnemonic>INIT</Mnemonic>
+<Bits>
+<Scaled Unit="% rc" Step=" 100" DivideBy=" 255" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Seuil de référence Avant">
+<Comment><![CDATA[RCcapt_AV_0]]></Comment>
+<Mnemonic>INIT</Mnemonic>
+<Bits>
+<Scaled Unit="% rc" Step=" 100" DivideBy=" 255" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Seuil maximal Arrière">
+<Comment><![CDATA[rear sensor max value]]></Comment>
+<Mnemonic>INIT</Mnemonic>
+<Bits>
+<Scaled Unit="% rc" Step=" 100" DivideBy=" 255" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Seuil maximal Avant">
+<Comment><![CDATA[front sensor max value]]></Comment>
+<Mnemonic>INIT</Mnemonic>
+<Bits>
+<Scaled Unit="% rc" Step=" 100" DivideBy=" 255" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Seuil minimal Arrière">
+<Comment><![CDATA[rear sensor min value]]></Comment>
+<Mnemonic>INIT</Mnemonic>
+<Bits>
+<Scaled Unit="% rc" Step=" 100" DivideBy=" 255" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Seuil minimal Avant">
+<Comment><![CDATA[front sensor min value]]></Comment>
+<Mnemonic>INIT</Mnemonic>
+<Bits>
+<Scaled Unit="% rc" Step=" 100" DivideBy=" 255" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Status 1">
+<Comment><![CDATA[Type de la panne n°1]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="5">
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="configuration non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/></List>
+</Bits>
+</Data>
+<Data Name="Status 2">
+<Comment><![CDATA[Type de la panne n°2]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="5">
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="configuration non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/></List>
+</Bits>
+</Data>
+<Data Name="Status 3">
+<Comment><![CDATA[Type de la panne n°3]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="5">
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="configuration non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/></List>
+</Bits>
+</Data>
+<Data Name="Status 4">
+<Comment><![CDATA[Type de la panne n°4]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="5">
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="configuration non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/></List>
+</Bits>
+</Data>
+<Data Name="Status 5">
+<Comment><![CDATA[Type de la panne n°5]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="5">
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="configuration non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/></List>
+</Bits>
+</Data>
+<Data Name="Status 6">
+<Comment><![CDATA[Type de la panne n°6]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}{\f3\fswiss\fprq2 System;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Type de panne
+\par }
+]]></Description>
+<Bits count="5">
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="configuration non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/></List>
+</Bits>
+</Data>
+<Data Name="Status 7">
+<Comment><![CDATA[Type de la panne n°7]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}{\f3\fswiss\fprq2 System;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Type de panne
+\par }
+]]></Description>
+<Bits count="5">
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="configuration non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/></List>
+</Bits>
+</Data>
+<Data Name="Status 8">
+<Comment><![CDATA[Type de la panne n°8]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}{\f3\fswiss\fprq2 System;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Type de panne
+\par }
+]]></Description>
+<Bits count="5">
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="configuration non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/></List>
+</Bits>
+</Data>
+<Data Name="Status 9">
+<Comment><![CDATA[Type de la panne n°9]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}{\f3\fswiss\fprq2 System;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Type de panne
+\par }
+]]></Description>
+<Bits count="5">
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="configuration non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/></List>
+</Bits>
+</Data>
+<Data Name="StatusDTC">
+<Comment><![CDATA[for DDT2000 automatique Failure screen]]></Comment>
+<Mnemonic>Status DTC</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}{\f3\fswiss\fprq2 System;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Type de panne
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="5" Text="défaillance"/>
+<Item Value="6" Text="signal incohérent"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="19" Text="valeur hors limites"/>
+<Item Value="22" Text="initialisation non valide"/>
+<Item Value="23" Text="initialisation non effectuée"/>
+<Item Value="37" Text="défaillance : Présente"/>
+<Item Value="38" Text="signal incohérent : Présente"/>
+<Item Value="39" Text="pas de signal : Présente"/>
+<Item Value="42" Text="niveau bas permanent : Présente"/>
+<Item Value="43" Text="niveau haut permanent : Présente"/>
+<Item Value="45" Text="anomalie électronique : Présente"/>
+<Item Value="51" Text="valeur hors limites : Présente"/>
+<Item Value="54" Text="configuration non valide : Présente"/>
+<Item Value="55" Text="initialisation non effectuée : Présente"/>
+<Item Value="69" Text="défaillance : Mémorisée"/>
+<Item Value="70" Text="signal incohérent  : Mémorisée"/>
+<Item Value="71" Text="pas de signal : Mémorisée"/>
+<Item Value="74" Text="niveau bas permanent : Mémorisée"/>
+<Item Value="75" Text="niveau haut permanent : Mémorisée"/>
+<Item Value="77" Text="anomalie électronique : Mémorisée"/>
+<Item Value="83" Text="valeur hors limites : Mémorisée"/>
+<Item Value="86" Text="configuration non valide : Mémorisée"/>
+<Item Value="87" Text="initialisation non effectuée : Mémorisée"/>
+<Item Value="101" Text="défaillance : Présente et Mémorisée"/>
+<Item Value="102" Text="signal incohérent : Présente et Mémorisée"/>
+<Item Value="103" Text="pas de signal : Présente et Mémorisée"/>
+<Item Value="106" Text="niveau bas permanent : Présente et Mémorisée"/>
+<Item Value="107" Text="niveau haut permanent : Présente et Mémorisée"/>
+<Item Value="109" Text="anomalie électronique : Présente et Mémorisée"/>
+<Item Value="115" Text="valeur hors limites : Présente et Mémorisée"/>
+<Item Value="118" Text="configuration non valide : Présente et Mémorisée"/>
+<Item Value="119" Text="initialisation non effectuée : Présente et Mémorisée"/>
+<Item Value="129" Text="défaillance actionneur"/>
+<Item Value="130" Text="défaillance lampe"/>
+<Item Value="131" Text="adresse ballast non configurée"/>
+<Item Value="161" Text="défaillance actionneur : Présente"/>
+<Item Value="162" Text="défaillance lampe : Présente"/>
+<Item Value="163" Text="adresse ballast non configurée : Présente"/>
+<Item Value="193" Text="défaillance actionneur : Mémorisée"/>
+<Item Value="194" Text="défaillance lampe : Mémorisée"/>
+<Item Value="195" Text="adresse ballast non configurée : Mémorisée"/>
+<Item Value="225" Text="défaillance actionneur : Présente et Mémorisée"/>
+<Item Value="226" Text="défaillance lampe : Présente et Mémorisée"/>
+<Item Value="227" Text="adresse ballast non configurée : Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Tension d'alimentation capteurs">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<Scaled Unit="V" Step=" .106" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Type de véhicule">
+<Comment><![CDATA[enregistrement du type de véhicule]]></Comment>
+<Mnemonic>IDENT-VEH</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Enregistre le type de vehicule (X74-X73-X81)
+\par 
+\par format des donn\'e9es:
+\par  
+\par \tab 3B A1 00
+\par \tab  |     |     |_______octet requ\'eate "WriteDataByLocalIdentifier"
+\par \tab  |     |
+\par \tab  |     |__________Fonction \'e0 r\'e9aliser
+\par \tab  |
+\par \tab  |_____________Identification de v\'e9hicule :    $74 pour X74
+\par \tab \tab \tab \tab \tab          $73 pour X73
+\par \tab \tab \tab \tab \tab          $81 pour X81
+\par }
+]]></Description>
+<Bits count="3">
+<List>
+<Item Value="0" Text="Choisir un modèle véhicule"/>
+<Item Value="1" Text="Modèle véhicule B ou C"/>
+<Item Value="2" Text="Modèle véhicule L ou K"/>
+<Item Value="3" Text="Modèle véhicule E"/></List>
+</Bits>
+</Data>
+<Data Name="Type de véhicule non-spécifié">
+<Mnemonic>DATA</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Défaut absent"/>
+<Item Value="1" Text="Défaut présent"/></List>
+</Bits>
+</Data>
+<Data Name="Valeur du  Vcode">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<Scaled Unit="V" Step=" .1064" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Variable A de filtrage">
+<Comment><![CDATA[Info tps réel]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<Scaled DivideBy=" 255" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="VEM-Key byte 1">
+<Comment><![CDATA[Valeurs de défaut $D0]]></Comment>
+<Mnemonic>KB1 $D0</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="VEM-Key byte 2">
+<Comment><![CDATA[Valeurs de défaut $8F]]></Comment>
+<Mnemonic>KB2 $8F</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Version du Logiciel">
+<Comment><![CDATA[Trame Identification système (TR_ID_COSLAD)]]></Comment>
+<Mnemonic>ROM</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="VIN ASCII">
+<Comment><![CDATA[Vehicle Identification Number]]></Comment>
+<Mnemonic>VIN</Mnemonic>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="VIN BINAIRE">
+<Comment><![CDATA[Vehicle Identification Number]]></Comment>
+<Mnemonic>VIN</Mnemonic>
+<Bytes count="17"/>
+</Data>
+<Data Name="VIN CRC">
+<Mnemonic>CRC </Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Vitesse du véhicule">
+<Comment><![CDATA[Info tps réel    ( conversion: data/288 )]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km/h" Format="0"/>
+</Bits>
+</Data>
+<Data Name="Vitesse maximale autorisée">
+<Comment><![CDATA[vehicle speed threshold]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<Scaled Unit="km/h" Format="0"/>
+</Bits>
+</Data>
+<Data Name="Vitesse non-nulle">
+<Mnemonic>DATA</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Défaut absent"/>
+<Item Value="1" Text="Défaut présent"/></List>
+</Bits>
+</Data>
+<Data Name="Panne Mémorisée">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="Panne Présente">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="Clear diag information">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Control: start control">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3081000001</SentBytes>
+<DataItem Name="Commande" FirstByte="3"/>
+<DataItem Name="Position finale de l'actionneur" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Control: status control">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3081010001</SentBytes>
+<DataItem Name="Commande" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Control: stop control">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3081110001</SentBytes>
+<DataItem Name="Commande" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Initialisation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308200</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="Etat de l'initialisation" FirstByte="3"/>
+<DataItem Name="Seuil de référence Arrière" FirstByte="4"/>
+<DataItem Name="Seuil de référence Avant" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="Output Control">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic testing screen]]></Comment>
+<Sent>
+<SentBytes>3081000001</SentBytes>
+<DataItem Name="Output Control Command" FirstByte="3"/>
+<DataItem Name="Output Driving" FirstByte="4"/>
+<DataItem Name="Output Temporary Control List" FirstByte="2"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700000</ReplyBytes>
+<DataItem Name="Output Control Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Read configuration number">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C1</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="Type de véhicule" Ref="1" FirstByte="3" BitOffset="5"/>
+</Received>
+</Request>
+<Request Name="Read current calibration parameters">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C3</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<DataItem Name="Adresse ballast non-définie" Ref="1" FirstByte="10" BitOffset="3"/>
+<DataItem Name="Capteurs hors-plage" Ref="1" FirstByte="10" BitOffset="5"/>
+<DataItem Name="Défaillance capteurs" Ref="1" FirstByte="10" BitOffset="6"/>
+<DataItem Name="Etat de l'initialisation" Ref="1" FirstByte="11"/>
+<DataItem Name="Seuil de référence Arrière" Ref="1" FirstByte="3"/>
+<DataItem Name="Seuil de référence Avant" Ref="1" FirstByte="4"/>
+<DataItem Name="Seuil maximal Arrière" Ref="1" FirstByte="6"/>
+<DataItem Name="Seuil maximal Avant" Ref="1" FirstByte="8"/>
+<DataItem Name="Seuil minimal Arrière" Ref="1" FirstByte="5"/>
+<DataItem Name="Seuil minimal Avant" Ref="1" FirstByte="7"/>
+<DataItem Name="Type de véhicule non-spécifié" Ref="1" FirstByte="10" BitOffset="4"/>
+<DataItem Name="Vitesse maximale autorisée" Ref="1" FirstByte="9"/>
+<DataItem Name="Vitesse non-nulle" Ref="1" FirstByte="10" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="Read ECU address">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C5</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Adresse du Ballast" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Read last service intervention date">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C2</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="Année APV" Ref="1" FirstByte="3"/>
+<DataItem Name="Jour APV" Ref="1" FirstByte="5"/>
+<DataItem Name="Mois APV" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Read system identification">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="Code Identification diagnostic" Ref="1" FirstByte="8"/>
+<DataItem Name="Code ITG fournisseur" Ref="1" FirstByte="9"/>
+<DataItem Name="Code pièce MPR" Ref="1" FirstByte="3"/>
+<DataItem Name="Padding" Ref="1" FirstByte="19"/>
+<DataItem Name="Référence Hardware" Ref="1" FirstByte="12"/>
+<DataItem Name="Version du Logiciel" Ref="1" FirstByte="17"/>
+</Received>
+</Request>
+<Request Name="Read system variables">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C0</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<DataItem Name="Assiette véhicule brute" Ref="1" FirstByte="10"/>
+<DataItem Name="Assiette véhicule brute (digits)" Ref="1" FirstByte="10"/>
+<DataItem Name="Assiette véhicule filtrée" Ref="1" FirstByte="12"/>
+<DataItem Name="Assiette véhicule filtrée (digits)" Ref="1" FirstByte="12"/>
+<DataItem Name="Bruit de roulement" Ref="1" FirstByte="16"/>
+<DataItem Name="Offset de rabattement" Ref="1" FirstByte="22"/>
+<DataItem Name="Position du capteur Arrière" Ref="1" FirstByte="3"/>
+<DataItem Name="Position du capteur Arrière (digits)" Ref="1" FirstByte="3"/>
+<DataItem Name="Position du capteur Avant" Ref="1" FirstByte="5"/>
+<DataItem Name="Position du capteur Avant (digits)" Ref="1" FirstByte="5"/>
+<DataItem Name="Position du moteur" Ref="1" FirstByte="14"/>
+<DataItem Name="Tension d'alimentation capteurs" Ref="1" FirstByte="9"/>
+<DataItem Name="Valeur du  Vcode" Ref="1" FirstByte="19"/>
+<DataItem Name="Variable A de filtrage" Ref="1" FirstByte="18"/>
+<DataItem Name="Vitesse du véhicule" Ref="1" FirstByte="20"/>
+</Received>
+</Request>
+<Request Name="Read VIN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="VIN ASCII" Ref="1" FirstByte="3"/>
+<DataItem Name="VIN BINAIRE" Ref="1" FirstByte="3"/>
+<DataItem Name="VIN CRC" Ref="1" FirstByte="20"/>
+</Received>
+</Request>
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+<DataItem Name="MoreDTC" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<DataItem Name="FirstDTC" FirstByte="3"/>
+<DataItem Name="FlagDTC" FirstByte="5"/>
+<DataItem Name="NDTC" FirstByte="2"/>
+<DataItem Name="StatusDTC" FirstByte="5"/>
+<DataItem Name="Panne Mémorisée" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Panne Présente" FirstByte="5" BitOffset="2"/>
+</Received>
+</Request>
+<Request Name="ReadStatusOfDiagnosticTroubleCodes">
+
+<Sent>
+<SentBytes>17FF00</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<DataItem Name="DTC 1" FirstByte="3"/>
+<DataItem Name="DTC 2" FirstByte="6"/>
+<DataItem Name="DTC 3" FirstByte="9"/>
+<DataItem Name="DTC 4" FirstByte="12"/>
+<DataItem Name="DTC 5" FirstByte="15"/>
+<DataItem Name="DTC 6" FirstByte="18"/>
+<DataItem Name="DTC 7" FirstByte="21"/>
+<DataItem Name="DTC 8" FirstByte="24"/>
+<DataItem Name="DTC 9" FirstByte="27"/>
+<DataItem Name="Flag 1" FirstByte="5"/>
+<DataItem Name="Flag 2" FirstByte="8"/>
+<DataItem Name="Flag 3" FirstByte="11"/>
+<DataItem Name="Flag 4" FirstByte="14"/>
+<DataItem Name="Flag 5" FirstByte="17"/>
+<DataItem Name="Flag 6" FirstByte="20"/>
+<DataItem Name="Flag 7" FirstByte="23"/>
+<DataItem Name="Flag 8" FirstByte="26"/>
+<DataItem Name="Flag 9" FirstByte="29"/>
+<DataItem Name="Nombre de défauts" FirstByte="2"/>
+<DataItem Name="Panne1" FirstByte="5"/>
+<DataItem Name="Panne2" FirstByte="8"/>
+<DataItem Name="Panne3" FirstByte="11"/>
+<DataItem Name="Panne4" FirstByte="14"/>
+<DataItem Name="Panne5" FirstByte="17"/>
+<DataItem Name="Panne6" FirstByte="20"/>
+<DataItem Name="Panne7" FirstByte="23"/>
+<DataItem Name="Panne8" FirstByte="26"/>
+<DataItem Name="Panne9" FirstByte="29"/>
+<DataItem Name="Status 1" FirstByte="5" BitOffset="3"/>
+<DataItem Name="Status 2" FirstByte="8" BitOffset="3"/>
+<DataItem Name="Status 3" FirstByte="11" BitOffset="3"/>
+<DataItem Name="Status 4" FirstByte="14" BitOffset="3"/>
+<DataItem Name="Status 5" FirstByte="17" BitOffset="3"/>
+<DataItem Name="Status 6" FirstByte="20" BitOffset="3"/>
+<DataItem Name="Status 7" FirstByte="23" BitOffset="3"/>
+<DataItem Name="Status 8" FirstByte="26" BitOffset="3"/>
+<DataItem Name="Status 9" FirstByte="29" BitOffset="3"/>
+</Received>
+</Request>
+<Request Name="Start communication">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>81</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="VEM-Key byte 1" FirstByte="2"/>
+<DataItem Name="VEM-Key byte 2" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Start diag session">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="Choix du type de diag" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Start Diagnostic Session">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="Session Name" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Stepper motor control">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[control stepper motor]]></Comment>
+<Sent>
+<SentBytes>3081110000</SentBytes>
+<DataItem Name="Commande" FirstByte="3"/>
+<DataItem Name="Position finale de l'actionneur" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Stop communication">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>82</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Write configuration number">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3BC100</SentBytes>
+<DataItem Name="Type de véhicule" FirstByte="3" BitOffset="5"/>
+</Sent>
+<Received MinBytes="2">
+</Received>
+</Request>
+<Request Name="Write date of last service">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3BC2000000</SentBytes>
+<DataItem Name="Année APV" FirstByte="3"/>
+<DataItem Name="Jour APV" FirstByte="5"/>
+<DataItem Name="Mois APV" FirstByte="4"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Write ECU address">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3BC570</SentBytes>
+<DataItem Name="Adresse du Ballast" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Actionneur" DTC="39939" Type="3">
+<DeviceData Name="Position du moteur" FailureFlag="0"/>
+</Device>
+<Device Name="Capteur arrière" DTC="39936">
+<DeviceData Name="Position du capteur Arrière" FailureFlag="0"/><DeviceData Name="Position du capteur Arrière (digits)" FailureFlag="0"/>
+</Device>
+<Device Name="Capteur avant" DTC="39937">
+<DeviceData Name="Position du capteur Avant" FailureFlag="0"/><DeviceData Name="Position du capteur Avant (digits)" FailureFlag="0"/>
+</Device>
+<Device Name="ECU" DTC="39941" Type="4">
+<DeviceData Name="Adresse du Ballast" FailureFlag="0"/><DeviceData Name="Assiette véhicule brute" FailureFlag="0"/><DeviceData Name="Assiette véhicule brute (digits)" FailureFlag="0"/><DeviceData Name="Assiette véhicule filtrée" FailureFlag="0"/><DeviceData Name="Assiette véhicule filtrée (digits)" FailureFlag="0"/><DeviceData Name="Etat de l'initialisation" FailureFlag="0"/><DeviceData Name="Type de véhicule" FailureFlag="0"/><DeviceData Name="Version du Logiciel" FailureFlag="0"/>
+</Device>
+<Device Name="Lampe Xénon" DTC="39940" Type="4">
+
+</Device>
+<Device Name="Signal Vitesse" DTC="39938">
+<DeviceData Name="Vitesse du véhicule" FailureFlag="0"/>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Ecrans USINE ou  APV">
+
+<Screen Name="1) Choix du type de DIAG" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="COSLAD X84" Color="16777215" Alignment="2">
+<Rectangle Left="2301" Top="240" Height="480" Width="4397"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Type de DIAG sélectionné" Color="16766421" Alignment="2">
+<Rectangle Left="480" Top="1080" Height="3960" Width="8040"/>
+<Font Name="Book Antiqua" Size=" 16" Bold="0" Italic="0" Color="128"/></Label>
+
+<Button Text="Lancer la session">
+<Rectangle Left="900" Top="2760" Height="720" Width="7200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Start diag session"/>
+</Button>
+
+<Input Width="2480" Color="16777215" DataName="Choix du type de diag" RequestName="Start diag session">
+<Rectangle Left="922" Top="2160" Height="338" Width="7156"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="2) Identification du véhicule" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="COSLAD X84" Color="16777215" Alignment="2">
+<Rectangle Left="2220" Top="720" Height="480" Width="4560"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Modèle de véhicule" Color="255" Alignment="2">
+<Rectangle Left="900" Top="1440" Height="3840" Width="7200"/>
+<Font Name="Arial" Size=" 16" Bold="0" Italic="0" Color="65535"/></Label>
+
+<Button Text="Enregistrer le modèle">
+<Rectangle Left="1531" Top="2640" Height="768" Width="5938"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write configuration number"/>
+</Button>
+<Button Text="Lire le type">
+<Rectangle Left="1531" Top="4200" Height="768" Width="5938"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Read configuration number"/>
+</Button>
+
+<Input Width="2000" Color="16777215" DataName="Type de véhicule" RequestName="Write configuration number">
+<Rectangle Left="1531" Top="2040" Height="320" Width="5938"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2000" Color="16777215" DataName="Type de véhicule" RequestName="Read configuration number">
+<Rectangle Left="1531" Top="3600" Height="300" Width="5938"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="3) Adressage du Ballast" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Adressage du Ballast" Color="255" Alignment="2">
+<Rectangle Left="900" Top="1440" Height="4263" Width="7200"/>
+<Font Name="Arial" Size=" 16" Bold="0" Italic="0" Color="65535"/></Label>
+<Label Text="COSLAD X84" Color="16777215" Alignment="2">
+<Rectangle Left="1773" Top="600" Height="568" Width="5453"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+
+<Button Text="Ecriture">
+<Rectangle Left="1753" Top="2880" Height="673" Width="5493"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write ECU address"/>
+</Button>
+<Button Text="Lecture">
+<Rectangle Left="1753" Top="4680" Height="673" Width="5493"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Read ECU address"/>
+</Button>
+
+<Input Width="1610" Color="16777215" DataName="Adresse du Ballast" RequestName="Write ECU address">
+<Rectangle Left="1753" Top="2280" Height="336" Width="5493"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="1640" Color="16777215" DataName="Adresse du Ballast" RequestName="Read ECU address">
+<Rectangle Left="1753" Top="4026" Height="336" Width="5493"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="4) Initialisation du véhicule" Color="16777215" WindowState="0" Width="10170" Height="9210">
+
+<Label Text="COSLAD X84" Color="16777215" Alignment="2">
+<Rectangle Left="3045" Top="120" Height="480" Width="4080"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Défauts empêchant l'initialisation" Color="8388736" Alignment="2">
+<Rectangle Left="765" Top="3360" Height="3360" Width="8640"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text="Initialisation du véhicule" Color="13386433" Alignment="2">
+<Rectangle Left="765" Top="840" Height="2278" Width="8640"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="16777215"/></Label>
+
+<Button Text="Lancer l'initialisation">
+<Rectangle Left="1035" Top="1320" Height="840" Width="8100"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Initialisation"/>
+</Button>
+
+<Display Width="4040" Color="16777215" DataName="Etat de l'initialisation" RequestName="Read current calibration parameters">
+<Rectangle Left="1035" Top="2400" Height="360" Width="8100"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4025" Color="16777215" DataName="Adresse ballast non-définie" RequestName="Read current calibration parameters">
+<Rectangle Left="1035" Top="4200" Height="300" Width="8100"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4025" Color="16777215" DataName="Type de véhicule non-spécifié" RequestName="Read current calibration parameters">
+<Rectangle Left="1035" Top="4680" Height="300" Width="8100"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4025" Color="16777215" DataName="Capteurs hors-plage" RequestName="Read current calibration parameters">
+<Rectangle Left="1035" Top="5160" Height="300" Width="8100"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4025" Color="16777215" DataName="Défaillance capteurs" RequestName="Read current calibration parameters">
+<Rectangle Left="1035" Top="5640" Height="300" Width="8100"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4025" Color="16777215" DataName="Vitesse non-nulle" RequestName="Read current calibration parameters">
+<Rectangle Left="1035" Top="6120" Height="300" Width="8100"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Commande des actionneurs" Color="16777215" WindowState="0" Width="8010" Height="6000">
+
+<Label Text="Commande des actionneurs" Color="16711808" Alignment="2">
+<Rectangle Left="1305" Top="1080" Height="4800" Width="5400"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="COSLAD X84" Color="16777215" Alignment="2">
+<Rectangle Left="1965" Top="240" Height="480" Width="4080"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+
+<Button Text="Déplacement">
+<Rectangle Left="1665" Top="2400" Height="1200" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Control: start control"/>
+</Button>
+<Button Text="Stop">
+<Rectangle Left="1665" Top="4560" Height="1200" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Control: stop control"/>
+</Button>
+
+<Input Width="3245" Color="16777215" DataName="Position finale de l'actionneur" RequestName="Control: start control">
+<Rectangle Left="1665" Top="1800" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3245" Color="16777215" DataName="Position du moteur" RequestName="Read system variables">
+<Rectangle Left="1665" Top="3960" Height="328" Width="4680"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture de la date d'intervention" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="COSLAD X84" Color="16777215" Alignment="2">
+<Rectangle Left="1950" Top="720" Height="480" Width="5100"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Date de la dernière intervention" Color="4259584" Alignment="2">
+<Rectangle Left="1260" Top="1440" Height="3960" Width="6480"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="4227327"/></Label>
+
+<Button Text="Lecture">
+<Rectangle Left="2500" Top="4080" Height="960" Width="4020"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Read last service intervention date"/>
+</Button>
+
+<Display Width="2000" Color="16777215" DataName="Jour APV" RequestName="Read last service intervention date">
+<Rectangle Left="2500" Top="2040" Height="348" Width="4020"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Mois APV" RequestName="Read last service intervention date">
+<Rectangle Left="2500" Top="2606" Height="348" Width="4020"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Année APV" RequestName="Read last service intervention date">
+<Rectangle Left="2500" Top="3132" Height="348" Width="4020"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture de l'ETat COSLAD" Color="16777215" WindowState="0" Width="11010" Height="9210">
+
+<Label Text="COSLAD X84" Color="16777215" Alignment="2">
+<Rectangle Left="2925" Top="240" Height="510" Width="5160"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Lecture instantanée" Color="16711808" Alignment="2">
+<Rectangle Left="120" Top="1440" Height="7680" Width="4910"/>
+<Font Name="Book Antiqua" Size=" 14" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text="Paramètres à l'initialisation" Color="6481960" Alignment="2">
+<Rectangle Left="5335" Top="1440" Height="7680" Width="4910"/>
+<Font Name="Book Antiqua" Size=" 14" Bold="0" Italic="0" Color="16777215"/></Label>
+
+<Button Text="Lecture">
+<Rectangle Left="424" Top="2160" Height="960" Width="4301"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Read system variables"/>
+</Button>
+<Button Text="Lecture">
+<Rectangle Left="5640" Top="2160" Height="960" Width="4301"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Read current calibration parameters"/>
+</Button>
+
+<Display Width="3320" Color="16777215" DataName="Position du capteur Arrière" RequestName="Read system variables">
+<Rectangle Left="424" Top="3360" Height="351" Width="4301"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="16777215" DataName="Position du capteur Arrière (digits)" RequestName="Read system variables">
+<Rectangle Left="424" Top="3944" Height="351" Width="4301"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="16777215" DataName="Position du capteur Avant" RequestName="Read system variables">
+<Rectangle Left="424" Top="4528" Height="351" Width="4301"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="16777215" DataName="Position du capteur Avant (digits)" RequestName="Read system variables">
+<Rectangle Left="424" Top="5113" Height="351" Width="4301"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="16777215" DataName="Assiette véhicule filtrée" RequestName="Read system variables">
+<Rectangle Left="424" Top="5697" Height="351" Width="4301"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="16777215" DataName="Assiette véhicule filtrée (digits)" RequestName="Read system variables">
+<Rectangle Left="424" Top="6281" Height="351" Width="4301"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3305" Color="16777215" DataName="Assiette véhicule brute (digits)" RequestName="Read system variables">
+<Rectangle Left="424" Top="7440" Height="353" Width="4301"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="16777215" DataName="Position du moteur" RequestName="Read system variables">
+<Rectangle Left="424" Top="8056" Height="351" Width="4301"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3305" Color="16777215" DataName="Vitesse du véhicule" RequestName="Read system variables">
+<Rectangle Left="424" Top="8640" Height="338" Width="4301"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3305" Color="16777215" DataName="Assiette véhicule brute" RequestName="Read system variables">
+<Rectangle Left="425" Top="6825" Height="360" Width="4300"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="16777215" DataName="Seuil de référence Arrière" RequestName="Read current calibration parameters">
+<Rectangle Left="5640" Top="3360" Height="338" Width="4301"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="16777215" DataName="Seuil minimal Arrière" RequestName="Read current calibration parameters">
+<Rectangle Left="5640" Top="3944" Height="338" Width="4301"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="16777215" DataName="Seuil maximal Arrière" RequestName="Read current calibration parameters">
+<Rectangle Left="5640" Top="4541" Height="338" Width="4301"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="16777215" DataName="Seuil de référence Avant" RequestName="Read current calibration parameters">
+<Rectangle Left="5640" Top="5113" Height="338" Width="4301"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="16777215" DataName="Seuil minimal Avant" RequestName="Read current calibration parameters">
+<Rectangle Left="5640" Top="5697" Height="338" Width="4301"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="16777215" DataName="Seuil maximal Avant" RequestName="Read current calibration parameters">
+<Rectangle Left="5640" Top="6281" Height="338" Width="4301"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="16777215" DataName="Vitesse maximale autorisée" RequestName="Read current calibration parameters">
+<Rectangle Left="5640" Top="7462" Height="338" Width="4301"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture de l'identification" Color="16777215" WindowState="0" Width="9450" Height="7530">
+
+<Label Text="COSLAD X84" Color="16777215" Alignment="2">
+<Rectangle Left="2535" Top="240" Height="480" Width="4380"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Identification du sytème" Color="16733525" Alignment="2">
+<Rectangle Left="855" Top="1440" Height="5160" Width="7740"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+
+<Button Text="Lecture">
+<Rectangle Left="1425" Top="2160" Height="1080" Width="6600"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Read system identification"/>
+</Button>
+
+<Display Width="2645" Color="16777215" DataName="Code pièce MPR" RequestName="Read system identification">
+<Rectangle Left="1425" Top="3600" Height="339" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2645" Color="16777215" DataName="Code Identification diagnostic" RequestName="Read system identification">
+<Rectangle Left="1425" Top="4174" Height="339" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2645" Color="16777215" DataName="Code ITG fournisseur" RequestName="Read system identification">
+<Rectangle Left="1425" Top="4748" Height="339" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2645" Color="16777215" DataName="Référence Hardware" RequestName="Read system identification">
+<Rectangle Left="1425" Top="5322" Height="339" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2645" Color="16777215" DataName="Version du Logiciel" RequestName="Read system identification">
+<Rectangle Left="1425" Top="5895" Height="339" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture des défauts" Color="16777215" WindowState="0" Width="11730" Height="8730">
+
+<Label Text="COSLAD X84" Color="16777215" Alignment="2">
+<Rectangle Left="3889" Top="0" Height="480" Width="4462"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Lecture des défauts" Color="8454143" Alignment="2">
+<Rectangle Left="600" Top="720" Height="7800" Width="11040"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="4194368"/></Label>
+
+<Button Text="Effacement des défauts">
+<Rectangle Left="9000" Top="7080" Height="1080" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Clear diag information"/>
+</Button>
+<Button Text="Lecture des défauts">
+<Rectangle Left="6360" Top="7080" Height="1080" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="500" RequestName="ReadStatusOfDiagnosticTroubleCodes"/>
+</Button>
+
+<Display Width="1820" Color="16777215" DataName="Nombre de défauts" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="1080" Height="360" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="DTC 1" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="1800" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="Flag 1" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="2160" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="Panne1" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="2520" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 7" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="DTC 2" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="3120" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="Flag 2" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="3480" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="Panne2" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="3840" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 7" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="DTC 3" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="4440" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="Flag 3" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="4800" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="Panne3" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="5160" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 7" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="DTC 4" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="5760" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="Flag 4" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="6120" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="Panne4" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="6480" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 7" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="DTC 5" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="7080" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="Flag 5" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="7440" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="Panne5" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="840" Top="7800" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 7" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="485" Color="16777215" DataName="DTC 6" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="6360" Top="1800" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="485" Color="16777215" DataName="Flag 6" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="6360" Top="2160" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="485" Color="16777215" DataName="Panne6" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="6360" Top="2520" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 7" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="DTC 7" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="6360" Top="3120" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="Flag 7" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="6360" Top="3480" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="500" Color="16777215" DataName="Panne7" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="6360" Top="3840" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 7" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="485" Color="16777215" DataName="DTC 8" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="6360" Top="4440" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="485" Color="16777215" DataName="Flag 8" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="6360" Top="4800" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="485" Color="16777215" DataName="Panne8" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="6360" Top="5160" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 7" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="485" Color="16777215" DataName="DTC 9" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="6360" Top="5760" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="485" Color="16777215" DataName="Flag 9" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="6360" Top="6120" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="485" Color="16777215" DataName="Panne9" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="6360" Top="6480" Height="360" Width="5058"/>
+<Font Name="Arial" Size=" 7" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture du VIN" Color="16777215" WindowState="0" Width="9000" Height="6930">
+
+<Label Text="COSLAD X84" Color="16777215" Alignment="2">
+<Rectangle Left="2220" Top="600" Height="480" Width="4560"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Lecture du VIN" Color="65280" Alignment="2">
+<Rectangle Left="780" Top="1800" Height="2520" Width="7440"/>
+<Font Name="Arial" Size=" 16" Bold="0" Italic="0" Color="255"/></Label>
+
+<Button Text="Lecture">
+<Rectangle Left="1440" Top="3600" Height="576" Width="6120"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Read VIN"/>
+</Button>
+
+<Display Width="1205" Color="16777215" DataName="VIN BINAIRE" RequestName="Read VIN">
+<Rectangle Left="1440" Top="2400" Height="300" Width="6120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1205" Color="16777215" DataName="VIN ASCII" RequestName="Read VIN">
+<Rectangle Left="1440" Top="2760" Height="300" Width="6120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1205" Color="16777215" DataName="VIN CRC" RequestName="Read VIN">
+<Rectangle Left="1440" Top="3120" Height="300" Width="6120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

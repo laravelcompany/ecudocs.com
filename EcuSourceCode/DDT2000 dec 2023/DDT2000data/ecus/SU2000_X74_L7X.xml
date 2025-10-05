@@ -1,0 +1,3051 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<ddt:Target Name="SU2000_X74_L7X" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" upload="10/3/03" href="SU2000_X74_L7X.xml" email="laurent.simon@renault.com"><Description><![CDATA[Version   : 1 
+Auteur    : 65640 /SERVAIS/ARDUINI
+Date       : 27/01/00
+Modifier  : 14/10/02 / 65650 / L. SIMON / Tél. (01692) 70 919 / laurent.simon@renault.com
+Application du soft 04.50 jusqu'au soft 05.30 inclu,  pour les PS et série  X74 L7X .]]></Description><Projects xmlns=""><x74/></Projects>
+<Function Name="BVA" Address="110"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>28/03/2001 16:18:24</DateOfficialisation>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<K BaudRate="10400">
+<KWP Multipoint="0">
+<FastInit><KW1 Value="241"/>
+<KW2 Value="110"/></FastInit>
+</KWP>
+<InterByte Delay="0"/>
+<ReplyToRequest Delay="5"/>
+<RequestToReply Timeout="300"/>
+<TesterPresent Delay="3000"/>
+<OnError Delay="300"/>
+</K>
+<AutoIdents>
+<AutoIdent DiagVersion="4" Supplier="A40" Soft="0520" Version="0002"/><AutoIdent DiagVersion="4" Supplier="A40" Soft="0520" Version="0A02"/><AutoIdent DiagVersion="4" Supplier="A40" Soft="0530" Version="0A02"/><AutoIdent DiagVersion="4" Supplier="A40" Soft="0530" Version="0002"/></AutoIdents>
+<Datas>
+
+<Data Name="      Mode du diag">
+<Bits>
+<List>
+<Item Value="144" Text="Fournisseur"/>
+<Item Value="160" Text="Etudes"/>
+<Item Value="176" Text="Production"/>
+<Item Value="192" Text="Après-vente"/></List>
+</Bits>
+</Data>
+<Data Name="     état status séquence act. sorties">
+<Bits>
+<List>
+<Item Value="1" Text="recommencer la procédure "/>
+<Item Value="2" Text="pas de défauts"/>
+<Item Value="3" Text="défauts _ voir ci dessous"/>
+<Item Value="4" Text="procédure terminée non OK"/>
+<Item Value="5" Text="inutilisé"/></List>
+</Bits>
+</Data>
+<Data Name="   DTC1 - Panne">
+<Bits count="1">
+<List>
+<Item Value="0" Text="panne non mémorisée"/>
+<Item Value="1" Text="panne mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="   DTC1 - Valeur">
+<Bits count="1">
+<List>
+<Item Value="0" Text="valeur standard"/>
+<Item Value="1" Text="valeur système"/></List>
+</Bits>
+</Data>
+<Data Name="   DTC1 _ Panne">
+<Bits count="1">
+<List>
+<Item Value="0" Text="panne non présente"/>
+<Item Value="1" Text="panne présente"/></List>
+</Bits>
+</Data>
+<Data Name="ABS Absent">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Cet octet contient un compteur de d\'e9faut avec un encodage pr\'e9cis :
+\par 
+\par 
+\par MSB\tab B7 - B6 - B5 - B4 - B3 - B2 - B1 - B0\tab LSB
+\par 
+\par B7 : 0 pour les valeurs "NonMuet","Pr\'e9sent" et "BusOn" selon la variable
+\par        1 pour les autres valeurs
+\par 
+\par B6 : 1 si le compteur "Panne Pr\'e9sente" = 255
+\par         0 sinon
+\par 
+\par B5 - B0 :  Compteur "Panne m\'e9moris\'e9"
+\par 
+\par }
+]]></Description>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="AIRBAG Absent">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Cet octet contient un compteur de d\'e9faut avec un encodage pr\'e9cis :
+\par 
+\par 
+\par MSB\tab B7 - B6 - B5 - B4 - B3 - B2 - B1 - B0\tab LSB
+\par 
+\par B7 : 0 pour les valeurs "NonMuet","Pr\'e9sent" et "BusOn" selon la variable
+\par        1 pour les autres valeurs
+\par 
+\par B6 : 1 si le compteur "Panne Pr\'e9sente" = 255
+\par         0 sinon
+\par 
+\par B5 - B0 :  Compteur "Panne m\'e9moris\'e9"
+\par 
+\par }
+]]></Description>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Alerte temp. huile">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Alerte température huile de boite">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Allumage voyant défaut BVA au TdB">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Allumage voyant défauts">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="BIN Absent">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Cet octet contient un compteur de d\'e9faut avec un encodage pr\'e9cis :
+\par 
+\par 
+\par MSB\tab B7 - B6 - B5 - B4 - B3 - B2 - B1 - B0\tab LSB
+\par 
+\par B7 : 0 pour les valeurs "NonMuet","Pr\'e9sent" et "BusOn" selon la variable
+\par        1 pour les autres valeurs
+\par 
+\par B6 : 1 si le compteur "Panne Pr\'e9sente" = 255
+\par         0 sinon
+\par 
+\par B5 - B0 :  Compteur "Panne m\'e9moris\'e9"
+\par 
+\par }
+]]></Description>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="BVA Absent">
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Changement de rapport - ESP">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Information fournie par le calculateur ABS partie controle de trajectoire (ESP).
+\par Permet de faire travailler la BVA dans le m\'eame sens que l'ESP 
+\par }
+]]></Description>
+<Bits count="2">
+<List>
+<Item Value="0" Text="Changement interdit"/>
+<Item Value="1" Text="Uniquement rapport descendant"/>
+<Item Value="2" Text="Uniquement rapport montant"/>
+<Item Value="3" Text="changement autorisé"/></List>
+</Bits>
+</Data>
+<Data Name="Changement de rapport en cours">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Chgt de rapport">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Changement interdit"/>
+<Item Value="1" Text="Uniquement rapport descendant"/>
+<Item Value="2" Text="Uniquement rapport montant"/>
+<Item Value="3" Text="changement autorisé"/></List>
+</Bits>
+</Data>
+<Data Name="CLIM Absent">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Cet octet contient un compteur de d\'e9faut avec un encodage pr\'e9cis :
+\par 
+\par 
+\par MSB\tab B7 - B6 - B5 - B4 - B3 - B2 - B1 - B0\tab LSB
+\par 
+\par B7 : 0 pour les valeurs "NonMuet","Pr\'e9sent" et "BusOn" selon la variable
+\par        1 pour les autres valeurs
+\par 
+\par B6 : 1 si le compteur "Panne Pr\'e9sente" = 255
+\par         0 sinon
+\par 
+\par B5 - B0 :  Compteur "Panne m\'e9moris\'e9"
+\par 
+\par }
+]]></Description>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="CMF ">
+<Bits count="4">
+<List>
+<Item Value="0" Text="défaut CMF"/>
+<Item Value="1" Text="défaut CMF 1"/>
+<Item Value="2" Text="défaut CMF 2"/>
+<Item Value="3" Text="R"/>
+<Item Value="4" Text="défaut CMF 3"/>
+<Item Value="5" Text="défaut CMF 4"/>
+<Item Value="6" Text="D"/>
+<Item Value="7" Text="défaut CMF 5"/>
+<Item Value="8" Text="défaut CMF 6"/>
+<Item Value="9" Text="P"/>
+<Item Value="10" Text="N"/>
+<Item Value="11" Text="R indéfini"/>
+<Item Value="12" Text="défaut CMF 7"/>
+<Item Value="13" Text="défaut CMF 8"/>
+<Item Value="14" Text="D indéfini 1"/>
+<Item Value="15" Text="D indéfini 2"/></List>
+</Bits>
+</Data>
+<Data Name="CMI-">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="CMI+">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="Commande GMV par BVA">
+<Bits count="1">
+<List>
+<Item Value="0" Text="pas de pilotage GMV"/>
+<Item Value="1" Text="GMV à piloter"/></List>
+</Bits>
+</Data>
+<Data Name="Contact CMI - ">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="Contact CMI+ ">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="Contact frein à ouverture">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="Contact frein à ouverture.">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="Controle pilotage">
+<Bytes count="1"/>
+</Data>
+<Data Name="Couple lent ">
+<Bits>
+<Scaled Unit="N.m" Step=" 2" Offset="-100"/>
+</Bits>
+</Data>
+<Data Name="Couple lent BVA">
+<Bits>
+<Scaled Unit="N.m" Step=" 2" Offset="-100"/>
+</Bits>
+</Data>
+<Data Name="Couple moteur anticipé ">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 min = -100 N.m
+\par max = +408 N.m
+\par 
+\par }
+]]></Description>
+<Bits>
+<Scaled Unit="N.m" Step=" 2" Offset="-100"/>
+</Bits>
+</Data>
+<Data Name="Couple moteur anticipé.">
+<Bits>
+<Scaled Unit="N.m" Step=" 2" Offset="-100"/>
+</Bits>
+</Data>
+<Data Name="Couple moteur effectif ">
+<Bits>
+<Scaled Unit="N.m" Step=" 2" Offset="-100"/>
+</Bits>
+</Data>
+<Data Name="Couple moteur effectif.">
+<Bits>
+<Scaled Unit="N.m" Step=" 2" Offset="-100"/>
+</Bits>
+</Data>
+<Data Name="Couple moteur hors consigne TA ">
+<Bits>
+<Scaled Unit="N.m" Step=" 2" Offset="-100"/>
+</Bits>
+</Data>
+<Data Name="Couple moteur hors consigne TA.">
+<Bits>
+<Scaled Unit="N.m" Step=" 2" Offset="-100"/>
+</Bits>
+</Data>
+<Data Name="Couple rapide ">
+<Bits>
+<Scaled Unit="N.m" Step=" 2" Offset="-100"/>
+</Bits>
+</Data>
+<Data Name="Couple rapide BVA">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Action du signal li\'e9 au signal shift In Progress.
+\par La valeur de ce signal est alors donn\'e9 au moteur comme consigne de couple \'e0 respecter jusqu'\'e0 la fin du shiftIn Progress
+\par }
+]]></Description>
+<Bits>
+<Scaled Unit="N.m" Step=" 2" Offset="-100"/>
+</Bits>
+</Data>
+<Data Name="Courant de sortie driver EV SLS">
+<Bits>
+<Scaled Unit="mA" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Courant de sortie driver EV SLT">
+<Bits>
+<Scaled Unit="mA" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Courant de sortie driver EV SLU">
+<Bits>
+<Scaled Unit="mA" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Courant de sortie EV SLS">
+<Bits>
+<Scaled Unit="mA" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Courant de sortie EV SLT">
+<Bits>
+<Scaled Unit="mA" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Courant de sortie EV SLU">
+<Bits>
+<Scaled Unit="mA" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Courant sortie SLS">
+<Bits>
+<Scaled Unit="mA" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Courant sortie SLT">
+<Bits>
+<Scaled Unit="mA" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Courant sortie SLU">
+<Bits>
+<Scaled Unit="mA" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="CRC">
+<Bytes count="2"/>
+</Data>
+<Data Name="CRC.">
+<Bytes count="2"/>
+</Data>
+<Data Name="Débrayage à l arret">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Park ou Neutre"/>
+<Item Value="1" Text="Réduction de trainée"/>
+<Item Value="2" Text="Embrayé"/>
+<Item Value="3" Text="donnée indisponible"/></List>
+</Bits>
+</Data>
+<Data Name="Débrayage arrêt">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Park ou Neutre"/>
+<Item Value="1" Text="Réduction de trainée"/>
+<Item Value="2" Text="Embrayé"/>
+<Item Value="3" Text="donnée indisponible"/></List>
+</Bits>
+</Data>
+<Data Name="Décodage position CMF">
+<Bits count="4">
+<List>
+<Item Value="0" Text="défaut CMF"/>
+<Item Value="1" Text="défaut CMF 1"/>
+<Item Value="2" Text="défaut CMF 2"/>
+<Item Value="3" Text="R"/>
+<Item Value="4" Text="défaut CMF 3"/>
+<Item Value="5" Text="défaut CMF 4"/>
+<Item Value="6" Text="D"/>
+<Item Value="7" Text="défaut CMF 5"/>
+<Item Value="8" Text="défaut CMF 6"/>
+<Item Value="9" Text="P"/>
+<Item Value="10" Text="N"/>
+<Item Value="11" Text="R indéfini"/>
+<Item Value="12" Text="défaut CMF 7"/>
+<Item Value="13" Text="défaut CMF 8"/>
+<Item Value="14" Text="D indéfini 1"/>
+<Item Value="15" Text="D indéfini 2"/></List>
+</Bits>
+</Data>
+<Data Name="Défaut BVA réservé">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Défaut cohérence de rapport">
+<Bits count="4">
+<List>
+<Item Value="0" Text="pas d erreur"/>
+<Item Value="1" Text="erreur 1er rapport"/>
+<Item Value="2" Text="erreur 2eme rapport"/>
+<Item Value="3" Text="erreur 3eme rapport"/>
+<Item Value="4" Text="erreur 4eme rapport"/>
+<Item Value="5" Text="erreur 5eme rapport"/>
+<Item Value="6" Text="erreur marche arrière"/>
+<Item Value="7" Text="panne hydraulique EV3"/></List>
+</Bits>
+</Data>
+<Data Name="Défauts rapport">
+<Bits count="4">
+<List>
+<Item Value="0" Text="pas d erreur"/>
+<Item Value="1" Text="erreur 1er rapport"/>
+<Item Value="2" Text="erreur 2eme rapport"/>
+<Item Value="3" Text="erreur 3eme rapport"/>
+<Item Value="4" Text="erreur 4eme rapport"/>
+<Item Value="5" Text="erreur 5eme rapport"/>
+<Item Value="6" Text="erreur marche arrière"/>
+<Item Value="7" Text="panne hydraulique EV3"/></List>
+</Bits>
+</Data>
+<Data Name="Demande incrément de rapport - ESP">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Demande incrément rapport">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Effacement réalisé">
+<Bits>
+<List>
+<Item Value="84" Text="OK"/></List>
+</Bits>
+</Data>
+<Data Name="Etat contact CMF A ">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="Etat contact CMF B ">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="Etat contact CMF C ">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="Etat contact CMF PA ">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="Etat convertisseur">
+<Bits count="2">
+<List>
+<Item Value="0" Text="ouvert"/>
+<Item Value="1" Text="en régulation"/>
+<Item Value="2" Text="fermé"/>
+<Item Value="3" Text="donnée indisponible"/></List>
+</Bits>
+</Data>
+<Data Name="Etat convertisseur.">
+<Bits count="2">
+<List>
+<Item Value="0" Text="ouvert"/>
+<Item Value="1" Text="en régulation"/>
+<Item Value="2" Text="fermé"/>
+<Item Value="3" Text="donnée indisponible"/></List>
+</Bits>
+</Data>
+<Data Name="Etat driver sortie EV 1">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat driver sortie EV 2">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat driver sortie EV 3">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat driver sortie EV 4">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat driver sortie EV 5 ">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat driver sortie Shiftlock">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat GMV ">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="Etat huile">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="Dégradée"/></List>
+</Bits>
+</Data>
+<Data Name="Etat huile BVA">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="Dégradée"/></List>
+</Bits>
+</Data>
+<Data Name="Etat sortie EV 1">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat sortie EV 2">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat sortie EV 3">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat sortie EV 4">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat sortie EV 5">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat sortie EV1">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat sortie EV2">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat sortie EV3">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat sortie EV4">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat sortie EV5">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat sortie Shift lock">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="Etat sortie Shiftlock">
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactive"/>
+<Item Value="1" Text="active"/></List>
+</Bits>
+</Data>
+<Data Name="EVS 1">
+<Bits count="1">
+<List>
+<Item Value="0" Text="pas de défauts"/>
+<Item Value="1" Text="C.O. ou C.C. à la masse"/></List>
+</Bits>
+</Data>
+<Data Name="EVS 2">
+<Bits count="1">
+<List>
+<Item Value="0" Text="pas de défauts"/>
+<Item Value="1" Text="C.O. ou C.C. à la masse"/></List>
+</Bits>
+</Data>
+<Data Name="EVS 3">
+<Bits count="1">
+<List>
+<Item Value="0" Text="pas de défauts"/>
+<Item Value="1" Text="C.O. ou C.C. à la masse"/></List>
+</Bits>
+</Data>
+<Data Name="EVS 4">
+<Bits count="1">
+<List>
+<Item Value="0" Text="pas de défauts"/>
+<Item Value="1" Text="C.O. ou C.C. à la masse"/></List>
+</Bits>
+</Data>
+<Data Name="EVS 5">
+<Bits count="1">
+<List>
+<Item Value="0" Text="pas de défauts"/>
+<Item Value="1" Text="C.O. ou C.C. à la masse"/></List>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Bits count="16">
+<List>
+<Item Value="277" Text="0115 - température eau moteur"/>
+<Item Value="288" Text="0120 - volonté conducteur"/>
+<Item Value="1280" Text="0500 - vitesse véhicule"/>
+<Item Value="1536" Text="0600 - problème réseau CAN"/>
+<Item Value="1620" Text="0654 - régime moteur"/>
+<Item Value="1792" Text="0700 - checksum"/>
+<Item Value="1793" Text="0701 - bus CAN"/>
+<Item Value="1794" Text="0702 - tension APC"/>
+<Item Value="1797" Text="0705 - C.M.F."/>
+<Item Value="1800" Text="0708 - C.M.I."/>
+<Item Value="1808" Text="0710 - température huile"/>
+<Item Value="1813" Text="0715 - capteur vitesse entrée"/>
+<Item Value="1824" Text="0720 - capteur vitesse sortie"/>
+<Item Value="1841" Text="0731 - cohérence rapport 1"/>
+<Item Value="1842" Text="0732 - cohérence rapport 2"/>
+<Item Value="1843" Text="0733 - cohérence rapport 3"/>
+<Item Value="1844" Text="0734 - cohérence rapport 4"/>
+<Item Value="1845" Text="0735 - cohérence rapport 5"/>
+<Item Value="1846" Text="0736 - cohérence rapport R"/>
+<Item Value="1856" Text="0740 - pontage convertisseur"/>
+<Item Value="1859" Text="0743 - E.V. SLU"/>
+<Item Value="1861" Text="0745 - E.V. SLT"/>
+<Item Value="1864" Text="0748 - E.V. SLS"/>
+<Item Value="1875" Text="0753 - E.V. S1"/>
+<Item Value="1880" Text="0758 - E.V. S2"/>
+<Item Value="1890" Text="0762 - cohérence rapport S3"/>
+<Item Value="1891" Text="0763 - E.V. S3"/>
+<Item Value="1896" Text="0768 - E.V. S4"/>
+<Item Value="1907" Text="0773 - E.V. S5"/>
+<Item Value="1920" Text="0780 - débrayage arrêt"/>
+<Item Value="1922" Text="0782 - blocage levier en P"/>
+<Item Value="1925" Text="0785 - défaut de passage"/></List>
+</Bits>
+</Data>
+<Data Name="Fonction auto Adaptative enclenchée">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 0 : Fonction Economique
+\par 1 : Appui accelerateur
+\par 2 : Fonction sport
+\par 3 : Fonction faible pente
+\par 4 : Fonction forte pente
+\par 5 : Fonction descente
+\par 6 : Maintient de rapport
+\par 7 : Aide au freinage 
+\par 
+\par }
+]]></Description>
+<Bits count="4">
+<List>
+<Item Value="0" Text="Economie"/>
+<Item Value="1" Text="Fast on"/>
+<Item Value="2" Text="Sport"/>
+<Item Value="3" Text="Up Slope 1"/>
+<Item Value="4" Text="Up Slope 2"/>
+<Item Value="5" Text="Down slope"/>
+<Item Value="6" Text="Gear Hold"/>
+<Item Value="7" Text="Brake assistance"/>
+<Item Value="8" Text="Medium"/>
+<Item Value="9" Text="Anti patinage "/>
+<Item Value="10" Text="Blocage en virage"/>
+<Item Value="11" Text="Warm up"/></List>
+</Bits>
+</Data>
+<Data Name="Fonction auto-adapt.">
+<Bits count="4">
+<List>
+<Item Value="0" Text="Economie"/>
+<Item Value="1" Text="Fast on"/>
+<Item Value="2" Text="Sport"/>
+<Item Value="3" Text="Up Slope 1"/>
+<Item Value="4" Text="Up Slope 2"/>
+<Item Value="5" Text="Down slope"/>
+<Item Value="6" Text="Gear Hold"/>
+<Item Value="7" Text="Brake assistance"/>
+<Item Value="8" Text="Medium"/>
+<Item Value="9" Text="Anti patinage"/>
+<Item Value="10" Text="Blocage en virage"/>
+<Item Value="11" Text="Warm up"/></List>
+</Bits>
+</Data>
+<Data Name="Freeze Frame Number">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Indice soft en devellopement">
+<Bits count="4">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="INJECTION Absent">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Cet octet contient un compteur de d\'e9faut avec un encodage pr\'e9cis :
+\par 
+\par 
+\par MSB\tab B7 - B6 - B5 - B4 - B3 - B2 - B1 - B0\tab LSB
+\par 
+\par B7 : 0 pour les valeurs "NonMuet","Pr\'e9sent" et "BusOn" selon la variable
+\par        1 pour les autres valeurs
+\par 
+\par B6 : 1 si le compteur "Panne Pr\'e9sente" = 255
+\par         0 sinon
+\par 
+\par B5 - B0 :  Compteur "Panne m\'e9moris\'e9"
+\par 
+\par }
+]]></Description>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Interdiction CLIM">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Interdiction CLIM.">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Kick down">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non activé"/>
+<Item Value="1" Text="activé"/></List>
+</Bits>
+</Data>
+<Data Name="Kick down.">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non activé"/>
+<Item Value="1" Text="activé"/></List>
+</Bits>
+</Data>
+<Data Name="Lois de passage">
+<Bits count="4">
+<List>
+<Item Value="0" Text="Economie"/>
+<Item Value="1" Text="Power"/>
+<Item Value="2" Text="Up slope 1"/>
+<Item Value="3" Text="Up slope 2"/>
+<Item Value="4" Text="Dowm slope "/></List>
+</Bits>
+</Data>
+<Data Name="MoreDTC">
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="N° calibration">
+<Bytes count="1"/>
+</Data>
+<Data Name="N° de sortie à piloter">
+<Bits>
+<List>
+<Item Value="129" Text="Electrovanne n°1"><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 
+\par }
+]]></Item>
+<Item Value="130" Text="Electrovanne n°2"/>
+<Item Value="131" Text="Electrovanne n°3"/>
+<Item Value="132" Text="Electrovanne n°4"/>
+<Item Value="133" Text="Electrovanne n°5"/>
+<Item Value="134" Text="Actionneur Shiftlock"/>
+<Item Value="135" Text="actionneur keylock _ ne pas utiliser"/>
+<Item Value="161" Text="EV linéaire SLT"/>
+<Item Value="162" Text="EV linéaire SLS"/>
+<Item Value="163" Text="EV linéaire SLU"/></List>
+</Bits>
+</Data>
+<Data Name="N° famille BVA">
+<Bytes count="1"/>
+</Data>
+<Data Name="N° fournisseur">
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="N° indice de calibration">
+<Bytes count="1"/>
+</Data>
+<Data Name="N° piece PIE">
+<Bytes count="5"/>
+</Data>
+<Data Name="N° structure de calibration">
+<Bytes count="2"/>
+</Data>
+<Data Name="N° version du materiel">
+<Bytes count="5"/>
+</Data>
+<Data Name="N° Version logiciel ">
+<Bytes count="2"/>
+</Data>
+<Data Name="NDTC">
+<Mnemonic>#DTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Non défini">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Non défini.">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet changement de rapport et Lois">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet changement de rapport et lois.">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet commande EVS">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet commande GMV par BVA">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet commande GMV par BVA.">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet Controle vitesse et fonction adaptatives">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet controle vitesse et fonction adaptatives.">
+<Bits count="4">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet décodage CMF">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet décodage CMF.">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet décodage température et contacts">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet décodage température et contacts.">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet Failure mode">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet identification APV">
+<Bytes count="1"/>
+</Data>
+<Data Name="Octet info état rapport de BVA">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet info état rapport de BVA.">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet sortie EVS">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet sortie EVS.">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet1">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet2">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet3">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Output Control Command">
+<Comment><![CDATA[Testing output : Command enumeration]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="Start Temporary"/>
+<Item Value="1" Text="Status"/>
+<Item Value="17" Text="Stop"/>
+<Item Value="32" Text="Start Permanent"/></List>
+</Bits>
+</Data>
+<Data Name="Output Control Status">
+<Bits>
+<List>
+<Item Value="1" Text="Running"/>
+<Item Value="2" Text="Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Output Permanent Control List">
+<Bits>
+<List>
+<Item Value="13" Text="IGNRelay"/>
+<Item Value="129" Text="Electrovanne n°1"/>
+<Item Value="131" Text="Electrovanne n°3"/>
+<Item Value="132" Text="Electrovanne n°4"/>
+<Item Value="133" Text="Electrovanne n°5"/>
+<Item Value="134" Text="Actionneur Shiftlock"/>
+<Item Value="135" Text="actionneur keylock _ ne pas utiliser"/>
+<Item Value="161" Text="EV linéaire SLT"/>
+<Item Value="162" Text="EV linéaire SLS"/>
+<Item Value="163" Text="EV linéaire SLU"/></List>
+</Bits>
+</Data>
+<Data Name="Output Temporary Control List">
+<Bits>
+<List>
+<Item Value="129" Text="Electrovanne n°1"/>
+<Item Value="130" Text="Electrovanne n°2"/>
+<Item Value="131" Text="Electrovanne n°3"/>
+<Item Value="132" Text="Electrovanne n°4"/>
+<Item Value="133" Text="Electrovanne n°5"/>
+<Item Value="134" Text="Actionneur Shiftlock"/>
+<Item Value="135" Text="actionneur keylock _ ne pas utiliser"/>
+<Item Value="161" Text="EV linéaire SLT"/>
+<Item Value="162" Text="EV linéaire SLS"/>
+<Item Value="163" Text="EV linéaire SLU"/></List>
+</Bits>
+</Data>
+<Data Name="Paramètre BUS OFF">
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Paramètre de pilotage">
+<Bits>
+<List>
+<Item Value="0" Text="Début action temporaire"/>
+<Item Value="1" Text="ETAT _ ne pas utiliser"/>
+<Item Value="17" Text="STOP"/>
+<Item Value="32" Text="début action permanente"/></List>
+</Bits>
+</Data>
+<Data Name="Paramètre Module Muet">
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Poids faible DTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Poids fort DTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Pontage ">
+<Bits count="1">
+<List>
+<Item Value="0" Text="déponté"/>
+<Item Value="1" Text="ponté"/></List>
+</Bits>
+</Data>
+<Data Name="Pontage.">
+<Bits count="1">
+<List>
+<Item Value="0" Text="déponté"/>
+<Item Value="1" Text="ponté"/></List>
+</Bits>
+</Data>
+<Data Name="Position levier ">
+<Bits count="4">
+<List>
+<Item Value="0" Text="P"/>
+<Item Value="1" Text="R"/>
+<Item Value="2" Text="N"/>
+<Item Value="3" Text="D"/></List>
+</Bits>
+</Data>
+<Data Name="Position levier BVA">
+<Bits count="4">
+<List>
+<Item Value="0" Text="P"/>
+<Item Value="1" Text="R"/>
+<Item Value="2" Text="N"/>
+<Item Value="3" Text="D"/></List>
+</Bits>
+</Data>
+<Data Name="Programme ">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Economique"/>
+<Item Value="1" Text="Sport"/>
+<Item Value="2" Text="Impulsionnel"/>
+<Item Value="3" Text="Hivers"/></List>
+</Bits>
+</Data>
+<Data Name="Programme BVA">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Economique"/>
+<Item Value="1" Text="Sport"/>
+<Item Value="2" Text="Impulsionnel"/>
+<Item Value="3" Text="Hivers"/></List>
+</Bits>
+</Data>
+<Data Name="RAMI">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Rapport engagé">
+<Bits count="4">
+<List>
+<Item Value="0" Text="Réduction de trainée"/>
+<Item Value="1" Text="1ère"/>
+<Item Value="2" Text="2ème"/>
+<Item Value="3" Text="3ème"/>
+<Item Value="4" Text="4ème"/>
+<Item Value="5" Text="5ème"/>
+<Item Value="9" Text="Marche arrière"/>
+<Item Value="10" Text="Neutre ou Parking"/>
+<Item Value="15" Text="Refuge"/></List>
+</Bits>
+</Data>
+<Data Name="Rapport engagé.">
+<Bits count="4">
+<List>
+<Item Value="0" Text="Réduction de trainée"/>
+<Item Value="1" Text="1ère"/>
+<Item Value="2" Text="2ème"/>
+<Item Value="3" Text="3ème"/>
+<Item Value="4" Text="4ème"/>
+<Item Value="5" Text="5ème"/>
+<Item Value="9" Text="Marche arrière"/>
+<Item Value="10" Text="Neutre ou Parking"/>
+<Item Value="15" Text="Refuge"/></List>
+</Bits>
+</Data>
+<Data Name="Rapport refusé">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Rapport refusé.">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Référence messagerie 1">
+<Bytes count="1"/>
+</Data>
+<Data Name="Référence messagerie 2">
+<Bytes count="1"/>
+</Data>
+<Data Name="Régime moteur ">
+<Bits>
+<Scaled Unit="tr/mn" Step=" 25"/>
+</Bits>
+</Data>
+<Data Name="Régime moteur.">
+<Bits>
+<Scaled Unit="tr/mn" Step=" 25"/>
+</Bits>
+</Data>
+<Data Name="Réservé Identification">
+<Bytes count="3"/>
+</Data>
+<Data Name="Réservé Producteur1 MUX">
+<Bytes count="1"/>
+</Data>
+<Data Name="Réservé Producteur2 MUX">
+<Bytes count="1"/>
+</Data>
+<Data Name="Réservé Producteur3 MUX">
+<Bytes count="1"/>
+</Data>
+<Data Name="Réservé Producteur4 MUX">
+<Bytes count="1"/>
+</Data>
+<Data Name="Réservé Producteur5 MUX">
+<Bytes count="1"/>
+</Data>
+<Data Name="S.W.A. Absent">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Cet octet contient un compteur de d\'e9faut avec un encodage pr\'e9cis :
+\par 
+\par 
+\par MSB\tab B7 - B6 - B5 - B4 - B3 - B2 - B1 - B0\tab LSB
+\par 
+\par B7 : 0 pour les valeurs "NonMuet","Pr\'e9sent" et "BusOn" selon la variable
+\par        1 pour les autres valeurs
+\par 
+\par B6 : 1 si le compteur "Panne Pr\'e9sente" = 255
+\par         0 sinon
+\par 
+\par B5 - B0 :  Compteur "Panne m\'e9moris\'e9"
+\par 
+\par }
+]]></Description>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Session Name">
+<Bits>
+<List>
+<Item Value="144" Text="Fournisseur"/>
+<Item Value="160" Text="Etudes"/>
+<Item Value="176" Text="Production"/>
+<Item Value="192" Text="Après-vente"/></List>
+</Bits>
+</Data>
+<Data Name="ShiftInProgress">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Shift-lock">
+<Bits count="1">
+<List>
+<Item Value="0" Text="pas de défauts"/>
+<Item Value="1" Text="C.O. ou C.C. à la masse"/></List>
+</Bits>
+</Data>
+<Data Name="Signal CMF A">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Les contacts sont mis \'e0 la masse par le CMF 
+\par 1 signifie non connect\'e9
+\par 0 signifie reli\'e9
+\par                     A       B     C       PA
+\par P                  0       1      1        0 
+\par R                  0       0      1        1
+\par N                  1       0      1        0
+\par D                  1       0      0        1
+\par 4                   0       0      0        0 
+\par 3                   0       1      0        1
+\par 2                   1       1      0        0 
+\par  
+\par D ind\'e9fini      1        0      0        0
+\par R ind\'e9fini      0        0      1        0
+\par R ind\'e9fini      1        0      1        1 
+\par 3 ind\'e9fini       0        1      0        0
+\par D\'e9faut CMF  0        1      1        1
+\par D\'e9faut CMF  0        0      0        1
+\par D\'e9faut CMF  1        1      0        1
+\par D\'e9faut CMF  1        1      1        1
+\par 
+\par 
+\par }
+]]></Description>
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="Signal CMF B">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Les contacts sont mis \'e0 la masse par le CMF 
+\par 1 signifie non connect\'e9
+\par 0 signifie reli\'e9
+\par                     A       B     C       PA
+\par P                  0       1      1        0 
+\par R                  0       0      1        1
+\par N                  1       0      1        0
+\par D                  1       0      0        1
+\par 4                   0       0      0        0 
+\par 3                   0       1      0        1
+\par 2                   1       1      0        0 
+\par  
+\par D ind\'e9fini      1        0      0        0
+\par R ind\'e9fini      0        0      1        0
+\par R ind\'e9fini      1        0      1        1 
+\par 3 ind\'e9fini       0        1      0        0
+\par D\'e9faut CMF  0        1      1        1
+\par D\'e9faut CMF  0        0      0        1
+\par D\'e9faut CMF  1        1      0        1
+\par D\'e9faut CMF  1        1      1        1
+\par 
+\par }
+]]></Description>
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="Signal CMF C">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Les contacts sont mis \'e0 la masse par le CMF 
+\par 1 signifie non connect\'e9
+\par 0 signifie reli\'e9
+\par                     A       B     C       PA
+\par P                  0       1      1        0 
+\par R                  0       0      1        1
+\par N                  1       0      1        0
+\par D                  1       0      0        1
+\par 4                   0       0      0        0 
+\par 3                   0       1      0        1
+\par 2                   1       1      0        0 
+\par  
+\par D ind\'e9fini      1        0      0        0
+\par R ind\'e9fini      0        0      1        0
+\par R ind\'e9fini      1        0      1        1 
+\par 3 ind\'e9fini       0        1      0        0
+\par D\'e9faut CMF  0        1      1        1
+\par D\'e9faut CMF  0        0      0        1
+\par D\'e9faut CMF  1        1      0        1
+\par D\'e9faut CMF  1        1      1        1
+\par 
+\par }
+]]></Description>
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="Signal CMF PA">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Les contacts sont mis \'e0 la masse par le CMF 
+\par 1 signifie non connect\'e9
+\par 0 signifie reli\'e9
+\par                     A       B     C       PA
+\par P                  0       1      1        0 
+\par R                  0       0      1        1
+\par N                  1       0      1        0
+\par D                  1       0      0        1
+\par 4                   0       0      0        0 
+\par 3                   0       1      0        1
+\par 2                   1       1      0        0 
+\par  
+\par D ind\'e9fini      1        0      0        0
+\par R ind\'e9fini      0        0      1        0
+\par R ind\'e9fini      1        0      1        1 
+\par 3 ind\'e9fini       0        1      0        0
+\par D\'e9faut CMF  0        1      1        1
+\par D\'e9faut CMF  0        0      0        1
+\par D\'e9faut CMF  1        1      0        1
+\par D\'e9faut CMF  1        1      1        1
+\par 
+\par }
+]]></Description>
+<Bits count="1">
+<List>
+<Item Value="0" Text="inactif"/>
+<Item Value="1" Text="actif"/></List>
+</Bits>
+</Data>
+<Data Name="SLS">
+<Bits count="1">
+<List>
+<Item Value="0" Text="pas de défauts"/>
+<Item Value="1" Text="C.O. ou C.C. à la masse"/></List>
+</Bits>
+</Data>
+<Data Name="SLT">
+<Bits count="1">
+<List>
+<Item Value="0" Text="pas de défauts"/>
+<Item Value="1" Text="C.O. ou C.C. à la masse"/></List>
+</Bits>
+</Data>
+<Data Name="SLU">
+<Bits count="1">
+<List>
+<Item Value="0" Text="pas de défauts"/>
+<Item Value="1" Text="C.O. ou C.C. à la masse"/></List>
+</Bits>
+</Data>
+<Data Name="Start diag Session OK">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Status DTC">
+<Bits>
+<List>
+<Item Value="33" Text="C.O."/>
+<Item Value="34" Text="C.C. à la masse"/>
+<Item Value="35" Text="C.C. au plus batterie"/>
+<Item Value="36" Text="paramètre en butée min."/>
+<Item Value="37" Text="paramètre en butée max."/>
+<Item Value="38" Text="incohérence ... DETAILS"/>
+<Item Value="39" Text="pas de signal"/>
+<Item Value="40" Text="en dessous du seuil min. - 9V pour APC -"/>
+<Item Value="41" Text="au dessus du seuil max. - 18V pour APC -"/>
+<Item Value="42" Text="niveau bas permanent"/>
+<Item Value="43" Text="niveau haut permanent"/>
+<Item Value="44" Text="lignes en C.C."/>
+<Item Value="45" Text="anomalie électrique interne"/>
+<Item Value="65" Text="C.O.."/>
+<Item Value="66" Text="C.C. à la masse."/>
+<Item Value="67" Text="C.C. au plus batterie."/>
+<Item Value="68" Text="paramètre en butée min.."/>
+<Item Value="69" Text="paramètre en butée max.."/>
+<Item Value="70" Text="incohérence ... DETAILS."><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 dgdhdhfghgfh
+\par }
+]]></Item>
+<Item Value="71" Text="pas de signal."/>
+<Item Value="72" Text="en dessous du seuil min. - 9V pour APC -."/>
+<Item Value="73" Text="au dessus du seuil max. - 18V pour APC -."/>
+<Item Value="74" Text="niveau bas permanent."/>
+<Item Value="75" Text="niveau haut permanent."/>
+<Item Value="76" Text="lignes en C.C.."/>
+<Item Value="77" Text="anomalie électrique interne."/>
+<Item Value="97" Text="C.O..."/>
+<Item Value="98" Text="C.C. à la masse.."/>
+<Item Value="99" Text="C.C. au plus batterie.."/>
+<Item Value="100" Text="paramètre en butée min..."/>
+<Item Value="101" Text="paramètre en butée max..."/>
+<Item Value="102" Text="incohérence ... DETAILS.."/>
+<Item Value="103" Text="pas de signal.."/>
+<Item Value="104" Text="en dessous du seuil min. - 9V pour APC -.."/>
+<Item Value="105" Text="au dessus du seuil max. - 18V pour APC -.."/>
+<Item Value="106" Text="niveau bas permanent.."/>
+<Item Value="107" Text="niveau haut permanent.."/>
+<Item Value="108" Text="lignes en C.C..."/>
+<Item Value="109" Text="anomalie électrique interne.."/>
+<Item Value="161" Text="C.O. ou C.C. au plus batterie"/>
+<Item Value="162" Text="C.O. ou C.C. à la masse"/>
+<Item Value="163" Text="par. A _ ctrl incorrect - DETAILS"/>
+<Item Value="164" Text="par. B _ ctrl incorrect - DETAILS"/>
+<Item Value="165" Text="par. C _ ctrl incorrect - DETAILS"/>
+<Item Value="166" Text="par. D _ ctrl incorrect - DETAILS"/>
+<Item Value="167" Text="défaut sur un passage"/>
+<Item Value="168" Text="couple moyen effectif non défini"/>
+<Item Value="169" Text="couple hors consigne TA non défini"/>
+<Item Value="170" Text="pas d emission Injection sur CAN"/>
+<Item Value="171" Text="pas d emission ABS sur CAN"/>
+<Item Value="172" Text="ABS en défaut"/>
+<Item Value="173" Text="ESP en défaut"/>
+<Item Value="174" Text="pas d emission UCH sur CAN"/>
+<Item Value="175" Text="non utilisé"/>
+<Item Value="178" Text="controleur CAN en BUS OFF"/>
+<Item Value="179" Text="pas d emission sur le CAN"/>
+<Item Value="181" Text="vitesse véhicule CAN non définie"/>
+<Item Value="182" Text="vitesse roue arrière droite non définie"/>
+<Item Value="183" Text="vitesse roue arrière gauche non définie"/>
+<Item Value="193" Text="C.O. ou C.C. au plus batterie."/>
+<Item Value="194" Text="C.O. ou C.C. à la masse."/>
+<Item Value="195" Text="par. A _ ctrl incorrect - DETAILS."/>
+<Item Value="196" Text="par. B _ ctrl incorrect - DETAILS."/>
+<Item Value="197" Text="par. C _ ctrl incorrect - DETAILS."/>
+<Item Value="198" Text="par. D _ ctrl incorrect - DETAILS."/>
+<Item Value="199" Text="défaut sur un passage."/>
+<Item Value="200" Text="couple moyen effectif non défini."/>
+<Item Value="201" Text="couple hors consigne TA non défini."/>
+<Item Value="202" Text="pas d emission Injection sur CAN."/>
+<Item Value="203" Text="pas d emission ABS sur CAN."/>
+<Item Value="204" Text="ABS en défaut."/>
+<Item Value="205" Text="ESP en défaut."/>
+<Item Value="206" Text="pas d emission UCH sur CAN."/>
+<Item Value="210" Text="controleur CAN en BUS OFF."/>
+<Item Value="211" Text="pas d emission sur le CAN."/>
+<Item Value="214" Text="vitesse roue arrière droite non définie."/>
+<Item Value="215" Text="vitesse roue arrière gauche non définie."/>
+<Item Value="225" Text="C.O. ou C.C. au plus batterie.."/>
+<Item Value="226" Text="C.O. ou C.C. à la masse.."/>
+<Item Value="227" Text="par. A _ ctrl incorrect - DETAILS.."/>
+<Item Value="228" Text="par. B _ ctrl incorrect - DETAILS.."/>
+<Item Value="229" Text="par. C _ ctrl incorrect - DETAILS.."/>
+<Item Value="230" Text="par. D _ ctrl incorrect - DETAILS.."/>
+<Item Value="231" Text="défaut sur un passage.."/>
+<Item Value="232" Text="couple moyen effectif non défini.."/>
+<Item Value="233" Text="couple hors consigne TA non défini.."/>
+<Item Value="234" Text="pas d emission Injection sur CAN.."/>
+<Item Value="235" Text="pas d emission ABS sur CAN.."/>
+<Item Value="236" Text="ABS en défaut.."/>
+<Item Value="237" Text="ESP en défaut.."/>
+<Item Value="238" Text="pas d emission UCH sur CAN.."/>
+<Item Value="242" Text="controleur CAN en BUS OFF.."/>
+<Item Value="243" Text="pas d emission sur le CAN.."/>
+<Item Value="245" Text="vitesse véhicule CAN non définie.."/>
+<Item Value="246" Text="vitesse roue arrière droite non définie.."/>
+<Item Value="247" Text="vitesse roue arrière gauche non définie.."/></List>
+</Bits>
+</Data>
+<Data Name="Stop communication OK">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="TdB Absent">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Cet octet contient un compteur de d\'e9faut avec un encodage pr\'e9cis :
+\par 
+\par 
+\par MSB\tab B7 - B6 - B5 - B4 - B3 - B2 - B1 - B0\tab LSB
+\par 
+\par B7 : 0 pour les valeurs "NonMuet","Pr\'e9sent" et "BusOn" selon la variable
+\par        1 pour les autres valeurs
+\par 
+\par B6 : 1 si le compteur "Panne Pr\'e9sente" = 255
+\par         0 sinon
+\par 
+\par B5 - B0 :  Compteur "Panne m\'e9moris\'e9"
+\par 
+\par }
+]]></Description>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Temperature d huile BVA °C">
+<Bits>
+<Scaled Unit="°C" Offset="-50"/>
+</Bits>
+</Data>
+<Data Name="Temperature d huile BVA V">
+<Bits>
+<Scaled Unit="V" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="Température eau moteur">
+<Bits>
+<Scaled Unit="°C" Offset="-40"/>
+</Bits>
+</Data>
+<Data Name="Température eau moteur.">
+<Bits>
+<Scaled Unit="°C" Offset="-40"/>
+</Bits>
+</Data>
+<Data Name="Température huile boite">
+<Bits>
+<Scaled Unit="°C" Offset="-50"/>
+</Bits>
+</Data>
+<Data Name="Tension APC">
+<Bits>
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="Tension APC mesurée par calculateur boite">
+<Bits>
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="Tester present OK">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Type de loi de passage ">
+<Bits count="4">
+<List>
+<Item Value="0" Text="Economie"/>
+<Item Value="1" Text="Power"/>
+<Item Value="2" Text="Up slope 1"/>
+<Item Value="3" Text="Up slope 2"/>
+<Item Value="4" Text="Down slope"/></List>
+</Bits>
+</Data>
+<Data Name="Type ECU">
+<Bits count="4">
+<List>
+<Item Value="0" Text="Série"/>
+<Item Value="1" Text="Evaluation"/></List>
+</Bits>
+</Data>
+<Data Name="Type Moteur">
+<Bits count="4">
+<List>
+<Item Value="1" Text="G9T"/>
+<Item Value="2" Text="L7X"/>
+<Item Value="3" Text="P9X"/></List>
+</Bits>
+</Data>
+<Data Name="Type Véhicule">
+<Bits count="4">
+<List>
+<Item Value="0" Text="X74"/>
+<Item Value="1" Text="X73"/>
+<Item Value="2" Text="X81"/></List>
+</Bits>
+</Data>
+<Data Name="UCH Absent">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Cet octet contient un compteur de d\'e9faut avec un encodage pr\'e9cis :
+\par 
+\par 
+\par MSB\tab B7 - B6 - B5 - B4 - B3 - B2 - B1 - B0\tab LSB
+\par 
+\par B7 : 0 pour les valeurs "NonMuet","Pr\'e9sent" et "BusOn" selon la variable
+\par        1 pour les autres valeurs
+\par 
+\par B6 : 1 si le compteur "Panne Pr\'e9sente" = 255
+\par         0 sinon
+\par 
+\par B5 - B0 :  Compteur "Panne m\'e9moris\'e9"
+\par 
+\par }
+]]></Description>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="VERROU Absent">
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Cet octet contient un compteur de d\'e9faut avec un encodage pr\'e9cis :
+\par 
+\par 
+\par MSB\tab B7 - B6 - B5 - B4 - B3 - B2 - B1 - B0\tab LSB
+\par 
+\par B7 : 0 pour les valeurs "NonMuet","Pr\'e9sent" et "BusOn" selon la variable
+\par        1 pour les autres valeurs
+\par 
+\par B6 : 1 si le compteur "Panne Pr\'e9sente" = 255
+\par         0 sinon
+\par 
+\par B5 - B0 :  Compteur "Panne m\'e9moris\'e9"
+\par }
+]]></Description>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Version Majeure">
+<Bits count="4">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Version Mineure">
+<Bits count="4">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="VIN">
+<Bytes count="17"/>
+</Data>
+<Data Name="VIN.">
+<Bytes count="17"/>
+</Data>
+<Data Name="Vitesse entrée boite">
+<Bits>
+<Scaled Unit="tr/mn" Step=" 25"/>
+</Bits>
+</Data>
+<Data Name="Vitesse entrée BVA">
+<Bits>
+<Scaled Unit="tr/mn" Step=" 25"/>
+</Bits>
+</Data>
+<Data Name="Vitesse sortie boite">
+<Bits>
+<Scaled Unit="tr/mn" Step=" 25"/>
+</Bits>
+</Data>
+<Data Name="Vitesse sortie BVA">
+<Bits>
+<Scaled Unit="tr/mn" Step=" 25"/>
+</Bits>
+</Data>
+<Data Name="Vitesse véhicule">
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="Vitesse véhicule. ">
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="Volonté conducteur ">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Volonté conducteur.">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Stored Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Present Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data></Datas>
+<Requests Endian="Little">
+<Request Name="Données Génériques">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2190</SentBytes>
+</Sent>
+<Received MinBytes="27">
+<DataItem Name="Alerte température huile de boite" Ref="1" FirstByte="22" BitOffset="1" Endian="Big"/>
+<DataItem Name="Allumage voyant défaut BVA au TdB" Ref="1" FirstByte="22" BitOffset="2" Endian="Big"/>
+<DataItem Name="Changement de rapport - ESP" Ref="1" FirstByte="25" BitOffset="6" Endian="Big"/>
+<DataItem Name="Changement de rapport en cours" Ref="1" FirstByte="24" BitOffset="3" Endian="Big"/>
+<DataItem Name="CMI-" Ref="1" FirstByte="22" BitOffset="5" Endian="Big"/>
+<DataItem Name="CMI+" Ref="1" FirstByte="22" BitOffset="6" Endian="Big"/>
+<DataItem Name="Commande GMV par BVA" Ref="1" FirstByte="23" BitOffset="4" Endian="Big"/>
+<DataItem Name="Contact frein à ouverture" Ref="1" FirstByte="22" BitOffset="7" Endian="Big"/>
+<DataItem Name="Couple lent BVA" Ref="1" FirstByte="17" Endian="Big"/>
+<DataItem Name="Couple moteur anticipé " Ref="1" FirstByte="14" Endian="Big"/>
+<DataItem Name="Couple moteur effectif " Ref="1" FirstByte="12" Endian="Big"/>
+<DataItem Name="Couple moteur hors consigne TA " Ref="1" FirstByte="13" Endian="Big"/>
+<DataItem Name="Couple rapide BVA" Ref="1" FirstByte="16" Endian="Big"/>
+<DataItem Name="Courant sortie SLS" Ref="1" FirstByte="5" Endian="Big"/>
+<DataItem Name="Courant sortie SLT" Ref="1" FirstByte="4" Endian="Big"/>
+<DataItem Name="Courant sortie SLU" Ref="1" FirstByte="6" Endian="Big"/>
+<DataItem Name="Débrayage à l arret" Ref="1" FirstByte="23" BitOffset="6" Endian="Big"/>
+<DataItem Name="Décodage position CMF" Ref="1" FirstByte="21" Endian="Big"/>
+<DataItem Name="Défaut BVA réservé" Ref="1" FirstByte="22" Endian="Big"/>
+<DataItem Name="Défaut cohérence de rapport" Ref="1" FirstByte="26" BitOffset="4" Endian="Big"/>
+<DataItem Name="Demande incrément de rapport - ESP" Ref="1" FirstByte="24" BitOffset="1" Endian="Big"/>
+<DataItem Name="Etat convertisseur" Ref="1" FirstByte="23" Endian="Big"/>
+<DataItem Name="Etat huile BVA" Ref="1" FirstByte="22" BitOffset="3" Endian="Big"/>
+<DataItem Name="Etat sortie EV1" Ref="1" FirstByte="3" BitOffset="7" Endian="Big"/>
+<DataItem Name="Etat sortie EV2" Ref="1" FirstByte="3" BitOffset="6" Endian="Big"/>
+<DataItem Name="Etat sortie EV3" Ref="1" FirstByte="3" BitOffset="5" Endian="Big"/>
+<DataItem Name="Etat sortie EV4" Ref="1" FirstByte="3" BitOffset="4" Endian="Big"/>
+<DataItem Name="Etat sortie EV5" Ref="1" FirstByte="3" BitOffset="3" Endian="Big"/>
+<DataItem Name="Etat sortie Shift lock" Ref="1" FirstByte="3" BitOffset="2" Endian="Big"/>
+<DataItem Name="Fonction auto Adaptative enclenchée" Ref="1" FirstByte="26" Endian="Big"/>
+<DataItem Name="Interdiction CLIM" Ref="1" FirstByte="23" BitOffset="5" Endian="Big"/>
+<DataItem Name="Kick down." Ref="1" FirstByte="24" Endian="Big"/>
+<DataItem Name="Non défini" Ref="1" FirstByte="20" Endian="Big"/>
+<DataItem Name="Octet changement de rapport et Lois" Ref="1" FirstByte="25" Endian="Big"/>
+<DataItem Name="Octet commande GMV par BVA" Ref="1" FirstByte="23" Endian="Big"/>
+<DataItem Name="Octet Controle vitesse et fonction adaptatives" Ref="1" FirstByte="26" Endian="Big"/>
+<DataItem Name="Octet décodage CMF" Ref="1" FirstByte="21" Endian="Big"/>
+<DataItem Name="Octet décodage température et contacts" Ref="1" FirstByte="22" Endian="Big"/>
+<DataItem Name="Octet Failure mode" Ref="1" FirstByte="27" BitOffset="7" Endian="Big"/>
+<DataItem Name="Octet info état rapport de BVA" Ref="1" FirstByte="24" Endian="Big"/>
+<DataItem Name="Octet sortie EVS" Ref="1" FirstByte="3" Endian="Big"/>
+<DataItem Name="Pontage " Ref="1" FirstByte="22" BitOffset="4" Endian="Big"/>
+<DataItem Name="Position levier BVA" Ref="1" FirstByte="21" BitOffset="4" Endian="Big"/>
+<DataItem Name="Programme BVA" Ref="1" FirstByte="23" BitOffset="2" Endian="Big"/>
+<DataItem Name="Rapport engagé" Ref="1" FirstByte="24" BitOffset="4" Endian="Big"/>
+<DataItem Name="Rapport refusé" Ref="1" FirstByte="24" BitOffset="2" Endian="Big"/>
+<DataItem Name="Régime moteur " Ref="1" FirstByte="11" Endian="Big"/>
+<DataItem Name="Signal CMF A" Ref="1" FirstByte="21" BitOffset="3" Endian="Big"/>
+<DataItem Name="Signal CMF B" Ref="1" FirstByte="21" BitOffset="2" Endian="Big"/>
+<DataItem Name="Signal CMF C" Ref="1" FirstByte="21" BitOffset="1" Endian="Big"/>
+<DataItem Name="Signal CMF PA" Ref="1" FirstByte="21" Endian="Big"/>
+<DataItem Name="Température eau moteur" Ref="1" FirstByte="18" Endian="Big"/>
+<DataItem Name="Température huile boite" Ref="1" FirstByte="9" Endian="Big"/>
+<DataItem Name="Tension APC mesurée par calculateur boite" Ref="1" FirstByte="10" Endian="Big"/>
+<DataItem Name="Type de loi de passage " Ref="1" FirstByte="25" Endian="Big"/>
+<DataItem Name="Vitesse entrée boite" Ref="1" FirstByte="8" Endian="Big"/>
+<DataItem Name="Vitesse sortie boite" Ref="1" FirstByte="7" Endian="Big"/>
+<DataItem Name="Vitesse véhicule" Ref="1" FirstByte="19" Endian="Big"/>
+<DataItem Name="Volonté conducteur " Ref="1" FirstByte="15" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Ecriture VIN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="CRC." Ref="1" FirstByte="20" Endian="Big"/>
+<DataItem Name="VIN." Ref="1" FirstByte="3" Endian="Big"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Effacement paramètres de lois auto-adapt">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>140001</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<DataItem Name="Effacement réalisé" Ref="1" FirstByte="1" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Effacer défauts">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Identification">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="Indice soft en devellopement" Ref="1" FirstByte="18" BitOffset="4" Endian="Big"/>
+<DataItem Name="N° calibration" Ref="1" FirstByte="21" Endian="Big"/>
+<DataItem Name="N° famille BVA" Ref="1" FirstByte="23" Endian="Big"/>
+<DataItem Name="N° fournisseur" Ref="1" FirstByte="9" Endian="Big"/>
+<DataItem Name="N° indice de calibration" Ref="1" FirstByte="22" Endian="Big"/>
+<DataItem Name="N° piece PIE" Ref="1" FirstByte="3" Endian="Big"/>
+<DataItem Name="N° structure de calibration" Ref="1" FirstByte="19" Endian="Big"/>
+<DataItem Name="N° version du materiel" Ref="1" FirstByte="12" Endian="Big"/>
+<DataItem Name="N° Version logiciel " Ref="1" FirstByte="17" Endian="Big"/>
+<DataItem Name="Octet identification APV" Ref="1" FirstByte="8" Endian="Big"/>
+<DataItem Name="Réservé Identification" Ref="1" FirstByte="24" Endian="Big"/>
+<DataItem Name="Type ECU" Ref="1" FirstByte="17" Endian="Big"/>
+<DataItem Name="Type Moteur" Ref="1" FirstByte="20" BitOffset="4" Endian="Big"/>
+<DataItem Name="Type Véhicule" Ref="1" FirstByte="20" Endian="Big"/>
+<DataItem Name="Version Majeure" Ref="1" FirstByte="17" BitOffset="4" Endian="Big"/>
+<DataItem Name="Version Mineure" Ref="1" FirstByte="18" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="IO CONTROL BLID">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<VariableLength/>
+<SentBytes>30000000</SentBytes>
+<DataItem Name="Controle pilotage" Ref="1" FirstByte="4" Endian="Big"/>
+<DataItem Name="N° de sortie à piloter" Ref="1" FirstByte="2" Endian="Big"/>
+<DataItem Name="Paramètre de pilotage" Ref="1" FirstByte="3" Endian="Big"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Lancer séquence activ. sorties">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>31C000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Lecture VIN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="CRC" Ref="1" FirstByte="20" Endian="Big"/>
+<DataItem Name="VIN" Ref="1" FirstByte="3" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Liaison CAN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2182</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="ABS Absent" Ref="1" FirstByte="8" Endian="Big"/>
+<DataItem Name="AIRBAG Absent" Ref="1" FirstByte="11" Endian="Big"/>
+<DataItem Name="BIN Absent" Ref="1" FirstByte="16" Endian="Big"/>
+<DataItem Name="BVA Absent" Ref="1" FirstByte="15" Endian="Big"/>
+<DataItem Name="CLIM Absent" Ref="1" FirstByte="14" Endian="Big"/>
+<DataItem Name="INJECTION Absent" Ref="1" FirstByte="7" Endian="Big"/>
+<DataItem Name="Paramètre BUS OFF" Ref="1" FirstByte="5" Endian="Big"/>
+<DataItem Name="Paramètre Module Muet" Ref="1" FirstByte="6" Endian="Big"/>
+<DataItem Name="Référence messagerie 1" Ref="1" FirstByte="3" Endian="Big"/>
+<DataItem Name="Référence messagerie 2" Ref="1" FirstByte="4" Endian="Big"/>
+<DataItem Name="Réservé Producteur1 MUX" Ref="1" FirstByte="17" Endian="Big"/>
+<DataItem Name="Réservé Producteur2 MUX" Ref="1" FirstByte="18" Endian="Big"/>
+<DataItem Name="Réservé Producteur3 MUX" Ref="1" FirstByte="19" Endian="Big"/>
+<DataItem Name="Réservé Producteur4 MUX" Ref="1" FirstByte="20" Endian="Big"/>
+<DataItem Name="Réservé Producteur5 MUX" Ref="1" FirstByte="21" Endian="Big"/>
+<DataItem Name="S.W.A. Absent" Ref="1" FirstByte="13" Endian="Big"/>
+<DataItem Name="TdB Absent" Ref="1" FirstByte="9" Endian="Big"/>
+<DataItem Name="UCH Absent" Ref="1" FirstByte="10" Endian="Big"/>
+<DataItem Name="VERROU Absent" Ref="1" FirstByte="12" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Output Control">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic testing screen]]></Comment>
+<Sent>
+<SentBytes>30000000</SentBytes>
+<DataItem Name="Controle pilotage" FirstByte="4" Endian="Big"/>
+<DataItem Name="Output Control Command" FirstByte="3" Endian="Big"/>
+<DataItem Name="Output Permanent Control List" FirstByte="2" Endian="Big"/>
+<DataItem Name="Output Temporary Control List" FirstByte="2" Endian="Big"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700000</ReplyBytes>
+<DataItem Name="Output Control Status" FirstByte="3" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="READ FREEZE FRAME">
+
+<DossierMaintenabilite/>
+<Sent>
+<VariableLength/>
+<SentBytes>1200040000</SentBytes>
+<DataItem Name="FirstDTC" FirstByte="4" Endian="Big"/>
+</Sent>
+<Received MinBytes="34">
+<DataItem Name="Alerte temp. huile" Ref="1" FirstByte="27" BitOffset="1" Endian="Big"/>
+<DataItem Name="Allumage voyant défauts" Ref="1" FirstByte="27" BitOffset="2" Endian="Big"/>
+<DataItem Name="Chgt de rapport" Ref="1" FirstByte="30"/>
+<DataItem Name="CMF " Ref="1" FirstByte="26" Endian="Big"/>
+<DataItem Name="Contact CMI - " Ref="1" FirstByte="27" BitOffset="5" Endian="Big"/>
+<DataItem Name="Contact CMI+ " Ref="1" FirstByte="27" BitOffset="6" Endian="Big"/>
+<DataItem Name="Contact frein à ouverture." Ref="1" FirstByte="27" BitOffset="7" Endian="Big"/>
+<DataItem Name="Couple lent " Ref="1" FirstByte="22" Endian="Big"/>
+<DataItem Name="Couple moteur anticipé." Ref="1" FirstByte="19" Endian="Big"/>
+<DataItem Name="Couple moteur effectif." Ref="1" FirstByte="17" Endian="Big"/>
+<DataItem Name="Couple moteur hors consigne TA." Ref="1" FirstByte="18" Endian="Big"/>
+<DataItem Name="Couple rapide " Ref="1" FirstByte="21" Endian="Big"/>
+<DataItem Name="Courant de sortie driver EV SLS" Ref="1" FirstByte="9" Endian="Big"/>
+<DataItem Name="Courant de sortie driver EV SLT" Ref="1" FirstByte="8" Endian="Big"/>
+<DataItem Name="Courant de sortie driver EV SLU" Ref="1" FirstByte="10" Endian="Big"/>
+<DataItem Name="Courant de sortie EV SLS" Ref="1" FirstByte="6" Endian="Big"/>
+<DataItem Name="Courant de sortie EV SLT" Ref="1" FirstByte="5" Endian="Big"/>
+<DataItem Name="Courant de sortie EV SLU" Ref="1" FirstByte="7" Endian="Big"/>
+<DataItem Name="Débrayage arrêt" Ref="1" FirstByte="28"/>
+<DataItem Name="Défauts rapport" Ref="1" FirstByte="31"/>
+<DataItem Name="Demande incrément rapport" Ref="1" FirstByte="29" BitOffset="6"/>
+<DataItem Name="Etat contact CMF A " Ref="1" FirstByte="26" BitOffset="3" Endian="Big"/>
+<DataItem Name="Etat contact CMF B " Ref="1" FirstByte="26" BitOffset="2" Endian="Big"/>
+<DataItem Name="Etat contact CMF C " Ref="1" FirstByte="26" BitOffset="1" Endian="Big"/>
+<DataItem Name="Etat contact CMF PA " Ref="1" FirstByte="26" Endian="Big"/>
+<DataItem Name="Etat convertisseur." Ref="1" FirstByte="28" BitOffset="6"/>
+<DataItem Name="Etat driver sortie EV 1" Ref="1" FirstByte="4" BitOffset="7" Endian="Big"/>
+<DataItem Name="Etat driver sortie EV 2" Ref="1" FirstByte="4" BitOffset="6" Endian="Big"/>
+<DataItem Name="Etat driver sortie EV 3" Ref="1" FirstByte="4" BitOffset="5" Endian="Big"/>
+<DataItem Name="Etat driver sortie EV 4" Ref="1" FirstByte="4" BitOffset="4" Endian="Big"/>
+<DataItem Name="Etat driver sortie EV 5 " Ref="1" FirstByte="4" BitOffset="3" Endian="Big"/>
+<DataItem Name="Etat driver sortie Shiftlock" Ref="1" FirstByte="4" BitOffset="2" Endian="Big"/>
+<DataItem Name="Etat GMV " Ref="1" FirstByte="28" BitOffset="3"/>
+<DataItem Name="Etat huile" Ref="1" FirstByte="27" BitOffset="3" Endian="Big"/>
+<DataItem Name="Etat sortie EV 1" Ref="1" FirstByte="3" BitOffset="7" Endian="Big"/>
+<DataItem Name="Etat sortie EV 2" Ref="1" FirstByte="3" BitOffset="6" Endian="Big"/>
+<DataItem Name="Etat sortie EV 3" Ref="1" FirstByte="3" BitOffset="5" Endian="Big"/>
+<DataItem Name="Etat sortie EV 4" Ref="1" FirstByte="3" BitOffset="4" Endian="Big"/>
+<DataItem Name="Etat sortie EV 5" Ref="1" FirstByte="3" BitOffset="3" Endian="Big"/>
+<DataItem Name="Etat sortie Shiftlock" Ref="1" FirstByte="3" BitOffset="2" Endian="Big"/>
+<DataItem Name="Fonction auto-adapt." Ref="1" FirstByte="31" BitOffset="4"/>
+<DataItem Name="Freeze Frame Number" Ref="1" FirstByte="2" Endian="Big"/>
+<DataItem Name="Interdiction CLIM." Ref="1" FirstByte="28" BitOffset="2"/>
+<DataItem Name="Kick down" Ref="1" FirstByte="29" BitOffset="7"/>
+<DataItem Name="Lois de passage" Ref="1" FirstByte="30" BitOffset="4"/>
+<DataItem Name="Non défini." Ref="1" FirstByte="25" Endian="Big"/>
+<DataItem Name="Octet changement de rapport et lois." Ref="1" FirstByte="30"/>
+<DataItem Name="Octet commande EVS" Ref="1" FirstByte="4" Endian="Big"/>
+<DataItem Name="Octet commande GMV par BVA." Ref="1" FirstByte="28"/>
+<DataItem Name="Octet controle vitesse et fonction adaptatives." Ref="1" FirstByte="31" BitOffset="4"/>
+<DataItem Name="Octet décodage CMF." Ref="1" FirstByte="26" Endian="Big"/>
+<DataItem Name="Octet décodage température et contacts." Ref="1" FirstByte="27" Endian="Big"/>
+<DataItem Name="Octet info état rapport de BVA." Ref="1" FirstByte="29"/>
+<DataItem Name="Octet sortie EVS." Ref="1" FirstByte="3" Endian="Big"/>
+<DataItem Name="Poids faible DTC" Ref="1" FirstByte="34"/>
+<DataItem Name="Poids fort DTC" Ref="1" FirstByte="33"/>
+<DataItem Name="Pontage." Ref="1" FirstByte="27" BitOffset="4" Endian="Big"/>
+<DataItem Name="Position levier " Ref="1" FirstByte="26" BitOffset="4" Endian="Big"/>
+<DataItem Name="Programme " Ref="1" FirstByte="28" BitOffset="4"/>
+<DataItem Name="RAMI" Ref="1" FirstByte="32"/>
+<DataItem Name="Rapport engagé." Ref="1" FirstByte="29"/>
+<DataItem Name="Rapport refusé." Ref="1" FirstByte="29" BitOffset="5"/>
+<DataItem Name="Régime moteur." Ref="1" FirstByte="16" Endian="Big"/>
+<DataItem Name="ShiftInProgress" Ref="1" FirstByte="29" BitOffset="4"/>
+<DataItem Name="Temperature d huile BVA °C" Ref="1" FirstByte="13" Endian="Big"/>
+<DataItem Name="Temperature d huile BVA V" Ref="1" FirstByte="14" Endian="Big"/>
+<DataItem Name="Température eau moteur." Ref="1" FirstByte="23" Endian="Big"/>
+<DataItem Name="Tension APC" Ref="1" FirstByte="15" Endian="Big"/>
+<DataItem Name="Vitesse entrée BVA" Ref="1" FirstByte="12" Endian="Big"/>
+<DataItem Name="Vitesse sortie BVA" Ref="1" FirstByte="11" Endian="Big"/>
+<DataItem Name="Vitesse véhicule. " Ref="1" FirstByte="24" Endian="Big"/>
+<DataItem Name="Volonté conducteur." Ref="1" FirstByte="20" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<Sent>
+<VariableLength/>
+<SentBytes>17FF00</SentBytes>
+<DataItem Name="MoreDTC" Ref="1" FirstByte="3" Endian="Big"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<DataItem Name="   DTC1 - Valeur" FirstByte="5" Endian="Big"/>
+<DataItem Name="FirstDTC" FirstByte="3" Endian="Big"/>
+<DataItem Name="NDTC" FirstByte="2" Endian="Big"/>
+<DataItem Name="Status DTC" FirstByte="5" Endian="Big"/>
+<DataItem Name="Stored Failure" FirstByte="5" BitOffset="1" Endian="Big"/>
+<DataItem Name="Present Failure" FirstByte="5" BitOffset="2" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="START DIAG SESSION">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="      Mode du diag" Ref="1" FirstByte="2" Endian="Big"/>
+</Sent>
+<Received MinBytes="1">
+<DataItem Name="Start diag Session OK" Ref="1" FirstByte="1" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Start Diagnostic Session">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="Session Name" FirstByte="2" Endian="Big"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Statut séquence activation sorties">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31C001</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<DataItem Name="     état status séquence act. sorties" Ref="1" FirstByte="3" Endian="Big"/>
+<DataItem Name="EVS 1" Ref="1" FirstByte="4" BitOffset="7" Endian="Big"/>
+<DataItem Name="EVS 2" Ref="1" FirstByte="4" BitOffset="6" Endian="Big"/>
+<DataItem Name="EVS 3" Ref="1" FirstByte="4" BitOffset="5" Endian="Big"/>
+<DataItem Name="EVS 4" Ref="1" FirstByte="4" BitOffset="4" Endian="Big"/>
+<DataItem Name="EVS 5" Ref="1" FirstByte="4" BitOffset="3" Endian="Big"/>
+<DataItem Name="Octet1" Ref="1" FirstByte="4" Endian="Big"/>
+<DataItem Name="Octet2" Ref="1" FirstByte="5" Endian="Big"/>
+<DataItem Name="Octet3" Ref="1" FirstByte="6" Endian="Big"/>
+<DataItem Name="Shift-lock" Ref="1" FirstByte="6" BitOffset="7" Endian="Big"/>
+<DataItem Name="SLS" Ref="1" FirstByte="5" BitOffset="6" Endian="Big"/>
+<DataItem Name="SLT" Ref="1" FirstByte="5" BitOffset="7" Endian="Big"/>
+<DataItem Name="SLU" Ref="1" FirstByte="5" BitOffset="5" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="STOP COM">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>82</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<DataItem Name="Stop communication OK" Ref="1" FirstByte="1" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="TESTER PRESENT">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3E</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<DataItem Name="Tester present OK" Ref="1" FirstByte="1" Endian="Big"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="0115 - température eau moteur" DTC="277" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0120 - volonté conducteur" DTC="288" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0500 - vitesse véhicule" DTC="1280" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0600 - problème réseau CAN" DTC="1536" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0654 - régime moteur" DTC="1620" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0700 - checksum" DTC="1792" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0701 - bus CAN" DTC="1793" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0702 - tension APC" DTC="1794" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0705 - C.M.F." DTC="1797" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0708 - C.M.I." DTC="1800" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0710 - température huile" DTC="1808" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0715 - capteur vitesse entrée" DTC="1813" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0720 - capteur vitesse sortie" DTC="1824" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0731 - cohérence rapport 1" DTC="1841" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0732 - cohérence rapport 2" DTC="1842" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0733 - cohérence rapport 3" DTC="1843" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0734 - cohérence rapport 4" DTC="1844" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0735 - cohérence rapport 5" DTC="1845" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0736 - cohérence rapport R" DTC="1846" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0740 - pontage convertisseur" DTC="1856" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0743 - E.V. SLU" DTC="1859" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0745 - E.V. SLT" DTC="1861" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0748 - E.V. SLS" DTC="1864" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0753 - E.V. S1" DTC="1875" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0758 - E.V. S2" DTC="1880" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0762 - cohérence rapport S3" DTC="1890" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0763 - E.V. S3" DTC="1891" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0768 - E.V. S4" DTC="1896" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0773 - E.V. S5" DTC="1907" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0780 - débrayage arrêt" DTC="1920" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0782 - blocage levier en P" DTC="1922" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+<Device Name="0785 - défaut de passage" DTC="1925" FreezeFrame="READ FREEZE FRAME">
+
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Ecrans Etudes">
+
+<Screen Name="Activation sorties" Color="8421504" WindowState="0" Width="11820" Height="8505">
+
+<Label Text="" Color="8454016" Alignment="0">
+<Rectangle Left="4080" Top="2700" Height="2760" Width="5160"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="8421631" Alignment="2">
+<Rectangle Left="1320" Top="540" Height="1020" Width="4080"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="0" Alignment="0">
+<Rectangle Left="1320" Top="2580" Height="120" Width="7920"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="  &lt; 400 tr/min" Color="8421631" Alignment="0">
+<Rectangle Left="5400" Top="900" Height="360" Width="3840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="  N ou P" Color="8421631" Alignment="0">
+<Rectangle Left="5400" Top="540" Height="360" Width="3840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="  nulle" Color="8421631" Alignment="0">
+<Rectangle Left="5400" Top="1260" Height="300" Width="3840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="1 - lancer la séquence d'activation des sorties." Color="8454016" Alignment="0">
+<Rectangle Left="1320" Top="2940" Height="420" Width="2760"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="2 - au bout de 5 secondes, faire une " Color="8454016" Alignment="0">
+<Rectangle Left="1320" Top="3360" Height="240" Width="2760"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Activation des sorties une à une" Color="32896" Alignment="2">
+<Rectangle Left="1320" Top="5580" Height="1440" Width="7920"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Attention : ne pas lancer la séquence lorsque" Color="0" Alignment="2">
+<Rectangle Left="9360" Top="1860" Height="420" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="65535"/></Label>
+<Label Text="Conditions de fonctionnement" Color="8421631" Alignment="2">
+<Rectangle Left="1320" Top="180" Height="360" Width="7920"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="demande de status." Color="8454016" Alignment="0">
+<Rectangle Left="1320" Top="3600" Height="1860" Width="2760"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="la boîte est en défaut  (défaut présent)." Color="0" Alignment="2">
+<Rectangle Left="9360" Top="2280" Height="1200" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="65535"/></Label>
+<Label Text="Procédure" Color="8454016" Alignment="2">
+<Rectangle Left="1320" Top="2700" Height="240" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Séquence d'activation de toutes les sorties" Color="8454016" Alignment="2">
+<Rectangle Left="1320" Top="1680" Height="900" Width="7920"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Action">
+<Rectangle Left="6540" Top="6120" Height="720" Width="2400"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="IO CONTROL BLID"/>
+</Button>
+<Button Text="Demande de status ">
+<Rectangle Left="5820" Top="2100" Height="360" Width="2220"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Statut séquence activation sorties"/>
+</Button>
+<Button Text="Lancer">
+<Rectangle Left="2460" Top="2100" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lancer séquence activ. sorties"/>
+</Button>
+
+<Display Width="600" Color="16777215" DataName="EVS 1" RequestName="Statut séquence activation sorties">
+<Rectangle Left="1380" Top="3960" Height="240" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="600" Color="16777215" DataName="EVS 2" RequestName="Statut séquence activation sorties">
+<Rectangle Left="1380" Top="4260" Height="240" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="600" Color="16777215" DataName="EVS 3" RequestName="Statut séquence activation sorties">
+<Rectangle Left="1380" Top="4560" Height="240" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="600" Color="16777215" DataName="EVS 4" RequestName="Statut séquence activation sorties">
+<Rectangle Left="1380" Top="4860" Height="240" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="600" Color="16777215" DataName="EVS 5" RequestName="Statut séquence activation sorties">
+<Rectangle Left="1380" Top="5160" Height="240" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2640" Color="16777215" DataName="Position levier BVA" RequestName="Données Génériques">
+<Rectangle Left="1440" Top="540" Height="240" Width="3900"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2640" Color="16777215" DataName="Régime moteur " RequestName="Données Génériques">
+<Rectangle Left="1440" Top="900" Height="240" Width="3900"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2640" Color="16777215" DataName="Vitesse véhicule" RequestName="Données Génériques">
+<Rectangle Left="1440" Top="1260" Height="240" Width="3900"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="1620" Color="16777215" DataName="N° de sortie à piloter" RequestName="IO CONTROL BLID">
+<Rectangle Left="1500" Top="6060" Height="300" Width="4620"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1620" Color="16777215" DataName="Paramètre de pilotage" RequestName="IO CONTROL BLID">
+<Rectangle Left="1500" Top="6480" Height="300" Width="4620"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="120" Color="16777215" DataName="     état status séquence act. sorties" RequestName="Statut séquence activation sorties">
+<Rectangle Left="4560" Top="3060" Height="300" Width="4560"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="780" Color="16777215" DataName="Shift-lock" RequestName="Statut séquence activation sorties">
+<Rectangle Left="5340" Top="4020" Height="240" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="600" Color="16777215" DataName="SLT" RequestName="Statut séquence activation sorties">
+<Rectangle Left="5340" Top="4440" Height="240" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="600" Color="16777215" DataName="SLS" RequestName="Statut séquence activation sorties">
+<Rectangle Left="5340" Top="4800" Height="240" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="600" Color="16777215" DataName="SLU" RequestName="Statut séquence activation sorties">
+<Rectangle Left="5340" Top="5160" Height="240" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1200" Color="16777215" DataName="Allumage voyant défaut BVA au TdB" RequestName="Données Génériques">
+<Rectangle Left="9420" Top="2820" Height="600" Width="2040"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/><Threshold Value=" 1" Color="255"/></Display>
+</Screen>
+<Screen Name="Compteurs défauts CAN" Color="8421504" WindowState="0" Width="11805" Height="8475">
+
+<Label Text="" Color="8421376" Alignment="0">
+<Rectangle Left="960" Top="1440" Height="4320" Width="9360"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="COMPTEURS DE DEFAUTS CAN" Color="16744576" Alignment="2">
+<Rectangle Left="3180" Top="120" Height="420" Width="5220"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+
+
+<Display Width="2520" Color="16777215" DataName="Paramètre Module Muet" RequestName="Liaison CAN">
+<Rectangle Left="1200" Top="2400" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1920" Color="16777215" DataName="Référence messagerie 1" RequestName="Liaison CAN">
+<Rectangle Left="2880" Top="1680" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="ABS Absent" RequestName="Liaison CAN">
+<Rectangle Left="3480" Top="3120" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="INJECTION Absent" RequestName="Liaison CAN">
+<Rectangle Left="3480" Top="3600" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="TdB Absent" RequestName="Liaison CAN">
+<Rectangle Left="3480" Top="4080" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="UCH Absent" RequestName="Liaison CAN">
+<Rectangle Left="3480" Top="4560" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="BVA Absent" RequestName="Liaison CAN">
+<Rectangle Left="3480" Top="5220" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1920" Color="16777215" DataName="Référence messagerie 2" RequestName="Liaison CAN">
+<Rectangle Left="6000" Top="1680" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="Paramètre BUS OFF" RequestName="Liaison CAN">
+<Rectangle Left="6180" Top="2400" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Défauts" Color="8421504" WindowState="0" Width="11925" Height="8610">
+
+<Label Text="" Color="12615808" Alignment="0">
+<Rectangle Left="60" Top="120" Height="420" Width="11520"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="16744576" Alignment="0">
+<Rectangle Left="60" Top="3540" Height="360" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="-2147483630"/></Label>
+<Label Text="" Color="8454143" Alignment="0">
+<Rectangle Left="60" Top="1380" Height="360" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="-2147483630"/></Label>
+<Label Text="" Color="8454016" Alignment="0">
+<Rectangle Left="60" Top="2100" Height="360" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="-2147483630"/></Label>
+<Label Text="" Color="12615935" Alignment="0">
+<Rectangle Left="60" Top="4260" Height="360" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="-2147483630"/></Label>
+<Label Text="" Color="8421631" Alignment="0">
+<Rectangle Left="60" Top="660" Height="360" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="-2147483630"/></Label>
+<Label Text="" Color="16777088" Alignment="0">
+<Rectangle Left="60" Top="2820" Height="360" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="-2147483630"/></Label>
+<Label Text="" Color="33023" Alignment="0">
+<Rectangle Left="60" Top="5700" Height="360" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="-2147483630"/></Label>
+<Label Text="" Color="8388863" Alignment="0">
+<Rectangle Left="60" Top="6480" Height="120" Width="8940"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="32896" Alignment="0">
+<Rectangle Left="60" Top="4980" Height="360" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="-2147483630"/></Label>
+<Label Text="" Color="12615808" Alignment="0">
+<Rectangle Left="9780" Top="780" Height="480" Width="1800"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" ouvrir l'écran Freeze Frame." Color="0" Alignment="2">
+<Rectangle Left="9060" Top="6780" Height="240" Width="2580"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text=" Pour la lecture de la Freeze frame," Color="0" Alignment="2">
+<Rectangle Left="9060" Top="6540" Height="240" Width="2580"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text=" Si le terme DETAILS apparaît dans le champ" Color="0" Alignment="2">
+<Rectangle Left="9780" Top="2640" Height="420" Width="1860"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text="&quot;Type de défaut&quot;, cliquer droit dans DTCx et " Color="0" Alignment="2">
+<Rectangle Left="9780" Top="3060" Height="420" Width="1860"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text="cliquer droit sur &quot;Nb défauts&quot;." Color="0" Alignment="2">
+<Rectangle Left="9780" Top="1860" Height="420" Width="1860"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text="d' informations sur le défaut." Color="0" Alignment="2">
+<Rectangle Left="9780" Top="3900" Height="480" Width="1860"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text="ouvrir la fiche DIAG, afin d'obtenir plus " Color="0" Alignment="2">
+<Rectangle Left="9780" Top="3480" Height="420" Width="1860"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text="Pour connaître les modes de protection, " Color="0" Alignment="2">
+<Rectangle Left="9780" Top="1440" Height="420" Width="1860"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text="Suite trame " Color="8388863" Alignment="0">
+<Rectangle Left="60" Top="6600" Height="420" Width="8940"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Type de défaut" Color="32896" Alignment="0">
+<Rectangle Left="60" Top="5340" Height="300" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Type de défaut" Color="12615935" Alignment="0">
+<Rectangle Left="60" Top="4620" Height="300" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Type de défaut" Color="33023" Alignment="0">
+<Rectangle Left="60" Top="6060" Height="300" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Type de défaut" Color="8454016" Alignment="0">
+<Rectangle Left="60" Top="2460" Height="300" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Type de défaut" Color="8454143" Alignment="0">
+<Rectangle Left="60" Top="1740" Height="300" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Type de défaut" Color="16744576" Alignment="0">
+<Rectangle Left="60" Top="3900" Height="300" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Type de défaut" Color="8421631" Alignment="0">
+<Rectangle Left="60" Top="1020" Height="300" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Type de défaut" Color="16777088" Alignment="0">
+<Rectangle Left="60" Top="3180" Height="300" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="ReadDTC"/>
+<Button Text="EFFACEMENT DEFAUTS">
+<Rectangle Left="9960" Top="4680" Height="1620" Width="1620"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0"/>
+<Message Text="Vous allez effacer tous les défauts BVA ! Veuillez confirmer."/>
+<Send Delay="0" RequestName="Effacer défauts"/>
+</Button>
+
+<Display Width="2760" Color="16777215" DataName="Allumage voyant défaut BVA au TdB" RequestName="Données Génériques">
+<Rectangle Left="120" Top="180" Height="300" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="16777215"/><Threshold Value=" 1" Color="255"/></Display>
+<Display Width="120" Color="16777215" DataName="Status DTC" RequestName="ReadDTC">
+<Rectangle Left="1260" Top="1020" Height="240" Width="5460"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="120" Color="16777215" DataName="   DTC1 - Valeur" RequestName="ReadDTC">
+<Rectangle Left="4020" Top="720" Height="240" Width="2700"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1260" Color="16777215" DataName="Rapport engagé" RequestName="Données Génériques">
+<Rectangle Left="4260" Top="180" Height="300" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2340" Color="16777215" DataName="Vitesse véhicule" RequestName="Données Génériques">
+<Rectangle Left="7380" Top="180" Height="300" Width="4140"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="960" Color="16777215" DataName="NDTC" RequestName="ReadDTC">
+<Rectangle Left="9840" Top="900" Height="300" Width="1680"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Données génériques" Color="8421504" WindowState="2" Width="11850" Height="8505">
+
+<Label Text="" Color="8421631" Alignment="0">
+<Rectangle Left="60" Top="3240" Height="3120" Width="2940"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="8454016" Alignment="0">
+<Rectangle Left="6180" Top="2460" Height="660" Width="4680"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="16744703" Alignment="0">
+<Rectangle Left="6180" Top="60" Height="1380" Width="4680"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="4210816" Alignment="0">
+<Rectangle Left="60" Top="6420" Height="660" Width="7620"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="16711935" Alignment="0">
+<Rectangle Left="7740" Top="3240" Height="960" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="4227072" Alignment="0">
+<Rectangle Left="7740" Top="4260" Height="660" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="16744576" Alignment="0">
+<Rectangle Left="300" Top="60" Height="3060" Width="5280"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="16776960" Alignment="0">
+<Rectangle Left="6180" Top="1620" Height="660" Width="4680"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="32896" Alignment="0">
+<Rectangle Left="7740" Top="4980" Height="1320" Width="3840"/>
+<Font Name="MS Sans Serif" Size=" 6" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="255" Alignment="0">
+<Rectangle Left="3060" Top="4260" Height="2100" Width="4620"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="4227327" Alignment="0">
+<Rectangle Left="3060" Top="3240" Height="960" Width="4620"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Décodage DTC cliquez Droit sur Nb défauts" Color="32896" Alignment="2">
+<Rectangle Left="7740" Top="6300" Height="240" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="et ouvrir la fiche DIAG" Color="32896" Alignment="2">
+<Rectangle Left="7740" Top="6540" Height="600" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Effacer Défauts">
+<Rectangle Left="8820" Top="6780" Height="300" Width="1680"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Effacer défauts"/>
+</Button>
+
+<Display Width="1500" Color="16777215" DataName="Etat sortie EV1" RequestName="Données Génériques">
+<Rectangle Left="120" Top="3300" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Etat sortie EV2" RequestName="Données Génériques">
+<Rectangle Left="120" Top="3600" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Etat sortie EV3" RequestName="Données Génériques">
+<Rectangle Left="120" Top="3900" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Etat sortie EV4" RequestName="Données Génériques">
+<Rectangle Left="120" Top="4200" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Etat sortie EV5" RequestName="Données Génériques">
+<Rectangle Left="120" Top="4500" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Courant sortie SLU" RequestName="Données Génériques">
+<Rectangle Left="120" Top="4980" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Courant sortie SLS" RequestName="Données Génériques">
+<Rectangle Left="120" Top="5280" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Courant sortie SLT" RequestName="Données Génériques">
+<Rectangle Left="120" Top="5580" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Etat sortie Shift lock" RequestName="Données Génériques">
+<Rectangle Left="120" Top="6000" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Interdiction CLIM" RequestName="Données Génériques">
+<Rectangle Left="120" Top="6480" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3000" Color="16777215" DataName="Rapport engagé" RequestName="Données Génériques">
+<Rectangle Left="360" Top="120" Height="300" Width="5160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2280" Color="16777215" DataName="Position levier BVA" RequestName="Données Génériques">
+<Rectangle Left="360" Top="480" Height="240" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2280" Color="16777215" DataName="Programme BVA" RequestName="Données Génériques">
+<Rectangle Left="360" Top="780" Height="240" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="CMI-" RequestName="Données Génériques">
+<Rectangle Left="360" Top="1080" Height="240" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="CMI+" RequestName="Données Génériques">
+<Rectangle Left="360" Top="1320" Height="240" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="Rapport refusé" RequestName="Données Génériques">
+<Rectangle Left="360" Top="1620" Height="240" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="Changement de rapport en cours" RequestName="Données Génériques">
+<Rectangle Left="360" Top="1920" Height="240" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2220" Color="16777215" DataName="Défaut cohérence de rapport" RequestName="Données Génériques">
+<Rectangle Left="360" Top="2220" Height="240" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2760" Color="16777215" DataName="Demande incrément de rapport - ESP" RequestName="Données Génériques">
+<Rectangle Left="360" Top="2520" Height="240" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2220" Color="16777215" DataName="Changement de rapport - ESP" RequestName="Données Génériques">
+<Rectangle Left="360" Top="2820" Height="240" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1980" Color="16777215" DataName="Commande GMV par BVA" RequestName="Données Génériques">
+<Rectangle Left="1800" Top="6780" Height="240" Width="3240"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2940" Color="16777215" DataName="Vitesse véhicule" RequestName="Données Génériques">
+<Rectangle Left="3120" Top="3300" Height="240" Width="4500"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2940" Color="16777215" DataName="Vitesse entrée boite" RequestName="Données Génériques">
+<Rectangle Left="3120" Top="3600" Height="240" Width="4500"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2940" Color="16777215" DataName="Vitesse sortie boite" RequestName="Données Génériques">
+<Rectangle Left="3120" Top="3900" Height="240" Width="4500"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2940" Color="16777215" DataName="Régime moteur " RequestName="Données Génériques">
+<Rectangle Left="3120" Top="4320" Height="240" Width="4500"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2940" Color="16777215" DataName="Température eau moteur" RequestName="Données Génériques">
+<Rectangle Left="3120" Top="4620" Height="240" Width="4500"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2940" Color="16777215" DataName="Couple moteur effectif " RequestName="Données Génériques">
+<Rectangle Left="3120" Top="4920" Height="240" Width="4500"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2940" Color="16777215" DataName="Couple moteur hors consigne TA " RequestName="Données Génériques">
+<Rectangle Left="3120" Top="5220" Height="240" Width="4500"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2940" Color="16777215" DataName="Couple moteur anticipé " RequestName="Données Génériques">
+<Rectangle Left="3120" Top="5520" Height="240" Width="4500"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2940" Color="16777215" DataName="Couple lent BVA" RequestName="Données Génériques">
+<Rectangle Left="3120" Top="5820" Height="240" Width="4500"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2940" Color="16777215" DataName="Couple rapide BVA" RequestName="Données Génériques">
+<Rectangle Left="3120" Top="6060" Height="240" Width="4500"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3240" Color="16777215" DataName="Tension APC mesurée par calculateur boite" RequestName="Données Génériques">
+<Rectangle Left="3120" Top="6480" Height="240" Width="4500"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="Décodage position CMF" RequestName="Données Génériques">
+<Rectangle Left="6240" Top="120" Height="240" Width="4560"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="Signal CMF A" RequestName="Données Génériques">
+<Rectangle Left="6240" Top="420" Height="240" Width="4560"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="Signal CMF B" RequestName="Données Génériques">
+<Rectangle Left="6240" Top="660" Height="240" Width="4560"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="Signal CMF C" RequestName="Données Génériques">
+<Rectangle Left="6240" Top="900" Height="240" Width="4560"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="Signal CMF PA" RequestName="Données Génériques">
+<Rectangle Left="6240" Top="1140" Height="240" Width="4560"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1440" Color="16777215" DataName="Etat convertisseur" RequestName="Données Génériques">
+<Rectangle Left="6240" Top="1680" Height="240" Width="4560"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1440" Color="16777215" DataName="Débrayage à l arret" RequestName="Données Génériques">
+<Rectangle Left="6240" Top="1980" Height="240" Width="4560"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2760" Color="16777215" DataName="Fonction auto Adaptative enclenchée" RequestName="Données Génériques">
+<Rectangle Left="6240" Top="2520" Height="240" Width="4560"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1740" Color="16777215" DataName="Type de loi de passage " RequestName="Données Génériques">
+<Rectangle Left="6240" Top="2820" Height="240" Width="4560"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="Volonté conducteur " RequestName="Données Génériques">
+<Rectangle Left="7800" Top="3300" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="Contact frein à ouverture" RequestName="Données Génériques">
+<Rectangle Left="7800" Top="3600" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="Kick down." RequestName="Données Génériques">
+<Rectangle Left="7800" Top="3900" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2400" Color="16777215" DataName="Température huile boite" RequestName="Données Génériques">
+<Rectangle Left="7800" Top="4320" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2400" Color="16777215" DataName="Etat huile BVA" RequestName="Données Génériques">
+<Rectangle Left="7800" Top="4620" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2760" Color="16777215" DataName="Alerte température huile de boite" RequestName="Données Génériques">
+<Rectangle Left="7800" Top="5040" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="16768405"/><Threshold Value=" 1" Color="255"/></Display>
+<Display Width="2760" Color="16777215" DataName="Allumage voyant défaut BVA au TdB" RequestName="Données Génériques">
+<Rectangle Left="7800" Top="5340" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="16777215"/><Threshold Value=" 1" Color="255"/></Display>
+<Display Width="960" Color="16777215" DataName="NDTC" RequestName="ReadDTC">
+<Rectangle Left="7800" Top="5640" Height="240" Width="1620"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="120" Color="16777215" RequestName="ReadDTC">
+<Rectangle Left="7800" Top="5940" Height="300" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Freeze Frame" Color="8421504" WindowState="0" Width="11925" Height="8610">
+
+<Label Text="" Color="32896" Alignment="0">
+<Rectangle Left="120" Top="60" Height="1080" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="32896" Alignment="0">
+<Rectangle Left="120" Top="1140" Height="6060" Width="11520"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="32896" Alignment="0">
+<Rectangle Left="8100" Top="60" Height="1080" Width="3540"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="au moment où le défaut apparaît." Color="32896" Alignment="2">
+<Rectangle Left="5280" Top="780" Height="360" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="valeur du DTC afin de connaître les" Color="32896" Alignment="2">
+<Rectangle Left="5280" Top="300" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="valeurs figées des données suivantes" Color="32896" Alignment="2">
+<Rectangle Left="5280" Top="540" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Veuillez taper dans cette fenêtre la" Color="32896" Alignment="2">
+<Rectangle Left="5280" Top="60" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="ReadDTC"/>
+<Button Text="Lecture freeze frame">
+<Rectangle Left="8340" Top="360" Height="480" Width="2940"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="READ FREEZE FRAME"/>
+</Button>
+
+<Display Width="1440" Color="16777215" DataName="Etat sortie EV 1" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="1200" Height="240" Width="2340"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1440" Color="16777215" DataName="Etat sortie EV 2" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="1560" Height="240" Width="2340"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1440" Color="16777215" DataName="Etat sortie EV 3" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="1920" Height="240" Width="2340"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1440" Color="16777215" DataName="Etat sortie EV 4" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="2280" Height="240" Width="2340"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1440" Color="16777215" DataName="Etat sortie EV 5" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="2640" Height="240" Width="2340"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1440" Color="16777215" DataName="Etat sortie Shiftlock" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="3060" Height="240" Width="2340"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2880" Color="16777215" DataName="Courant de sortie EV SLT" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="3480" Height="240" Width="4200"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2880" Color="16777215" DataName="Courant de sortie driver EV SLT" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="3780" Height="240" Width="4200"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2880" Color="16777215" DataName="Courant de sortie EV SLS" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="4140" Height="240" Width="4200"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2880" Color="16777215" DataName="Courant de sortie driver EV SLS" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="4440" Height="240" Width="4200"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2880" Color="16777215" DataName="Courant de sortie EV SLU" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="4800" Height="240" Width="4200"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2880" Color="16777215" DataName="Courant de sortie driver EV SLU" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="5100" Height="240" Width="4200"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1260" Color="16777215" DataName="Programme " RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="5760" Height="240" Width="4200"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1260" Color="16777215" DataName="Défauts rapport" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="6120" Height="240" Width="4200"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1260" Color="16777215" DataName="Chgt de rapport" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="6480" Height="240" Width="4200"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2100" Color="16777215" DataName="Demande incrément rapport" RequestName="READ FREEZE FRAME">
+<Rectangle Left="180" Top="6840" Height="240" Width="4200"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="420" Color="16777215" DataName="FirstDTC" RequestName="READ FREEZE FRAME">
+<Rectangle Left="360" Top="420" Height="300" Width="4740"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="1860" Color="16777215" DataName="Etat driver sortie EV 1" RequestName="READ FREEZE FRAME">
+<Rectangle Left="2580" Top="1200" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1860" Color="16777215" DataName="Etat driver sortie EV 2" RequestName="READ FREEZE FRAME">
+<Rectangle Left="2580" Top="1560" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1860" Color="16777215" DataName="Etat driver sortie EV 3" RequestName="READ FREEZE FRAME">
+<Rectangle Left="2580" Top="1920" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1860" Color="16777215" DataName="Etat driver sortie EV 4" RequestName="READ FREEZE FRAME">
+<Rectangle Left="2580" Top="2280" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1860" Color="16777215" DataName="Etat driver sortie EV 5 " RequestName="READ FREEZE FRAME">
+<Rectangle Left="2580" Top="2640" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1860" Color="16777215" DataName="Etat driver sortie Shiftlock" RequestName="READ FREEZE FRAME">
+<Rectangle Left="2580" Top="3060" Height="240" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="360" Color="16777215" DataName="CMF " RequestName="READ FREEZE FRAME">
+<Rectangle Left="4500" Top="3480" Height="240" Width="2700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Etat contact CMF A " RequestName="READ FREEZE FRAME">
+<Rectangle Left="4500" Top="3780" Height="240" Width="2700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Etat contact CMF B " RequestName="READ FREEZE FRAME">
+<Rectangle Left="4500" Top="4080" Height="240" Width="2700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Etat contact CMF C " RequestName="READ FREEZE FRAME">
+<Rectangle Left="4500" Top="4380" Height="240" Width="2700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Etat contact CMF PA " RequestName="READ FREEZE FRAME">
+<Rectangle Left="4500" Top="4680" Height="240" Width="2700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1320" Color="16777215" DataName="Rapport engagé." RequestName="READ FREEZE FRAME">
+<Rectangle Left="4500" Top="5100" Height="240" Width="2700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1320" Color="16777215" DataName="Position levier " RequestName="READ FREEZE FRAME">
+<Rectangle Left="4500" Top="5460" Height="240" Width="2700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1320" Color="16777215" DataName="Contact CMI+ " RequestName="READ FREEZE FRAME">
+<Rectangle Left="4500" Top="5820" Height="240" Width="2700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1320" Color="16777215" DataName="Contact CMI - " RequestName="READ FREEZE FRAME">
+<Rectangle Left="4500" Top="6120" Height="240" Width="2700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1320" Color="16777215" DataName="Rapport refusé." RequestName="READ FREEZE FRAME">
+<Rectangle Left="4500" Top="6480" Height="240" Width="2700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1320" Color="16777215" DataName="ShiftInProgress" RequestName="READ FREEZE FRAME">
+<Rectangle Left="4500" Top="6840" Height="240" Width="2700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2100" Color="16777215" DataName="Temperature d huile BVA °C" RequestName="READ FREEZE FRAME">
+<Rectangle Left="5520" Top="1200" Height="240" Width="3180"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2100" Color="16777215" DataName="Temperature d huile BVA V" RequestName="READ FREEZE FRAME">
+<Rectangle Left="5520" Top="1500" Height="240" Width="3180"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2100" Color="16777215" DataName="Alerte temp. huile" RequestName="READ FREEZE FRAME">
+<Rectangle Left="5520" Top="1800" Height="240" Width="3180"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2100" Color="16777215" DataName="Etat huile" RequestName="READ FREEZE FRAME">
+<Rectangle Left="5520" Top="2100" Height="240" Width="3180"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1920" Color="16777215" DataName="Contact frein à ouverture." RequestName="READ FREEZE FRAME">
+<Rectangle Left="5520" Top="2460" Height="240" Width="3180"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1920" Color="16777215" DataName="Kick down" RequestName="READ FREEZE FRAME">
+<Rectangle Left="5520" Top="2760" Height="240" Width="3180"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1920" Color="16777215" DataName="Volonté conducteur." RequestName="READ FREEZE FRAME">
+<Rectangle Left="5520" Top="3060" Height="240" Width="3180"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="Régime moteur." RequestName="READ FREEZE FRAME">
+<Rectangle Left="7320" Top="3420" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="Température eau moteur." RequestName="READ FREEZE FRAME">
+<Rectangle Left="7320" Top="3780" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="Couple moteur effectif." RequestName="READ FREEZE FRAME">
+<Rectangle Left="7320" Top="4140" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="Couple moteur hors consigne TA." RequestName="READ FREEZE FRAME">
+<Rectangle Left="7320" Top="4440" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="Couple moteur anticipé." RequestName="READ FREEZE FRAME">
+<Rectangle Left="7320" Top="4740" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="Couple lent " RequestName="READ FREEZE FRAME">
+<Rectangle Left="7320" Top="5100" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="Couple rapide " RequestName="READ FREEZE FRAME">
+<Rectangle Left="7320" Top="5400" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1260" Color="16777215" DataName="Débrayage arrêt" RequestName="READ FREEZE FRAME">
+<Rectangle Left="7320" Top="5760" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1260" Color="16777215" DataName="Etat convertisseur." RequestName="READ FREEZE FRAME">
+<Rectangle Left="7320" Top="6120" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="Lois de passage" RequestName="READ FREEZE FRAME">
+<Rectangle Left="7320" Top="6480" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="Fonction auto-adapt." RequestName="READ FREEZE FRAME">
+<Rectangle Left="7320" Top="6840" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="Vitesse véhicule. " RequestName="READ FREEZE FRAME">
+<Rectangle Left="8820" Top="1200" Height="240" Width="2760"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="Vitesse sortie BVA" RequestName="READ FREEZE FRAME">
+<Rectangle Left="8820" Top="1620" Height="240" Width="2760"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="Vitesse entrée BVA" RequestName="READ FREEZE FRAME">
+<Rectangle Left="8820" Top="1920" Height="240" Width="2760"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1380" Color="16777215" DataName="Tension APC" RequestName="READ FREEZE FRAME">
+<Rectangle Left="8820" Top="2280" Height="240" Width="2760"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1380" Color="16777215" DataName="Interdiction CLIM." RequestName="READ FREEZE FRAME">
+<Rectangle Left="8820" Top="2640" Height="240" Width="2760"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1380" Color="16777215" DataName="Etat GMV " RequestName="READ FREEZE FRAME">
+<Rectangle Left="8820" Top="3000" Height="240" Width="2760"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Identification" Color="8421504" WindowState="0" Width="11760" Height="8430">
+
+<Label Text="" Color="8421631" Alignment="2">
+<Rectangle Left="840" Top="5760" Height="1080" Width="9600"/>
+<Font Name="Times New Roman" Size=" 16" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="8421631" Alignment="2">
+<Rectangle Left="840" Top="4380" Height="1200" Width="9600"/>
+<Font Name="Times New Roman" Size=" 16" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="0" Alignment="0">
+<Rectangle Left="840" Top="2520" Height="180" Width="9600"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="8421631" Alignment="2">
+<Rectangle Left="840" Top="720" Height="1800" Width="9600"/>
+<Font Name="Times New Roman" Size=" 16" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="8421631" Alignment="2">
+<Rectangle Left="840" Top="2700" Height="1500" Width="9600"/>
+<Font Name="Times New Roman" Size=" 16" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Identification " Color="16744576" Alignment="2">
+<Rectangle Left="2820" Top="60" Height="420" Width="5940"/>
+<Font Name="Old English" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Titre7" Color="0" Alignment="0">
+<Rectangle Left="840" Top="4200" Height="180" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="-2147483630"/></Label>
+<Label Text="Titre8" Color="0" Alignment="0">
+<Rectangle Left="840" Top="5580" Height="180" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="-2147483630"/></Label>
+
+
+<Display Width="2040" Color="16777215" DataName="N° structure de calibration" RequestName="Identification">
+<Rectangle Left="1500" Top="4560" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2220" Color="16777215" DataName="Indice soft en devellopement" RequestName="Identification">
+<Rectangle Left="2460" Top="3720" Height="300" Width="3300"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="N° calibration" RequestName="Identification">
+<Rectangle Left="2520" Top="5100" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Version Majeure" RequestName="Identification">
+<Rectangle Left="3120" Top="3240" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2040" Color="16777215" DataName="Réservé Identification" RequestName="Identification">
+<Rectangle Left="3720" Top="6360" Height="300" Width="3300"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1740" Color="16777215" DataName="N° version du materiel" RequestName="Identification">
+<Rectangle Left="3960" Top="2040" Height="300" Width="3540"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1920" Color="16777215" DataName="N° Version logiciel " RequestName="Identification">
+<Rectangle Left="4140" Top="2820" Height="300" Width="2700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1260" Color="16777215" DataName="N° piece PIE" RequestName="Identification">
+<Rectangle Left="4260" Top="780" Height="300" Width="3060"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2400" Color="16777215" DataName="Octet identification APV" RequestName="Identification">
+<Rectangle Left="4260" Top="1200" Height="300" Width="3060"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1860" Color="16777215" DataName="N° fournisseur" RequestName="Identification">
+<Rectangle Left="4260" Top="1620" Height="300" Width="3060"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1320" Color="16777215" DataName="N° famille BVA" RequestName="Identification">
+<Rectangle Left="4440" Top="5880" Height="300" Width="2220"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1140" Color="16777215" DataName="Type Véhicule" RequestName="Identification">
+<Rectangle Left="4860" Top="4560" Height="300" Width="1980"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Version Mineure" RequestName="Identification">
+<Rectangle Left="5760" Top="3240" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1740" Color="16777215" DataName="N° indice de calibration" RequestName="Identification">
+<Rectangle Left="5880" Top="5100" Height="300" Width="2700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1500" Color="16777215" DataName="Type ECU" RequestName="Identification">
+<Rectangle Left="6180" Top="3720" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1140" Color="16777215" DataName="Type Moteur" RequestName="Identification">
+<Rectangle Left="7140" Top="4560" Height="300" Width="1920"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Requête générique" Color="8421504" WindowState="0" Width="11790" Height="8550">
+
+<Label Text="Réponse" Color="8421631" Alignment="2">
+<Rectangle Left="480" Top="3180" Height="840" Width="10140"/>
+<Font Name="Times New Roman" Size=" 14" Bold="0" Italic="0" Color="128"/></Label>
+<Label Text="Requête" Color="8421631" Alignment="2">
+<Rectangle Left="420" Top="960" Height="1380" Width="10140"/>
+<Font Name="Times New Roman" Size=" 14" Bold="0" Italic="0" Color="128"/></Label>
+<Label Text="Requête générique" Color="8421631" Alignment="2">
+<Rectangle Left="3300" Top="240" Height="360" Width="4500"/>
+<Font Name="Times New Roman" Size=" 14" Bold="0" Italic="0" Color="128"/></Label>
+
+<Button Text="Envoi Trame">
+<Rectangle Left="4560" Top="2580" Height="420" Width="1740"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+
+</Button>
+
+</Screen>
+<Screen Name="VIN et gestion E2PROM" Color="8421504" WindowState="0" Width="11760" Height="8430">
+
+<Label Text="ECRITURE" Color="12615935" Alignment="2">
+<Rectangle Left="6000" Top="840" Height="1980" Width="5520"/>
+<Font Name="Arial" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Gestion E2PROM" Color="16777088" Alignment="2">
+<Rectangle Left="2820" Top="3900" Height="2340" Width="5940"/>
+<Font Name="Times New Roman" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="LECTURE" Color="16744576" Alignment="2">
+<Rectangle Left="120" Top="840" Height="1980" Width="5520"/>
+<Font Name="Arial" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="VIN" Color="16777088" Alignment="2">
+<Rectangle Left="2820" Top="120" Height="420" Width="5940"/>
+<Font Name="Old English" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Ecriture VIN">
+<Rectangle Left="7860" Top="2280" Height="420" Width="1860"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture VIN"/>
+</Button>
+<Button Text="Effacement des paramètres de lois auto-adaptatives">
+<Rectangle Left="4380" Top="4440" Height="1020" Width="2700"/>
+<Font Name="Arial" Size=" 11" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Effacement paramètres de lois auto-adapt"/>
+</Button>
+
+<Display Width="420" Color="16777215" DataName="VIN" RequestName="Lecture VIN">
+<Rectangle Left="180" Top="1440" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="840" Color="16777215" DataName="CRC" RequestName="Lecture VIN">
+<Rectangle Left="1920" Top="2160" Height="300" Width="1800"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1800" Color="16777215" DataName="Effacement réalisé" RequestName="Effacement paramètres de lois auto-adapt">
+<Rectangle Left="4620" Top="5760" Height="300" Width="2460"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="420" Color="16777215" DataName="VIN." RequestName="Ecriture VIN">
+<Rectangle Left="6060" Top="1260" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="840" Color="16777215" DataName="CRC." RequestName="Ecriture VIN">
+<Rectangle Left="7860" Top="1800" Height="300" Width="1800"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

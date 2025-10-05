@@ -1,0 +1,3491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.2.0.0" date="2014-11-05T15:27"/>
+<ddt:Target Name="PSCU_CMF1_SW5.2" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="gary.obadia-renexter@renault.com" href="PSCU_CMF1_SW5.2_20141105T155810.xml" upload="11/5/2014" group="PSCU_V1"><Description><![CDATA[** 30/07/2012
+Initialisation de la base DDT de la fonction SIEGE_FrontSeat 15-40
+Pilote : Assystem (G.OBADIA)
+Sce : ???
+
+**19/07/2013
+Mise à jour de la base DDT
+
+**20/07/2013
+Correction format sur 
+- B_Pillar
+- Slider length
+- Massage range
+
+
+17/01/2014
+Ajout des écrans pour les routines d'apprentissage
+
+30/01/2014
+Correction DTC inscrit en FirstDTC
+Ajout des écrans pour le pilotage du siège par I/O control
+
+17/03/14
+Correction réponses aux requêtes d'I/O control
+Correction réponses aux requêtes de reoutine
+Ajout écran d'identification (VIN, ref part, ref sw, ref hw, version sw)
+
+09/04/14
+Modification des positions offset de DataRead pour LED1Heating,LED2Heating,LED1Fan, LED2FAN, HeatingMap, Fan
+Ajout de la requête OutputControl
+Ajout des données IOCTL DataIdentifier, PositiveReposnce, StatusRecordParameter, StatusRecordParameterCS1
+Ajout des IOCTL précèdents dans l'onglet receive de chaque IO Contol
+
+28/05/14
+Corrections sur l'adresse du paramètre EasyAccessPassager
+Supression de l'étiquette EasyAccessDriver dans l'écran de configuration 
+Modification du codage du bouton SeatWorld
+
+04/06/2014
+Correction sur la trame de réponse EasyAccessPassenger
+
+05/11/2014
+Application de la base aux véhicule XZG, XZH, XZI, XZJ, XFG, HBA, HJA
+
+]]></Description><Projects xmlns=""><xBA/><xFA/><xFB/><xFC/><xFD/><xFF/><xFG/><xHA/><xZG/><xZH/><xZHPh2/><xZJ/></Projects>
+
+<Function Name="LDCM" Address="247"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>18/04/2013 11:24:14</DateOfficialisation>
+<Failures Name="DTC Failures" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="1814"/>
+</SendId><ReceiveId>
+<CANId Value="1846"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="4" Supplier="007" Soft="0001" Version="0001"/></AutoIdents>
+<Datas>
+
+<Data Name="vehicleManufacturerSparePartNumber">
+<Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM]]></Comment>
+<Mnemonic>DID_$F187</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer spare part number. </FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="vehicleManufacturerECUSoftwareNumber">
+<Comment><![CDATA[Reference SW Number]]></Comment>
+<Mnemonic>DID_$F188</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="systemSupplierIdentifier">
+<Comment><![CDATA[Name and address information of the supplier.]]></Comment>
+<Mnemonic>DID_$F18A</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier name and address information.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+<Bytes count="64" ascii="1"/>
+</Data>
+<Data Name="ECUSerialNumber">
+<Comment><![CDATA[ECU serial number]]></Comment>
+<Mnemonic>DID_$F18C</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the ECU (server) serial number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific.</FONT></P>]]></Description>
+<Bytes count="20" ascii="1"/>
+</Data>
+<Data Name="vehicleManufacturerKitAssemblyPartNumber">
+<Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM.]]></Comment>
+<Mnemonic>DID_$F18E</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="VIN">
+<Comment><![CDATA[Vehicle Identification Number]]></Comment>
+<Mnemonic>DID_$F190</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the VIN number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be specified by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>It shall not be erased when the ECU is reprogrammed.</FONT></P>]]></Description>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="vehicleManufacturerECUHardwareNumber">
+<Comment><![CDATA[Hardware Reference Number]]></Comment>
+<Mnemonic>DID_$F191</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used by reading services to reference the vehicle-manufacturer-specific ECU (server) hardware number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be serverspecific and defined by vehicle manufacturer.</FONT></P>]]></Description>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="systemSupplierECUHardwareNumber">
+<Comment><![CDATA[Hardware Number (Supplier)]]></Comment>
+<Mnemonic>DID_$F192</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) hardware number. </FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+<Bytes count="32" ascii="1"/>
+</Data>
+<Data Name="systemSupplierECUSoftwareNumber">
+<Comment><![CDATA[Software Number (Supplier)]]></Comment>
+<Mnemonic>DID_$F194</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+<Bytes count="32" ascii="1"/>
+</Data>
+<Data Name="systemSupplierECUSoftwareVersionNumber">
+<Comment><![CDATA[Software Version (Supplier)]]></Comment>
+<Mnemonic>DID_$F195</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software version number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+<Bytes count="32" ascii="1"/>
+</Data>
+<Data Name="Tilt function">
+<Mnemonic>Tilt_function</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="diagnosticVersion">
+<Comment><![CDATA[VDIAG]]></Comment>
+<Mnemonic>DID_$F1A0</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the diagnostic version of the ECU.</FONT></P>
+<P><FONT size=2>It is defined by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>Refer to manufacture ECU designer.</FONT></P>]]></Description>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SessionName">
+<Comment><![CDATA[Diagnostic session values. See documentation for more information.]]></Comment>
+<Mnemonic>LEV_DS</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>[0x00] : ISO / SAE Reserved<BR>[0x01] : Default session<BR>[0x02] : Programming session<BR>[0x03] : Extended diagnostic session<BR>[0x04] : Safety system diagnostic session<BR>[0x05 - 0x3F] : ISO / SAE Reserved<BR>[0x40 - 0x5F] : Vehicle manufacturer specific<BR>[0x60 - 0x7E] : System supplier specific<BR>[0x7F] : ISO / SAE Reserved</FONT></P>]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="DefaultSession"/>
+<Item Value="2" Text="ProgrammingSession"/>
+<Item Value="3" Text="ExtendedDiagnosticSession"/></List>
+</Bits>
+</Data>
+<Data Name="DTCCount">
+<Comment><![CDATA[DTC count]]></Comment>
+<Mnemonic>DTCC</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCFormatIdentifier">
+<Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+<Mnemonic>DTCFID</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="SAE_J2012-DA_DTC"/>
+<Item Value="1" Text="ISO_14229-1_DTC"/>
+<Item Value="2" Text="SAE_J1939-73_DTC"/>
+<Item Value="3" Text="ISO_11992-4_DTC"/>
+<Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatusAvailabilityMask">
+<Mnemonic>DTCSAM</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Slider length">
+<Mnemonic>Slider_Length</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="StatusOfDTC">
+<Mnemonic>DTCASR_SODTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailed">
+<Mnemonic>TF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedThisMonitoringCycle">
+<Mnemonic>TFTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.pendingDTC">
+<Mnemonic>PDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.confirmedDTC">
+<Mnemonic>CDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedSinceLastClear">
+<Mnemonic>TNCSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedSinceLastClear">
+<Mnemonic>TFSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+<Mnemonic>TNCTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.warningIndicatorRequested">
+<Mnemonic>WIR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.Category">
+<Bits count="4">
+<List>
+<Item Value="0" Text="General Failure Information"/>
+<Item Value="1" Text="General Electrical Failures"/>
+<Item Value="2" Text="General Signal Failures"/>
+<Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="15" Text="Vehicle manufacturer / System supplier specific"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType">
+<Bits>
+<List>
+<Item Value="0" Text="Device and failure type ODB codding"/>
+<Item Value="1" Text="General Electrical Failure"/>
+<Item Value="2" Text="General signal failure"/>
+<Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="17" Text="circuit short to ground"/>
+<Item Value="18" Text="circuit short to battery"/>
+<Item Value="19" Text="circuit open"/>
+<Item Value="20" Text="circuit short to ground or open"/>
+<Item Value="21" Text="circuit short to battery or open"/>
+<Item Value="22" Text="circuit voltage below threshold"/>
+<Item Value="23" Text="circuit voltage above threshold"/>
+<Item Value="24" Text="circuit current below threshold"/>
+<Item Value="25" Text="circuit current above threshold"/>
+<Item Value="26" Text="circuit resistance below threshold"/>
+<Item Value="27" Text="circuit resistance above threshold"/>
+<Item Value="28" Text="circuit voltage out of range"/>
+<Item Value="29" Text="circuit current out of range"/>
+<Item Value="30" Text="circuit resistance out of range"/>
+<Item Value="31" Text="circuit intermittent"/>
+<Item Value="33" Text="signal amplitude &lt; minimum"/>
+<Item Value="34" Text="signal amplitude &gt; maximum"/>
+<Item Value="35" Text="signal stuck low"/>
+<Item Value="36" Text="signal stuck high"/>
+<Item Value="37" Text="signal shape / waveform failure"/>
+<Item Value="38" Text="signal rate of change below threshold"/>
+<Item Value="39" Text="signal rate of change above threshold"/>
+<Item Value="40" Text="signal bias level out of range / zero adj. failure"/>
+<Item Value="41" Text="signal signal invalid"/>
+<Item Value="47" Text="signal erratic"/>
+<Item Value="49" Text="no signal"/>
+<Item Value="50" Text="signal low time &lt; minimum"/>
+<Item Value="51" Text="signal low time &gt; maximum"/>
+<Item Value="52" Text="signal high time &lt; minimum"/>
+<Item Value="53" Text="signal high time &gt; maximum"/>
+<Item Value="54" Text="signal frequency too low"/>
+<Item Value="55" Text="signal frequency too high"/>
+<Item Value="56" Text="signal frequency incorrect"/>
+<Item Value="57" Text="incorrect has too few pulses"/>
+<Item Value="58" Text="incorrect has too many pulses"/>
+<Item Value="65" Text="general checksum failure"/>
+<Item Value="66" Text="general memory failure"/>
+<Item Value="67" Text="special memory failure"/>
+<Item Value="68" Text="data memory failure"/>
+<Item Value="69" Text="program memory failure"/>
+<Item Value="70" Text="calibration / parameter memory failure"/>
+<Item Value="71" Text="watchdog / safety µC failure"/>
+<Item Value="72" Text="supervision software failure"/>
+<Item Value="73" Text="internal electronic failure"/>
+<Item Value="74" Text="incorrect component installed"/>
+<Item Value="75" Text="over temperature"/>
+<Item Value="81" Text="not programmed"/>
+<Item Value="82" Text="not activated"/>
+<Item Value="83" Text="deactivated"/>
+<Item Value="84" Text="missing calibration"/>
+<Item Value="85" Text="not configured"/>
+<Item Value="97" Text="signal calculation failure"/>
+<Item Value="98" Text="signal compare failure"/>
+<Item Value="99" Text="circuit / component protection time-out"/>
+<Item Value="100" Text="signal plausibility failure"/>
+<Item Value="101" Text="signal has too few transitions / events"/>
+<Item Value="102" Text="signal has too many transitions / events"/>
+<Item Value="103" Text="signal incorrect after event"/>
+<Item Value="104" Text="event information"/>
+<Item Value="113" Text="actuator stuck"/>
+<Item Value="114" Text="actuator stuck open"/>
+<Item Value="115" Text="actuator stuck closed"/>
+<Item Value="116" Text="actuator slipping"/>
+<Item Value="117" Text="emergency position not reachable"/>
+<Item Value="118" Text="wrong mounting position"/>
+<Item Value="119" Text="commanded position not reachable"/>
+<Item Value="120" Text="alignment or adjustment incorrect"/>
+<Item Value="121" Text="mechanical linkage failure"/>
+<Item Value="122" Text="fluid leak or seal failure"/>
+<Item Value="123" Text="low fluid level"/>
+<Item Value="129" Text="invalid serial data received"/>
+<Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+<Item Value="131" Text="value of signal protection calculation incorrect"/>
+<Item Value="132" Text="signal below allowable range"/>
+<Item Value="133" Text="signal above allowable range"/>
+<Item Value="134" Text="signal invalid"/>
+<Item Value="135" Text="missing message"/>
+<Item Value="136" Text="bus off"/>
+<Item Value="143" Text="erratic"/>
+<Item Value="145" Text="parametric"/>
+<Item Value="146" Text="performance or incorrect operation"/>
+<Item Value="147" Text="no operation"/>
+<Item Value="148" Text="unexpected operation"/>
+<Item Value="149" Text="incorrect assembly"/>
+<Item Value="150" Text="component internal failure"/>
+<Item Value="151" Text="Component or sys. operation obstructed or blocked"/>
+<Item Value="152" Text="component or system over temperature"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceIdentifier">
+<Bits count="16">
+<List>
+<Item Value="43280" Text="Control panel swirtches"/>
+<Item Value="43361" Text="Fan LED 1"/>
+<Item Value="43362" Text="Fan LED 2"/>
+<Item Value="43344" Text="FAN MOTOR"/>
+<Item Value="43360" Text="Fan Switch"/>
+<Item Value="43376" Text="FRONT SLIDE LEARNING FAILED"/>
+<Item Value="43345" Text="HEATING FRAME"/>
+<Item Value="43364" Text="Heating LED 1"/>
+<Item Value="43365" Text="Heating LED 2"/>
+<Item Value="43346" Text="HEATING SENSOR"/>
+<Item Value="43363" Text="Heating Switch"/>
+<Item Value="43378" Text="LUMBAR LEARNING FAILED"/>
+<Item Value="43377" Text="REAR SLIDE LEARNING FAILED"/>
+<Item Value="43303" Text="SENSOR MOTOR LATERAL MAINTAIN BW/FW"/>
+<Item Value="43296" Text="SENSOR/MOTOR BACKREST FW/BW"/>
+<Item Value="43299" Text="SENSOR/MOTOR FRONT UP/DOWN"/>
+<Item Value="43302" Text="SENSOR/MOTOR LUMBAR FORWARD/BACKWARD"/>
+<Item Value="43301" Text="SENSOR/MOTOR LUMBAR UP/DOWN"/>
+<Item Value="43297" Text="SENSOR/MOTOR REAR UP/DOWN"/>
+<Item Value="43300" Text="SENSOR/MOTOR SHOULDER ADJUSTER FW/BW"/>
+<Item Value="43298" Text="SENSOR/MOTOR SLIDE BW/FW"/>
+<Item Value="43264" Text="UCE SEAT"/>
+<Item Value="43381" Text="APC OFF LOAD 2 voltage"/>
+<Item Value="49449" Text="UCE SEAT 2"/>
+<Item Value="61443" Text="UCE SEAT 1"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceAndFailureTypeOBD">
+<Bits count="16">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.ManufacturerOrSupplier">
+<Bits count="4">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCMaskRecord">
+<Mnemonic>DTCMREC_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCRecord">
+<Mnemonic>DTCASR_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="RoutineIdentifierList">
+<Bits count="16">
+<List>
+<Item Value="1" Text="RoutineCalibrationInPlants"/>
+<Item Value="2" Text="RoutineCalibrationInAfterSalesMarket"/>
+<Item Value="3" Text="RoutineDynanometerTestBench"/></List>
+</Bits>
+</Data>
+<Data Name="RoutineStatusRecord.RoutineInfo">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH FAN">
+<Mnemonic>STATE_SWITCH_FAN</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH HEATING">
+<Mnemonic>STATE_SWITCH_HEATING</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="Slide function">
+<Mnemonic>Slide_function</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function Absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="SENSOR/MOTOR BACKREST FW/BW">
+<Mnemonic>SENSOR/MOTOR_BACKREST_FW/BW</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="No movement"/>
+<Item Value="1" Text="Movement FW"/>
+<Item Value="2" Text="Movement BW"/></List>
+</Bits>
+</Data>
+<Data Name="SENSOR/MOTOR REAR UP/DOWN">
+<Mnemonic>SENSOR/MOTOR_REAR_UP/DOWN</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="No movement"/>
+<Item Value="1" Text="Movement UP"/>
+<Item Value="2" Text="Movement DOWN"/></List>
+</Bits>
+</Data>
+<Data Name="SENSOR/MOTOR FRONT UP/DOWN">
+<Mnemonic>SENSOR/MOTOR_FRONT_UP/DOWN</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="No movement"/>
+<Item Value="1" Text="Movement UP"/>
+<Item Value="2" Text="Movement DOWN"/></List>
+</Bits>
+</Data>
+<Data Name="SENSOR/MOTOR SHOULDER ADJUSTER FW/BW">
+<Mnemonic>SENSOR/MOTOR_SHOULDER_ADJUSTER_FW/BW</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="No movement"/>
+<Item Value="1" Text="Movement FW"/>
+<Item Value="2" Text="Movement BW"/></List>
+</Bits>
+</Data>
+<Data Name="SENSOR/MOTOR LUMBAR UP/DOWN">
+<Mnemonic>SENSOR/MOTOR_LUMBAR_UP/DOWN</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="No movement"/>
+<Item Value="1" Text="Movement UP"/>
+<Item Value="2" Text="Movement DOWN"/></List>
+</Bits>
+</Data>
+<Data Name="Backrest function">
+<Mnemonic>Backrest_function</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="Raise function">
+<Mnemonic>Raise_function</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="Massage function">
+<Mnemonic>Massage_function</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="Massage OM1">
+<Mnemonic>Massage_OM1</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Paramètre de connexion du moteur 1 de lombaire Sens 1"/></List>
+</Bits>
+</Data>
+<Data Name="Massage OM2">
+<Mnemonic>Massage_OM2</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Paramètre de connexion du moteur 2 de lombaire Sens 1"/></List>
+</Bits>
+</Data>
+<Data Name="Massage range">
+<Mnemonic>Massage_range</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH BACKWARD BACKREST">
+<Mnemonic>STATE_SWITCH_BACKWARD_BACKREST</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH FORWAD BACKREST">
+<Mnemonic>STATE_SWITCH_FORWAD_BACKREST</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH BACKWARD TOP BACKREST">
+<Mnemonic>STATE_SWITCH_BACKWARD_TOP_BACKREST</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH FORWAD TOP BACKREST">
+<Mnemonic>STATE_SWITCH_FORWAD_TOP_BACKREST</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH BACKWARD LUMBAR">
+<Mnemonic>STATE_SWITCH_BACKWARD_LUMBAR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH FORWAD LUMBAR">
+<Mnemonic>STATE_SWITCH_FORWAD_LUMBAR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH DOWN RAISE">
+<Mnemonic>STATE_SWITCH_DOWN_RAISE</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH UP RAISE">
+<Mnemonic>STATE_SWITCH_UP_RAISE</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH BACKWARD CUSHION">
+<Mnemonic>STATE_SWITCH_BACKWARD_CUSHION</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH FORWAD CUSHION">
+<Mnemonic>STATE_SWITCH_FORWAD_CUSHION</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH DOWN FRONT CUSHION">
+<Mnemonic>STATE_SWITCH_DOWN_FRONT_CUSHION</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH UP FRONT CUSHION">
+<Mnemonic>STATE_SWITCH_UP_FRONT_CUSHION</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH DOWN LUMBAR">
+<Mnemonic>STATE_SWITCH_DOWN_LUMBAR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH UP LUMBAR">
+<Mnemonic>STATE_SWITCH_FORWAD_LUMBAR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH MEMORY 1">
+<Mnemonic>STATE_SWITCH_MEMORY_1</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH MEMORY 2">
+<Mnemonic>STATE_SWITCH_MEMORY_2</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH MEMORY 3">
+<Mnemonic>STATE_SWITCH_MEMORY_3</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH KEYBOARD.STATE SWITCH MEMORY 4">
+<Mnemonic>STATE_SWITCH_MEMORY_4</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="Memorization function">
+<Mnemonic>Memorization_function</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="SENSOR/MOTOR LUMBAR FW/BW">
+<Mnemonic>SENSOR/MOTOR_LUMBAR_FW/BW</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="No movement"/>
+<Item Value="1" Text="Movement FW"/>
+<Item Value="2" Text="Movement BW"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH APA">
+<Mnemonic>STATE_SWITCH_APA</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="STATE DRIVER/PASSENGER ENCODING">
+<Mnemonic>STATE DRIVER_PASSENGER_ENCODING</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="Pasenger"/>
+<Item Value="1" Text="Driver"/>
+<Item Value="2" Text="Undefined"/></List>
+</Bits>
+</Data>
+<Data Name="STATE SWITCH SEAT WORLD">
+<Comment><![CDATA[AUSSI STATE SWITCH MASSAGE]]></Comment>
+<Mnemonic>STATE_SWITCH_SEAT_WORLD</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="pressed"/>
+<Item Value="1" Text="Not pressed"/></List>
+</Bits>
+</Data>
+<Data Name="SENSOR HEATING NTC">
+<Comment><![CDATA[Pour relire la température du capteur nappe chauffante]]></Comment>
+<Mnemonic>SENSOR_HEATING_NTC</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="°C"/>
+</Bits>
+</Data>
+<Data Name="SENSOR/MOTOR LATERAL MAINTAIN FW/BW">
+<Bits>
+<List>
+<Item Value="0" Text="No movement"/>
+<Item Value="1" Text="Movement FW"/>
+<Item Value="2" Text="Movement BW"/></List>
+</Bits>
+</Data>
+<Data Name="SENSOR/MOTOR SLIDE FW/BW">
+<Mnemonic>SENSOR/MOTOR_SLIDE_BW/FW</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="No movement"/>
+<Item Value="1" Text="Movement FW"/>
+<Item Value="2" Text="Movement BW"/></List>
+</Bits>
+</Data>
+<Data Name="OutputPermanentControlList">
+<Mnemonic>OUTPUT_CONTROL</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="769" Text="Shoulder Adjuster FW/BW Motor"/>
+<Item Value="770" Text="Backrest FW/BW Motor"/>
+<Item Value="771" Text="Front UP/DOWN Motor"/>
+<Item Value="772" Text="Slide FW/BW Motor"/>
+<Item Value="773" Text="Rear UP/DOWN Motor"/>
+<Item Value="774" Text="Lumbar FW/BW Motor"/>
+<Item Value="775" Text="Lumbar UP/DOWN Motor"/>
+<Item Value="776" Text="FAN Motor"/>
+<Item Value="777" Text="LED 1 FAN"/>
+<Item Value="784" Text="LED 2 FAN"/>
+<Item Value="785" Text="Heating Map"/>
+<Item Value="786" Text="LED 1 Heating"/>
+<Item Value="787" Text="LED 2 Heating"/>
+<Item Value="788" Text="Airneck"/>
+<Item Value="789" Text="Lateral Maintain FW/BW Motor"/>
+<Item Value="790" Text="LED Massage"/></List>
+</Bits>
+</Data>
+<Data Name="OutputControlCommand">
+<Bits>
+<List>
+<Item Value="0" Text="ReturnControlToECU"/>
+<Item Value="3" Text="ShortTermAdjustment"/></List>
+</Bits>
+</Data>
+<Data Name="Routine Learning Forward">
+<Bits>
+<List/>
+</Bits>
+</Data>
+<Data Name="Shoulder adjuster function">
+<Mnemonic>Shoulder_function</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="Factory Mode">
+<Mnemonic>Factory_mode</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Factory mode"/>
+<Item Value="1" Text="Serial life"/></List>
+</Bits>
+</Data>
+<Data Name="Heating function">
+<Mnemonic>Heating_function</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function absent"/>
+<Item Value="1" Text="Function Present"/></List>
+</Bits>
+</Data>
+<Data Name="Lateral Maintain function">
+<Mnemonic>Lateral_Maintain_function</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="LED 1 HEATING">
+<Mnemonic>LED_1_HEATING</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Switched off"/>
+<Item Value="1" Text="Switched on"/></List>
+</Bits>
+</Data>
+<Data Name="LED 2 FAN">
+<Mnemonic>LED_2_FAN</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Switched off"/>
+<Item Value="1" Text="Switched on"/></List>
+</Bits>
+</Data>
+<Data Name="LED 2 HEATING">
+<Mnemonic>LED_2_HEATING</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Switched off"/>
+<Item Value="1" Text="Switched on"/></List>
+</Bits>
+</Data>
+<Data Name="LED 1 FAN">
+<Mnemonic>LED_1_FAN</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Switched off"/>
+<Item Value="1" Text="Switched on"/></List>
+</Bits>
+</Data>
+<Data Name="LED MASSAGE">
+<Mnemonic>LED_MASSAGE</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Switched off"/>
+<Item Value="1" Text="Switched on"/></List>
+</Bits>
+</Data>
+<Data Name="FAN">
+<Mnemonic>FAN</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="FAN speed 0"/>
+<Item Value="1" Text="FAN speed 1"/>
+<Item Value="2" Text="FAN speed 2"/></List>
+</Bits>
+</Data>
+<Data Name="HEATING MAP">
+<Mnemonic>HEATING_MAP</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Heating level 0"/>
+<Item Value="1" Text="Heating level 1"/>
+<Item Value="2" Text="Heating level 2"/></List>
+</Bits>
+</Data>
+<Data Name="I/OControl">
+<Bits>
+<List>
+<Item Value="0" Text="Stop"/>
+<Item Value="1" Text="Forward/Up/Heating1/Fan1/Light"/>
+<Item Value="2" Text="Backward/Down/Heating2/Fan2/Light"/></List>
+</Bits>
+</Data>
+<Data Name="Lumbar function">
+<Mnemonic>Lumbar_function</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function Absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="Easy Access Driver">
+<Mnemonic>Easy_Access_driver</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="Easy Access Passenger">
+<Mnemonic>Easy_Access_passenger</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="Démarrage routine">
+<Bits>
+<List>
+<Item Value="1" Text="Demarrage routine"/></List>
+</Bits>
+</Data>
+<Data Name="Enregistrement de la lecture de la voie Conducteur/Passager">
+<Mnemonic>Enregistrement_de_la_lecture de_la voie_Conducteur</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Passager"/>
+<Item Value="1" Text="Conducteur"/></List>
+</Bits>
+</Data>
+<Data Name="Blower function">
+<Mnemonic>Blower_function</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="Courtoisie function">
+<Mnemonic>Courtesy_function</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="B Pillar position">
+<Mnemonic>BPillar_position</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Airneck function">
+<Mnemonic>Airneck_function</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Function absent"/>
+<Item Value="1" Text="Function present"/></List>
+</Bits>
+</Data>
+<Data Name="AIRNECK">
+<Mnemonic>AIRNECK</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Airneck level 0"/>
+<Item Value="1" Text="Airneck level 1"/>
+<Item Value="2" Text="Airneck level 2"/></List>
+</Bits>
+</Data>
+<Data Name="Cuir/Tissu/Velours">
+<Mnemonic>Cuir_Tissu_Velours</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Tissu"/>
+<Item Value="1" Text="Cuir"/></List>
+</Bits>
+</Data>
+<Data Name="NDTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Bits count="16">
+<List>
+<Item Value="43280" Text="Control panel swirtches"/>
+<Item Value="43296" Text="SENSOR/MOTOR BACKREST FW/BW"/>
+<Item Value="43297" Text="SENSOR/MOTOR REAR UP/DOWN"/>
+<Item Value="43298" Text="SENSOR/MOTOR SLIDE BW/FW"/>
+<Item Value="43299" Text="SENSOR/MOTOR FRONT UP/DOWN"/>
+<Item Value="43300" Text="SENSOR/MOTOR SHOULDER ADJUSTER FW/BW"/>
+<Item Value="43301" Text="SENSOR/MOTOR LUMBAR UP/DOWN"/>
+<Item Value="43302" Text="SENSOR/MOTOR LUMBAR FORWARD/BACKWARD"/>
+<Item Value="43303" Text="SENSOR MOTOR LATERAL MAINTAIN BW/FW"/>
+<Item Value="43344" Text="FAN MOTOR"/>
+<Item Value="43345" Text="HEATING FRAME"/>
+<Item Value="43346" Text="HEATING SENSOR"/>
+<Item Value="43360" Text="Fan Switch"/>
+<Item Value="43361" Text="Fan LED 1"/>
+<Item Value="43362" Text="Fan LED 2"/>
+<Item Value="43363" Text="Heating Switch"/>
+<Item Value="43364" Text="Heating LED 1"/>
+<Item Value="43365" Text="Heating LED 2"/>
+<Item Value="43376" Text="FRONT SLIDE LEARNING FAILED"/>
+<Item Value="43377" Text="REAR SLIDE LEARNING FAILED"/>
+<Item Value="43378" Text="LUMBAR LEARNING FAILED"/>
+<Item Value="43381" Text="APC OFF LOAD 2 voltage"/>
+<Item Value="49449" Text="UCE SEAT 2"/>
+<Item Value="61443" Text="UCE SEAT 1"/></List>
+</Bits>
+</Data>
+<Data Name="Historical Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Current Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="IOCTL.DataIdentifier">
+<Bits count="16">
+<List>
+<Item Value="769" Text="Shoulder Adjuster FW/BW Motor"/>
+<Item Value="770" Text="Backrest FW/BW Motor"/>
+<Item Value="771" Text="Front UP/DOWN Motor"/>
+<Item Value="772" Text="Slide FW/BW Motor"/>
+<Item Value="773" Text="Rear UP/DOWN Motor"/>
+<Item Value="774" Text="Lumbar FW/BW Motor"/>
+<Item Value="775" Text="Lumbar UP/DOWN Motor"/>
+<Item Value="776" Text="FAN Motor"/>
+<Item Value="777" Text="LED 1 FAN"/>
+<Item Value="784" Text="LED 2 FAN"/>
+<Item Value="785" Text="Heating Map"/>
+<Item Value="786" Text="LED 1 Heating"/>
+<Item Value="787" Text="LED 2 Heating"/>
+<Item Value="788" Text="Airneck"/>
+<Item Value="789" Text="Lateral Maintain FW/BW Motor"/>
+<Item Value="790" Text="LED Massage"/></List>
+</Bits>
+</Data>
+<Data Name="IOCTL.StatusRecordParameter">
+<Bits>
+<List>
+<Item Value="3" Text="ShortThermAdjustment"/></List>
+</Bits>
+</Data>
+<Data Name="IOCTL.StatusRecordParameterCS1">
+<Bits>
+<List>
+<Item Value="0" Text="TemporaryControl"/></List>
+</Bits>
+</Data>
+<Data Name="IOCTL.PositiveResponse">
+<Bits>
+<List>
+<Item Value="1" Text="control in progress"/>
+<Item Value="2" Text="control complet and ok"/>
+<Item Value="4" Text="control impossible"/></List>
+</Bits>
+</Data>
+<Data Name="RoutineEntryStatus">
+<Bits>
+<List>
+<Item Value="1" Text="routine in progress"/>
+<Item Value="2" Text="routine completed and OK"/>
+<Item Value="3" Text="routine completed and NOK"/>
+<Item Value="16" Text="Routine Type1 complet"/></List>
+</Bits>
+</Data>
+<Data Name="Standard Fault">
+<Bits count="5">
+<List>
+<Item Value="0" Text="No possible classification about the type of fault"/>
+<Item Value="1" Text="Open circuit"/>
+<Item Value="2" Text="Short circuit to ground"/>
+<Item Value="3" Text="Short circuit at battery +"/>
+<Item Value="4" Text="Parameter at min limit"/>
+<Item Value="5" Text="Parameter at max limit"/>
+<Item Value="6" Text="Incoherency, not plausible"/>
+<Item Value="7" Text="No signal"/>
+<Item Value="8" Text="Below min. threshold"/>
+<Item Value="9" Text="Above max. threshold"/>
+<Item Value="10" Text="Permanent Low Level"/>
+<Item Value="11" Text="Permanent High Level"/>
+<Item Value="12" Text="Lines short-circuited"/>
+<Item Value="13" Text="Internal electronic anomaly"/>
+<Item Value="14" Text="Network default"/>
+<Item Value="15" Text="Remote diagnostic"/>
+<Item Value="16" Text="Disturbed communication"/>
+<Item Value="17" Text="Microcuts"/>
+<Item Value="18" Text="Abnormal voltage"/>
+<Item Value="19" Text="Value out of range"/>
+<Item Value="20" Text="Open circuit or Short circuit to ground"/>
+<Item Value="21" Text="Open circuit or Short circuit to battery"/>
+<Item Value="22" Text="Initialization / configuration not valid"/></List>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="DataRead.vehicleManufacturerECUSoftwareNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read vehicleManufacturerECUSoftwareNumber]]></Comment>
+<Sent>
+<SentBytes>22F188</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F188</ReplyBytes>
+<DataItem Name="vehicleManufacturerECUSoftwareNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierIdentifier">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read systemSupplierIdentifier]]></Comment>
+<Sent>
+<SentBytes>22F18A</SentBytes>
+</Sent>
+<Received MinBytes="67">
+<ReplyBytes>62F18A</ReplyBytes>
+<DataItem Name="systemSupplierIdentifier" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ECUSerialNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read ECUSerialNumber]]></Comment>
+<Sent>
+<SentBytes>22F18C</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<ReplyBytes>62F18C</ReplyBytes>
+<DataItem Name="ECUSerialNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerKitAssemblyPartNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read vehicleManufacturerKitAssemblyPartNumber]]></Comment>
+<Sent>
+<SentBytes>22F18E</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F18E</ReplyBytes>
+<DataItem Name="vehicleManufacturerKitAssemblyPartNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VIN">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VIN]]></Comment>
+<Sent>
+<SentBytes>22F190</SentBytes>
+</Sent>
+<Received MinBytes="20">
+<ReplyBytes>62F190</ReplyBytes>
+<DataItem Name="VIN" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerECUHardwareNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read vehicleManufacturerECUHardwareNumber]]></Comment>
+<Sent>
+<SentBytes>22F191</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F191</ReplyBytes>
+<DataItem Name="vehicleManufacturerECUHardwareNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierECUHardwareNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read systemSupplierECUHardwareNumber]]></Comment>
+<Sent>
+<SentBytes>22F192</SentBytes>
+</Sent>
+<Received MinBytes="35">
+<ReplyBytes>62F192</ReplyBytes>
+<DataItem Name="systemSupplierECUHardwareNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierECUSoftwareNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read systemSupplierECUSoftwareNumber]]></Comment>
+<Sent>
+<SentBytes>22F194</SentBytes>
+</Sent>
+<Received MinBytes="35">
+<ReplyBytes>62F194</ReplyBytes>
+<DataItem Name="systemSupplierECUSoftwareNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read systemSupplierECUSoftwareVersionNumber]]></Comment>
+<Sent>
+<SentBytes>22F195</SentBytes>
+</Sent>
+<Received MinBytes="35">
+<ReplyBytes>62F195</ReplyBytes>
+<DataItem Name="systemSupplierECUSoftwareVersionNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.diagnosticVersion">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read diagnosticVersion]]></Comment>
+<Sent>
+<SentBytes>22F1A0</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62F1A0</ReplyBytes>
+<DataItem Name="diagnosticVersion" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Default">
+
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1001</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5001</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Programming">
+
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1002</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5002</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1003</SentBytes>
+<DataItem Name="SessionName" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5003</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.ExtendedDiagnostic">
+
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1003</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5003</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ClearDiagnosticInformation.All">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+<Sent>
+<SentBytes>14FFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>54</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report number of DTC]]></Comment>
+<Sent>
+<SentBytes>1901FF</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>5901FF000000</ReplyBytes>
+<DataItem Name="DTCCount" FirstByte="5"/>
+<DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1902FF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+<DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTCSnapshotIdentification">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read snapshot identification]]></Comment>
+<Sent>
+<SentBytes>1903000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5903</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSnapshot">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1904000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590400000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSupportedDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report supported DTC]]></Comment>
+<Sent>
+<SentBytes>190A</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>590AFF00000000</ReplyBytes>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="DataWrite.vehicleManufacturerECUSoftwareNumber">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2EF18800000000000000000000</SentBytes>
+<DataItem Name="vehicleManufacturerECUSoftwareNumber" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6EF188</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.VIN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Write VIN]]></Comment>
+<Sent>
+<SentBytes>2EF1900000000000000000000000000000000000</SentBytes>
+<DataItem Name="VIN" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6EF190</ReplyBytes>
+</Received>
+</Request>
+<Request Name="RoutineControl">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<VariableLength/>
+<SentBytes>31000000</SentBytes>
+<DataItem Name="RoutineIdentifierList" FirstByte="3"/>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7100000000</ReplyBytes>
+<DataItem Name="RoutineStatusRecord.RoutineInfo" FirstByte="5" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="RoutineControl.RoutineCalibrationInPlants.Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010001</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7101000001</ReplyBytes>
+<DataItem Name="RoutineStatusRecord.RoutineInfo" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="RoutineControl.RoutineCalibrationInAfterSalesMarket.Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010002</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7101000002</ReplyBytes>
+<DataItem Name="RoutineStatusRecord.RoutineInfo" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="RoutineControl.RoutineDynanometerTestBench.Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010003</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7101000003</ReplyBytes>
+<DataItem Name="RoutineStatusRecord.RoutineInfo" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="RoutineControl.RoutineCalibrationInPlants.Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31020001</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7102000001</ReplyBytes>
+<DataItem Name="RoutineStatusRecord.RoutineInfo" FirstByte="5" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="RoutineControl.RoutineCalibrationInAfterSalesMarket.Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31020002</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7102000002</ReplyBytes>
+<DataItem Name="RoutineStatusRecord.RoutineInfo" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="RoutineControl.RoutineDynanometerTestBench.Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31020003</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7102000003</ReplyBytes>
+<DataItem Name="RoutineStatusRecord.RoutineInfo" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+<Sent>
+<SentBytes>3E00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerSparePartNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read vehicleManufacturerSparePartNumber]]></Comment>
+<Sent>
+<SentBytes>22F187</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F187</ReplyBytes>
+<DataItem Name="vehicleManufacturerSparePartNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.STATE SWITCH FAN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220110</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620110</ReplyBytes>
+<DataItem Name="STATE SWITCH FAN" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.STATE SWITCH HEATING">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220111</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620111</ReplyBytes>
+<DataItem Name="STATE SWITCH HEATING" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.Slide function">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220201</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620201</ReplyBytes>
+<DataItem Name="Slide function" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Slide function">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020100</SentBytes>
+<DataItem Name="Slide function" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0201</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SENSOR/MOTOR BACKREST FW/BW">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220302</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620302</ReplyBytes>
+<DataItem Name="SENSOR/MOTOR BACKREST FW/BW" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SENSOR/MOTOR BACKREST FW/BW">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030200</SentBytes>
+<DataItem Name="SENSOR/MOTOR BACKREST FW/BW" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0302</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SENSOR/MOTOR REAR UP/DOWN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220305</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620305</ReplyBytes>
+<DataItem Name="SENSOR/MOTOR REAR UP/DOWN" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SENSOR/MOTOR REAR UP/DOWN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030500</SentBytes>
+<DataItem Name="SENSOR/MOTOR REAR UP/DOWN" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0305</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SENSOR/MOTOR FRONT UP/DOWN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220303</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620303</ReplyBytes>
+<DataItem Name="SENSOR/MOTOR FRONT UP/DOWN" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SENSOR/MOTOR FRONT UP/DOWN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030300</SentBytes>
+<DataItem Name="SENSOR/MOTOR FRONT UP/DOWN" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0303</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SENSOR/MOTOR SHOULDER ADJUSTER FW/BW">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220301</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620301</ReplyBytes>
+<DataItem Name="SENSOR/MOTOR SHOULDER ADJUSTER FW/BW" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SENSOR/MOTOR SHOULDER ADJUSTER FW/BW">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030100</SentBytes>
+<DataItem Name="SENSOR/MOTOR SHOULDER ADJUSTER FW/BW" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0301</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SENSOR/MOTOR LUMBAR UP/DOWN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220307</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620307</ReplyBytes>
+<DataItem Name="SENSOR/MOTOR LUMBAR UP/DOWN" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SENSOR/MOTOR LUMBAR UP/DOWN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030700</SentBytes>
+<DataItem Name="SENSOR/MOTOR LUMBAR UP/DOWN" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0307</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Shoulder adjuster function">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220203</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620203</ReplyBytes>
+<DataItem Name="Shoulder adjuster function" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Shoulder adjuster function">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020300</SentBytes>
+<DataItem Name="Shoulder adjuster function" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0203</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Backrest function">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220202</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620202</ReplyBytes>
+<DataItem Name="Backrest function" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Backrest function">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020200</SentBytes>
+<DataItem Name="Backrest function" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0202</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Easy Access Driver">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22020A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62020A</ReplyBytes>
+<DataItem Name="Easy Access Driver" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Easy Access Driver">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020A00</SentBytes>
+<DataItem Name="Easy Access Driver" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E020A</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Easy Access Passenger">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22020B</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62020B</ReplyBytes>
+<DataItem Name="Easy Access Passenger" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Easy Access Passenger">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020B00</SentBytes>
+<DataItem Name="Easy Access Passenger" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E020B</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Enregistrement de la lecture de la voie Conducteur/Passager">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22020E</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62020E</ReplyBytes>
+<DataItem Name="Enregistrement de la lecture de la voie Conducteur/Passager" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Enregistrement de la lecture de la voie Conducteur/Passager">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020E00</SentBytes>
+<DataItem Name="Enregistrement de la lecture de la voie Conducteur/Passager" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E020E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Cuir/Tissu/Velours">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22020D</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62020D</ReplyBytes>
+<DataItem Name="Cuir/Tissu/Velours" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Cuir/Tissu/Velours">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020D00</SentBytes>
+<DataItem Name="Cuir/Tissu/Velours" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E020D</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.Factory Mode">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020F00</SentBytes>
+<DataItem Name="Factory Mode" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E020F</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Blower function">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220208</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620208</ReplyBytes>
+<DataItem Name="Blower function" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Blower function">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020800</SentBytes>
+<DataItem Name="Blower function" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0208</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Courtoisie function">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22020C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62020C</ReplyBytes>
+<DataItem Name="Courtoisie function" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Courtoisie function">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020C00</SentBytes>
+<DataItem Name="Courtoisie function" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E020C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Heating function">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220207</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620207</ReplyBytes>
+<DataItem Name="Heating function" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Heating function">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020700</SentBytes>
+<DataItem Name="Heating function" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0207</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Lumbar function">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220206</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620206</ReplyBytes>
+<DataItem Name="Lumbar function" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Lumbar function">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020600</SentBytes>
+<DataItem Name="Lumbar function" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0206</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Massage function">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220209</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620209</ReplyBytes>
+<DataItem Name="Massage function" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Massage function">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020900</SentBytes>
+<DataItem Name="Massage function" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0209</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Raise function">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220204</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620204</ReplyBytes>
+<DataItem Name="Raise function" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Raise function">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020400</SentBytes>
+<DataItem Name="Raise function" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0204</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Tilt function">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220205</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620205</ReplyBytes>
+<DataItem Name="Tilt function" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Tilt function">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E020500</SentBytes>
+<DataItem Name="Tilt function" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0205</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Factory Mode">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22020F</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62020F</ReplyBytes>
+<DataItem Name="Factory Mode" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.B Pillar position">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read B Pillar position]]></Comment>
+<Sent>
+<SentBytes>220210</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620210</ReplyBytes>
+<DataItem Name="B Pillar position" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.B Pillar position">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E02100000</SentBytes>
+<DataItem Name="B Pillar position" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0210</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Massage OM1">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read Massage OM1]]></Comment>
+<Sent>
+<SentBytes>220211</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620211</ReplyBytes>
+<DataItem Name="Massage OM1" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Massage OM1">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Write Massage OM1]]></Comment>
+<Sent>
+<SentBytes>2E021100</SentBytes>
+<DataItem Name="Massage OM1" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0211</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Massage OM2">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read Massage OM2]]></Comment>
+<Sent>
+<SentBytes>220212</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620212</ReplyBytes>
+<DataItem Name="Massage OM2" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Massage OM2">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Write Massage OM2]]></Comment>
+<Sent>
+<SentBytes>2E021200</SentBytes>
+<DataItem Name="Massage OM2" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0212</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Massage range">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read Massage range]]></Comment>
+<Sent>
+<SentBytes>220213</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620213</ReplyBytes>
+<DataItem Name="Massage range" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Massage range">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Write Massage range]]></Comment>
+<Sent>
+<SentBytes>2E02130000</SentBytes>
+<DataItem Name="Massage range" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0213</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.STATE SWITCH KEYBOARD">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220101</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>620101</ReplyBytes>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH BACKWARD BACKREST" Ref="1" FirstByte="4"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH BACKWARD CUSHION" Ref="1" FirstByte="5" BitOffset="4"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH DOWN FRONT CUSHION" Ref="1" FirstByte="5" BitOffset="6"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH BACKWARD LUMBAR" Ref="1" FirstByte="5"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH DOWN RAISE" Ref="1" FirstByte="5" BitOffset="2"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH BACKWARD TOP BACKREST" Ref="1" FirstByte="4" BitOffset="2"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH FORWAD BACKREST" Ref="1" FirstByte="4" BitOffset="1"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH FORWAD CUSHION" Ref="1" FirstByte="5" BitOffset="5"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH UP FRONT CUSHION" Ref="1" FirstByte="5" BitOffset="7"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH FORWAD LUMBAR" Ref="1" FirstByte="5" BitOffset="1"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH UP RAISE" Ref="1" FirstByte="5" BitOffset="3"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH FORWAD TOP BACKREST" Ref="1" FirstByte="4" BitOffset="3"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH UP LUMBAR" Ref="1" FirstByte="6" BitOffset="7"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH DOWN LUMBAR" Ref="1" FirstByte="6" BitOffset="6"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH MEMORY 1" Ref="1" FirstByte="4" BitOffset="7"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH MEMORY 2" Ref="1" FirstByte="4" BitOffset="6"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH MEMORY 3" Ref="1" FirstByte="4" BitOffset="5"/>
+<DataItem Name="STATE SWITCH KEYBOARD.STATE SWITCH MEMORY 4" Ref="1" FirstByte="4" BitOffset="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Memorization function">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220214</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620214</ReplyBytes>
+<DataItem Name="Memorization function" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Memorization function">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E021400</SentBytes>
+<DataItem Name="Memorization function" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0214</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Slider length">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220215</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620215</ReplyBytes>
+<DataItem Name="Slider length" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Slider length">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E02150000</SentBytes>
+<DataItem Name="Slider length" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0215</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Airneck function">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220217</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620217</ReplyBytes>
+<DataItem Name="Airneck function" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Airneck function">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E021700</SentBytes>
+<DataItem Name="Airneck function" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0217</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Lateral Maintain function">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220216</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620216</ReplyBytes>
+<DataItem Name="Lateral Maintain function" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Lateral Maintain function">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E021600</SentBytes>
+<DataItem Name="Lateral Maintain function" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0216</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SENSOR/MOTOR LUMBAR FW/BW">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220306</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620306</ReplyBytes>
+<DataItem Name="SENSOR/MOTOR LUMBAR FW/BW" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SENSOR/MOTOR LUMBAR FW/BW">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030600</SentBytes>
+<DataItem Name="SENSOR/MOTOR LUMBAR FW/BW" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0306</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.STATE SWITCH APA">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220112</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620112</ReplyBytes>
+<DataItem Name="STATE SWITCH APA" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.STATE DRIVER/PASSENGER ENCODING">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220113</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620113</ReplyBytes>
+<DataItem Name="STATE DRIVER/PASSENGER ENCODING" Ref="1" FirstByte="4" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.LED 1 FAN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220309</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620309</ReplyBytes>
+<DataItem Name="LED 1 FAN" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.LED 1 FAN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030900</SentBytes>
+<DataItem Name="LED 1 FAN" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0309</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.LED 1 HEATING">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220312</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620312</ReplyBytes>
+<DataItem Name="LED 1 HEATING" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.LED 1 HEATING">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E031200</SentBytes>
+<DataItem Name="LED 1 HEATING" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0312</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.LED 2 FAN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220310</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620310</ReplyBytes>
+<DataItem Name="LED 2 FAN" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.LED 2 FAN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E031000</SentBytes>
+<DataItem Name="LED 2 FAN" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0310</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.LED 2 HEATING">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220313</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620313</ReplyBytes>
+<DataItem Name="LED 2 HEATING" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.LED 2 HEATING">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E031300</SentBytes>
+<DataItem Name="LED 2 HEATING" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0313</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.STATE SWITCH SEAT WORLD">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220114</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620114</ReplyBytes>
+<DataItem Name="STATE SWITCH SEAT WORLD" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.LED MASSAGE">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220316</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620316</ReplyBytes>
+<DataItem Name="LED MASSAGE" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.LED MASSAGE">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E031600</SentBytes>
+<DataItem Name="LED MASSAGE" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0316</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.HEATING MAP">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220311</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620311</ReplyBytes>
+<DataItem Name="HEATING MAP" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.FAN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220308</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620308</ReplyBytes>
+<DataItem Name="FAN" Ref="1" FirstByte="4" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="DataWrite.FAN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030800</SentBytes>
+<DataItem Name="FAN" FirstByte="4" BitOffset="6"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0308</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.HEATING MAP">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E031100</SentBytes>
+<DataItem Name="HEATING MAP" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0311</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SENSOR HEATING NTC">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220116</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620116</ReplyBytes>
+<DataItem Name="SENSOR HEATING NTC" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.AIRNECK">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220314</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620314</ReplyBytes>
+<DataItem Name="AIRNECK" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.AIRNECK">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E031400</SentBytes>
+<DataItem Name="AIRNECK" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0314</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SENSOR/MOTOR LATERAL MAINTAIN FW/BW">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220315</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620315</ReplyBytes>
+<DataItem Name="SENSOR/MOTOR LATERAL MAINTAIN FW/BW" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SENSOR/MOTOR LATERAL MAINTAIN FW/BW">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E031500</SentBytes>
+<DataItem Name="SENSOR/MOTOR LATERAL MAINTAIN FW/BW" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0315</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SENSOR/MOTOR SLIDE FW/BW">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220304</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620304</ReplyBytes>
+<DataItem Name="SENSOR/MOTOR SLIDE FW/BW" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SENSOR/MOTOR SLIDE FW/BW">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030400</SentBytes>
+<DataItem Name="SENSOR/MOTOR SLIDE FW/BW" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0304</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Daimler Identification">
+
+<Sent>
+<SentBytes>21EF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RoutineControl.FrontSliderLearning">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010402</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7101040100</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="RoutineControl.RearSliderLearning">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010401</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7101040100</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="RoutineControl.LumbarLearnnig">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010403</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7101040300</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Start.SliderFW">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F03040301</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="I/OControl" FirstByte="5"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0304000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Start.SliderBW">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F03040302</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="I/OControl" FirstByte="5"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0304000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Start.BackrestFW">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F03020301</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="I/OControl" FirstByte="5"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0302000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Start.BackrestBW">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F03020302</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="I/OControl" FirstByte="5"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0302000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.BackrestStop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F030200</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0302000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.SliderStop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F030400</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0304000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Start.RaiseUP">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F03050301</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="I/OControl" FirstByte="5"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0305000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Start.RaiseDOWN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F03050302</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="I/OControl" FirstByte="5"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0305000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.RaiseStop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F030500</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0305000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Start.TitlUP">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F03030301</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="I/OControl" FirstByte="5"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0303000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Start.TiltDOWN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F03030302</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="I/OControl" FirstByte="5"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0303000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.TiltStop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F030300</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0303000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Start.LumbarXFW">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F03060301</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="I/OControl" FirstByte="5"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0306000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Start.LumbarXBW">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F03060302</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="I/OControl" FirstByte="5"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0306000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Start.LumbarYUP">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F03070301</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="I/OControl" FirstByte="5"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0307000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Start.LumbarYDOWN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F03070302</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="I/OControl" FirstByte="5"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0307000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.LumbarYStop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F030700</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0307000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl.LumbarXStop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[I/O control]]></Comment>
+<Sent>
+<SentBytes>2F030600</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0306000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="OutputControl">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2F00000000</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="OutputControlCommand" FirstByte="4"/>
+<DataItem Name="I/OControl" FirstByte="5"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6F0000000000</ReplyBytes>
+<DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+<DataItem Name="IOCTL.StatusRecordParameter" FirstByte="4"/>
+<DataItem Name="IOCTL.StatusRecordParameterCS1" FirstByte="5"/>
+<DataItem Name="IOCTL.PositiveResponse" FirstByte="6"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="UCE SEAT" DTC="43264" Type="2">
+
+<Test Type="73" Severity="0">
+</Test><Test Type="136" Severity="0">
+</Test><Test Type="81" Severity="0">
+</Test><Test Type="85" Severity="0">
+</Test><Test Type="9" Severity="0">
+</Test>
+</Device>
+<Device Name="UCE SEAT 1" DTC="61443" Type="2">
+
+<Test Type="22" Severity="0">
+</Test><Test Type="23" Severity="0">
+</Test>
+</Device>
+<Device Name="UCE SEAT 2" DTC="49449" Type="2">
+
+<Test Type="135" Severity="0">
+<Description>Missing message from ABS</Description>
+</Test>
+</Device>
+<Device Name="Control panel swirtches" DTC="43280">
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="Fan LED 1" DTC="43361" Type="3">
+
+<Test Type="17">
+</Test><Test Type="18">
+</Test>
+</Device>
+<Device Name="Fan LED 2" DTC="43362" Type="3">
+
+<Test Type="18">
+</Test><Test Type="17">
+</Test>
+</Device>
+<Device Name="SENSOR/MOTOR BACKREST FW/BW" DTC="43296">
+
+<Test Type="49" Severity="0">
+<Description>No hall pulses in each of the two movements.</Description>
+</Test><Test Type="17">
+</Test><Test Type="18">
+</Test>
+</Device>
+<Device Name="SENSOR/MOTOR REAR UP/DOWN" DTC="43297">
+
+<Test Type="49" Severity="0">
+<Description>No hall pulses in each of the two movements.</Description>
+</Test><Test Type="17">
+</Test><Test Type="18">
+</Test>
+</Device>
+<Device Name="SENSOR/MOTOR SLIDE BW/FW" DTC="43298">
+
+<Test Type="49" Severity="0">
+<Description>No hall pulses in each of the two movements.</Description>
+</Test><Test Type="17">
+</Test><Test Type="18">
+</Test>
+</Device>
+<Device Name="SENSOR/MOTOR FRONT UP/DOWN" DTC="43299">
+
+<Test Type="49" Severity="0">
+<Description>No hall pulses in each of the two movements.</Description>
+</Test><Test Type="17">
+</Test><Test Type="18">
+</Test>
+</Device>
+<Device Name="SENSOR/MOTOR SHOULDER ADJUSTER FW/BW" DTC="43300">
+
+<Test Type="49" Severity="0">
+<Description>No hall pulses in each of the two movements.</Description>
+</Test><Test Type="18">
+</Test><Test Type="17">
+</Test>
+</Device>
+<Device Name="SENSOR/MOTOR LUMBAR UP/DOWN" DTC="43301">
+
+<Test Type="49" Severity="0">
+<Description>No hall pulses in each of the two movements.</Description>
+</Test><Test Type="17">
+</Test><Test Type="18">
+</Test><Test Type="24">
+</Test><Test Type="152">
+</Test>
+</Device>
+<Device Name="SENSOR/MOTOR LUMBAR FORWARD/BACKWARD" DTC="43302">
+
+<Test Type="49" Severity="0">
+<Description>No hall pulses in each of the two movements.</Description>
+</Test><Test Type="17">
+</Test><Test Type="18">
+</Test><Test Type="152">
+</Test><Test Type="24">
+</Test>
+</Device>
+<Device Name="Heating Switch" DTC="43363">
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="Fan Switch" DTC="43360">
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="Heating LED 1" DTC="43364" Type="3">
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="Heating LED 2" DTC="43365" Type="3">
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="SENSOR MOTOR LATERAL MAINTAIN BW/FW" DTC="43303">
+
+<Test Type="49" Severity="0">
+<Description>No hall pulses in each of the two movements.</Description>
+</Test><Test Type="17">
+</Test><Test Type="18">
+</Test>
+</Device>
+<Device Name="FAN MOTOR" DTC="43344" Type="3">
+
+<Test Type="17">
+</Test><Test Type="18">
+</Test>
+</Device>
+<Device Name="HEATING SENSOR" DTC="43346">
+
+<Test Type="17">
+</Test><Test Type="18">
+</Test>
+</Device>
+<Device Name="LUMBAR LEARNING FAILED" DTC="43378" Type="2">
+
+<Test Type="104">
+</Test>
+</Device>
+<Device Name="FRONT SLIDE LEARNING FAILED" DTC="43376" Type="2">
+
+<Test Type="104">
+</Test>
+</Device>
+<Device Name="REAR SLIDE LEARNING FAILED" DTC="43377" Type="2">
+
+<Test Type="104">
+</Test>
+</Device>
+<Device Name="HEATING FRAME" DTC="43345" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test>
+</Device>
+<Device Name="APC OFF LOAD 2 voltage" DTC="43381" Type="2">
+
+<Test Type="1" Severity="0">
+</Test>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="test">
+
+<Screen Name="Relecture état switch" Color="16744576" WindowState="0" Width="11340" Height="7980">
+
+<Label Text="Backrest Backward" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="360" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Backrest Forward" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="840" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Cushion Backward" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="1320" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Cushion Forward" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="1800" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Rear Up" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="2280" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Rear Down" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="2760" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Front Up" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="3240" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Front Down" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="3720" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Lumbar Backward" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="4200" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Lumbar Forward" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="4680" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Lumbar Up" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="5160" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Lumbar Down" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="5640" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Seat World" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="6360" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Heating Switch" Color="16777215" Alignment="0">
+<Rectangle Left="6000" Top="1200" Height="420" Width="2040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="986895"/></Label>
+<Label Text="Fan Switch" Color="16777215" Alignment="0">
+<Rectangle Left="6120" Top="2640" Height="360" Width="2040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="TesterPresent.WithResponse"/>
+<Button Text="Read Switch">
+<Rectangle Left="6600" Top="5280" Height="1200" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="DataRead.STATE SWITCH KEYBOARD"/><Send Delay="0" RequestName="DataRead.STATE SWITCH HEATING"/><Send Delay="0" RequestName="DataRead.STATE SWITCH FAN"/><Send Delay="0" RequestName="DataRead.STATE SWITCH SEAT WORLD"/>
+</Button>
+
+<Display Width="0" Color="16777215" DataName="STATE SWITCH KEYBOARD.STATE SWITCH BACKWARD BACKREST" RequestName="DataRead.STATE SWITCH KEYBOARD">
+<Rectangle Left="2040" Top="360" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH KEYBOARD.STATE SWITCH FORWAD BACKREST" RequestName="DataRead.STATE SWITCH KEYBOARD">
+<Rectangle Left="2040" Top="840" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH KEYBOARD.STATE SWITCH BACKWARD LUMBAR" RequestName="DataRead.STATE SWITCH KEYBOARD">
+<Rectangle Left="2040" Top="4200" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH KEYBOARD.STATE SWITCH FORWAD LUMBAR" RequestName="DataRead.STATE SWITCH KEYBOARD">
+<Rectangle Left="2040" Top="4680" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH KEYBOARD.STATE SWITCH DOWN RAISE" RequestName="DataRead.STATE SWITCH KEYBOARD">
+<Rectangle Left="2040" Top="2760" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH KEYBOARD.STATE SWITCH UP RAISE" RequestName="DataRead.STATE SWITCH KEYBOARD">
+<Rectangle Left="2040" Top="2280" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH KEYBOARD.STATE SWITCH BACKWARD CUSHION" RequestName="DataRead.STATE SWITCH KEYBOARD">
+<Rectangle Left="2040" Top="1320" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH KEYBOARD.STATE SWITCH FORWAD CUSHION" RequestName="DataRead.STATE SWITCH KEYBOARD">
+<Rectangle Left="2040" Top="1800" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH KEYBOARD.STATE SWITCH DOWN FRONT CUSHION" RequestName="DataRead.STATE SWITCH KEYBOARD">
+<Rectangle Left="2040" Top="3720" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH KEYBOARD.STATE SWITCH UP FRONT CUSHION" RequestName="DataRead.STATE SWITCH KEYBOARD">
+<Rectangle Left="2040" Top="3240" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH KEYBOARD.STATE SWITCH DOWN LUMBAR" RequestName="DataRead.STATE SWITCH KEYBOARD">
+<Rectangle Left="2040" Top="5640" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH KEYBOARD.STATE SWITCH UP LUMBAR" RequestName="DataRead.STATE SWITCH KEYBOARD">
+<Rectangle Left="2040" Top="5160" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH SEAT WORLD" RequestName="DataRead.STATE SWITCH SEAT WORLD">
+<Rectangle Left="2040" Top="6360" Height="390" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH HEATING" RequestName="DataRead.STATE SWITCH HEATING">
+<Rectangle Left="8280" Top="1200" Height="390" Width="2200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="STATE SWITCH FAN" RequestName="DataRead.STATE SWITCH FAN">
+<Rectangle Left="8280" Top="2640" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Configuration" Color="12632256" WindowState="0" Width="14580" Height="8220">
+
+<Label Text="READ" Color="16777215" Alignment="2">
+<Rectangle Left="4560" Top="120" Height="300" Width="1350"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="WRITE" Color="16777215" Alignment="2">
+<Rectangle Left="12120" Top="240" Height="300" Width="1350"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="TesterPresent.WithResponse"/>
+<Button Text="Ecriture de la config">
+<Rectangle Left="12240" Top="7200" Height="840" Width="1560"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="DataWrite.Slide function"/><Send Delay="0" RequestName="DataWrite.Backrest function"/><Send Delay="0" RequestName="DataWrite.Raise function"/><Send Delay="0" RequestName="DataWrite.Tilt function"/><Send Delay="0" RequestName="DataWrite.Lumbar function"/><Send Delay="0" RequestName="DataWrite.Heating function"/><Send Delay="0" RequestName="DataWrite.Blower function"/><Send Delay="0" RequestName="DataWrite.Massage function"/><Send Delay="0" RequestName="DataWrite.Easy Access Passenger"/><Send Delay="0" RequestName="DataWrite.Memorization function"/><Send Delay="0" RequestName="DataWrite.Courtoisie function"/><Send Delay="0" RequestName="DataWrite.Massage OM1"/><Send Delay="0" RequestName="DataWrite.Massage OM2"/><Send Delay="0" RequestName="DataWrite.Massage range"/><Send Delay="0" RequestName="DataWrite.Slider length"/><Send Delay="0" RequestName="DataWrite.B Pillar position"/><Send Delay="0" RequestName="DataWrite.Factory Mode"/><Send Delay="0" RequestName="DataWrite.Cuir/Tissu/Velours"/>
+</Button>
+<Button Text="Lecture de la config">
+<Rectangle Left="4800" Top="7080" Height="900" Width="1560"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="DataRead.Slide function"/><Send Delay="0" RequestName="DataRead.Backrest function"/><Send Delay="0" RequestName="DataRead.Raise function"/><Send Delay="0" RequestName="DataRead.Tilt function"/><Send Delay="0" RequestName="DataRead.Lumbar function"/><Send Delay="0" RequestName="DataRead.Heating function"/><Send Delay="0" RequestName="DataRead.Blower function"/><Send Delay="0" RequestName="DataRead.Massage function"/><Send Delay="0" RequestName="DataRead.Easy Access Passenger"/><Send Delay="0" RequestName="DataRead.Memorization function"/><Send Delay="0" RequestName="DataRead.Courtoisie function"/><Send Delay="0" RequestName="DataRead.Massage OM1"/><Send Delay="0" RequestName="DataRead.Massage OM2"/><Send Delay="0" RequestName="DataRead.Massage range"/><Send Delay="0" RequestName="DataRead.Slider length"/><Send Delay="0" RequestName="DataRead.B Pillar position"/><Send Delay="0" RequestName="DataRead.Factory Mode"/><Send Delay="0" RequestName="DataRead.Cuir/Tissu/Velours"/>
+</Button>
+
+<Display Width="2000" Color="16777215" DataName="Slide function" RequestName="DataRead.Slide function">
+<Rectangle Left="480" Top="360" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Backrest function" RequestName="DataRead.Backrest function">
+<Rectangle Left="480" Top="720" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Tilt function" RequestName="DataRead.Tilt function">
+<Rectangle Left="480" Top="1440" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Raise function" RequestName="DataRead.Raise function">
+<Rectangle Left="480" Top="1080" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Lumbar function" RequestName="DataRead.Lumbar function">
+<Rectangle Left="480" Top="1800" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Massage function" RequestName="DataRead.Massage function">
+<Rectangle Left="480" Top="3360" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Heating function" RequestName="DataRead.Heating function">
+<Rectangle Left="480" Top="2400" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Blower function" RequestName="DataRead.Blower function">
+<Rectangle Left="480" Top="2760" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2255" Color="16777215" DataName="Easy Access Passenger" RequestName="DataRead.Easy Access Passenger">
+<Rectangle Left="480" Top="4080" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Memorization function" RequestName="DataRead.Memorization function">
+<Rectangle Left="480" Top="4440" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Courtoisie function" RequestName="DataRead.Courtoisie function">
+<Rectangle Left="480" Top="4800" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Massage OM1" RequestName="DataRead.Massage OM1">
+<Rectangle Left="480" Top="5640" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Massage OM2" RequestName="DataRead.Massage OM2">
+<Rectangle Left="480" Top="6000" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Massage range" RequestName="DataRead.Massage range">
+<Rectangle Left="480" Top="6360" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Slider length" RequestName="DataRead.Slider length">
+<Rectangle Left="480" Top="6720" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="B Pillar position" RequestName="DataRead.B Pillar position">
+<Rectangle Left="480" Top="7080" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Factory Mode" RequestName="DataRead.Factory Mode">
+<Rectangle Left="480" Top="7440" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Cuir/Tissu/Velours" RequestName="DataRead.Cuir/Tissu/Velours">
+<Rectangle Left="480" Top="7800" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2000" Color="16777215" DataName="Slide function" RequestName="DataWrite.Slide function">
+<Rectangle Left="8040" Top="360" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Backrest function" RequestName="DataWrite.Backrest function">
+<Rectangle Left="8040" Top="720" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Raise function" RequestName="DataWrite.Raise function">
+<Rectangle Left="8040" Top="1080" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Tilt function" RequestName="DataWrite.Tilt function">
+<Rectangle Left="8040" Top="1440" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Lumbar function" RequestName="DataWrite.Lumbar function">
+<Rectangle Left="8040" Top="1800" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Heating function" RequestName="DataWrite.Heating function">
+<Rectangle Left="8040" Top="2400" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Blower function" RequestName="DataWrite.Blower function">
+<Rectangle Left="8040" Top="2760" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Massage function" RequestName="DataWrite.Massage function">
+<Rectangle Left="8040" Top="3360" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2240" Color="16777215" DataName="Easy Access Passenger" RequestName="DataWrite.Easy Access Passenger">
+<Rectangle Left="8040" Top="4080" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Memorization function" RequestName="DataWrite.Memorization function">
+<Rectangle Left="8040" Top="4440" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Courtoisie function" RequestName="DataWrite.Courtoisie function">
+<Rectangle Left="8040" Top="4800" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Massage OM1" RequestName="DataWrite.Massage OM1">
+<Rectangle Left="8040" Top="5640" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Massage OM2" RequestName="DataWrite.Massage OM2">
+<Rectangle Left="8040" Top="6000" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Massage range" RequestName="DataWrite.Massage range">
+<Rectangle Left="8040" Top="6360" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Slider length" RequestName="DataWrite.Slider length">
+<Rectangle Left="8040" Top="6720" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="B Pillar position" RequestName="DataWrite.B Pillar position">
+<Rectangle Left="8040" Top="7080" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Factory Mode" RequestName="DataWrite.Factory Mode">
+<Rectangle Left="8040" Top="7440" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Cuir/Tissu/Velours" RequestName="DataWrite.Cuir/Tissu/Velours">
+<Rectangle Left="8040" Top="7800" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="I/O Control" Color="16711935" WindowState="0" Width="11940" Height="7860">
+
+
+<Button Text="&lt;--Slider FW">
+<Rectangle Left="2760" Top="3960" Height="360" Width="2280"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="OutputControl.Start.SliderFW"/>
+</Button>
+<Button Text="Slider BW --&gt;">
+<Rectangle Left="5160" Top="3960" Height="360" Width="2280"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="OutputControl.Start.SliderBW"/>
+</Button>
+<Button Text="SliderStop">
+<Rectangle Left="4320" Top="4320" Height="480" Width="1560"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="200" RequestName="OutputControl.SliderStop"/>
+</Button>
+<Button Text="Raise UP /\">
+<Rectangle Left="7560" Top="3600" Height="480" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="OutputControl.Start.RaiseUP"/>
+</Button>
+<Button Text="Raise DOWN \/">
+<Rectangle Left="7560" Top="4200" Height="480" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="OutputControl.Start.RaiseDOWN"/>
+</Button>
+<Button Text="RaiseStop">
+<Rectangle Left="9000" Top="3840" Height="480" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="OutputControl.RaiseStop"/>
+</Button>
+<Button Text="&lt;-- Backrest FW">
+<Rectangle Left="9600" Top="360" Height="2760" Width="720"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="OutputControl.Start.BackrestFW"/>
+</Button>
+<Button Text="Backrest BW --&gt;">
+<Rectangle Left="10440" Top="360" Height="2760" Width="720"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="OutputControl.Start.BackrestBW"/>
+</Button>
+<Button Text="Backrest Stop">
+<Rectangle Left="9840" Top="3120" Height="480" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="OutputControl.BackrestStop"/>
+</Button>
+<Button Text="Tilt UP /\">
+<Rectangle Left="1440" Top="3600" Height="420" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="OutputControl.Start.TitlUP"/>
+</Button>
+<Button Text="Tilt DOWN \/">
+<Rectangle Left="1440" Top="4080" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="OutputControl.Start.TiltDOWN"/>
+</Button>
+<Button Text="Tilt Stop">
+<Rectangle Left="240" Top="3840" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="OutputControl.TiltStop"/>
+</Button>
+<Button Text="&lt; Lumbar FW">
+<Rectangle Left="7200" Top="5760" Height="720" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="OutputControl.Start.LumbarXFW"/>
+</Button>
+<Button Text="Lumbar BW &gt;">
+<Rectangle Left="9480" Top="5760" Height="720" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="OutputControl.Start.LumbarXBW"/>
+</Button>
+<Button Text="Lumbar UP /\">
+<Rectangle Left="8280" Top="5040" Height="720" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="OutputControl.Start.LumbarYUP"/>
+</Button>
+<Button Text="Lumbar DOWN \/">
+<Rectangle Left="8280" Top="6480" Height="720" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="OutputControl.Start.LumbarYDOWN"/>
+</Button>
+<Button Text="Lumbar Stop">
+<Rectangle Left="6360" Top="6840" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="OutputControl.LumbarXStop"/><Send Delay="0" RequestName="OutputControl.LumbarYStop"/>
+</Button>
+
+</Screen>
+<Screen Name="Routine d'apprentissage" Color="16777215" WindowState="0" Width="9180" Height="6180">
+
+<Label Text="FrontSliderLearning" Color="16777215" Alignment="0">
+<Rectangle Left="360" Top="720" Height="600" Width="2040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="RearSliderLearning" Color="16777215" Alignment="0">
+<Rectangle Left="360" Top="1920" Height="600" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="LumbarLearning" Color="16777215" Alignment="0">
+<Rectangle Left="480" Top="3360" Height="720" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="TesterPresent.WithResponse"/>
+<Button Text="SliderFront">
+<Rectangle Left="2400" Top="360" Height="960" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="RoutineControl.FrontSliderLearning"/>
+</Button>
+<Button Text="SliderRear">
+<Rectangle Left="2400" Top="1680" Height="960" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="RoutineControl.RearSliderLearning"/>
+</Button>
+<Button Text="Lumbar">
+<Rectangle Left="2400" Top="3000" Height="960" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="RoutineControl.LumbarLearnnig"/>
+</Button>
+
+</Screen>
+<Screen Name="Identification" Color="65280" WindowState="0" Width="9000" Height="6000">
+
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="100" RequestName="TesterPresent.WithResponse"/>
+<Button Text="Lecture VIN">
+<Rectangle Left="360" Top="360" Height="600" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="200" RequestName="DataRead.VIN"/>
+</Button>
+<Button Text="Lecture Part Reference">
+<Rectangle Left="240" Top="1200" Height="600" Width="2100"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="200" RequestName="DataRead.vehicleManufacturerSparePartNumber"/>
+</Button>
+<Button Text="Lecture version SW">
+<Rectangle Left="360" Top="3960" Height="720" Width="1800"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="200" RequestName="DataRead.systemSupplierECUSoftwareNumber"/>
+</Button>
+<Button Text="Lecture Ref SW">
+<Rectangle Left="240" Top="2040" Height="600" Width="2040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="200" RequestName="DataRead.vehicleManufacturerECUSoftwareNumber"/>
+</Button>
+<Button Text="Lecture Ref HW">
+<Rectangle Left="240" Top="2760" Height="600" Width="2040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="200" RequestName="DataRead.vehicleManufacturerECUHardwareNumber"/>
+</Button>
+
+<Display Width="0" Color="16777215" RequestName="DataRead.VIN">
+<Rectangle Left="3240" Top="480" Height="480" Width="4080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" RequestName="DataRead.vehicleManufacturerSparePartNumber">
+<Rectangle Left="3240" Top="1320" Height="465" Width="4080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" RequestName="DataRead.systemSupplierECUSoftwareNumber">
+<Rectangle Left="3240" Top="4080" Height="495" Width="4080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" RequestName="DataRead.vehicleManufacturerECUSoftwareNumber">
+<Rectangle Left="3240" Top="2160" Height="480" Width="4080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" RequestName="DataRead.vehicleManufacturerECUHardwareNumber">
+<Rectangle Left="3240" Top="2880" Height="480" Width="4080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

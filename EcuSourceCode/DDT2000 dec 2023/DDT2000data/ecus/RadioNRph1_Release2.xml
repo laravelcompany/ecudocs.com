@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<ddt:Target Name="RADIO NR ph1" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" upload="12/20/04" href="RadioNRph1_Release2.xml" email="Domonique.d.Renault@renault.com"><Description><![CDATA[Radio NR ph1 
+
+Remontée Pré-code
+juillet 2004
+
+Release 2 : mise en place des écrans
+
+Dominique Renault
+Sce 65620
+Tel : 55575
+Domonique.d.Renault@renault.com]]></Description><Projects xmlns=""><x44/><x61/><x70Ph3/><x73Ph2/><x74Ph2/><x76/><x77/><x77Ph2/><x81/><x81Ph2/><x83Ph2/><x84Ph2/><x85/></Projects>
+<Function Name="Audio" Address="19"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation/>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="1810"/>
+</SendId><ReceiveId>
+<CANId Value="1842"/>
+</ReceiveId></CAN>
+<AutoIdents>
+</AutoIdents>
+<Datas>
+
+<Data Name="Ident Hardware">
+<Comment><![CDATA[B.C.D coded hardware identification number]]></Comment>
+<Mnemonic>IDHARD</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Ident Software">
+<Comment><![CDATA[Hexa coded software identification number]]></Comment>
+<Mnemonic>IDSOFT</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Ident PART">
+<Comment><![CDATA[ECU reference (hard + soft + calib)]]></Comment>
+<Mnemonic>NPIECE</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Ident DIAGNOSIS">
+<Comment><![CDATA[Diag evolution number]]></Comment>
+<Mnemonic>VDIAG</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Ident release">
+<Comment><![CDATA[software release]]></Comment>
+<Mnemonic>NVERS</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Ident supplier">
+<Comment><![CDATA[supplier ITG Number (ASCII)]]></Comment>
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Ident car maker">
+<Comment><![CDATA[car maker Identification]]></Comment>
+<Mnemonic>IDTCONSTR</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Renault R1"/>
+<Item Value="128" Text="Nissan N1"/>
+<Item Value="129" Text="Nissan N2"/>
+<Item Value="130" Text="Nissan N3"/></List>
+</Bits>
+</Data>
+<Data Name="Ident Calibration">
+<Comment><![CDATA[Identification de la calibration]]></Comment>
+<Mnemonic>IDCAL</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Response tester">
+<Comment><![CDATA[tester present response query]]></Comment>
+<Mnemonic>RSPREQ</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="reponse waited"/>
+<Item Value="2" Text="No response waited"/></List>
+</Bits>
+</Data>
+<Data Name="traceability serial number">
+<Comment><![CDATA[serial numbers]]></Comment>
+<Mnemonic>TRACA</Mnemonic>
+<Bytes count="8" ascii="1"/>
+</Data>
+<Data Name="traceability week of production">
+<Comment><![CDATA[semaine de production]]></Comment>
+<Mnemonic>TRACA</Mnemonic>
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="Pre Code Radio">
+<Comment><![CDATA[Precode radio]]></Comment>
+<Mnemonic>PCODE</Mnemonic>
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="Level Field">
+<Comment><![CDATA[niveau du champ de la station en cours]]></Comment>
+<Mnemonic>FIELD</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="Frequency Range">
+<Comment><![CDATA[Gamme LW/MW/FM en cours]]></Comment>
+<Mnemonic>FREQRANGE</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="FM"/>
+<Item Value="2" Text="LW"/>
+<Item Value="3" Text="MW"/></List>
+</Bits>
+</Data>
+<Data Name="Frequency Tune">
+<Comment><![CDATA[station courante FM/AM]]></Comment>
+<Mnemonic>FREQTUNE</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="AM2 Field min">
+<Comment><![CDATA[niveau du champ AM min mémorisé à N-2]]></Comment>
+<Mnemonic>AMFLDMIN2</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="AM2 Field max">
+<Comment><![CDATA[niveau du champ AM max mémorisé à N-2]]></Comment>
+<Mnemonic>AMFLDMAX2</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="AM2 Field mean">
+<Comment><![CDATA[niveau du champ AM moyen mémorisé à N-2]]></Comment>
+<Mnemonic>AMFLDMEAN2</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM Memory 3 Frequency Tune">
+<Comment><![CDATA[frequence mémorisée FM à N-3  (résolution 0,1Mhz)]]></Comment>
+<Mnemonic>TUNEFM3</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="FM Memory 2 Frequency Tune">
+<Comment><![CDATA[frequence mémorisée FM à N-2 (résolution 0,1Mhz)]]></Comment>
+<Mnemonic>TUNEFM2</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="FM Memory 1 Frequency Tune">
+<Comment><![CDATA[frequence mémorisée FM à N-1  (résolution 0,1Mhz)]]></Comment>
+<Mnemonic>TUNEFM1</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="FM Memory 4 Frequency Tune">
+<Comment><![CDATA[frequence mémorisée FM à N-4  (résolution 0,1Mhz)]]></Comment>
+<Mnemonic>TUNEFM4</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="FM Memory 5 Frequency Tune">
+<Comment><![CDATA[frequence mémorisée FM à N-5  (résolution 0,1Mhz)]]></Comment>
+<Mnemonic>TUNEFM5</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="AM Memory 3 Frequency Tune">
+<Comment><![CDATA[frequence mémorisée AM à N-3 en KHz]]></Comment>
+<Mnemonic>TUNEAM3</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="AM Memory 2 Frequency Tune">
+<Comment><![CDATA[frequence mémorisée AM à N-2 en KHz]]></Comment>
+<Mnemonic>TUNEAM2</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="AM Memory 1 Frequency Tune">
+<Comment><![CDATA[frequence mémorisée AM à N-1 en KHz]]></Comment>
+<Mnemonic>TUNEAM1</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="AM Memory 4 Frequency Tune">
+<Comment><![CDATA[frequence mémorisée AM à N-4 en KHz]]></Comment>
+<Mnemonic>TUNEAM4</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="AM Memory 5 Frequency Tune">
+<Comment><![CDATA[frequence mémorisée AM à N-5 en KHz]]></Comment>
+<Mnemonic>TUNEAM5</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="AM1 Field min">
+<Comment><![CDATA[niveau du champ AM min mémorisé à N-1]]></Comment>
+<Mnemonic>AMFLDMIN1</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="AM1 Field max">
+<Comment><![CDATA[niveau du champ AM max mémorisé à N-1]]></Comment>
+<Mnemonic>AMFLDMAX1</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="AM1 Field mean">
+<Comment><![CDATA[niveau du champ AM moyen mémorisé à N-1]]></Comment>
+<Mnemonic>AMFLDMEAN1</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="AM3 Field min">
+<Comment><![CDATA[niveau du champ AM min mémorisé à N-3]]></Comment>
+<Mnemonic>AMFLDMIN3</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="AM3 Field max">
+<Comment><![CDATA[niveau du champ AM max mémorisé à N-3]]></Comment>
+<Mnemonic>AMFLDMAX3</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="AM3 Field mean">
+<Comment><![CDATA[niveau du champ AM moyen mémorisé à N-3]]></Comment>
+<Mnemonic>AMFLDMEAN3</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="AM4 Field min">
+<Comment><![CDATA[niveau du champ AM min mémorisé à N-4]]></Comment>
+<Mnemonic>AMFLDMIN4</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="AM4 Field max">
+<Comment><![CDATA[niveau du champ AM max mémorisé à N-4]]></Comment>
+<Mnemonic>AMFLDMAX4</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="AM4 Field mean">
+<Comment><![CDATA[niveau du champ AM moyen mémorisé à N-4]]></Comment>
+<Mnemonic>AMFLDMEAN4</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="AM5 Field min">
+<Comment><![CDATA[niveau du champ AM min mémorisé à N-5]]></Comment>
+<Mnemonic>AMFLDMIN5</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="AM5 Field max">
+<Comment><![CDATA[niveau du champ AM max mémorisé à N-5]]></Comment>
+<Mnemonic>AMFLDMAX5</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="AM5 Field mean">
+<Comment><![CDATA[niveau du champ AM moyen mémorisé à N-5]]></Comment>
+<Mnemonic>AMFLDMEAN5</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM1 Field min">
+<Comment><![CDATA[niveau du champ FM min mémorisé à N-1]]></Comment>
+<Mnemonic>FMFLDMIN1</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM1 Field max">
+<Comment><![CDATA[niveau du champ FM max mémorisé à N-1]]></Comment>
+<Mnemonic>FMFLDMAX1</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM1 Field mean">
+<Comment><![CDATA[niveau du champ AM moyen mémorisé à N-1]]></Comment>
+<Mnemonic>AMFLDMEAN1</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM2 Field min">
+<Comment><![CDATA[niveau du champ FM min mémorisé à N-2]]></Comment>
+<Mnemonic>FMFLDMIN2</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM2 Field max">
+<Comment><![CDATA[niveau du champ FM max mémorisé à N-2]]></Comment>
+<Mnemonic>FMFLDMAX2</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM2 Field mean">
+<Comment><![CDATA[niveau du champ AM moyen mémorisé à N-2]]></Comment>
+<Mnemonic>AMFLDMEAN2</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM3 Field min">
+<Comment><![CDATA[niveau du champ FM min mémorisé à N-3]]></Comment>
+<Mnemonic>FMFLDMIN3</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM3 Field max">
+<Comment><![CDATA[niveau du champ FM max mémorisé à N-3]]></Comment>
+<Mnemonic>FMFLDMAX3</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM3 Field mean">
+<Comment><![CDATA[niveau du champ AM moyen mémorisé à N-3]]></Comment>
+<Mnemonic>AMFLDMEAN3</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM4 Field min">
+<Comment><![CDATA[niveau du champ FM min mémorisé à N-4]]></Comment>
+<Mnemonic>FMFLDMIN4</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM4 Field max">
+<Comment><![CDATA[niveau du champ FM max mémorisé à N-4]]></Comment>
+<Mnemonic>FMFLDMAX4</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM4 Field mean">
+<Comment><![CDATA[niveau du champ AM moyen mémorisé à N-4]]></Comment>
+<Mnemonic>AMFLDMEAN4</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM5 Field min">
+<Comment><![CDATA[niveau du champ FM min mémorisé à N-5]]></Comment>
+<Mnemonic>FMFLDMIN5</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM5 Field max">
+<Comment><![CDATA[niveau du champ FM max mémorisé à N-5]]></Comment>
+<Mnemonic>FMFLDMAX5</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FM5 Field mean">
+<Comment><![CDATA[niveau du champ AM moyen mémorisé à N-5]]></Comment>
+<Mnemonic>AMFLDMEAN5</Mnemonic>
+<Bits>
+<Scaled Unit="dBuV" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="traceability blank">
+<Comment><![CDATA[blanking spaces]]></Comment>
+<Mnemonic>BLANK</Mnemonic>
+<Bytes count="4" ascii="1"/>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="Identification">
+
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>6180</ReplyBytes>
+<DataItem Name="Ident DIAGNOSIS" Ref="1" FirstByte="8" Endian="Little"/>
+<DataItem Name="Ident Hardware" Ref="1" FirstByte="12" Endian="Little"/>
+<DataItem Name="Ident PART" Ref="1" FirstByte="3" Endian="Little"/>
+<DataItem Name="Ident Software" Ref="1" FirstByte="17" Endian="Little"/>
+<DataItem Name="Ident supplier" Ref="1" FirstByte="9" Endian="Little"/>
+<DataItem Name="Ident release" Ref="1" FirstByte="19" Endian="Little"/>
+<DataItem Name="Ident car maker" Ref="1" FirstByte="26" Endian="Little"/>
+<DataItem Name="Ident Calibration" Ref="1" FirstByte="23" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="Start diag">
+
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[StartDiagnosticSession]]></Comment>
+<Sent>
+<SentBytes>1000</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50C0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="TesterPresent">
+
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[TesterPresent]]></Comment>
+<Sent>
+<SentBytes>3E01</SentBytes>
+<DataItem Name="Response tester" Ref="1" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Start default">
+
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[StartDiagnosticSession]]></Comment>
+<Sent>
+<SentBytes>1081</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5081</ReplyBytes>
+</Received>
+</Request>
+<Request Name="System traceability">
+
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>6184</ReplyBytes>
+<DataItem Name="traceability week of production" Ref="1" FirstByte="3"/>
+<DataItem Name="traceability serial number" Ref="1" FirstByte="7"/>
+<DataItem Name="Pre Code Radio" Ref="1" FirstByte="15"/>
+<DataItem Name="traceability blank" Ref="1" FirstByte="19"/>
+</Received>
+</Request>
+<Request Name="AM/FM Reception level">
+
+<DenyAccess><NoSDS/><Supplier/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2110</SentBytes>
+</Sent>
+<Received MinBytes="56">
+<ReplyBytes>6110</ReplyBytes>
+<DataItem Name="Level Field" Ref="1" FirstByte="6"/>
+<DataItem Name="Frequency Range" Ref="1" FirstByte="3"/>
+<DataItem Name="Frequency Tune" Ref="1" FirstByte="4"/>
+<DataItem Name="AM2 Field min" Ref="1" FirstByte="39"/>
+<DataItem Name="AM2 Field max" Ref="1" FirstByte="41"/>
+<DataItem Name="AM2 Field mean" Ref="1" FirstByte="40"/>
+<DataItem Name="FM Memory 3 Frequency Tune" Ref="1" FirstByte="17"/>
+<DataItem Name="FM Memory 2 Frequency Tune" Ref="1" FirstByte="12"/>
+<DataItem Name="FM Memory 1 Frequency Tune" Ref="1" FirstByte="7"/>
+<DataItem Name="FM Memory 4 Frequency Tune" Ref="1" FirstByte="22"/>
+<DataItem Name="FM Memory 5 Frequency Tune" Ref="1" FirstByte="27"/>
+<DataItem Name="AM Memory 3 Frequency Tune" Ref="1" FirstByte="42"/>
+<DataItem Name="AM Memory 2 Frequency Tune" Ref="1" FirstByte="37"/>
+<DataItem Name="AM Memory 1 Frequency Tune" Ref="1" FirstByte="32"/>
+<DataItem Name="AM Memory 4 Frequency Tune" Ref="1" FirstByte="47"/>
+<DataItem Name="AM Memory 5 Frequency Tune" Ref="1" FirstByte="52"/>
+<DataItem Name="AM1 Field min" Ref="1" FirstByte="34"/>
+<DataItem Name="AM1 Field max" Ref="1" FirstByte="36"/>
+<DataItem Name="AM1 Field mean" Ref="1" FirstByte="35"/>
+<DataItem Name="AM3 Field min" Ref="1" FirstByte="44"/>
+<DataItem Name="AM3 Field max" Ref="1" FirstByte="46"/>
+<DataItem Name="AM3 Field mean" Ref="1" FirstByte="45"/>
+<DataItem Name="AM4 Field min" Ref="1" FirstByte="49"/>
+<DataItem Name="AM4 Field max" Ref="1" FirstByte="51"/>
+<DataItem Name="AM4 Field mean" Ref="1" FirstByte="50"/>
+<DataItem Name="AM5 Field min" Ref="1" FirstByte="54"/>
+<DataItem Name="AM5 Field max" Ref="1" FirstByte="56"/>
+<DataItem Name="AM5 Field mean" Ref="1" FirstByte="55"/>
+<DataItem Name="FM1 Field min" Ref="1" FirstByte="9"/>
+<DataItem Name="FM1 Field max" Ref="1" FirstByte="11"/>
+<DataItem Name="FM1 Field mean" Ref="1" FirstByte="10"/>
+<DataItem Name="FM2 Field min" Ref="1" FirstByte="14"/>
+<DataItem Name="FM2 Field max" Ref="1" FirstByte="16"/>
+<DataItem Name="FM2 Field mean" Ref="1" FirstByte="15"/>
+<DataItem Name="FM3 Field min" Ref="1" FirstByte="19"/>
+<DataItem Name="FM3 Field max" Ref="1" FirstByte="21"/>
+<DataItem Name="FM3 Field mean" Ref="1" FirstByte="20"/>
+<DataItem Name="FM4 Field min" Ref="1" FirstByte="24"/>
+<DataItem Name="FM4 Field max" Ref="1" FirstByte="26"/>
+<DataItem Name="FM4 Field mean" Ref="1" FirstByte="25"/>
+<DataItem Name="FM5 Field min" Ref="1" FirstByte="29"/>
+<DataItem Name="FM5 Field max" Ref="1" FirstByte="31"/>
+<DataItem Name="FM5 Field mean" Ref="1" FirstByte="30"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="RadioNR">
+
+<Screen Name="System Tracability" Color="16711680" WindowState="0" Width="9000" Height="2820">
+
+<Label Text="Semaine de production" Color="16776960" Alignment="0">
+<Rectangle Left="1320" Top="1080" Height="300" Width="2708"/>
+<Font Name="Arial Black" Size=" 10" Bold="0" Italic="1" Color="0"/></Label>
+<Label Text="Numero de série" Color="16776960" Alignment="0">
+<Rectangle Left="1320" Top="1680" Height="300" Width="2865"/>
+<Font Name="Arial Black" Size=" 10" Bold="0" Italic="1" Color="0"/></Label>
+<Label Text="Pré Code" Color="16776960" Alignment="0">
+<Rectangle Left="1320" Top="2280" Height="300" Width="2708"/>
+<Font Name="Arial Black" Size=" 10" Bold="0" Italic="1" Color="0"/></Label>
+<Label Text="TRACABILITE" Color="16711680" Alignment="2">
+<Rectangle Left="2880" Top="240" Height="300" Width="2205"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="250" RequestName="System traceability"/>
+
+<Display Width="0" Color="13619151" DataName="traceability week of production" RequestName="System traceability">
+<Rectangle Left="3960" Top="1080" Height="330" Width="2775"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="13619151" DataName="traceability serial number" RequestName="System traceability">
+<Rectangle Left="3960" Top="1680" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="13619151" DataName="Pre Code Radio" RequestName="System traceability">
+<Rectangle Left="3960" Top="2280" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="AM/FM Reception level" Color="4194432" WindowState="0" Width="10380" Height="11700">
+
+<Label Text="Niveau de réception AM / FM" Color="4194432" Alignment="0">
+<Rectangle Left="3360" Top="360" Height="360" Width="3000"/>
+<Font Name="Palatino Linotype" Size=" 14" Bold="1" Italic="0" Color="16777215"/></Label>
+
+
+<Display Width="1580" Color="8454143" DataName="Frequency Range" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="1200" Height="300" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1580" Color="8454143" DataName="Frequency Tune" RequestName="AM/FM Reception level">
+<Rectangle Left="3600" Top="1200" Height="300" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1655" Color="8454143" DataName="Level Field" RequestName="AM/FM Reception level">
+<Rectangle Left="6840" Top="1200" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="16777215" DataName="FM Memory 1 Frequency Tune" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="1800" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="FM1 Field min" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="2520" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="16777215" DataName="FM1 Field mean" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="2160" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="FM1 Field max" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="2880" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="FM Memory 2 Frequency Tune" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="3480" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2885" Color="16777215" DataName="FM2 Field min" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="4200" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="FM2 Field mean" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="3840" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2900" Color="16777215" DataName="FM2 Field max" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="4560" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="16777215" DataName="FM Memory 3 Frequency Tune" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="5160" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="FM3 Field min" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="5880" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="16777215" DataName="FM3 Field mean" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="5520" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="FM3 Field max" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="6240" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2885" Color="16777215" DataName="FM Memory 4 Frequency Tune" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="6840" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2900" Color="16777215" DataName="FM4 Field min" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="7560" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2900" Color="16777215" DataName="FM4 Field mean" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="7200" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2895" Color="16777215" DataName="FM4 Field max" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="7920" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2930" Color="16777215" DataName="FM Memory 5 Frequency Tune" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="8520" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2930" Color="16777215" DataName="FM5 Field min" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="9240" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2930" Color="16777215" DataName="FM5 Field mean" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="8880" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2945" Color="16777215" DataName="FM5 Field max" RequestName="AM/FM Reception level">
+<Rectangle Left="240" Top="9600" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="16777215" DataName="AM Memory 1 Frequency Tune" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="1800" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="16777215" DataName="AM1 Field min" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="2520" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="16777215" DataName="AM1 Field mean" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="2160" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="16777215" DataName="AM1 Field max" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="2880" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="AM Memory 2 Frequency Tune" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="3480" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="AM2 Field min" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="3840" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="AM2 Field mean" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="4200" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2885" Color="16777215" DataName="AM2 Field max" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="4560" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="AM Memory 3 Frequency Tune" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="5160" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="AM3 Field min" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="5520" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="AM3 Field mean" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="5880" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2885" Color="16777215" DataName="AM3 Field max" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="6240" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="AM Memory 4 Frequency Tune" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="6840" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="AM4 Field mean" RequestName="AM/FM Reception level">
+<Rectangle Left="1215" Top="12255" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="AM4 Field max" RequestName="AM/FM Reception level">
+<Rectangle Left="1215" Top="12555" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="AM Memory 5 Frequency Tune" RequestName="AM/FM Reception level">
+<Rectangle Left="1215" Top="12855" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="AM5 Field min" RequestName="AM/FM Reception level">
+<Rectangle Left="1215" Top="13155" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="AM5 Field mean" RequestName="AM/FM Reception level">
+<Rectangle Left="1215" Top="13455" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="AM5 Field max" RequestName="AM/FM Reception level">
+<Rectangle Left="1215" Top="13755" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2885" Color="16777215" DataName="AM4 Field max" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="7920" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2885" Color="16777215" DataName="AM Memory 5 Frequency Tune" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="8520" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2885" Color="16777215" DataName="AM5 Field min" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="9240" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2885" Color="16777215" DataName="AM5 Field mean" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="8880" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2900" Color="16777215" DataName="AM5 Field max" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="9600" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2885" Color="16777215" DataName="AM4 Field min" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="7560" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2885" Color="16777215" DataName="AM4 Field mean" RequestName="AM/FM Reception level">
+<Rectangle Left="5400" Top="7200" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Identification" Color="65535" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Identification" Color="65535" Alignment="0">
+<Rectangle Left="3360" Top="120" Height="300" Width="2415"/>
+<Font Name="MS Serif" Size=" 14" Bold="1" Italic="0" Color="0"/></Label>
+
+
+<Display Width="2000" Color="13619151" DataName="Ident PART" RequestName="Identification">
+<Rectangle Left="1440" Top="720" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="13619151" DataName="Ident DIAGNOSIS" RequestName="Identification">
+<Rectangle Left="1440" Top="1200" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="13619151" DataName="Ident supplier" RequestName="Identification">
+<Rectangle Left="1440" Top="1680" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="13619151" DataName="Ident Hardware" RequestName="Identification">
+<Rectangle Left="1440" Top="2160" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="13619151" DataName="Ident Software" RequestName="Identification">
+<Rectangle Left="1440" Top="2640" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="13619151" DataName="Ident release" RequestName="Identification">
+<Rectangle Left="1440" Top="3120" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="13619151" DataName="Ident Calibration" RequestName="Identification">
+<Rectangle Left="1440" Top="3600" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="13619151" DataName="Ident car maker" RequestName="Identification">
+<Rectangle Left="1440" Top="4080" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

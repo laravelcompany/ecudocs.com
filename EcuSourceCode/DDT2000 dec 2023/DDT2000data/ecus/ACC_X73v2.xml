@@ -1,0 +1,3371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<ddt:Target Name="ACC X73 v2" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" upload="4/28/04" href="ACC_X73v2.xml" email="jean-paul.jarrix@renault.com"><Description><![CDATA[ACC Bosch
+Projet:  X73 phase 1 et phase 2 - diagnostic série
+
+diagnostic version 2 (avril 2004) :
+- mise à jour configuration SPU & RPU
+- ajout du service contexte de panne (Freeze frame)
+
+spec diag version 1.2 (octobre 2002)
+Sce 65630 - JP Jarrix (57749)
+jean-paul.jarrix@renault.com]]></Description>
+<Projects xmlns=""><x73/></Projects><Function Name="ACC" Address="11"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation/>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<K BaudRate="10400">
+<KWP Multipoint="0">
+<FastInit><KW1 Value="241"/>
+<KW2 Value="11"/></FastInit>
+</KWP>
+<InterByte Delay="0"/>
+<ReplyToRequest Delay="5"/>
+<RequestToReply Timeout="300"/>
+<TesterPresent Delay="3000"/>
+<OnError Delay="300"/>
+</K>
+<AutoIdents>
+<AutoIdent DiagVersion="4" Supplier="037" Soft="0757" Version="00B0"/><AutoIdent DiagVersion="4" Supplier="037" Soft="0757" Version="00C0"/><AutoIdent DiagVersion="4" Supplier="037" Soft="9999" Version="00D0"/></AutoIdents>
+<Datas>
+
+<Data Name="ACC absent">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Angle quality objet_1">
+<Bits signed="1">
+<Scaled DivideBy=" 128"/>
+</Bits>
+</Data>
+<Data Name="Angle quality objet_2">
+<Bits signed="1">
+<Scaled DivideBy=" 128"/>
+</Bits>
+</Data>
+<Data Name="BB number SPU">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="BB-number RPU">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="BVA absent - panne confirmée">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="BVA absent - panne présente">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 1">
+<Bits count="16">
+<List>
+<Item Value="20672" Text="sous-tension"/>
+<Item Value="20673" Text="surtension"/>
+<Item Value="23040" Text="défaut  interne hardware"/>
+<Item Value="23041" Text="défaut température SCU"/>
+<Item Value="23072" Text="défaut hardware CAN"/>
+<Item Value="23088" Text="timeout trame INJ"/>
+<Item Value="23089" Text="timeout trame ESP"/>
+<Item Value="23090" Text="timeout trame BVA"/>
+<Item Value="23091" Text="timeout trame Tableau de Bord"/>
+<Item Value="23092" Text="timeout trame UCH"/>
+<Item Value="23104" Text="plausibilité données INJ"/>
+<Item Value="23105" Text="plausibilité données ESP"/>
+<Item Value="23106" Text="plausibilité données BVA"/>
+<Item Value="23107" Text="plausibilité données TdB"/>
+<Item Value="23115" Text="plausibilité données EEPROM"/>
+<Item Value="23116" Text="accél véhicule en action moteur"/>
+<Item Value="23117" Text="accèl véhicule en action freins"/>
+<Item Value="23120" Text="données indisponibles INJ"/>
+<Item Value="23121" Text="données indisponibles ESP"/>
+<Item Value="23122" Text="données indisponibles BVA"/>
+<Item Value="23123" Text="donnée indisponible TdB"/>
+<Item Value="23130" Text="donnée indisponible sur microswitch"/>
+<Item Value="23131" Text="donnée indisponible cluster"/>
+<Item Value="23132" Text="donnée indisponible sur filament feu stop ou fusib"/>
+<Item Value="23133" Text="donnée indisponible sur contact feu stop"/>
+<Item Value="23134" Text="donnée indisponible sur touche au volant"/>
+<Item Value="23136" Text="acquittement ACC par sous-systèmes"/>
+<Item Value="23137" Text="status ACC incohérent"/>
+<Item Value="23152" Text="offset vitesse de lacet"/>
+<Item Value="23153" Text="radar désaligné en azimut"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 2">
+<Bits count="16">
+<List>
+<Item Value="20672" Text="sous-tension"/>
+<Item Value="20673" Text="surtension"/>
+<Item Value="23040" Text="défaut  interne hardware"/>
+<Item Value="23041" Text="défaut température SCU"/>
+<Item Value="23072" Text="défaut hardware CAN"/>
+<Item Value="23088" Text="timeout trame INJ"/>
+<Item Value="23089" Text="timeout trame ESP"/>
+<Item Value="23090" Text="timeout trame BVA"/>
+<Item Value="23091" Text="timeout trame Tableau de Bord"/>
+<Item Value="23092" Text="timeout trame UCH"/>
+<Item Value="23104" Text="plausibilité données INJ"/>
+<Item Value="23105" Text="plausibilité données ESP"/>
+<Item Value="23106" Text="plausibilité données BVA"/>
+<Item Value="23107" Text="plausibilité données TdB"/>
+<Item Value="23115" Text="plausibilité données EEPROM"/>
+<Item Value="23116" Text="accél véhicule en action moteur"/>
+<Item Value="23117" Text="accèl véhicule en action freins"/>
+<Item Value="23120" Text="données indisponibles INJ"/>
+<Item Value="23121" Text="données indisponibles ESP"/>
+<Item Value="23122" Text="données indisponibles BVA"/>
+<Item Value="23123" Text="donnée indisponible TdB"/>
+<Item Value="23130" Text="donnée indisponible sur microswitch"/>
+<Item Value="23131" Text="donnée indisponible cluster"/>
+<Item Value="23132" Text="défaut filament feu stop ou fusible"/>
+<Item Value="23133" Text="donnée indisponible sur contact feu stop"/>
+<Item Value="23134" Text="donnée indisponible sur touche au volant"/>
+<Item Value="23136" Text="acquittement ACC par sous-systèmes"/>
+<Item Value="23137" Text="status ACC incohérent"/>
+<Item Value="23152" Text="offset vitesse de lacet"/>
+<Item Value="23153" Text="radar désaligné en azimut"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 3">
+<Bits count="16">
+<List>
+<Item Value="20672" Text="sous-tension"/>
+<Item Value="20673" Text="surtension"/>
+<Item Value="23040" Text="défaut  interne hardware"/>
+<Item Value="23041" Text="défaut température SCU"/>
+<Item Value="23072" Text="défaut hardware CAN"/>
+<Item Value="23088" Text="timeout trame INJ"/>
+<Item Value="23089" Text="timeout trame ESP"/>
+<Item Value="23090" Text="timeout trame BVA"/>
+<Item Value="23091" Text="timeout trame Tableau de Bord"/>
+<Item Value="23092" Text="timeout trame UCH"/>
+<Item Value="23104" Text="plausibilité données INJ"/>
+<Item Value="23105" Text="plausibilité données ESP"/>
+<Item Value="23106" Text="plausibilité données BVA"/>
+<Item Value="23107" Text="plausibilité données TdB"/>
+<Item Value="23115" Text="plausibilité données EEPROM"/>
+<Item Value="23116" Text="accél véhicule en action moteur"/>
+<Item Value="23117" Text="accèl véhicule en action freins"/>
+<Item Value="23120" Text="données indisponibles INJ"/>
+<Item Value="23121" Text="données indisponibles ESP"/>
+<Item Value="23122" Text="données indisponibles BVA"/>
+<Item Value="23123" Text="donnée indisponible TdB"/>
+<Item Value="23130" Text="donnée indisponible sur microswitch"/>
+<Item Value="23131" Text="donnée indisponible cluster"/>
+<Item Value="23132" Text="défaut filament feu stop ou fusible"/>
+<Item Value="23133" Text="donnée indisponible sur contact feu stop"/>
+<Item Value="23134" Text="donnée indisponible sur touche au volant"/>
+<Item Value="23136" Text="acquittement ACC par sous-systèmes"/>
+<Item Value="23137" Text="status ACC incohérent"/>
+<Item Value="23152" Text="offset vitesse de lacet"/>
+<Item Value="23153" Text="radar désaligné en azimut"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 4">
+<Bits count="16">
+<List>
+<Item Value="20672" Text="sous-tension"/>
+<Item Value="20673" Text="surtension"/>
+<Item Value="23040" Text="défaut  interne hardware"/>
+<Item Value="23041" Text="défaut température SCU"/>
+<Item Value="23072" Text="défaut hardware CAN"/>
+<Item Value="23088" Text="timeout trame INJ"/>
+<Item Value="23089" Text="timeout trame ESP"/>
+<Item Value="23090" Text="timeout trame BVA"/>
+<Item Value="23091" Text="timeout trame Tableau de Bord"/>
+<Item Value="23092" Text="timeout trame UCH"/>
+<Item Value="23104" Text="plausibilité données INJ"/>
+<Item Value="23105" Text="plausibilité données ESP"/>
+<Item Value="23106" Text="plausibilité données BVA"/>
+<Item Value="23107" Text="plausibilité données TdB"/>
+<Item Value="23115" Text="plausibilité données EEPROM"/>
+<Item Value="23116" Text="accél véhicule en action moteur"/>
+<Item Value="23117" Text="accèl véhicule en action freins"/>
+<Item Value="23120" Text="données indisponibles INJ"/>
+<Item Value="23121" Text="données indisponibles ESP"/>
+<Item Value="23122" Text="données indisponibles BVA"/>
+<Item Value="23123" Text="donnée indisponible TdB"/>
+<Item Value="23130" Text="donnée indisponible sur microswitch"/>
+<Item Value="23131" Text="donnée indisponible cluster"/>
+<Item Value="23132" Text="défaut filament feu stop ou fusible"/>
+<Item Value="23133" Text="donnée indisponible sur contact feu stop"/>
+<Item Value="23134" Text="donnée indisponible sur touche au volant"/>
+<Item Value="23136" Text="acquittement ACC par sous-systèmes"/>
+<Item Value="23137" Text="status ACC incohérent"/>
+<Item Value="23152" Text="offset vitesse de lacet"/>
+<Item Value="23153" Text="radar désaligné en azimut"/></List>
+</Bits>
+</Data>
+<Data Name="DTC 5">
+<Bits count="16">
+<List>
+<Item Value="20672" Text="sous-tension"/>
+<Item Value="20673" Text="surtension"/>
+<Item Value="23040" Text="défaut  interne hardware"/>
+<Item Value="23041" Text="défaut température SCU"/>
+<Item Value="23072" Text="défaut hardware CAN"/>
+<Item Value="23088" Text="timeout trame INJ"/>
+<Item Value="23089" Text="timeout trame ESP"/>
+<Item Value="23090" Text="timeout trame BVA"/>
+<Item Value="23091" Text="timeout trame Tableau de Bord"/>
+<Item Value="23092" Text="timeout trame UCH"/>
+<Item Value="23104" Text="plausibilité données INJ"/>
+<Item Value="23105" Text="plausibilité données ESP"/>
+<Item Value="23106" Text="plausibilité données BVA"/>
+<Item Value="23107" Text="plausibilité données TdB"/>
+<Item Value="23115" Text="plausibilité données EEPROM"/>
+<Item Value="23116" Text="accél véhicule en action moteur"/>
+<Item Value="23117" Text="accèl véhicule en action freins"/>
+<Item Value="23120" Text="données indisponibles INJ"/>
+<Item Value="23121" Text="données indisponibles ESP"/>
+<Item Value="23122" Text="données indisponibles BVA"/>
+<Item Value="23123" Text="donnée indisponible TdB"/>
+<Item Value="23130" Text="donnée indisponible sur microswitch"/>
+<Item Value="23131" Text="donnée indisponible cluster"/>
+<Item Value="23132" Text="défaut filament feu stop ou fusible"/>
+<Item Value="23133" Text="donnée indisponible sur contact feu stop"/>
+<Item Value="23134" Text="donnée indisponible sur touche au volant"/>
+<Item Value="23136" Text="acquittement ACC par sous-systèmes"/>
+<Item Value="23137" Text="status ACC incohérent"/>
+<Item Value="23152" Text="offset vitesse de lacet"/>
+<Item Value="23153" Text="radar désaligné en azimut"/></List>
+</Bits>
+</Data>
+<Data Name="DV-Plausibility objet_1">
+<Bits>
+<Scaled Step=" 64" DivideBy=" 128"/>
+</Bits>
+</Data>
+<Data Name="DV-Plausibility objet_2">
+<Bits>
+<Scaled Step=" 64" DivideBy=" 128"/>
+</Bits>
+</Data>
+<Data Name="Distance dx objet_1">
+<Bits count="16">
+<Scaled Unit="m" Step=" 256" DivideBy=" 32768"/>
+</Bits>
+</Data>
+<Data Name="Distance dx objet_2">
+<Bits count="16">
+<Scaled Unit="m" Step=" 256" DivideBy=" 32768"/>
+</Bits>
+</Data>
+<Data Name="Distance max">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Distance min">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="ESP absent - panne confirmée">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="ESP absent - panne présente">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="ESP désactivé">
+<Bits count="1">
+<List>
+<Item Value="0" Text="ESP ON"/>
+<Item Value="1" Text="ESP désactivé par le conducteur"/></List>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Bits count="16">
+<List>
+<Item Value="20672" Text="sous-tension"/>
+<Item Value="20673" Text="surtension"/>
+<Item Value="23040" Text="défaut interne hardware"/>
+<Item Value="23041" Text="défaut température SCU"/>
+<Item Value="23072" Text="défaut hardware CAN"/>
+<Item Value="23088" Text="timeout trame INJ"/>
+<Item Value="23089" Text="timeout trame ESP"/>
+<Item Value="23090" Text="timeout trame BVA"/>
+<Item Value="23091" Text="timeout trame Tableau de Bord"/>
+<Item Value="23092" Text="timeout trame UCH"/>
+<Item Value="23104" Text="plausibilité données INJ"/>
+<Item Value="23105" Text="plausibilité données ESP"/>
+<Item Value="23106" Text="plausibilité données BVA"/>
+<Item Value="23107" Text="plausibilité données TdB"/>
+<Item Value="23115" Text="plausibilité données EEPROM"/>
+<Item Value="23116" Text="accél véhicule en action moteur"/>
+<Item Value="23117" Text="accèl véhicule en action freins"/>
+<Item Value="23120" Text="données indisponibles INJ"/>
+<Item Value="23121" Text="données indisponibles ESP"/>
+<Item Value="23122" Text="données indisponibles BVA"/>
+<Item Value="23123" Text="donnée indisponible TdB"/>
+<Item Value="23130" Text="donnée indisponible sur microswitch"/>
+<Item Value="23131" Text="donnée indisponible cluster"/>
+<Item Value="23132" Text="donnée indisponible sur filament feu stop ou fusib"/>
+<Item Value="23133" Text="donnée indisponible sur contact feu stop"/>
+<Item Value="23134" Text="donnée indisponible sur touche au volant"/>
+<Item Value="23136" Text="acquittement ACC par sous-systèmes"/>
+<Item Value="23137" Text="status ACC incohérent"/>
+<Item Value="23152" Text="offset vitesse de lacet"/>
+<Item Value="23153" Text="radar désaligné en azimut"/></List>
+</Bits>
+</Data>
+<Data Name="INJ absent - panne confirmée">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="INJ absent - panne présente">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="NDTC">
+<Mnemonic>#DTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Nbre de DTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="N° HW Bosch">
+<Bytes count="5"/>
+</Data>
+<Data Name="N° calibration">
+<Bytes count="1"/>
+</Data>
+<Data Name="N° révision SW Bosch">
+<Bytes count="1"/>
+</Data>
+<Data Name="N° version SW Bosch">
+<Bytes count="1"/>
+</Data>
+<Data Name="Position latérale objet_1">
+<Bits count="16" signed="1">
+<Scaled Unit="m" Step=" 128" DivideBy=" 32768"/>
+</Bits>
+</Data>
+<Data Name="Position latérale objet_2">
+<Bits count="16" signed="1">
+<Scaled Unit="m" Step=" 128" DivideBy=" 32768"/>
+</Bits>
+</Data>
+<Data Name="Session Name">
+<Bits>
+<List>
+<Item Value="132" Text="manufacture"/>
+<Item Value="134" Text="developpement"/>
+<Item Value="192" Text="Renault"/></List>
+</Bits>
+</Data>
+<Data Name="Status 1">
+<Bits>
+<List>
+<Item Value="0" Text="pas de panne"/>
+<Item Value="32" Text="panne présente"/>
+<Item Value="38" Text="panne présente - Incohérence"/>
+<Item Value="39" Text="panne présente - Pas de signal"/>
+<Item Value="64" Text="panne mémorisée"/>
+<Item Value="70" Text="panne mémorisée - Incohérence"/>
+<Item Value="71" Text="panne mémorisée - Pas de signal"/>
+<Item Value="96" Text="panne présente et mémorisée"/>
+<Item Value="102" Text="panne présente et mémorisée - Incohérence"/>
+<Item Value="103" Text="panne présente et mémorisée - Pas de signal"/></List>
+</Bits>
+</Data>
+<Data Name="Status 2">
+<Bits>
+<List>
+<Item Value="0" Text="pas de défaut"/>
+<Item Value="32" Text="panne présente"/>
+<Item Value="38" Text="panne présente - Incohérence"/>
+<Item Value="39" Text="panne présente - Pas de signal"/>
+<Item Value="64" Text="panne mémorisée"/>
+<Item Value="70" Text="panne mémorisée - Incohérence"/>
+<Item Value="71" Text="panne mémorisée - Pas de signal"/>
+<Item Value="96" Text="panne présente et mémorisée"/>
+<Item Value="102" Text="panne présente et mémorisée - Incohérence"/>
+<Item Value="103" Text="panne présente et mémorisée - Pas de signal"/></List>
+</Bits>
+</Data>
+<Data Name="Status 3">
+<Bits>
+<List>
+<Item Value="0" Text="pas de défaut"/>
+<Item Value="32" Text="panne présente"/>
+<Item Value="38" Text="panne présente - Incohérence"/>
+<Item Value="39" Text="panne présente - Pas de signal"/>
+<Item Value="64" Text="panne mémorisée"/>
+<Item Value="70" Text="panne mémorisée - Incohérence"/>
+<Item Value="71" Text="panne mémorisée - Pas de signal"/>
+<Item Value="96" Text="panne présente et mémorisée"/>
+<Item Value="102" Text="panne présente et mémorisée - Incohérence"/>
+<Item Value="103" Text="panne présente et mémorisée - Pas de signal"/></List>
+</Bits>
+</Data>
+<Data Name="Status 4">
+<Bits>
+<List>
+<Item Value="0" Text="pas de défaut"/>
+<Item Value="32" Text="panne présente"/>
+<Item Value="38" Text="panne présente - Incohérence"/>
+<Item Value="39" Text="panne présente - Pas de signal"/>
+<Item Value="64" Text="panne mémorisée"/>
+<Item Value="70" Text="panne mémorisée - Incohérence"/>
+<Item Value="71" Text="panne mémorisée - Pas de signal"/>
+<Item Value="96" Text="panne présente et mémorisée"/>
+<Item Value="102" Text="panne présente et mémorisée - Incohérence"/>
+<Item Value="103" Text="panne présente et mémorisée - Pas de signal"/></List>
+</Bits>
+</Data>
+<Data Name="Status 5">
+<Bits>
+<List>
+<Item Value="0" Text="pas de défaut"/>
+<Item Value="32" Text="panne présente"/>
+<Item Value="38" Text="panne présente - Incohérence"/>
+<Item Value="39" Text="panne présente - Pas de signal"/>
+<Item Value="64" Text="panne mémorisée"/>
+<Item Value="70" Text="panne mémorisée - Incohérence"/>
+<Item Value="71" Text="panne mémorisée - Pas de signal"/>
+<Item Value="96" Text="panne présente et mémorisée"/>
+<Item Value="102" Text="panne présente et mémorisée - Incohérence"/>
+<Item Value="103" Text="panne présente et mémorisée - Pas de signal"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCheckSumTestSPU">
+<Bits>
+<List>
+<Item Value="0" Text="test OK"/>
+<Item Value="255" Text="test NOK"/></List>
+</Bits>
+</Data>
+<Data Name="StatusChecksumTestRPU">
+<Bits>
+<List>
+<Item Value="0" Text="test OK"/>
+<Item Value="255" Text="test NOK"/></List>
+</Bits>
+</Data>
+<Data Name="Statut panne">
+<Bits>
+<List>
+<Item Value="0" Text="pas de panne"/>
+<Item Value="32" Text="panne présente"/>
+<Item Value="38" Text="panne présente - Incohérence"/>
+<Item Value="39" Text="panne présente - Pas de signal"/>
+<Item Value="64" Text="panne mémorisée"/>
+<Item Value="70" Text="panne mémorisée - Incohérence"/>
+<Item Value="71" Text="panne mémorisée - Pas de signal"/>
+<Item Value="96" Text="panne présente et mémorisée"/>
+<Item Value="102" Text="panne présente et mémorisée - Incohérence"/>
+<Item Value="103" Text="panne présente et mémorisée - Pas de signal"/></List>
+</Bits>
+</Data>
+<Data Name="TdB absent - panne confirmée">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="TdB absent - panne présente">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="UCH absent - panne confirmée">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="UCH absent - panne présente">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Vitesse max">
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Vitesse min">
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Vitesse relative objet_1">
+<Bits count="16" signed="1">
+<Scaled Unit="m/s" Step=" 256" DivideBy=" 32768"/>
+</Bits>
+</Data>
+<Data Name="Vitesse relative objet_2">
+<Bits count="16" signed="1">
+<Scaled Unit="m/s" Step=" 256" DivideBy=" 32768"/>
+</Bits>
+</Data>
+<Data Name="accélération longitudinale">
+<Bits count="16" signed="1">
+<Scaled Unit="m/s2" DivideBy=" 2048"/>
+</Bits>
+</Data>
+<Data Name="accélération objet 1">
+<Bits count="16" signed="1">
+<Scaled Unit="m/s2" DivideBy=" 2048"/>
+</Bits>
+</Data>
+<Data Name="accélération objet 2">
+<Bits count="16" signed="1">
+<Scaled Unit="m/s2" DivideBy=" 2048"/>
+</Bits>
+</Data>
+<Data Name="action sur touche au volant">
+<Bits count="4">
+<List>
+<Item Value="0" Text="pas appui sur les touches"/>
+<Item Value="1" Text="appui court sur touche +"/>
+<Item Value="3" Text="appui long sur touche +"/>
+<Item Value="5" Text="appui court sur touche -"/>
+<Item Value="6" Text="appui sur touche R"/>
+<Item Value="7" Text="appui long sur touche -"/>
+<Item Value="12" Text="appui sur touche O"/>
+<Item Value="15" Text="valeur invalide"/></List>
+</Bits>
+</Data>
+<Data Name="amplitude ampx objet_1">
+<Bits count="16">
+<Scaled DivideBy=" 32768"/>
+</Bits>
+</Data>
+<Data Name="amplitude ampx objet_2">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="angle au volant">
+<Bits count="16" signed="1">
+<Scaled Unit="rad" DivideBy=" 1024"/>
+</Bits>
+</Data>
+<Data Name="angle de poussée">
+<Bytes count="2"/>
+</Data>
+<Data Name="année de production">
+<Bytes count="1"/>
+</Data>
+<Data Name="année dernière intervention">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="année dernière intervention APV">
+<Bits>
+<List>
+<Item Value="0" Text="2000"/>
+<Item Value="1" Text="2001"/>
+<Item Value="2" Text="2002"/>
+<Item Value="3" Text="2003"/>
+<Item Value="4" Text="2004"/>
+<Item Value="5" Text="2005"/>
+<Item Value="6" Text="2006"/>
+<Item Value="7" Text="2007"/>
+<Item Value="8" Text="2008"/>
+<Item Value="9" Text="2009"/></List>
+</Bits>
+</Data>
+<Data Name="année production UCE">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="année production VH">
+<Bits>
+<List>
+<Item Value="0" Text="2000"/>
+<Item Value="1" Text="2001"/>
+<Item Value="2" Text="2002"/>
+<Item Value="3" Text="2003"/>
+<Item Value="4" Text="2004"/>
+<Item Value="5" Text="2005"/>
+<Item Value="6" Text="2006"/>
+<Item Value="7" Text="2007"/>
+<Item Value="8" Text="2008"/>
+<Item Value="9" Text="2009"/></List>
+</Bits>
+</Data>
+<Data Name="année production véhicule">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="bus off - panne confirmée">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="bus off - panne présente">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="code ITG">
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="code MPR">
+<Bytes count="5"/>
+</Data>
+<Data Name="code diagnostic">
+<Bytes count="1"/>
+</Data>
+<Data Name="compteur BVA absent">
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="compteur ESP absent">
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="compteur INJ absent">
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="compteur TdB absent">
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="compteur UCH absent">
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="compteur apparition">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="compteur bus off">
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="compteur module muet">
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="couple moteur effectif">
+<Bits count="16" signed="1">
+<Scaled Unit="Nm" DivideBy=" 32"/>
+</Bits>
+</Data>
+<Data Name="couple résistant">
+<Bits count="16" signed="1">
+<Scaled Unit="Nm" DivideBy=" 32"/>
+</Bits>
+</Data>
+<Data Name="day_production">
+<Bytes count="1"/>
+</Data>
+<Data Name="degré de désalignement">
+<Bits count="2">
+<List>
+<Item Value="0" Text="désalignement inférieur à 0,3°"/>
+<Item Value="1" Text="désalignement compris entre 0,3° et 0,6°"/>
+<Item Value="2" Text="désalignement compris entre 0,6° et 0,9°"/>
+<Item Value="3" Text="désalignement supérieur à 0,9°"/></List>
+</Bits>
+</Data>
+<Data Name="delta vitesse roues AR">
+<Bits count="16" signed="1">
+<Scaled Unit="m/s" DivideBy=" 256"/>
+</Bits>
+</Data>
+<Data Name="delta vitesse roues AV">
+<Bits count="16" signed="1">
+<Scaled Unit="m/s" DivideBy=" 256"/>
+</Bits>
+</Data>
+<Data Name="distance objet 1">
+<Bits count="16">
+<Scaled Unit="m" DivideBy=" 128"/>
+</Bits>
+</Data>
+<Data Name="distance objet 2">
+<Bits count="16">
+<Scaled Unit="m" DivideBy=" 128"/>
+</Bits>
+</Data>
+<Data Name="désactivation du CAN par SPU">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="désalignement horizontal">
+<Bits signed="1">
+<Scaled Unit="°" Step=" .0278" Format="0.0000"/>
+</Bits>
+</Data>
+<Data Name="désalignement radar">
+<Bits signed="1">
+<Scaled Unit="°" Step=" .0278" Format="0.000"/>
+</Bits>
+</Data>
+<Data Name="désalignement vertical">
+<Bits signed="1">
+<Scaled Unit="°" Step=" .027976" Format="0.0000"/>
+</Bits>
+</Data>
+<Data Name="détection freinage conducteur">
+<Bits count="1">
+<List>
+<Item Value="0" Text="pas de freinage conducteur"/>
+<Item Value="1" Text="freinage conducteur"/></List>
+</Bits>
+</Data>
+<Data Name="faisceau 1">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="faisceau 2">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="faisceau 3">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="flash-block">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="fonction implémentée">
+<Bits>
+<List>
+<Item Value="16" Text="ACC BVA"/>
+<Item Value="21" Text="ACC BVA + ADAPT"/>
+<Item Value="80" Text="ACC BVM"/>
+<Item Value="85" Text="ACC BVM + ADAPT"/></List>
+</Bits>
+</Data>
+<Data Name="gain GMP">
+<Bits count="16">
+<Scaled Unit="N/Nm" DivideBy=" 512"/>
+</Bits>
+</Data>
+<Data Name="hardware number">
+<Bytes count="1"/>
+</Data>
+<Data Name="jour de production">
+<Bytes count="1"/>
+</Data>
+<Data Name="jour dernière intervention">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="jour dernière intervention APV">
+<Bits>
+<List>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/></List>
+</Bits>
+</Data>
+<Data Name="jour production UCE">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="jour production VH">
+<Bits>
+<List>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/></List>
+</Bits>
+</Data>
+<Data Name="jour production véhicule">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="lecture code VIN">
+<Bytes count="19" ascii="1"/>
+</Data>
+<Data Name="lecture configuration EOL">
+<Bits>
+<List>
+<Item Value="0" Text="seuil de vitesse"/>
+<Item Value="1" Text="seuil régime moteur"/></List>
+</Bits>
+</Data>
+<Data Name="lentille pas propre">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="lentille sale">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="libellé du défaut">
+<Bits count="16">
+<List>
+<Item Value="20672" Text="sous tension"><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 
+\par }
+]]></Item>
+<Item Value="20673" Text="surtension"/>
+<Item Value="23040" Text="défaut interne hardware"/>
+<Item Value="23041" Text="défaut température SCU"/>
+<Item Value="23056" Text="défaut interrupteur temps de suivi"/>
+<Item Value="23072" Text="défaut Hardware CAN"/>
+<Item Value="23088" Text="timeout trame INJ"/>
+<Item Value="23089" Text="timeout trame ESP"/>
+<Item Value="23090" Text="timeout trame BVA"/>
+<Item Value="23091" Text="timeout trame Tableau de Bord"/>
+<Item Value="23092" Text="timeout trame UCH"/>
+<Item Value="23104" Text="plausibilité données INJ"/>
+<Item Value="23105" Text="plausibilité données ESP"/>
+<Item Value="23106" Text="plausibilité données BVA"/>
+<Item Value="23107" Text="plausibilité données TdB"/>
+<Item Value="23115" Text="plausibilité données EEPROM"/>
+<Item Value="23116" Text="plausibilité accèl. en action moteur"/>
+<Item Value="23117" Text="plausibilité accèl. en action freins"/>
+<Item Value="23120" Text="données indisponibles INJ"/>
+<Item Value="23121" Text="données indisponibles ESP"/>
+<Item Value="23122" Text="données indisponibles BVA"/>
+<Item Value="23123" Text="donnée indisponible TdB"/>
+<Item Value="23130" Text="donnée indisponible microswitch booster"/>
+<Item Value="23131" Text="donnée indisponible cluster"/>
+<Item Value="23132" Text="défaillance filaments ou fusible feu stop"/>
+<Item Value="23133" Text="donnée indisponible contact feu stop  ABS"/>
+<Item Value="23134" Text="donnée indisponible touches au volant"/>
+<Item Value="23136" Text="acquittement ACC par sous-systèmes"/>
+<Item Value="23137" Text="état ACC incohérent"/>
+<Item Value="23152" Text="offset vitesse de lacet"/>
+<Item Value="23153" Text="radar désaligné en azimut"/></List>
+</Bits>
+</Data>
+<Data Name="longTermAdjustment">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="module muet - panne confirmée">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="module muet - panne présente">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="mois de production">
+<Bytes count="1"/>
+</Data>
+<Data Name="mois dernière intervention">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="mois dernière intervention APV">
+<Bits>
+<List>
+<Item Value="1" Text="janvier"/>
+<Item Value="2" Text="février"/>
+<Item Value="3" Text="mars"/>
+<Item Value="4" Text="avril"/>
+<Item Value="5" Text="mai"/>
+<Item Value="6" Text="juin"/>
+<Item Value="7" Text="juillet"/>
+<Item Value="8" Text="aout"/>
+<Item Value="9" Text="septembre"/>
+<Item Value="10" Text="octobre"/>
+<Item Value="11" Text="novembre"/>
+<Item Value="12" Text="décembre"/></List>
+</Bits>
+</Data>
+<Data Name="mois production UCE">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="mois production VH">
+<Bits>
+<List>
+<Item Value="1" Text="janvier"/>
+<Item Value="2" Text="février"/>
+<Item Value="3" Text="mars"/>
+<Item Value="4" Text="avril"/>
+<Item Value="5" Text="mai"/>
+<Item Value="6" Text="juin"/>
+<Item Value="7" Text="juillet"/>
+<Item Value="8" Text="aout"/>
+<Item Value="9" Text="septembre"/>
+<Item Value="10" Text="octobre"/>
+<Item Value="11" Text="novembre"/>
+<Item Value="12" Text="décembre"/></List>
+</Bits>
+</Data>
+<Data Name="mois production véhicule">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="month_production">
+<Bytes count="1"/>
+</Data>
+<Data Name="part-number Bosch">
+<Bytes count="5"/>
+</Data>
+<Data Name="part-number Renault">
+<Bytes count="5"/>
+</Data>
+<Data Name="patch RPU">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="patch SPU">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="plaus désalignement horizontal">
+<Bits>
+<Scaled DivideBy=" 256"/>
+</Bits>
+</Data>
+<Data Name="plaus désalignement vertical">
+<Bits>
+<Scaled DivideBy=" 256"/>
+</Bits>
+</Data>
+<Data Name="plausibilité 1">
+<Bits>
+<Scaled DivideBy=" 256"/>
+</Bits>
+</Data>
+<Data Name="plausibilité 2">
+<Bits>
+<Scaled DivideBy=" 256"/>
+</Bits>
+</Data>
+<Data Name="plausibilité amplitude">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="plausibilité distance">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="position dyc objet 1">
+<Bits count="16" signed="1">
+<Scaled Unit="m" DivideBy=" 128"/>
+</Bits>
+</Data>
+<Data Name="position dyc objet 2">
+<Bits count="16" signed="1">
+<Scaled Unit="m" DivideBy=" 128"/>
+</Bits>
+</Data>
+<Data Name="position dyv objet 1">
+<Bits count="16" signed="1">
+<Scaled Unit="m" DivideBy=" 128"/>
+</Bits>
+</Data>
+<Data Name="position dyv objet 2">
+<Bits count="16" signed="1">
+<Scaled Unit="m" DivideBy=" 128"/>
+</Bits>
+</Data>
+<Data Name="position interrupteur ACC">
+<Bits count="1">
+<List>
+<Item Value="0" Text="interrupteur sur position OFF ou LV"/>
+<Item Value="1" Text="interrupteur sur position ACC"/></List>
+</Bits>
+</Data>
+<Data Name="position pédale accélérateur">
+<Bits>
+<Scaled Unit="%" DivideBy=" 256"/>
+</Bits>
+</Data>
+<Data Name="recordvalue10_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue10_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue11_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue11_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue12_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue12_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue13_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue13_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue14_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue14_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue15_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue15_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue16_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue16_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue17_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue18_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue19_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue1_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue1_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue20_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue21_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue22_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue23_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue24_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue25_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue26_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue27_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue28_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue29_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue2_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue2_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue30_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue31_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue32_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue33_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue34_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue35_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue36_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue37_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue38_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue39_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue3_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue3_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue40_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue41_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue42_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue43_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue44_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue45_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue46_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue47_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue48_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue49_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue4_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue4_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue50_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue51_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue52_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue53_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue54_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue55_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue56_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue57_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue58_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue59_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue5_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue5_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue60_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue61_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue62_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue63_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue64_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue6_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue6_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue7_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue7_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue8_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue8_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue9_RPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="recordvalue9_SPU">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="revision-number RPU">
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="revision-number SPU">
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="régime moteur">
+<Bits count="16">
+<Scaled Unit="tr/mn" DivideBy=" 4"/>
+</Bits>
+</Data>
+<Data Name="serial number">
+<Bytes count="2"/>
+</Data>
+<Data Name="temps de suivi sélectionné">
+<Bits count="16">
+<Scaled Unit="s" DivideBy=" 2048" Format="0.0"/>
+</Bits>
+</Data>
+<Data Name="temps écoulé">
+<Bits count="16">
+<Scaled Unit="h" Step=" 15" DivideBy=" 120" Format="0000.000"/>
+</Bits>
+</Data>
+<Data Name="température extérieure">
+<Bits signed="1">
+<Scaled Unit="°"/>
+</Bits>
+</Data>
+<Data Name="température interne radar">
+<Bits signed="1">
+<Scaled Unit="°"/>
+</Bits>
+</Data>
+<Data Name="tension alimentation UCE">
+<Bits count="16">
+<Scaled Unit="V" Step=" .001" Format="00.000"/>
+</Bits>
+</Data>
+<Data Name="tension alimentation lors du défaut">
+<Bits>
+<Scaled Unit="V" Step=" .128" Format="00.000"/>
+</Bits>
+</Data>
+<Data Name="totalisateur km">
+<Bits count="16">
+<Scaled Unit="km" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="version UCE">
+<Bits>
+<List>
+<Item Value="160" Text="échantillon A"/>
+<Item Value="176" Text="échantillon B"/>
+<Item Value="177" Text="échantillon B1"/>
+<Item Value="178" Text="échantillon B2"/>
+<Item Value="192" Text="échantillon C"/>
+<Item Value="193" Text="échantillon C1"/>
+<Item Value="194" Text="échantillon C2"/>
+<Item Value="208" Text="échantillon D"/></List>
+</Bits>
+</Data>
+<Data Name="version messagerie CAN">
+<Bytes count="1"/>
+</Data>
+<Data Name="version-number RPU">
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="version-number SPU">
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="vitesse de lacet">
+<Bits count="16" signed="1">
+<Scaled Unit="rad/s" DivideBy=" 16384"/>
+</Bits>
+</Data>
+<Data Name="vitesse relative objet 1">
+<Bits count="16" signed="1">
+<Scaled Unit="m/s" DivideBy=" 256"/>
+</Bits>
+</Data>
+<Data Name="vitesse relative objet 2">
+<Bits count="16" signed="1">
+<Scaled Unit="m/s" DivideBy=" 256"/>
+</Bits>
+</Data>
+<Data Name="vitesse véhicule">
+<Bits count="16" signed="1">
+<Scaled Unit="m/s" DivideBy=" 256"/>
+</Bits>
+</Data>
+<Data Name="vitesse véhicule affichée">
+<Bits count="16" signed="1">
+<Scaled Unit="m/s" DivideBy=" 256"/>
+</Bits>
+</Data>
+<Data Name="year_production">
+<Bytes count="2"/>
+</Data>
+<Data Name="écriture angle de poussée">
+<Bits count="16">
+<List>
+<Item Value="0" Text="0 min"/>
+<Item Value="1" Text="1 min"/>
+<Item Value="2" Text="2 min"/>
+<Item Value="3" Text="3 min"/>
+<Item Value="4" Text="4 min"/>
+<Item Value="5" Text="5 min"/>
+<Item Value="6" Text="6 min"/>
+<Item Value="7" Text="7 min"/>
+<Item Value="8" Text="8 min"/>
+<Item Value="9" Text="9 min"/>
+<Item Value="65527" Text="- 9 min"/>
+<Item Value="65528" Text="- 8 min"/>
+<Item Value="65529" Text="- 7 min"/>
+<Item Value="65530" Text="- 6 min"/>
+<Item Value="65531" Text="- 5 min"/>
+<Item Value="65532" Text="- 4 min"/>
+<Item Value="65533" Text="- 3 min"/>
+<Item Value="65534" Text="- 2 min"/>
+<Item Value="65535" Text="- 1 min"/></List>
+</Bits>
+</Data>
+<Data Name="écriture checksum">
+<Bits>
+<List>
+<Item Value="0" Text="pas de désalignement"/>
+<Item Value="37" Text="checksum pour désalignement de 1°"/>
+<Item Value="73" Text="checksum pour désalignement de 2°"/></List>
+</Bits>
+</Data>
+<Data Name="écriture code VIN">
+<Bytes count="19" ascii="1"/>
+</Data>
+<Data Name="écriture configuration EOL">
+<Bits>
+<List>
+<Item Value="0" Text="seuil de vitesse"/>
+<Item Value="1" Text="seuil régime moteur"/></List>
+</Bits>
+</Data>
+<Data Name="écriture désalignement horizontal">
+<Bits>
+<List>
+<Item Value="0" Text="pas de désalignement"/>
+<Item Value="36" Text="désalignement de 1°"/>
+<Item Value="72" Text="désalignement de 2°"/></List>
+</Bits>
+</Data>
+<Data Name="état ACC">
+<Bits>
+<List>
+<Item Value="0" Text="ACC OFF"/>
+<Item Value="1" Text="ACC inactif"/>
+<Item Value="2" Text="ACC désactivé"/>
+<Item Value="3" Text="ACC en action freins seuls"/>
+<Item Value="4" Text="ACC en maintien de vitesse ou de distance"/>
+<Item Value="5" Text="ACC suspendu sur accèlération conducteur"/>
+<Item Value="7" Text="ACC en défaut"/></List>
+</Bits>
+</Data>
+<Data Name="état contacteur feu stop">
+<Bits count="1">
+<List>
+<Item Value="0" Text="contact fermé - pas de freinage"/>
+<Item Value="1" Text="contact ouvert - freinage"/></List>
+</Bits>
+</Data>
+<Data Name="Current Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Historical Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Standard Fault">
+<Bits count="5">
+<List>
+<Item Value="0" Text="No possible classification about the type of fault"/>
+<Item Value="6" Text="Incoherency, not plausible"/>
+<Item Value="7" Text="No signal"/></List>
+</Bits>
+</Data></Datas>
+<Requests Endian="Little">
+<Request Name="757_1_KMH_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC3E263070220161011325B80000D08402B</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="757_1_MPH_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC3E26B070420161011325B80000D08402B</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="757_2_KMH_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC414C0202DA01380000052000D280A4060</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="757_2_MPH_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC414C0202DA01380000052000D280A4060</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="757_3_KMH_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC54013A0C0808080E620134D5232B47AA0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="757_3_MPH_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC54013A0C0808080E620134D521E6E7AA0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="757_4_KMH_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC68006210606149C140B24480B001AEC00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="757_4_MPH_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC68006210606149C140B24480B001AC8D4</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="CDI_ClearErrorMemory">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="ConfigRPU1_RDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C3</SentBytes>
+</Sent>
+<Received MinBytes="18">
+<DataItem Name="recordvalue1_RPU" Ref="1" FirstByte="3"/>
+<DataItem Name="recordvalue10_RPU" Ref="1" FirstByte="12"/>
+<DataItem Name="recordvalue11_RPU" Ref="1" FirstByte="13"/>
+<DataItem Name="recordvalue12_RPU" Ref="1" FirstByte="14"/>
+<DataItem Name="recordvalue13_RPU" Ref="1" FirstByte="15"/>
+<DataItem Name="recordvalue14_RPU" Ref="1" FirstByte="16"/>
+<DataItem Name="recordvalue15_RPU" Ref="1" FirstByte="17"/>
+<DataItem Name="recordvalue16_RPU" Ref="1" FirstByte="18"/>
+<DataItem Name="recordvalue2_RPU" Ref="1" FirstByte="4"/>
+<DataItem Name="recordvalue3_RPU" Ref="1" FirstByte="5"/>
+<DataItem Name="recordvalue4_RPU" Ref="1" FirstByte="6"/>
+<DataItem Name="recordvalue5_RPU" Ref="1" FirstByte="7"/>
+<DataItem Name="recordvalue6_RPU" Ref="1" FirstByte="8"/>
+<DataItem Name="recordvalue7_RPU" Ref="1" FirstByte="9"/>
+<DataItem Name="recordvalue8_RPU" Ref="1" FirstByte="10"/>
+<DataItem Name="recordvalue9_RPU" Ref="1" FirstByte="11"/>
+</Received>
+</Request>
+<Request Name="ConfigRPU1_vierge_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC300000000000000000000000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="ConfigRPU2_RDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C4</SentBytes>
+</Sent>
+<Received MinBytes="18">
+<DataItem Name="recordvalue17_RPU" Ref="1" FirstByte="3"/>
+<DataItem Name="recordvalue18_RPU" Ref="1" FirstByte="4"/>
+<DataItem Name="recordvalue19_RPU" Ref="1" FirstByte="5"/>
+<DataItem Name="recordvalue20_RPU" Ref="1" FirstByte="6"/>
+<DataItem Name="recordvalue21_RPU" Ref="1" FirstByte="7"/>
+<DataItem Name="recordvalue22_RPU" Ref="1" FirstByte="8"/>
+<DataItem Name="recordvalue23_RPU" Ref="1" FirstByte="9"/>
+<DataItem Name="recordvalue24_RPU" Ref="1" FirstByte="10"/>
+<DataItem Name="recordvalue25_RPU" Ref="1" FirstByte="11"/>
+<DataItem Name="recordvalue26_RPU" Ref="1" FirstByte="12"/>
+<DataItem Name="recordvalue27_RPU" Ref="1" FirstByte="13"/>
+<DataItem Name="recordvalue28_RPU" Ref="1" FirstByte="14"/>
+<DataItem Name="recordvalue29_RPU" Ref="1" FirstByte="15"/>
+<DataItem Name="recordvalue30_RPU" Ref="1" FirstByte="16"/>
+<DataItem Name="recordvalue31_RPU" Ref="1" FirstByte="17"/>
+<DataItem Name="recordvalue32_RPU" Ref="1" FirstByte="18"/>
+</Received>
+</Request>
+<Request Name="ConfigRPU2_vierge_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC400000000000000000000000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="ConfigRPU3_RDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C5</SentBytes>
+</Sent>
+<Received MinBytes="18">
+<DataItem Name="recordvalue33_RPU" Ref="1" FirstByte="3"/>
+<DataItem Name="recordvalue34_RPU" Ref="1" FirstByte="4"/>
+<DataItem Name="recordvalue35_RPU" Ref="1" FirstByte="5"/>
+<DataItem Name="recordvalue36_RPU" Ref="1" FirstByte="6"/>
+<DataItem Name="recordvalue37_RPU" Ref="1" FirstByte="7"/>
+<DataItem Name="recordvalue38_RPU" Ref="1" FirstByte="8"/>
+<DataItem Name="recordvalue39_RPU" Ref="1" FirstByte="9"/>
+<DataItem Name="recordvalue40_RPU" Ref="1" FirstByte="10"/>
+<DataItem Name="recordvalue41_RPU" Ref="1" FirstByte="11"/>
+<DataItem Name="recordvalue42_RPU" Ref="1" FirstByte="12"/>
+<DataItem Name="recordvalue43_RPU" Ref="1" FirstByte="13"/>
+<DataItem Name="recordvalue44_RPU" Ref="1" FirstByte="14"/>
+<DataItem Name="recordvalue45_RPU" Ref="1" FirstByte="15"/>
+<DataItem Name="recordvalue46_RPU" Ref="1" FirstByte="16"/>
+<DataItem Name="recordvalue47_RPU" Ref="1" FirstByte="17"/>
+<DataItem Name="recordvalue48_RPU" Ref="1" FirstByte="18"/>
+</Received>
+</Request>
+<Request Name="ConfigRPU3_vierge_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC500000000000000000000000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="ConfigRPU4_RDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C6</SentBytes>
+</Sent>
+<Received MinBytes="18">
+<DataItem Name="recordvalue49_RPU" Ref="1" FirstByte="3"/>
+<DataItem Name="recordvalue50_RPU" Ref="1" FirstByte="4"/>
+<DataItem Name="recordvalue51_RPU" Ref="1" FirstByte="5"/>
+<DataItem Name="recordvalue52_RPU" Ref="1" FirstByte="6"/>
+<DataItem Name="recordvalue53_RPU" Ref="1" FirstByte="7"/>
+<DataItem Name="recordvalue54_RPU" Ref="1" FirstByte="8"/>
+<DataItem Name="recordvalue55_RPU" Ref="1" FirstByte="9"/>
+<DataItem Name="recordvalue56_RPU" Ref="1" FirstByte="10"/>
+<DataItem Name="recordvalue57_RPU" Ref="1" FirstByte="11"/>
+<DataItem Name="recordvalue58_RPU" Ref="1" FirstByte="12"/>
+<DataItem Name="recordvalue59_RPU" Ref="1" FirstByte="13"/>
+<DataItem Name="recordvalue60_RPU" Ref="1" FirstByte="14"/>
+<DataItem Name="recordvalue61_RPU" Ref="1" FirstByte="15"/>
+<DataItem Name="recordvalue62_RPU" Ref="1" FirstByte="16"/>
+<DataItem Name="recordvalue63_RPU" Ref="1" FirstByte="17"/>
+<DataItem Name="recordvalue64_RPU" Ref="1" FirstByte="18"/>
+</Received>
+</Request>
+<Request Name="ConfigRPU4_vierge_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC600000000000000000000000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="ConfigSPU_72c_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC2C04618FF4847000088B35F6B00004826</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="ConfigSPU_RDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C2</SentBytes>
+</Sent>
+<Received MinBytes="18">
+<DataItem Name="recordvalue1_SPU" Ref="1" FirstByte="3"/>
+<DataItem Name="recordvalue10_SPU" Ref="1" FirstByte="12"/>
+<DataItem Name="recordvalue11_SPU" Ref="1" FirstByte="13"/>
+<DataItem Name="recordvalue12_SPU" Ref="1" FirstByte="14"/>
+<DataItem Name="recordvalue13_SPU" Ref="1" FirstByte="15"/>
+<DataItem Name="recordvalue14_SPU" Ref="1" FirstByte="16"/>
+<DataItem Name="recordvalue15_SPU" Ref="1" FirstByte="17"/>
+<DataItem Name="recordvalue16_SPU" Ref="1" FirstByte="18"/>
+<DataItem Name="recordvalue2_SPU" Ref="1" FirstByte="4"/>
+<DataItem Name="recordvalue3_SPU" Ref="1" FirstByte="5"/>
+<DataItem Name="recordvalue4_SPU" Ref="1" FirstByte="6"/>
+<DataItem Name="recordvalue5_SPU" Ref="1" FirstByte="7"/>
+<DataItem Name="recordvalue6_SPU" Ref="1" FirstByte="8"/>
+<DataItem Name="recordvalue7_SPU" Ref="1" FirstByte="9"/>
+<DataItem Name="recordvalue8_SPU" Ref="1" FirstByte="10"/>
+<DataItem Name="recordvalue9_SPU" Ref="1" FirstByte="11"/>
+</Received>
+</Request>
+<Request Name="ConfigSPU_vierge_WDBLID">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC200000000000000000000000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="IOCBLID_ReadAdjustmentData">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>308101FF</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<DataItem Name="faisceau 1" FirstByte="4"/>
+<DataItem Name="faisceau 2" FirstByte="6"/>
+<DataItem Name="faisceau 3" FirstByte="8"/>
+<DataItem Name="plausibilité amplitude" FirstByte="10"/>
+<DataItem Name="plausibilité distance" FirstByte="12"/>
+</Received>
+</Request>
+<Request Name="IOCBLID_ReadRadarObject">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3080010096C43C</SentBytes>
+<DataItem Name="Distance max" FirstByte="5"/>
+<DataItem Name="Distance min" FirstByte="4"/>
+<DataItem Name="Vitesse max" FirstByte="7"/>
+<DataItem Name="Vitesse min" FirstByte="6"/>
+</Sent>
+<Received MinBytes="23">
+<DataItem Name="amplitude ampx objet_1" FirstByte="12"/>
+<DataItem Name="amplitude ampx objet_2" FirstByte="22"/>
+<DataItem Name="Angle quality objet_1" FirstByte="10"/>
+<DataItem Name="Angle quality objet_2" FirstByte="20"/>
+<DataItem Name="Distance dx objet_1" FirstByte="4"/>
+<DataItem Name="Distance dx objet_2" FirstByte="14"/>
+<DataItem Name="DV-Plausibility objet_1" FirstByte="11"/>
+<DataItem Name="DV-Plausibility objet_2" FirstByte="21"/>
+<DataItem Name="Position latérale objet_1" FirstByte="8"/>
+<DataItem Name="Position latérale objet_2" FirstByte="18"/>
+<DataItem Name="Vitesse relative objet_1" FirstByte="6"/>
+<DataItem Name="Vitesse relative objet_2" FirstByte="16"/>
+</Received>
+</Request>
+<Request Name="IOCBLID_TestChecksumCodingDataRPU">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>309101</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="StatusChecksumTestRPU" FirstByte="4" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="IOCBLID_TestChecksumCodingDataSPU">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>309001</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="StatusCheckSumTestSPU" FirstByte="4" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="RDBLID_ReadACCSystemCondition">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C1</SentBytes>
+</Sent>
+<Received MinBytes="10">
+<DataItem Name="désalignement radar" Ref="1" FirstByte="8"/>
+<DataItem Name="état ACC" Ref="1" FirstByte="5"/>
+<DataItem Name="lentille sale" Ref="1" FirstByte="9" BitOffset="2"/>
+<DataItem Name="temps de suivi sélectionné" Ref="1" FirstByte="6"/>
+<DataItem Name="tension alimentation UCE" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLID_ReadAngleAlpha">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21CA</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="angle de poussée" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLID_ReadCANFaultCounters">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2182</SentBytes>
+</Sent>
+<Received MinBytes="30">
+<DataItem Name="ACC absent" Ref="1" FirstByte="13" Endian="Big"/>
+<DataItem Name="bus off - panne confirmée" Ref="1" FirstByte="5" BitOffset="1" Endian="Big"/>
+<DataItem Name="bus off - panne présente" Ref="1" FirstByte="5" Endian="Big"/>
+<DataItem Name="BVA absent - panne confirmée" Ref="1" FirstByte="15" BitOffset="1" Endian="Big"/>
+<DataItem Name="BVA absent - panne présente" Ref="1" FirstByte="15" Endian="Big"/>
+<DataItem Name="compteur bus off" Ref="1" FirstByte="5" BitOffset="2" Endian="Big"/>
+<DataItem Name="compteur BVA absent" Ref="1" FirstByte="15" BitOffset="2" Endian="Big"/>
+<DataItem Name="compteur ESP absent" Ref="1" FirstByte="8" BitOffset="2" Endian="Big"/>
+<DataItem Name="compteur INJ absent" Ref="1" FirstByte="7" BitOffset="2" Endian="Big"/>
+<DataItem Name="compteur module muet" Ref="1" FirstByte="6" BitOffset="2" Endian="Big"/>
+<DataItem Name="compteur TdB absent" Ref="1" FirstByte="9" BitOffset="2" Endian="Big"/>
+<DataItem Name="compteur UCH absent" Ref="1" FirstByte="10" BitOffset="2" Endian="Big"/>
+<DataItem Name="ESP absent - panne confirmée" Ref="1" FirstByte="8" BitOffset="1" Endian="Big"/>
+<DataItem Name="ESP absent - panne présente" Ref="1" FirstByte="8" Endian="Big"/>
+<DataItem Name="INJ absent - panne confirmée" Ref="1" FirstByte="7" BitOffset="1" Endian="Big"/>
+<DataItem Name="INJ absent - panne présente" Ref="1" FirstByte="7" Endian="Big"/>
+<DataItem Name="module muet - panne confirmée" Ref="1" FirstByte="6" BitOffset="1" Endian="Big"/>
+<DataItem Name="module muet - panne présente" Ref="1" FirstByte="6" Endian="Big"/>
+<DataItem Name="TdB absent - panne confirmée" Ref="1" FirstByte="9" BitOffset="1" Endian="Big"/>
+<DataItem Name="TdB absent - panne présente" Ref="1" FirstByte="9" Endian="Big"/>
+<DataItem Name="UCH absent - panne confirmée" Ref="1" FirstByte="10" BitOffset="1" Endian="Big"/>
+<DataItem Name="UCH absent - panne présente" Ref="1" FirstByte="10" Endian="Big"/>
+<DataItem Name="version messagerie CAN" Ref="1" FirstByte="4" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="RDBLID_ReadDynamicDataSPU">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21FD</SentBytes>
+</Sent>
+<Received MinBytes="18">
+<DataItem Name="désalignement horizontal" Ref="1" FirstByte="3"/>
+<DataItem Name="désalignement vertical" Ref="1" FirstByte="5"/>
+<DataItem Name="plaus désalignement horizontal" Ref="1" FirstByte="4"/>
+<DataItem Name="plaus désalignement vertical" Ref="1" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="RDBLID_ReadEOLConfiguration">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21CD</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="lecture configuration EOL" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLID_ReadESPonCAN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21A1</SentBytes>
+</Sent>
+<Received MinBytes="18">
+<DataItem Name="accélération longitudinale" Ref="1" FirstByte="7"/>
+<DataItem Name="angle au volant" Ref="1" FirstByte="9"/>
+<DataItem Name="delta vitesse roues AR" Ref="1" FirstByte="15"/>
+<DataItem Name="delta vitesse roues AV" Ref="1" FirstByte="13"/>
+<DataItem Name="détection freinage conducteur" Ref="1" FirstByte="5" BitOffset="2"/>
+<DataItem Name="ESP désactivé" Ref="1" FirstByte="12" BitOffset="2"/>
+<DataItem Name="vitesse de lacet" Ref="1" FirstByte="17"/>
+<DataItem Name="vitesse véhicule" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLID_ReadGMPonCAN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21A0</SentBytes>
+</Sent>
+<Received MinBytes="19">
+<DataItem Name="action sur touche au volant" Ref="1" FirstByte="19" BitOffset="4"/>
+<DataItem Name="couple moteur effectif" Ref="1" FirstByte="8"/>
+<DataItem Name="couple résistant" Ref="1" FirstByte="10"/>
+<DataItem Name="état contacteur feu stop" Ref="1" FirstByte="5" BitOffset="1"/>
+<DataItem Name="gain GMP" Ref="1" FirstByte="16"/>
+<DataItem Name="position interrupteur ACC" Ref="1" FirstByte="13" BitOffset="3"/>
+<DataItem Name="position pédale accélérateur" Ref="1" FirstByte="7"/>
+<DataItem Name="régime moteur" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLID_ReadOHARadarObject">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21CB</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="accélération objet 1" Ref="1" FirstByte="7" Endian="Big"/>
+<DataItem Name="accélération objet 2" Ref="1" FirstByte="19" Endian="Big"/>
+<DataItem Name="distance objet 1" Ref="1" FirstByte="3" Endian="Big"/>
+<DataItem Name="distance objet 2" Ref="1" FirstByte="15" Endian="Big"/>
+<DataItem Name="plausibilité 1" Ref="1" FirstByte="13" Endian="Big"/>
+<DataItem Name="plausibilité 2" Ref="1" FirstByte="25" Endian="Big"/>
+<DataItem Name="position dyc objet 1" Ref="1" FirstByte="11" Endian="Big"/>
+<DataItem Name="position dyc objet 2" Ref="1" FirstByte="23" Endian="Big"/>
+<DataItem Name="position dyv objet 1" Ref="1" FirstByte="9" Endian="Big"/>
+<DataItem Name="position dyv objet 2" Ref="1" FirstByte="21" Endian="Big"/>
+<DataItem Name="vitesse relative objet 1" Ref="1" FirstByte="5" Endian="Big"/>
+<DataItem Name="vitesse relative objet 2" Ref="1" FirstByte="17" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="RDBLID_ReadStoredDates">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C0</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<DataItem Name="année dernière intervention" Ref="1" FirstByte="6" Endian="Big"/>
+<DataItem Name="année production UCE" Ref="1" FirstByte="9" Endian="Big"/>
+<DataItem Name="année production véhicule" Ref="1" FirstByte="3" Endian="Big"/>
+<DataItem Name="jour dernière intervention" Ref="1" FirstByte="8" Endian="Big"/>
+<DataItem Name="jour production UCE" Ref="1" FirstByte="11" Endian="Big"/>
+<DataItem Name="jour production véhicule" Ref="1" FirstByte="5" Endian="Big"/>
+<DataItem Name="mois dernière intervention" Ref="1" FirstByte="7" Endian="Big"/>
+<DataItem Name="mois production UCE" Ref="1" FirstByte="10" Endian="Big"/>
+<DataItem Name="mois production véhicule" Ref="1" FirstByte="4" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="RDBLID_ReadSupplierDataId">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2194</SentBytes>
+</Sent>
+<Received MinBytes="55">
+<DataItem Name="année de production" Ref="1" FirstByte="14" Endian="Big"/>
+<DataItem Name="BB number SPU" Ref="1" FirstByte="24"/>
+<DataItem Name="BB-number RPU" Ref="1" FirstByte="40"/>
+<DataItem Name="day_production" Ref="1" FirstByte="13" Endian="Big"/>
+<DataItem Name="hardware number" Ref="1" FirstByte="9" Endian="Big"/>
+<DataItem Name="jour de production" Ref="1" FirstByte="16" Endian="Big"/>
+<DataItem Name="mois de production" Ref="1" FirstByte="15" Endian="Big"/>
+<DataItem Name="month_production" Ref="1" FirstByte="12" Endian="Big"/>
+<DataItem Name="part-number Bosch" Ref="1" FirstByte="19" Endian="Big"/>
+<DataItem Name="part-number Renault" Ref="1" FirstByte="3" Endian="Big"/>
+<DataItem Name="patch RPU" Ref="1" FirstByte="55"/>
+<DataItem Name="patch SPU" Ref="1" FirstByte="39"/>
+<DataItem Name="revision-number RPU" Ref="1" FirstByte="52"/>
+<DataItem Name="revision-number SPU" Ref="1" FirstByte="36"/>
+<DataItem Name="serial number" Ref="1" FirstByte="17" Endian="Big"/>
+<DataItem Name="version-number RPU" Ref="1" FirstByte="50"/>
+<DataItem Name="version-number SPU" Ref="1" FirstByte="34"/>
+<DataItem Name="year_production" Ref="1" FirstByte="10" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="RDBLID_ReadSystemIdentification">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="code diagnostic" Ref="1" FirstByte="8"/>
+<DataItem Name="code ITG" Ref="1" FirstByte="9"/>
+<DataItem Name="code MPR" Ref="1" FirstByte="3"/>
+<DataItem Name="fonction implémentée" Ref="1" FirstByte="23"/>
+<DataItem Name="N° calibration" Ref="1" FirstByte="22"/>
+<DataItem Name="N° HW Bosch" Ref="1" FirstByte="12"/>
+<DataItem Name="N° révision SW Bosch" Ref="1" FirstByte="18"/>
+<DataItem Name="N° version SW Bosch" Ref="1" FirstByte="17"/>
+<DataItem Name="version UCE" Ref="1" FirstByte="20"/>
+</Received>
+</Request>
+<Request Name="RDBLID_ReadTdBonCAN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21A2</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="vitesse véhicule affichée" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLID_ReadVINnumber">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="lecture code VIN" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDODTC_ReadErrorMemory">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<ReplyBytes>5700</ReplyBytes>
+<DataItem Name="DTC 1" FirstByte="3" Endian="Big"/>
+<DataItem Name="DTC 2" FirstByte="6" Endian="Big"/>
+<DataItem Name="DTC 3" FirstByte="9" Endian="Big"/>
+<DataItem Name="DTC 4" FirstByte="12" Endian="Big"/>
+<DataItem Name="DTC 5" FirstByte="15" Endian="Big"/>
+<DataItem Name="Nbre de DTC" FirstByte="2" Endian="Big"/>
+<DataItem Name="Status 1" FirstByte="5" Endian="Big"/>
+<DataItem Name="Status 2" FirstByte="8" Endian="Big"/>
+<DataItem Name="Status 3" FirstByte="11" Endian="Big"/>
+<DataItem Name="Status 4" FirstByte="14" Endian="Big"/>
+<DataItem Name="Status 5" FirstByte="17" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="RFFD_ReadErrorEnvironmentalConditions">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>1200040000</SentBytes>
+<DataItem Name="FirstDTC" FirstByte="4" Endian="Big"/>
+</Sent>
+<Received MinBytes="14">
+<DataItem Name="compteur apparition" FirstByte="3" Endian="Big"/>
+<DataItem Name="degré de désalignement" FirstByte="11" BitOffset="6" Endian="Big"/>
+<DataItem Name="désactivation du CAN par SPU" FirstByte="11" BitOffset="3" Endian="Big"/>
+<DataItem Name="flash-block" FirstByte="11" BitOffset="2" Endian="Big"/>
+<DataItem Name="lentille pas propre" FirstByte="11" BitOffset="4" Endian="Big"/>
+<DataItem Name="température extérieure" FirstByte="8" Endian="Big"/>
+<DataItem Name="température interne radar" FirstByte="9" Endian="Big"/>
+<DataItem Name="temps écoulé" FirstByte="6"/>
+<DataItem Name="tension alimentation lors du défaut" FirstByte="10" Endian="Big"/>
+<DataItem Name="totalisateur km" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<DataItem Name="FirstDTC" FirstByte="3" Endian="Big"/>
+<DataItem Name="NDTC" FirstByte="2" Endian="Big"/>
+<DataItem Name="Historical Failure" FirstByte="5" BitOffset="1" Endian="Big"/>
+<DataItem Name="Current Failure" FirstByte="5" BitOffset="2" Endian="Big"/>
+<DataItem Name="Standard Fault" FirstByte="5" BitOffset="3" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="ResetDynamicDataRPU">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BCB</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="ResetDynamicDataSPU">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>309208</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="longTermAdjustment" FirstByte="3" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="SDS_Development">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>1086</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="SDS_RB-manufacture">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>1084</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="SDS_Renault">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Start Diagnostic Session">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="Session Name" FirstByte="2" Endian="Big"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WDBLID_WriteASDate">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BC0000000</SentBytes>
+<DataItem Name="année dernière intervention APV" FirstByte="3" Endian="Big"/>
+<DataItem Name="jour dernière intervention APV" FirstByte="5" Endian="Big"/>
+<DataItem Name="mois dernière intervention APV" FirstByte="4" Endian="Big"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WDBLID_WriteAngleAlpha">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BCA0000</SentBytes>
+<DataItem Name="écriture angle de poussée" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WDBLID_WriteDynamicDataSPU">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BFD00000000000000000000000000000000</SentBytes>
+<DataItem Name="écriture checksum" FirstByte="17"/>
+<DataItem Name="écriture désalignement horizontal" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WDBLID_WriteEOLConfiguration">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BCD00</SentBytes>
+<DataItem Name="écriture configuration EOL" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WDBLID_WriteVINnumber">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="écriture code VIN" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WDBLID_WriteVProdDate">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3BB0000000</SentBytes>
+<DataItem Name="année production VH" FirstByte="3" Endian="Big"/>
+<DataItem Name="jour production VH" FirstByte="5" Endian="Big"/>
+<DataItem Name="mois production VH" FirstByte="4" Endian="Big"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="accèl véhicule en action freins" DTC="23117" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="accél véhicule en action moteur" DTC="23116" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="acquittement ACC par sous-systèmes" DTC="23136" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="donnée indisponible TdB" DTC="23123" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="donnée indisponible cluster" DTC="23131" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="donnée indisponible sur contact feu stop" DTC="23133" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="donnée indisponible sur filament feu stop ou fusib" DTC="23132" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="donnée indisponible sur microswitch" DTC="23130" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="donnée indisponible sur touche au volant" DTC="23134" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="données indisponibles BVA" DTC="23122" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="données indisponibles ESP" DTC="23121" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+
+</Device>
+<Device Name="données indisponibles INJ" DTC="23120" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="défaut hardware CAN" DTC="23072" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="défaut température SCU" DTC="23041" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="offset vitesse de lacet" DTC="23152" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="plausibilité données BVA" DTC="23106" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="plausibilité données EEPROM" DTC="23115" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="plausibilité données ESP" DTC="23105" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+
+</Device>
+<Device Name="plausibilité données INJ" DTC="23104" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="plausibilité données TdB" DTC="23107" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="radar désaligné en azimut" DTC="23153" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="sous-tension" DTC="20672" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+
+</Device>
+<Device Name="status ACC incohérent" DTC="23137" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="surtension" DTC="20673" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="timeout trame BVA" DTC="23090" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="timeout trame ESP" DTC="23089" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="timeout trame INJ" DTC="23088" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="timeout trame Tableau de Bord" DTC="23091" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="timeout trame UCH" DTC="23092" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+</Device>
+<Device Name="défaut interne hardware" DTC="23040" FreezeFrame="RFFD_ReadErrorEnvironmentalConditions">
+
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Diag BE">
+
+<Screen Name="Ecriture code VIN" Color="-2147483643" WindowState="0" Width="15480" Height="11220">
+
+<Label Text="Ecriture code VIN" Color="12566463" Alignment="2">
+<Rectangle Left="360" Top="600" Height="3480" Width="10440"/>
+<Font Name="MS Sans Serif" Size=" 24" Bold="1" Italic="0" Color="16711680"/></Label>
+
+<Button Text="Lancement écriture">
+<Rectangle Left="4200" Top="2760" Height="720" Width="2760"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WDBLID_WriteVINnumber"/>
+</Button>
+
+<Input Width="3000" Color="16777215" DataName="écriture code VIN" RequestName="WDBLID_WriteVINnumber">
+<Rectangle Left="600" Top="1680" Height="420" Width="9960"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Ecriture date APV" Color="-2147483643" WindowState="0" Width="11745" Height="9270">
+
+<Label Text=" " Color="11513775" Alignment="0">
+<Rectangle Left="1440" Top="1320" Height="3720" Width="6420"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Ecriture date dernière intervention (APV)" Color="16777215" Alignment="2">
+<Rectangle Left="480" Top="480" Height="540" Width="8760"/>
+<Font Name="Arial" Size=" 22" Bold="1" Italic="0" Color="16711680"/></Label>
+
+<Button Text="Lancement écriture">
+<Rectangle Left="3600" Top="4080" Height="480" Width="2160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WDBLID_WriteASDate"/>
+</Button>
+
+<Input Width="3300" Color="16777215" DataName="jour dernière intervention APV" RequestName="WDBLID_WriteASDate">
+<Rectangle Left="1920" Top="1920" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3300" Color="16777215" DataName="mois dernière intervention APV" RequestName="WDBLID_WriteASDate">
+<Rectangle Left="1920" Top="2520" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3300" Color="16777215" DataName="année dernière intervention APV" RequestName="WDBLID_WriteASDate">
+<Rectangle Left="1920" Top="3240" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Ecriture date production véhicule" Color="-2147483643" WindowState="0" Width="11745" Height="9270">
+
+<Label Text=" " Color="11513775" Alignment="2">
+<Rectangle Left="1320" Top="1200" Height="3240" Width="6720"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Ecriture Date production véhicule" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="360" Height="720" Width="9120"/>
+<Font Name="Arial" Size=" 24" Bold="1" Italic="0" Color="16711680"/></Label>
+
+<Button Text="Lancement écriture">
+<Rectangle Left="3360" Top="3600" Height="600" Width="2640"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WDBLID_WriteVProdDate"/>
+</Button>
+
+<Input Width="2040" Color="16777215" DataName="jour production VH" RequestName="WDBLID_WriteVProdDate">
+<Rectangle Left="1680" Top="1680" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2040" Color="16777215" DataName="mois production VH" RequestName="WDBLID_WriteVProdDate">
+<Rectangle Left="1680" Top="2280" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2040" Color="16777215" DataName="année production VH" RequestName="WDBLID_WriteVProdDate">
+<Rectangle Left="1680" Top="2880" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Lecture code VIN" Color="-2147483643" WindowState="2" Width="11745" Height="9270">
+
+<Label Text="Lecture code &quot;Vehicle Identification Number&quot;" Color="12566463" Alignment="2">
+<Rectangle Left="0" Top="480" Height="3120" Width="11400"/>
+<Font Name="Arial" Size=" 26" Bold="1" Italic="0" Color="16711680"/></Label>
+
+
+<Display Width="3000" Color="16777215" DataName="lecture code VIN" RequestName="RDBLID_ReadVINnumber">
+<Rectangle Left="240" Top="1800" Height="480" Width="10560"/>
+<Font Name="Arial" Size=" 16" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture des dates programmées" Color="16777215" WindowState="0" Width="11745" Height="9270">
+
+<Label Text="Dernière intervention APV" Color="11513775" Alignment="2">
+<Rectangle Left="7560" Top="1320" Height="2280" Width="3420"/>
+<Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Lecture des dates programmées" Color="16777215" Alignment="2">
+<Rectangle Left="2160" Top="360" Height="600" Width="6840"/>
+<Font Name="Arial" Size=" 20" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="Production calculateur" Color="11513775" Alignment="2">
+<Rectangle Left="240" Top="1320" Height="2280" Width="3120"/>
+<Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Production véhicule" Color="11513775" Alignment="2">
+<Rectangle Left="3720" Top="1320" Height="2280" Width="3420"/>
+<Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="8388608"/></Label>
+
+
+<Display Width="2040" Color="16777215" DataName="année production UCE" RequestName="RDBLID_ReadStoredDates">
+<Rectangle Left="480" Top="1800" Height="300" Width="2700"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2040" Color="16777215" DataName="mois production UCE" RequestName="RDBLID_ReadStoredDates">
+<Rectangle Left="480" Top="2280" Height="300" Width="2700"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2040" Color="16777215" DataName="jour production UCE" RequestName="RDBLID_ReadStoredDates">
+<Rectangle Left="480" Top="2760" Height="300" Width="2700"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2340" Color="16777215" DataName="année production véhicule" RequestName="RDBLID_ReadStoredDates">
+<Rectangle Left="3960" Top="1800" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2340" Color="16777215" DataName="mois production véhicule" RequestName="RDBLID_ReadStoredDates">
+<Rectangle Left="3960" Top="2280" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2340" Color="16777215" DataName="jour production véhicule" RequestName="RDBLID_ReadStoredDates">
+<Rectangle Left="3960" Top="2760" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2400" Color="16777215" DataName="année dernière intervention" RequestName="RDBLID_ReadStoredDates">
+<Rectangle Left="7800" Top="1800" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2400" Color="16777215" DataName="mois dernière intervention" RequestName="RDBLID_ReadStoredDates">
+<Rectangle Left="7800" Top="2280" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2400" Color="16777215" DataName="jour dernière intervention" RequestName="RDBLID_ReadStoredDates">
+<Rectangle Left="7800" Top="2760" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture des données radar pour alignement" Color="16777215" WindowState="2" Width="11745" Height="9270">
+
+<Label Text="Données pour l' alignement en azimut" Color="11513775" Alignment="2">
+<Rectangle Left="1800" Top="960" Height="1800" Width="4260"/>
+<Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Données pour l'alignement en site" Color="11513775" Alignment="2">
+<Rectangle Left="1800" Top="3240" Height="1560" Width="4260"/>
+<Font Name="Arial" Size=" 11.25" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Lecture des données pour alignement du radar" Color="16777215" Alignment="2">
+<Rectangle Left="-2040" Top="120" Height="600" Width="13500"/>
+<Font Name="Arial" Size=" 20" Bold="1" Italic="0" Color="16711680"/></Label>
+
+
+<Display Width="1260" Color="16777215" DataName="faisceau 1" RequestName="IOCBLID_ReadAdjustmentData">
+<Rectangle Left="2400" Top="1440" Height="360" Width="2640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1260" Color="16777215" DataName="faisceau 3" RequestName="IOCBLID_ReadAdjustmentData">
+<Rectangle Left="2400" Top="2040" Height="360" Width="2640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1260" Color="16777215" DataName="faisceau 2" RequestName="IOCBLID_ReadAdjustmentData">
+<Rectangle Left="2520" Top="3960" Height="360" Width="2640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture des Informations Fournisseur" Color="-2147483643" WindowState="2" Width="11745" Height="9270">
+
+<Label Text="Lecture des informations spécifiques Fournisseur" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="0" Height="540" Width="13320"/>
+<Font Name="Arial" Size=" 26" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="RPU" Color="11513775" Alignment="2">
+<Rectangle Left="7560" Top="1440" Height="2520" Width="6780"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="SPU" Color="11513775" Alignment="2">
+<Rectangle Left="7560" Top="4080" Height="2520" Width="6840"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Traçabilité unitaire" Color="12566463" Alignment="2">
+<Rectangle Left="480" Top="1440" Height="5160" Width="6960"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+
+
+<Display Width="3420" Color="16777215" DataName="année de production" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="720" Top="2280" Height="360" Width="6240"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3420" Color="16777215" DataName="mois de production" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="720" Top="2880" Height="360" Width="6240"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3420" Color="16777215" DataName="jour de production" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="720" Top="3480" Height="360" Width="6240"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3420" Color="16777215" DataName="serial number" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="720" Top="4080" Height="360" Width="6240"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3360" Color="16777215" DataName="BB-number RPU" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="7680" Top="1920" Height="360" Width="6120"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3360" Color="16777215" DataName="version-number RPU" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="7680" Top="2400" Height="360" Width="6120"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3360" Color="16777215" DataName="revision-number RPU" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="7680" Top="2880" Height="360" Width="6120"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3360" Color="16777215" DataName="patch RPU" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="7680" Top="3360" Height="360" Width="6120"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3405" Color="16777215" DataName="BB number SPU" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="7680" Top="4560" Height="360" Width="6120"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3420" Color="16777215" DataName="version-number SPU" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="7680" Top="5040" Height="360" Width="6120"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3420" Color="16777215" DataName="revision-number SPU" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="7680" Top="5520" Height="360" Width="6120"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3420" Color="16777215" DataName="patch SPU" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="7680" Top="6000" Height="360" Width="6120"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3420" Color="16777215" DataName="hardware number" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="720" Top="4680" Height="360" Width="6240"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3420" Color="16777215" DataName="part-number Renault" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="720" Top="5280" Height="360" Width="6240"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3420" Color="16777215" DataName="part-number Bosch" RequestName="RDBLID_ReadSupplierDataId">
+<Rectangle Left="720" Top="5880" Height="360" Width="6240"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture des infos CAN issues de ESP" Color="-2147483643" WindowState="0" Width="15450" Height="11220">
+
+<Label Text="1) Appuyer sur la pédale de frein, puis relâcher" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="1320" Height="420" Width="6780"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="2) Appuyer sur l'interrupteur ESP OFF" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="2640" Height="420" Width="6780"/>
+<Font Name="MS Sans Serif" Size=" 13.5" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Lecture des infos venant de l'ESP" Color="16777215" Alignment="2">
+<Rectangle Left="600" Top="240" Height="540" Width="8520"/>
+<Font Name="MS Sans Serif" Size=" 24" Bold="1" Italic="0" Color="16711680"/></Label>
+
+
+<Display Width="3720" Color="16777215" DataName="détection freinage conducteur" RequestName="RDBLID_ReadESPonCAN">
+<Rectangle Left="960" Top="2040" Height="300" Width="7380"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3720" Color="16777215" DataName="ESP désactivé" RequestName="RDBLID_ReadESPonCAN">
+<Rectangle Left="1080" Top="3600" Height="300" Width="7380"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture des infos CAN issues du Moteur" Color="-2147483643" WindowState="0" Width="15450" Height="11220">
+
+<Label Text="a) Appuyer sur la pédale de frein puis relâcher" Color="16777215" Alignment="0">
+<Rectangle Left="360" Top="1080" Height="420" Width="6720"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="b) appuyer sur l'interrupteur ACC" Color="16777215" Alignment="0">
+<Rectangle Left="360" Top="2280" Height="480" Width="6600"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="c) Appuyer sur l'une des touches au volant" Color="16777215" Alignment="0">
+<Rectangle Left="360" Top="3600" Height="480" Width="6600"/>
+<Font Name="MS Sans Serif" Size=" 13.5" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Lecture des infos CAN issues du Contrôle Moteur" Color="16777215" Alignment="2">
+<Rectangle Left="-360" Top="240" Height="480" Width="11460"/>
+<Font Name="MS Sans Serif" Size=" 24" Bold="0" Italic="0" Color="16711680"/></Label>
+
+
+<Display Width="1740" Color="16777215" DataName="régime moteur" RequestName="RDBLID_ReadGMPonCAN">
+<Rectangle Left="960" Top="5160" Height="300" Width="3660"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3240" Color="16777215" DataName="état contacteur feu stop" RequestName="RDBLID_ReadGMPonCAN">
+<Rectangle Left="840" Top="1680" Height="300" Width="7800"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3240" Color="16777215" DataName="position interrupteur ACC" RequestName="RDBLID_ReadGMPonCAN">
+<Rectangle Left="840" Top="2880" Height="300" Width="7800"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3240" Color="16777215" DataName="action sur touche au volant" RequestName="RDBLID_ReadGMPonCAN">
+<Rectangle Left="840" Top="4200" Height="300" Width="7800"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture et écriture angle de poussée" Color="-2147483643" WindowState="0" Width="15480" Height="11220">
+
+<Label Text="Ecriture angle de poussée" Color="16777215" Alignment="2">
+<Rectangle Left="600" Top="480" Height="660" Width="6540"/>
+<Font Name="MS Sans Serif" Size=" 24" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Lecture angle de poussée" Color="16777215" Alignment="2">
+<Rectangle Left="480" Top="3720" Height="660" Width="6540"/>
+<Font Name="MS Sans Serif" Size=" 24" Bold="1" Italic="0" Color="8388608"/></Label>
+
+<Button Text="Lancement écriture">
+<Rectangle Left="2040" Top="2640" Height="780" Width="3240"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WDBLID_WriteAngleAlpha"/><Send Delay="50" RequestName="RDBLID_ReadAngleAlpha"/>
+</Button>
+
+<Input Width="3660" Color="16777215" DataName="écriture angle de poussée" RequestName="WDBLID_WriteAngleAlpha">
+<Rectangle Left="960" Top="1680" Height="300" Width="5520"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3660" Color="16777215" DataName="angle de poussée" RequestName="RDBLID_ReadAngleAlpha">
+<Rectangle Left="960" Top="4920" Height="300" Width="5520"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture et écriture configuration EOL" Color="-2147483643" WindowState="0" Width="15480" Height="11220">
+
+<Label Text="Ecriture configuration EOL" Color="16777215" Alignment="2">
+<Rectangle Left="1080" Top="3480" Height="660" Width="6420"/>
+<Font Name="MS Sans Serif" Size=" 24" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Lecture configuration EOL" Color="16777215" Alignment="2">
+<Rectangle Left="1080" Top="480" Height="660" Width="6420"/>
+<Font Name="MS Sans Serif" Size=" 24" Bold="1" Italic="0" Color="8388608"/></Label>
+
+<Button Text="Lancement écriture">
+<Rectangle Left="2520" Top="6000" Height="600" Width="4200"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WDBLID_WriteEOLConfiguration"/><Send Delay="100" RequestName="RDBLID_ReadEOLConfiguration"/>
+</Button>
+
+<Display Width="3000" Color="16777215" DataName="lecture configuration EOL" RequestName="RDBLID_ReadEOLConfiguration">
+<Rectangle Left="1080" Top="1800" Height="300" Width="5700"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="3045" Color="16777215" DataName="écriture configuration EOL" RequestName="WDBLID_WriteEOLConfiguration">
+<Rectangle Left="1200" Top="4800" Height="300" Width="5700"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Lecture et effacement des configs SPU et RPU" Color="16777215" WindowState="0" Width="15480" Height="11220">
+
+<Label Text="Configuration RPU" Color="12566463" Alignment="2">
+<Rectangle Left="3720" Top="720" Height="6600" Width="10140"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Configuration SPU" Color="12566463" Alignment="2">
+<Rectangle Left="360" Top="720" Height="6600" Width="3120"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Lecture et effacement des configurations" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="0" Height="660" Width="10680"/>
+<Font Name="Arial" Size=" 24" Bold="1" Italic="0" Color="16711680"/></Label>
+
+<Button Text="Ecriture des configs (en KMH) pour soft série (099 / 099)">
+<Rectangle Left="360" Top="8280" Height="480" Width="5280"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="ConfigSPU_72c_WDBLID"/><Send Delay="20" RequestName="757_1_KMH_WDBLID"/><Send Delay="20" RequestName="757_2_KMH_WDBLID"/><Send Delay="20" RequestName="757_3_KMH_WDBLID"/><Send Delay="20" RequestName="757_4_KMH_WDBLID"/><Send Delay="20" RequestName="IOCBLID_TestChecksumCodingDataSPU"/><Send Delay="20" RequestName="IOCBLID_TestChecksumCodingDataRPU"/>
+</Button>
+<Button Text="Ecriture des configs (en MPH) pour soft série (099 / 099)">
+<Rectangle Left="360" Top="9000" Height="540" Width="5280"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="ConfigSPU_72c_WDBLID"/><Send Delay="20" RequestName="757_1_MPH_WDBLID"/><Send Delay="20" RequestName="757_2_MPH_WDBLID"/><Send Delay="20" RequestName="757_3_MPH_WDBLID"/><Send Delay="20" RequestName="757_4_MPH_WDBLID"/><Send Delay="20" RequestName="IOCBLID_TestChecksumCodingDataSPU"/><Send Delay="20" RequestName="IOCBLID_TestChecksumCodingDataRPU"/>
+</Button>
+<Button Text="Effacement  des configs SPU et RPU">
+<Rectangle Left="360" Top="7560" Height="480" Width="5280"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="ConfigSPU_vierge_WDBLID"/><Send Delay="20" RequestName="ConfigRPU1_vierge_WDBLID"/><Send Delay="20" RequestName="ConfigRPU2_vierge_WDBLID"/><Send Delay="20" RequestName="ConfigRPU3_vierge_WDBLID"/><Send Delay="20" RequestName="ConfigRPU4_vierge_WDBLID"/><Send Delay="20" RequestName="ConfigSPU_RDBLID"/><Send Delay="20" RequestName="ConfigRPU1_RDBLID"/><Send Delay="20" RequestName="ConfigRPU2_RDBLID"/><Send Delay="20" RequestName="ConfigRPU3_RDBLID"/><Send Delay="20" RequestName="ConfigRPU4_RDBLID"/>
+</Button>
+
+<Display Width="1560" Color="16777215" DataName="recordvalue1_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="1320" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue2_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="1680" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue3_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="2040" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue4_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="2400" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue5_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="2760" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue6_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="3120" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue7_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="3480" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue8_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="3840" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue9_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="4200" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue10_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="4560" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue11_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="4920" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue12_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="5280" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue13_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="5640" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue14_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="6000" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue15_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="6360" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue16_SPU" RequestName="ConfigSPU_RDBLID">
+<Rectangle Left="720" Top="6720" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue1_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="1320" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue2_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="1680" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue3_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="2040" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue4_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="2400" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue5_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="2760" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue6_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="3120" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue7_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="3480" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue8_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="3840" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue9_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="4200" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue10_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="4560" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue11_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="4920" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue12_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="5280" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue13_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="5640" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue14_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="6000" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue15_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="6360" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue16_RPU" RequestName="ConfigRPU1_RDBLID">
+<Rectangle Left="3960" Top="6720" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue17_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="1320" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue18_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="1680" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue19_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="2040" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue20_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="2400" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue21_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="2760" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue22_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="3120" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue23_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="3480" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue24_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="3840" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue25_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="4200" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue26_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="4560" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue27_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="4920" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue28_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="5280" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue29_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="5640" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue30_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="6000" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue31_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="6360" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue32_RPU" RequestName="ConfigRPU2_RDBLID">
+<Rectangle Left="6480" Top="6720" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2040" Color="16777215" DataName="StatusCheckSumTestSPU" RequestName="IOCBLID_TestChecksumCodingDataSPU">
+<Rectangle Left="7920" Top="7680" Height="300" Width="3060"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2040" Color="16777215" DataName="StatusChecksumTestRPU" RequestName="IOCBLID_TestChecksumCodingDataRPU">
+<Rectangle Left="7920" Top="8280" Height="300" Width="3060"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue33_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="1320" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue34_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="1680" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue35_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="2040" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue36_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="2400" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue37_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="2760" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue38_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="3120" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue39_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="3480" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue40_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="3840" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue41_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="4200" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue42_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="4560" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue43_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="4920" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue44_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="5280" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue45_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="5640" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue46_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="6000" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue47_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="6360" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue48_RPU" RequestName="ConfigRPU3_RDBLID">
+<Rectangle Left="9000" Top="6720" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue49_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="1320" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue50_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="1680" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue51_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="2040" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue52_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="2400" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue53_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="2760" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue54_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="3120" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue55_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="3480" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue56_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="3840" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue57_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="4200" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue58_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="4560" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue59_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="4920" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue60_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="5280" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue61_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="5640" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue62_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="6000" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue63_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="6360" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="recordvalue64_RPU" RequestName="ConfigRPU4_RDBLID">
+<Rectangle Left="11520" Top="6720" Height="300" Width="2220"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture et effacement des défauts" Color="-2147483643" WindowState="2" Width="11745" Height="9270">
+
+<Label Text=" " Color="11513775" Alignment="0">
+<Rectangle Left="120" Top="840" Height="3840" Width="14520"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="(à utiliser après le process d'alignement)" Color="255" Alignment="2">
+<Rectangle Left="5400" Top="5520" Height="1200" Width="7200"/>
+<Font Name="Arial" Size=" 14.25" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="Effacement des défauts" Color="255" Alignment="2">
+<Rectangle Left="360" Top="5040" Height="1680" Width="4620"/>
+<Font Name="Arial" Size=" 14" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="Lecture et effacement des codes défaut ( DTC)" Color="16777215" Alignment="2">
+<Rectangle Left="1200" Top="0" Height="540" Width="9720"/>
+<Font Name="Arial" Size=" 20" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="Nota : effacement de l'info désalignement" Color="16777215" Alignment="0">
+<Rectangle Left="6720" Top="6720" Height="480" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="ResetDynamicDataSPU" Color="255" Alignment="2">
+<Rectangle Left="5400" Top="5040" Height="480" Width="7200"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="16777215"/></Label>
+
+<Button Text="Lancement effacement">
+<Rectangle Left="1680" Top="5760" Height="600" Width="2040"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text="Attention, vous allez effacer la totalité des défauts en mémoire"/>
+<Send Delay="0" RequestName="CDI_ClearErrorMemory"/><Send Delay="1500" RequestName="RDODTC_ReadErrorMemory"/>
+</Button>
+<Button Text="Reset">
+<Rectangle Left="7920" Top="6000" Height="480" Width="1620"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="ResetDynamicDataSPU"/>
+</Button>
+
+<Display Width="780" Color="16777215" DataName="DTC 1" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="360" Top="1560" Height="300" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="780" Color="16777215" DataName="DTC 2" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="360" Top="2160" Height="300" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="780" Color="16777215" DataName="DTC 3" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="360" Top="2760" Height="300" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="780" Color="16777215" DataName="DTC 4" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="360" Top="3360" Height="300" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="780" Color="16777215" DataName="DTC 5" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="360" Top="3960" Height="300" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1200" Color="16777215" DataName="Nbre de DTC" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="1680" Top="960" Height="300" Width="1800"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1200" Color="16777215" DataName="Status 1" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="7320" Top="1560" Height="300" Width="6180"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1200" Color="16777215" DataName="Status 2" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="7320" Top="2160" Height="300" Width="6180"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1200" Color="16777215" DataName="Status 3" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="7320" Top="2760" Height="300" Width="6180"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1200" Color="16777215" DataName="Status 4" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="7320" Top="3360" Height="300" Width="6180"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1200" Color="16777215" DataName="Status 5" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="7320" Top="3960" Height="300" Width="6180"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture Etat Système ACC" Color="-2147483643" WindowState="0" Width="11745" Height="9270">
+
+<Label Text="Etat système ACC" Color="11513775" Alignment="2">
+<Rectangle Left="240" Top="120" Height="5280" Width="6360"/>
+<Font Name="Arial" Size=" 24" Bold="1" Italic="0" Color="16711680"/></Label>
+
+
+<Display Width="2880" Color="16777215" DataName="tension alimentation UCE" RequestName="RDBLID_ReadACCSystemCondition">
+<Rectangle Left="840" Top="1080" Height="300" Width="4740"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2880" Color="16777215" DataName="état ACC" RequestName="RDBLID_ReadACCSystemCondition">
+<Rectangle Left="840" Top="2040" Height="300" Width="4740"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2880" Color="16777215" DataName="temps de suivi sélectionné" RequestName="RDBLID_ReadACCSystemCondition">
+<Rectangle Left="840" Top="3000" Height="300" Width="4740"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2880" Color="16777215" DataName="désalignement radar" RequestName="RDBLID_ReadACCSystemCondition">
+<Rectangle Left="840" Top="3960" Height="300" Width="4740"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2880" Color="16777215" DataName="lentille sale" RequestName="RDBLID_ReadACCSystemCondition">
+<Rectangle Left="840" Top="4800" Height="300" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture Identification Système" Color="16777215" WindowState="2" Width="11745" Height="9270">
+
+<Label Text=" " Color="11513775" Alignment="0">
+<Rectangle Left="360" Top="840" Height="5280" Width="6960"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Identification Système ACC" Color="16777215" Alignment="2">
+<Rectangle Left="960" Top="120" Height="600" Width="6660"/>
+<Font Name="Arial" Size=" 26" Bold="1" Italic="0" Color="16711680"/></Label>
+
+
+<Display Width="2175" Color="16777215" DataName="code MPR" RequestName="RDBLID_ReadSystemIdentification">
+<Rectangle Left="1440" Top="1200" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2175" Color="16777215" DataName="code diagnostic" RequestName="RDBLID_ReadSystemIdentification">
+<Rectangle Left="1440" Top="1800" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2175" Color="16777215" DataName="code ITG" RequestName="RDBLID_ReadSystemIdentification">
+<Rectangle Left="1440" Top="2400" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2190" Color="16777215" DataName="version UCE" RequestName="RDBLID_ReadSystemIdentification">
+<Rectangle Left="1440" Top="3000" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2175" Color="16777215" DataName="N° HW Bosch" RequestName="RDBLID_ReadSystemIdentification">
+<Rectangle Left="1440" Top="3600" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2190" Color="16777215" DataName="N° version SW Bosch" RequestName="RDBLID_ReadSystemIdentification">
+<Rectangle Left="1440" Top="4200" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2205" Color="16777215" DataName="N° révision SW Bosch" RequestName="RDBLID_ReadSystemIdentification">
+<Rectangle Left="1440" Top="4800" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2310" Color="16777215" DataName="fonction implémentée" RequestName="RDBLID_ReadSystemIdentification">
+<Rectangle Left="1320" Top="5400" Height="300" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture trame DIAG-MUX" Color="16777215" WindowState="2" Width="11745" Height="9270">
+
+<Label Text=" " Color="11513775" Alignment="0">
+<Rectangle Left="120" Top="840" Height="6120" Width="9360"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Lecture de la trame DIAG MUX" Color="16777215" Alignment="2">
+<Rectangle Left="600" Top="0" Height="540" Width="8160"/>
+<Font Name="Arial" Size=" 26" Bold="1" Italic="0" Color="16711680"/></Label>
+
+
+<Display Width="2805" Color="16777215" DataName="compteur bus off" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="480" Top="1680" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2805" Color="16777215" DataName="bus off - panne confirmée" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="480" Top="2040" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2805" Color="16777215" DataName="bus off - panne présente" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="480" Top="2400" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2805" Color="16777215" DataName="compteur INJ absent" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="480" Top="3000" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2790" Color="16777215" DataName="INJ absent - panne confirmée" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="480" Top="3360" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2805" Color="16777215" DataName="INJ absent - panne présente" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="480" Top="3720" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2805" Color="16777215" DataName="compteur BVA absent" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="480" Top="4320" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2805" Color="16777215" DataName="BVA absent - panne confirmée" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="480" Top="4680" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2805" Color="16777215" DataName="BVA absent - panne présente" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="480" Top="5040" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2805" Color="16777215" DataName="compteur ESP absent" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="480" Top="5520" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2820" Color="16777215" DataName="ESP absent - panne confirmée" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="480" Top="5880" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2820" Color="16777215" DataName="ESP absent - panne présente" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="480" Top="6240" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="version messagerie CAN" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="3000" Top="1080" Height="300" Width="4140"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2820" Color="16777215" DataName="compteur module muet" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="5040" Top="1680" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2820" Color="16777215" DataName="module muet - panne confirmée" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="5040" Top="2040" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2820" Color="16777215" DataName="module muet - panne présente" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="5040" Top="2400" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2835" Color="16777215" DataName="compteur TdB absent" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="5040" Top="3000" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2850" Color="16777215" DataName="TdB absent - panne confirmée" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="5040" Top="3360" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2850" Color="16777215" DataName="TdB absent - panne présente" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="5040" Top="3720" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2835" Color="16777215" DataName="compteur UCH absent" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="5040" Top="4320" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2835" Color="16777215" DataName="UCH absent - panne confirmée" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="5040" Top="4680" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2835" Color="16777215" DataName="UCH absent - panne présente" RequestName="RDBLID_ReadCANFaultCounters">
+<Rectangle Left="5040" Top="5040" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture du contexte de panne" Color="16777215" WindowState="0" Width="11220" Height="8580">
+
+<Label Text="Lecture du contexte de panne" Color="16777215" Alignment="2">
+<Rectangle Left="0" Top="0" Height="540" Width="8160"/>
+<Font Name="Arial" Size=" 26" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="Choix du DTC" Color="16777215" Alignment="2">
+<Rectangle Left="1560" Top="2760" Height="360" Width="2760"/>
+<Font Name="Arial" Size=" 14" Bold="1" Italic="0" Color="16711680"/></Label>
+
+
+<Display Width="780" Color="16777215" DataName="DTC 1" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="240" Top="840" Height="300" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="780" Color="16777215" DataName="DTC 2" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="240" Top="1200" Height="300" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="780" Color="16777215" DataName="DTC 3" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="240" Top="1560" Height="300" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="780" Color="16777215" DataName="DTC 4" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="240" Top="1920" Height="300" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="780" Color="16777215" DataName="DTC 5" RequestName="RDODTC_ReadErrorMemory">
+<Rectangle Left="240" Top="2280" Height="300" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="1700" Color="16777215" DataName="FirstDTC" RequestName="RFFD_ReadErrorEnvironmentalConditions">
+<Rectangle Left="360" Top="3120" Height="300" Width="6480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3395" Color="16777215" DataName="compteur apparition" RequestName="RFFD_ReadErrorEnvironmentalConditions">
+<Rectangle Left="960" Top="3720" Height="300" Width="5880"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3395" Color="16777215" DataName="totalisateur km" RequestName="RFFD_ReadErrorEnvironmentalConditions">
+<Rectangle Left="960" Top="4080" Height="300" Width="5880"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3410" Color="16777215" DataName="temps écoulé" RequestName="RFFD_ReadErrorEnvironmentalConditions">
+<Rectangle Left="960" Top="6240" Height="300" Width="5880"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3410" Color="16777215" DataName="température extérieure" RequestName="RFFD_ReadErrorEnvironmentalConditions">
+<Rectangle Left="960" Top="6600" Height="300" Width="5880"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3395" Color="16777215" DataName="température interne radar" RequestName="RFFD_ReadErrorEnvironmentalConditions">
+<Rectangle Left="960" Top="5160" Height="300" Width="5880"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3395" Color="16777215" DataName="tension alimentation lors du défaut" RequestName="RFFD_ReadErrorEnvironmentalConditions">
+<Rectangle Left="960" Top="4440" Height="300" Width="5880"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3410" Color="16777215" DataName="désactivation du CAN par SPU" RequestName="RFFD_ReadErrorEnvironmentalConditions">
+<Rectangle Left="960" Top="5880" Height="300" Width="5880"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3410" Color="16777215" DataName="lentille pas propre" RequestName="RFFD_ReadErrorEnvironmentalConditions">
+<Rectangle Left="960" Top="5520" Height="300" Width="5880"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3395" Color="16777215" DataName="degré de désalignement" RequestName="RFFD_ReadErrorEnvironmentalConditions">
+<Rectangle Left="960" Top="4800" Height="300" Width="5880"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Diag Développement">
+
+<Screen Name="Ecriture du désalignement horizontal" Color="-2147483643" WindowState="0" Width="15450" Height="11220">
+
+<Label Text="(il faut documenter les 2 paramètres suivants)" Color="16777215" Alignment="2">
+<Rectangle Left="1800" Top="720" Height="300" Width="5820"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="16711680"/></Label>
+<Label Text="Ecriture du désalignement fin de chaine" Color="16777215" Alignment="2">
+<Rectangle Left="600" Top="240" Height="480" Width="8100"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="1" Italic="0" Color="16711680"/></Label>
+
+<Button Text="Lancement écriture">
+<Rectangle Left="3240" Top="2400" Height="780" Width="2520"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="20" RequestName="WDBLID_WriteDynamicDataSPU"/>
+</Button>
+
+<Input Width="3840" Color="16777215" DataName="écriture désalignement horizontal" RequestName="WDBLID_WriteDynamicDataSPU">
+<Rectangle Left="360" Top="1200" Height="300" Width="8460"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3840" Color="16777215" DataName="écriture checksum" RequestName="WDBLID_WriteDynamicDataSPU">
+<Rectangle Left="360" Top="1680" Height="300" Width="8460"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Lecture des désalignements" Color="-2147483643" WindowState="0" Width="15450" Height="11220">
+
+<Label Text="Lecture du désalignement radar" Color="16777215" Alignment="2">
+<Rectangle Left="600" Top="240" Height="600" Width="8220"/>
+<Font Name="MS Sans Serif" Size=" 24" Bold="1" Italic="0" Color="16711680"/></Label>
+<Send Delay="20" RequestName="SDS_Development"/><Send Delay="100" RequestName="RDBLID_ReadDynamicDataSPU"/>
+
+<Display Width="3600" Color="16777215" DataName="désalignement horizontal" RequestName="RDBLID_ReadDynamicDataSPU">
+<Rectangle Left="1440" Top="1440" Height="300" Width="5700"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3600" Color="16777215" DataName="plaus désalignement horizontal" RequestName="RDBLID_ReadDynamicDataSPU">
+<Rectangle Left="1440" Top="1920" Height="300" Width="5700"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3600" Color="16777215" DataName="désalignement vertical" RequestName="RDBLID_ReadDynamicDataSPU">
+<Rectangle Left="1440" Top="2760" Height="300" Width="5700"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3600" Color="16777215" DataName="plaus désalignement vertical" RequestName="RDBLID_ReadDynamicDataSPU">
+<Rectangle Left="1440" Top="3240" Height="300" Width="5700"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

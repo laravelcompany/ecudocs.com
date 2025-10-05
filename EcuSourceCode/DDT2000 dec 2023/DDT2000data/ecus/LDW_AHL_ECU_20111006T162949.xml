@@ -1,0 +1,1611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.0.0.1" date="2011-10-06T14:13"/>
+<ddt:Target Name="LDW_AHL_ECU" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" group="Front camera ECU" upload="10/6/2011" href="LDW_AHL_ECU_20111006T162949.xml" email=""><Description><![CDATA[** 05/10/2011
+Initialisation de la base DDT de la caméra frontale permettant l'alerte sortie de voie (LDW) 
+et la commutation automatique code/phare (AHL)
+Pilote : Altran (S.CHANSAVANG)
+Sce : 65608]]></Description>
+<Projects xmlns=""><x95Ph2/></Projects>
+<Function Name="FCAM" Address="98"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation/>
+<Failures Name="DTC Failures" Id="3"/>
+<Boot Name="Front cam X95ph2"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="2012"/>
+</SendId><ReceiveId>
+<CANId Value="2013"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="4" Supplier="AFK" Soft="0000" Version="0402"/><AutoIdent DiagVersion="4" Supplier="AFK" Soft="0000" Version="0500"/><AutoIdent DiagVersion="4" Supplier="AFK" Soft="0000" Version="0600"/><AutoIdent DiagVersion="4" Supplier="AFK" Soft="0000" Version="0700"/><AutoIdent DiagVersion="4" Supplier="AFK" Soft="0000" Version="0706"/><AutoIdent DiagVersion="4" Supplier="AFK" Soft="0000" Version="0801"/><AutoIdent DiagVersion="4" Supplier="AFK" Soft="0000" Version="0802"/><AutoIdent DiagVersion="4" Supplier="AFK" Soft="0000" Version="0900"/></AutoIdents>
+<Datas>
+
+<Data Name="DTCStatusAvailabilityMask">
+<Mnemonic>DTCSAM</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCRecord">
+<Mnemonic>DTCASR_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCMaskRecord">
+<Mnemonic>DTCMREC_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCFailureType.Category">
+<Bits count="4">
+<List>
+<Item Value="0" Text="General Failure Information"/>
+<Item Value="1" Text="General Electrical Failures"/>
+<Item Value="2" Text="General Signal Failures"/>
+<Item Value="3" Text="FM / PWM Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="15" Text="Vehicle manufacturer / System supplier specific"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType">
+<Bits>
+<List>
+<Item Value="0" Text="Device and failure type ODB codding"/>
+<Item Value="1" Text="General Electrical Failure"/>
+<Item Value="2" Text="General signal failure"/>
+<Item Value="3" Text="FM / PWM Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="17" Text="circuit short to ground"/>
+<Item Value="18" Text="circuit short to battery"/>
+<Item Value="19" Text="circuit open"/>
+<Item Value="20" Text="circuit short to ground or open"/>
+<Item Value="21" Text="circuit short to battery or open"/>
+<Item Value="22" Text="circuit voltage below threshold"/>
+<Item Value="23" Text="circuit voltage above threshold"/>
+<Item Value="24" Text="circuit current below threshold"/>
+<Item Value="25" Text="circuit current above threshold"/>
+<Item Value="26" Text="circuit resistance below threshold"/>
+<Item Value="27" Text="circuit resistance above threshold"/>
+<Item Value="28" Text="circuit voltage out of range"/>
+<Item Value="29" Text="circuit current out of range"/>
+<Item Value="30" Text="circuit resistance out of range"/>
+<Item Value="31" Text="circuit intermittent"/>
+<Item Value="33" Text="signal amplitude &lt; minimum"/>
+<Item Value="34" Text="signal amplitude &gt; maximum"/>
+<Item Value="35" Text="signal stuck low"/>
+<Item Value="36" Text="signal stuck high"/>
+<Item Value="37" Text="signal shape / waveform failure"/>
+<Item Value="38" Text="signal rate of change below threshold"/>
+<Item Value="39" Text="signal rate of change above threshold"/>
+<Item Value="40" Text="signal bias lvl out of range/zero adjustmt failure"/>
+<Item Value="41" Text="signal signal invalid"/>
+<Item Value="47" Text="signal erratic"/>
+<Item Value="49" Text="no signal"/>
+<Item Value="50" Text="signal low time &lt; minimum"/>
+<Item Value="51" Text="signal low time &gt; maximum"/>
+<Item Value="52" Text="signal high time &lt; minimum"/>
+<Item Value="53" Text="signal high time &gt; maximum"/>
+<Item Value="54" Text="signal frequency too low"/>
+<Item Value="55" Text="signal frequency too high"/>
+<Item Value="56" Text="signal frequency incorrect"/>
+<Item Value="57" Text="incorrect has too few pulses"/>
+<Item Value="58" Text="incorrect has too many pulses"/>
+<Item Value="65" Text="general checksum failure"/>
+<Item Value="66" Text="general memory failure"/>
+<Item Value="67" Text="special memory failure"/>
+<Item Value="68" Text="data memory failure"/>
+<Item Value="69" Text="program memory failure"/>
+<Item Value="70" Text="calibration / parameter memory failure"/>
+<Item Value="71" Text="watchdog / safety µC failure"/>
+<Item Value="72" Text="supervision software failure"/>
+<Item Value="73" Text="internal electronic failure"/>
+<Item Value="74" Text="incorrect component installed"/>
+<Item Value="75" Text="over temperature"/>
+<Item Value="81" Text="not programmed"/>
+<Item Value="82" Text="not activated"/>
+<Item Value="83" Text="deactivated"/>
+<Item Value="84" Text="missing calibration"/>
+<Item Value="85" Text="not configured"/>
+<Item Value="97" Text="signal calculation failure"/>
+<Item Value="98" Text="signal compare failure"/>
+<Item Value="99" Text="circuit / component protection time-out"/>
+<Item Value="100" Text="signal plausibility failure"/>
+<Item Value="101" Text="signal has too few transitions / events"/>
+<Item Value="102" Text="signal has too many transitions / events"/>
+<Item Value="103" Text="signal incorrect after event"/>
+<Item Value="104" Text="event information"/>
+<Item Value="113" Text="actuator stuck"/>
+<Item Value="114" Text="actuator stuck open"/>
+<Item Value="115" Text="actuator stuck closed"/>
+<Item Value="116" Text="actuator slipping"/>
+<Item Value="117" Text="emergency position not reachable"/>
+<Item Value="118" Text="wrong mounting position"/>
+<Item Value="119" Text="commanded position not reachable"/>
+<Item Value="120" Text="alignment or adjustment incorrect"/>
+<Item Value="121" Text="mechanical linkage failure"/>
+<Item Value="122" Text="fluid leak or seal failure"/>
+<Item Value="123" Text="low fluid level"/>
+<Item Value="129" Text="invalid serial data received"/>
+<Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+<Item Value="131" Text="value of signal protection calculation incorrect"/>
+<Item Value="132" Text="signal below allowable range"/>
+<Item Value="133" Text="signal above allowable range"/>
+<Item Value="134" Text="signal invalid"/>
+<Item Value="135" Text="missing message"/>
+<Item Value="136" Text="bus off"/>
+<Item Value="143" Text="erratic"/>
+<Item Value="145" Text="parametric"/>
+<Item Value="146" Text="performance or incorrect operation"/>
+<Item Value="147" Text="no operation"/>
+<Item Value="148" Text="unexpected operation"/>
+<Item Value="149" Text="incorrect assembly"/>
+<Item Value="150" Text="component internal failure"/>
+<Item Value="151" Text="Component or syst operation obstructed or blocked"/>
+<Item Value="152" Text="component or system over temperature"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.confirmedDTC">
+<Mnemonic>CDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedSinceLastClear">
+<Mnemonic>TNCSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedSinceLastClear">
+<Mnemonic>TFSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCExtendedDataRecordNumber">
+<Mnemonic>DTCEDRN</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Mileage"/>
+<Item Value="129" Text="AgingCounter"/>
+<Item Value="130" Text="DTCOccurrenceCounter"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceAndFailureTypeOBD">
+<Bits count="16">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCDeviceIdentifier">
+<Bits count="16">
+<List>
+<Item Value="44288" Text="Camera"/>
+<Item Value="44289" Text="Camera heat"/>
+<Item Value="44290" Text="Camera virgin"/>
+<Item Value="44292" Text="Can network"/>
+<Item Value="44293" Text="LDW LED"/>
+<Item Value="44291" Text="LDW switch"/>
+<Item Value="44294" Text="Camera supply"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailed">
+<Mnemonic>TF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.ManufacturerOrSupplier">
+<Bits count="4">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.Mileage">
+<Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>MILEAGE</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.AgingCounter">
+<Comment><![CDATA[Description of the extendedData AgingCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>AGINGCOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.DTCOccurrenceCounter">
+<Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="RoutineEntryOption">
+<Comment><![CDATA[= "Routine" input parameters]]></Comment>
+<Mnemonic>RENTOPT1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Perform routine requested"/>
+<Item Value="1" Text="Status request"/></List>
+</Bits>
+</Data>
+<Data Name="RoutineEntryStatus">
+<Mnemonic>RENTSTAT1</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="In progress"/>
+<Item Value="2" Text="Complete and OK"/>
+<Item Value="4" Text="Complete and not OK"/></List>
+</Bits>
+</Data>
+<Data Name="StatusOfDTC">
+<Mnemonic>DTCASR_SODTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SessionName">
+<Bits>
+<List>
+<Item Value="129" Text="DefaultSession"/>
+<Item Value="133" Text="ProgrammingSession"/>
+<Item Value="134" Text="Supplier Session"/>
+<Item Value="192" Text="AfterMarket/Plant Session"/></List>
+</Bits>
+</Data>
+<Data Name="CalibrationNumber">
+<Comment><![CDATA[Numero de calibration en Hexa]]></Comment>
+<Mnemonic>IDENT-7</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="DiagnosticIdentificationCode">
+<Comment><![CDATA[Diag evolution number]]></Comment>
+<Mnemonic>IDENT-2</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="ManufacturerIdentificationCode">
+<Mnemonic>IDENT-11</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Renault R1"/>
+<Item Value="128" Text="Nissan N1"/>
+<Item Value="129" Text="Nissan N2"/>
+<Item Value="130" Text="Nissan N3"/>
+<Item Value="136" Text="Renault"/>
+<Item Value="255" Text="Renault R3"/></List>
+</Bits>
+</Data>
+<Data Name="Headlamps type">
+<Comment><![CDATA[Value between 0 and 2 with a resolution of 1]]></Comment>
+<Mnemonic>Headlamp_type</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Halogen"/>
+<Item Value="1" Text="Xenon"/>
+<Item Value="2" Text="LED"/></List>
+</Bits>
+</Data>
+<Data Name="Distance of target from front axle center">
+<Comment><![CDATA[Value between 0 and 65535mm with a resolution of 1]]></Comment>
+<Mnemonic>Distance_of_target_from_axle_vehicle</Mnemonic>
+<Bits count="16">
+<Scaled Unit="mm"/>
+</Bits>
+</Data>
+<Data Name="Height of the center of target from the ground">
+<Comment><![CDATA[Value between 0 and 3825 mm with a resolution of 15]]></Comment>
+<Mnemonic>Height_of_the_center_of_target_from_the_ground</Mnemonic>
+<Bits>
+<Scaled Unit="mm" Step=" 15"/>
+</Bits>
+</Data>
+<Data Name="Tolerance of height from Z">
+<Comment><![CDATA[Value between -255 and 255 mm with a resolution of 2]]></Comment>
+<Mnemonic>Tolerance_of_height_from_Z</Mnemonic>
+<Bits signed="1">
+<Scaled Unit="mm" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="Vehicle type">
+<Comment><![CDATA[Value between 0 and 5 with a resolution of 1]]></Comment>
+<Mnemonic>Vehicle_type</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="J95² Standard"/>
+<Item Value="1" Text="J95² Long"/>
+<Item Value="2" Text="B95²"/>
+<Item Value="3" Text="D95²"/>
+<Item Value="4" Text="K95²"/>
+<Item Value="5" Text="E95²"/></List>
+</Bits>
+</Data>
+<Data Name="CRC">
+<Bytes count="2"/>
+</Data>
+<Data Name="Traceability serial number">
+<Comment><![CDATA[production umber in the week]]></Comment>
+<Mnemonic>TRASN</Mnemonic>
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="Traceability supplier number">
+<Mnemonic>TRAITG</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Traceability year of production">
+<Comment><![CDATA[Year of production]]></Comment>
+<Mnemonic>TRAYP</Mnemonic>
+<Bits>
+<List>
+<Item Value="48" Text="2011"/>
+<Item Value="49" Text="2012"/>
+<Item Value="50" Text="2013"/>
+<Item Value="51" Text="2014"/>
+<Item Value="52" Text="2015"/>
+<Item Value="53" Text="2016"/>
+<Item Value="54" Text="2017"/>
+<Item Value="55" Text="2018"/>
+<Item Value="56" Text="2019"/>
+<Item Value="57" Text="2020"/></List>
+</Bits>
+</Data>
+<Data Name="VehicleManufacturerSparePartNumber">
+<Comment><![CDATA[Vehice Spare Part  Number]]></Comment>
+<Mnemonic>ID_VMSPN</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="Steering wheel angle">
+<Comment><![CDATA[Value between -3276 and 3276 with a resolution of 1]]></Comment>
+<Mnemonic>Steering_wheel_angle</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="°"/>
+</Bits>
+</Data>
+<Data Name="Region">
+<Comment><![CDATA[Value between 0 and 255 with a resolution of 1 (fix coded)]]></Comment>
+<Mnemonic>Region</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="USA (Right Hand Traffic)"/>
+<Item Value="1" Text="Europe (Right Hand Traffic)"/>
+<Item Value="2" Text="Europe (Left Hand Traffic)"/>
+<Item Value="3" Text="Russia (Right Hand Traffic)"/>
+<Item Value="4" Text="Japan (Left Hand Traffic)"/>
+<Item Value="5" Text="Autralia (Left Hand Traffic)"/>
+<Item Value="6" Text="Korea (Right Hand Traffic)"/>
+<Item Value="7" Text="Other/Default (Right Hand Traffic)"/></List>
+</Bits>
+</Data>
+<Data Name="LDW push button state">
+<Comment><![CDATA[Value between 0 and 1 with a resolution of 1 (fix coded)]]></Comment>
+<Mnemonic>LDW_push_button_state</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="off"/>
+<Item Value="1" Text="on"/></List>
+</Bits>
+</Data>
+<Data Name="Supply voltage">
+<Comment><![CDATA[Value between 6 and 18 with a resolution of 0.1]]></Comment>
+<Mnemonic>Supply_voltage</Mnemonic>
+<Bits>
+<Scaled Unit="V" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Windshield type">
+<Comment><![CDATA[Value between 0 and 2 with a resolution of 1 (fix coded)]]></Comment>
+<Mnemonic>Windshield_type</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Non acoustic windshield"/>
+<Item Value="1" Text="Acoustic windshield"/>
+<Item Value="2" Text="Athermic windshield"/></List>
+</Bits>
+</Data>
+<Data Name="Vehicle speed">
+<Comment><![CDATA[Value between 0 and 255 km/h with a resolution of 1]]></Comment>
+<Mnemonic>Vehicle_speed</Mnemonic>
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="ECU internal temperature">
+<Comment><![CDATA[Value between -40 and 86 °C with a resolution of 2]]></Comment>
+<Mnemonic>ECU_internal_temperature</Mnemonic>
+<Bits signed="1">
+<Scaled Unit="°C" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="Traceability week of production">
+<Comment><![CDATA[week number in the year]]></Comment>
+<Mnemonic>TRAWP</Mnemonic>
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="Vehicle width">
+<Comment><![CDATA[Value between 0 and 4000 mm with a resolution of 1]]></Comment>
+<Mnemonic>Vehicule_width</Mnemonic>
+<Bits count="16">
+<Scaled Unit="mm"/>
+</Bits>
+</Data>
+<Data Name="VIN">
+<Mnemonic>VIN</Mnemonic>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="Traceability available for supplier needs">
+<Mnemonic>TRABS1</Mnemonic>
+<Bytes count="9"/>
+</Data>
+<Data Name="RoutineExitStatus">
+<Bits>
+<List>
+<Item Value="0" Text="Not activated"/>
+<Item Value="1" Text="In progress"/>
+<Item Value="2" Text="Complete and OK"/>
+<Item Value="4" Text="Complete and not OK"/></List>
+</Bits>
+</Data>
+<Data Name="Camera position in the vehicle.X position">
+<Comment><![CDATA[Value between 0 and 2000 mm with a resolution of 1]]></Comment>
+<Mnemonic>Camera_position_vehicle_X</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="mm"/>
+</Bits>
+</Data>
+<Data Name="Camera position from the ground.Z position">
+<Comment><![CDATA[Value between 0 and 3000 mm with a resolution of 1]]></Comment>
+<Mnemonic>Camera_position_vehicle_Z</Mnemonic>
+<Bits count="16">
+<Scaled Unit="mm"/>
+</Bits>
+</Data>
+<Data Name="Camera position in the vehicle.Y position">
+<Comment><![CDATA[Value between 0 and 2000 mm with a resolution of 1]]></Comment>
+<Mnemonic>Camera_position_vehicle_Y</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="mm"/>
+</Bits>
+</Data>
+<Data Name="Roll angle">
+<Comment><![CDATA[Value between -3 and 3 ° with a resolution of 0.001]]></Comment>
+<Mnemonic>Roll_angle</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="°" DivideBy=" 1000"/>
+</Bits>
+</Data>
+<Data Name="Distance between target">
+<Comment><![CDATA[specific parameter for plant setup 65535mm with the resolution of 1]]></Comment>
+<Mnemonic>Distance_between_target</Mnemonic>
+<Bits count="16">
+<Scaled Unit="mm"/>
+</Bits>
+</Data>
+<Data Name="LDW push button LED state">
+<Comment><![CDATA[Value between 0 and 1 with a resolution of 1 (fix coded)]]></Comment>
+<Mnemonic>LDW_push_button_LED_state</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="off"/>
+<Item Value="1" Text="on"/></List>
+</Bits>
+</Data>
+<Data Name="Pitch angle default value">
+<Comment><![CDATA[Value between -4 and 8° with a resolution of 0.001]]></Comment>
+<Mnemonic>Pitch_angle_default_value</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="°" DivideBy=" 1000"/>
+</Bits>
+</Data>
+<Data Name="Pitch angle after calibration">
+<Comment><![CDATA[Value between -4 and 8° with a resolution of 0.0001]]></Comment>
+<Mnemonic>pitch_angle_after_calibration</Mnemonic>
+<Bits count="32" signed="1">
+<Scaled Unit="°" DivideBy=" 10000"/>
+</Bits>
+</Data>
+<Data Name="PartNumberLowerPart">
+<Comment><![CDATA[5 derniers digits de la référence pièce]]></Comment>
+<Mnemonic>IDENT-1</Mnemonic>
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="SupplierITGNumber">
+<Comment><![CDATA[Supplier ITG code]]></Comment>
+<Mnemonic>IDENT-3</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="HardwareNumberLowerPart">
+<Mnemonic>IDENT-4</Mnemonic>
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="SoftwareVersion">
+<Comment><![CDATA[Software identification number]]></Comment>
+<Mnemonic>NPGRGM</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="PartNumber.BasicPartList">
+<Mnemonic>IDENT-8</Mnemonic>
+<Bits>
+<List>
+<Item Value="2" Text="284A6"/></List>
+</Bits>
+</Data>
+<Data Name="X_offset after calibration">
+<Comment><![CDATA[Value between 170 and 190mpix with a resolution of 0.001]]></Comment>
+<Mnemonic>X_offset_after_calibration</Mnemonic>
+<Bits count="32" signed="1">
+<Scaled DivideBy=" 1000"/>
+</Bits>
+</Data>
+<Data Name="HardwareNumber.BasicPartList">
+<Mnemonic>IDENT- 9</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="28462"/></List>
+</Bits>
+</Data>
+<Data Name="ApprovalNumber.BasicPartList">
+<Mnemonic>IDENT-10</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/></List>
+</Bits>
+</Data>
+<Data Name="IndexNumber">
+<Comment><![CDATA[Software version(edition) number]]></Comment>
+<Mnemonic>IDENT-6</Mnemonic>
+<Bytes count="2"/>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="DataRead.Identification.RenaultR2">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>6180</ReplyBytes>
+<DataItem Name="CalibrationNumber" Ref="1" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" Ref="1" FirstByte="8"/>
+<DataItem Name="SoftwareVersion" Ref="1" FirstByte="17"/>
+<DataItem Name="SupplierITGNumber" Ref="1" FirstByte="9"/>
+<DataItem Name="IndexNumber" Ref="1" FirstByte="19"/>
+<DataItem Name="HardwareNumberLowerPart" Ref="1" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" Ref="1" FirstByte="26"/>
+<DataItem Name="PartNumberLowerPart" Ref="1" FirstByte="3"/>
+<DataItem Name="PartNumber.BasicPartList" Ref="1" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" Ref="1" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" Ref="1" FirstByte="25"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>190209</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+<DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1906000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590600000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ClearDiagnosticInformation.All">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+<Sent>
+<SentBytes>14FFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>54</ReplyBytes>
+</Received>
+</Request>
+<Request Name="FailuresDetect.All">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import (Conditional)]]></Comment>
+<Sent>
+<SentBytes>310100</SentBytes>
+<DataItem Name="RoutineEntryOption" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710100</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000080</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>59060000000080000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.AgingCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000081</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>5906000000008100</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.DTCOccurrenceCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000082</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>5906000000008200</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+<Sent>
+<SentBytes>3E01</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="SessionName" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+</Received>
+</Request>
+<Request Name="DataRead.Traceability">
+
+<DossierMaintenabilite/>
+<DenyAccess><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>6184</ReplyBytes>
+<DataItem Name="Traceability supplier number" Ref="1" FirstByte="3"/>
+<DataItem Name="Traceability year of production" Ref="1" FirstByte="6"/>
+<DataItem Name="Traceability week of production" Ref="1" FirstByte="7"/>
+<DataItem Name="Traceability serial number" Ref="1" FirstByte="9"/>
+<DataItem Name="Traceability available for supplier needs" FirstByte="14"/>
+</Received>
+</Request>
+<Request Name="DataRead.VehicleManufacturerSparePartNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ID_VMSPN]]></Comment>
+<Sent>
+<SentBytes>22F187</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F187</ReplyBytes>
+<DataItem Name="VehicleManufacturerSparePartNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Region">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2E206200</SentBytes>
+<DataItem Name="Region" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E2062</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Region">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222062</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>622062</ReplyBytes>
+<DataItem Name="Region" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.VIN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="CRC" FirstByte="20"/>
+<DataItem Name="VIN" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B81</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.VIN">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[VIN]]></Comment>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<ReplyBytes>6181</ReplyBytes>
+<DataItem Name="CRC" FirstByte="20"/>
+<DataItem Name="VIN" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="StopRoutineByLocalIdentifier">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>320100</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>720100</ReplyBytes>
+<DataItem Name="RoutineExitStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="DataRead.Camera position in the vehicle.X position">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222051</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>622051</ReplyBytes>
+<DataItem Name="Camera position in the vehicle.X position" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Camera position in the vehicle.X position">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2E20510000</SentBytes>
+<DataItem Name="Camera position in the vehicle.X position" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E2051</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Camera position from the ground.Z position">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222052</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>622052</ReplyBytes>
+<DataItem Name="Camera position from the ground.Z position" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Camera position from the ground.Z position">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2E20520000</SentBytes>
+<DataItem Name="Camera position from the ground.Z position" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E2052</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Distance of target from front axle center">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222054</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>622054</ReplyBytes>
+<DataItem Name="Distance of target from front axle center" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Distance of target from front axle center">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2E20540000</SentBytes>
+<DataItem Name="Distance of target from front axle center" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E2054</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Camera position in the vehicle.Y position">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222050</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>622050</ReplyBytes>
+<DataItem Name="Camera position in the vehicle.Y position" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Camera position in the vehicle.Y position">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2E20500000</SentBytes>
+<DataItem Name="Camera position in the vehicle.Y position" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E2050</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Vehicle width">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222069</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>622069</ReplyBytes>
+<DataItem Name="Vehicle width" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Vehicle width">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2E20690000</SentBytes>
+<DataItem Name="Vehicle width" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E2069</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Vehicle speed">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222067</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>622067</ReplyBytes>
+<DataItem Name="Vehicle speed" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Tolerance of height from Z">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222066</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>622066</ReplyBytes>
+<DataItem Name="Tolerance of height from Z" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Tolerance of height from Z">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2E206600</SentBytes>
+<DataItem Name="Tolerance of height from Z" FirstByte="4"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>6E2066</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Supply voltage">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222065</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>622065</ReplyBytes>
+<DataItem Name="Supply voltage" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Roll angle">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222063</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>622063</ReplyBytes>
+<DataItem Name="Roll angle" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Steering wheel angle">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222064</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>622064</ReplyBytes>
+<DataItem Name="Steering wheel angle" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.LDW push button state">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222058</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>622058</ReplyBytes>
+<DataItem Name="LDW push button state" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Vehicle type">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222068</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>622068</ReplyBytes>
+<DataItem Name="Vehicle type" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Vehicle type">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2E206800</SentBytes>
+<DataItem Name="Vehicle type" FirstByte="4"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>6E2068</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.X_offset after calibration">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222071</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>622071</ReplyBytes>
+<DataItem Name="X_offset after calibration" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Windshield type">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222070</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>622070</ReplyBytes>
+<DataItem Name="Windshield type" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Windshield type">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E207000</SentBytes>
+<DataItem Name="Windshield type" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E2070</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Height of the center of target from the ground">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222057</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>622057</ReplyBytes>
+<DataItem Name="Height of the center of target from the ground" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Height of the center of target from the ground">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2E205700</SentBytes>
+<DataItem Name="Height of the center of target from the ground" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E2057</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Headlamps type">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222056</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>622056</ReplyBytes>
+<DataItem Name="Headlamps type" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Headlamps type">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2E205600</SentBytes>
+<DataItem Name="Headlamps type" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E2056</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.ECU internal temperature">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222055</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>622055</ReplyBytes>
+<DataItem Name="ECU internal temperature" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Distance between target">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222053</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>622053</ReplyBytes>
+<DataItem Name="Distance between target" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Distance between target">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E20530000</SentBytes>
+<DataItem Name="Distance between target" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E2053</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ECUResetHard">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Reset of ECU]]></Comment>
+<Sent>
+<SentBytes>1101</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>5101</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSnapshot">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>1904000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590400000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.LDW push button LED state">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222059</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>622059</ReplyBytes>
+<DataItem Name="LDW push button LED state" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Pitch angle default value">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222061</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>622061</ReplyBytes>
+<DataItem Name="Pitch angle default value" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Pitch angle default value">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2E20610000</SentBytes>
+<DataItem Name="Pitch angle default value" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E2061</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Pitch angle after calibration">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>222060</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>622060</ReplyBytes>
+<DataItem Name="Pitch angle after calibration" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.VehicleManufacturerSparePartNumber">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2EF18700000000000000000000</SentBytes>
+<DataItem Name="VehicleManufacturerSparePartNumber" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6EF187</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartRoutineByLocalIdentifier_Perform Routine Requested">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>31010000000000</SentBytes>
+<DataItem Name="Distance of target from front axle center" FirstByte="6"/>
+<DataItem Name="Height of the center of target from the ground" FirstByte="5"/>
+<DataItem Name="Tolerance of height from Z" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710100</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="StartRoutineByLocalIdentifier_Status Request">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>31010100000000</SentBytes>
+<DataItem Name="Tolerance of height from Z" FirstByte="4"/>
+<DataItem Name="Height of the center of target from the ground" FirstByte="5"/>
+<DataItem Name="Distance of target from front axle center" FirstByte="6"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710100</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Camera" DTC="44288" Type="2">
+
+<Test Type="73" Severity="0">
+</Test>
+</Device>
+<Device Name="LDW switch" DTC="44291">
+
+<Test Type="18" Severity="0">
+</Test>
+</Device>
+<Device Name="LDW LED" DTC="44293" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="Can network" DTC="44292" Type="2">
+
+<Test Type="136" Severity="0">
+</Test>
+</Device>
+<Device Name="Camera heat" DTC="44289" Type="2">
+
+<Test Type="75" Severity="0">
+</Test>
+</Device>
+<Device Name="Camera virgin" DTC="44290" Type="2">
+
+<Test Type="85" Severity="0">
+</Test>
+</Device>
+<Device Name="Camera supply" DTC="44294" Type="2">
+
+<Test Type="22" Severity="0">
+</Test><Test Type="23" Severity="0">
+</Test>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="diagnostic">
+
+<Screen Name="1_Diag_Session" Color="8453888" WindowState="0" Width="9780" Height="7500">
+
+<Label Text="Diagnostic Session Selection" Color="16777215" Alignment="2">
+<Rectangle Left="3120" Top="720" Height="300" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Go diag">
+<Rectangle Left="3840" Top="3360" Height="360" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/>
+</Button>
+
+<Input Width="2000" Color="16777215" DataName="SessionName" RequestName="StartDiagnosticSession">
+<Rectangle Left="2640" Top="2520" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="2_Vehicle_Properties" Color="11513775" WindowState="0" Width="9540" Height="7260">
+
+<Label Text="Vehicle Properties" Color="16777215" Alignment="2">
+<Rectangle Left="3000" Top="480" Height="300" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Write">
+<Rectangle Left="6360" Top="1080" Height="300" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="40" RequestName="DataWrite.Vehicle type"/><Send Delay="60" RequestName="DataWrite.Vehicle width"/><Send Delay="80" RequestName="DataWrite.Windshield type"/><Send Delay="100" RequestName="DataWrite.Headlamps type"/>
+</Button>
+
+<Display Width="2000" Color="16777215" DataName="Vehicle width" RequestName="DataRead.Vehicle width">
+<Rectangle Left="600" Top="1920" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Windshield type" RequestName="DataRead.Windshield type">
+<Rectangle Left="600" Top="2280" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Vehicle type" RequestName="DataRead.Vehicle type">
+<Rectangle Left="600" Top="2640" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Headlamps type" RequestName="DataRead.Headlamps type">
+<Rectangle Left="600" Top="3000" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="0" Color="16777215" DataName="Headlamps type" RequestName="DataWrite.Headlamps type">
+<Rectangle Left="5760" Top="3000" Height="300" Width="2040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vehicle type" RequestName="DataWrite.Vehicle type">
+<Rectangle Left="5760" Top="2640" Height="300" Width="2040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vehicle width" RequestName="DataWrite.Vehicle width">
+<Rectangle Left="5760" Top="1920" Height="300" Width="2040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Windshield type" RequestName="DataWrite.Windshield type">
+<Rectangle Left="5760" Top="2280" Height="300" Width="2040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2000" Color="16777215" DataName="Vehicle speed" RequestName="DataRead.Vehicle speed">
+<Rectangle Left="600" Top="3840" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3380" Color="16777215" DataName="VehicleManufacturerSparePartNumber" RequestName="DataRead.VehicleManufacturerSparePartNumber">
+<Rectangle Left="600" Top="5400" Height="300" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="3_LDW_Function" Color="11513775" WindowState="0" Width="9660" Height="7260">
+
+<Label Text="LDW Function" Color="16777215" Alignment="2">
+<Rectangle Left="3000" Top="720" Height="300" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Write">
+<Rectangle Left="6240" Top="3720" Height="300" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="40" RequestName="DataWrite.Region"/>
+</Button>
+
+<Display Width="3515" Color="16777215" DataName="LDW push button LED state" RequestName="DataRead.LDW push button LED state">
+<Rectangle Left="1920" Top="2280" Height="300" Width="5880"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Region" RequestName="DataRead.Region">
+<Rectangle Left="720" Top="4200" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="0" Color="16777215" DataName="Region" RequestName="DataWrite.Region">
+<Rectangle Left="5400" Top="4200" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2000" Color="16777215" DataName="Steering wheel angle" RequestName="DataRead.Steering wheel angle">
+<Rectangle Left="720" Top="4560" Height="240" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2180" Color="16777215" DataName="LDW push button state" RequestName="DataRead.LDW push button state">
+<Rectangle Left="3240" Top="2760" Height="300" Width="4515"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="4_Traceability" Color="12615808" WindowState="0" Width="9780" Height="7260">
+
+<Label Text="Traceability" Color="16777215" Alignment="2">
+<Rectangle Left="3000" Top="720" Height="300" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+
+
+<Display Width="3395" Color="16777215" DataName="Traceability supplier number" RequestName="DataRead.Traceability">
+<Rectangle Left="1320" Top="2520" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3395" Color="16777215" DataName="Traceability year of production" RequestName="DataRead.Traceability">
+<Rectangle Left="1320" Top="2820" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3395" Color="16777215" DataName="Traceability week of production" RequestName="DataRead.Traceability">
+<Rectangle Left="1320" Top="3120" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3395" Color="16777215" DataName="Traceability serial number" RequestName="DataRead.Traceability">
+<Rectangle Left="1320" Top="3420" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3395" Color="16777215" DataName="Traceability available for supplier needs" RequestName="DataRead.Traceability">
+<Rectangle Left="1320" Top="3720" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="5_Camera_Properties" Color="12566463" WindowState="0" Width="10020" Height="8340">
+
+<Label Text="Camera Properties" Color="16777215" Alignment="2">
+<Rectangle Left="4320" Top="600" Height="300" Width="2520"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Write camera position">
+<Rectangle Left="7440" Top="1920" Height="300" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="40" RequestName="DataWrite.Camera position in the vehicle.X position"/><Send Delay="40" RequestName="DataWrite.Camera position in the vehicle.Y position"/><Send Delay="40" RequestName="DataWrite.Camera position from the ground.Z position"/>
+</Button>
+<Button Text="Write ">
+<Rectangle Left="7710" Top="3720" Height="300" Width="1065"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="40" RequestName="DataWrite.Distance of target from front axle center"/><Send Delay="40" RequestName="DataWrite.Distance between target"/><Send Delay="40" RequestName="DataWrite.Height of the center of target from the ground"/>
+</Button>
+<Button Text="Write">
+<Rectangle Left="7695" Top="5505" Height="300" Width="1065"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="40" RequestName="DataWrite.Tolerance of height from Z"/><Send Delay="40" RequestName="DataWrite.Pitch angle default value"/>
+</Button>
+
+<Display Width="2150" Color="16777215" DataName="X_offset after calibration" RequestName="DataRead.X_offset after calibration">
+<Rectangle Left="2760" Top="5760" Height="315" Width="4320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2885" Color="16777215" DataName="Pitch angle default value" RequestName="DataRead.Pitch angle default value">
+<Rectangle Left="2025" Top="6975" Height="300" Width="5040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4380" Color="16777215" DataName="Camera position in the vehicle.X position" RequestName="DataRead.Camera position in the vehicle.X position">
+<Rectangle Left="540" Top="2460" Height="360" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4385" Color="16777215" DataName="Camera position in the vehicle.Y position" RequestName="DataRead.Camera position in the vehicle.Y position">
+<Rectangle Left="540" Top="2805" Height="360" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3965" Color="16777215" DataName="Distance of target from front axle center" RequestName="DataRead.Distance of target from front axle center">
+<Rectangle Left="1005" Top="4155" Height="345" Width="6255"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4445" Color="16777215" DataName="Height of the center of target from the ground" RequestName="DataRead.Height of the center of target from the ground">
+<Rectangle Left="525" Top="4920" Height="300" Width="6720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2870" Color="16777215" DataName="Tolerance of height from Z" RequestName="DataRead.Tolerance of height from Z">
+<Rectangle Left="2040" Top="6165" Height="315" Width="5040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2750" Color="16777215" DataName="Roll angle" RequestName="DataRead.Roll angle">
+<Rectangle Left="2160" Top="6585" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3350" Color="16777215" DataName="Distance between target" RequestName="DataRead.Distance between target">
+<Rectangle Left="1620" Top="4530" Height="360" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4385" Color="16777215" DataName="Camera position from the ground.Z position" RequestName="DataRead.Camera position from the ground.Z position">
+<Rectangle Left="540" Top="3165" Height="330" Width="6595"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="0" Color="16777215" DataName="Distance of target from front axle center" RequestName="DataWrite.Distance of target from front axle center">
+<Rectangle Left="7335" Top="4140" Height="345" Width="1740"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Distance between target" RequestName="DataWrite.Distance between target">
+<Rectangle Left="7335" Top="4530" Height="360" Width="1740"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Height of the center of target from the ground" RequestName="DataWrite.Height of the center of target from the ground">
+<Rectangle Left="7350" Top="4935" Height="300" Width="1740"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Tolerance of height from Z" RequestName="DataWrite.Tolerance of height from Z">
+<Rectangle Left="7200" Top="6150" Height="345" Width="1980"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Pitch angle default value" RequestName="DataWrite.Pitch angle default value">
+<Rectangle Left="7185" Top="6960" Height="300" Width="2010"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Camera position from the ground.Z position" RequestName="DataWrite.Camera position from the ground.Z position">
+<Rectangle Left="7350" Top="3135" Height="345" Width="1905"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Camera position in the vehicle.Y position" RequestName="DataWrite.Camera position in the vehicle.Y position">
+<Rectangle Left="7350" Top="2760" Height="390" Width="1905"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Camera position in the vehicle.X position" RequestName="DataWrite.Camera position in the vehicle.X position">
+<Rectangle Left="7350" Top="2445" Height="330" Width="1905"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="1955" Color="16777215" DataName="Supply voltage" RequestName="DataRead.Supply voltage">
+<Rectangle Left="480" Top="1440" Height="300" Width="3840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2390" Color="16777215" DataName="Pitch angle after calibration" RequestName="DataRead.Pitch angle after calibration">
+<Rectangle Left="2520" Top="7320" Height="240" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="6_Start_and_Stop_Routine" Color="11513775" WindowState="0" Width="10020" Height="7380">
+
+<Label Text="Start Routine" Color="16777215" Alignment="2">
+<Rectangle Left="3720" Top="840" Height="300" Width="2520"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Start Perform routine requested">
+<Rectangle Left="2280" Top="2400" Height="300" Width="2520"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="100" RequestName="StartRoutineByLocalIdentifier_Perform Routine Requested"/>
+</Button>
+<Button Text="Start Status request">
+<Rectangle Left="5040" Top="2400" Height="300" Width="1920"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StopRoutineByLocalIdentifier"/>
+</Button>
+
+<Input Width="4175" Color="16777215" DataName="Distance of target from front axle center" RequestName="StartRoutineByLocalIdentifier_Perform Routine Requested">
+<Rectangle Left="360" Top="3360" Height="300" Width="6480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="4415" Color="16777215" DataName="Height of the center of target from the ground" RequestName="StartRoutineByLocalIdentifier_Perform Routine Requested">
+<Rectangle Left="120" Top="3720" Height="300" Width="6720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2855" Color="16777215" DataName="Tolerance of height from Z" RequestName="StartRoutineByLocalIdentifier_Perform Routine Requested">
+<Rectangle Left="1680" Top="3000" Height="300" Width="5160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2000" Color="16777215" DataName="RoutineExitStatus" RequestName="StopRoutineByLocalIdentifier">
+<Rectangle Left="2520" Top="4560" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="7_ECU identification" Color="12615808" WindowState="0" Width="9660" Height="7260">
+
+<Label Text="Renault System Identification" Color="16777215" Alignment="2">
+<Rectangle Left="3120" Top="600" Height="300" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+
+
+<Display Width="3140" Color="16777215" DataName="DiagnosticIdentificationCode" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="1800" Top="3000" Height="287" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="SupplierITGNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="1800" Top="3360" Height="287" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="HardwareNumberLowerPart" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="1800" Top="3720" Height="287" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="SoftwareVersion" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="1800" Top="4080" Height="287" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="IndexNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="1800" Top="4440" Height="287" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="CalibrationNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="1800" Top="4800" Height="287" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3125" Color="16777215" DataName="PartNumberLowerPart" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="1800" Top="2640" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="PartNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="1800" Top="5160" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3125" Color="16777215" DataName="HardwareNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="1800" Top="5520" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3125" Color="16777215" DataName="ApprovalNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="1800" Top="5880" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3125" Color="16777215" DataName="ManufacturerIdentificationCode" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="1800" Top="6240" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="8_Vehicle Identification Number" Color="12615808" WindowState="0" Width="10020" Height="7500">
+
+<Label Text="Vehicle Identification Number" Color="16777215" Alignment="2">
+<Rectangle Left="3600" Top="360" Height="300" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Write VIN">
+<Rectangle Left="6000" Top="1800" Height="300" Width="1185"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="100" RequestName="DataWrite.VIN"/>
+</Button>
+
+<Display Width="2000" Color="16777215" DataName="VIN" RequestName="DataRead.VIN">
+<Rectangle Left="1680" Top="2520" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="CRC" RequestName="DataRead.VIN">
+<Rectangle Left="1680" Top="3000" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="15" Color="16777215" DataName="VIN" RequestName="DataWrite.VIN">
+<Rectangle Left="5640" Top="2520" Height="300" Width="1960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="CRC" RequestName="DataWrite.VIN">
+<Rectangle Left="5640" Top="3000" Height="300" Width="1960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="9_ECU Reset" Color="12615935" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="ECU Reset" Color="16777215" Alignment="2">
+<Rectangle Left="3360" Top="480" Height="300" Width="2130"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Hard Reset">
+<Rectangle Left="3600" Top="2640" Height="300" Width="1530"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="40" RequestName="ECUResetHard"/>
+</Button>
+
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

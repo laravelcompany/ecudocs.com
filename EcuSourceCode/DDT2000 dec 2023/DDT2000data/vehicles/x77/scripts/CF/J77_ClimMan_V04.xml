@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by groubs (none) -->
+<?xml-stylesheet type="text/xsl" href="CustomerFeatureV4.xslt"?>
+<CustomerFeaturesdataSet 
+	xmlns="http://www-diag.renault.com/2003/CustomerFeatures" >
+	<lang lang="fr"/>
+	<lang lang="es"/>
+	<lang lang="en"/>
+	<lang lang="ja"/>
+
+	<featuredescription lang="fr">
+		<name>CLIMATISATION MANUELLE</name>
+		<description>Ensemble de sous prestations relatif à une climatisation manuelle</description>
+	</featuredescription>
+	<featuredescription lang="en">
+		<name>MANUAL CLIMATE CONTROL</name>
+		<description>Set of features linked to manual climate control</description>
+	</featuredescription>
+	<featuredescription lang="ja">
+		<name>手動気候制御</name>
+		<description>手動気候の制御システム</description>
+	</featuredescription>
+
+	<feature id="WarmUpVehicleInside">
+		<featuredescription lang="fr">
+			<name>Chauffage habitacle</name>
+			<description>Production et diffusion chaleur</description>
+		</featuredescription>
+		<featuredescription lang="en">
+			<name>Warm up the vehicle interior</name>
+			<description>Produce warm air</description>
+		</featuredescription>
+		<featuredescription lang="es">
+			<name>Calefacción la cabina Vehículo </name>
+			<description>Hacer calor </description>
+		</featuredescription>
+		<use diagitem="OutsideTemperatureSensor" as="input"/>
+		<use diagitem="OutsideTemperature" as="input"/>
+		<use diagitem="BorneDF" as="input"/>
+		<use diagitem="BlowerFanSwitchGMV0" as="input"/>
+		<use diagitem="EngineCoolantTemperatureSensor" as="input"/>
+		<use diagitem="WaterTemperatureMesured" as="input"/>
+		<use diagitem="PTCRelay1" as="output"/>
+		<use diagitem="PTCRelay2" as="output"/>
+		<use diagitem="PTCRelay3" as="output"/>
+	</feature>
+	<feature id="CoolDownVehicleInterior">
+		<featuredescription lang="fr">
+			<name>Refroidissement habitable</name>
+			<description>production de froid</description>
+		</featuredescription>
+		<featuredescription lang="en">
+			<name>Make cold air</name>
+			<description>Producing cold air</description>
+		</featuredescription>
+		<featuredescription lang="es">
+			<name>Hacer frío</name>
+			<description>Hacer frío</description>
+		</featuredescription>
+		<use diagitem="OutsideTemperatureSensor" as="input"/>
+		<use diagitem="OutsideTemperature" as="input"/>
+		<use diagitem="BorneDF" as="input"/>
+		<use diagitem="BlowerFanSwitchGMV0" as="input"/>
+		<use diagitem="ACSwitch" as="input"/>
+		<use diagitem="EngineCoolantTemperatureSensor" as="input"/>
+		<use diagitem="WaterTemperatureMesured" as="input"/>
+		<use diagitem="ACLEDIndicator" as="output"/>
+		<use diagitem="RelayActivationACCompressor" as="output"/>
+		<use diagitem="ACCompressor" as="output"/>
+		<use diagitem="RelayActivationEngineFan" as="output"/>
+		<use diagitem="EngineFan" as="output"/>
+	</feature>
+	<feature id="DeFogingFrontWindow">
+		<featuredescription lang="fr">
+			<name>Désembuage</name>
+			<description>Ventilation du pare brise</description>
+		</featuredescription>
+		<featuredescription lang="en">
+			<name>Take of window mist </name>
+			<description>Blow air to demist the front window</description>
+		</featuredescription>
+		<featuredescription lang="es">
+			<name>Eliminación del vaho</name>
+			<description>Ventilar lo prevé brisa</description>
+		</featuredescription>
+		<use diagitem="OutsideTemperatureSensor" as="input"/>
+		<use diagitem="OutsideTemperature" as="input"/>
+		<use diagitem="ACSwitch" as="input"/>
+		<use diagitem="ClimatisationPressureCircuitSensor" as="input"/>
+		<use diagitem="ClimatisationPressure" as="input"/>
+		<use diagitem="RelayActivationACCompressor" as="output"/>
+		<use diagitem="ACCompressor" as="output"/>
+		<use diagitem="RelayActivationEngineFan" as="output"/>
+		<use diagitem="EngineFan" as="output"/>
+	</feature>
+	<feature id="RearWindowDefroster">
+		<featuredescription lang="fr">
+			<name>Dégivrage arrière</name>
+			<description>Chauffage lunette arrière</description>
+		</featuredescription>
+		<featuredescription lang="en">
+			<name>Warm up Rear window</name>
+			<description>Defrost rear window</description>
+		</featuredescription>
+		<featuredescription lang="es">
+			<name>Deshielo posterior</name>
+			<description>calentar el catalejo posterior</description>
+		</featuredescription>
+		<use diagitem="LARCONSwitch" as="input"/>
+		<use diagitem="LARCONLEDIndicator" as="output"/>
+		<use diagitem="RearDefroster" as="output"/>
+	</feature>
+	<diagitem id="BorneDF" type="device">
+		<itemdescription lang="fr">
+			<name>Alim de puissance</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>Power supply</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>Alimentación de potencia</name>
+		</itemdescription>
+		<synonym>Alimentation batterie 12V BCM</synonym>
+	</diagitem>
+	<diagitem id="BlowerFanSwitchGMV0" type="device" Codeloca="1123">
+		<itemdescription lang="fr">
+			<name>Moteur de ventilation</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>Ventilation motor</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>Motor de desglose</name>
+		</itemdescription>
+		<synonym address="38">Blower Fan Switch/ interrupteur demande de ventilateur</synonym>
+	</diagitem>
+	<diagitem id="ACLEDIndicator" type="device">
+		<itemdescription lang="fr">
+			<name>LED du bouton de A/C</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>Air Conditionning LED indicator</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>LED del botón de A/C</name>
+		</itemdescription>
+		<synonym address="38">A/C LED / Sortie pilotage Led Clim</synonym>
+		<synonym>A/C LED / Sortie pilotage Led Clim</synonym>
+	</diagitem>
+	<diagitem id="ACSwitch" type="device">
+		<itemdescription lang="fr">
+			<name>Bouton demande de clim manuelle</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>Manual Climatisation request switch</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>Botón pide de climatización manual</name>
+		</itemdescription>
+		<synonym address="38">Air Conditioned Switch/ interrupteur demande de Clim manuelle</synonym>
+		<synonym>Air Conditioned Switch/ interrupteur demande de Clim manuelle</synonym>
+	</diagitem>
+	<diagitem id="OutsideTemperatureSensor" type="device" Codeloca=" 245">
+		<itemdescription lang="fr">
+			<name>Capteur de Température extérieure</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>External Temperature Sensor</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>Sensor de Temperatura exterior</name>
+		</itemdescription>
+		<synonym address="38">OAT_SENSOR_FAILURE/ capteur temperature</synonym>
+		<synonym>OAT_SENSOR_FAILURE/ capteur temperature</synonym>
+	</diagitem>
+	<diagitem id="PTCRelay1" type="device" Codeloca="1344">
+		<itemdescription lang="fr">
+			<name>Relais de chauffage (relais PTC 1)</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>heating Relay (relay PTC 1)</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>Enlace de calefacción (enlace PTC 1)</name>
+		</itemdescription>
+		<synonym>PTC_OUTPUT1/ Sortie relais PTC 1</synonym>
+		<synonym address="38">PTC_OUTPUT1/ Sortie relais PTC 1</synonym>
+	</diagitem>
+	<diagitem id="PTCRelay2" type="device" Codeloca="1345">
+		<itemdescription lang="fr">
+			<name>Relais de chauffage (relais PTC 2)</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name> heating Relay (relay PTC 2)</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>Enlace de calefacción (enlace PTC 2)</name>
+		</itemdescription>
+		<synonym address="38">PTC_OUTPUT2/ Sortie relais PTC 2</synonym>
+		<synonym>PTC_OUTPUT2/ Sortie relais PTC 2</synonym>
+	</diagitem>
+	<diagitem id="PTCRelay3" type="device" Codeloca="1346">
+		<itemdescription lang="fr">
+			<name>Relais de chauffage (relais PTC 3)</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>heating Relay (relay PTC 3)</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>Enlace de calefacción (enlace PTC 3)</name>
+		</itemdescription>
+		<synonym address="38">PTC_OUTPUT3/ Sortie relais PTC 3</synonym>
+		<synonym>PTC_OUTPUT3/ Sortie relais PTC 3</synonym>
+	</diagitem>
+	<diagitem id="LARCONSwitch" type="device">
+		<itemdescription lang="fr">
+			<name>Bouton pour demande de dégivrage lunette</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>Switch set Rear Defroster active</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>Botón para solicitud de deshielo catalejo</name>
+		</itemdescription>
+		<synonym address="38">Rear Defogger Switch / demande lunette chauffante arriere</synonym>
+		<synonym>Rear Defogger Switch / demande lunette chauffante arriere</synonym>
+	</diagitem>
+	<diagitem id="LARCONLEDIndicator" type="device">
+		<itemdescription lang="fr">
+			<name>LED de dégivrage lunette</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>Rear Defroster LED</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>LED de deshielo catalejo</name>
+		</itemdescription>
+		<synonym address="38">RR_DEFOGGER_LED</synonym>
+		<synonym>RR_DEFOGGER_LED</synonym>
+		<synonym address="38">Rear_Defogger_Led/ Led Lunette arrière chauffante</synonym>
+		<synonym>Rear_Defogger_Led/ Led Lunette arrière chauffante</synonym>
+	</diagitem>
+	<diagitem id="EngineFan" type="device"/>
+	<diagitem id="RelayActivationEngineFan" type="device">
+		<itemdescription lang="fr">
+			<name>Moteur de pulseur</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>Pulsor motor</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>Motor de pulsar </name>
+		</itemdescription>
+		<synonym address="39">O_MOTOR_FAN_MM02_MM06</synonym>
+		<synonym>O_MOTOR_FAN_MM02_MM06</synonym>
+	</diagitem>
+	<diagitem id="ACCompressor" type="device"/>
+	<diagitem id="RelayActivationACCompressor" type="device">
+		<itemdescription lang="fr">
+			<name>Activation du compresseur de A/C</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>Air Conditionning Compressor Activated</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>Activación del compresor de A/C</name>
+		</itemdescription>
+		<synonym address="39">O_A/C_MN09</synonym>
+		<synonym>O_A/C_MN09</synonym>
+	</diagitem>
+	<diagitem id="RearDefroster" type="device">
+		<itemdescription lang="fr">
+			<name>Lunette chauffante</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>Rear window defroster</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>Catalejo que calienta</name>
+		</itemdescription>
+		<synonym address="39">O_RR-DEFROSTER_CM04</synonym>
+		<synonym>O_RR-DEFROSTER_CM04</synonym>
+	</diagitem>
+	<diagitem id="ClimatisationPressureCircuitSensor" type="device">
+		<itemdescription lang="fr">
+			<name>Capteur de pression du circuit climatisation</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>Climatisation pressure sensor</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>Captador de presión del circuito climatización</name>
+		</itemdescription>
+		<synonym address="122"> Circuit capteur pression climatisation</synonym>
+		<synonym>Circuit capteur pression climatisation</synonym>
+		<synonym>A/C Refrigerant Pressure Sensor Circuit</synonym>
+	</diagitem>
+	<diagitem id="EngineCoolantTemperatureSensor" type="device">
+		<itemdescription lang="fr">
+			<name>Capteur de température d'eau</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>Water Temperature Sensor</name>
+		</itemdescription>
+		<itemdescription lang="es">
+			<name>Sensor de temperatura de agua</name>
+		</itemdescription>
+		<synonym address="122">Circuit capteur température d'eau</synonym>
+		<synonym>Circuit capteur température d'eau</synonym>
+		<synonym>température d'eau</synonym>
+		<synonym>Engine Coolant Temperature Circuit</synonym>
+	</diagitem>
+	<diagitem id="WaterTemperatureMesured" type="data" Unit="°C">
+		<itemdescription lang="fr">
+			<name>température d'eau linéarisée</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>coolant temperature linearised</name>
+		</itemdescription>
+		<synonym>Température eau mode2</synonym>
+		<synonym>Coolant Temperature Linearised</synonym>
+		<synonym>Température eau mesurée</synonym>
+		<synonym>Engine Coolant Temperature Circuit</synonym>
+	</diagitem>
+	<diagitem id="OutsideTemperature" type="data" MinValue="-30" MaxValue="+60" Unit="°C">
+		<itemdescription lang="fr">
+			<name>température extérieur</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>outside temperature</name>
+		</itemdescription>
+		<synonym>OUTSIDE TEMPERATURE</synonym>
+		<synonym>Outside Air Temperature</synonym>
+	</diagitem>
+	<diagitem id="ClimatisationPressure" type="data" Unit="Bar">
+		<itemdescription lang="fr">
+			<name>température extérieur</name>
+		</itemdescription>
+		<itemdescription lang="en">
+			<name>outside temperature</name>
+		</itemdescription>
+		<synonym>Pression_climatisation</synonym>
+		<synonym>AC_Comp_pressure/2(PRSCLIM/2)</synonym>
+	</diagitem>
+</CustomerFeaturesdataSet>

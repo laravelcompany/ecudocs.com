@@ -1,0 +1,2248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.2.0.0" date="2019-07-24T16:38"/>
+<ddt:Target Name="CD3_REPS_JTEKT_V2" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" group="N_P33A_EPS_UDS_PT_20" upload="7/24/2019" href="CD3_REPS_JTEKT_V2_20190724T130621.xml" email=""><Description><![CDATA[[R] 2019/07/22 Renault Gunky YEE
+Modified Nissan DB according to Renault check result (V1.9 builer)
+ - Upade DID names and data names
+ - Delete data 'DTCDeviceAndFailureTypeOBD' and 'DTCFailureType.ManufacturerOrSupplier' that not used.
+
+[7] 2019/06/26 Nissan XX6 M.Hoshino
+Modified Item: CF.
+
+[6] 2019/06/14 Nissan XX6 M.Hoshino
+Modified Item: CF.
+
+[5] 2019/05/29 Nissan XX6 M.Hoshino
+Added & Modified Item: CF.
+
+[4] 2019/03/15 Nissan XX6 M.Hoshino
+Modified & Added item: Failures.
+
+[3] 2019/03/14 Nissan XX6 M.Hoshino
+Modified item: Failures(OBD).
+
+[2] 2019/03/12 Nissan XX6 M.Hoshino
+Added & Modified item : Failures.
+
+[1] 2018/12/20 Nissan XX6 M.Hoshino
+Added item: DM, CF
+
+[N] 2018/01/29 Nissan XX6 C.Kudo
+Intial Creation based on N_L21B_EPS_UDS_sharp2_20171031.xml.]]></Description>
+<Projects xmlns=""><p33A/><p33B/><xCB/><xHC/><xHN/></Projects>
+<Function Name="EPS" Address="4" Type=""/>
+<Language Name="Francais" Reference="1"/>
+
+<DateOfficialisation>2019-06-26</DateOfficialisation>
+<Failures Name="DTC Failures" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="1858"/>
+</SendId><ReceiveId>
+<CANId Value="1890"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="16" Supplier="1111" Soft="11111111112222222222333333333344" Version="11111111112222222222333333333344"/></AutoIdents>
+<Datas>
+
+<Data Name="SessionName">
+<Comment><![CDATA[for Start diagnostic session]]></Comment>
+<Mnemonic>SDS</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="DefaultSession"/>
+<Item Value="2" Text="ReprogrammingSession"/>
+<Item Value="3" Text="ExtendedDiagSession"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatusAvailabilityMask">
+<Comment><![CDATA[DTCSAM]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCFailureType">
+<Mnemonic>DF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Device and failure type ODB codding"/>
+<Item Value="1" Text="General Electrical Failure"/>
+<Item Value="2" Text="General signal failure"/>
+<Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="10" Text="General Electrical Failures - 2"/>
+<Item Value="17" Text="circuit short to ground"/>
+<Item Value="18" Text="circuit short to battery"/>
+<Item Value="19" Text="circuit open"/>
+<Item Value="20" Text="circuit short to ground or open"/>
+<Item Value="21" Text="circuit short to battery or open"/>
+<Item Value="22" Text="circuit voltage below threshold"/>
+<Item Value="23" Text="circuit voltage above threshold"/>
+<Item Value="24" Text="circuit current below threshold"/>
+<Item Value="25" Text="circuit current above threshold"/>
+<Item Value="26" Text="circuit resistance below threshold"/>
+<Item Value="27" Text="circuit resistance above threshold"/>
+<Item Value="28" Text="circuit voltage out of range"/>
+<Item Value="29" Text="circuit current out of range"/>
+<Item Value="30" Text="circuit resistance out of range"/>
+<Item Value="31" Text="circuit intermittent"/>
+<Item Value="33" Text="signal amplitude &lt; minimum"/>
+<Item Value="34" Text="signal amplitude &gt; maximum"/>
+<Item Value="35" Text="signal stuck low"/>
+<Item Value="36" Text="signal stuck high"/>
+<Item Value="37" Text="signal shape / waveform failure"/>
+<Item Value="38" Text="signal rate of change below threshold"/>
+<Item Value="39" Text="signal rate of change above threshold"/>
+<Item Value="40" Text="signal bias level out of range / zero adj. failure"/>
+<Item Value="41" Text="signal signal invalid"/>
+<Item Value="42" Text="signal stuck in range"/>
+<Item Value="43" Text="signal cross coupled"/>
+<Item Value="47" Text="signal erratic"/>
+<Item Value="49" Text="no signal"/>
+<Item Value="50" Text="signal low time &lt; minimum"/>
+<Item Value="51" Text="signal low time &gt; maximum"/>
+<Item Value="52" Text="signal high time &lt; minimum"/>
+<Item Value="53" Text="signal high time &gt; maximum"/>
+<Item Value="54" Text="signal frequency too low"/>
+<Item Value="55" Text="signal frequency too high"/>
+<Item Value="56" Text="signal frequency incorrect"/>
+<Item Value="57" Text="incorrect has too few pulses"/>
+<Item Value="58" Text="incorrect has too many pulses"/>
+<Item Value="65" Text="general checksum failure"/>
+<Item Value="66" Text="general memory failure"/>
+<Item Value="67" Text="special memory failure"/>
+<Item Value="68" Text="data memory failure"/>
+<Item Value="69" Text="program memory failure"/>
+<Item Value="70" Text="calibration / parameter memory failure"/>
+<Item Value="71" Text="watchdog / safety µC failure"/>
+<Item Value="72" Text="supervision software failure"/>
+<Item Value="73" Text="internal electronic failure"/>
+<Item Value="74" Text="incorrect component installed"/>
+<Item Value="75" Text="over temperature"/>
+<Item Value="81" Text="not programmed"/>
+<Item Value="82" Text="not activated"/>
+<Item Value="83" Text="deactivated"/>
+<Item Value="84" Text="missing calibration"/>
+<Item Value="85" Text="not configured"/>
+<Item Value="86" Text="invalid or incompatible configuration"/>
+<Item Value="87" Text="invalid or incompatible software component"/>
+<Item Value="97" Text="signal calculation failure"/>
+<Item Value="98" Text="signal compare failure"/>
+<Item Value="99" Text="circuit / component protection time-out"/>
+<Item Value="100" Text="signal plausibility failure"/>
+<Item Value="101" Text="signal has too few transitions / events"/>
+<Item Value="102" Text="signal has too many transitions / events"/>
+<Item Value="103" Text="signal incorrect after event"/>
+<Item Value="104" Text="event information"/>
+<Item Value="113" Text="actuator stuck"/>
+<Item Value="114" Text="actuator stuck open"/>
+<Item Value="115" Text="actuator stuck closed"/>
+<Item Value="116" Text="actuator slipping"/>
+<Item Value="117" Text="emergency position not reachable"/>
+<Item Value="118" Text="wrong mounting position"/>
+<Item Value="119" Text="commanded position not reachable"/>
+<Item Value="120" Text="alignment or adjustment incorrect"/>
+<Item Value="121" Text="mechanical linkage failure"/>
+<Item Value="122" Text="fluid leak or seal failure"/>
+<Item Value="123" Text="low fluid level"/>
+<Item Value="124" Text="Slow Response"/>
+<Item Value="125" Text="Actuator Stuck On"/>
+<Item Value="127" Text="Actuator Stuck Off"/>
+<Item Value="129" Text="invalid serial data received"/>
+<Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+<Item Value="131" Text="value of signal protection calculation incorrect"/>
+<Item Value="132" Text="signal below allowable range"/>
+<Item Value="133" Text="signal above allowable range"/>
+<Item Value="134" Text="signal invalid"/>
+<Item Value="135" Text="missing message"/>
+<Item Value="136" Text="bus off"/>
+<Item Value="143" Text="erratic"/>
+<Item Value="145" Text="parametric"/>
+<Item Value="146" Text="performance or incorrect operation"/>
+<Item Value="147" Text="no operation"/>
+<Item Value="148" Text="unexpected operation"/>
+<Item Value="149" Text="incorrect assembly"/>
+<Item Value="150" Text="component internal failure"/>
+<Item Value="151" Text="Component or sys. operation obstructed or blocked"/>
+<Item Value="152" Text="component or system over temperature"/>
+<Item Value="153" Text="Exceeded Learning Limit"/>
+<Item Value="154" Text="component or system operating conditions"/>
+<Item Value="155" Text="High/Excessive Flow"/>
+<Item Value="156" Text="Low/Insufficient Flow"/>
+<Item Value="158" Text="Stuck On"/>
+<Item Value="159" Text="Stuck Off"/>
+<Item Value="161" Text="System Voltage"/>
+<Item Value="162" Text="System Voltage Low"/>
+<Item Value="163" Text="System Voltage High"/></List>
+</Bits>
+</Data>
+<Data Name="DTCMaskRecord">
+<Comment><![CDATA[DTCMREC_DTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCDeviceIdentifier">
+<Mnemonic>DF</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="16465" Text="[C0051]Signal compare failure"/>
+<Item Value="22017" Text="[C1601]BATTERY VOLT"/>
+<Item Value="22019" Text="[C1603]Incomplete ST ANG SEN adjustment"/>
+<Item Value="22020" Text="[C1604]TORQUE SENSOR"/>
+<Item Value="22022" Text="[C1606]EPS MOTOR"/>
+<Item Value="22024" Text="[C1608]CONTROL UNIT"/>
+<Item Value="22037" Text="[C1615]Control unit over heat"/>
+<Item Value="22038" Text="[C1616]Motor over heat"/>
+<Item Value="22039" Text="[C1617]Inconsistent LKA request"/>
+<Item Value="22040" Text="[C1618](TBD)EPS-SWA not configured"/>
+<Item Value="22041" Text="[C1619]Inconsistent HFP request"/>
+<Item Value="22042" Text="[C161A]CAN Vehicle speed"/>
+<Item Value="22043" Text="[C161B]ABS"/>
+<Item Value="22044" Text="[C161C]CAN Vehicle speed"/>
+<Item Value="22046" Text="[C161E]ABS"/>
+<Item Value="22047" Text="[C161F]CAN IVI fault (IVI)"/>
+<Item Value="22048" Text="[C1620]CAN IPA fault (IPA)"/>
+<Item Value="22049" Text="[C1621]BCM system"/>
+<Item Value="22050" Text="[C1622]EPS Fault - EPS-SWA"/>
+<Item Value="22051" Text="[C1623]ECM system"/>
+<Item Value="22052" Text="[C1624]Signal connector"/>
+<Item Value="22053" Text="[C1625]EPS Fault - EPS-SWA"/>
+<Item Value="22055" Text="[C1627]CAN LKA/LDW fault (FrCamera)"/>
+<Item Value="22056" Text="[C1628]CAN IPA fault (IPA)"/>
+<Item Value="22057" Text="[C1629]CAN Vehicle speed"/>
+<Item Value="22058" Text="[C162A]CAN Meter fault (METER)"/>
+<Item Value="22064" Text="[C1630]EPS Fault - EPS-SWA"/>
+<Item Value="22065" Text="[C1631]General CAN network failure"/>
+<Item Value="22066" Text="[C1632](TBD)EPS Fault - EPS-SWA"/>
+<Item Value="22067" Text="[C1633](TBD)TransversalAccelCorrected"/>
+<Item Value="22068" Text="[C1634](TBD)SteeringWheelRotationSpeed"/>
+<Item Value="22069" Text="[C1635]PowerTrainStatus"/>
+<Item Value="22070" Text="[C1636]LDW_VibrationIntensityReq2"/>
+<Item Value="22071" Text="[C1637](TBD)VMC_SteeringGain_k2"/>
+<Item Value="22072" Text="[C1638](TBD)VMC_SteeringAngleRequest"/>
+<Item Value="22073" Text="[C1639]LDW_RoadQualityEstimation"/>
+<Item Value="22074" Text="[C163A](TBD)LKA_SteeringTorqueRequest"/>
+<Item Value="22075" Text="[C163B](TBD)VMC_C_PointTorqueRequest"/>
+<Item Value="22076" Text="[C163C](TBD)VMC_SteeringAngleOrder"/>
+<Item Value="49192" Text="[U0028]CAN communication circuit"/>
+<Item Value="49267" Text="[U0073]Control module comm Bus A Off"/>
+<Item Value="49270" Text="[U0076]Control module comm Bus D Off"/>
+<Item Value="49272" Text="[U0078]Control module comm Bus F Off"/>
+<Item Value="53248" Text="[U1000]EPS Fault - EPS-SWA"/>
+<Item Value="54049" Text="[U1321]Configuration unfinished"/>
+<Item Value="54050" Text="[U1322](TBD)This DTC when configuration is inconsistent"/>
+<Item Value="57664" Text="[U2140]CAN comm err (ECM)"/>
+<Item Value="57672" Text="[U2148]CAN comm err (brake control unit)"/>
+<Item Value="57678" Text="[U214E]CAN comm err (combination meter)"/>
+<Item Value="57679" Text="[U214F]CAN comm err (BCM)"/>
+<Item Value="57682" Text="[U2152]CAN comm err (ADAS control unit)"/>
+<Item Value="57684" Text="[U2154]CAN comm err (MIU)"/>
+<Item Value="57686" Text="[U2156]CAN comm err (steering angel sensor)"/>
+<Item Value="57691" Text="[U215B]CAN comm err (IPDM E/R)"/>
+<Item Value="57718" Text="[U2176]CAN comm err (CCM)"/>
+<Item Value="57938" Text="[U2252]CAN LCA fault (LCA)"/>
+<Item Value="57963" Text="[U226B]CAN comm err (front camera)"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.Category">
+<Mnemonic>DF</Mnemonic>
+<Bits count="4">
+<List>
+<Item Value="0" Text="General Failure Information"/>
+<Item Value="1" Text="General Electrical Failures"/>
+<Item Value="2" Text="General Signal Failures"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="15" Text="Vehicle manufacturer / System supplier specific"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.warningIndicatorRequested">
+<Comment><![CDATA[WIR]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+<Comment><![CDATA[TNCTMC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedSinceLastClear">
+<Comment><![CDATA[TFSLC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedSinceLastClear">
+<Comment><![CDATA[TNCSLC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.confirmedDTC">
+<Comment><![CDATA[CDTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.pendingDTC">
+<Comment><![CDATA[PDTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedThisMonitoringCycle">
+<Comment><![CDATA[TFTMC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailed">
+<Comment><![CDATA[TF]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCRecord">
+<Comment><![CDATA[DTCASR_DTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="StatusOfDTC">
+<Comment><![CDATA[DTCASR_SODTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCCount">
+<Comment><![CDATA[DTC count]]></Comment>
+<Mnemonic>DTCC</Mnemonic>
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCFormatIdentifier">
+<Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+<Mnemonic>DTLIDIDlist</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="SAE_J2012-DA_DTC"/>
+<Item Value="1" Text="ISO_14229-1_DTC"/>
+<Item Value="2" Text="SAE_J1939-73_DTC"/>
+<Item Value="3" Text="ISO_11992-4_DTC"/>
+<Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/></List>
+</Bits>
+</Data>
+<Data Name="OperationnalReference">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="vehicleManufacturerSparePartNumber">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="vehicleManufacturerECUSoftwareNumber">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="systemSupplierIdentifier">
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="ECUSerialNumber">
+<Bytes count="20" ascii="1"/>
+</Data>
+<Data Name="VIN">
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="vehicleManufacturerECUHardwareNumber">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="systemSupplierECUSoftwareNumber">
+<Bytes count="32" ascii="1"/>
+</Data>
+<Data Name="systemSupplierECUSoftwareVersionNumber">
+<Bytes count="32" ascii="1"/>
+</Data>
+<Data Name="diagnosticVersion">
+<Bytes count="1"/>
+</Data>
+<Data Name="Steering wheel velocity">
+<Comment><![CDATA[$0101]]></Comment>
+<Mnemonic>FFD</Mnemonic>
+<Bits count="16">
+<Scaled Unit="deg/s" Offset="-32767" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Steering wheel angle sensor internal status">
+<Comment><![CDATA[$0102]]></Comment>
+<Mnemonic>FFD</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="(TBD)not calibrated(00h)"/>
+<Item Value="1" Text="(TBD)calibrated(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="System mode">
+<Mnemonic>FFD</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="(TBD)System_Stop(01h)"/>
+<Item Value="2" Text="(TBD)PowerUp_WaitForAssist(02h)"/>
+<Item Value="3" Text="(TBD)RampUp_NormalOperation(03h)"/>
+<Item Value="4" Text="(TBD)Unknown_Vehicle_State(04h)"/>
+<Item Value="5" Text="(TBD)Ramp_Down(05h)"/>
+<Item Value="6" Text="(TBD)System_PowerDown(06h)"/>
+<Item Value="7" Text="(TBD)Park Assist mode (substate of 03)(07h)"/></List>
+</Bits>
+</Data>
+<Data Name="Wheelspeed_index_map_selector">
+<Mnemonic>CF</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="VoltageBoost Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="TJP Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="VehicleSpeed">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="16">
+<Scaled Unit="kph" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="TrafficJamPilot currently active">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="(TBD)function not running(00h)"/>
+<Item Value="1" Text="(TBD)function currently running(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="vehicleManufacturerSparePartNumber_N">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="Absolute steering wheel angle">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="16">
+<Scaled Unit="deg" Offset="-32767" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Assistance Level">
+<Mnemonic>FFD</Mnemonic>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="Filtered Vehicle Speed">
+<Mnemonic>FFD</Mnemonic>
+<Bits>
+<Scaled Unit="kph"/>
+</Bits>
+</Data>
+<Data Name="Motor current demand">
+<Mnemonic>FFD</Mnemonic>
+<Bits>
+<Scaled Unit="A" Offset="-127"/>
+</Bits>
+</Data>
+<Data Name="RackEndStop Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="IgnitionSwitchCounter">
+<Mnemonic>FFD</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Measured motor current">
+<Mnemonic>FFD</Mnemonic>
+<Bits>
+<Scaled Unit="A" Offset="-127"/>
+</Bits>
+</Data>
+<Data Name="Battery Voltage">
+<Mnemonic>FFD</Mnemonic>
+<Bits>
+<Scaled Unit="V" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="ECU temperature">
+<Mnemonic>FFD</Mnemonic>
+<Bits>
+<Scaled Unit="degC" Offset="-50"/>
+</Bits>
+</Data>
+<Data Name="Motor temperature">
+<Mnemonic>FFD</Mnemonic>
+<Bits>
+<Scaled Unit="degC" Offset="-50"/>
+</Bits>
+</Data>
+<Data Name="Ignition status">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="off(00h)"/>
+<Item Value="1" Text="on(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="RackEndStop currently active">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="(TBD)No limitation of assistance(00h)"/>
+<Item Value="1" Text="(TBD)Limitation of assistance due(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="FOTA Function Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="FOTA enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="Enhanced Diagnostic Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="External Angle sensor">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="no absolute angle signal available(00h)"/>
+<Item Value="1" Text="absolute angle signal available (default)(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="Boost high voltage">
+<Mnemonic>CF</Mnemonic>
+<Bits count="4">
+<Scaled Unit="V" Step=" 25" Offset="-1150" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Boost low voltage">
+<Mnemonic>CF</Mnemonic>
+<Bits count="4">
+<Scaled Unit="V" Step=" 25" Offset="-1150" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="MultiDrive Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="LDW Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Disabled(default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="HFP Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="disabled (default) =&gt; EPS will ignore HFP request(00h)"/>
+<Item Value="1" Text="enabled =&gt; EPS able to receive HFP request from HFP(01h)"/>
+<Item Value="2" Text="enabled =&gt; EPS able to receive HFP request from IPA(02h)"/>
+<Item Value="3" Text="not used(03h)"/></List>
+</Bits>
+</Data>
+<Data Name="LKA Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Disabled(default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="LDW_VibrationIntensity_Master">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="LDW_VibrationIntensityReq from METER(00h)"/>
+<Item Value="1" Text="LDW_VibrationIntensityReq from IVI (01h)"/></List>
+</Bits>
+</Data>
+<Data Name="Dongle Frames Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="dongle frames not sent (00h)"/>
+<Item Value="1" Text="dongle frames sent (default at SOP)(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="ClusterWarningLampCheck Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="Internal Steering wheel angle offset">
+<Comment><![CDATA[$01C5]]></Comment>
+<Bits signed="1">
+<Scaled Unit="°" Offset="-127"/>
+</Bits>
+</Data>
+<Data Name="ISS Status">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="(TBD)Not Stop Auto Phase(00h)"/>
+<Item Value="1" Text="(TBD)Auto Start(01h)"/>
+<Item Value="2" Text="(TBD)Idle Stop(02h)"/>
+<Item Value="3" Text="(TBD)Auto Phase Aborted(03h)"/></List>
+</Bits>
+</Data>
+<Data Name="AntiKickBack Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="AD2_Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="Exported_SWA_SWV Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="PullDrift_Static_compensation_Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="PullDrift_Static_compensation_Value">
+<Mnemonic>CF</Mnemonic>
+<Bits>
+<Scaled Unit="Nm" Offset="-15" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="PullDrift_dynamic_compensation Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="EngineStatus">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="(TBD)engine stopped(00h)"/>
+<Item Value="2" Text="(TBD)independant running engine(02h)"/>
+<Item Value="3" Text="(TBD)running engine-driven(03h)"/></List>
+</Bits>
+</Data>
+<Data Name="AntiKickBack_currently_active">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="(TBD)function not running(00h)"/>
+<Item Value="1" Text="(TBD)function currently running(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="IdleStop Activation">
+<Mnemonic>CF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="ISCS and TorqueOnFlag disable(00h)"/>
+<Item Value="5" Text="IS and TorqueOnFlag enable(05h)"/>
+<Item Value="6" Text="CS and TorqueOnFlag enable(06h)"/>
+<Item Value="7" Text="ISCS and TorqueOnFlag enable(07h)"/></List>
+</Bits>
+</Data>
+<Data Name="PullDriftCompensation currently active">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="(TBD)function not running(00h)"/>
+<Item Value="1" Text="(TBD)function currently running(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="LaneKeepingAssist currently active">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="(TBD)function not running(00h)"/>
+<Item Value="1" Text="(TBD)function currently running(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="HandFreeParking currently active">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="(TBD)function not running(00h)"/>
+<Item Value="1" Text="(TBD)function currently running(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="LaneDepartureWarning currently active">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="(TBD)function not running(00h)"/>
+<Item Value="1" Text="(TBD)function currently running(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="EPS_SWA activation">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="Debug_info">
+<Mnemonic>FFD</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="Mileage">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="DTC Occurence Counter">
+<Mnemonic>FFD</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="InternalFaultCode for DTC">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Activation of BatteryDisconnection">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="Activation of ExportedRelativeAngle">
+<Mnemonic>CF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="disabled (default)(00h)"/>
+<Item Value="1" Text="enabled(01h)"/></List>
+</Bits>
+</Data>
+<Data Name="Input torque from torque sensor">
+<Mnemonic>FFD</Mnemonic>
+<Bits count="16">
+<Scaled Unit="Nm" Offset="-200" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="RoutineStatusRecord_Type2">
+<Bits>
+<List>
+<Item Value="32" Text="OK(Completed)"/>
+<Item Value="33" Text="NG(Completed)"/>
+<Item Value="34" Text="OK(in progress)"/></List>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="StartDiagnosticSession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[SDS]]></Comment>
+<Sent>
+<SentBytes>1000</SentBytes>
+<DataItem Name="SessionName" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5000</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.DefaultSession">
+
+<ManuelSend/>
+<Comment><![CDATA[SDS]]></Comment>
+<Sent>
+<SentBytes>1001</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5001</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.ReprogrammingSession">
+
+<ManuelSend/>
+<Comment><![CDATA[SDS]]></Comment>
+<Sent>
+<SentBytes>1002</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5002</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.ExtendedDiagSession">
+
+<ManuelSend/>
+<Comment><![CDATA[SDS]]></Comment>
+<Sent>
+<SentBytes>1003</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5003</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ClearDiagnosticInformation.All">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[ClearDiagnosticInformation]]></Comment>
+<Sent>
+<SentBytes>14FFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>54</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDTCInformation]]></Comment>
+<Sent>
+<SentBytes>1902AF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSnapshot">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDTCInformation]]></Comment>
+<Sent>
+<SentBytes>1904000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590400000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report number of DTC]]></Comment>
+<Sent>
+<SentBytes>1901FF</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>5901FF000000</ReplyBytes>
+<DataItem Name="DTCCount" FirstByte="5"/>
+<DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSupportedDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report supported DTC]]></Comment>
+<Sent>
+<SentBytes>190A</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>590AFF00000000</ReplyBytes>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.OperationnalReference">
+
+<Sent>
+<SentBytes>22F012</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F01200000000000000000000</ReplyBytes>
+<DataItem Name="OperationnalReference" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerSparePartNumber">
+
+<Sent>
+<SentBytes>22F187</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F18700000000000000000000</ReplyBytes>
+<DataItem Name="vehicleManufacturerSparePartNumber" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerECUSoftwareNumber">
+
+<Sent>
+<SentBytes>22F188</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F18800000000000000000000</ReplyBytes>
+<DataItem Name="vehicleManufacturerECUSoftwareNumber" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierIdentifier">
+
+<Sent>
+<SentBytes>22F18A</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>62F18A00000000</ReplyBytes>
+<DataItem Name="systemSupplierIdentifier" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ECUSerialNumber">
+
+<Sent>
+<SentBytes>22F18C</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<ReplyBytes>62F18C0000000000000000000000000000000000000000</ReplyBytes>
+<DataItem Name="ECUSerialNumber" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VIN">
+
+<Sent>
+<SentBytes>22F190</SentBytes>
+</Sent>
+<Received MinBytes="20">
+<ReplyBytes>62F1900000000000000000000000000000000000</ReplyBytes>
+<DataItem Name="VIN" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerECUHardwareNumber">
+
+<Sent>
+<SentBytes>22F191</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F19100000000000000000000</ReplyBytes>
+<DataItem Name="vehicleManufacturerECUHardwareNumber" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierECUSoftwareNumber">
+
+<Sent>
+<SentBytes>22F194</SentBytes>
+</Sent>
+<Received MinBytes="35">
+<ReplyBytes>62F1940000000000000000000000000000000000000000000000000000000000000000</ReplyBytes>
+<DataItem Name="systemSupplierECUSoftwareNumber" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+
+<Sent>
+<SentBytes>22F195</SentBytes>
+</Sent>
+<Received MinBytes="35">
+<ReplyBytes>62F1950000000000000000000000000000000000000000000000000000000000000000</ReplyBytes>
+<DataItem Name="systemSupplierECUSoftwareVersionNumber" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.diagnosticVersion">
+
+<Sent>
+<SentBytes>22F1A0</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62F1A000</ReplyBytes>
+<DataItem Name="diagnosticVersion" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerSparePartNumber_N">
+
+<Sent>
+<SentBytes>22F1A1</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F1A100000000000000000000</ReplyBytes>
+<DataItem Name="vehicleManufacturerSparePartNumber_N" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[TesterPresent]]></Comment>
+<Sent>
+<SentBytes>3E00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="RoutineControl.start_$0181_startRoutine Config Initialize">
+
+<Sent>
+<SentBytes>31010181</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7101018100</ReplyBytes>
+<DataItem Name="RoutineStatusRecord_Type2" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="RoutineControl.status_$0181_requestRoutineResults Config Initialize">
+
+<Sent>
+<SentBytes>31030181</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7103018100</ReplyBytes>
+<DataItem Name="RoutineStatusRecord_Type2" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="DataRead.Steering wheel velocity">
+
+<Comment><![CDATA[Read Steering wheel velocity]]></Comment>
+<Sent>
+<SentBytes>220101</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620101</ReplyBytes>
+<DataItem Name="Steering wheel velocity" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Steering wheel angle sensor internal status">
+
+<Sent>
+<SentBytes>220102</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62010200</ReplyBytes>
+<DataItem Name="Steering wheel angle sensor internal status" FirstByte="4" BitOffset="5"/>
+</Received>
+</Request>
+<Request Name="DataRead.Absolute steering wheel angle">
+
+<Sent>
+<SentBytes>220104</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>6201040000</ReplyBytes>
+<DataItem Name="Absolute steering wheel angle" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.System mode">
+
+<Sent>
+<SentBytes>220119</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011900</ReplyBytes>
+<DataItem Name="System mode" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Motor current demand">
+
+<Sent>
+<SentBytes>220113</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011300</ReplyBytes>
+<DataItem Name="Motor current demand" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Filtered Vehicle Speed">
+
+<Sent>
+<SentBytes>220118</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011800</ReplyBytes>
+<DataItem Name="Filtered Vehicle Speed" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Assistance Level">
+
+<Sent>
+<SentBytes>220115</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011500</ReplyBytes>
+<DataItem Name="Assistance Level" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.IgnitionSwitchCounter">
+
+<Sent>
+<SentBytes>22011E</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011E00</ReplyBytes>
+<DataItem Name="IgnitionSwitchCounter" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.RackEndStop Activation">
+
+<Sent>
+<SentBytes>22012A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62012A00</ReplyBytes>
+<DataItem Name="RackEndStop Activation" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.RackEndStop Activation">
+
+<Sent>
+<SentBytes>2E012A00</SentBytes>
+<DataItem Name="RackEndStop Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E012A</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Measured motor current">
+
+<Sent>
+<SentBytes>22012C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62012C00</ReplyBytes>
+<DataItem Name="Measured motor current" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Motor temperature">
+
+<Sent>
+<SentBytes>22012D</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62012D00</ReplyBytes>
+<DataItem Name="Motor temperature" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ECU temperature">
+
+<Sent>
+<SentBytes>22012E</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62012E00</ReplyBytes>
+<DataItem Name="ECU temperature" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Battery Voltage">
+
+<Sent>
+<SentBytes>22012F</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62012F00</ReplyBytes>
+<DataItem Name="Battery Voltage" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Ignition status">
+
+<Sent>
+<SentBytes>220131</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62013100</ReplyBytes>
+<DataItem Name="Ignition status" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.FOTA Function Activation">
+
+<Sent>
+<SentBytes>220135</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62013500</ReplyBytes>
+<DataItem Name="FOTA Function Activation" Ref="1" FirstByte="4" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="DataWrite.FOTA Function Activation">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2E013500</SentBytes>
+<DataItem Name="FOTA Function Activation" FirstByte="4" BitOffset="6"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0135</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.RackEndStop currently active">
+
+<Sent>
+<SentBytes>220151</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62015100</ReplyBytes>
+<DataItem Name="RackEndStop currently active" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.Enhanced Diagnostic Activation">
+
+<Sent>
+<SentBytes>22014C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62014C00</ReplyBytes>
+<DataItem Name="Enhanced Diagnostic Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Enhanced Diagnostic Activation">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2E014C00</SentBytes>
+<DataItem Name="Enhanced Diagnostic Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E014C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.External Angle sensor">
+
+<Sent>
+<SentBytes>22015A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62015A00</ReplyBytes>
+<DataItem Name="External Angle sensor" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.External Angle sensor">
+
+<Sent>
+<SentBytes>2E015A00</SentBytes>
+<DataItem Name="External Angle sensor" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E015A</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Wheelspeed_index_map_selector">
+
+<Sent>
+<SentBytes>220168</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62016800</ReplyBytes>
+<DataItem Name="Wheelspeed_index_map_selector" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Wheelspeed_index_map_selector">
+
+<Sent>
+<SentBytes>2E016800</SentBytes>
+<DataItem Name="Wheelspeed_index_map_selector" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0168</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Boost high voltage">
+
+<Sent>
+<SentBytes>220170</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62017000</ReplyBytes>
+<DataItem Name="Boost high voltage" Ref="1" FirstByte="4" BitOffset="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Boost high voltage">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2E017000</SentBytes>
+<DataItem Name="Boost high voltage" FirstByte="4" BitOffset="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0170</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.VoltageBoost Activation">
+
+<Sent>
+<SentBytes>220171</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62017100</ReplyBytes>
+<DataItem Name="VoltageBoost Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.VoltageBoost Activation">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2E017100</SentBytes>
+<DataItem Name="VoltageBoost Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0171</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Boost low voltage">
+
+<Sent>
+<SentBytes>220172</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62017200</ReplyBytes>
+<DataItem Name="Boost low voltage" FirstByte="4" BitOffset="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Boost low voltage">
+
+<Sent>
+<SentBytes>2E017200</SentBytes>
+<DataItem Name="Boost low voltage" FirstByte="4" BitOffset="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0172</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.MultiDrive Activation">
+
+<Sent>
+<SentBytes>22017D</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62017D00</ReplyBytes>
+<DataItem Name="MultiDrive Activation" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.MultiDrive Activation">
+
+<Sent>
+<SentBytes>2E017D00</SentBytes>
+<DataItem Name="MultiDrive Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E017D</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.HFP Activation">
+
+<Sent>
+<SentBytes>220182</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62018200</ReplyBytes>
+<DataItem Name="HFP Activation" Ref="1" FirstByte="4" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="DataWrite.HFP Activation">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2E018200</SentBytes>
+<DataItem Name="HFP Activation" FirstByte="4" BitOffset="6"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0182</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.LDW Activation">
+
+<Sent>
+<SentBytes>2201B1</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201B100</ReplyBytes>
+<DataItem Name="LDW Activation" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.LDW Activation">
+
+<Sent>
+<SentBytes>2E01B100</SentBytes>
+<DataItem Name="LDW Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01B1</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.LKA Activation">
+
+<Sent>
+<SentBytes>2201BD</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201BD00</ReplyBytes>
+<DataItem Name="LKA Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.LKA Activation">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2E01BD00</SentBytes>
+<DataItem Name="LKA Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01BD</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.LDW_VibrationIntensity_Master">
+
+<Sent>
+<SentBytes>2201BE</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201BE00</ReplyBytes>
+<DataItem Name="LDW_VibrationIntensity_Master" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.LDW_VibrationIntensity_Master">
+
+<Sent>
+<SentBytes>2E01BE00</SentBytes>
+<DataItem Name="LDW_VibrationIntensity_Master" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01BE</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Dongle Frames Activation">
+
+<Sent>
+<SentBytes>2201C3</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201C300</ReplyBytes>
+<DataItem Name="Dongle Frames Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Dongle Frames Activation">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2E01C300</SentBytes>
+<DataItem Name="Dongle Frames Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01C3</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.ClusterWarningLampCheck Activation">
+
+<Sent>
+<SentBytes>2201C7</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201C700</ReplyBytes>
+<DataItem Name="ClusterWarningLampCheck Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.ClusterWarningLampCheck Activation">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2E01C700</SentBytes>
+<DataItem Name="ClusterWarningLampCheck Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01C7</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Internal Steering wheel angle offset">
+
+<Comment><![CDATA[Read Internal Steering wheel angle offset]]></Comment>
+<Sent>
+<SentBytes>2201C5</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201C5</ReplyBytes>
+<DataItem Name="Internal Steering wheel angle offset" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ISS Status">
+
+<Sent>
+<SentBytes>2201C8</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201C800</ReplyBytes>
+<DataItem Name="ISS Status" FirstByte="4" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.AntiKickBack Activation">
+
+<Sent>
+<SentBytes>2201CA</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201CA00</ReplyBytes>
+<DataItem Name="AntiKickBack Activation" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.AntiKickBack Activation">
+
+<Sent>
+<SentBytes>2E01CA00</SentBytes>
+<DataItem Name="AntiKickBack Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01CA</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.TJP Activation">
+
+<Sent>
+<SentBytes>2201CB</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201CB00</ReplyBytes>
+<DataItem Name="TJP Activation" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.TJP Activation">
+
+<Sent>
+<SentBytes>2E01CB00</SentBytes>
+<DataItem Name="TJP Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01CB</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.AD2_Activation">
+
+<Sent>
+<SentBytes>2201CC</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201CC00</ReplyBytes>
+<DataItem Name="AD2_Activation" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.AD2_Activation">
+
+<Sent>
+<SentBytes>2E01CC00</SentBytes>
+<DataItem Name="AD2_Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01CC</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Exported_SWA_SWV Activation">
+
+<Sent>
+<SentBytes>2201CD</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201CD00</ReplyBytes>
+<DataItem Name="Exported_SWA_SWV Activation" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Exported_SWA_SWV Activation">
+
+<Sent>
+<SentBytes>2E01CD00</SentBytes>
+<DataItem Name="Exported_SWA_SWV Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01CD</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.PullDrift_Static_compensation_Activation">
+
+<Sent>
+<SentBytes>2201CE</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201CE00</ReplyBytes>
+<DataItem Name="PullDrift_Static_compensation_Activation" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.PullDrift_Static_compensation_Activation">
+
+<Sent>
+<SentBytes>2E01CE00</SentBytes>
+<DataItem Name="PullDrift_Static_compensation_Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01CE</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.PullDrift_Static_compensation_Value">
+
+<Sent>
+<SentBytes>2201CF</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201CF00</ReplyBytes>
+<DataItem Name="PullDrift_Static_compensation_Value" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.PullDrift_Static_compensation_Value">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2E01CF00</SentBytes>
+<DataItem Name="PullDrift_Static_compensation_Value" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01CF</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.PullDrift_dynamic_compensation Activation">
+
+<Sent>
+<SentBytes>2201D0</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201D000</ReplyBytes>
+<DataItem Name="PullDrift_dynamic_compensation Activation" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.PullDrift_dynamic_compensation Activation">
+
+<Sent>
+<SentBytes>2E01D000</SentBytes>
+<DataItem Name="PullDrift_dynamic_compensation Activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01D0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.VehicleSpeed">
+
+<Sent>
+<SentBytes>2201D1</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>6201D10000</ReplyBytes>
+<DataItem Name="VehicleSpeed" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.EngineStatus">
+
+<Sent>
+<SentBytes>2201D2</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201D200</ReplyBytes>
+<DataItem Name="EngineStatus" FirstByte="4" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.AntiKickBack_currently_active">
+
+<Sent>
+<SentBytes>2201E0</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201E000</ReplyBytes>
+<DataItem Name="AntiKickBack_currently_active" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.HandFreeParking currently active">
+
+<Sent>
+<SentBytes>2201E1</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201E100</ReplyBytes>
+<DataItem Name="HandFreeParking currently active" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.LaneKeepingAssist currently active">
+
+<Sent>
+<SentBytes>2201E2</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201E200</ReplyBytes>
+<DataItem Name="LaneKeepingAssist currently active" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.LaneDepartureWarning currently active">
+
+<Sent>
+<SentBytes>2201E3</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201E300</ReplyBytes>
+<DataItem Name="LaneDepartureWarning currently active" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.TrafficJamPilot currently active">
+
+<Sent>
+<SentBytes>2201E4</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201E400</ReplyBytes>
+<DataItem Name="TrafficJamPilot currently active" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.PullDriftCompensation currently active">
+
+<Sent>
+<SentBytes>2201E6</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201E600</ReplyBytes>
+<DataItem Name="PullDriftCompensation currently active" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.IdleStop Activation">
+
+<Sent>
+<SentBytes>2201E7</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201E700</ReplyBytes>
+<DataItem Name="IdleStop Activation" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.IdleStop Activation">
+
+<Sent>
+<SentBytes>2E01E700</SentBytes>
+<DataItem Name="IdleStop Activation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01E7</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.EPS_SWA activation">
+
+<Sent>
+<SentBytes>22C000</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62C00000</ReplyBytes>
+<DataItem Name="EPS_SWA activation" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.EPS_SWA activation">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2EC00000</SentBytes>
+<DataItem Name="EPS_SWA activation" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6EC000</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Debug_info">
+
+<Sent>
+<SentBytes>22D002</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>62D00200000000</ReplyBytes>
+<DataItem Name="Debug_info" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Mileage">
+
+<Sent>
+<SentBytes>22F0D0</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>62F0D0000000</ReplyBytes>
+<DataItem Name="Mileage" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.DTC Occurence Counter">
+
+<Sent>
+<SentBytes>22F0D1</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62F0D100</ReplyBytes>
+<DataItem Name="DTC Occurence Counter" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Activation of BatteryDisconnection">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2E01EE00</SentBytes>
+<DataItem Name="Activation of BatteryDisconnection" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01EE</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.Activation of ExportedRelativeAngle">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2E01ED00</SentBytes>
+<DataItem Name="Activation of ExportedRelativeAngle" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01ED</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.InternalFaultCode for DTC">
+
+<Sent>
+<SentBytes>22EF01</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62EF010000</ReplyBytes>
+<DataItem Name="InternalFaultCode for DTC" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Activation of ExportedRelativeAngle">
+
+<Sent>
+<SentBytes>2201ED</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201ED00</ReplyBytes>
+<DataItem Name="Activation of ExportedRelativeAngle" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.Activation of BatteryDisconnection">
+
+<Sent>
+<SentBytes>2201EE</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201EE00</ReplyBytes>
+<DataItem Name="Activation of BatteryDisconnection" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.Input torque from torque sensor">
+
+<Sent>
+<SentBytes>220112</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>6201120000</ReplyBytes>
+<DataItem Name="Input torque from torque sensor" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="[C1604]TORQUE SENSOR" DTC="22020" OBD="22020">
+
+<Test Type="150" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1606]EPS MOTOR" DTC="22022" OBD="22022">
+
+<Test Type="150" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1608]CONTROL UNIT" DTC="22024" OBD="22024">
+
+<Test Type="67" Severity="0">
+</Test><Test Type="68" Severity="0">
+</Test><Test Type="69" Severity="0">
+</Test><Test Type="70" Severity="0">
+</Test><Test Type="73" Severity="0">
+</Test><Test Type="84" Severity="0">
+</Test><Test Type="0" Severity="0">
+</Test>
+</Device>
+<Device Name="[U1321]Configuration unfinished" DTC="54049" OBD="54049">
+
+<Test Type="85" Severity="0">
+</Test>
+</Device>
+<Device Name="[U1322](TBD)This DTC when configuration is inconsistent" DTC="54050" OBD="54050">
+
+<Test Type="84" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1615]Control unit over heat" DTC="22037" OBD="22037">
+
+<Test Type="75" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1616]Motor over heat" DTC="22038" OBD="22038">
+
+<Test Type="152" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1618](TBD)EPS-SWA not configured" DTC="22040" OBD="22040">
+
+<Test Type="85" Severity="0">
+</Test><Test Type="84" Severity="0">
+</Test><Test Type="73" Severity="0">
+</Test><Test Type="100">
+</Test>
+</Device>
+<Device Name="[C1601]BATTERY VOLT" DTC="22017" OBD="22017">
+
+<Test Type="19" Severity="0">
+</Test><Test Type="22" Severity="0">
+</Test><Test Type="23" Severity="0">
+</Test>
+</Device>
+<Device Name="[U1000]EPS Fault - EPS-SWA" DTC="53248" OBD="53248">
+
+<Test Type="1" Severity="0">
+</Test>
+</Device>
+<Device Name="[U0073]Control module comm Bus A Off" DTC="49267" OBD="49267">
+
+<Test Type="0" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1630]EPS Fault - EPS-SWA" DTC="22064" OBD="22064">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[U0028]CAN communication circuit" DTC="49192" OBD="49192">
+
+<Test Type="0" Severity="0">
+</Test>
+</Device>
+<Device Name="[U2148]CAN comm err (brake control unit)" DTC="57672" OBD="57672">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C161A]CAN Vehicle speed" DTC="22042" OBD="22042">
+
+<Test Type="134" Severity="0">
+</Test><Test Type="130" Severity="0">
+</Test><Test Type="131" Severity="0">
+</Test><Test Type="135">
+</Test>
+</Device>
+<Device Name="[C161B]ABS" DTC="22043" OBD="22043">
+
+<Test Type="134" Severity="0">
+</Test><Test Type="135" Severity="0">
+</Test><Test Type="130">
+</Test><Test Type="131">
+</Test>
+</Device>
+<Device Name="[C161E]ABS" DTC="22046" OBD="22046">
+
+<Test Type="134" Severity="0">
+</Test><Test Type="130">
+</Test><Test Type="131">
+</Test><Test Type="135">
+</Test>
+</Device>
+<Device Name="[C1629]CAN Vehicle speed" DTC="22057" OBD="22057">
+
+<Test Type="134" Severity="0">
+</Test><Test Type="135">
+</Test>
+</Device>
+<Device Name="[U214E]CAN comm err (combination meter)" DTC="57678" OBD="57678">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[U2156]CAN comm err (steering angel sensor)" DTC="57686" OBD="57686">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C161C]CAN Vehicle speed" DTC="22044" OBD="22044">
+
+<Test Type="134" Severity="0">
+</Test><Test Type="130" Severity="0">
+</Test><Test Type="131" Severity="0">
+</Test><Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1603]Incomplete ST ANG SEN adjustment" DTC="22019" OBD="22019">
+
+<Test Type="84" Severity="0">
+</Test>
+</Device>
+<Device Name="[C0051]Signal compare failure" DTC="16465" OBD="16465">
+
+<Test Type="98" Severity="0">
+</Test>
+</Device>
+<Device Name="[U2140]CAN comm err (ECM)" DTC="57664" OBD="57664">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1623]ECM system" DTC="22051" OBD="22051">
+
+<Test Type="102" Severity="0">
+</Test><Test Type="134" Severity="0">
+</Test><Test Type="135">
+</Test>
+</Device>
+<Device Name="[C1624]Signal connector" DTC="22052" OBD="22052">
+
+<Test Type="135" Severity="0">
+</Test><Test Type="0">
+</Test>
+</Device>
+<Device Name="[U215B]CAN comm err (IPDM E/R)" DTC="57691" OBD="57691">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[U214F]CAN comm err (BCM)" DTC="57679" OBD="57679">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1621]BCM system" DTC="22049" OBD="22049">
+
+<Test Type="134" Severity="0">
+</Test><Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1622]EPS Fault - EPS-SWA" DTC="22050" OBD="22050">
+
+<Test Type="134" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1625]EPS Fault - EPS-SWA" DTC="22053" OBD="22053">
+
+<Test Type="134" Severity="0">
+</Test>
+</Device>
+<Device Name="[U2154]CAN comm err (MIU)" DTC="57684" OBD="57684">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C161F]CAN IVI fault (IVI)" DTC="22047" OBD="22047">
+
+<Test Type="134" Severity="0">
+</Test><Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C162A]CAN Meter fault (METER)" DTC="22058" OBD="22058">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[U0078]Control module comm Bus F Off" DTC="49272" OBD="49272">
+
+<Test Type="0" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1631]General CAN network failure" DTC="22065" OBD="22065">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1620]CAN IPA fault (IPA)" DTC="22048" OBD="22048">
+
+<Test Type="134" Severity="0">
+</Test><Test Type="130">
+</Test><Test Type="131">
+</Test><Test Type="135">
+</Test>
+</Device>
+<Device Name="[C1628]CAN IPA fault (IPA)" DTC="22056" OBD="22056">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1619]Inconsistent HFP request" DTC="22041" OBD="22041">
+
+<Test Type="100" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1617]Inconsistent LKA request" DTC="22039" OBD="22039">
+
+<Test Type="100" Severity="0">
+</Test>
+</Device>
+<Device Name="[U226B]CAN comm err (front camera)" DTC="57963" OBD="57963">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1627]CAN LKA/LDW fault (FrCamera)" DTC="22055" OBD="22055">
+
+<Test Type="134" Severity="0">
+</Test><Test Type="135" Severity="0">
+</Test><Test Type="130" Severity="0">
+</Test><Test Type="131" Severity="0">
+</Test>
+</Device>
+<Device Name="[U2252]CAN LCA fault (LCA)" DTC="57938" OBD="57938">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C163A](TBD)LKA_SteeringTorqueRequest" DTC="22074" OBD="22074">
+
+<Test Type="134" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1637](TBD)VMC_SteeringGain_k2" DTC="22071" OBD="22071">
+
+<Test Type="134" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1638](TBD)VMC_SteeringAngleRequest" DTC="22072" OBD="22072">
+
+<Test Type="134" Severity="0">
+</Test>
+</Device>
+<Device Name="[C163B](TBD)VMC_C_PointTorqueRequest" DTC="22075" OBD="22075">
+
+<Test Type="134" Severity="0">
+</Test>
+</Device>
+<Device Name="[C163C](TBD)VMC_SteeringAngleOrder" DTC="22076" OBD="22076">
+
+<Test Type="134" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1634](TBD)SteeringWheelRotationSpeed" DTC="22068" OBD="22068">
+
+<Test Type="134" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1633](TBD)TransversalAccelCorrected" DTC="22067" OBD="22067">
+
+<Test Type="134" Severity="0">
+</Test><Test Type="135">
+</Test>
+</Device>
+<Device Name="[C1632](TBD)EPS Fault - EPS-SWA" DTC="22066" OBD="22066">
+
+<Test Type="134" Severity="0">
+</Test>
+</Device>
+<Device Name="[U0076]Control module comm Bus D Off" DTC="49270" OBD="49270">
+
+<Test Type="0" Severity="0">
+</Test>
+</Device>
+<Device Name="[U2152]CAN comm err (ADAS control unit)" DTC="57682" OBD="57682">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[U2176]CAN comm err (CCM)" DTC="57718" OBD="57718">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1635]PowerTrainStatus" DTC="22069" OBD="22069">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1636]LDW_VibrationIntensityReq2" DTC="22070" OBD="22070">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="[C1639]LDW_RoadQualityEstimation" DTC="22073" OBD="22073">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"/></ddt:Target></xml>

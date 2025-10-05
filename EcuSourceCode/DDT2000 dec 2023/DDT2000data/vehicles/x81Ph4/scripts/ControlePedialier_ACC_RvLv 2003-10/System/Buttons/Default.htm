@@ -1,0 +1,215 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<script language=vbscript>
+Option Explicit
+
+Dim ButtonWithFocus
+
+Sub public_Display(ButtonName)
+select case ButtonName
+case "StartButton"
+	StartButton.style.display=""
+case "StepButton"
+	StepButton.style.display=""
+case "AutoButton"
+	AutoButton.style.display=""
+case "CancelButton"
+	CancelButton.style.display=""
+case "TicketButton"
+	TicketButton.style.display=""
+case "ExitButton"
+	ExitButton.style.display=""
+end select
+End Sub
+
+Sub public_HideAll
+StartButton.style.display="none"
+StepButton.style.display="none"
+AutoButton.style.display="none"
+TicketButton.style.display="none"
+ExitButton.style.display="none"	
+CancelButton.style.display="none"
+End Sub
+
+Sub public_Hide(ButtonName)
+select case ButtonName
+case "StartButton"
+	StartButton.style.display="none"
+case "StepButton"
+	StepButton.style.display="none"
+case "AutoButton"
+	AutoButton.style.display="none"
+case "CancelButton"
+	CancelButton.style.display="none"
+case "TicketButton"
+	TicketButton.style.display="none"
+case "ExitButton"
+	ExitButton.style.display="none"
+end select
+End Sub
+
+Function public_get_ButtonClicked()
+public_get_ButtonClicked=ButtonWithFocus
+End function
+
+Sub public_put_StartButtonLabel(Text)
+StartButtonLabel.innertext=Text
+End Sub
+
+Sub StartButton_OnClick
+ButtonWithFocus="Start"
+window.external.bubbleEvent
+End Sub
+
+Sub AutoButton_OnClick
+ButtonWithFocus="Auto"
+window.external.bubbleEvent
+End Sub
+
+Sub StepButton_OnClick
+ButtonWithFocus="Step"
+window.external.bubbleEvent
+End Sub
+
+Sub CancelButton_OnClick
+ButtonWithFocus="Cancel"
+window.external.bubbleEvent
+End Sub
+
+Sub TicketButton_OnClick
+ButtonWithFocus="Ticket"
+window.external.bubbleEvent
+End Sub
+
+Sub ExitButton_OnClick
+ButtonWithFocus="Exit"
+window.external.bubbleEvent
+End Sub
+
+
+
+
+
+Sub Window_OnLoad()
+End Sub
+</script>
+
+<title>Buttons</title>
+
+</head>
+
+<body topmargin="0" leftmargin="0">
+<table border="0" width="100%" height="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="23" bgcolor="#DFDCD7" valign="bottom" background="../../skin/WFMiddleLeft2.jpg" >
+      <img border="0" src="../../skin/WFBUttonLeft.jpg" align="absbottom" width="23" height="53">
+    </td>
+    
+    <td bgcolor="#DFDCD7" valign="bottom" >
+      <table border="0" width="100%" bgcolor="#696F70" cellspacing="0" cellpadding="0" background="../../skin/BFCenter.jpg">
+        <tr>
+        
+          <td >
+            <table border="0" width="100%"  height="100%" cellspacing="0" cellpadding="0" >
+              <tr>
+          			<td background="../../skin/BFCenter.jpg" >
+                  <p  align="center"><font color="#FFFFFF"><img border="0" src="../../skin/BFCenter.jpg" width="16" height="53"></font></p>
+          			</td>
+              </tr>
+            </table>
+          </td>
+          
+          <td >
+            <table Id="StartButton" border="0" width="100%"  height="100%" cellspacing="0" cellpadding="0" style="display:none; cursor:hand; font-family: Verdana; font-size: 14pt; color: #FFFFFF">
+              <tr>
+          			<td width="26"><img border="0" src="../../skin/BBlackLeft.jpg" width="26" height="53"></td>
+          				<td background="../../skin/BBlackCenter.jpg" >
+            	  		<p Id="StartButtonLabel" align="center"><font color="#FFFFFF">START</font></p>
+          				</td>
+          			<td width="26"><img border="0" src="../../skin/BBlackRight.jpg" width="26" height="53"></td>
+              </tr>
+            </table>
+          </td>
+          
+          <td >
+            <table Id="AutoButton" border="0" width="100%" cellspacing="0" cellpadding="0" style="display:none; cursor:hand; font-family: Verdana; font-size: 14pt; color: #000000">
+              <tr>
+          			<td width="26"><img border="0" src="../../skin/BWhiteLeft.jpg" width="26" height="53"></td>
+          				<td background="../../skin/BWhiteCenter.jpg" >
+            	  			<p Id="AutoButtonLabel" align="center">AUTO</p>
+          				</td>
+          			<td width="26"><img border="0" src="../../skin/BWhiteRight.jpg" width="26" height="53"></td>
+              </tr>
+            </table>
+          </td>
+                    
+          <td >
+            <table Id="StepButton" border="0" width="100%" cellspacing="0" cellpadding="0" style="display:none; cursor:hand; font-family: Verdana; font-size: 14pt; color: #000000">
+              <tr>
+              	<td width="26"><img border="0" src="../../skin/BYellowLeft.jpg" width="26" height="53"></td>
+          				<td background="../../skin/BYellowCenter.jpg">
+            	 		 <p Id="StepButtonLabel"  align="center">NEXT</p>
+            			</td>
+         		 	<td width="26"><img border="0" src="../../skin/BYellowRight.jpg" width="26" height="53"></td>
+              </tr>
+            </table>
+          </td>
+
+          <td >
+            <table Id="TicketButton" border="0" width="100%" cellspacing="0" cellpadding="0" style="display:none; cursor:hand; font-family: Verdana; font-size: 14pt; color: #000000" cellspacing="0" cellpadding="0">
+              <tr>
+              	<td width="26"><img border="0" src="../../skin/BYellowLeft.jpg" width="26" height="53"></td>
+       			   	<td background="../../skin/BYellowCenter.jpg">
+       		     	  <p Id="TicketButtonLabel"  align="center">TICKET</p>
+        		    	</td>
+       		   	<td width="26"><img border="0" src="../../skin/BYellowRight.jpg" width="26" height="53"></td>
+              </tr>
+            </table>
+          </td>
+          
+          <td >
+            <table Id="CancelButton" border="0" width="100%" cellspacing="0" cellpadding="0" style="display:none; cursor:hand; font-family: Verdana; font-size: 14pt; color: #000000">
+              <tr>
+        		  	<td width="26"><img border="0" src="../../skin/BYellowLeft.jpg" width="26" height="53"></td>
+       			   	<td background="../../skin/BYellowCenter.jpg">
+       		     	  <p Id="CancelButtonLabel"  align="center">CANCEL</p>
+        		    	</td>
+        		  	<td width="26"><img border="0" src="../../skin/BYellowRight.jpg" width="26" height="53"></td>
+              </tr>
+            </table>
+          </td>    
+                
+          <td >
+            <table Id="ExitButton" border="0" width="100%" cellspacing="0" cellpadding="0" style="display:none; cursor:hand; font-family: Verdana; font-size: 14pt; color: #FFFFFF">
+              <tr>
+       		   	<td width="26"><img border="0" src="../../skin/BBlackLeft.jpg" width="26" height="53"></td>
+       			   	<td background="../../skin/BBlackCenter.jpg">
+         			   	  <p Id="ExitButtonLabel" align="center"><font color="#FFFFFF">EXIT</font></p>
+         			 	</td>
+        		  	<td width="26"><img border="0" src="../../skin/BBlackRight.jpg" width="26" height="53"></td>
+              </tr>
+            </table>
+          </td>
+          
+          <td >
+            <table border="0" width="100%"  height="100%" cellspacing="0" cellpadding="0" >
+              <tr>
+         		 	<td background="../../skin/BFCenter.jpg" >
+                  <p align="center"><font color="#FFFFFF"><img border="0" src="../../skin/BFCenter.jpg" width="16" height="53"></font></p>
+       		   	</td>
+              </tr>
+            </table>
+          </td>
+          
+        </tr>
+      </table>
+    </td>
+    
+    <td width="23" bgcolor="#DFDCD7" valign="bottom" background="../../skin/WFMiddleRight2.jpg" >
+      <img border="0" src="../../skin/WFButtonRight.jpg" width="23" height="53" align="absbottom">
+    </td>
+  </tr>
+</table>
+</body>

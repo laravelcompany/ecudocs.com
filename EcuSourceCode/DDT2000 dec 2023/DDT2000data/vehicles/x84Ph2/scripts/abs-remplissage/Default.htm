@@ -1,0 +1,546 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title></title>
+
+
+<script language="vbscript">
+'------------------------------------ variables diag
+Dim Session
+'-----------------protocols
+Dim pABS
+Dim pUCH
+'-----------------requests
+Dim rSERV
+Dim rDone
+Dim StartTime
+
+'------------------------------------INIT SESSION
+Sub InitSession
+Dim DiagContext
+
+Set DiagContext = Createobject("DiagnosticContext.Context")
+If DiagContext.Object is Nothing then
+	err.raise 9000,, "No SESSION (run SCAN)"
+End if 
+
+Set Session = DiagContext.Object
+on error resume next
+Set pUCH = Session("UCBIC/BFR")
+if not isobject(pUCH) then	
+	err.raise 9000,, "UCH ECU MISSING in CONFIGURATION"
+end if
+Set pABS = Session("ABS")
+if not isobject(pABS) then	
+	err.raise 9000,, "ABS ECU MISSING in CONFIGURATION"
+end if
+on error goto 0
+End Sub
+
+'------------------------------------ SET SERVITUDE
+Sub SetServ
+pUCH.Init
+' msgbox "init uch"
+on error resume next
+set rSERV = pUCH.Item("Output Control")
+err.clear
+on error goto 0
+if not isobject(rSERV) then
+	err.raise 9000,, "OUTPUT CONTROL command missing in UCH " & pUCH.name
+end if
+With rSERV
+	.Item("Output Temporary Control List").Text = "Servitude output"
+	.Item("Output Control Command").Text = "Start Temporary"
+	.Item("Temps d'activation de la sortie (x640ms)").Value = 0
+	.Send
+	If .Item("Output Control Status").Text <> "Running" Then
+		Err.Raise 9000,, .DiagItem("Output Control Status").Text
+	End If
+	.Item("Output Control Command").Text = "Status"
+End With
+End Sub
+
+'------------------------------------ STOP SERVITUDE
+Sub StopServ
+With rSERV
+	.Item("Output Control Command").Text = "Stop"
+	.Send
+End With
+End Sub
+
+'------------------------------------ START REMPLISSAGE
+Sub StartFill
+pABS.Init
+With pABS.Item("R-StartRBLI - Evac&FillProcedure")
+	.Send
+	If .Item("Etat de la routine").Text <> "Routine en cours" Then
+		Err.Raise 9000,, .DiagItem("Etat de la routine").Text
+	End If
+End With
+StartTime = Now
+set rDone = pABS.Item("R-StatusRoutine - Evac&FillProcedure")
+End Sub
+
+'------------------------------------- TEST REMPLISSAGE
+Function FillDone
+With rSERV
+	.Send
+	If .Item("Output Control Status").Text <> "Running" Then
+		Err.Raise 9000,, .DiagItem("Output Control Status").Text
+	End If
+End With
+With rDone
+	.Send
+	If .Item("Etat de la routine").Text = "Routine en cours" Then
+		PurgeDone = False
+	ElseIf .Item("Etat de la routine").Text <> "Routine terminée Ok" Then
+		Err.Raise 9000,, .DiagItem("Etat de la routine").Text
+	Else
+		FillDone = True
+	End If
+End With
+End Function
+
+'============================================================= fonctions automate
+
+'------------------------------------ variables script
+Dim CurrentStep
+Dim CurrentStepId
+Dim All
+Const ScriptYellow = "#FFD663"
+Dim NumberOfSteps
+Dim AutoMode
+
+Sub Hide(Object)
+	Object.style.display="none"
+end sub
+
+Sub DisplayStep(Step)
+	Step0.style.display="none"
+	step1.style.display="none"
+	step2.style.display="none"
+	step3.style.display="none"
+	
+	Ticket.style.display="none"
+	
+	StartButton.style.display="none"
+	StepButton.style.display="none"
+	AutoButton.style.display="none"
+	TicketButton.style.display="none"
+	ExitButton.style.display="none"	
+	
+	StepMessage.style.display="none"
+	
+	Step.style.display=""
+	set CurrentStepId=Step
+End Sub
+
+Sub DisplayStepMessage(MessageText,InkColor,PaperColor)
+	StepMessage.style.display=""
+	StepMessageContent.style.display=""
+	StepMessageContent.innertext=MessageText
+	StepMessageContent.style.color=InkColor
+	StepMessageContent.style.backgroundcolor=PaperColor
+End sub
+
+Sub WriteTicket(TextToWrite)
+		TicketContent.InsertAdjacentHTML "beforeEnd", TextToWrite
+End sub
+
+Sub DisplayStepButton(MessageLabel)
+		StepButtonLabel.innertext=MessageLabel
+		StepButton.style.display=""
+End sub
+
+Sub DisplayStartButton(MessageLabel)
+		StartButtonLabel.innertext=MessageLabel
+		StartButton.style.display=""
+End sub
+
+Sub DisplayExitButton(MessageLabel)
+		ExitButtonLabel.innertext=MessageLabel
+		ExitButton.style.display=""
+End sub
+
+Sub DisplayTicketButton(MessageLabel)
+		TicketButtonLabel.innertext=MessageLabel
+		TicketButton.style.display=""
+End sub
+
+Sub DisplayAutoButton(MessageLabel)
+		AutoButtonLabel.innertext=MessageLabel
+		AutoButton.style.display=""
+End sub
+
+Sub Window_OnLoad()
+NumberOfSteps=3
+NumberOfStepsDisplay.innertext = NumberOfSteps
+end sub
+
+
+Sub ExitButton_onclick
+history.go(-1)
+end sub
+
+
+sub StartButton_onclick
+	TicketContent.innertext=""
+	CurrentStep=0
+	Automode=false
+	GoToNextStep
+end sub
+
+
+sub AutoButton_onclick
+	Automode=true
+	GoToNextStep
+end sub
+
+
+sub TicketButton_onclick
+If Ticket.style.display="none" then
+	CurrentStepId.style.display="none"
+	StepMessage.style.display="none"
+	Ticket.style.display=""
+	TicketButtonLabel.innertext = "HIDE TICKET"
+else
+	Ticket.style.display="none"
+	CurrentStepId.style.display=""
+	StepMessage.style.display=""
+	TicketButtonLabel.innertext = "SHOW TICKET"
+end if
+end sub
+
+'=================================================== contenu applicatif script
+
+'--------------------------------------------------- preparation
+sub StepPreparation
+WriteTicket "<BR>"+"- Etape PREPARATION - "
+DisplayStep Step1 ' preparation
+InitSession
+DisplayStepButton "ETAPE SUIVANTE (PLUS SERVITURE)"
+DisplayAutoButton "AUTO"
+DisplayExitButton "EXIT"
+end sub
+
+'--------------------------------------------------- mise du plus servitude
+sub StepServitude
+WriteTicket "<BR>"+"- Etape SERVITUDE - "
+DisplayStep Step2 ' Servitude
+DisplayStepMessage  "EN COURS", "black", ScriptYellow
+SetServ
+session.Sleep 1000 ' attente ABS pret pour remplissage
+DisplayStepMessage "TERMINE", "white", "mediumseagreen"
+DisplayStepButton "ETAPE SUIVANTE (REMPLISSAGE)"
+DisplayAutoButton "AUTO"
+DisplayTicketButton "SHOW TICKET"
+DisplayExitButton "EXIT"
+end sub
+
+'--------------------------------------------------- remplissage ABS
+sub StepRemplissage
+WriteTicket "<BR>"+"- Etape REMPLISSAGE - "
+DisplayStep Step3 ' Remplissage
+DisplayStepMessage "EN COURS", "black", ScriptYellow
+StartFill
+Do
+	session.Sleep 1000
+Loop Until FillDone
+DisplayStepMessage "TERMINE", "white", "mediumseagreen"
+DisplayStepButton "FIN"
+DisplayExitButton "EXIT"	
+Automode=false
+end sub
+
+'--------------------------------------------------- fin du script
+Sub StepFin
+WriteTicket "<BR>"+"- FIN - "
+DisplayStep Step0
+DisplayStartButton "START"
+DisplayExitButton "EXIT"
+DisplayTicketButton "SHOW TICKET"
+end sub
+
+sub GoToNextStep
+on error resume next
+CurrentStep=CurrentStep + 1
+select case CurrentStep
+case 1
+		StepPreparation
+case 2
+		StepServitude
+case 3
+		StepRemplissage	
+case 4
+		StepFin
+end select
+' msgbox err.description
+if err = 0 then
+	if Automode then	window.settimeout "GoToNextStep",500
+else
+	StepMessage.style.display=""
+	DisplayStepMessage err.description, "white", "red"
+	WriteTicket "<BR>"+ err.description
+	err.clear
+	on error goto 0
+	Hide StepButton
+	Hide AutoButton
+	DisplayStartButton "RESTART"
+	DisplayExitButton "EXIT"
+	DisplayTicketButton "SHOW TICKET"
+end if
+end sub
+
+</script>
+
+</head>
+
+<body topmargin="0" leftmargin="0" scroll=no>
+<table border="0" width="100%" height="100%" cellspacing="0" cellpadding="0">
+  <tr height="15" >
+    <td width="20%" height="20" bgcolor="#FFFFFF" style="border-bottom-style: ridge; border-bottom-width: 2" >
+      <p align="center"><font face="Verdana" size="4">X84</font></td>
+    <td height="20" bgcolor="#FFFFFF" style="border-bottom-style: ridge; border-bottom-width: 2" >
+      <p align="center"><font face="Verdana" size="4" color="#000000">REMPLISSAGE
+      ABS</font></td>
+  </tr>
+  <tr Id="Step0">
+    <td width="20%" bgcolor="#BCB6AA" valign="top" style="border-right-style: ridge; border-right-width: 2">
+      <p align="center"><b><font face="Verdana" size="2">&nbsp;<br>
+      </font><i><font color="#FFFFFF" face="Verdana" size="4">DDT</font><font color="#FFFFFF" face="Verdana" size="1">2000</font><font face="Verdana" size="2">
+      </font></i><font face="Verdana" size="1">script</font></b></p>
+      <p align="center"><font face="Verdana" size="2">durée estimée</font><br>
+      <font face="Verdana" size="4"><b>2</b></font><font face="Verdana" size="2">
+      minutes&nbsp;</font>
+      <p align="center">-
+      <p align="center"><font face="Verdana" size="2"><b>ETAPES<br>
+      &nbsp;</b></font>
+      <div align="center">
+        <center>
+        <table border="1" width="95%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td bgcolor="#FFCD66">
+      <p align="left"><font face="Verdana" size="2"><b>1</b></font></td>
+            <td style="color: #FFFFFF" bgcolor="#000000"><font face="Verdana" size="2"><b>préparation</b></font></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FFFFFF"><font face="Verdana" size="2"><b>2</b></font></td>
+            <td style="color: #FFFFFF" bgcolor="#000000"><font face="Verdana" size="2"><b>mise
+              du + servitude</b></font></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FFFFFF"><font face="Verdana" size="2"><b>3</b></font></td>
+            <td style="color: #FFFFFF" bgcolor="#000000"><font face="Verdana" size="2"><b>remplissage</b></font></td>
+          </tr>
+        </table>
+        </center>
+      </div>
+    </td>
+    <td bgcolor="#DFDCD7" >
+      <p align="center"><font face="Verdana" size="5">Ce script effectue le remplissage
+      du circuit ABS<br>
+      (dialogue avec l'ABS et l'UCH)</font></p>
+      <p align="center">&nbsp;</p>
+      <p align="center">&nbsp;</p>
+      <p align="center"><font face="Verdana" size="4">lorsque vous êtes prêt, cliquez
+      sur <b>START</b>&nbsp;</font></p>
+      <p align="center"><font face="Verdana" size="4">pour quitter maintenant,
+      cliquez
+      sur <b>EXIT</b></font></td>
+  </tr>
+  <tr Id="Step1" style="display:none">
+    <td width="20%" bgcolor="#BCB6AA" valign="middle" style="font-family: Verdana; font-size: 10pt; font-weight: bold; border-right-style: ridge; border-right-width: 2">
+      <p align="center"><b><font face="Verdana" size="2">&nbsp;</font></b>ETAPE
+      1</p>
+    </td>
+    <td bgcolor="#DFDCD7" >
+      <p align="center"><b><font face="Verdana" size="5">PRÉPARATION<br>
+      &nbsp;</font></b>
+      <table border="0" width="100%" style="font-family: Verdana; font-size: 14pt" cellspacing="0">
+        <tr>
+          <td valign="top" bgcolor="#FFCD66" style="border-style: ridge; border-width: 2">
+            <p align="center">1</td>
+          <td align="left" valign="top" style="border-style: ridge; border-width: 2">
+            <p align="left"><font face="Verdana">Alimenter le circuit
+          freinage</font></p>
+          </td>
+          <td align="center"></td>
+        </tr>
+        <tr>
+          <td valign="top" bgcolor="#FFCD66" style="border-style: ridge; border-width: 2">
+            <p align="center">2</td>
+          <td align="left" valign="top" style="border-style: ridge; border-width: 2"><font face="Verdana">Insérer le badge dans
+          le lecteur du véhicule</font></td>
+          <td align="center"><img border="0" src="InserBadge.jpg" width="200" height="197"></td>
+        </tr>
+        <tr>
+          <td valign="top" bgcolor="#FFCD66" style="border-style: ridge; border-width: 2">3</td>
+          <td align="left" valign="top" style="border-style: ridge; border-width: 2"><font face="Verdana">Vérifier que dans
+          votre config. SCAN il y a au moins<br>
+          - CAN 500 ou une messagerie<br>
+          - UCE ABS<br>
+          - UCE UCH (UCBIC/BFR)</font></td>
+          <td align="center"><img border="0" src="Scan.jpg" width="199" height="150"></td>
+        </tr>
+        <tr>
+          <td valign="top" bgcolor="#FFCD66" style="border-style: ridge; border-width: 2">
+            <p align="center">4</td>
+          <td align="left" valign="top" style="border-style: ridge; border-width: 2"><font face="Verdana">Connecter l'outil de
+      diagnostic au véhicule</font></td>
+          <td align="center"><img border="0" src="PriseDiag.jpg" width="199" height="117"></td>
+        </tr>
+      </table>
+          <p align="left">&nbsp;
+    </td>
+  </tr>
+  <tr Id="Step2" style="display:none">
+    <td width="20%" bgcolor="#BCB6AA" valign="middle" style="border-right-style: ridge; border-right-width: 2">
+      <p align="center"><b><font face="Verdana" size="2">&nbsp;ETAPE 2
+      </font></b></p>
+    </td>
+    <td bgcolor="#DFDCD7" >
+      <p align="center"><b><font face="Verdana" size="5">MISE DU + SERVITUDE</font></b>
+      <p align="center">&nbsp;</td>
+  </tr>
+  <tr Id="Step3" style="display:none">
+    <td width="20%" bgcolor="#BCB6AA" valign="middle" style="border-right-style: ridge; border-right-width: 2">
+      <p align="center"><b><font face="Verdana" size="2">&nbsp;ETAPE 3
+      </font></b></p>
+    </td>
+    <td bgcolor="#DFDCD7" >
+      <p align="center"><b><font face="Verdana" size="5">REMPLISSAGE</font></b>
+      <p align="center"><font face="Verdana" size="4">(on doit entendre les électrovannes
+      &quot;claquer&quot;)</font></td>
+  </tr>
+  <tr Id="StepMessage">
+    <td width="20%" bgcolor="#BCB6AA" valign="top" style="border-right-style: ridge; border-right-width: 2">
+      <p align="center"><b><font face="Verdana" size="2">&nbsp;<br>
+      </font></b></p>
+      <p align="center">&nbsp;</p>
+      <p align="center">&nbsp;</td>
+    <td bgcolor="#DFDCD7" style="font-size: 8pt" >
+      <div align="center">
+        <center>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0" height="100%">
+          <tr>
+            <td Id="StepMessageContent" style="font-family: Verdana; font-size: 18pt; font-weight: bold" align="center" valign="middle" height="100%">
+              <p align="center"></td>
+          </tr>
+        </table>
+        </center>
+      </div>
+    </td>
+  </tr>
+  <tr Id="Ticket" style="display:none">
+    <td width="20%" bgcolor="#BCB6AA" valign="middle" style="border-right-style: ridge; border-right-width: 2">
+      <p align="center"><b><font face="Verdana" size="2">&nbsp;Ticket</font></b></p>
+    </td>
+    <td bgcolor="#FFFFFF" style="font-family: Verdana; font-size: 10pt" valign="top" >
+      <table border="0" width="100%" cellspacing="0" cellpadding="0" style="font-family: Verdana; font-size: 10pt" bgcolor="#9C9C84">
+        <tr>
+          <td width="33%" align="center" style="font-family: Verdana; font-size: 10pt" valign="top" bgcolor="#000000"><b><font color="#FFFFFF">DT2000
+            Script</font></b></td>
+          <td width="33%" align="center" bgcolor="#000000"><b><font color="#FFFFFF">X84</font></b></td>
+          <td width="34%" align="center" bgcolor="#000000"><b><font color="#FFFFFF"> REMPLISSAGE ABS</font></b>
+          </td>
+        </tr>
+      </table>
+      <p Id="TicketContent">&nbsp;</p>
+    </td>
+  </tr>
+  <tr height="50">
+    <td width="20%" height="50" bgcolor="#BCB6AA" style="border-right-style: ridge; border-right-width: 2" >
+      <table border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#BCB6AA">
+        <tr>
+          <td width="10%" rowspan="2"></td>
+          <td style="font-family: Verdana; font-size: 14pt; color: #FFFFFF">
+            <p Id="NumberOfStepsDisplay" align="center">&nbsp;</td>
+          <td width="10%" rowspan="2"></td>
+        </tr>
+        <tr>
+          <td style="font-family: Verdana; font-size: 14pt; color: #000000">
+            <p align="center">
+            <b><font size="1">ETAPES</font></b></td>
+        </tr>
+      </table>
+    </td>
+    <td height="50" bgcolor="#000000" background="../../../x84absonly/scripts/images/VBack.gif"   style="border-top-style: ridge; border-top-width: 2">
+      <table border="0" width="100%" cellspacing="0" cellpadding="0" style="font-family: Verdana; font-size: 14pt">
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+            <table Id="StartButton" border="0" width="100%" cellspacing="0" cellpadding="0" style="cursor:hand; font-family: Verdana; font-size: 14pt; color: #FFFFFF">
+              <tr>
+          <td>
+            <p align="right"><img border="0" src="../../../x84absonly/scripts/images/HomeButtonLeft.jpg" width="20" height="34"></p>
+          </td>
+          <td background="../../../x84absonly/scripts/images/HomeButtonCenter.jpg" >
+            <p Id="StartButtonLabel" align="center"><font color="#FFFFFF">START</font></p>
+          </td>
+          <td><img border="0" src="../../../x84absonly/scripts/images/HomeButtonRight.jpg" width="20" height="34"></td>
+              </tr>
+            </table>
+          </td>
+          <td></td>
+          <td>
+            <table Id="StepButton" onclick="GoToNextStep" border="0" width="100%" cellspacing="0" cellpadding="0" style="display:none; cursor:hand; font-family: Verdana; font-size: 14pt; color: #000000">
+              <tr>
+          <td>
+            <p align="right"><img border="0" src="../../../x84absonly/scripts/images/HomeButtonLeftY.jpg" width="20" height="34"></td>
+          <td background="../../../x84absonly/scripts/images/HomeButtonCenterY.jpg">
+            <p Id="StepButtonLabel"  align="center">NEXT STEP</td>
+          <td ><img border="0" src="../../../x84absonly/scripts/images/HomeButtonRightY.jpg" width="20" height="34"></td>
+              </tr>
+            </table>
+          </td>
+          <td></td>
+          <td>
+            <table Id="AutoButton" border="0" width="100%" cellspacing="0" cellpadding="0" style="display:none; cursor:hand; font-family: Verdana; font-size: 14pt; color: #000000">
+              <tr>
+          <td>
+            <p align="right"><img border="0" src="../../../x84absonly/scripts/images/HomeButtonLeftW.jpg" width="20" height="34"></p>
+          </td>
+          <td background="../../../x84absonly/scripts/images/HomeButtonCenterW.jpg" >
+            <p Id="AutoButtonLabel" align="center">AUTO</p>
+          </td>
+          <td><img border="0" src="../../../x84absonly/scripts/images/HomeButtonRightW.jpg" width="20" height="34"></td>
+              </tr>
+            </table>
+          </td>
+          <td></td>
+          <td>
+            <table Id="TicketButton" border="0" width="100%" style="display:none; cursor:hand; font-family: Verdana; font-size: 14pt; color: #000000" cellspacing="0" cellpadding="0">
+              <tr>
+          <td>
+            <p align="right"><img border="0" src="../../../x84absonly/scripts/images/HomeButtonLeftY.jpg" width="20" height="34"></td>
+          <td background="../../../x84absonly/scripts/images/HomeButtonCenterY.jpg">
+            <p Id="TicketButtonLabel"  align="center">TICKET</td>
+          <td ><img border="0" src="../../../x84absonly/scripts/images/HomeButtonRightY.jpg" width="20" height="34"></td>
+              </tr>
+            </table>
+          </td>
+          <td></td>
+          <td>
+            <table Id="ExitButton" border="0" width="100%" cellspacing="0" cellpadding="0" style="cursor:hand; font-family: Verdana; font-size: 14pt; color: #FFFFFF">
+              <tr>
+          <td>
+            <p align="right"><img border="0" src="../../../x84absonly/scripts/images/HomeButtonLeft.jpg" width="20" height="34"></td>
+          <td  background="../../../x84absonly/scripts/images/HomeButtonCenter.jpg">
+            <p Id="ExitButtonLabel" align="center"><font color="#FFFFFF">EXIT</font></p>
+          </td>
+          <td><img border="0" src="../../../x84absonly/scripts/images/HomeButtonRight.jpg" width="20" height="34"></td>
+              </tr>
+            </table>
+          </td>
+          <td></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

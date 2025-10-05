@@ -1,0 +1,2746 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<ddt:Target Name="Coslad J84ph2_APVU_0101" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" href="Coslad_J84ph2_APVU_0101.xml" upload="4/24/06" email="mohamed.wahbi@renault.com"><Description><![CDATA[Diagnostic des systèmes de correction commun des LAD J84 et M2S : Juin 2002
+Edité par : Mohamed WAHBI - Sce 65620 - 55962
+Spécifié par le pilote : Cécile AUDOIN- Sce 65620 - 54807
+
+Modifications Par M.WAHBI le 06 avril 2006
+Mis en correspondance du nom de la base avec la version de soft]]></Description><Projects xmlns=""><x73/><x74/><x81/><x84/><x84bugABS/><x84Ph2/></Projects>
+
+<Function Name="Lampes à décharge" Address="7"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>06/04/2006 07:48:46</DateOfficialisation>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<K BaudRate="10400">
+<KWP Multipoint="0">
+<FastInit><KW1 Value="208"/>
+<KW2 Value="143"/></FastInit>
+</KWP>
+<InterByte Delay="2"/>
+<ReplyToRequest Delay="5"/>
+<RequestToReply Timeout="300"/>
+<TesterPresent Delay="3000"/>
+<OnError Delay="300"/>
+</K>
+<AutoIdents>
+<AutoIdent DiagVersion="5" Supplier="267" Soft="0101" Version="0010"/><AutoIdent DiagVersion="5" Supplier="267" Soft="0101" Version="0011"/></AutoIdents>
+<Datas>
+
+<Data Name="Actuator position">
+<Comment><![CDATA[Testing output : Command enumeration]]></Comment>
+<Bits count="16">
+<Scaled Unit="steps"/>
+</Bits>
+</Data>
+<Data Name="Année">
+<Comment><![CDATA[Enregistrement de l'année de construction ou d'intervention Après-Vente]]></Comment>
+<Mnemonic>AA</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}{\f4\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f4\fs17 Permet d'enregistrer la date de construction du v\'e9hicule (en mode construction 
+\par v\'e9hicule) ou la date de la derni\'e8re intervention Apr\'e8s-Vente (mode apr\'e8s vente)
+\par dans la m\'e9moire de l'UCE
+\par 
+\par format des Donn\'e9es:
+\par \tab 3B  00 00 00 00
+\par \tab  |           |______________octet Ann\'e9e
+\par                  |____________________octet requ\'eate "WriteDataByLocalIdentifier"
+\par              
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="0" Text="2000"/>
+<Item Value="1" Text="2001"/>
+<Item Value="2" Text="2002"/>
+<Item Value="3" Text="2003"/>
+<Item Value="4" Text="2004"/>
+<Item Value="5" Text="2005"/>
+<Item Value="6" Text="2006"/>
+<Item Value="7" Text="2007"/>
+<Item Value="8" Text="2008"/>
+<Item Value="9" Text="2009"/>
+<Item Value="10" Text="2010"/>
+<Item Value="99" Text="1999"/></List>
+</Bits>
+</Data>
+<Data Name="Année APV">
+<Comment><![CDATA[Lecture de la date de la dernière intervention APrès-Vente]]></Comment>
+<Mnemonic>AA</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Ann\'e9e de la derni\'e8re intervention Apr\'e8s-Vente:
+\par 
+\par format des Donn\'e9es-Requ\'eate:
+\par \tab 
+\par \tab 21 D2
+\par \tab   |    |______octet requ\'eate "ReadDataByLocalIdentifier"
+\par                   |________Demande Lecture Dates
+\par 
+\par format des Donn\'e9es-R\'e9ponse:
+\par 
+\par 61 D2 ZZ ZZ ZZ YY YY YY XX XX XX
+\par  |     |     |     |     |     |     |     |     |     |     |____Ann\'e9e APV $aa
+\par  |     |     |     |     |     |     |     |     |     |_______Mois APV    $mm
+\par  |     |     |     |     |     |     |     |     |__________Jour APV     $jj
+\par  |     |     |     |     |     |     |     |
+\par  |     |     |     |     |     |__ |__ |_____________Date construction
+\par  |     |     |__ |__ |______________________Date fabrication UCE
+\par  |     |
+\par  |     |______________________________octet de commande "Lecture Date"
+\par  |_________________________________octet r\'e9ponse "ReadDataByLocal
+\par \tab \tab \tab \tab \tab \tab            IdentifierOK"
+\par 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="0" Text="2000"/>
+<Item Value="1" Text="2001"/>
+<Item Value="2" Text="2002"/>
+<Item Value="3" Text="2003"/>
+<Item Value="4" Text="2004"/>
+<Item Value="5" Text="2005"/>
+<Item Value="6" Text="2006"/>
+<Item Value="7" Text="2007"/>
+<Item Value="8" Text="2008"/>
+<Item Value="9" Text="2009"/>
+<Item Value="10" Text="2010"/>
+<Item Value="99" Text="1999"/>
+<Item Value="255" Text="Non-documentée"/></List>
+</Bits>
+</Data>
+<Data Name="Année UCE">
+<Comment><![CDATA[Lecture de la date de fabrication de l'UCE]]></Comment>
+<Mnemonic>AA</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Ann\'e9e de la derni\'e8re intervention Apr\'e8s-Vente:
+\par 
+\par format des Donn\'e9es-Requ\'eate:
+\par \tab 
+\par \tab 21 D2
+\par \tab   |    |______octet requ\'eate "ReadDataByLocalIdentifier"
+\par                   |________Demande Lecture Dates
+\par 
+\par format des Donn\'e9es-R\'e9ponse:
+\par 
+\par 61 D2 ZZ ZZ ZZ YY YY YY XX XX XX
+\par  |     |     |     |     |     |     |     |     |     |     |____Ann\'e9e APV $aa
+\par  |     |     |     |     |     |     |     |     |     |_______Mois APV    $mm
+\par  |     |     |     |     |     |     |     |     |__________Jour APV     $jj
+\par  |     |     |     |     |     |     |     |
+\par  |     |     |     |     |     |__ |__ |_____________Date construction
+\par  |     |     |__ |__ |______________________Date fabrication UCE
+\par  |     |
+\par  |     |______________________________octet de commande "Lecture Date"
+\par  |_________________________________octet r\'e9ponse "ReadDataByLocal
+\par \tab \tab \tab \tab \tab \tab            IdentifierOK"
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="0" Text="2000"/>
+<Item Value="1" Text="2001"/>
+<Item Value="2" Text="2002"/>
+<Item Value="3" Text="2003"/>
+<Item Value="4" Text="2004"/>
+<Item Value="5" Text="2005"/>
+<Item Value="6" Text="2006"/>
+<Item Value="7" Text="2007"/>
+<Item Value="8" Text="2008"/>
+<Item Value="9" Text="2009"/>
+<Item Value="10" Text="2010"/>
+<Item Value="99" Text="1999"/>
+<Item Value="255" Text="Non-documentée"/></List>
+</Bits>
+</Data>
+<Data Name="Année véhicule">
+<Comment><![CDATA[Lecture de la date de construction du véhicule]]></Comment>
+<Mnemonic>AA</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Ann\'e9e de la derni\'e8re intervention Apr\'e8s-Vente:
+\par 
+\par format des Donn\'e9es-Requ\'eate:
+\par \tab 
+\par \tab 21 D2
+\par \tab   |    |______octet requ\'eate "ReadDataByLocalIdentifier"
+\par                   |________Demande Lecture Dates
+\par 
+\par format des Donn\'e9es-R\'e9ponse:
+\par 
+\par 61 D2 ZZ ZZ ZZ YY YY YY XX XX XX
+\par  |     |     |     |     |     |     |     |     |     |     |____Ann\'e9e APV $aa
+\par  |     |     |     |     |     |     |     |     |     |_______Mois APV    $mm
+\par  |     |     |     |     |     |     |     |     |__________Jour APV     $jj
+\par  |     |     |     |     |     |     |     |
+\par  |     |     |     |     |     |__ |__ |_____________Date construction
+\par  |     |     |__ |__ |______________________Date fabrication UCE
+\par  |     |
+\par  |     |______________________________octet de commande "Lecture Date"
+\par  |_________________________________octet r\'e9ponse "ReadDataByLocal
+\par \tab \tab \tab \tab \tab \tab            IdentifierOK"
+\par \plain\f0\fs17 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="0" Text="2000"/>
+<Item Value="1" Text="2001"/>
+<Item Value="2" Text="2002"/>
+<Item Value="3" Text="2003"/>
+<Item Value="4" Text="2004"/>
+<Item Value="5" Text="2005"/>
+<Item Value="6" Text="2006"/>
+<Item Value="7" Text="2007"/>
+<Item Value="8" Text="2008"/>
+<Item Value="9" Text="2009"/>
+<Item Value="10" Text="2010"/>
+<Item Value="99" Text="1999"/>
+<Item Value="255" Text="Non-documentée"/></List>
+</Bits>
+</Data>
+<Data Name="Calibration du Soft">
+<Comment><![CDATA[Trame Identification système (TR_ID_COSLAD)]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="Choix des dates">
+<Comment><![CDATA[Choix entre écriture date de construction véhicule et date de dernière intervention Après Vente]]></Comment>
+<Mnemonic>FONCT</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Permet de choisir le type de date que l'on enregistre entre:
+\par - Date construction du v\'e9hicule  (code $B0)
+\par - Date derni\'e8re intervention Apr\'e8s-Vente (code $C0)
+\par 
+\par format des Donn\'e9es:
+\par \tab 3B  00 00 00 00
+\par \tab  |      |_________________octet 'Choix dates' = $B0 ou $C0 
+\par                  |____________________octet requ\'eate "WriteDataByLocalIdentifier"
+\par 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="176" Text="Fabrication"/>
+<Item Value="192" Text="Après-Vente"/></List>
+</Bits>
+</Data>
+<Data Name="Choix du type de session">
+<Comment><![CDATA[Choix du type de diagnostic (par défaut APV)]]></Comment>
+<Mnemonic>DIAGMODE</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Certains services sont interdits dans certains modes de diagnostics 
+\par (ex:ReadMemoryByAddress interdit au SAV)
+\par 
+\par Le mode de fonctionnement par d\'e9faut avant l'envoi d'une requ\'eate 
+\par "StartDiagnosticSession" est le mode Apr\'e8s Vente
+\par 
+\par format donn\'e9es:
+\par 
+\par \tab 10 00
+\par \tab   |    |_______ A0 pour le mode Diagnostic Etudes
+\par                   |                   B0 pour le mode Diagnostic Contr\'f4les en cha\'eene
+\par \tab   |\tab       C0 pour le mode Diagnostic Apr\'e8s Vente
+\par                   |                   80 pour le mode Diag Fournisseur
+\par \tab   |
+\par                   |_________octet requ\'eate "StartDiagnosticSession"
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="128" Text="Fournisseur"/>
+<Item Value="160" Text="Etude"/>
+<Item Value="176" Text="Contrôle en chaîne"/>
+<Item Value="192" Text="APrès-Vente"/></List>
+</Bits>
+</Data>
+<Data Name="Code identification diagnostic">
+<Comment><![CDATA[Trame Identification système (TR_ID_COSLAD)]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Déplacement opéré">
+<Comment><![CDATA[Pilotage des actuateurs min/max]]></Comment>
+<Mnemonic>PARAPILi</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Tige sortie"/>
+<Item Value="2" Text="Tige rentrée"/>
+<Item Value="3" Text="Entrée-Sortie de la Tige"/></List>
+</Bits>
+</Data>
+<Data Name="Déplacement souhaité">
+<Comment><![CDATA[Pilotage des actuateurs min/max]]></Comment>
+<Mnemonic>PARAPILi</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Tige sortie"/>
+<Item Value="2" Text="Tige rentrée"/>
+<Item Value="3" Text="Sortie-Entrée de la Tige"/></List>
+</Bits>
+</Data>
+<Data Name="DTC1">
+<Comment><![CDATA[Lieu de la panne n°1]]></Comment>
+<Mnemonic>DTC1-DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Localisation de la panne
+\par }
+]]></Description>
+<Bits count="16">
+<List>
+<Item Value="36865" Text="Capteur ARrière"/>
+<Item Value="36866" Text="Capteur AVant"/>
+<Item Value="36867" Text="Calculateur"/>
+<Item Value="36868" Text="Actionneur"/></List>
+</Bits>
+</Data>
+<Data Name="DTC2">
+<Comment><![CDATA[Lieu de la panne n°2]]></Comment>
+<Mnemonic>DTC2-DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Localisation de la panne
+\par }
+]]></Description>
+<Bits count="16">
+<List>
+<Item Value="36865" Text="Capteur ARrière"/>
+<Item Value="36866" Text="Capteur AVant"/>
+<Item Value="36867" Text="Calculateur"/>
+<Item Value="36868" Text="Actionneur"/></List>
+</Bits>
+</Data>
+<Data Name="DTC3">
+<Comment><![CDATA[Lieu de la panne n°3]]></Comment>
+<Mnemonic>DTC3-DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Localisation de la panne
+\par }
+]]></Description>
+<Bits count="16">
+<List>
+<Item Value="36865" Text="Capteur ARrière"/>
+<Item Value="36866" Text="Capteur AVant"/>
+<Item Value="36867" Text="Calculateur"/>
+<Item Value="36868" Text="Actionneur"/></List>
+</Bits>
+</Data>
+<Data Name="DTC4">
+<Comment><![CDATA[Lieu de la panne n°4]]></Comment>
+<Mnemonic>DTC4-DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Localisation de la panne
+\par }
+]]></Description>
+<Bits count="16">
+<List>
+<Item Value="36865" Text="Capteur ARrière"/>
+<Item Value="36866" Text="Capteur AVant"/>
+<Item Value="36867" Text="Calculateur"/>
+<Item Value="36868" Text="Actionneur"/></List>
+</Bits>
+</Data>
+<Data Name="DTC5">
+<Comment><![CDATA[Lieu de la panne n°5]]></Comment>
+<Mnemonic>DTC5-DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Localisation de la panne
+\par }
+]]></Description>
+<Bits count="16">
+<List>
+<Item Value="36865" Text="Capteur ARrière"/>
+<Item Value="36866" Text="Capteur AVant"/>
+<Item Value="36867" Text="Calculateur"/>
+<Item Value="36868" Text="Actionneur"/></List>
+</Bits>
+</Data>
+<Data Name="Etat de l'initialisation">
+<Comment><![CDATA[Demande de status sur l'initialisation]]></Comment>
+<Mnemonic>STATPIL1</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="En cours"/>
+<Item Value="2" Text="Effectuée"/>
+<Item Value="17" Text="Interrompue ou non-effectuable"/></List>
+</Bits>
+</Data>
+<Data Name="Etat des prestations LAD">
+<Comment><![CDATA[Indique l'état du rabattement en fonction de la vitesse et de la signature]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="170" Text="Signature et Rabattement ON"/>
+<Item Value="175" Text="Signature ON et Rabattement OFF"/>
+<Item Value="250" Text="Signature OFF et Rabattement ON"/>
+<Item Value="255" Text="Signature et Rabattement OFF"/></List>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Comment><![CDATA[DDT2000]]></Comment>
+<Mnemonic>FirstDTC</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Localisation de la panne
+\par }
+]]></Description>
+<Bits count="16">
+<List>
+<Item Value="36865" Text="Capteur ARrière"/>
+<Item Value="36866" Text="Capteur AVant"/>
+<Item Value="36867" Text="Calculateur"/>
+<Item Value="36868" Text="Actionneur"/></List>
+</Bits>
+</Data>
+<Data Name="Flag DTC">
+<Comment><![CDATA[Type de panne : 3 bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne standard Présente"/>
+<Item Value="2" Text="Panne standard Mémorisée"/>
+<Item Value="3" Text="Panne standard Présente et Mémorisée"/>
+<Item Value="5" Text="Panne spécifique Présente"/>
+<Item Value="6" Text="Panne spécifique Mémorisée"/>
+<Item Value="7" Text="Panne spécifique Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Flag1">
+<Comment><![CDATA[Type de panne : 3 bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne standard Présente"/>
+<Item Value="2" Text="Panne standard Mémorisée"/>
+<Item Value="3" Text="Panne standard Présente et Mémorisée"/>
+<Item Value="5" Text="Panne spécifique Présente"/>
+<Item Value="6" Text="Panne spécifique Mémorisée"/>
+<Item Value="7" Text="Panne spécifique Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Flag2">
+<Comment><![CDATA[Type de panne : 3 bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne standard Présente"/>
+<Item Value="2" Text="Panne standard Mémorisée"/>
+<Item Value="3" Text="Panne standard Présente et Mémorisée"/>
+<Item Value="5" Text="Panne spécifique Présente"/>
+<Item Value="6" Text="Panne spécifique Mémorisée"/>
+<Item Value="7" Text="Panne spécifique Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Flag3">
+<Comment><![CDATA[Type de panne : 3 bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne standard Présente"/>
+<Item Value="2" Text="Panne standard Mémorisée"/>
+<Item Value="3" Text="Panne standard Présente et Mémorisée"/>
+<Item Value="5" Text="Panne spécifique Présente"/>
+<Item Value="6" Text="Panne spécifique Mémorisée"/>
+<Item Value="7" Text="Panne spécifique Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Flag4">
+<Comment><![CDATA[Type de panne : 3 bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne standard Présente"/>
+<Item Value="2" Text="Panne standard Mémorisée"/>
+<Item Value="3" Text="Panne standard Présente et Mémorisée"/>
+<Item Value="5" Text="Panne spécifique Présente"/>
+<Item Value="6" Text="Panne spécifique Mémorisée"/>
+<Item Value="7" Text="Panne spécifique Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Flag5">
+<Comment><![CDATA[Type de panne : 3 bits de poids fort de l'octet STATUT]]></Comment>
+<Mnemonic>STATUT-FLAG</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="1" Text="Panne standard Présente"/>
+<Item Value="2" Text="Panne standard Mémorisée"/>
+<Item Value="3" Text="Panne standard Présente et Mémorisée"/>
+<Item Value="5" Text="Panne spécifique Présente"/>
+<Item Value="6" Text="Panne spécifique Mémorisée"/>
+<Item Value="7" Text="Panne spécifique Présente et Mémorisée"/></List>
+</Bits>
+</Data>
+<Data Name="Hauteur ARrière">
+<Comment><![CDATA[Lecture des octets 3 et 4 de la Trame ETat COSLAD]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Lecture Trame-ETat COSLAD
+\par 
+\par \tab D\'e9finition de la trame:
+\par 
+\par octets 1 et 2:\tab Hauteur avant \tab ->sensor value Hex
+\par octets 3 et 4:\tab Hauteur arri\'e8re\tab ->sensor value Hex
+\par octet 5:\tab \tab Vitesse v\'e9hicule\tab ->Km/h
+\par octets 6 et 7:\tab Position des actionneurs filtr\'e9e
+\par octets 8 et 9:\tab Assiette calcul\'e9e non filtr\'e9e
+\par octets 10 et 11:\tab Hauteur avant \'e0 l'initialisation\tab ->*
+\par octets 12 et 13:\tab Hauteur arri\'e8re \'e0 l'initialisation\tab ->*
+\par 
+\par * :\tab Si init non faite $FF $FF (Hex)
+\par 
+\par format Donn\'e9es-Requ\'eate:
+\par 
+\par \tab 21 C0
+\par \tab  |     |_____Demande Lecture TR_ET_COSLAD
+\par \tab  |________octet requ\'eate "ReadDataByLocalIdentifier"
+\par 
+\par format Donn\'e9es-r\'e9ponse:
+\par 
+\par \tab 61 CO XX ...
+\par \tab  |      |     |
+\par \tab  |      |     |______Trame TR_ET_COSLAD
+\par \tab  |      |_________octet de commande "Trame \'e9tat COSLAD"
+\par \tab  |____________octet r\'e9ponse "ReadDataByLocalIdentifierOK"\plain\f0\fs17 
+\par }
+]]></Description>
+<Bits count="16">
+<Scaled Step=" 72" DivideBy=" 3275" Format="0.0"/>
+</Bits>
+</Data>
+<Data Name="Hauteur ARrière à l'initialisation">
+<Comment><![CDATA[Lecture des octets 12 et 13 de la Trame ETat COSLAD  ($FF $FF si init non faite)]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Lecture Trame-ETat COSLAD
+\par 
+\par \tab D\'e9finition de la trame:
+\par 
+\par octets 1 et 2:\tab Hauteur avant \tab ->sensor value Hex
+\par octets 3 et 4:\tab Hauteur arri\'e8re\tab ->sensor value Hex
+\par octet 5:\tab \tab Vitesse v\'e9hicule\tab ->Km/h
+\par octets 6 et 7:\tab Position des actionneurs filtr\'e9e
+\par octets 8 et 9:\tab Assiette calcul\'e9e non filtr\'e9e
+\par octets 10 et 11:\tab Hauteur avant \'e0 l'initialisation\tab ->*
+\par octets 12 et 13:\tab Hauteur arri\'e8re \'e0 l'initialisation\tab ->*
+\par 
+\par * :\tab Si init non faite $FF $FF (Hex)
+\par 
+\par format Donn\'e9es-Requ\'eate:
+\par 
+\par \tab 21 C0
+\par \tab  |     |_____Demande Lecture TR_ET_COSLAD
+\par \tab  |________octet requ\'eate "ReadDataByLocalIdentifier"
+\par 
+\par format Donn\'e9es-r\'e9ponse:
+\par 
+\par \tab 61 CO XX ...
+\par \tab  |      |     |
+\par \tab  |      |     |______Trame TR_ET_COSLAD
+\par \tab  |      |_________octet de commande "Trame \'e9tat COSLAD"
+\par \tab  |____________octet r\'e9ponse "ReadDataByLocalIdentifierOK"\plain\f0\fs17 
+\par }
+]]></Description>
+<Bits count="16">
+<Scaled Step=" 72" DivideBy=" 3275" Format="0.0"/>
+</Bits>
+</Data>
+<Data Name="Hauteur ARrière à l'initialisation en digits">
+<Comment><![CDATA[Lecture des octets 12 et 13 de la Trame ETat COSLAD  ($FF $FF si init non faite)]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Lecture Trame-ETat COSLAD
+\par 
+\par \tab D\'e9finition de la trame:
+\par 
+\par octets 1 et 2:\tab Hauteur avant \tab ->sensor value Hex
+\par octets 3 et 4:\tab Hauteur arri\'e8re\tab ->sensor value Hex
+\par octet 5:\tab \tab Vitesse v\'e9hicule\tab ->Km/h
+\par octets 6 et 7:\tab Position des actionneurs filtr\'e9e
+\par octets 8 et 9:\tab Assiette calcul\'e9e non filtr\'e9e
+\par octets 10 et 11:\tab Hauteur avant \'e0 l'initialisation\tab ->*
+\par octets 12 et 13:\tab Hauteur arri\'e8re \'e0 l'initialisation\tab ->*
+\par 
+\par * :\tab Si init non faite $FF $FF (Hex)
+\par 
+\par format Donn\'e9es-Requ\'eate:
+\par 
+\par \tab 21 C0
+\par \tab  |     |_____Demande Lecture TR_ET_COSLAD
+\par \tab  |________octet requ\'eate "ReadDataByLocalIdentifier"
+\par 
+\par format Donn\'e9es-r\'e9ponse:
+\par 
+\par \tab 61 CO XX ...
+\par \tab  |      |     |
+\par \tab  |      |     |______Trame TR_ET_COSLAD
+\par \tab  |      |_________octet de commande "Trame \'e9tat COSLAD"
+\par \tab  |____________octet r\'e9ponse "ReadDataByLocalIdentifierOK"\plain\f0\fs17 
+\par }
+]]></Description>
+<Bits count="16">
+<Scaled Format="0"/>
+</Bits>
+</Data>
+<Data Name="Hauteur ARrière en digits">
+<Comment><![CDATA[Lecture des octets 3 et 4 de la Trame ETat COSLAD]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Lecture Trame-ETat COSLAD
+\par 
+\par \tab D\'e9finition de la trame:
+\par 
+\par octets 1 et 2:\tab Hauteur avant \tab ->sensor value Hex
+\par octets 3 et 4:\tab Hauteur arri\'e8re\tab ->sensor value Hex
+\par octet 5:\tab \tab Vitesse v\'e9hicule\tab ->Km/h
+\par octets 6 et 7:\tab Position des actionneurs filtr\'e9e
+\par octets 8 et 9:\tab Assiette calcul\'e9e non filtr\'e9e
+\par octets 10 et 11:\tab Hauteur avant \'e0 l'initialisation\tab ->*
+\par octets 12 et 13:\tab Hauteur arri\'e8re \'e0 l'initialisation\tab ->*
+\par 
+\par * :\tab Si init non faite $FF $FF (Hex)
+\par 
+\par format Donn\'e9es-Requ\'eate:
+\par 
+\par \tab 21 C0
+\par \tab  |     |_____Demande Lecture TR_ET_COSLAD
+\par \tab  |________octet requ\'eate "ReadDataByLocalIdentifier"
+\par 
+\par format Donn\'e9es-r\'e9ponse:
+\par 
+\par \tab 61 CO XX ...
+\par \tab  |      |     |
+\par \tab  |      |     |______Trame TR_ET_COSLAD
+\par \tab  |      |_________octet de commande "Trame \'e9tat COSLAD"
+\par \tab  |____________octet r\'e9ponse "ReadDataByLocalIdentifierOK"\plain\f0\fs17 
+\par }
+]]></Description>
+<Bits count="16">
+<Scaled Format="0"/>
+</Bits>
+</Data>
+<Data Name="Hauteur AVant">
+<Comment><![CDATA[Lecture des octets 1 et 2 de la Trame ETat COSLAD]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Lecture Trame-ETat COSLAD
+\par 
+\par \tab D\'e9finition de la trame:
+\par 
+\par octets 1 et 2:\tab Hauteur avant \tab ->sensor value Hex
+\par octets 3 et 4:\tab Hauteur arri\'e8re\tab ->sensor value Hex
+\par octet 5:\tab \tab Vitesse v\'e9hicule\tab ->Km/h
+\par octets 6 et 7:\tab Position des actionneurs filtr\'e9e
+\par octets 8 et 9:\tab Assiette calcul\'e9e non filtr\'e9e
+\par octets 10 et 11:\tab Hauteur avant \'e0 l'initialisation\tab ->*
+\par octets 12 et 13:\tab Hauteur arri\'e8re \'e0 l'initialisation\tab ->*
+\par 
+\par * :\tab Si init non faite $FF $FF (Hex)
+\par 
+\par format Donn\'e9es-Requ\'eate:
+\par 
+\par \tab 21 C0
+\par \tab  |     |_____Demande Lecture TR_ET_COSLAD
+\par \tab  |________octet requ\'eate "ReadDataByLocalIdentifier"
+\par 
+\par format Donn\'e9es-r\'e9ponse:
+\par 
+\par \tab 61 CO XX ...
+\par \tab  |      |     |
+\par \tab  |      |     |______Trame TR_ET_COSLAD
+\par \tab  |      |_________octet de commande "Trame \'e9tat COSLAD"
+\par \tab  |____________octet r\'e9ponse "ReadDataByLocalIdentifierOK"
+\par }
+]]></Description>
+<Bits count="16">
+<Scaled Step=" 120" DivideBy=" 4095" Format="0.0"/>
+</Bits>
+</Data>
+<Data Name="Hauteur AVant à l'initialisation">
+<Comment><![CDATA[Lecture des octets 10 et 11 de la Trame ETat COSLAD ($FF $FF si init non faite)]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Lecture Trame-ETat COSLAD
+\par 
+\par \tab D\'e9finition de la trame:
+\par 
+\par octets 1 et 2:\tab Hauteur avant \tab ->sensor value Hex
+\par octets 3 et 4:\tab Hauteur arri\'e8re\tab ->sensor value Hex
+\par octet 5:\tab \tab Vitesse v\'e9hicule\tab ->Km/h
+\par octets 6 et 7:\tab Position des actionneurs filtr\'e9e
+\par octets 8 et 9:\tab Assiette calcul\'e9e non filtr\'e9e
+\par octets 10 et 11:\tab Hauteur avant \'e0 l'initialisation\tab ->*
+\par octets 12 et 13:\tab Hauteur arri\'e8re \'e0 l'initialisation\tab ->*
+\par 
+\par * :\tab Si init non faite $FF $FF (Hex)
+\par 
+\par format Donn\'e9es-Requ\'eate:
+\par 
+\par \tab 21 C0
+\par \tab  |     |_____Demande Lecture TR_ET_COSLAD
+\par \tab  |________octet requ\'eate "ReadDataByLocalIdentifier"
+\par 
+\par format Donn\'e9es-r\'e9ponse:
+\par 
+\par \tab 61 CO XX ...
+\par \tab  |      |     |
+\par \tab  |      |     |______Trame TR_ET_COSLAD
+\par \tab  |      |_________octet de commande "Trame \'e9tat COSLAD"
+\par \tab  |____________octet r\'e9ponse "ReadDataByLocalIdentifierOK"\plain\f0\fs17 
+\par }
+]]></Description>
+<Bits count="16">
+<Scaled Step=" 120" DivideBy=" 4095" Format="0.0"/>
+</Bits>
+</Data>
+<Data Name="Hauteur AVant à l'initialisation en digits">
+<Comment><![CDATA[Lecture des octets 10 et 11 de la Trame ETat COSLAD ($FF $FF si init non faite)]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Lecture Trame-ETat COSLAD
+\par 
+\par \tab D\'e9finition de la trame:
+\par 
+\par octets 1 et 2:\tab Hauteur avant \tab ->sensor value Hex
+\par octets 3 et 4:\tab Hauteur arri\'e8re\tab ->sensor value Hex
+\par octet 5:\tab \tab Vitesse v\'e9hicule\tab ->Km/h
+\par octets 6 et 7:\tab Position des actionneurs filtr\'e9e
+\par octets 8 et 9:\tab Assiette calcul\'e9e non filtr\'e9e
+\par octets 10 et 11:\tab Hauteur avant \'e0 l'initialisation\tab ->*
+\par octets 12 et 13:\tab Hauteur arri\'e8re \'e0 l'initialisation\tab ->*
+\par 
+\par * :\tab Si init non faite $FF $FF (Hex)
+\par 
+\par format Donn\'e9es-Requ\'eate:
+\par 
+\par \tab 21 C0
+\par \tab  |     |_____Demande Lecture TR_ET_COSLAD
+\par \tab  |________octet requ\'eate "ReadDataByLocalIdentifier"
+\par 
+\par format Donn\'e9es-r\'e9ponse:
+\par 
+\par \tab 61 CO XX ...
+\par \tab  |      |     |
+\par \tab  |      |     |______Trame TR_ET_COSLAD
+\par \tab  |      |_________octet de commande "Trame \'e9tat COSLAD"
+\par \tab  |____________octet r\'e9ponse "ReadDataByLocalIdentifierOK"\plain\f0\fs17 
+\par }
+]]></Description>
+<Bits count="16">
+<Scaled Format="0"/>
+</Bits>
+</Data>
+<Data Name="Hauteur AVant en digits">
+<Comment><![CDATA[Lecture des octets 1 et 2 de la Trame ETat COSLAD]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 Lecture Trame-ETat COSLAD
+\par 
+\par \tab D\'e9finition de la trame:
+\par 
+\par octets 1 et 2:\tab Hauteur avant \tab ->sensor value Hex
+\par octets 3 et 4:\tab Hauteur arri\'e8re\tab ->sensor value Hex
+\par octet 5:\tab \tab Vitesse v\'e9hicule\tab ->Km/h
+\par octets 6 et 7:\tab Position des actionneurs filtr\'e9e
+\par octets 8 et 9:\tab Assiette calcul\'e9e non filtr\'e9e
+\par octets 10 et 11:\tab Hauteur avant \'e0 l'initialisation\tab ->*
+\par octets 12 et 13:\tab Hauteur arri\'e8re \'e0 l'initialisation\tab ->*
+\par 
+\par * :\tab Si init non faite $FF $FF (Hex)
+\par 
+\par format Donn\'e9es-Requ\'eate:
+\par 
+\par \tab 21 C0
+\par \tab  |     |_____Demande Lecture TR_ET_COSLAD
+\par \tab  |________octet requ\'eate "ReadDataByLocalIdentifier"
+\par 
+\par format Donn\'e9es-r\'e9ponse:
+\par 
+\par \tab 61 CO XX ...
+\par \tab  |      |     |
+\par \tab  |      |     |______Trame TR_ET_COSLAD
+\par \tab  |      |_________octet de commande "Trame \'e9tat COSLAD"
+\par \tab  |____________octet r\'e9ponse "ReadDataByLocalIdentifierOK"
+\par }
+]]></Description>
+<Bits count="16">
+<Scaled Format="0"/>
+</Bits>
+</Data>
+<Data Name="Initialisation">
+<Comment><![CDATA[Demande de status sur l'initialisation]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Non-effectuée"/>
+<Item Value="1" Text="Effectuée"/></List>
+</Bits>
+</Data>
+<Data Name="Jour">
+<Comment><![CDATA[Enregistrement du jour de construction ou d'intervention Après-Vente]]></Comment>
+<Mnemonic>DD</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Permet d'enregistrer la date de construction du v\'e9hicule (en mode construction 
+\par v\'e9hicule) ou la date de la derni\'e8re intervention Apr\'e8s-Vente (mode apr\'e8s vente)
+\par dans la m\'e9moire de l'UCE
+\par 
+\par format des Donn\'e9es:
+\par \tab 3B  00 00 00 00
+\par \tab  |                     |_________octet Jour
+\par                  |____________________octet requ\'eate "WriteDataByLocalIdentifier"
+\par 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/></List>
+</Bits>
+</Data>
+<Data Name="Jour APV">
+<Comment><![CDATA[Lecture de la date de la dernière intervention Après-Vente]]></Comment>
+<Mnemonic>DD</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Ann\'e9e de la derni\'e8re intervention Apr\'e8s-Vente:
+\par 
+\par format des Donn\'e9es-Requ\'eate:
+\par \tab 
+\par \tab 21 D2
+\par \tab   |    |______octet requ\'eate "ReadDataByLocalIdentifier"
+\par                   |________Demande Lecture Dates
+\par 
+\par format des Donn\'e9es-R\'e9ponse:
+\par 
+\par 61 D2 ZZ ZZ ZZ YY YY YY XX XX XX
+\par  |     |     |     |     |     |     |     |     |     |     |____Ann\'e9e APV $aa
+\par  |     |     |     |     |     |     |     |     |     |_______Mois APV    $mm
+\par  |     |     |     |     |     |     |     |     |__________Jour APV     $jj
+\par  |     |     |     |     |     |     |     |
+\par  |     |     |     |     |     |__ |__ |_____________Date construction
+\par  |     |     |__ |__ |______________________Date fabrication UCE
+\par  |     |
+\par  |     |______________________________octet de commande "Lecture Date"
+\par  |_________________________________octet r\'e9ponse "ReadDataByLocal
+\par \tab \tab \tab \tab \tab \tab            IdentifierOK"
+\par 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/>
+<Item Value="255" Text="Non-documenté"/></List>
+</Bits>
+</Data>
+<Data Name="Jour UCE">
+<Comment><![CDATA[Lecture de la date de fabrication de l'UCE]]></Comment>
+<Mnemonic>DD</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Jour de la derni\'e8re intervention Apr\'e8s-Vente:
+\par 
+\par format des Donn\'e9es-Requ\'eate:
+\par \tab 
+\par \tab 21 D2
+\par \tab   |    |______octet requ\'eate "ReadDataByLocalIdentifier"
+\par                   |________Demande Lecture Dates
+\par 
+\par format des Donn\'e9es-R\'e9ponse:
+\par 
+\par 61 D2 ZZ ZZ ZZ YY YY YY XX XX XX
+\par  |     |     |     |     |     |     |     |     |     |     |____Ann\'e9e APV $aa
+\par  |     |     |     |     |     |     |     |     |     |_______Mois APV    $mm
+\par  |     |     |     |     |     |     |     |     |__________Jour APV     $jj
+\par  |     |     |     |     |     |     |     |
+\par  |     |     |     |     |     |__ |__ |_____________Date construction
+\par  |     |     |__ |__ |______________________Date fabrication UCE
+\par  |     |
+\par  |     |______________________________octet de commande "Lecture Date"
+\par  |_________________________________octet r\'e9ponse "ReadDataByLocal
+\par \tab \tab \tab \tab \tab \tab            IdentifierOK"
+\par 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/>
+<Item Value="255" Text="Non-documenté"/></List>
+</Bits>
+</Data>
+<Data Name="Jour véhicule">
+<Comment><![CDATA[Lecture de la date de construction du véhicule]]></Comment>
+<Mnemonic>DD</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Ann\'e9e de la derni\'e8re intervention Apr\'e8s-Vente:
+\par 
+\par format des Donn\'e9es-Requ\'eate:
+\par \tab 
+\par \tab 21 D2
+\par \tab   |    |______octet requ\'eate "ReadDataByLocalIdentifier"
+\par                   |________Demande Lecture Dates
+\par 
+\par format des Donn\'e9es-R\'e9ponse:
+\par 
+\par 61 D2 ZZ ZZ ZZ YY YY YY XX XX XX
+\par  |     |     |     |     |     |     |     |     |     |     |____Ann\'e9e APV $aa
+\par  |     |     |     |     |     |     |     |     |     |_______Mois APV    $mm
+\par  |     |     |     |     |     |     |     |     |__________Jour APV     $jj
+\par  |     |     |     |     |     |     |     |
+\par  |     |     |     |     |     |__ |__ |_____________Date construction
+\par  |     |     |__ |__ |______________________Date fabrication UCE
+\par  |     |
+\par  |     |______________________________octet de commande "Lecture Date"
+\par  |_________________________________octet r\'e9ponse "ReadDataByLocal
+\par \tab \tab \tab \tab \tab \tab            IdentifierOK"
+\par \plain\f0\fs17 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/>
+<Item Value="255" Text="Non-documenté"/></List>
+</Bits>
+</Data>
+<Data Name="Mois">
+<Comment><![CDATA[Enregistrement du mois de construction ou d'intervention Après-Vente]]></Comment>
+<Mnemonic>MM</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Permet d'enregistrer la date de construction du v\'e9hicule (en mode construction 
+\par v\'e9hicule) ou la date de la derni\'e8re intervention Apr\'e8s-Vente (mode apr\'e8s vente)
+\par dans la m\'e9moire de l'UCE
+\par 
+\par format des Donn\'e9es:
+\par \tab 3B  00 00 00 00
+\par \tab  |                |____________octet Mois
+\par                  |____________________octet requ\'eate "WriteDataByLocalIdentifier"
+\par 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="Janvier"/>
+<Item Value="2" Text="Février"/>
+<Item Value="3" Text="Mars"/>
+<Item Value="4" Text="Avril"/>
+<Item Value="5" Text="Mai"/>
+<Item Value="6" Text="Juin"/>
+<Item Value="7" Text="Juillet"/>
+<Item Value="8" Text="Août"/>
+<Item Value="9" Text="Septembre"/>
+<Item Value="10" Text="Octobre"/>
+<Item Value="11" Text="Novembre"/>
+<Item Value="12" Text="Décembre"/></List>
+</Bits>
+</Data>
+<Data Name="Mois APV">
+<Comment><![CDATA[Lecture de la date de la dernière intervention Après-Vente]]></Comment>
+<Mnemonic>MM</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Ann\'e9e de la derni\'e8re intervention Apr\'e8s-Vente:
+\par 
+\par format des Donn\'e9es-Requ\'eate:
+\par \tab 
+\par \tab 21 D2
+\par \tab   |    |______octet requ\'eate "ReadDataByLocalIdentifier"
+\par                   |________Demande Lecture Dates
+\par 
+\par format des Donn\'e9es-R\'e9ponse:
+\par 
+\par 61 D2 ZZ ZZ ZZ YY YY YY XX XX XX
+\par  |     |     |     |     |     |     |     |     |     |     |____Ann\'e9e APV $aa
+\par  |     |     |     |     |     |     |     |     |     |_______Mois APV    $mm
+\par  |     |     |     |     |     |     |     |     |__________Jour APV     $jj
+\par  |     |     |     |     |     |     |     |
+\par  |     |     |     |     |     |__ |__ |_____________Date construction
+\par  |     |     |__ |__ |______________________Date fabrication UCE
+\par  |     |
+\par  |     |______________________________octet de commande "Lecture Date"
+\par  |_________________________________octet r\'e9ponse "ReadDataByLocal
+\par \tab \tab \tab \tab \tab \tab            IdentifierOK"
+\par \plain\f0\fs17 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="Janvier"/>
+<Item Value="2" Text="Février"/>
+<Item Value="3" Text="Mars"/>
+<Item Value="4" Text="Avril"/>
+<Item Value="5" Text="Mai"/>
+<Item Value="6" Text="Juin"/>
+<Item Value="7" Text="Juillet"/>
+<Item Value="8" Text="Août"/>
+<Item Value="9" Text="Septembre"/>
+<Item Value="10" Text="Octobre"/>
+<Item Value="11" Text="Novembre"/>
+<Item Value="12" Text="Décembre"/>
+<Item Value="255" Text="Non-documenté"/></List>
+</Bits>
+</Data>
+<Data Name="Mois UCE">
+<Comment><![CDATA[Lecture de la date de fabrication de l'UCE]]></Comment>
+<Mnemonic>MM</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Mois de la derni\'e8re intervention Apr\'e8s-Vente:
+\par 
+\par format des Donn\'e9es-Requ\'eate:
+\par \tab 
+\par \tab 21 D2
+\par \tab   |    |______octet requ\'eate "ReadDataByLocalIdentifier"
+\par                   |________Demande Lecture Dates
+\par 
+\par format des Donn\'e9es-R\'e9ponse:
+\par 
+\par 61 D2 ZZ ZZ ZZ YY YY YY XX XX XX
+\par  |     |     |     |     |     |     |     |     |     |     |____Ann\'e9e APV $aa
+\par  |     |     |     |     |     |     |     |     |     |_______Mois APV    $mm
+\par  |     |     |     |     |     |     |     |     |__________Jour APV     $jj
+\par  |     |     |     |     |     |     |     |
+\par  |     |     |     |     |     |__ |__ |_____________Date construction
+\par  |     |     |__ |__ |______________________Date fabrication UCE
+\par  |     |
+\par  |     |______________________________octet de commande "Lecture Date"
+\par  |_________________________________octet r\'e9ponse "ReadDataByLocal
+\par \tab \tab \tab \tab \tab \tab            IdentifierOK"
+\par 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="Janvier"/>
+<Item Value="2" Text="Février"/>
+<Item Value="3" Text="Mars"/>
+<Item Value="4" Text="Avril"/>
+<Item Value="5" Text="Mai"/>
+<Item Value="6" Text="Juin"/>
+<Item Value="7" Text="Juillet"/>
+<Item Value="8" Text="Août"/>
+<Item Value="9" Text="Septembre"/>
+<Item Value="10" Text="Octobre"/>
+<Item Value="11" Text="Novembre"/>
+<Item Value="12" Text="Décembre"/>
+<Item Value="255" Text="Non-documenté"/></List>
+</Bits>
+</Data>
+<Data Name="Mois véhicule">
+<Comment><![CDATA[Lecture de la date de construction du véhicule]]></Comment>
+<Mnemonic>MM</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Mois de la construction de v\'e9hicule
+\par 
+\par format des Donn\'e9es-Requ\'eate:
+\par \tab 
+\par \tab 21 D2
+\par \tab   |    |______octet requ\'eate "ReadDataByLocalIdentifier"
+\par                   |________Demande Lecture Dates
+\par 
+\par format des Donn\'e9es-R\'e9ponse:
+\par 
+\par 61 D2 ZZ ZZ ZZ YY YY YY XX XX XX
+\par  |     |     |     |     |     |     |     |     |     |     |____Ann\'e9e APV $aa
+\par  |     |     |     |     |     |     |     |     |     |_______Mois APV    $mm
+\par  |     |     |     |     |     |     |     |     |__________Jour APV     $jj
+\par  |     |     |     |     |     |     |     |
+\par  |     |     |     |     |     |__ |__ |_____________Date construction
+\par  |     |     |__ |__ |______________________Date fabrication UCE
+\par  |     |
+\par  |     |______________________________octet de commande "Lecture Date"
+\par  |_________________________________octet r\'e9ponse "ReadDataByLocal
+\par \tab \tab \tab \tab \tab \tab            IdentifierOK"
+\par 
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="Janvier"/>
+<Item Value="2" Text="Février"/>
+<Item Value="3" Text="Mars"/>
+<Item Value="4" Text="Avril"/>
+<Item Value="5" Text="Mai"/>
+<Item Value="6" Text="Juin"/>
+<Item Value="7" Text="Juillet"/>
+<Item Value="8" Text="Août"/>
+<Item Value="9" Text="Septembre"/>
+<Item Value="10" Text="Octobre"/>
+<Item Value="11" Text="Novembre"/>
+<Item Value="12" Text="Décembre"/>
+<Item Value="255" Text="Non-documenté"/></List>
+</Bits>
+</Data>
+<Data Name="MoreDTC">
+<Mnemonic>MOREDTC</Mnemonic>
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="N° de code ITG Fournisseur">
+<Comment><![CDATA[Trame Identification système (TR_ID_COSLAD)]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="N° de code pièce MPR">
+<Comment><![CDATA[Trame Identification système (TR_ID_COSLAD)]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="N° de Hardware">
+<Comment><![CDATA[Trame Identification système (TR_ID_COSLAD)]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="N° du logiciel">
+<Comment><![CDATA[Trame Identification système (TR_ID_COSLAD)]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="NDTC">
+<Mnemonic>#DTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Nombre de défauts">
+<Comment><![CDATA[Nombre de DTC détectés et enregistrés]]></Comment>
+<Mnemonic>#DTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Octet clé 1">
+<Comment><![CDATA[Valeurs de défaut $D0]]></Comment>
+<Mnemonic>KB1</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Octet clé 2">
+<Comment><![CDATA[Valeurs de défaut $8F]]></Comment>
+<Mnemonic>KB2</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Output Control Command">
+<Comment><![CDATA[Testing output : Command enumeration]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="Start Temporary"/>
+<Item Value="1" Text="Status"/>
+<Item Value="17" Text="Stop"/>
+<Item Value="32" Text="Start Permanent"/></List>
+</Bits>
+</Data>
+<Data Name="Output Control Status">
+<Bits>
+<List>
+<Item Value="1" Text="Running"/>
+<Item Value="2" Text="Stopped"/>
+<Item Value="17" Text="Manually Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Output Driving">
+<Comment><![CDATA[Ecriture des calibrations]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="129" Text="Projecteur"/></List>
+</Bits>
+</Data>
+<Data Name="Output Permanent Control List">
+<Bits>
+<List>
+<Item Value="1" Text="Dirigé vers le bas"/>
+<Item Value="2" Text="Dirigé vers le haut"/>
+<Item Value="3" Text="Descente-Montée"/></List>
+</Bits>
+</Data>
+<Data Name="Output Temporary Control List">
+<Bits>
+<List>
+<Item Value="1" Text="Dirigé vers le bas"/>
+<Item Value="2" Text="Dirigé vers le haut"/>
+<Item Value="3" Text="Descente-Montée"/></List>
+</Bits>
+</Data>
+<Data Name="Panne1">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Circuit ouvert sur Vcode"/>
+<Item Value="2" Text="Court circuit à la masse "/>
+<Item Value="3" Text="Court circuit au +bat "/>
+<Item Value="6" Text="Information non plausible"/>
+<Item Value="7" Text="Absence de signal"/>
+<Item Value="8" Text="Information hors limite inférieure"/>
+<Item Value="9" Text="Information hors limite supérieure"/>
+<Item Value="10" Text="Niveau bas permanent sur le signal vitesse"/>
+<Item Value="11" Text="Niveau haut permanent sur le signal vitesse"/>
+<Item Value="13" Text="Défaillance interne "/>
+<Item Value="22" Text="Initialisation véhicule non faite"/>
+<Item Value="33" Text="Circuit ouvert sur Vcode P"/>
+<Item Value="34" Text="Court circuit à la masse P"/>
+<Item Value="35" Text="Court circuit au +bat P"/>
+<Item Value="38" Text="Information non plausible P"/>
+<Item Value="39" Text="Absence de signal P"/>
+<Item Value="40" Text="Information hors limite inférieure P"/>
+<Item Value="41" Text="Information hors limite supérieure P"/>
+<Item Value="42" Text="Niveau bas permanent sur le signal vitesse P"/>
+<Item Value="43" Text="Niveau haut permanent sur le signal vitesse P"/>
+<Item Value="45" Text="Défaillance interne P"/>
+<Item Value="54" Text="Initialisation véhicule non faite P"/>
+<Item Value="65" Text="Circuit ouvert sur Vcode M"/>
+<Item Value="66" Text="Court circuit à la masse M"/>
+<Item Value="67" Text="Court circuit au +bat M"/>
+<Item Value="70" Text="Information non plausible M"/>
+<Item Value="71" Text="Absence de signal M"/>
+<Item Value="72" Text="Information hors limite inférieure M"/>
+<Item Value="73" Text="Information hors limite supérieure M"/>
+<Item Value="74" Text="Niveau bas permanent sur le signal vitesse M"/>
+<Item Value="75" Text="Niveau haut permanent sur le signal vitesse M"/>
+<Item Value="77" Text="Défaillance interne M"/>
+<Item Value="86" Text="Initialisation véhicule non faite M"/>
+<Item Value="97" Text="Circuit ouvert sur Vcode PM"/>
+<Item Value="98" Text="Court circuit à la masse PM"/>
+<Item Value="99" Text="Court circuit au +bat PM"/>
+<Item Value="102" Text="Information non plausible PM"/>
+<Item Value="103" Text="Absence de signal PM"/>
+<Item Value="104" Text="Information hors limite inférieure PM"/>
+<Item Value="105" Text="Information hors limite supérieure PM"/>
+<Item Value="106" Text="Niveau bas permanent sur le signal vitesse PM"/>
+<Item Value="107" Text="Niveau haut permanent sur le signal vitesse PM"/>
+<Item Value="109" Text="Défaillance interne PM"/>
+<Item Value="118" Text="Initialisation véhicule non faite PM"/>
+<Item Value="128" Text="Fréquence hors tolérance"/>
+<Item Value="131" Text="Information hors limite à l'initialisation"/>
+<Item Value="135" Text="Fréquence signal vitesse trop élevée"/>
+<Item Value="137" Text="Circuit ouvert sur la ligne commande actionneur"/>
+<Item Value="141" Text="Programmation véhicule non faite "/>
+<Item Value="148" Text="Court circuit à la masse de la ligne commande actionneur "/>
+<Item Value="149" Text="Court circuit au +bat de la ligne commande actionneur "/>
+<Item Value="150" Text="Tension d'alimentation trop basse"/>
+<Item Value="151" Text="Vitesse non nulle à l'initialisation"/>
+<Item Value="160" Text="Fréquence hors tolérance P"/>
+<Item Value="163" Text="Information hors limite à l'initialisation P"/>
+<Item Value="167" Text="Fréquence signal vitesse trop élevée P"/>
+<Item Value="169" Text="Circuit ouvert sur la ligne commande actionneur P"/>
+<Item Value="173" Text="Programmation véhicule non faite P"/>
+<Item Value="180" Text="Court circuit à la masse de la ligne commande actionneur P"/>
+<Item Value="181" Text="Court circuit au +bat de la ligne commande actionneur  P"/>
+<Item Value="182" Text="Tension d'alimentation trop basse P"/>
+<Item Value="183" Text="Vitesse non nulle à l'initialisation P"/>
+<Item Value="192" Text="Fréquence hors tolérance M"/>
+<Item Value="195" Text="Information hors limite à l'initialisation M"/>
+<Item Value="199" Text="Fréquence signal vitesse trop élevée M"/>
+<Item Value="201" Text="Circuit ouvert sur la ligne commande actionneur M"/>
+<Item Value="205" Text="Programmation véhicule non faite M"/>
+<Item Value="212" Text="Court circuit à la masse de la ligne commande actionneur M"/>
+<Item Value="213" Text="Court circuit au +bat de la ligne commande actionneur M"/>
+<Item Value="214" Text="Tension d'alimentation trop basse M"/>
+<Item Value="215" Text="Vitesse non nulle à l'initialisation M"/>
+<Item Value="224" Text="Fréquence hors tolérance PM"/>
+<Item Value="227" Text="Information hors limite à l'initialisation PM"/>
+<Item Value="231" Text="Fréquence signal vitesse trop élevée PM"/>
+<Item Value="233" Text="Circuit ouvert sur la ligne commande actionneur PM"/>
+<Item Value="237" Text="Programmation véhicule non faite PM"/>
+<Item Value="244" Text="Court circuit à la masse de la ligne commande actionneur PM"/>
+<Item Value="245" Text="Court circuit au +bat de la ligne commande actionneur PM"/>
+<Item Value="246" Text="Tension d'alimentation trop basse PM"/>
+<Item Value="247" Text="Vitesse non nulle à l'initialisation PM"/></List>
+</Bits>
+</Data>
+<Data Name="Panne2">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Circuit ouvert sur Vcode"/>
+<Item Value="2" Text="Court circuit à la masse "/>
+<Item Value="3" Text="Court circuit au +bat "/>
+<Item Value="6" Text="Information non plausible"/>
+<Item Value="7" Text="Absence de signal"/>
+<Item Value="8" Text="Information hors limite inférieure"/>
+<Item Value="9" Text="Information hors limite supérieure"/>
+<Item Value="10" Text="Niveau bas permanent sur le signal vitesse"/>
+<Item Value="11" Text="Niveau haut permanent sur le signal vitesse"/>
+<Item Value="13" Text="Défaillance interne "/>
+<Item Value="22" Text="Initialisation véhicule non faite"/>
+<Item Value="33" Text="Circuit ouvert sur Vcode P"/>
+<Item Value="34" Text="Court circuit à la masse P"/>
+<Item Value="35" Text="Court circuit au +bat P"/>
+<Item Value="38" Text="Information non plausible P"/>
+<Item Value="39" Text="Absence de signal P"/>
+<Item Value="40" Text="Information hors limite inférieure P"/>
+<Item Value="41" Text="Information hors limite supérieure P"/>
+<Item Value="42" Text="Niveau bas permanent sur le signal vitesse P"/>
+<Item Value="43" Text="Niveau haut permanent sur le signal vitesse P"/>
+<Item Value="45" Text="Défaillance interne P"/>
+<Item Value="54" Text="Initialisation véhicule non faite P"/>
+<Item Value="65" Text="Circuit ouvert sur Vcode M"/>
+<Item Value="66" Text="Court circuit à la masse M"/>
+<Item Value="67" Text="Court circuit au +bat M"/>
+<Item Value="70" Text="Information non plausible M"/>
+<Item Value="71" Text="Absence de signal M"/>
+<Item Value="72" Text="Information hors limite inférieure M"/>
+<Item Value="73" Text="Information hors limite supérieure M"/>
+<Item Value="74" Text="Niveau bas permanent sur le signal vitesse M"/>
+<Item Value="75" Text="Niveau haut permanent sur le signal vitesse M"/>
+<Item Value="77" Text="Défaillance interne M"/>
+<Item Value="86" Text="Initialisation véhicule non faite M"/>
+<Item Value="97" Text="Circuit ouvert sur Vcode PM"/>
+<Item Value="98" Text="Court circuit à la masse PM"/>
+<Item Value="99" Text="Court circuit au +bat PM"/>
+<Item Value="102" Text="Information non plausible PM"/>
+<Item Value="103" Text="Absence de signal PM"/>
+<Item Value="104" Text="Information hors limite inférieure PM"/>
+<Item Value="105" Text="Information hors limite supérieure PM"/>
+<Item Value="106" Text="Niveau bas permanent sur le signal vitesse PM"/>
+<Item Value="107" Text="Niveau haut permanent sur le signal vitesse PM"/>
+<Item Value="109" Text="Défaillance interne PM"/>
+<Item Value="118" Text="Initialisation véhicule non faite PM"/>
+<Item Value="128" Text="Fréquence hors tolérance"/>
+<Item Value="131" Text="Information hors limite à l'initialisation"/>
+<Item Value="135" Text="Fréquence signal vitesse trop élevée"/>
+<Item Value="137" Text="Circuit ouvert sur la ligne commande actionneur"/>
+<Item Value="141" Text="Programmation véhicule non faite "/>
+<Item Value="148" Text="Court circuit à la masse de la ligne commande actionneur "/>
+<Item Value="149" Text="Court circuit au +bat de la ligne commande actionneur "/>
+<Item Value="150" Text="Tension d'alimentation trop basse"/>
+<Item Value="151" Text="Vitesse non nulle à l'initialisation"/>
+<Item Value="160" Text="Fréquence hors tolérance P"/>
+<Item Value="163" Text="Information hors limite à l'initialisation P"/>
+<Item Value="167" Text="Fréquence signal vitesse trop élevée P"/>
+<Item Value="169" Text="Circuit ouvert sur la ligne commande actionneur P"/>
+<Item Value="173" Text="Programmation véhicule non faite P"/>
+<Item Value="180" Text="Court circuit à la masse de la ligne commande actionneur P"/>
+<Item Value="181" Text="Court circuit au +bat de la ligne commande actionneur  P"/>
+<Item Value="182" Text="Tension d'alimentation trop basse P"/>
+<Item Value="183" Text="Vitesse non nulle à l'initialisation P"/>
+<Item Value="192" Text="Fréquence hors tolérance M"/>
+<Item Value="195" Text="Information hors limite à l'initialisation M"/>
+<Item Value="199" Text="Fréquence signal vitesse trop élevée M"/>
+<Item Value="201" Text="Circuit ouvert sur la ligne commande actionneur M"/>
+<Item Value="205" Text="Programmation véhicule non faite M"/>
+<Item Value="212" Text="Court circuit à la masse de la ligne commande actionneur M"/>
+<Item Value="213" Text="Court circuit au +bat de la ligne commande actionneur M"/>
+<Item Value="214" Text="Tension d'alimentation trop basse M"/>
+<Item Value="215" Text="Vitesse non nulle à l'initialisation M"/>
+<Item Value="224" Text="Fréquence hors tolérance PM"/>
+<Item Value="227" Text="Information hors limite à l'initialisation PM"/>
+<Item Value="231" Text="Fréquence signal vitesse trop élevée PM"/>
+<Item Value="233" Text="Circuit ouvert sur la ligne commande actionneur PM"/>
+<Item Value="237" Text="Programmation véhicule non faite PM"/>
+<Item Value="244" Text="Court circuit à la masse de la ligne commande actionneur PM"/>
+<Item Value="245" Text="Court circuit au +bat de la ligne commande actionneur PM"/>
+<Item Value="246" Text="Tension d'alimentation trop basse PM"/>
+<Item Value="247" Text="Vitesse non nulle à l'initialisation PM"/></List>
+</Bits>
+</Data>
+<Data Name="Panne3">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Circuit ouvert sur Vcode"/>
+<Item Value="2" Text="Court circuit à la masse "/>
+<Item Value="3" Text="Court circuit au +bat "/>
+<Item Value="6" Text="Information non plausible"/>
+<Item Value="7" Text="Absence de signal"/>
+<Item Value="8" Text="Information hors limite inférieure"/>
+<Item Value="9" Text="Information hors limite supérieure"/>
+<Item Value="10" Text="Niveau bas permanent sur le signal vitesse"/>
+<Item Value="11" Text="Niveau haut permanent sur le signal vitesse"/>
+<Item Value="13" Text="Défaillance interne "/>
+<Item Value="22" Text="Initialisation véhicule non faite"/>
+<Item Value="33" Text="Circuit ouvert sur Vcode P"/>
+<Item Value="34" Text="Court circuit à la masse P"/>
+<Item Value="35" Text="Court circuit au +bat P"/>
+<Item Value="38" Text="Information non plausible P"/>
+<Item Value="39" Text="Absence de signal P"/>
+<Item Value="40" Text="Information hors limite inférieure P"/>
+<Item Value="41" Text="Information hors limite supérieure P"/>
+<Item Value="42" Text="Niveau bas permanent sur le signal vitesse P"/>
+<Item Value="43" Text="Niveau haut permanent sur le signal vitesse P"/>
+<Item Value="45" Text="Défaillance interne P"/>
+<Item Value="54" Text="Initialisation véhicule non faite P"/>
+<Item Value="65" Text="Circuit ouvert sur Vcode M"/>
+<Item Value="66" Text="Court circuit à la masse M"/>
+<Item Value="67" Text="Court circuit au +bat M"/>
+<Item Value="70" Text="Information non plausible M"/>
+<Item Value="71" Text="Absence de signal M"/>
+<Item Value="72" Text="Information hors limite inférieure M"/>
+<Item Value="73" Text="Information hors limite supérieure M"/>
+<Item Value="74" Text="Niveau bas permanent sur le signal vitesse M"/>
+<Item Value="75" Text="Niveau haut permanent sur le signal vitesse M"/>
+<Item Value="77" Text="Défaillance interne M"/>
+<Item Value="86" Text="Initialisation véhicule non faite M"/>
+<Item Value="97" Text="Circuit ouvert sur Vcode PM"/>
+<Item Value="98" Text="Court circuit à la masse PM"/>
+<Item Value="99" Text="Court circuit au +bat PM"/>
+<Item Value="102" Text="Information non plausible PM"/>
+<Item Value="103" Text="Absence de signal PM"/>
+<Item Value="104" Text="Information hors limite inférieure PM"/>
+<Item Value="105" Text="Information hors limite supérieure PM"/>
+<Item Value="106" Text="Niveau bas permanent sur le signal vitesse PM"/>
+<Item Value="107" Text="Niveau haut permanent sur le signal vitesse PM"/>
+<Item Value="109" Text="Défaillance interne PM"/>
+<Item Value="118" Text="Initialisation véhicule non faite PM"/>
+<Item Value="128" Text="Fréquence hors tolérance"/>
+<Item Value="131" Text="Information hors limite à l'initialisation"/>
+<Item Value="135" Text="Fréquence signal vitesse trop élevée"/>
+<Item Value="137" Text="Circuit ouvert sur la ligne commande actionneur"/>
+<Item Value="141" Text="Programmation véhicule non faite "/>
+<Item Value="148" Text="Court circuit à la masse de la ligne commande actionneur "/>
+<Item Value="149" Text="Court circuit au +bat de la ligne commande actionneur "/>
+<Item Value="150" Text="Tension d'alimentation trop basse"/>
+<Item Value="151" Text="Vitesse non nulle à l'initialisation"/>
+<Item Value="160" Text="Fréquence hors tolérance P"/>
+<Item Value="163" Text="Information hors limite à l'initialisation P"/>
+<Item Value="167" Text="Fréquence signal vitesse trop élevée P"/>
+<Item Value="169" Text="Circuit ouvert sur la ligne commande actionneur P"/>
+<Item Value="173" Text="Programmation véhicule non faite P"/>
+<Item Value="180" Text="Court circuit à la masse de la ligne commande actionneur P"/>
+<Item Value="181" Text="Court circuit au +bat de la ligne commande actionneur  P"/>
+<Item Value="182" Text="Tension d'alimentation trop basse P"/>
+<Item Value="183" Text="Vitesse non nulle à l'initialisation P"/>
+<Item Value="192" Text="Fréquence hors tolérance M"/>
+<Item Value="195" Text="Information hors limite à l'initialisation M"/>
+<Item Value="199" Text="Fréquence signal vitesse trop élevée M"/>
+<Item Value="201" Text="Circuit ouvert sur la ligne commande actionneur M"/>
+<Item Value="205" Text="Programmation véhicule non faite M"/>
+<Item Value="212" Text="Court circuit à la masse de la ligne commande actionneur M"/>
+<Item Value="213" Text="Court circuit au +bat de la ligne commande actionneur M"/>
+<Item Value="214" Text="Tension d'alimentation trop basse M"/>
+<Item Value="215" Text="Vitesse non nulle à l'initialisation M"/>
+<Item Value="224" Text="Fréquence hors tolérance PM"/>
+<Item Value="227" Text="Information hors limite à l'initialisation PM"/>
+<Item Value="231" Text="Fréquence signal vitesse trop élevée PM"/>
+<Item Value="233" Text="Circuit ouvert sur la ligne commande actionneur PM"/>
+<Item Value="237" Text="Programmation véhicule non faite PM"/>
+<Item Value="244" Text="Court circuit à la masse de la ligne commande actionneur PM"/>
+<Item Value="245" Text="Court circuit au +bat de la ligne commande actionneur PM"/>
+<Item Value="246" Text="Tension d'alimentation trop basse PM"/>
+<Item Value="247" Text="Vitesse non nulle à l'initialisation PM"/></List>
+</Bits>
+</Data>
+<Data Name="Panne4">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Circuit ouvert sur Vcode"/>
+<Item Value="2" Text="Court circuit à la masse "/>
+<Item Value="3" Text="Court circuit au +bat "/>
+<Item Value="6" Text="Information non plausible"/>
+<Item Value="7" Text="Absence de signal"/>
+<Item Value="8" Text="Information hors limite inférieure"/>
+<Item Value="9" Text="Information hors limite supérieure"/>
+<Item Value="10" Text="Niveau bas permanent sur le signal vitesse"/>
+<Item Value="11" Text="Niveau haut permanent sur le signal vitesse"/>
+<Item Value="13" Text="Défaillance interne "/>
+<Item Value="22" Text="Initialisation véhicule non faite"/>
+<Item Value="33" Text="Circuit ouvert sur Vcode P"/>
+<Item Value="34" Text="Court circuit à la masse P"/>
+<Item Value="35" Text="Court circuit au +bat P"/>
+<Item Value="38" Text="Information non plausible P"/>
+<Item Value="39" Text="Absence de signal P"/>
+<Item Value="40" Text="Information hors limite inférieure P"/>
+<Item Value="41" Text="Information hors limite supérieure P"/>
+<Item Value="42" Text="Niveau bas permanent sur le signal vitesse P"/>
+<Item Value="43" Text="Niveau haut permanent sur le signal vitesse P"/>
+<Item Value="45" Text="Défaillance interne P"/>
+<Item Value="54" Text="Initialisation véhicule non faite P"/>
+<Item Value="65" Text="Circuit ouvert sur Vcode M"/>
+<Item Value="66" Text="Court circuit à la masse M"/>
+<Item Value="67" Text="Court circuit au +bat M"/>
+<Item Value="70" Text="Information non plausible M"/>
+<Item Value="71" Text="Absence de signal M"/>
+<Item Value="72" Text="Information hors limite inférieure M"/>
+<Item Value="73" Text="Information hors limite supérieure M"/>
+<Item Value="74" Text="Niveau bas permanent sur le signal vitesse M"/>
+<Item Value="75" Text="Niveau haut permanent sur le signal vitesse M"/>
+<Item Value="77" Text="Défaillance interne M"/>
+<Item Value="86" Text="Initialisation véhicule non faite M"/>
+<Item Value="97" Text="Circuit ouvert sur Vcode PM"/>
+<Item Value="98" Text="Court circuit à la masse PM"/>
+<Item Value="99" Text="Court circuit au +bat PM"/>
+<Item Value="102" Text="Information non plausible PM"/>
+<Item Value="103" Text="Absence de signal PM"/>
+<Item Value="104" Text="Information hors limite inférieure PM"/>
+<Item Value="105" Text="Information hors limite supérieure PM"/>
+<Item Value="106" Text="Niveau bas permanent sur le signal vitesse PM"/>
+<Item Value="107" Text="Niveau haut permanent sur le signal vitesse PM"/>
+<Item Value="109" Text="Défaillance interne PM"/>
+<Item Value="118" Text="Initialisation véhicule non faite PM"/>
+<Item Value="128" Text="Fréquence hors tolérance"/>
+<Item Value="131" Text="Information hors limite à l'initialisation"/>
+<Item Value="135" Text="Fréquence signal vitesse trop élevée"/>
+<Item Value="137" Text="Circuit ouvert sur la ligne commande actionneur"/>
+<Item Value="141" Text="Programmation véhicule non faite "/>
+<Item Value="148" Text="Court circuit à la masse de la ligne commande actionneur "/>
+<Item Value="149" Text="Court circuit au +bat de la ligne commande actionneur "/>
+<Item Value="150" Text="Tension d'alimentation trop basse"/>
+<Item Value="151" Text="Vitesse non nulle à l'initialisation"/>
+<Item Value="160" Text="Fréquence hors tolérance P"/>
+<Item Value="163" Text="Information hors limite à l'initialisation P"/>
+<Item Value="167" Text="Fréquence signal vitesse trop élevée P"/>
+<Item Value="169" Text="Circuit ouvert sur la ligne commande actionneur P"/>
+<Item Value="173" Text="Programmation véhicule non faite P"/>
+<Item Value="180" Text="Court circuit à la masse de la ligne commande actionneur P"/>
+<Item Value="181" Text="Court circuit au +bat de la ligne commande actionneur  P"/>
+<Item Value="182" Text="Tension d'alimentation trop basse P"/>
+<Item Value="183" Text="Vitesse non nulle à l'initialisation P"/>
+<Item Value="192" Text="Fréquence hors tolérance M"/>
+<Item Value="195" Text="Information hors limite à l'initialisation M"/>
+<Item Value="199" Text="Fréquence signal vitesse trop élevée M"/>
+<Item Value="201" Text="Circuit ouvert sur la ligne commande actionneur M"/>
+<Item Value="205" Text="Programmation véhicule non faite M"/>
+<Item Value="212" Text="Court circuit à la masse de la ligne commande actionneur M"/>
+<Item Value="213" Text="Court circuit au +bat de la ligne commande actionneur M"/>
+<Item Value="214" Text="Tension d'alimentation trop basse M"/>
+<Item Value="215" Text="Vitesse non nulle à l'initialisation M"/>
+<Item Value="224" Text="Fréquence hors tolérance PM"/>
+<Item Value="227" Text="Information hors limite à l'initialisation PM"/>
+<Item Value="231" Text="Fréquence signal vitesse trop élevée PM"/>
+<Item Value="233" Text="Circuit ouvert sur la ligne commande actionneur PM"/>
+<Item Value="237" Text="Programmation véhicule non faite PM"/>
+<Item Value="244" Text="Court circuit à la masse de la ligne commande actionneur PM"/>
+<Item Value="245" Text="Court circuit au +bat de la ligne commande actionneur PM"/>
+<Item Value="246" Text="Tension d'alimentation trop basse PM"/>
+<Item Value="247" Text="Vitesse non nulle à l'initialisation PM"/></List>
+</Bits>
+</Data>
+<Data Name="Panne5">
+<Comment><![CDATA[Panne]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Circuit ouvert sur Vcode"/>
+<Item Value="2" Text="Court circuit à la masse "/>
+<Item Value="3" Text="Court circuit au +bat "/>
+<Item Value="6" Text="Information non plausible"/>
+<Item Value="7" Text="Absence de signal"/>
+<Item Value="8" Text="Information hors limite inférieure"/>
+<Item Value="9" Text="Information hors limite supérieure"/>
+<Item Value="10" Text="Niveau bas permanent sur le signal vitesse"/>
+<Item Value="11" Text="Niveau haut permanent sur le signal vitesse"/>
+<Item Value="13" Text="Défaillance interne "/>
+<Item Value="22" Text="Initialisation véhicule non faite"/>
+<Item Value="33" Text="Circuit ouvert sur Vcode P"/>
+<Item Value="34" Text="Court circuit à la masse P"/>
+<Item Value="35" Text="Court circuit au +bat P"/>
+<Item Value="38" Text="Information non plausible P"/>
+<Item Value="39" Text="Absence de signal P"/>
+<Item Value="40" Text="Information hors limite inférieure P"/>
+<Item Value="41" Text="Information hors limite supérieure P"/>
+<Item Value="42" Text="Niveau bas permanent sur le signal vitesse P"/>
+<Item Value="43" Text="Niveau haut permanent sur le signal vitesse P"/>
+<Item Value="45" Text="Défaillance interne P"/>
+<Item Value="54" Text="Initialisation véhicule non faite P"/>
+<Item Value="65" Text="Circuit ouvert sur Vcode M"/>
+<Item Value="66" Text="Court circuit à la masse M"/>
+<Item Value="67" Text="Court circuit au +bat M"/>
+<Item Value="70" Text="Information non plausible M"/>
+<Item Value="71" Text="Absence de signal M"/>
+<Item Value="72" Text="Information hors limite inférieure M"/>
+<Item Value="73" Text="Information hors limite supérieure M"/>
+<Item Value="74" Text="Niveau bas permanent sur le signal vitesse M"/>
+<Item Value="75" Text="Niveau haut permanent sur le signal vitesse M"/>
+<Item Value="77" Text="Défaillance interne M"/>
+<Item Value="86" Text="Initialisation véhicule non faite M"/>
+<Item Value="97" Text="Circuit ouvert sur Vcode PM"/>
+<Item Value="98" Text="Court circuit à la masse PM"/>
+<Item Value="99" Text="Court circuit au +bat PM"/>
+<Item Value="102" Text="Information non plausible PM"/>
+<Item Value="103" Text="Absence de signal PM"/>
+<Item Value="104" Text="Information hors limite inférieure PM"/>
+<Item Value="105" Text="Information hors limite supérieure PM"/>
+<Item Value="106" Text="Niveau bas permanent sur le signal vitesse PM"/>
+<Item Value="107" Text="Niveau haut permanent sur le signal vitesse PM"/>
+<Item Value="109" Text="Défaillance interne PM"/>
+<Item Value="118" Text="Initialisation véhicule non faite PM"/>
+<Item Value="128" Text="Fréquence hors tolérance"/>
+<Item Value="131" Text="Information hors limite à l'initialisation"/>
+<Item Value="135" Text="Fréquence signal vitesse trop élevée"/>
+<Item Value="137" Text="Circuit ouvert sur la ligne commande actionneur"/>
+<Item Value="141" Text="Programmation véhicule non faite "/>
+<Item Value="148" Text="Court circuit à la masse de la ligne commande actionneur "/>
+<Item Value="149" Text="Court circuit au +bat de la ligne commande actionneur "/>
+<Item Value="150" Text="Tension d'alimentation trop basse"/>
+<Item Value="151" Text="Vitesse non nulle à l'initialisation"/>
+<Item Value="160" Text="Fréquence hors tolérance P"/>
+<Item Value="163" Text="Information hors limite à l'initialisation P"/>
+<Item Value="167" Text="Fréquence signal vitesse trop élevée P"/>
+<Item Value="169" Text="Circuit ouvert sur la ligne commande actionneur P"/>
+<Item Value="173" Text="Programmation véhicule non faite P"/>
+<Item Value="180" Text="Court circuit à la masse de la ligne commande actionneur P"/>
+<Item Value="181" Text="Court circuit au +bat de la ligne commande actionneur  P"/>
+<Item Value="182" Text="Tension d'alimentation trop basse P"/>
+<Item Value="183" Text="Vitesse non nulle à l'initialisation P"/>
+<Item Value="192" Text="Fréquence hors tolérance M"/>
+<Item Value="195" Text="Information hors limite à l'initialisation M"/>
+<Item Value="199" Text="Fréquence signal vitesse trop élevée M"/>
+<Item Value="201" Text="Circuit ouvert sur la ligne commande actionneur M"/>
+<Item Value="205" Text="Programmation véhicule non faite M"/>
+<Item Value="212" Text="Court circuit à la masse de la ligne commande actionneur M"/>
+<Item Value="213" Text="Court circuit au +bat de la ligne commande actionneur M"/>
+<Item Value="214" Text="Tension d'alimentation trop basse M"/>
+<Item Value="215" Text="Vitesse non nulle à l'initialisation M"/>
+<Item Value="224" Text="Fréquence hors tolérance PM"/>
+<Item Value="227" Text="Information hors limite à l'initialisation PM"/>
+<Item Value="231" Text="Fréquence signal vitesse trop élevée PM"/>
+<Item Value="233" Text="Circuit ouvert sur la ligne commande actionneur PM"/>
+<Item Value="237" Text="Programmation véhicule non faite PM"/>
+<Item Value="244" Text="Court circuit à la masse de la ligne commande actionneur PM"/>
+<Item Value="245" Text="Court circuit au +bat de la ligne commande actionneur PM"/>
+<Item Value="246" Text="Tension d'alimentation trop basse PM"/>
+<Item Value="247" Text="Vitesse non nulle à l'initialisation PM"/></List>
+</Bits>
+</Data>
+<Data Name="Paramètre de contrôle de pilotage">
+<Comment><![CDATA[Pilotage de la fonction]]></Comment>
+<Mnemonic>PARAPIL1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Pilotage temporaire"/>
+<Item Value="1" Text="Demande de status"/>
+<Item Value="17" Text="Arrêt du pilotage"/></List>
+</Bits>
+</Data>
+<Data Name="Paramètre de contrôle d'initialisation">
+<Comment><![CDATA[Pilotage de la fonction]]></Comment>
+<Mnemonic>PARAPIL1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Pilotage temporaire"/>
+<Item Value="1" Text="Demande de status"/>
+<Item Value="17" Text="Arrêt du pilotage"/></List>
+</Bits>
+</Data>
+<Data Name="Position des actionneurs filtrée">
+<Comment><![CDATA[Lecture des octets 6 et 7 de la Trame ETat COSLAD]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Lecture Trame-ETat COSLAD
+\par 
+\par \tab D\'e9finition de la trame:
+\par 
+\par octets 1 et 2:\tab Hauteur avant \tab ->sensor value Hex
+\par octets 3 et 4:\tab Hauteur arri\'e8re\tab ->sensor value Hex
+\par octet 5:\tab \tab Vitesse v\'e9hicule\tab ->Km/h
+\par octets 6 et 7:\tab Position des actionneurs filtr\'e9e
+\par octets 8 et 9:\tab Assiette calcul\'e9e non filtr\'e9e
+\par octets 10 et 11:\tab Hauteur avant \'e0 l'initialisation\tab ->*
+\par octets 12 et 13:\tab Hauteur arri\'e8re \'e0 l'initialisation\tab ->*
+\par 
+\par * :\tab Si init non faite $FF $FF (Hex)
+\par 
+\par format Donn\'e9es-Requ\'eate:
+\par 
+\par \tab 21 C0
+\par \tab  |     |_____Demande Lecture TR_ET_COSLAD
+\par \tab  |________octet requ\'eate "ReadDataByLocalIdentifier"
+\par 
+\par format Donn\'e9es-r\'e9ponse:
+\par 
+\par \tab 61 CO XX ...
+\par \tab  |      |     |
+\par \tab  |      |     |______Trame TR_ET_COSLAD
+\par \tab  |      |_________octet de commande "Trame \'e9tat COSLAD"
+\par \tab  |____________octet r\'e9ponse "ReadDataByLocalIdentifierOK"\plain\f0\fs17 
+\par }
+]]></Description>
+<Bits count="16">
+<Scaled Unit="pas" Format="0"/>
+</Bits>
+</Data>
+<Data Name="Position des actionneurs non filtrée">
+<Comment><![CDATA[Lecture des octet 8 et 9 de la Trame ETat COSLAD]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16">
+<Scaled Unit="pas" Format="0"/>
+</Bits>
+</Data>
+<Data Name="Position des moteurs">
+<Comment><![CDATA[Lecture des octets 4 et 5 de la trame de commande des moteurs]]></Comment>
+<Mnemonic>STATPILi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Lecture Trame-ETat COSLAD
+\par 
+\par \tab D\'e9finition de la trame:
+\par 
+\par octets 1 et 2:\tab Hauteur avant \tab ->sensor value Hex
+\par octets 3 et 4:\tab Hauteur arri\'e8re\tab ->sensor value Hex
+\par octet 5:\tab \tab Vitesse v\'e9hicule\tab ->Km/h
+\par octets 6 et 7:\tab Position des actionneurs filtr\'e9e
+\par octets 8 et 9:\tab Assiette calcul\'e9e non filtr\'e9e
+\par octets 10 et 11:\tab Hauteur avant \'e0 l'initialisation\tab ->*
+\par octets 12 et 13:\tab Hauteur arri\'e8re \'e0 l'initialisation\tab ->*
+\par 
+\par * :\tab Si init non faite $FF $FF (Hex)
+\par 
+\par format Donn\'e9es-Requ\'eate:
+\par 
+\par \tab 21 C0
+\par \tab  |     |_____Demande Lecture TR_ET_COSLAD
+\par \tab  |________octet requ\'eate "ReadDataByLocalIdentifier"
+\par 
+\par format Donn\'e9es-r\'e9ponse:
+\par 
+\par \tab 61 CO XX ...
+\par \tab  |      |     |
+\par \tab  |      |     |______Trame TR_ET_COSLAD
+\par \tab  |      |_________octet de commande "Trame \'e9tat COSLAD"
+\par \tab  |____________octet r\'e9ponse "ReadDataByLocalIdentifierOK"\plain\f0\fs17 
+\par }
+]]></Description>
+<Bits count="16">
+<Scaled Unit="pas" Format="0"/>
+</Bits>
+</Data>
+<Data Name="Session Name">
+<Comment><![CDATA[choix du type de diagnostic]]></Comment>
+<Mnemonic>DIAGMODE</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Fournisseur"/>
+<Item Value="160" Text="Etude"/>
+<Item Value="176" Text="Contrôle en chaîne"/>
+<Item Value="192" Text="APrès-Vente"/></List>
+</Bits>
+</Data>
+<Data Name="Status DTC">
+<Comment><![CDATA[For the automatic DDT2000 failure screen]]></Comment>
+<Mnemonic>StatusDTC</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}{\f3\fswiss\fprq2 System;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Type de panne
+\par }
+]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="Circuit ouvert sur Vcode"/>
+<Item Value="2" Text="Court circuit à la masse "/>
+<Item Value="3" Text="Court circuit au +bat "/>
+<Item Value="6" Text="Information non plausible"/>
+<Item Value="7" Text="Absence de signal"/>
+<Item Value="8" Text="Information hors limite inférieure"/>
+<Item Value="9" Text="Information hors limite supérieure"/>
+<Item Value="10" Text="Niveau bas permanent sur le signal vitesse"/>
+<Item Value="11" Text="Niveau haut permanent sur le signal vitesse"/>
+<Item Value="13" Text="Défaillance interne "/>
+<Item Value="22" Text="Initialisation véhicule non faite"/>
+<Item Value="33" Text="Circuit ouvert sur Vcode P"/>
+<Item Value="34" Text="Court circuit à la masse P"/>
+<Item Value="35" Text="Court circuit au +bat P"/>
+<Item Value="38" Text="Information non plausible P"/>
+<Item Value="39" Text="Absence de signal P"/>
+<Item Value="40" Text="Information hors limite inférieure P"/>
+<Item Value="41" Text="Information hors limite supérieure P"/>
+<Item Value="42" Text="Niveau bas permanent sur le signal vitesse P"/>
+<Item Value="43" Text="Niveau haut permanent sur le signal vitesse P"/>
+<Item Value="45" Text="Défaillance interne P"/>
+<Item Value="54" Text="Initialisation véhicule non faite P"/>
+<Item Value="65" Text="Circuit ouvert sur Vcode M"/>
+<Item Value="66" Text="Court circuit à la masse M"/>
+<Item Value="67" Text="Court circuit au +bat M"/>
+<Item Value="70" Text="Information non plausible M"/>
+<Item Value="71" Text="Absence de signal M"/>
+<Item Value="72" Text="Information hors limite inférieure M"/>
+<Item Value="73" Text="Information hors limite supérieure M"/>
+<Item Value="74" Text="Niveau bas permanent sur le signal vitesse M"/>
+<Item Value="75" Text="Niveau haut permanent sur le signal vitesse M"/>
+<Item Value="77" Text="Défaillance interne M"/>
+<Item Value="86" Text="Initialisation véhicule non faite M"/>
+<Item Value="97" Text="Circuit ouvert sur Vcode PM"/>
+<Item Value="98" Text="Court circuit à la masse PM"/>
+<Item Value="99" Text="Court circuit au +bat PM"/>
+<Item Value="102" Text="Information non plausible PM"/>
+<Item Value="103" Text="Absence de signal PM"/>
+<Item Value="104" Text="Information hors limite inférieure PM"/>
+<Item Value="105" Text="Information hors limite supérieure PM"/>
+<Item Value="106" Text="Niveau bas permanent sur le signal vitesse PM"/>
+<Item Value="107" Text="Niveau haut permanent sur le signal vitesse PM"/>
+<Item Value="109" Text="Défaillance interne PM"/>
+<Item Value="118" Text="Initialisation véhicule non faite PM"/>
+<Item Value="128" Text="Fréquence hors tolérance"/>
+<Item Value="131" Text="Information hors limite à l'initialisation"/>
+<Item Value="135" Text="Fréquence signal vitesse trop élevée"/>
+<Item Value="137" Text="Circuit ouvert sur la ligne commande actionneur"/>
+<Item Value="141" Text="Programmation véhicule non faite "/>
+<Item Value="148" Text="Court circuit à la masse de la ligne commande actionneur "/>
+<Item Value="149" Text="Court circuit au +bat de la ligne commande actionneur "/>
+<Item Value="150" Text="Tension d'alimentation trop basse"/>
+<Item Value="151" Text="Vitesse non nulle à l'initialisation"/>
+<Item Value="160" Text="Fréquence hors tolérance P"/>
+<Item Value="163" Text="Information hors limite à l'initialisation P"/>
+<Item Value="167" Text="Fréquence signal vitesse trop élevée P"/>
+<Item Value="169" Text="Circuit ouvert sur la ligne commande actionneur P"/>
+<Item Value="173" Text="Programmation véhicule non faite P"/>
+<Item Value="180" Text="Court circuit à la masse de la ligne commande actionneur P"/>
+<Item Value="181" Text="Court circuit au +bat de la ligne commande actionneur  P"/>
+<Item Value="182" Text="Tension d'alimentation trop basse P"/>
+<Item Value="183" Text="Vitesse non nulle à l'initialisation P"/>
+<Item Value="192" Text="Fréquence hors tolérance M"/>
+<Item Value="195" Text="Information hors limite à l'initialisation M"/>
+<Item Value="199" Text="Fréquence signal vitesse trop élevée M"/>
+<Item Value="201" Text="Circuit ouvert sur la ligne commande actionneur M"/>
+<Item Value="205" Text="Programmation véhicule non faite M"/>
+<Item Value="212" Text="Court circuit à la masse de la ligne commande actionneur M"/>
+<Item Value="213" Text="Court circuit au +bat de la ligne commande actionneur M"/>
+<Item Value="214" Text="Tension d'alimentation trop basse M"/>
+<Item Value="215" Text="Vitesse non nulle à l'initialisation M"/>
+<Item Value="224" Text="Fréquence hors tolérance PM"/>
+<Item Value="227" Text="Information hors limite à l'initialisation PM"/>
+<Item Value="231" Text="Fréquence signal vitesse trop élevée PM"/>
+<Item Value="233" Text="Circuit ouvert sur la ligne commande actionneur PM"/>
+<Item Value="237" Text="Programmation véhicule non faite PM"/>
+<Item Value="244" Text="Court circuit à la masse de la ligne commande actionneur PM"/>
+<Item Value="245" Text="Court circuit au +bat de la ligne commande actionneur PM"/>
+<Item Value="246" Text="Tension d'alimentation trop basse PM"/>
+<Item Value="247" Text="Vitesse non nulle à l'initialisation PM"/></List>
+</Bits>
+</Data>
+<Data Name="Type de véhicule">
+<Comment><![CDATA[Enregistrement du type de véhicule]]></Comment>
+<Mnemonic>PARAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Enregistre le type de vehicule (X74-X73-X81)
+\par 
+\par format des donn\'e9es:
+\par  
+\par \tab 3B A1 00
+\par \tab  |     |     |_______octet requ\'eate "WriteDataByLocalIdentifier"
+\par \tab  |     |
+\par \tab  |     |__________Fonction \'e0 r\'e9aliser
+\par \tab  |
+\par \tab  |_____________Identification de v\'e9hicule :    $74 pour X74
+\par \tab \tab \tab \tab \tab          $73 pour X73
+\par \tab \tab \tab \tab \tab          $81 pour X81
+\par }
+]]></Description>
+<Bits count="16">
+<List>
+<Item Value="0" Text="A documenter"/>
+<Item Value="29440" Text="Velsatis"/>
+<Item Value="29696" Text="Laguna II"/>
+<Item Value="33024" Text="Espace IV"/>
+<Item Value="33797" Text="Scénic"/>
+<Item Value="33799" Text="Scénic rallongé"/>
+<Item Value="33860" Text="Scénic RX4"/></List>
+</Bits>
+</Data>
+<Data Name="Version UCE">
+<Comment><![CDATA[Trame Identification système (TR_ID_COSLAD)]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="0" Text="Vague mulet"/>
+<Item Value="1" Text="Vague C_lot"/>
+<Item Value="16" Text="Vague PPP"/>
+<Item Value="17" Text="Vague série"/></List>
+</Bits>
+</Data>
+<Data Name="VIN ASCII">
+<Comment><![CDATA[Lecture du VIN]]></Comment>
+<Mnemonic>VIN</Mnemonic>
+<Bytes count="19" ascii="1"/>
+</Data>
+<Data Name="VIN HEXA">
+<Comment><![CDATA[Lecture du VIN]]></Comment>
+<Mnemonic>VIN</Mnemonic>
+<Bytes count="19"/>
+</Data>
+<Data Name="Vitesse véhicule">
+<Comment><![CDATA[Lecture de l'octet 5 de la Trame ETat COSLAD]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Description><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f2\fs17 Lecture Trame-ETat COSLAD
+\par 
+\par \tab D\'e9finition de la trame:
+\par 
+\par octets 1 et 2:\tab Hauteur avant \tab ->sensor value Hex
+\par octets 3 et 4:\tab Hauteur arri\'e8re\tab ->sensor value Hex
+\par octet 5:\tab \tab Vitesse v\'e9hicule\tab ->Km/h
+\par octets 6 et 7:\tab Position des actionneurs filtr\'e9e
+\par octets 8 et 9:\tab Assiette calcul\'e9e non filtr\'e9e
+\par octets 10 et 11:\tab Hauteur avant \'e0 l'initialisation\tab ->*
+\par octets 12 et 13:\tab Hauteur arri\'e8re \'e0 l'initialisation\tab ->*
+\par 
+\par * :\tab Si init non faite $FF $FF (Hex)
+\par 
+\par format Donn\'e9es-Requ\'eate:
+\par 
+\par \tab 21 C0
+\par \tab  |     |_____Demande Lecture TR_ET_COSLAD
+\par \tab  |________octet requ\'eate "ReadDataByLocalIdentifier"
+\par 
+\par format Donn\'e9es-r\'e9ponse:
+\par 
+\par \tab 61 CO XX ...
+\par \tab  |      |     |
+\par \tab  |      |     |______Trame TR_ET_COSLAD
+\par \tab  |      |_________octet de commande "Trame \'e9tat COSLAD"
+\par \tab  |____________octet r\'e9ponse "ReadDataByLocalIdentifierOK"\plain\f0\fs17 
+\par }
+]]></Description>
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="Etat du pilotage">
+<Comment><![CDATA[Statut de l'initialisation]]></Comment>
+<Mnemonic>STATPIL1</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="En cours"/>
+<Item Value="2" Text="Terminé"/>
+<Item Value="17" Text="Arrêté ou défaillant"/></List>
+</Bits>
+</Data>
+<Data Name="Identification véhicule">
+<Comment><![CDATA[Trame Identification système (TR_ID_COSLAD)]]></Comment>
+<Mnemonic>DATAi</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="0" Text="Type de caisse M2S non-spécifiée"/>
+<Item Value="29440" Text="Velsatis"/>
+<Item Value="29696" Text="Laguna II"/>
+<Item Value="33024" Text="Espace IV"/>
+<Item Value="33792" Text="Type de caisse 84 non-spécifié"/>
+<Item Value="33797" Text="Scénic"/>
+<Item Value="33799" Text="Scénic rallongé"/>
+<Item Value="33860" Text="Scénic RX4"/></List>
+</Bits>
+</Data>
+<Data Name="Current Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Historical Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Standard Fault">
+<Bits count="5">
+<List>
+<Item Value="1" Text="Circuit ouvert sur Vcode"/>
+<Item Value="2" Text="Court circuit à la masse"/>
+<Item Value="3" Text="Court circuit au +bat"/>
+<Item Value="6" Text="Information non plausible"/>
+<Item Value="7" Text="Absence de signal"/>
+<Item Value="8" Text="Information hors limite inférieure"/>
+<Item Value="9" Text="Information hors limite supérieure"/>
+<Item Value="10" Text="Niveau bas permanent sur le signal vitesse"/>
+<Item Value="11" Text="Niveau haut permanent sur le signal vitesse"/>
+<Item Value="13" Text="Défaillance interne"/>
+<Item Value="22" Text="Initialisation véhicule non faite"/></List>
+</Bits>
+</Data>
+<Data Name="Type Of Fault">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Standard"/>
+<Item Value="1" Text="Specific"/></List>
+</Bits>
+</Data>
+<Data Name="Specific Fault">
+<Bits count="5">
+<List>
+<Item Value="0" Text="Fréquence hors tolérance"/>
+<Item Value="3" Text="Information hors limite à l'initialisation"/>
+<Item Value="7" Text="Fréquence signal vitesse trop élevée"/>
+<Item Value="9" Text="Circuit ouvert sur la ligne commande actionneur"/>
+<Item Value="13" Text="Programmation véhicule non faite"/>
+<Item Value="20" Text="Court circuit à la masse de la ligne commande actionneur"/>
+<Item Value="21" Text="Court circuit au +bat de la ligne commande actionneur"/>
+<Item Value="22" Text="Tension d'alimentation trop basse"/>
+<Item Value="23" Text="Vitesse non nulle à l'initialisation"/></List>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="ClearDiagnosticInformation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Demande d'effacement de toutes les pannes présentes et mémorisées dans l'UCE]]></Comment>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Ecriture de données (dates fab et APV)">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Ecriture de données prédéfinies dans l'UCE]]></Comment>
+<Sent>
+<SentBytes>3BC0000101</SentBytes>
+<DataItem Name="Année" FirstByte="3"/>
+<DataItem Name="Choix des dates" FirstByte="2"/>
+<DataItem Name="Jour" FirstByte="5"/>
+<DataItem Name="Mois" FirstByte="4"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Ecriture de l'identification véhicule">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Modification des paramètres véhicule]]></Comment>
+<Sent>
+<SentBytes>3BA10000</SentBytes>
+<DataItem Name="Type de véhicule" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Ecriture du VIN en mémoire">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Stockage en mémoire du calculateur de l'identification du véhicule]]></Comment>
+<Sent>
+<SentBytes>3B8111111111111111111111111111111111111111</SentBytes>
+<DataItem Name="VIN ASCII" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="ECU Reset">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Requête de commande d'actuateur ECU Reset]]></Comment>
+<Sent>
+<SentBytes>1180</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Initialisation de la fonction">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Mémorisation des valeurs de référence pour les assiettes véhicule]]></Comment>
+<Sent>
+<SentBytes>308000</SentBytes>
+<DataItem Name="Paramètre de contrôle d'initialisation" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat de l'initialisation" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture de la Trame ETat COSLAD">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Lecture de l'état du système COSLAD]]></Comment>
+<Sent>
+<SentBytes>21C1</SentBytes>
+</Sent>
+<Received MinBytes="17">
+<DataItem Name="Etat des prestations LAD" Ref="1" FirstByte="17"/>
+<DataItem Name="Hauteur ARrière" Ref="1" FirstByte="5"/>
+<DataItem Name="Hauteur ARrière à l'initialisation" Ref="1" FirstByte="14"/>
+<DataItem Name="Hauteur ARrière à l'initialisation en digits" Ref="1" FirstByte="14"/>
+<DataItem Name="Hauteur ARrière en digits" Ref="1" FirstByte="5"/>
+<DataItem Name="Hauteur AVant" Ref="1" FirstByte="3"/>
+<DataItem Name="Hauteur AVant à l'initialisation" Ref="1" FirstByte="12"/>
+<DataItem Name="Hauteur AVant à l'initialisation en digits" Ref="1" FirstByte="12"/>
+<DataItem Name="Hauteur AVant en digits" Ref="1" FirstByte="3"/>
+<DataItem Name="Initialisation" Ref="1" FirstByte="16"/>
+<DataItem Name="Position des actionneurs filtrée" Ref="1" FirstByte="8"/>
+<DataItem Name="Position des actionneurs non filtrée" Ref="1" FirstByte="10"/>
+<DataItem Name="Vitesse véhicule" Ref="1" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="Lecture de l'identification système">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Lecture de la trame identification système mémorisée dans l'UCE]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="Calibration du Soft" Ref="1" FirstByte="23"/>
+<DataItem Name="Code identification diagnostic" Ref="1" FirstByte="8"/>
+<DataItem Name="Identification véhicule" Ref="1" FirstByte="21"/>
+<DataItem Name="N° de code ITG Fournisseur" Ref="1" FirstByte="9"/>
+<DataItem Name="N° de code pièce MPR" Ref="1" FirstByte="3"/>
+<DataItem Name="N° de Hardware" Ref="1" FirstByte="12"/>
+<DataItem Name="N° du logiciel" Ref="1" FirstByte="17"/>
+<DataItem Name="Version UCE" Ref="1" FirstByte="19"/>
+</Received>
+</Request>
+<Request Name="Lecture des dates">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Lecture de données prédéfinies dans l'UCE]]></Comment>
+<Sent>
+<SentBytes>21D2</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<DataItem Name="Année APV" Ref="1" FirstByte="9"/>
+<DataItem Name="Année UCE" Ref="1" FirstByte="3"/>
+<DataItem Name="Année véhicule" Ref="1" FirstByte="6"/>
+<DataItem Name="Jour APV" Ref="1" FirstByte="11"/>
+<DataItem Name="Jour UCE" Ref="1" FirstByte="5"/>
+<DataItem Name="Jour véhicule" Ref="1" FirstByte="8"/>
+<DataItem Name="Mois APV" Ref="1" FirstByte="10"/>
+<DataItem Name="Mois UCE" Ref="1" FirstByte="4"/>
+<DataItem Name="Mois véhicule" Ref="1" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="Lecture du VIN">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Lecture du VIN du véhicule]]></Comment>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="VIN ASCII" Ref="1" FirstByte="3"/>
+<DataItem Name="VIN HEXA" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Output Control">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic testing screen]]></Comment>
+<Sent>
+<SentBytes>30000000</SentBytes>
+<DataItem Name="Output Control Command" FirstByte="3"/>
+<DataItem Name="Output Driving" FirstByte="2"/>
+<DataItem Name="Output Permanent Control List" FirstByte="4"/>
+<DataItem Name="Output Temporary Control List" FirstByte="4"/>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="Actuator position" FirstByte="4"/>
+<DataItem Name="Output Control Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage des actuateurs à position min/max">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Commande des actuateurs]]></Comment>
+<Sent>
+<SentBytes>30810000</SentBytes>
+<DataItem Name="Déplacement souhaité" FirstByte="4"/>
+<DataItem Name="Paramètre de contrôle de pilotage" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<DataItem Name="Déplacement opéré" FirstByte="4"/>
+<DataItem Name="Etat du pilotage" FirstByte="3"/>
+<DataItem Name="Position des moteurs" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Détection des pannes]]></Comment>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+<DataItem Name="MoreDTC" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<DataItem Name="FirstDTC" FirstByte="3"/>
+<DataItem Name="NDTC" FirstByte="2"/>
+<DataItem Name="Historical Failure" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Current Failure" FirstByte="5" BitOffset="2"/>
+<DataItem Name="Standard Fault" FirstByte="5" BitOffset="3"/>
+<DataItem Name="Type Of Fault" FirstByte="5"/>
+<DataItem Name="Specific Fault" FirstByte="5" BitOffset="3"/>
+</Received>
+</Request>
+<Request Name="ReadStatusOfDiagnosticTroubleCodes">
+
+<ManuelSend/>
+<Comment><![CDATA[Lecture des défauts]]></Comment>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<DataItem Name="DTC1" FirstByte="3"/>
+<DataItem Name="DTC2" FirstByte="6"/>
+<DataItem Name="DTC3" FirstByte="9"/>
+<DataItem Name="DTC4" FirstByte="12"/>
+<DataItem Name="DTC5" FirstByte="15"/>
+<DataItem Name="Flag1" FirstByte="5"/>
+<DataItem Name="Flag2" FirstByte="8"/>
+<DataItem Name="Flag3" FirstByte="11"/>
+<DataItem Name="Flag4" FirstByte="14"/>
+<DataItem Name="Flag5" FirstByte="17"/>
+<DataItem Name="Nombre de défauts" FirstByte="2"/>
+<DataItem Name="Panne1" FirstByte="5"/>
+<DataItem Name="Panne2" FirstByte="8"/>
+<DataItem Name="Panne3" FirstByte="11"/>
+<DataItem Name="Panne4" FirstByte="14"/>
+<DataItem Name="Panne5" FirstByte="17"/>
+</Received>
+</Request>
+<Request Name="Start Diagnostic Session">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="Session Name" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Startcommunication">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Initialisation du boîtier électronique après décodage du Wake Up Pattern]]></Comment>
+<Sent>
+<SentBytes>81</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Octet clé 1" FirstByte="2"/>
+<DataItem Name="Octet clé 2" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Startdiagnosticsession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Spécification du type de diagnostic désiré]]></Comment>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="Choix du type de session" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Stopcommunication">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Demande de l'outil vers l'UCE pour sortir du mode diagnostic en mode diffusion]]></Comment>
+<Sent>
+<SentBytes>82</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Testerpresent">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Réinitialisation du time-out pendant la communication]]></Comment>
+<Sent>
+<SentBytes>3E</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Actionneur" DTC="36868">
+<DeviceData Name="Position des actionneurs filtrée" FailureFlag="0"/><DeviceData Name="Position des actionneurs non filtrée" FailureFlag="0"/>
+
+</Device>
+<Device Name="Calculateur" DTC="36867">
+<DeviceData Name="Etat des prestations LAD" FailureFlag="0"/><DeviceData Name="Identification véhicule" FailureFlag="0"/><DeviceData Name="Initialisation" FailureFlag="0"/><DeviceData Name="N° du logiciel" FailureFlag="0"/><DeviceData Name="Version UCE" FailureFlag="0"/><DeviceData Name="Vitesse véhicule" FailureFlag="0"/>
+
+</Device>
+<Device Name="Capteur ARrière" DTC="36865">
+<DeviceData Name="Hauteur ARrière à l'initialisation en digits" FailureFlag="0"/><DeviceData Name="Hauteur ARrière en digits" FailureFlag="0"/>
+
+</Device>
+<Device Name="Capteur AVant" DTC="36866">
+<DeviceData Name="Hauteur AVant à l'initialisation en digits" FailureFlag="0"/><DeviceData Name="Hauteur AVant en digits" FailureFlag="0"/>
+
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Ecrans USINE ou APV">
+
+<Screen Name="Commande des actionneurs" Color="16744576" WindowState="0" Width="12120" Height="9120">
+
+<Label Text="Commande des actionneurs" Color="16744576" Alignment="2">
+<Rectangle Left="2070" Top="1320" Height="360" Width="7980"/>
+<Font Name="Book Antiqua" Size=" 16" Bold="0" Italic="0" Color="128"/></Label>
+<Label Text="Fonction COSLAD J84M2S" Color="16744576" Alignment="2">
+<Rectangle Left="2070" Top="960" Height="360" Width="7980"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Pilotage min/max" Color="12615680" Alignment="2">
+<Rectangle Left="2070" Top="2400" Height="4080" Width="7980"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+
+<Button Text="Lancer">
+<Rectangle Left="2520" Top="3960" Height="743" Width="7080"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Pilotage des actuateurs à position min/max"/><Send Delay="0" RequestName="Lecture de la Trame ETat COSLAD"/>
+</Button>
+
+<Input Width="3755" Color="16777215" DataName="Paramètre de contrôle de pilotage" RequestName="Pilotage des actuateurs à position min/max">
+<Rectangle Left="2520" Top="2880" Height="329" Width="7080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3755" Color="16777215" DataName="Déplacement souhaité" RequestName="Pilotage des actuateurs à position min/max">
+<Rectangle Left="2520" Top="3406" Height="329" Width="7080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3770" Color="16777215" DataName="Etat du pilotage" RequestName="Pilotage des actuateurs à position min/max">
+<Rectangle Left="2520" Top="4890" Height="330" Width="7080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3770" Color="16777215" DataName="Déplacement opéré" RequestName="Pilotage des actuateurs à position min/max">
+<Rectangle Left="2520" Top="5400" Height="330" Width="7080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3770" Color="16777215" DataName="Position des moteurs" RequestName="Pilotage des actuateurs à position min/max">
+<Rectangle Left="2520" Top="5880" Height="300" Width="7080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Configuration et initialisation" Color="16744576" WindowState="0" Width="12120" Height="9120">
+
+<Label Text="Configuration" Color="16711680" Alignment="2">
+<Rectangle Left="2160" Top="1920" Height="2640" Width="7800"/>
+<Font Name="Book Antiqua" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="Configuration et initialisation du véhicule" Color="16744576" Alignment="2">
+<Rectangle Left="2520" Top="1200" Height="480" Width="7080"/>
+<Font Name="Book Antiqua" Size=" 16" Bold="0" Italic="0" Color="128"/></Label>
+<Label Text="Fonction COSLAD J84M2S" Color="16744576" Alignment="2">
+<Rectangle Left="2520" Top="720" Height="480" Width="7080"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Initialisation" Color="16711680" Alignment="2">
+<Rectangle Left="2160" Top="4800" Height="3480" Width="7800"/>
+<Font Name="Book Antiqua" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+
+<Button Text="Ecriture des paramètres de configuration">
+<Rectangle Left="2760" Top="3240" Height="1020" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture de l'identification véhicule"/><Send Delay="10" RequestName="ECU Reset"/>
+</Button>
+<Button Text="Initialisation de la fonction">
+<Rectangle Left="2760" Top="6120" Height="1020" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Initialisation de la fonction"/>
+</Button>
+
+<Input Width="3285" Color="16777215" DataName="Type de véhicule" RequestName="Ecriture de l'identification véhicule">
+<Rectangle Left="2760" Top="2580" Height="330" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3290" Color="16777215" DataName="Paramètre de contrôle d'initialisation" RequestName="Initialisation de la fonction">
+<Rectangle Left="2760" Top="5400" Height="340" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3290" Color="16777215" DataName="Etat de l'initialisation" RequestName="Initialisation de la fonction">
+<Rectangle Left="2760" Top="7440" Height="340" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Démarrage du diagnostic" Color="16744576" WindowState="0" Width="12120" Height="9120">
+
+<Label Text="Fonction COSLAD J84M2S" Color="16744576" Alignment="2">
+<Rectangle Left="1950" Top="1440" Height="480" Width="8220"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Type de DIAG sélectionné" Color="16711680" Alignment="2">
+<Rectangle Left="1950" Top="3000" Height="3000" Width="8220"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+
+<Button Text="Lancement de la session">
+<Rectangle Left="3120" Top="4342" Height="1357" Width="5880"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Startdiagnosticsession"/>
+</Button>
+
+<Input Width="2895" Color="16777215" DataName="Choix du type de session" RequestName="Startdiagnosticsession">
+<Rectangle Left="3137" Top="3720" Height="360" Width="5845"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Ecriture des paramètres véhicule" Color="16744576" WindowState="0" Width="12210" Height="8970">
+
+<Label Text="Ecriture des paramètres spécifiques au véhicule" Color="16744576" Alignment="2">
+<Rectangle Left="2115" Top="840" Height="420" Width="7980"/>
+<Font Name="Book Antiqua" Size=" 16" Bold="0" Italic="0" Color="128"/></Label>
+<Label Text="Fonction COSLAD J84M2S" Color="16744576" Alignment="2">
+<Rectangle Left="2925" Top="360" Height="480" Width="6360"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Identification du véhicule" Color="16711808" Alignment="2">
+<Rectangle Left="2785" Top="1770" Height="1920" Width="6639"/>
+<Font Name="Book Antiqua" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="Indication des dates" Color="16711808" Alignment="2">
+<Rectangle Left="2785" Top="3990" Height="3000" Width="6639"/>
+<Font Name="Book Antiqua" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+
+<Button Text="Enregistrement">
+<Rectangle Left="2785" Top="7320" Height="1020" Width="6639"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture de données (dates fab et APV)"/><Send Delay="1000" RequestName="Ecriture du VIN en mémoire"/>
+</Button>
+
+<Input Width="1050" Color="16777215" DataName="VIN ASCII" RequestName="Ecriture du VIN en mémoire">
+<Rectangle Left="3105" Top="2329" Height="315" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="1055" Color="16777215" DataName="VIN HEXA" RequestName="Lecture du VIN">
+<Rectangle Left="3105" Top="2850" Height="315" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="1710" Color="16777215" DataName="Choix des dates" RequestName="Ecriture de données (dates fab et APV)">
+<Rectangle Left="3105" Top="4560" Height="326" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1695" Color="16777215" DataName="Jour" RequestName="Ecriture de données (dates fab et APV)">
+<Rectangle Left="3105" Top="5081" Height="326" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1695" Color="16777215" DataName="Mois" RequestName="Ecriture de données (dates fab et APV)">
+<Rectangle Left="3105" Top="5602" Height="326" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1695" Color="16777215" DataName="Année" RequestName="Ecriture de données (dates fab et APV)">
+<Rectangle Left="3105" Top="6124" Height="326" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Lecture des paramètres véhicule" Color="16744576" WindowState="0" Width="9660" Height="10530">
+
+<Label Text="Date de la dernière intervention APV" Color="12632256" Alignment="2">
+<Rectangle Left="914" Top="7320" Height="1920" Width="7831"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Fonction COSLAD J84M2S" Color="16744576" Alignment="2">
+<Rectangle Left="1358" Top="225" Height="480" Width="6944"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Identité du véhicule" Color="12632256" Alignment="2">
+<Rectangle Left="914" Top="5850" Height="1350" Width="7831"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Lecture des paramètres spécifiques au véhicule" Color="16744576" Alignment="2">
+<Rectangle Left="397" Top="645" Height="360" Width="8865"/>
+<Font Name="Book Antiqua" Size=" 16" Bold="0" Italic="0" Color="128"/></Label>
+<Label Text="Références du système" Color="12632256" Alignment="2">
+<Rectangle Left="914" Top="1290" Height="4440" Width="7831"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="8388608"/></Label>
+
+
+<Display Width="3665" Color="16777215" DataName="N° de code pièce MPR" RequestName="Lecture de l'identification système">
+<Rectangle Left="1136" Top="1676" Height="316" Width="7388"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3665" Color="16777215" DataName="Code identification diagnostic" RequestName="Lecture de l'identification système">
+<Rectangle Left="1136" Top="2182" Height="316" Width="7388"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3665" Color="16777215" DataName="N° de code ITG Fournisseur" RequestName="Lecture de l'identification système">
+<Rectangle Left="1136" Top="2688" Height="316" Width="7388"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3665" Color="16777215" DataName="N° de Hardware" RequestName="Lecture de l'identification système">
+<Rectangle Left="1136" Top="3194" Height="316" Width="7388"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3665" Color="16777215" DataName="N° du logiciel" RequestName="Lecture de l'identification système">
+<Rectangle Left="1136" Top="3700" Height="316" Width="7388"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3665" Color="16777215" DataName="Version UCE" RequestName="Lecture de l'identification système">
+<Rectangle Left="1136" Top="4206" Height="316" Width="7388"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3665" Color="16777215" DataName="Identification véhicule" RequestName="Lecture de l'identification système">
+<Rectangle Left="1136" Top="4712" Height="316" Width="7388"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3665" Color="16777215" DataName="Calibration du Soft" RequestName="Lecture de l'identification système">
+<Rectangle Left="1136" Top="5218" Height="316" Width="7388"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3660" Color="16777215" DataName="VIN ASCII" RequestName="Lecture du VIN">
+<Rectangle Left="1136" Top="6210" Height="343" Width="7388"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3665" Color="16777215" DataName="VIN HEXA" RequestName="Lecture du VIN">
+<Rectangle Left="1136" Top="6673" Height="343" Width="7388"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3660" Color="16777215" DataName="Jour APV" RequestName="Lecture des dates">
+<Rectangle Left="1136" Top="7718" Height="329" Width="7388"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3660" Color="16777215" DataName="Mois APV" RequestName="Lecture des dates">
+<Rectangle Left="1136" Top="8224" Height="329" Width="7388"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3660" Color="16777215" DataName="Année APV" RequestName="Lecture des dates">
+<Rectangle Left="1136" Top="8730" Height="329" Width="7388"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture des variables de correction" Color="16744576" WindowState="0" Width="12690" Height="9120">
+
+<Label Text="Fonction COSLAD J84M2S" Color="16744576" Alignment="2">
+<Rectangle Left="2906" Top="720" Height="480" Width="7641"/>
+<Font Name="Arial" Size=" 18" Bold="1" Italic="0" Color="8388608"/></Label>
+<Label Text="Lecture de la Trame ETat COSLAD" Color="16744576" Alignment="2">
+<Rectangle Left="2906" Top="1200" Height="420" Width="7641"/>
+<Font Name="Book Antiqua" Size=" 16" Bold="0" Italic="0" Color="128"/></Label>
+<Label Text="Statuts" Color="8421631" Alignment="2">
+<Rectangle Left="120" Top="5280" Height="1725" Width="6164"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="1" Color="8421376"/></Label>
+<Label Text="Valeurs à l'initialisation" Color="8454143" Alignment="2">
+<Rectangle Left="120" Top="2160" Height="3000" Width="6164"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="1" Color="8421376"/></Label>
+<Label Text="Valeurs en temps réel" Color="65408" Alignment="2">
+<Rectangle Left="6423" Top="2160" Height="4845" Width="6177"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="1" Color="8421376"/></Label>
+
+<Button Text="Lecture">
+<Rectangle Left="120" Top="7200" Height="867" Width="12480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture de la Trame ETat COSLAD"/>
+</Button>
+
+<Display Width="3725" Color="16777215" DataName="Hauteur AVant à l'initialisation" RequestName="Lecture de la Trame ETat COSLAD">
+<Rectangle Left="260" Top="2640" Height="309" Width="5883"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3720" Color="16777215" DataName="Hauteur AVant à l'initialisation en digits" RequestName="Lecture de la Trame ETat COSLAD">
+<Rectangle Left="260" Top="3258" Height="309" Width="5883"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3725" Color="16777215" DataName="Hauteur ARrière à l'initialisation" RequestName="Lecture de la Trame ETat COSLAD">
+<Rectangle Left="260" Top="3877" Height="309" Width="5883"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3725" Color="16777215" DataName="Hauteur ARrière à l'initialisation en digits" RequestName="Lecture de la Trame ETat COSLAD">
+<Rectangle Left="260" Top="4495" Height="309" Width="5883"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2225" Color="16777215" DataName="Initialisation" RequestName="Lecture de la Trame ETat COSLAD">
+<Rectangle Left="260" Top="5732" Height="309" Width="5883"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2225" Color="16777215" DataName="Etat des prestations LAD" RequestName="Lecture de la Trame ETat COSLAD">
+<Rectangle Left="260" Top="6351" Height="309" Width="5883"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3725" Color="16777215" DataName="Hauteur AVant" RequestName="Lecture de la Trame ETat COSLAD">
+<Rectangle Left="6570" Top="2640" Height="309" Width="5883"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3725" Color="16777215" DataName="Hauteur AVant en digits" RequestName="Lecture de la Trame ETat COSLAD">
+<Rectangle Left="6570" Top="3258" Height="309" Width="5883"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="255"/><Threshold Value=" 205" Color="255"/><Threshold Value=" 206" Color="65408"/><Threshold Value=" 3889" Color="65408"/><Threshold Value=" 3890" Color="255"/></Display>
+<Display Width="3725" Color="16777215" DataName="Hauteur ARrière" RequestName="Lecture de la Trame ETat COSLAD">
+<Rectangle Left="6570" Top="3877" Height="309" Width="5883"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3725" Color="16777215" DataName="Hauteur ARrière en digits" RequestName="Lecture de la Trame ETat COSLAD">
+<Rectangle Left="6570" Top="4495" Height="309" Width="5883"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="255"/><Threshold Value=" 272" Color="255"/><Threshold Value=" 273" Color="65408"/><Threshold Value=" 3791" Color="65408"/><Threshold Value=" 3792" Color="255"/></Display>
+<Display Width="3725" Color="16777215" DataName="Position des actionneurs non filtrée" RequestName="Lecture de la Trame ETat COSLAD">
+<Rectangle Left="6570" Top="5114" Height="309" Width="5883"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3725" Color="16777215" DataName="Position des actionneurs filtrée" RequestName="Lecture de la Trame ETat COSLAD">
+<Rectangle Left="6570" Top="5732" Height="309" Width="5883"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3725" Color="16777215" DataName="Vitesse véhicule" RequestName="Lecture de la Trame ETat COSLAD">
+<Rectangle Left="6570" Top="6351" Height="309" Width="5883"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture et effacement des défauts" Color="16744576" WindowState="0" Width="12120" Height="9120">
+
+<Label Text="Fonction COSLAD J84M2S" Color="16744576" Alignment="2">
+<Rectangle Left="660" Top="0" Height="420" Width="10800"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="8388608"/></Label>
+<Label Text="Lecture des défauts du système" Color="16744576" Alignment="2">
+<Rectangle Left="660" Top="525" Height="480" Width="10800"/>
+<Font Name="Book Antiqua" Size=" 16" Bold="0" Italic="0" Color="8388736"/></Label>
+
+<Button Text="Effacement des défauts">
+<Rectangle Left="600" Top="6606" Height="956" Width="3360"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text="Cette opération effacera toutes les pannes enregistrées, désirez-vous continuer?"/>
+<Send Delay="0" RequestName="ClearDiagnosticInformation"/>
+</Button>
+<Button Text="Lecture des défauts">
+<Rectangle Left="600" Top="4014" Height="1055" Width="3360"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="800" RequestName="ReadStatusOfDiagnosticTroubleCodes"/>
+</Button>
+
+<Display Width="2600" Color="16777215" DataName="Nombre de défauts" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="600" Top="1560" Height="328" Width="3360"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="DTC1" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="1560" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="Flag1" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="1840" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="Panne1" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="2117" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="DTC2" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="2815" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="Flag2" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="3095" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="Panne2" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="3375" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="DTC3" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="4071" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="Flag3" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="4376" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="Panne3" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="4696" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="DTC4" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="5328" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="Flag4" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="5608" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="Panne4" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="5888" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="DTC5" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="6606" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="Flag5" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="6878" Height="335" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1400" Color="16777215" DataName="Panne5" RequestName="ReadStatusOfDiagnosticTroubleCodes">
+<Rectangle Left="4440" Top="7152" Height="349" Width="6960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

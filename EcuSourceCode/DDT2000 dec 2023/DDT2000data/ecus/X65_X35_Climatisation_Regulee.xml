@@ -1,0 +1,1040 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="1.2.0.5" date="2008-03-12T17:02"/>
+<ddt:Target Name="X65 X35 Climatisation Régulée" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" href="X65_X35_Climatisation_Regulee.xml" upload="3/13/08" group="CAREG" email="laurent.prevot@renault.com"><Description><![CDATA[X65 et X35 régulée - Version automatique
+CDC 2000 0228/-A
+
+Statut   : Validé
+Version : 12/03/08 modif par L. PREVOT 56441
+Auteurs : Thomazo(Ecrans)  -  Pujos(CdC)
+
+*****************************************
+Le diag se fait sur ligne K
+*****************************************
+
+12/03/08  L. PREVOT 56441
+Suppression requete 21xx générique, de l'écran et des datas associées
+correction de paramètres sur les requêtes de pilotage des sorties
+
+28/08/07  L. PREVOT 56441
+Le calculateur de climatisation mis en place sur X35 est le X65 Careg.
+Cette base DDT est la reprise de la DDT X65_regulee avec :
+des corrections sur le format des temp. interieure et d'air soufflé
+
+]]></Description>
+<Projects xmlns=""><x35/><x65/></Projects>
+<Function Name="Climatisation" Address="41"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>12/03/2008 11:13:59</DateOfficialisation>
+<Failures Name="Ne contient pas de pannes" Id="0"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<K BaudRate="10400">
+<KWP Multipoint="0">
+<FastInit><KW1 Value="241"/>
+<KW2 Value="41"/></FastInit>
+</KWP>
+<InterByte Delay="0"/>
+<ReplyToRequest Delay="150"/>
+<RequestToReply Timeout="300"/>
+<TesterPresent Delay="3000"/>
+<OnError Delay="300"/>
+</K>
+<AutoIdents>
+<AutoIdent DiagVersion="0" Supplier="000" Soft="0003" Version="0000"/><AutoIdent DiagVersion="0" Supplier="000" Soft="0004" Version="0000"/><AutoIdent DiagVersion="0" Supplier="000" Soft="0005" Version="0000"/><AutoIdent DiagVersion="0" Supplier="000" Soft="0006" Version="0000"/></AutoIdents>
+<Datas>
+
+<Data Name="Code ITG Fournisseur">
+<Comment><![CDATA[codé sur 4 octets 00 00 04 02 ==> 42]]></Comment>
+<Mnemonic>REF_ITG</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="Configuration du système">
+<Comment><![CDATA[Configuration du système]]></Comment>
+<Mnemonic>TBIT</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Echo Service">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Effacer toutes les Pannes">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="N° calibration">
+<Comment><![CDATA[Numéro de calibration]]></Comment>
+<Mnemonic>REF_CAL</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="N° version">
+<Comment><![CDATA[Numéro de version]]></Comment>
+<Mnemonic>REF_VER</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Pannes mémorisées 1">
+<Comment><![CDATA[Pannes mémorisées 1]]></Comment>
+<Mnemonic>PAN_MEM_1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Pannes mémorisées 2">
+<Comment><![CDATA[Pannes mémorisées 2]]></Comment>
+<Mnemonic>PAN_MEM_2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Pannes présentes 1">
+<Comment><![CDATA[Pannes présentes 1]]></Comment>
+<Mnemonic>PAN_PRE_1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Pannes présentes 2">
+<Comment><![CDATA[Pannes présentes 2]]></Comment>
+<Mnemonic>PAN_PRE_2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Position du volet de distribution">
+<Comment><![CDATA[Position du volet de distribution]]></Comment>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="Position du volet de mixage">
+<Comment><![CDATA[Position du volet de mixage]]></Comment>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="Référence RENAULT">
+<Comment><![CDATA[Référence RENAULT]]></Comment>
+<Mnemonic>REF_REN</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Sens de pilotage Distrib">
+<Bits>
+<List>
+<Item Value="0" Text="Vers Aérateur"/>
+<Item Value="240" Text="Vers Dégi"/></List>
+</Bits>
+</Data>
+<Data Name="Sens de pilotage Mixage">
+<Bits>
+<List>
+<Item Value="0" Text="Vers tout froid"/>
+<Item Value="240" Text="Vers tout chaud"/></List>
+</Bits>
+</Data>
+<Data Name="Sens de pilotage Recy">
+<Bits>
+<List>
+<Item Value="0" Text="Vers Air Ext."/>
+<Item Value="240" Text="Vers RECY"/></List>
+</Bits>
+</Data>
+<Data Name="Service">
+<Bytes count="1"/>
+</Data>
+<Data Name="Sortie à arreter">
+<Comment><![CDATA[Sortie à arrêter]]></Comment>
+<Mnemonic>NSP</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="GMV habitacle"><![CDATA[{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil\fprq2 MS Sans Serif;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 
+\par }
+]]></Item>
+<Item Value="129" Text="AC_CYCLE"/>
+<Item Value="132" Text="Moteur de recyclage"/>
+<Item Value="133" Text="Témoins Fct"/>
+<Item Value="134" Text="Moteur de distribution"/>
+<Item Value="135" Text="Moteur de mixage"/></List>
+</Bits>
+</Data>
+<Data Name="Sortie à piloter">
+<Comment><![CDATA[Sortie à piloter]]></Comment>
+<Mnemonic>NSP</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="GMV habitacle"/>
+<Item Value="129" Text="AC_CYCLE"/>
+<Item Value="132" Text="Moteur de recyclage"/>
+<Item Value="133" Text="Témoins Fct"/>
+<Item Value="134" Text="Moteur de distribution"/>
+<Item Value="135" Text="Moteur de mixage"/></List>
+</Bits>
+</Data>
+<Data Name="Sortie à surveiller">
+<Comment><![CDATA[Sortie à surveiller]]></Comment>
+<Mnemonic>NSP</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="GMV habitacle"/>
+<Item Value="129" Text="AC_CYCLE"/>
+<Item Value="132" Text="Moteur de recyclage"/>
+<Item Value="133" Text="Témoins Fct"/>
+<Item Value="134" Text="Moteur de distribution"/>
+<Item Value="135" Text="Moteur de mixage"/></List>
+</Bits>
+</Data>
+<Data Name="Status de la sortie">
+<Comment><![CDATA[Status de la sortie]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="- rien - "/>
+<Item Value="1" Text="pilotage EN COURS"/>
+<Item Value="2" Text="pilotage TERMINE"/>
+<Item Value="241" Text="pilotage SENS INVERSE EN COURS"/></List>
+</Bits>
+</Data>
+<Data Name="Température Air Soufflé sortie radiateur">
+<Comment><![CDATA[Température d' Air soufflé 1]]></Comment>
+<Bits count="7">
+<Scaled Unit="°C" Step=" .5" Format="#0.0"/>
+</Bits>
+</Data>
+<Data Name="Température extérieure">
+<Bits count="7">
+<Scaled Unit="°C" Step=" .5" Format="#0.0"/>
+</Bits>
+</Data>
+<Data Name="Température Intérieure">
+<Comment><![CDATA[Température Intérieur]]></Comment>
+<Bits count="7">
+<Scaled Unit="°C" Step=" .5" Format="#0.0"/>
+</Bits>
+</Data>
+<Data Name="Tension alimentation du calculateur">
+<Comment><![CDATA[Tension d' alimentation du calculateur]]></Comment>
+<Mnemonic>SSV_DIA</Mnemonic>
+<Bits>
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="Version climatisation">
+<Comment><![CDATA[Version climatisation : Régulée]]></Comment>
+<Mnemonic>VER_CA</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="BAC"/>
+<Item Value="6" Text="X65 Régulée"/></List>
+</Bits>
+</Data>
+<Data Name="Vitesse moto ventillateur">
+<Comment><![CDATA[Vitesse moto ventilateur]]></Comment>
+<Mnemonic>CBS_DIA</Mnemonic>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée CC sonde Temp. Air Soufflé sortie radiateur">
+<Comment><![CDATA[Panne mémorisée CC sonde Temp. Air Soufflé Pieds]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée CC sonde Temp. intérieur">
+<Comment><![CDATA[Panne mémorisée CC sonde Temp. Intérieure]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée CO sonde Temp. Air Soufflé sortie radiateur">
+<Comment><![CDATA[Panne mémorisée CO sonde Temp. Air Soufflé Pieds]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée CO sonde Temp. intérieur">
+<Comment><![CDATA[Panne mémorisée CO sonde Temp. Intérieure]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne présente CC sonde Temp. Air Soufflé sortie radiateur">
+<Comment><![CDATA[Panne présente CC sonde Temp. Air Soufflé Pieds]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne présente CC sonde Temp. intérieur">
+<Comment><![CDATA[Panne présente CC sonde Temp. Intérieure]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne présente CO retour vitesse">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne présente CO sonde Temp. Air Soufflé sortie radiateur">
+<Comment><![CDATA[Panne présente CO sonde Temp. Air Soufflé Pieds]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne présente CO sonde Temp. intérieur">
+<Comment><![CDATA[Panne présente CO sonde Temp. Intérieure]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne présente EEPROM">
+<Comment><![CDATA[Panne présente EEPROM]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne présente moteur de distribution">
+<Comment><![CDATA[Panne présente moteur de distrubution]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne présente moteur de mixage">
+<Comment><![CDATA[Panne présente moteur de mixage]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne présente moteur de recyclage">
+<Comment><![CDATA[Panne présente moteur de recyclage]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Signe Température Extérieure">
+<Comment><![CDATA[Température Extérieur]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="+"/>
+<Item Value="1" Text="-"/></List>
+</Bits>
+</Data>
+<Data Name="Signe Température Intérieure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="+"/>
+<Item Value="1" Text="-"/></List>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée CO retour vitesse">
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée EEPROM">
+<Comment><![CDATA[Panne mémorisée EEPROM]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée moteur de distribution">
+<Comment><![CDATA[Panne mémorisée moteur de distrubution]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée moteur de mixage">
+<Comment><![CDATA[Panne mémorisée moteur de mixage]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée moteur de recyclage">
+<Comment><![CDATA[Panne mémorisée moteur de recyclage]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Présence +12V ACC">
+<Comment><![CDATA[Présence +12 V ACC]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="Présence du +12 LANT">
+<Comment><![CDATA[Présence du +12 LANT]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="N° hardware">
+<Comment><![CDATA[Numéro de Hardware]]></Comment>
+<Mnemonic>REF_HDW</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Signe TASsortie radiateur">
+<Bits count="1">
+<List>
+<Item Value="0" Text="+"/>
+<Item Value="1" Text="-"/></List>
+</Bits>
+</Data>
+<Data Name="Commande recy">
+<Comment><![CDATA[Commande recy]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Air ext"/>
+<Item Value="1" Text="Recy"/></List>
+</Bits>
+</Data>
+<Data Name="Demande AC">
+<Comment><![CDATA[demande AC]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="Demande RECY">
+<Comment><![CDATA[demande RECY]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="N° du logiciel">
+<Comment><![CDATA[Numéro du logiciel]]></Comment>
+<Mnemonic>REF_SFW</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="SessionName">
+<Bits>
+<List>
+<Item Value="129" Text="DefaultSession"/>
+<Item Value="160" Text="EngineeringSession"/>
+<Item Value="192" Text="AfterSaleSession"/></List>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="00-DébutPilotage des Sorties">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308000</SentBytes>
+<DataItem Name="Sortie à piloter" Ref="1" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="01-DébutPilotage GMV habitacle">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="02-DébutPilotage AC_CYCLE">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308100</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="05-DebutPilotage Moteur Recyclage">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308400</SentBytes>
+<DataItem Name="Sens de pilotage Recy" Ref="1" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="06-DebutPilotageTémoins de FCT">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308500</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="07-DebutPilotage Moteur distribution">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308600</SentBytes>
+<DataItem Name="Sens de pilotage Distrib" Ref="1" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="08-DebutPilotage Moteur mixage">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>308700</SentBytes>
+<DataItem Name="Sens de pilotage Mixage" Ref="1" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="10-ArretPilotageDesSorties">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308011</SentBytes>
+<DataItem Name="Sortie à arreter" Ref="1" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="11-ArretPilotageGMV habitacle">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308011</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="12-ArretPilotageAC_CYCLE">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308111</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="15-ArretPilotageMoteurRecyclage">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308411</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="16-ArretPilotage Témoins de Fct">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308511</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="17-ArretPilotage Moteur Distribution">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308611</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="18-ArretPilotageMoteur Mixage">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>308711</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="ClearDiagInfo">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+<DataItem Name="Effacer toutes les Pannes" Ref="1" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Diagnostic Système">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C0</SentBytes>
+</Sent>
+<Received MinBytes="20">
+<DataItem Name="Panne mémorisée CC sonde Temp. Air Soufflé sortie radiateur" Ref="1" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Panne mémorisée CC sonde Temp. intérieur" Ref="1" FirstByte="5" BitOffset="7"/>
+<DataItem Name="Panne mémorisée CO sonde Temp. Air Soufflé sortie radiateur" Ref="1" FirstByte="5"/>
+<DataItem Name="Panne mémorisée CO sonde Temp. intérieur" Ref="1" FirstByte="5" BitOffset="6"/>
+<DataItem Name="Panne présente CC sonde Temp. Air Soufflé sortie radiateur" Ref="1" FirstByte="3" BitOffset="1"/>
+<DataItem Name="Panne présente CC sonde Temp. intérieur" Ref="1" FirstByte="3" BitOffset="7"/>
+<DataItem Name="Panne présente CO retour vitesse" Ref="1" FirstByte="4" BitOffset="6"/>
+<DataItem Name="Panne présente CO sonde Temp. Air Soufflé sortie radiateur" Ref="1" FirstByte="3"/>
+<DataItem Name="Panne présente CO sonde Temp. intérieur" Ref="1" FirstByte="3" BitOffset="6"/>
+<DataItem Name="Panne présente EEPROM" Ref="1" FirstByte="4"/>
+<DataItem Name="Panne présente moteur de distribution" Ref="1" FirstByte="4" BitOffset="5"/>
+<DataItem Name="Panne présente moteur de mixage" Ref="1" FirstByte="4" BitOffset="4"/>
+<DataItem Name="Panne présente moteur de recyclage" Ref="1" FirstByte="4" BitOffset="3"/>
+<DataItem Name="Signe Température Extérieure" Ref="1" FirstByte="9"/>
+<DataItem Name="Signe Température Intérieure" Ref="1" FirstByte="8"/>
+<DataItem Name="Panne mémorisée CO retour vitesse" Ref="1" FirstByte="6" BitOffset="6"/>
+<DataItem Name="Panne mémorisée EEPROM" Ref="1" FirstByte="6"/>
+<DataItem Name="Panne mémorisée moteur de distribution" Ref="1" FirstByte="6" BitOffset="5"/>
+<DataItem Name="Panne mémorisée moteur de mixage" Ref="1" FirstByte="6" BitOffset="4"/>
+<DataItem Name="Panne mémorisée moteur de recyclage" Ref="1" FirstByte="6" BitOffset="3"/>
+<DataItem Name="Signe TASsortie radiateur" Ref="1" FirstByte="12"/>
+<DataItem Name="Commande recy" Ref="1" FirstByte="20" BitOffset="1"/>
+<DataItem Name="Demande AC" Ref="1" FirstByte="20" BitOffset="7"/>
+<DataItem Name="Demande RECY" Ref="1" FirstByte="20" BitOffset="6"/>
+<DataItem Name="Pannes mémorisées 1" Ref="1" FirstByte="5"/>
+<DataItem Name="Pannes mémorisées 2" Ref="1" FirstByte="6"/>
+<DataItem Name="Pannes présentes 1" Ref="1" FirstByte="3"/>
+<DataItem Name="Pannes présentes 2" Ref="1" FirstByte="4"/>
+<DataItem Name="Position du volet de distribution" Ref="1" FirstByte="16"/>
+<DataItem Name="Position du volet de mixage" Ref="1" FirstByte="17"/>
+<DataItem Name="Présence +12V ACC" Ref="1" FirstByte="19" BitOffset="7"/>
+<DataItem Name="Présence du +12 LANT" Ref="1" FirstByte="19" BitOffset="6"/>
+<DataItem Name="Température Air Soufflé sortie radiateur" Ref="1" FirstByte="12" BitOffset="1"/>
+<DataItem Name="Température extérieure" Ref="1" FirstByte="9" BitOffset="1"/>
+<DataItem Name="Température Intérieure" Ref="1" FirstByte="8" BitOffset="1"/>
+<DataItem Name="Tension alimentation du calculateur" Ref="1" FirstByte="7"/>
+<DataItem Name="Vitesse moto ventillateur" Ref="1" FirstByte="18"/>
+</Received>
+</Request>
+<Request Name="Identification système">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="Code ITG Fournisseur" Ref="1" FirstByte="8"/>
+<DataItem Name="Configuration du système" Ref="1" FirstByte="23"/>
+<DataItem Name="N° calibration" Ref="1" FirstByte="21"/>
+<DataItem Name="N° du logiciel" Ref="1" FirstByte="17"/>
+<DataItem Name="N° version" Ref="1" FirstByte="19"/>
+<DataItem Name="N° hardware" Ref="1" FirstByte="12"/>
+<DataItem Name="Référence RENAULT" Ref="1" FirstByte="3"/>
+<DataItem Name="Version climatisation" Ref="1" FirstByte="26"/>
+</Received>
+</Request>
+<Request Name="StatusPilotageDesSorties">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>308001</SentBytes>
+<DataItem Name="Sortie à surveiller" Ref="1" FirstByte="2"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de la sortie" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic session selector in DDT2000 tool-Spec A]]></Comment>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="SessionName" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Alimentation">
+<DeviceData Name="Tension alimentation du calculateur" FailureFlag="0"/><DeviceData Name="Présence +12V ACC" FailureFlag="0"/><DeviceData Name="Présence du +12 LANT" FailureFlag="0"/>
+
+</Device>
+<Device Name="Capteur Temp Int.">
+<DeviceData Name="Signe Température Intérieure" FailureFlag="0"/><DeviceData Name="Température Intérieure" FailureFlag="0"/><DeviceData Name="Panne mémorisée CC sonde Temp. intérieur" FailureFlag="0"/><DeviceData Name="Panne présente CC sonde Temp. intérieur" FailureFlag="0"/><DeviceData Name="Panne mémorisée CO sonde Temp. intérieur" FailureFlag="0"/><DeviceData Name="Panne présente CO sonde Temp. intérieur" FailureFlag="0"/>
+
+</Device>
+<Device Name="Capteur Temp. air soufflé">
+<DeviceData Name="Signe TASsortie radiateur" FailureFlag="0"/><DeviceData Name="Température Air Soufflé sortie radiateur" FailureFlag="0"/><DeviceData Name="Panne mémorisée CC sonde Temp. Air Soufflé sortie radiateur" FailureFlag="0"/><DeviceData Name="Panne présente CO sonde Temp. Air Soufflé sortie radiateur" FailureFlag="0"/><DeviceData Name="Panne mémorisée CO sonde Temp. Air Soufflé sortie radiateur" FailureFlag="0"/><DeviceData Name="Panne présente CC sonde Temp. Air Soufflé sortie radiateur" FailureFlag="0"/>
+
+</Device>
+<Device Name="Consigne Pulseur" Type="3">
+<DeviceData Name="Vitesse moto ventillateur" FailureFlag="0"/><DeviceData Name="Panne présente CO retour vitesse" FailureFlag="0"/><DeviceData Name="Panne mémorisée CO retour vitesse" FailureFlag="0"/>
+
+</Device>
+<Device Name="Position volet Recy" Type="3">
+<DeviceData Name="Commande recy" FailureFlag="0"/><DeviceData Name="Panne mémorisée moteur de recyclage" FailureFlag="0"/><DeviceData Name="Panne présente moteur de recyclage" FailureFlag="0"/>
+
+</Device>
+<Device Name="Position volet mixage" Type="3">
+<DeviceData Name="Position du volet de mixage" FailureFlag="0"/><DeviceData Name="Panne présente moteur de mixage" FailureFlag="0"/><DeviceData Name="Panne mémorisée moteur de mixage" FailureFlag="0"/>
+
+</Device>
+<Device Name="Position volets distribution" Type="3">
+<DeviceData Name="Position du volet de distribution" FailureFlag="0"/><DeviceData Name="Panne mémorisée moteur de distribution" FailureFlag="0"/><DeviceData Name="Panne présente moteur de distribution" FailureFlag="0"/>
+
+</Device>
+<Device Name="Eeprom" Type="2">
+<DeviceData Name="Panne présente EEPROM" FailureFlag="0"/><DeviceData Name="Panne mémorisée EEPROM" FailureFlag="0"/>
+
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Ecrans Etudes">
+
+<Screen Name="Ecran Diag" Color="11055106" WindowState="2" Width="11700" Height="7500">
+
+<Label Text="CC sonde température air soufflé sortie radiateur" Color="9816778" Alignment="0">
+<Rectangle Left="4680" Top="1320" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="CC sonde température intérieure" Color="9816778" Alignment="0">
+<Rectangle Left="4680" Top="720" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="CO retour vitesse" Color="9816778" Alignment="0">
+<Rectangle Left="4680" Top="3120" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="CO sonde température air soufflé sortie radiateur" Color="9816778" Alignment="0">
+<Rectangle Left="4680" Top="1620" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="CO sonde température intérieure" Color="9816778" Alignment="0">
+<Rectangle Left="4680" Top="1020" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Etat commande" Color="13761966" Alignment="2">
+<Rectangle Left="120" Top="60" Height="300" Width="4320"/>
+<Font Name="MS Sans Serif" Size=" 9.75" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Panne EEPROM" Color="9816778" Alignment="0">
+<Rectangle Left="4680" Top="2820" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Panne moteur distribution" Color="9816778" Alignment="0">
+<Rectangle Left="4680" Top="2220" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Panne moteur mixage" Color="9816778" Alignment="0">
+<Rectangle Left="4680" Top="1920" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Panne moteur recyclage" Color="9816778" Alignment="0">
+<Rectangle Left="4680" Top="2520" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Pannes" Color="13761966" Alignment="2">
+<Rectangle Left="4620" Top="60" Height="300" Width="4860"/>
+<Font Name="MS Sans Serif" Size=" 9.75" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Pilotage des sorties" Color="13761966" Alignment="2">
+<Rectangle Left="60" Top="3540" Height="2580" Width="9240"/>
+<Font Name="MS Sans Serif" Size=" 9.75" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="PM" Color="14408448" Alignment="2">
+<Rectangle Left="9060" Top="420" Height="300" Width="360"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="-2147483630"/></Label>
+<Label Text="PP" Color="14408448" Alignment="2">
+<Rectangle Left="8460" Top="405" Height="300" Width="360"/>
+<Font Name="MS Sans Serif" Size=" 11" Bold="0" Italic="0" Color="-2147483630"/></Label>
+
+<Button Text="   Début AC_CYCLE">
+<Rectangle Left="7560" Top="4320" Height="300" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="02-DébutPilotage AC_CYCLE"/>
+</Button>
+<Button Text="Arrêt AC_CYCLE">
+<Rectangle Left="7560" Top="4680" Height="300" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="12-ArretPilotageAC_CYCLE"/>
+</Button>
+<Button Text="Arrêt GMV habitacle">
+<Rectangle Left="7560" Top="3960" Height="300" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="11-ArretPilotageGMV habitacle"/>
+</Button>
+<Button Text="Arrêt moteur distribution">
+<Rectangle Left="5520" Top="5280" Height="300" Width="1980"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="17-ArretPilotage Moteur Distribution"/>
+</Button>
+<Button Text="Arrêt moteur mixage">
+<Rectangle Left="5520" Top="4920" Height="300" Width="1980"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="18-ArretPilotageMoteur Mixage"/>
+</Button>
+<Button Text="Arrêt moteur recyclage">
+<Rectangle Left="5520" Top="5640" Height="300" Width="1980"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="15-ArretPilotageMoteurRecyclage"/>
+</Button>
+<Button Text="Arrêt pilotage">
+<Rectangle Left="4500" Top="4140" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="10-ArretPilotageDesSorties"/>
+</Button>
+<Button Text="Arrêt témoins fonctionnement">
+<Rectangle Left="7560" Top="5580" Height="480" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="16-ArretPilotage Témoins de Fct"/>
+</Button>
+<Button Text="Clear pannes">
+<Rectangle Left="4740" Top="390" Height="300" Width="3600"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="ClearDiagInfo"/>
+</Button>
+<Button Text="Début GMV habitacle">
+<Rectangle Left="7560" Top="3600" Height="300" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="01-DébutPilotage GMV habitacle"/>
+</Button>
+<Button Text="Début moteur distribution">
+<Rectangle Left="3480" Top="5280" Height="300" Width="1980"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="07-DebutPilotage Moteur distribution"/>
+</Button>
+<Button Text="Début moteur mixage">
+<Rectangle Left="3480" Top="4920" Height="300" Width="1980"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="08-DebutPilotage Moteur mixage"/>
+</Button>
+<Button Text="Début moteur recyclage">
+<Rectangle Left="3480" Top="5640" Height="300" Width="1980"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="05-DebutPilotage Moteur Recyclage"/>
+</Button>
+<Button Text="Début pilotage">
+<Rectangle Left="4500" Top="3840" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="00-DébutPilotage des Sorties"/>
+</Button>
+<Button Text="Début témoins fonctionnement ">
+<Rectangle Left="7560" Top="5040" Height="480" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="06-DebutPilotageTémoins de FCT"/>
+</Button>
+
+<Input Width="1260" Color="16777215" DataName="Sortie à piloter" RequestName="00-DébutPilotage des Sorties">
+<Rectangle Left="120" Top="3840" Height="300" Width="4380"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1260" Color="16777215" DataName="Sortie à arreter" RequestName="10-ArretPilotageDesSorties">
+<Rectangle Left="120" Top="4140" Height="300" Width="4380"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1260" Color="16777215" DataName="Sortie à surveiller" RequestName="StatusPilotageDesSorties">
+<Rectangle Left="120" Top="4440" Height="300" Width="4380"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1800" Color="16777215" DataName="Sens de pilotage Mixage" RequestName="08-DebutPilotage Moteur mixage">
+<Rectangle Left="120" Top="4920" Height="300" Width="3300"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1800" Color="16777215" DataName="Sens de pilotage Distrib" RequestName="07-DebutPilotage Moteur distribution">
+<Rectangle Left="120" Top="5280" Height="300" Width="3300"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1800" Color="16777215" DataName="Sens de pilotage Recy" RequestName="05-DebutPilotage Moteur Recyclage">
+<Rectangle Left="120" Top="5640" Height="300" Width="3300"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3540" Color="16777215" DataName="Présence +12V ACC" RequestName="Diagnostic Système">
+<Rectangle Left="180" Top="480" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Présence du +12 LANT" RequestName="Diagnostic Système">
+<Rectangle Left="180" Top="720" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Demande AC" RequestName="Diagnostic Système">
+<Rectangle Left="180" Top="960" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Demande RECY" RequestName="Diagnostic Système">
+<Rectangle Left="180" Top="1200" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Commande recy" RequestName="Diagnostic Système">
+<Rectangle Left="180" Top="1440" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Tension alimentation du calculateur" RequestName="Diagnostic Système">
+<Rectangle Left="180" Top="1680" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Température Intérieure" RequestName="Diagnostic Système">
+<Rectangle Left="180" Top="1920" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Température extérieure" RequestName="Diagnostic Système">
+<Rectangle Left="180" Top="2160" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Température Air Soufflé sortie radiateur" RequestName="Diagnostic Système">
+<Rectangle Left="180" Top="2400" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Position du volet de mixage" RequestName="Diagnostic Système">
+<Rectangle Left="180" Top="2640" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Position du volet de distribution" RequestName="Diagnostic Système">
+<Rectangle Left="180" Top="2880" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Vitesse moto ventillateur" RequestName="Diagnostic Système">
+<Rectangle Left="180" Top="3120" Height="240" Width="4260"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Signe Température Intérieure" RequestName="Diagnostic Système">
+<Rectangle Left="3540" Top="1920" Height="240" Width="180"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Signe Température Extérieure" RequestName="Diagnostic Système">
+<Rectangle Left="3540" Top="2160" Height="240" Width="180"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Signe TASsortie radiateur" RequestName="Diagnostic Système">
+<Rectangle Left="3540" Top="2400" Height="240" Width="180"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1440" Color="16777215" DataName="Status de la sortie" RequestName="StatusPilotageDesSorties">
+<Rectangle Left="4500" Top="4440" Height="300" Width="2820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne présente CC sonde Temp. intérieur" RequestName="Diagnostic Système">
+<Rectangle Left="8400" Top="720" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne présente CO sonde Temp. intérieur" RequestName="Diagnostic Système">
+<Rectangle Left="8400" Top="1020" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne présente CC sonde Temp. Air Soufflé sortie radiateur" RequestName="Diagnostic Système">
+<Rectangle Left="8400" Top="1320" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne présente CO sonde Temp. Air Soufflé sortie radiateur" RequestName="Diagnostic Système">
+<Rectangle Left="8400" Top="1620" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne présente moteur de mixage" RequestName="Diagnostic Système">
+<Rectangle Left="8400" Top="1920" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne présente moteur de distribution" RequestName="Diagnostic Système">
+<Rectangle Left="8400" Top="2220" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne présente moteur de recyclage" RequestName="Diagnostic Système">
+<Rectangle Left="8400" Top="2520" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne présente EEPROM" RequestName="Diagnostic Système">
+<Rectangle Left="8400" Top="2820" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne présente CO retour vitesse" RequestName="Diagnostic Système">
+<Rectangle Left="8400" Top="3120" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne mémorisée CC sonde Temp. intérieur" RequestName="Diagnostic Système">
+<Rectangle Left="9000" Top="720" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne mémorisée CO sonde Temp. intérieur" RequestName="Diagnostic Système">
+<Rectangle Left="9000" Top="1020" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne mémorisée CC sonde Temp. Air Soufflé sortie radiateur" RequestName="Diagnostic Système">
+<Rectangle Left="9000" Top="1320" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne mémorisée CO sonde Temp. Air Soufflé sortie radiateur" RequestName="Diagnostic Système">
+<Rectangle Left="9000" Top="1620" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne mémorisée moteur de mixage" RequestName="Diagnostic Système">
+<Rectangle Left="9000" Top="1920" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne mémorisée moteur de distribution" RequestName="Diagnostic Système">
+<Rectangle Left="9000" Top="2220" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne mémorisée moteur de recyclage" RequestName="Diagnostic Système">
+<Rectangle Left="9000" Top="2520" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne mémorisée EEPROM" RequestName="Diagnostic Système">
+<Rectangle Left="9000" Top="2820" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Panne mémorisée CO retour vitesse" RequestName="Diagnostic Système">
+<Rectangle Left="9000" Top="3120" Height="240" Width="480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2000" Color="16777215" DataName="Effacer toutes les Pannes" RequestName="ClearDiagInfo">
+<Rectangle Left="120" Top="6360" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Identification et configuration" Color="8421504" WindowState="2" Width="9780" Height="7380">
+
+<Label Text="Identification" Color="4194304" Alignment="2">
+<Rectangle Left="1620" Top="480" Height="2520" Width="3540"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="0" Italic="0" Color="65535"/></Label>
+<Label Text="IDENTIFICATION et CONFIGURATION" Color="8421504" Alignment="0">
+<Rectangle Left="180" Top="60" Height="300" Width="5220"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="65535"/></Label>
+
+
+<Display Width="1980" Color="16777215" DataName="Référence RENAULT" RequestName="Identification système">
+<Rectangle Left="1680" Top="780" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1980" Color="16777215" DataName="Code ITG Fournisseur" RequestName="Identification système">
+<Rectangle Left="1680" Top="1080" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1980" Color="16777215" DataName="N° hardware" RequestName="Identification système">
+<Rectangle Left="1680" Top="1380" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1980" Color="16777215" DataName="N° du logiciel" RequestName="Identification système">
+<Rectangle Left="1680" Top="1680" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1980" Color="16777215" DataName="N° version" RequestName="Identification système">
+<Rectangle Left="1680" Top="1980" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1980" Color="16777215" DataName="N° calibration" RequestName="Identification système">
+<Rectangle Left="1680" Top="2280" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1980" Color="16777215" DataName="Version climatisation" RequestName="Identification système">
+<Rectangle Left="1680" Top="2580" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

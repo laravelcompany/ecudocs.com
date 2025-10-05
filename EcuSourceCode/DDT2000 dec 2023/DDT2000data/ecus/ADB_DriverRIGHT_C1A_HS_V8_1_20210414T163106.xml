@@ -1,0 +1,2669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+  <Generator name="DDT2000 XML library" version="2.2.0.0" date="2021-04-08T16:42"/>
+  <ddt:Target Name="ADB_RIGHT_C1A_HS_V8" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="SOW Ousmane (renexter) &lt;ousmane.p.sow-extern@renault.com&gt;" href="ADB_DriverRIGHT_C1A_HS_V8_1_20210414T163106.xml" upload="4/14/2021" group="R_ADB Driver C1AHS"><Description><![CDATA[08/04/2021
+J-P Malet (LDE) / Julien PENEAU (AEES)
+Major update for Routine, DID, DTC and Screens.
+
+
+]]></Description>
+    <Projects xmlns=""><xHN/></Projects><Checks Version="V1.11" Date="20210414T162245">
+      <Ctrl Type="DDT2000" Warning="30" Error="0"/>
+      <Ctrl Type="CPDD" Warning="15" Error="0"/>
+      <Ctrl Type="DAIMLER-ODX" Warning="0" Error="5"/>
+      <Ctrl Type="ALLIANCE-ODX" Warning="0" Error="0"/>
+    </Checks>
+    
+    <Function Name="ADB-R" Address="115" LogicalAddress="0073"/>
+    <Language Name="Français" Reference="1"/>
+    
+    <DateOfficialisation>20/03/2020 13:48:08</DateOfficialisation>
+    <Failures Name="Ne contient pas de pannes" Id="0"/>
+    <PowerSupply>
+      <Ground/>
+      <Vbat/>
+      <AfterContact/>
+    </PowerSupply>
+    <CAN BaudRate="10400" Multipoint="1">
+      <SendId>
+        <CANId Value="416969714" Extended="1"/>
+      </SendId>
+      <ReceiveId>
+        <CANId Value="417002099" Extended="1"/>
+      </ReceiveId>
+    </CAN>
+    <AutoIdents>
+      <AutoIdent DiagVersion="4" Supplier="HELLA" Soft="X200      " Version="00000000000000000000000000000000"/>
+      <AutoIdent DiagVersion="4" Supplier="HELLA" Soft="X200-3    " Version="00000000000000000000000000000000"/>
+      <AutoIdent DiagVersion="4" Supplier="HELLA" Soft="X200-2    " Version="00000000000000000000000000000000"/>
+      <AutoIdent DiagVersion="4" Supplier="HELLA" Soft="X270      " Version="00000000000000000000000000000000"/>
+      <AutoIdent DiagVersion="4" Supplier="HELLA" Soft="X271      " Version="00000000000000000000000000000000"/>
+    </AutoIdents>
+    <Datas>
+      <Data Name="applicationDataIdentification">
+        <Comment><![CDATA[Calibration Number]]></Comment>
+        <Mnemonic>DID_$F182</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer specific ECU application data identification record.</FONT></P>
+<P><FONT size=2>The format of the application data identification structure shall be ECU specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="diagnosticVersion">
+        <Comment><![CDATA[VDIAG]]></Comment>
+        <Mnemonic>DID_$F1A0</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the diagnostic version of the ECU.</FONT></P>
+<P><FONT size=2>It is defined by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>Refer to manufacture ECU designer.</FONT></P>]]></Description>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="ECUSerialNumber">
+        <Comment><![CDATA[ECU serial number]]></Comment>
+        <Mnemonic>DID_$F18C</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the ECU (server) serial number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific.</FONT></P>]]></Description>
+        <Bytes count="20" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareNumber">
+        <Comment><![CDATA[Software Number (Supplier)]]></Comment>
+        <Mnemonic>DID_$F194</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierIdentifier">
+        <Comment><![CDATA[Name and address information of the supplier.]]></Comment>
+        <Mnemonic>DID_$F18A</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier name and address information.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="5" ascii="1"/>
+      </Data>
+      <Data Name="VIN">
+        <Comment><![CDATA[Vehicle Identification Number]]></Comment>
+        <Mnemonic>DID_$F190</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the VIN number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be specified by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>It shall not be erased when the ECU is reprogrammed.</FONT></P>]]></Description>
+        <Bytes count="17" ascii="1"/>
+      </Data>
+      <Data Name="SessionName">
+        <Comment><![CDATA[Diagnostic session values. See documentation for more information.]]></Comment>
+        <Mnemonic>LEV_DS</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>[0x00] : ISO / SAE Reserved<BR>[0x01] : Default session<BR>[0x02] : Programming session<BR>[0x03] : Extended diagnostic session<BR>[0x04] : Safety system diagnostic session<BR>[0x05 - 0x3F] : ISO / SAE Reserved<BR>[0x40 - 0x5F] : Vehicle manufacturer specific<BR>[0x60 - 0x7E] : System supplier specific<BR>[0x7F] : ISO / SAE Reserved</FONT></P>]]></Description>
+        <Bits>
+          <List>
+            <Item Value="1" Text="DefaultSession"/>
+            <Item Value="2" Text="ProgrammingSession"/>
+            <Item Value="3" Text="ExtendedDiagnosticSession"/>
+            <Item Value="4" Text="SafetySystemDiagnosticSession"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="StatusOfDTC">
+        <Mnemonic>DTCASR_SODTC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailed">
+        <Mnemonic>TF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedThisMonitoringCycle">
+        <Mnemonic>TFTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.pendingDTC">
+        <Mnemonic>PDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.confirmedDTC">
+        <Mnemonic>CDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedSinceLastClear">
+        <Mnemonic>TNCSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedSinceLastClear">
+        <Mnemonic>TFSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+        <Mnemonic>TNCTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.warningIndicatorRequested">
+        <Mnemonic>WIR</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.Category">
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="General Failure Information"/>
+            <Item Value="1" Text="General Electrical Failures"/>
+            <Item Value="2" Text="General Signal Failures"/>
+            <Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="10" Text="General Electrical Failures - 2"/>
+            <Item Value="15" Text="Vehicle manufacturer / System supplier specific"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Device and failure type ODB codding"/>
+            <Item Value="1" Text="General Electrical Failure"/>
+            <Item Value="2" Text="General signal failure"/>
+            <Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="10" Text="General Electrical Failures - 2"/>
+            <Item Value="17" Text="circuit short to ground"/>
+            <Item Value="18" Text="circuit short to battery"/>
+            <Item Value="19" Text="circuit open"/>
+            <Item Value="20" Text="circuit short to ground or open"/>
+            <Item Value="21" Text="circuit short to battery or open"/>
+            <Item Value="22" Text="circuit voltage below threshold"/>
+            <Item Value="23" Text="circuit voltage above threshold"/>
+            <Item Value="24" Text="circuit current below threshold"/>
+            <Item Value="25" Text="circuit current above threshold"/>
+            <Item Value="26" Text="circuit resistance below threshold"/>
+            <Item Value="27" Text="circuit resistance above threshold"/>
+            <Item Value="28" Text="circuit voltage out of range"/>
+            <Item Value="29" Text="circuit current out of range"/>
+            <Item Value="30" Text="circuit resistance out of range"/>
+            <Item Value="31" Text="circuit intermittent"/>
+            <Item Value="33" Text="signal amplitude &lt; minimum"/>
+            <Item Value="34" Text="signal amplitude &gt; maximum"/>
+            <Item Value="35" Text="signal stuck low"/>
+            <Item Value="36" Text="signal stuck high"/>
+            <Item Value="37" Text="signal shape / waveform failure"/>
+            <Item Value="38" Text="signal rate of change below threshold"/>
+            <Item Value="39" Text="signal rate of change above threshold"/>
+            <Item Value="40" Text="signal bias level out of range / zero adj. failure"/>
+            <Item Value="41" Text="signal signal invalid"/>
+            <Item Value="42" Text="signal stuck in range"/>
+            <Item Value="43" Text="signal cross coupled"/>
+            <Item Value="47" Text="signal erratic"/>
+            <Item Value="49" Text="no signal"/>
+            <Item Value="50" Text="signal low time &lt; minimum"/>
+            <Item Value="51" Text="signal low time &gt; maximum"/>
+            <Item Value="52" Text="signal high time &lt; minimum"/>
+            <Item Value="53" Text="signal high time &gt; maximum"/>
+            <Item Value="54" Text="signal frequency too low"/>
+            <Item Value="55" Text="signal frequency too high"/>
+            <Item Value="56" Text="signal frequency incorrect"/>
+            <Item Value="57" Text="incorrect has too few pulses"/>
+            <Item Value="58" Text="incorrect has too many pulses"/>
+            <Item Value="65" Text="general checksum failure"/>
+            <Item Value="66" Text="general memory failure"/>
+            <Item Value="67" Text="special memory failure"/>
+            <Item Value="68" Text="data memory failure"/>
+            <Item Value="69" Text="program memory failure"/>
+            <Item Value="70" Text="calibration / parameter memory failure"/>
+            <Item Value="71" Text="watchdog / safety µC failure"/>
+            <Item Value="72" Text="supervision software failure"/>
+            <Item Value="73" Text="internal electronic failure"/>
+            <Item Value="74" Text="incorrect component installed"/>
+            <Item Value="75" Text="over temperature"/>
+            <Item Value="81" Text="not programmed"/>
+            <Item Value="82" Text="not activated"/>
+            <Item Value="83" Text="deactivated"/>
+            <Item Value="84" Text="missing calibration"/>
+            <Item Value="85" Text="not configured"/>
+            <Item Value="86" Text="invalid or incompatible configuration"/>
+            <Item Value="87" Text="invalid or incompatible software component"/>
+            <Item Value="97" Text="signal calculation failure"/>
+            <Item Value="98" Text="signal compare failure"/>
+            <Item Value="99" Text="circuit / component protection time-out"/>
+            <Item Value="100" Text="signal plausibility failure"/>
+            <Item Value="101" Text="signal has too few transitions / events"/>
+            <Item Value="102" Text="signal has too many transitions / events"/>
+            <Item Value="103" Text="signal incorrect after event"/>
+            <Item Value="104" Text="event information"/>
+            <Item Value="113" Text="actuator stuck"/>
+            <Item Value="114" Text="actuator stuck open"/>
+            <Item Value="115" Text="actuator stuck closed"/>
+            <Item Value="116" Text="actuator slipping"/>
+            <Item Value="117" Text="emergency position not reachable"/>
+            <Item Value="118" Text="wrong mounting position"/>
+            <Item Value="119" Text="commanded position not reachable"/>
+            <Item Value="120" Text="alignment or adjustment incorrect"/>
+            <Item Value="121" Text="mechanical linkage failure"/>
+            <Item Value="122" Text="fluid leak or seal failure"/>
+            <Item Value="123" Text="low fluid level"/>
+            <Item Value="124" Text="Slow Response"/>
+            <Item Value="125" Text="Actuator Stuck On"/>
+            <Item Value="127" Text="Actuator Stuck Off"/>
+            <Item Value="129" Text="invalid serial data received"/>
+            <Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+            <Item Value="131" Text="value of signal protection calculation incorrect"/>
+            <Item Value="132" Text="signal below allowable range"/>
+            <Item Value="133" Text="signal above allowable range"/>
+            <Item Value="134" Text="signal invalid"/>
+            <Item Value="135" Text="missing message"/>
+            <Item Value="136" Text="bus off"/>
+            <Item Value="143" Text="erratic"/>
+            <Item Value="145" Text="parametric"/>
+            <Item Value="146" Text="performance or incorrect operation"/>
+            <Item Value="147" Text="no operation"/>
+            <Item Value="148" Text="unexpected operation"/>
+            <Item Value="149" Text="incorrect assembly"/>
+            <Item Value="150" Text="component internal failure"/>
+            <Item Value="151" Text="Component or sys. operation obstructed or blocked"/>
+            <Item Value="152" Text="component or system over temperature"/>
+            <Item Value="153" Text="Exceeded Learning Limit"/>
+            <Item Value="154" Text="component or system operating conditions"/>
+            <Item Value="155" Text="High/Excessive Flow"/>
+            <Item Value="156" Text="Low/Insufficient Flow"/>
+            <Item Value="158" Text="Stuck On"/>
+            <Item Value="159" Text="Stuck Off"/>
+            <Item Value="161" Text="System Voltage"/>
+            <Item Value="162" Text="System Voltage Low"/>
+            <Item Value="163" Text="System Voltage High"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceIdentifier">
+        <Bits count="16">
+          <List>
+            <Item Value="38450" Text="ADB_LED_Module_OC"/>
+            <Item Value="38452" Text="ADB_LED_Module_Failure"/>
+            <Item Value="38454" Text="ADB_Driver_COMM_Failure"/>
+            <Item Value="38456" Text="ADB_Driver_Failure"/>
+            <Item Value="38464" Text="ADB_Driver_Reprogramming_Failure"/>
+            <Item Value="38468" Text="ADB_LED_Module_TEMP"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceAndFailureTypeOBD">
+        <Comment><![CDATA[Not applicable]]></Comment>
+        <Mnemonic>DTCDEVICE_AND_FAILURE_TYPE_OBD</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.ManufacturerOrSupplier">
+        <Comment><![CDATA[Not applicable]]></Comment>
+        <Mnemonic>DTCFAILURE_TYPE_MANUFACTURER_OR_SUPPLIER</Mnemonic>
+        <Bits count="4">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatusAvailabilityMask">
+        <Mnemonic>DTCSAM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCMaskRecord">
+        <Mnemonic>DTCMREC_DTC</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="DTCRecord">
+        <Mnemonic>DTCASR_DTC</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareVersionNumber">
+        <Comment><![CDATA[Software Version (Supplier)]]></Comment>
+        <Mnemonic>DID_$F195</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software version number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="32" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUHardwareNumber">
+        <Comment><![CDATA[Hardware Number]]></Comment>
+        <Mnemonic>DID_$F191</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used by reading services to reference the vehicle-manufacturer-specific ECU (server) hardware number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be serverspecific and defined by vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUSoftwareNumber">
+        <Mnemonic>DID_$F188</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="Left_OutVoltage2">
+        <Comment><![CDATA[ADB LED Ouput Voltage]]></Comment>
+        <Bits count="16">
+          <Scaled Unit="V" DivideBy=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="LeftWdots_Current">
+        <Comment><![CDATA[ADB LED Ouput Current]]></Comment>
+        <Bits count="16">
+          <Scaled Unit="mA"/>
+        </Bits>
+      </Data>
+      <Data Name="vehicleManufacturerSparePartNumber">
+        <Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM]]></Comment>
+        <Mnemonic>DID_$F187</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer spare part number. </FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="LeftWdotsNbreLEDFailure">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftWdotsLED_Fail">
+        <Bits>
+          <List>
+            <Item Value="0" Text="No Failure"/>
+            <Item Value="1" Text="Failure"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="OutputPermanentControlList">
+        <Comment><![CDATA[List of Data Identifiers for Input Output Control - The list defined here is AN EXAMPLE.]]></Comment>
+        <Mnemonic>IOI</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2><STRONG><U>Definition of IOControl</U></STRONG></FONT></P>
+<P><FONT size=2>Data: IOCTL.DataIdentifierList</FONT></P>
+<P><FONT size=2>&nbsp; Contains the list of all IO devices that may be<BR>&nbsp; controlled by InputOutputControl service.<BR>&nbsp; <BR>&nbsp; Example:<BR>&nbsp; <BR>&nbsp;&nbsp;&nbsp; 0 - DID_Pump<BR>&nbsp;&nbsp;&nbsp; 1 - DID_Wiper</FONT></P>
+<P><FONT size=2>If some of these IO devices have parameters, you should defined a data with the same name as the IO devices followed by a dot and a text</FONT></P>
+<P><FONT size=2>&nbsp; Example:<BR>&nbsp; <BR>&nbsp; Data: DID_Wiper.Mode<BR>&nbsp;&nbsp;&nbsp;&nbsp; Type: List<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 - Slow speed<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 - High speed</FONT></P>
+<P><FONT size=2>Then, you should add theses data in the "Send tab" of the&nbsp;InputOutpuControl request, after the IOCTL.OptionRecord.Parameter data.</FONT></P>]]></Description>
+        <Bits count="16">
+          <List>
+            <Item Value="768" Text="Full"/>
+            <Item Value="769" Text="Left_HighBeam"/>
+            <Item Value="790" Text="Left_LEDs"/>
+            <Item Value="808" Text="Left_HighBeam_FAN"/>
+            <Item Value="811" Text="Left_LowBeam_FAN"/>
+            <Item Value="815" Text="Left_WDots"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="OutputControlCommand">
+        <Comment><![CDATA[Input Output control parameter list]]></Comment>
+        <Mnemonic>COR_IOCP</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Stop"/>
+            <Item Value="1" Text="resetToDefault"/>
+            <Item Value="2" Text="freezeCurrentState"/>
+            <Item Value="3" Text="Start Permanent"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IOCTL.DataIdentifier">
+        <Comment><![CDATA[Data Identifier received in reply to InputOutputControl request]]></Comment>
+        <Mnemonic>IOI_READ</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="IOCTL.StatusRecord.Parameter">
+        <Comment><![CDATA[Input Output control status]]></Comment>
+        <Mnemonic>CSR_IOCP</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="returnControlToECU"/>
+            <Item Value="1" Text="resetToDefault"/>
+            <Item Value="2" Text="freezeCurrentState"/>
+            <Item Value="3" Text="shortTermAdjustment"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LefttFAN_FAIL.LB_FANStatus">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No Failure"/>
+            <Item Value="1" Text="Failure"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LefttFAN_FAIL.HB_FanStatus">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No Failure"/>
+            <Item Value="1" Text="Failure"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="OutputControlStatus">
+        <Comment><![CDATA[Testing output : Status]]></Comment>
+        <Mnemonic>OUTPUT_CONTROL_STATUS</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Running"/>
+            <Item Value="2" Text="Stopped"/>
+            <Item Value="17" Text="Manually Stopped"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED17PWM">
+        <Mnemonic>L_LED17_PWM</Mnemonic>
+        <Bits>
+          <Scaled Unit="%"/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED16PWM">
+        <Mnemonic>L_LED16_PWM</Mnemonic>
+        <Bits>
+          <Scaled Unit="%"/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED15PWM">
+        <Mnemonic>L_LED15_PWM</Mnemonic>
+        <Bits>
+          <Scaled Unit="%"/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED14PWM">
+        <Mnemonic>L_LED14_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED13PWM">
+        <Mnemonic>L_LED13_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED12PWM">
+        <Mnemonic>L_LED12_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED11PWM">
+        <Mnemonic>L_LED11_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED10PWM">
+        <Mnemonic>L_LED10_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED18PWM">
+        <Mnemonic>L_LED18_PWM</Mnemonic>
+        <Bits>
+          <Scaled Unit="%"/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED09PWM">
+        <Mnemonic>L_LED09_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED08PWM">
+        <Mnemonic>L_LED08_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED07PWM">
+        <Mnemonic>L_LED07_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED06PWM">
+        <Mnemonic>L_LED06_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED05PWM">
+        <Mnemonic>L_LED05_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED04PWM">
+        <Mnemonic>L_LED04_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED03PWM">
+        <Mnemonic>L_LED03_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED01PWM">
+        <Mnemonic>L_LED01_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLED02PWM">
+        <Mnemonic>L_LED02_PWM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCCount">
+        <Comment><![CDATA[DTC count]]></Comment>
+        <Mnemonic>DTCC</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCFormatIdentifier">
+        <Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+        <Mnemonic>DTCFID</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="SAE_J2012-DA_DTC"/>
+            <Item Value="1" Text="ISO_14229-1_DTC"/>
+            <Item Value="2" Text="SAE_J1939-73_DTC"/>
+            <Item Value="3" Text="ISO_11992-4_DTC"/>
+            <Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDStatus.M3L3">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDStatus.M3L4">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDStatus.M3L5">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDs_PWM_Value.M3L4">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDs_PWM_Value.M3L5">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDsFail.M3L4">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDsFail.M3L5">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="BootVersion">
+        <Comment><![CDATA[BootSoftwareIdentificationDataIdentifier]]></Comment>
+        <Mnemonic>BSIDID</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer spare part number. </FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="6" ascii="1"/>
+      </Data>
+      <Data Name="ConfigDataReferenceAfterConfigProcess">
+        <Mnemonic>CONFIG_DATA_REFERENCE_AFTER_CONFIG_PROCESS</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="OperationalReference">
+        <Comment><![CDATA[OperationalReference]]></Comment>
+        <Mnemonic>VMS $F012</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="IndexSrvData">
+        <Mnemonic>INDEX_SRV_DATA</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc1">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.Number">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc1">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc2">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc2">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc3">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc3">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc4">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc4">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc5">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc5">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc6">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc6">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc7">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc7">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc8">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc8">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc9">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc9">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc10">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc10">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc11">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc11">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc12">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc12">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc13">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc13">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc14">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc14">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc15">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc15">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.TypeResetOcc16">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDsFail.M4L1">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDsFail.M4L2">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDsFail.M4L3">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDsFail.M4L4">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDStatus.M4L1">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDStatus.M4L3">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDStatus.M4L4">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDs_PWM_Value.M4L1">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDs_PWM_Value.M4L2">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDs_PWM_Value.M4L3">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LeftLEDs_PWM_Value.M4L4">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="FailureLED_Unavailable.Status">
+        <Bits>
+          <List>
+            <Item Value="0" Text="No Failure"/>
+            <Item Value="1" Text="Failure"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDStatus...M2L2">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDStatus...M2L1">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDStatus..M1L6">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDStatus.M1L5">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDStatus.M1L4">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDStatus..M1L3">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDStatus.M1L2">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDStatus.M1L1">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDStatus.M2L6">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDStatus.M2L5">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDStatus.M2L4">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDStatus.M2L3">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LED_ADB_Temp..Value1">
+        <Bits>
+          <Scaled Unit="°" Offset="-40"/>
+        </Bits>
+      </Data>
+      <Data Name="LED_ADB_Temp.Value2">
+        <Bits>
+          <Scaled Unit="°" Offset="-40"/>
+        </Bits>
+      </Data>
+      <Data Name="OutVoltage1">
+        <Comment><![CDATA[ADB LED Ouput Voltage]]></Comment>
+        <Bits count="16">
+          <Scaled Unit="V" DivideBy=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="NbreLEDsFailure">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LEDsFail.M2L4">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDsFail.M2L1">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDsFail.M1L6">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDsFail.M1L5">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDsFail.M1L4">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDsFail.M1L3">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDsFail.M2L2">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDsFail.M1L2">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDsFail.M1L1">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDsFail.M2L6">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDsFail.M2L5">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDsFail.M2L3">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LEDs_PWM_Value.M1L1">
+        <Comment><![CDATA[PWM value for each ADB LED module]]></Comment>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LEDs_PWM_Value.M1L2">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LEDs_PWM_Value.M1L3">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LEDs_PWM_Value.M1L4">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LEDs_PWM_Value.M1L5">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LEDs_PWM_Value.M1L6">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LEDs_PWM_Value.M2L1">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LEDs_PWM_Value.M2L2">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LEDs_PWM_Value.M2L3">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LEDs_PWM_Value.M2L4">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LEDs_PWM_Value.M2L5">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LEDs_PWM_Value.M2L6">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LightClass">
+        <Bits count="5">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ResetCounter.OdometerOcc16">
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCExtendedData.Mileage">
+        <Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+        <Mnemonic>MILEAGE</Mnemonic>
+        <Bits count="24">
+          <Scaled Unit="km"/>
+        </Bits>
+      </Data>
+      <Data Name="ADBDriver_Supply">
+        <Comment><![CDATA[ADB Driver Voltage Supply]]></Comment>
+        <Bits count="16">
+          <Scaled Unit="V" DivideBy=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="ADBDriver_Temp">
+        <Bits>
+          <Scaled Unit="°" Offset="-40"/>
+        </Bits>
+      </Data>
+      <Data Name="ADB_RBIN.Value1">
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ADB_State">
+        <Bits>
+          <List>
+            <Item Value="0" Text="ADB Operationnel"/>
+            <Item Value="1" Text="ADB in defect"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ADB_Tunnel..ADB_Tunnel.RightBoundaryVehicule">
+        <Bits count="16">
+          <Scaled Unit="°"/>
+        </Bits>
+      </Data>
+      <Data Name="ADB_Tunnel..ADB_Tunnel.LeftBoundaryVehicule">
+        <Bits count="16">
+          <Scaled Unit="°"/>
+        </Bits>
+      </Data>
+      <Data Name="ADB_Tunnel..ADB_Tunnel.RightBoundaryTrafficSign1">
+        <Bits count="16">
+          <Scaled Unit="°" DivideBy=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="ADB_Tunnel..ADB_Tunnel.LeftBoundaryTrafficSign1">
+        <Bits count="16">
+          <Scaled Unit="°" DivideBy=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="ADB_Tunnel..ADB_Tunnel.RightBoundaryTrafficSign2">
+        <Bits count="16">
+          <Scaled Unit="°" DivideBy=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="ADB_Tunnel.ADB_Tunnel.LeftBoundaryTrafficSign2">
+        <Bits count="16">
+          <Scaled Unit="°" DivideBy=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="ADB_Current.Current.Value1">
+        <Comment><![CDATA[ADB LED Ouput Current]]></Comment>
+        <Bits count="32" signed="1">
+          <Scaled Unit="mA" Step=" 2"/>
+        </Bits>
+      </Data>
+      <Data Name="DTCOccurenceCounter">
+        <Mnemonic>DID_$F0D1</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+    </Datas>
+    <Requests Endian="Big">
+      <Request Name="DataRead.applicationDataIdentification">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read applicationDataIdentification]]></Comment>
+        <Sent>
+          <SentBytes>22F182</SentBytes>
+        </Sent>
+        <Received MinBytes="14">
+          <ReplyBytes>62F182</ReplyBytes>
+          <DataItem Name="applicationDataIdentification" Ref="1" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.diagnosticVersion">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read diagnosticVersion]]></Comment>
+        <Sent>
+          <SentBytes>22F1A0</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F1A0</ReplyBytes>
+          <DataItem Name="diagnosticVersion" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ECUSerialNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read ECUSerialNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F18C</SentBytes>
+        </Sent>
+        <Received MinBytes="23">
+          <ReplyBytes>62F18C</ReplyBytes>
+          <DataItem Name="ECUSerialNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierECUSoftwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F194</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F194</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierIdentifier">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierIdentifier]]></Comment>
+        <Sent>
+          <SentBytes>22F18A</SentBytes>
+        </Sent>
+        <Received MinBytes="67">
+          <ReplyBytes>62F18A</ReplyBytes>
+          <DataItem Name="systemSupplierIdentifier" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VIN">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read VIN]]></Comment>
+        <Sent>
+          <SentBytes>22F190</SentBytes>
+        </Sent>
+        <Received MinBytes="20">
+          <ReplyBytes>62F190</ReplyBytes>
+          <DataItem Name="VIN" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="TesterPresent.WithResponse">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+        <Sent>
+          <SentBytes>3E00</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>7E</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1003</SentBytes>
+          <DataItem Name="SessionName" FirstByte="2"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5003</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.ExtendedDiagnostic">
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1003</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5003</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.Default">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1001</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5001</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.Programming">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1002</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5002</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ClearDiagnosticInformation.All">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+        <Sent>
+          <SentBytes>14FFFFFF</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>54</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTC">
+        <Comment><![CDATA[DDT2000 Failures page requests / DDT : Unusable for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1902FF</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>59020000000000</ReplyBytes>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+          <DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+          <DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+          <DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+          <DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+          <DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+          <DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+          <DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+          <DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+          <DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSnapshot">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+        <Sent>
+          <SentBytes>1904000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>590400000000</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSupportedDTC">
+        <Comment><![CDATA[Report supported DTC]]></Comment>
+        <Sent>
+          <SentBytes>190A</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>590AFF00000000</ReplyBytes>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierECUVersionNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F195</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62F195</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareVersionNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUHardwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerECUHardwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F191</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F191</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUHardwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUSoftwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read autoconfigurationFingerPrint]]></Comment>
+        <Sent>
+          <SentBytes>22F188</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F188</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerSparePartNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerSparePartNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F187</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F187</ReplyBytes>
+          <DataItem Name="vehicleManufacturerSparePartNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LefttFAN_FAIL">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220356</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620356</ReplyBytes>
+          <DataItem Name="LefttFAN_FAIL.HB_FanStatus" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="OutputControl.Start.FullLeftHdlp">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Input Output Control - Full Left Headlamp]]></Comment>
+        <Sent>
+          <SentBytes>2F03000301</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F030003</ReplyBytes>
+          <DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report number of DTC]]></Comment>
+        <Sent>
+          <SentBytes>1901FF</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>5901FF000000</ReplyBytes>
+          <DataItem Name="DTCCount" FirstByte="5"/>
+          <DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="OutputControl">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Input Output Control]]></Comment>
+        <Sent>
+          <SentBytes>2F0000000000</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F000000</ReplyBytes>
+          <DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="OutputControl.Stop.FullLeftHdlp">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F03000302</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F030000</ReplyBytes>
+          <DataItem Name="OutputControlStatus" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="ECUReset">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <DenyAccess>
+          <NoSDS/>
+          <Plant/>
+        </DenyAccess>
+        <Sent>
+          <SentBytes>1101</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5101</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="OutputControl.Stop.LeftLED">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F031600</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F031600</ReplyBytes>
+          <DataItem Name="OutputControlStatus" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="OutputControl.Start.LeftLED">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Input Output Control - LED01]]></Comment>
+        <Sent>
+          <SentBytes>2F031603000000000000000000000000</SentBytes>
+          <DataItem Name="LeftLED01PWM" FirstByte="5"/>
+          <DataItem Name="LeftLED02PWM" FirstByte="6"/>
+          <DataItem Name="LeftLED03PWM" FirstByte="7"/>
+          <DataItem Name="LeftLED04PWM" FirstByte="8"/>
+          <DataItem Name="LeftLED05PWM" FirstByte="9"/>
+          <DataItem Name="LeftLED06PWM" FirstByte="10"/>
+          <DataItem Name="LeftLED07PWM" FirstByte="11"/>
+          <DataItem Name="LeftLED08PWM" FirstByte="12"/>
+          <DataItem Name="LeftLED09PWM" FirstByte="13"/>
+          <DataItem Name="LeftLED10PWM" FirstByte="14"/>
+          <DataItem Name="LeftLED11PWM" FirstByte="15"/>
+          <DataItem Name="LeftLED12PWM" FirstByte="16"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F031603</ReplyBytes>
+          <DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="OutputControl.Start.LeftLEDRef">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Input Output Control - LEFT LED Reference]]></Comment>
+        <Sent>
+          <SentBytes>2F031603000000006400000000000000</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F031603</ReplyBytes>
+          <DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.BootVersion">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read BootVersion]]></Comment>
+        <Sent>
+          <SentBytes>22F180</SentBytes>
+        </Sent>
+        <Received MinBytes="9">
+          <ReplyBytes>62F180</ReplyBytes>
+          <DataItem Name="BootVersion" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ConfigDataReferenceAfterConfigProcess">
+        <Sent>
+          <SentBytes>22F1A2</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F1A2</ReplyBytes>
+          <DataItem Name="ConfigDataReferenceAfterConfigProcess" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.ConfigDataReferenceAfterConfigProcess">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2EF1A200000000000000000000</SentBytes>
+          <DataItem Name="ConfigDataReferenceAfterConfigProcess" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF1A2</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.OperationalReference">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F012</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F012</ReplyBytes>
+          <DataItem Name="OperationalReference" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IndexSrvData">
+        <Sent>
+          <SentBytes>22F011</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F011</ReplyBytes>
+          <DataItem Name="IndexSrvData" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ResetCounter">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220360</SentBytes>
+        </Sent>
+        <Received MinBytes="68">
+          <ReplyBytes>620360</ReplyBytes>
+          <DataItem Name="ResetCounter.TypeResetOcc1" Ref="1" FirstByte="5"/>
+          <DataItem Name="ResetCounter.Number" Ref="1" FirstByte="4"/>
+          <DataItem Name="ResetCounter.OdometerOcc1" Ref="1" FirstByte="6"/>
+          <DataItem Name="ResetCounter.TypeResetOcc2" Ref="1" FirstByte="9"/>
+          <DataItem Name="ResetCounter.OdometerOcc2" Ref="1" FirstByte="10"/>
+          <DataItem Name="ResetCounter.TypeResetOcc3" Ref="1" FirstByte="13"/>
+          <DataItem Name="ResetCounter.OdometerOcc3" Ref="1" FirstByte="14"/>
+          <DataItem Name="ResetCounter.TypeResetOcc4" Ref="1" FirstByte="17"/>
+          <DataItem Name="ResetCounter.OdometerOcc4" Ref="1" FirstByte="18"/>
+          <DataItem Name="ResetCounter.TypeResetOcc5" Ref="1" FirstByte="21"/>
+          <DataItem Name="ResetCounter.OdometerOcc5" Ref="1" FirstByte="22"/>
+          <DataItem Name="ResetCounter.TypeResetOcc6" Ref="1" FirstByte="25"/>
+          <DataItem Name="ResetCounter.OdometerOcc6" Ref="1" FirstByte="26"/>
+          <DataItem Name="ResetCounter.TypeResetOcc7" Ref="1" FirstByte="29"/>
+          <DataItem Name="ResetCounter.OdometerOcc7" Ref="1" FirstByte="30"/>
+          <DataItem Name="ResetCounter.TypeResetOcc8" Ref="1" FirstByte="33"/>
+          <DataItem Name="ResetCounter.OdometerOcc8" Ref="1" FirstByte="34"/>
+          <DataItem Name="ResetCounter.TypeResetOcc9" Ref="1" FirstByte="37"/>
+          <DataItem Name="ResetCounter.OdometerOcc9" Ref="1" FirstByte="38"/>
+          <DataItem Name="ResetCounter.TypeResetOcc10" Ref="1" FirstByte="41"/>
+          <DataItem Name="ResetCounter.OdometerOcc10" Ref="1" FirstByte="42"/>
+          <DataItem Name="ResetCounter.TypeResetOcc11" Ref="1" FirstByte="45"/>
+          <DataItem Name="ResetCounter.OdometerOcc11" Ref="1" FirstByte="46"/>
+          <DataItem Name="ResetCounter.TypeResetOcc12" Ref="1" FirstByte="49"/>
+          <DataItem Name="ResetCounter.OdometerOcc12" Ref="1" FirstByte="50"/>
+          <DataItem Name="ResetCounter.TypeResetOcc13" Ref="1" FirstByte="53"/>
+          <DataItem Name="ResetCounter.OdometerOcc13" Ref="1" FirstByte="54"/>
+          <DataItem Name="ResetCounter.TypeResetOcc14" Ref="1" FirstByte="57"/>
+          <DataItem Name="ResetCounter.OdometerOcc14" Ref="1" FirstByte="58"/>
+          <DataItem Name="ResetCounter.TypeResetOcc15" Ref="1" FirstByte="61"/>
+          <DataItem Name="ResetCounter.OdometerOcc15" Ref="1" FirstByte="62"/>
+          <DataItem Name="ResetCounter.TypeResetOcc16" Ref="1" FirstByte="65"/>
+          <DataItem Name="ResetCounter.OdometerOcc16" Ref="1" FirstByte="66"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DTCExtendedData.Mileage">
+        <Comment><![CDATA[Read DTCExtendedData.Mileage]]></Comment>
+        <Sent>
+          <SentBytes>22F0D0</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>62F0D0</ReplyBytes>
+          <DataItem Name="DTCExtendedData.Mileage" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DTCOccurenceCounter">
+        <Sent>
+          <SentBytes>22F0D1</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F0D1</ReplyBytes>
+          <DataItem Name="DTCOccurenceCounter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Read.OutputControl.LeftHBFAN">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>220328</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>620328</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Read.OutputControl.LeftLBFAN">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>22032B</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>62032B</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Read.OutputControl.LeftWDots">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Input Output Control - Left Welcome Dots]]></Comment>
+        <Sent>
+          <SentBytes>22032F</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>62032F</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.VIN">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[WriteVIN]]></Comment>
+        <Sent>
+          <SentBytes>2EF1900000000000000000000000000000000000</SentBytes>
+          <DataItem Name="VIN" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF190</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.FailureLED_Unavailable">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220353</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620353</ReplyBytes>
+          <DataItem Name="FailureLED_Unavailable.Status" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead.OutputPermanentControlList">
+        <Sent>
+          <SentBytes>220301</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>620301</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ADB_Tunnel">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220304</SentBytes>
+        </Sent>
+        <Received MinBytes="15">
+          <ReplyBytes>620304</ReplyBytes>
+          <DataItem Name="ADB_Tunnel..ADB_Tunnel.RightBoundaryVehicule" Ref="1" FirstByte="4"/>
+          <DataItem Name="ADB_Tunnel..ADB_Tunnel.LeftBoundaryVehicule" Ref="1" FirstByte="6"/>
+          <DataItem Name="ADB_Tunnel..ADB_Tunnel.RightBoundaryTrafficSign1" Ref="1" FirstByte="8"/>
+          <DataItem Name="ADB_Tunnel..ADB_Tunnel.LeftBoundaryTrafficSign1" Ref="1" FirstByte="10"/>
+          <DataItem Name="ADB_Tunnel..ADB_Tunnel.RightBoundaryTrafficSign2" Ref="1" FirstByte="12"/>
+          <DataItem Name="ADB_Tunnel.ADB_Tunnel.LeftBoundaryTrafficSign2" Ref="1" FirstByte="14"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LED_ADB_Temp">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220464</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620464</ReplyBytes>
+          <DataItem Name="LED_ADB_Temp..Value1" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ADBDriver_Supply">
+        <Sent>
+          <SentBytes>220460</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>620460</ReplyBytes>
+          <DataItem Name="ADBDriver_Supply" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ADB_Current">
+        <Sent>
+          <SentBytes>220462</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>620462</ReplyBytes>
+          <DataItem Name="ADB_Current.Current.Value1" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LEDStatus">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220497</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>620497</ReplyBytes>
+          <DataItem Name="LEDStatus..M1L6" Ref="1" FirstByte="4" BitOffset="2"/>
+          <DataItem Name="LEDStatus.M1L5" Ref="1" FirstByte="4" BitOffset="3"/>
+          <DataItem Name="LEDStatus.M2L6" Ref="1" FirstByte="5" BitOffset="4"/>
+          <DataItem Name="LEDStatus.M2L5" Ref="1" FirstByte="5" BitOffset="5"/>
+          <DataItem Name="LEDStatus...M2L1" Ref="1" FirstByte="4" BitOffset="1"/>
+          <DataItem Name="LEDStatus...M2L2" Ref="1" FirstByte="4"/>
+          <DataItem Name="LEDStatus.M2L3" Ref="1" FirstByte="5" BitOffset="7"/>
+          <DataItem Name="LEDStatus.M2L4" Ref="1" FirstByte="5" BitOffset="6"/>
+          <DataItem Name="LEDStatus.M1L4" Ref="1" FirstByte="4" BitOffset="4"/>
+          <DataItem Name="LEDStatus..M1L3" Ref="1" FirstByte="4" BitOffset="5"/>
+          <DataItem Name="LEDStatus.M1L2" Ref="1" FirstByte="4" BitOffset="6"/>
+          <DataItem Name="LEDStatus.M1L1" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LEDs_PWM_Value">
+        <Sent>
+          <SentBytes>220473</SentBytes>
+        </Sent>
+        <Received MinBytes="15">
+          <ReplyBytes>620473</ReplyBytes>
+          <DataItem Name="LEDs_PWM_Value.M1L2" Ref="1" FirstByte="5"/>
+          <DataItem Name="LEDs_PWM_Value.M1L1" Ref="1" FirstByte="4"/>
+          <DataItem Name="LEDs_PWM_Value.M1L3" Ref="1" FirstByte="6"/>
+          <DataItem Name="LEDs_PWM_Value.M1L4" Ref="1" FirstByte="7"/>
+          <DataItem Name="LEDs_PWM_Value.M1L5" Ref="1" FirstByte="8"/>
+          <DataItem Name="LEDs_PWM_Value.M1L6" Ref="1" FirstByte="9"/>
+          <DataItem Name="LEDs_PWM_Value.M2L1" Ref="1" FirstByte="10"/>
+          <DataItem Name="LEDs_PWM_Value.M2L2" Ref="1" FirstByte="11"/>
+          <DataItem Name="LEDs_PWM_Value.M2L3" Ref="1" FirstByte="12"/>
+          <DataItem Name="LEDs_PWM_Value.M2L4" Ref="1" FirstByte="13"/>
+          <DataItem Name="LEDs_PWM_Value.M2L5" Ref="1" FirstByte="14"/>
+          <DataItem Name="LEDs_PWM_Value.M2L6" Ref="1" FirstByte="15"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ADBDriver_Temp">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220471</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620471</ReplyBytes>
+          <DataItem Name="ADBDriver_Temp" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.OutVoltage1">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22046D</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62046D</ReplyBytes>
+          <DataItem Name="OutVoltage1" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ADB_RBIN">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220467</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>620467</ReplyBytes>
+          <DataItem Name="ADB_RBIN.Value1" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ADB_State">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220332</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620332</ReplyBytes>
+          <DataItem Name="ADB_State" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.NbreLEDsFailure">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220350</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620350</ReplyBytes>
+          <DataItem Name="NbreLEDsFailure" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LEDsFail">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220329</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>620329</ReplyBytes>
+          <DataItem Name="LEDsFail.M2L6" Ref="1" FirstByte="5" BitOffset="4"/>
+          <DataItem Name="LEDsFail.M2L5" Ref="1" FirstByte="5" BitOffset="5"/>
+          <DataItem Name="LEDsFail.M2L2" Ref="1" FirstByte="4" BitOffset="6"/>
+          <DataItem Name="LEDsFail.M2L3" Ref="1" FirstByte="5" BitOffset="7"/>
+          <DataItem Name="LEDsFail.M2L4" Ref="1" FirstByte="4"/>
+          <DataItem Name="LEDsFail.M2L1" Ref="1" FirstByte="4" BitOffset="1"/>
+          <DataItem Name="LEDsFail.M1L6" Ref="1" FirstByte="4" BitOffset="2"/>
+          <DataItem Name="LEDsFail.M1L5" Ref="1" FirstByte="4" BitOffset="3"/>
+          <DataItem Name="LEDsFail.M1L4" Ref="1" FirstByte="4" BitOffset="4"/>
+          <DataItem Name="LEDsFail.M1L3" Ref="1" FirstByte="4" BitOffset="5"/>
+          <DataItem Name="LEDsFail.M1L2" Ref="1" FirstByte="4" BitOffset="6"/>
+          <DataItem Name="LEDsFail.M1L1" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Read.OutputControl.FullHdlp">
+        <Sent>
+          <SentBytes>220300</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>620300</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Read.OutputControl.LED">
+        <Sent>
+          <SentBytes>220316</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>620316</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LightClass">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220D12</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620D12</ReplyBytes>
+          <DataItem Name="LightClass" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+    </Requests>
+    <Devices>
+      <Device Name="ADB_LED_Module_OC" DTC="38450">
+        <Mnemonic>ADB_LED_Module_OC</Mnemonic>
+        <Test Type="19">
+        </Test>
+      </Device>
+      <Device Name="ADB_LED_Module_Failure" DTC="38452">
+        <Mnemonic>ADB_LED_Module_Failure</Mnemonic>
+        <Test Type="1" Severity="0">
+          <Description>Right_LED_Failure</Description>
+        </Test>
+      </Device>
+      <Device Name="ADB_Driver_COMM_Failure" DTC="38454">
+        <Mnemonic>ADB_Driver_COMM_Failure</Mnemonic>
+        <Test Type="136">
+        </Test>
+      </Device>
+      <Device Name="ADB_Driver_Failure" DTC="38456">
+        <Mnemonic>ADB_Driver_Failure</Mnemonic>
+        <Test Type="150" Severity="0">
+          <Description>RightDriverDriver_FAIL</Description>
+        </Test>
+      </Device>
+      <Device Name="ADB_Driver_Reprogramming_Failure" DTC="38464">
+        <Mnemonic>ADB_Driver_Reprogramming_Failure</Mnemonic>
+        <Test Type="85">
+        </Test>
+      </Device>
+      <Device Name="ADB_LED_Module_TEMP" DTC="38468">
+        <Mnemonic>ADB_LED_Module_TEMP</Mnemonic>
+        <Test Type="152">
+        </Test>
+      </Device>
+    </Devices>
+    <ds:Categories xmlns="http://www-diag.renault.com/2002/screens">
+      <Category Name="Config">
+        <Screen Name="Read" Color="5581568" WindowState="0" Width="11340" Height="8940">
+          <Label Text="Left ADB Driver" Color="16755027" Alignment="2">
+            <Rectangle Left="3240" Top="840" Height="2040" Width="4800"/>
+            <Font Name="Comic Sans MS" Size=" 12" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Left ADB LEDs" Color="16755027" Alignment="2">
+            <Rectangle Left="3240" Top="3480" Height="3360" Width="4800"/>
+            <Font Name="Comic Sans MS" Size=" 12" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="LEFT- HEADLAMP" Color="16744448" Alignment="2">
+            <Rectangle Left="3930" Top="240" Height="375" Width="3720"/>
+            <Font Name="Comic Sans MS" Size=" 12" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Button Text="LED FULL HB ON">
+            <Rectangle Left="8880" Top="1320" Height="375" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="OutputControl.Start.FullLeftHdlp"/>
+          </Button>
+          <Button Text="LED FULL HB OFF">
+            <Rectangle Left="8880" Top="1800" Height="375" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="OutputControl.Stop.FullLeftHdlp"/>
+          </Button>
+          <Display Width="3240" Color="16777215" DataName="OutVoltage1" RequestName="DataRead.OutVoltage1">
+            <Rectangle Left="3480" Top="1920" Height="300" Width="4320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3240" Color="16777215" DataName="ADBDriver_Supply" RequestName="DataRead.ADBDriver_Supply">
+            <Rectangle Left="3480" Top="1440" Height="300" Width="4320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3330" Color="16777215" DataName="NbreLEDsFailure" RequestName="DataRead.NbreLEDsFailure">
+            <Rectangle Left="3480" Top="4800" Height="300" Width="4440"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3330" Color="16777215" DataName="FailureLED_Unavailable.Status" RequestName="DataRead.FailureLED_Unavailable">
+            <Rectangle Left="3480" Top="4080" Height="300" Width="4440"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2220" Color="16777215" DataName="ADB_State" RequestName="DataRead.ADB_State">
+            <Rectangle Left="3480" Top="4440" Height="300" Width="4440"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3330" Color="16777215" DataName="ADB_RBIN.Value1" RequestName="DataRead.ADB_RBIN">
+            <Rectangle Left="3480" Top="5520" Height="300" Width="4440"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3330" Color="16777215" DataName="ADB_Current.Current.Value1" RequestName="DataRead.ADB_Current">
+            <Rectangle Left="3480" Top="5160" Height="300" Width="4440"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3240" Color="16777215" DataName="ADBDriver_Temp" RequestName="DataRead.ADBDriver_Temp">
+            <Rectangle Left="3480" Top="2400" Height="300" Width="4320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3330" Color="16777215" DataName="LED_ADB_Temp..Value1" RequestName="DataRead.LED_ADB_Temp">
+            <Rectangle Left="3480" Top="5880" Height="300" Width="4440"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5625" Color="16777215" DataName="systemSupplierECUSoftwareNumber" RequestName="DataRead.systemSupplierECUSoftwareNumber">
+            <Rectangle Left="1920" Top="7800" Height="300" Width="7500"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5625" Color="16777215" DataName="ECUSerialNumber" RequestName="DataRead.ECUSerialNumber">
+            <Rectangle Left="1920" Top="8520" Height="300" Width="7500"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5625" Color="16777215" DataName="systemSupplierECUSoftwareVersionNumber" RequestName="DataRead.systemSupplierECUSoftwareVersionNumber">
+            <Rectangle Left="1920" Top="8160" Height="300" Width="7500"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="LightClass" RequestName="DataRead.LightClass">
+            <Rectangle Left="3480" Top="6240" Height="300" Width="4440"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+      </Category>
+      <Category Name="Left ADB LEDs">
+        <Screen Name="LED Status" Color="8404992" WindowState="0" Width="9540" Height="7140">
+          <Label Text="Default" Color="16777215" Alignment="2">
+            <Rectangle Left="2520" Top="660" Height="300" Width="1920"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="ON/OFF" Color="16777215" Alignment="2">
+            <Rectangle Left="7680" Top="660" Height="300" Width="960"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="LEFT- HEADLAMP" Color="16744448" Alignment="2">
+            <Rectangle Left="3120" Top="120" Height="375" Width="3720"/>
+            <Font Name="Comic Sans MS" Size=" 12" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Button Text="LED FULL HB ON">
+            <Rectangle Left="4200" Top="5640" Height="375" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="OutputControl.Start.FullLeftHdlp"/>
+          </Button>
+          <Button Text="LED FULL HB OFF">
+            <Rectangle Left="4200" Top="6120" Height="375" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="OutputControl.Stop.FullLeftHdlp"/>
+          </Button>
+          <Display Width="2250" Color="16777215" DataName="LEDStatus.M1L1" RequestName="DataRead.LEDStatus">
+            <Rectangle Left="5640" Top="1080" Height="300" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 1" Color="65280"/>
+          </Display>
+          <Display Width="2250" Color="16777215" DataName="LEDStatus.M1L2" RequestName="DataRead.LEDStatus">
+            <Rectangle Left="5640" Top="1380" Height="300" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 1" Color="65280"/>
+          </Display>
+          <Display Width="2250" Color="16777215" DataName="LEDStatus..M1L3" RequestName="DataRead.LEDStatus">
+            <Rectangle Left="5640" Top="1680" Height="300" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 1" Color="65280"/>
+          </Display>
+          <Display Width="2250" Color="16777215" DataName="LEDStatus.M1L4" RequestName="DataRead.LEDStatus">
+            <Rectangle Left="5640" Top="1980" Height="300" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 1" Color="65280"/>
+          </Display>
+          <Display Width="2250" Color="16777215" DataName="LEDStatus.M2L4" RequestName="DataRead.LEDStatus">
+            <Rectangle Left="5640" Top="4020" Height="300" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 1" Color="65280"/>
+          </Display>
+          <Display Width="2250" Color="16777215" DataName="LEDStatus.M2L3" RequestName="DataRead.LEDStatus">
+            <Rectangle Left="5640" Top="3720" Height="300" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 1" Color="65280"/>
+          </Display>
+          <Display Width="2250" Color="16777215" DataName="LEDStatus...M2L2" RequestName="DataRead.LEDStatus">
+            <Rectangle Left="5640" Top="3420" Height="300" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 1" Color="65280"/>
+          </Display>
+          <Display Width="2250" Color="16777215" DataName="LEDStatus...M2L1" RequestName="DataRead.LEDStatus">
+            <Rectangle Left="5640" Top="3120" Height="300" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 1" Color="65280"/>
+          </Display>
+          <Display Width="2250" Color="16777215" DataName="LEDStatus.M2L5" RequestName="DataRead.LEDStatus">
+            <Rectangle Left="5640" Top="4320" Height="300" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 1" Color="65280"/>
+          </Display>
+          <Display Width="2250" Color="16777215" DataName="LEDStatus.M2L6" RequestName="DataRead.LEDStatus">
+            <Rectangle Left="5640" Top="4620" Height="300" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 1" Color="65280"/>
+          </Display>
+          <Display Width="2250" Color="16777215" DataName="LEDStatus.M1L5" RequestName="DataRead.LEDStatus">
+            <Rectangle Left="5640" Top="2280" Height="300" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 1" Color="65280"/>
+          </Display>
+          <Display Width="2250" Color="16777215" DataName="LEDStatus..M1L6" RequestName="DataRead.LEDStatus">
+            <Rectangle Left="5640" Top="2580" Height="300" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 1" Color="65280"/>
+          </Display>
+          <Display Width="2002" Color="16777215" DataName="LEDsFail.M1L1" RequestName="DataRead.LEDsFail">
+            <Rectangle Left="480" Top="1080" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="4259584"/>
+            <Threshold Value=" 1" Color="255"/>
+          </Display>
+          <Display Width="2002" Color="16777215" DataName="LEDsFail.M1L2" RequestName="DataRead.LEDsFail">
+            <Rectangle Left="480" Top="1380" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="4259584"/>
+            <Threshold Value=" 1" Color="255"/>
+          </Display>
+          <Display Width="2002" Color="16777215" DataName="LEDsFail.M1L3" RequestName="DataRead.LEDsFail">
+            <Rectangle Left="480" Top="1680" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="4259584"/>
+            <Threshold Value=" 1" Color="255"/>
+          </Display>
+          <Display Width="2002" Color="16777215" DataName="LEDsFail.M1L4" RequestName="DataRead.LEDsFail">
+            <Rectangle Left="480" Top="1980" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="4259584"/>
+            <Threshold Value=" 1" Color="255"/>
+          </Display>
+          <Display Width="2002" Color="16777215" DataName="LEDsFail.M1L5" RequestName="DataRead.LEDsFail">
+            <Rectangle Left="480" Top="2280" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="4259584"/>
+            <Threshold Value=" 1" Color="255"/>
+          </Display>
+          <Display Width="2002" Color="16777215" DataName="LEDsFail.M1L6" RequestName="DataRead.LEDsFail">
+            <Rectangle Left="480" Top="2580" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="4259584"/>
+            <Threshold Value=" 1" Color="255"/>
+          </Display>
+          <Display Width="2002" Color="16777215" DataName="LEDsFail.M2L1" RequestName="DataRead.LEDsFail">
+            <Rectangle Left="480" Top="3120" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="4259584"/>
+            <Threshold Value=" 1" Color="255"/>
+          </Display>
+          <Display Width="2002" Color="16777215" DataName="LEDsFail.M2L4" RequestName="DataRead.LEDsFail">
+            <Rectangle Left="480" Top="3420" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="4259584"/>
+            <Threshold Value=" 1" Color="255"/>
+          </Display>
+          <Display Width="2002" Color="16777215" DataName="LEDsFail.M2L3" RequestName="DataRead.LEDsFail">
+            <Rectangle Left="480" Top="3720" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="4259584"/>
+            <Threshold Value=" 1" Color="255"/>
+          </Display>
+          <Display Width="2002" Color="16777215" DataName="LEDsFail.M2L2" RequestName="DataRead.LEDsFail">
+            <Rectangle Left="480" Top="4020" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="4259584"/>
+            <Threshold Value=" 1" Color="255"/>
+          </Display>
+          <Display Width="2002" Color="16777215" DataName="LEDsFail.M2L5" RequestName="DataRead.LEDsFail">
+            <Rectangle Left="480" Top="4320" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="4259584"/>
+            <Threshold Value=" 1" Color="255"/>
+          </Display>
+          <Display Width="2002" Color="16777215" DataName="LEDsFail.M2L6" RequestName="DataRead.LEDsFail">
+            <Rectangle Left="480" Top="4620" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="4259584"/>
+            <Threshold Value=" 1" Color="255"/>
+          </Display>
+        </Screen>
+        <Screen Name="Visualisation LED" Color="8404992" WindowState="0" Width="15420" Height="8940">
+          <Label Text="" Color="255" Alignment="0">
+            <Rectangle Left="3930" Top="840" Height="4080" Width="60"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="M1_Led_1" Color="16744576" Alignment="2">
+            <Rectangle Left="600" Top="6240" Height="600" Width="1890"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="M1_Led_2" Color="16744576" Alignment="2">
+            <Rectangle Left="2520" Top="6240" Height="600" Width="1890"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="M1_Led_3" Color="16744576" Alignment="2">
+            <Rectangle Left="4440" Top="6240" Height="600" Width="1890"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="M1_Led_4" Color="16744576" Alignment="2">
+            <Rectangle Left="6360" Top="6240" Height="600" Width="1890"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="M2_Led_4" Color="16744576" Alignment="2">
+            <Rectangle Left="6360" Top="7200" Height="600" Width="1890"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="M2_Led_5" Color="16744576" Alignment="2">
+            <Rectangle Left="8280" Top="7200" Height="600" Width="1890"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="M2_Led_6" Color="16744576" Alignment="2">
+            <Rectangle Left="10200" Top="7200" Height="600" Width="1890"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="M1_Led_5" Color="8388863" Alignment="2">
+            <Rectangle Left="8280" Top="6240" Height="600" Width="1890"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="M1_Led_6" Color="16744576" Alignment="2">
+            <Rectangle Left="10200" Top="6240" Height="600" Width="1890"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="M2_Led_1" Color="16744576" Alignment="2">
+            <Rectangle Left="600" Top="7200" Height="600" Width="1890"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="M2_Led_2" Color="16744576" Alignment="2">
+            <Rectangle Left="2520" Top="7200" Height="600" Width="1890"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="M2_Led_3" Color="16744576" Alignment="2">
+            <Rectangle Left="4440" Top="7200" Height="600" Width="1890"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Mode Expert" Color="8388736" Alignment="2">
+            <Rectangle Left="360" Top="5280" Height="3000" Width="12000"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="-12" Color="16711808" Alignment="0">
+            <Rectangle Left="360" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="-10" Color="16711808" Alignment="0">
+            <Rectangle Left="960" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="-8" Color="16711808" Alignment="0">
+            <Rectangle Left="1560" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="-6" Color="16711808" Alignment="0">
+            <Rectangle Left="2160" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="-4" Color="16711808" Alignment="0">
+            <Rectangle Left="2760" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="-2" Color="16711808" Alignment="0">
+            <Rectangle Left="3360" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="2" Color="16711808" Alignment="1">
+            <Rectangle Left="3990" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="4" Color="16711808" Alignment="1">
+            <Rectangle Left="4590" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="6" Color="16711808" Alignment="1">
+            <Rectangle Left="5190" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="8" Color="16711808" Alignment="1">
+            <Rectangle Left="5790" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="10" Color="16711808" Alignment="1">
+            <Rectangle Left="6390" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="12" Color="16711808" Alignment="1">
+            <Rectangle Left="6990" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="14" Color="16711808" Alignment="1">
+            <Rectangle Left="7590" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="16" Color="16711808" Alignment="1">
+            <Rectangle Left="8190" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="18" Color="16711808" Alignment="1">
+            <Rectangle Left="8790" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="20" Color="16711808" Alignment="1">
+            <Rectangle Left="9390" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="22" Color="16711808" Alignment="1">
+            <Rectangle Left="9990" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="24" Color="16711808" Alignment="1">
+            <Rectangle Left="10590" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="26" Color="16711808" Alignment="1">
+            <Rectangle Left="11190" Top="840" Height="4080" Width="570"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="RIGHT- HEADLAMP" Color="16744448" Alignment="2">
+            <Rectangle Left="5640" Top="240" Height="375" Width="3720"/>
+            <Font Name="Comic Sans MS" Size=" 12" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Tunnels" Color="16711808" Alignment="2">
+            <Rectangle Left="11880" Top="840" Height="4080" Width="3240"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Left Boundary" Color="16744576" Alignment="2">
+            <Rectangle Left="12120" Top="1200" Height="675" Width="1350"/>
+            <Font Name="Comic Sans MS" Size=" 11" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Right Boundary" Color="16744576" Alignment="2">
+            <Rectangle Left="13560" Top="1200" Height="675" Width="1350"/>
+            <Font Name="Comic Sans MS" Size=" 11" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Vehicle Tunnel" Color="32768" Alignment="2">
+            <Rectangle Left="12480" Top="2040" Height="375" Width="2175"/>
+            <Font Name="Comic Sans MS" Size=" 11" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Traffic Sign 1" Color="32768" Alignment="2">
+            <Rectangle Left="12480" Top="3000" Height="375" Width="2175"/>
+            <Font Name="Comic Sans MS" Size=" 11" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Traffic Sign 2" Color="32768" Alignment="2">
+            <Rectangle Left="12480" Top="3960" Height="375" Width="2175"/>
+            <Font Name="Comic Sans MS" Size=" 11" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Ref LED" Color="8388736" Alignment="2">
+            <Rectangle Left="12480" Top="5280" Height="1320" Width="2640"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Full LED" Color="8388736" Alignment="2">
+            <Rectangle Left="12480" Top="6840" Height="1440" Width="2640"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="16777215"/>
+          </Label>
+          <Button Text="LED REFERENCE ON">
+            <Rectangle Left="12960" Top="5640" Height="375" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text="Active LED Ref (M2L4)"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="OutputControl.Start.LeftLEDRef"/>
+          </Button>
+          <Button Text="LED REFERENCE OFF">
+            <Rectangle Left="12960" Top="6120" Height="375" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="OutputControl.Stop.LeftLED"/>
+          </Button>
+          <Button Text="LED FULL HB ON">
+            <Rectangle Left="12960" Top="7200" Height="375" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="OutputControl.Start.FullLeftHdlp"/>
+          </Button>
+          <Button Text="SEND">
+            <Rectangle Left="8400" Top="5520" Height="375" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="OutputControl.Start.LeftLED"/>
+          </Button>
+          <Button Text="LED FULL HB OFF">
+            <Rectangle Left="12960" Top="7680" Height="375" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="OutputControl.Stop.FullLeftHdlp"/>
+          </Button>
+          <Button Text="STOP LEDs">
+            <Rectangle Left="10320" Top="5520" Height="375" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="OutputControl.Stop.LeftLED"/>
+          </Button>
+          <Input Width="0" Color="16777215" DataName="LeftLED01PWM" RequestName="OutputControl.Start.LeftLED">
+            <Rectangle Left="1005" Top="6510" Height="300" Width="1080"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="5" Color="16777215" DataName="ADB_Tunnel..ADB_Tunnel.RightBoundaryVehicule" RequestName="DataRead.ADB_Tunnel">
+            <Rectangle Left="13560" Top="2520" Height="375" Width="1200"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="30" Color="16777215" DataName="ADB_Tunnel..ADB_Tunnel.LeftBoundaryVehicule" RequestName="DataRead.ADB_Tunnel">
+            <Rectangle Left="12240" Top="2520" Height="375" Width="1200"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="15" Color="16777215" DataName="ADB_Tunnel..ADB_Tunnel.RightBoundaryTrafficSign1" RequestName="DataRead.ADB_Tunnel">
+            <Rectangle Left="13560" Top="3480" Height="375" Width="1200"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16777215" DataName="ADB_Tunnel..ADB_Tunnel.LeftBoundaryTrafficSign1" RequestName="DataRead.ADB_Tunnel">
+            <Rectangle Left="12240" Top="3480" Height="375" Width="1230"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16777215" DataName="ADB_Tunnel..ADB_Tunnel.RightBoundaryTrafficSign2" RequestName="DataRead.ADB_Tunnel">
+            <Rectangle Left="13560" Top="4440" Height="375" Width="1200"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16777215" DataName="ADB_Tunnel.ADB_Tunnel.LeftBoundaryTrafficSign2" RequestName="DataRead.ADB_Tunnel">
+            <Rectangle Left="12240" Top="4440" Height="375" Width="1200"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="0" Color="16777215" DataName="LeftLED02PWM" RequestName="OutputControl.Start.LeftLED">
+            <Rectangle Left="2925" Top="6510" Height="300" Width="1080"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="16777215" DataName="LeftLED03PWM" RequestName="OutputControl.Start.LeftLED">
+            <Rectangle Left="4845" Top="6510" Height="300" Width="1080"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="16777215" DataName="LeftLED04PWM" RequestName="OutputControl.Start.LeftLED">
+            <Rectangle Left="6765" Top="6510" Height="300" Width="1080"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="16777215" DataName="LeftLED05PWM" RequestName="OutputControl.Start.LeftLED">
+            <Rectangle Left="8685" Top="6510" Height="300" Width="1080"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="16777215" DataName="LeftLED06PWM" RequestName="OutputControl.Start.LeftLED">
+            <Rectangle Left="10560" Top="6510" Height="300" Width="1080"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="16777215" DataName="LeftLED07PWM" RequestName="OutputControl.Start.LeftLED">
+            <Rectangle Left="1005" Top="7470" Height="300" Width="1080"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="16777215" DataName="LeftLED08PWM" RequestName="OutputControl.Start.LeftLED">
+            <Rectangle Left="2925" Top="7470" Height="300" Width="1080"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="16777215" DataName="LeftLED09PWM" RequestName="OutputControl.Start.LeftLED">
+            <Rectangle Left="4845" Top="7470" Height="300" Width="1080"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="16777215" DataName="LeftLED10PWM" RequestName="OutputControl.Start.LeftLED">
+            <Rectangle Left="6765" Top="7470" Height="300" Width="1080"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="16777215" DataName="LeftLED11PWM" RequestName="OutputControl.Start.LeftLED">
+            <Rectangle Left="8685" Top="7470" Height="300" Width="1080"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="16777215" DataName="LeftLED12PWM" RequestName="OutputControl.Start.LeftLED">
+            <Rectangle Left="10560" Top="7470" Height="300" Width="1080"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="15" Color="16777215" DataName="LEDs_PWM_Value.M1L1" RequestName="DataRead.LEDs_PWM_Value">
+            <Rectangle Left="6240" Top="1320" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="8421504"/>
+            <Threshold Value=" 1" Color="16777215"/>
+            <Threshold Value=" 30" Color="65535"/>
+            <Threshold Value=" 31" Color="16777215"/>
+            <Threshold Value=" 76" Color="33023"/>
+            <Threshold Value=" 77" Color="255"/>
+          </Display>
+          <Display Width="15" Color="16777215" DataName="LEDs_PWM_Value.M1L2" RequestName="DataRead.LEDs_PWM_Value">
+            <Rectangle Left="5460" Top="1620" Height="300" Width="4080"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="8421504"/>
+            <Threshold Value=" 1" Color="16777215"/>
+            <Threshold Value=" 30" Color="65535"/>
+            <Threshold Value=" 31" Color="16777215"/>
+            <Threshold Value=" 76" Color="33023"/>
+            <Threshold Value=" 77" Color="255"/>
+          </Display>
+          <Display Width="15" Color="16777215" DataName="LEDs_PWM_Value.M1L3" RequestName="DataRead.LEDs_PWM_Value">
+            <Rectangle Left="4860" Top="1920" Height="300" Width="3180"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="8421504"/>
+            <Threshold Value=" 1" Color="16777215"/>
+            <Threshold Value=" 40" Color="65535"/>
+            <Threshold Value=" 41" Color="16777215"/>
+            <Threshold Value=" 100" Color="33023"/>
+          </Display>
+          <Display Width="15" Color="16777215" DataName="LEDs_PWM_Value.M1L4" RequestName="DataRead.LEDs_PWM_Value">
+            <Rectangle Left="4260" Top="2220" Height="300" Width="2025"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="8421504"/>
+            <Threshold Value=" 1" Color="16777215"/>
+            <Threshold Value=" 40" Color="65535"/>
+            <Threshold Value=" 41" Color="16777215"/>
+            <Threshold Value=" 100" Color="33023"/>
+          </Display>
+          <Display Width="15" Color="16777215" DataName="LEDs_PWM_Value.M1L5" RequestName="DataRead.LEDs_PWM_Value">
+            <Rectangle Left="3360" Top="2520" Height="300" Width="1260"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="8421504"/>
+            <Threshold Value=" 1" Color="16777215"/>
+            <Threshold Value=" 40" Color="65535"/>
+            <Threshold Value=" 41" Color="16777215"/>
+            <Threshold Value=" 100" Color="33023"/>
+          </Display>
+          <Display Width="15" Color="16777215" DataName="LEDs_PWM_Value.M1L6" RequestName="DataRead.LEDs_PWM_Value">
+            <Rectangle Left="1710" Top="2820" Height="300" Width="2010"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="8421504"/>
+            <Threshold Value=" 1" Color="16777215"/>
+            <Threshold Value=" 30" Color="65535"/>
+            <Threshold Value=" 31" Color="16777215"/>
+            <Threshold Value=" 76" Color="33023"/>
+            <Threshold Value=" 77" Color="255"/>
+          </Display>
+          <Display Width="15" Color="16777215" DataName="LEDs_PWM_Value.M2L1" RequestName="DataRead.LEDs_PWM_Value">
+            <Rectangle Left="6210" Top="2610" Height="300" Width="4560"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="8421504"/>
+            <Threshold Value=" 1" Color="16777215"/>
+            <Threshold Value=" 30" Color="65535"/>
+            <Threshold Value=" 31" Color="16777215"/>
+            <Threshold Value=" 76" Color="33023"/>
+            <Threshold Value=" 77" Color="255"/>
+          </Display>
+          <Display Width="15" Color="16777215" DataName="LEDs_PWM_Value.M2L2" RequestName="DataRead.LEDs_PWM_Value">
+            <Rectangle Left="5400" Top="2910" Height="300" Width="3540"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="8421504"/>
+            <Threshold Value=" 1" Color="16777215"/>
+            <Threshold Value=" 30" Color="65535"/>
+            <Threshold Value=" 31" Color="16777215"/>
+            <Threshold Value=" 76" Color="33023"/>
+            <Threshold Value=" 77" Color="255"/>
+          </Display>
+          <Display Width="15" Color="16777215" DataName="LEDs_PWM_Value.M2L3" RequestName="DataRead.LEDs_PWM_Value">
+            <Rectangle Left="4560" Top="3210" Height="300" Width="2610"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="8421504"/>
+            <Threshold Value=" 1" Color="16777215"/>
+            <Threshold Value=" 30" Color="65535"/>
+            <Threshold Value=" 31" Color="16777215"/>
+            <Threshold Value=" 76" Color="33023"/>
+            <Threshold Value=" 77" Color="255"/>
+          </Display>
+          <Display Width="15" Color="16777215" DataName="LEDs_PWM_Value.M2L4" RequestName="DataRead.LEDs_PWM_Value">
+            <Rectangle Left="3900" Top="3510" Height="300" Width="1500"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="8421504"/>
+            <Threshold Value=" 1" Color="16777215"/>
+            <Threshold Value=" 40" Color="65535"/>
+            <Threshold Value=" 41" Color="16777215"/>
+            <Threshold Value=" 100" Color="33023"/>
+          </Display>
+          <Display Width="15" Color="16777215" DataName="LEDs_PWM_Value.M2L5" RequestName="DataRead.LEDs_PWM_Value">
+            <Rectangle Left="2550" Top="3810" Height="300" Width="1590"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="8421504"/>
+            <Threshold Value=" 1" Color="16777215"/>
+            <Threshold Value=" 40" Color="65535"/>
+            <Threshold Value=" 41" Color="16777215"/>
+            <Threshold Value=" 100" Color="33023"/>
+          </Display>
+          <Display Width="15" Color="16777215" DataName="LEDs_PWM_Value.M2L6" RequestName="DataRead.LEDs_PWM_Value">
+            <Rectangle Left="840" Top="4110" Height="300" Width="2670"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 0" Color="8421504"/>
+            <Threshold Value=" 1" Color="16777215"/>
+            <Threshold Value=" 40" Color="65535"/>
+            <Threshold Value=" 41" Color="16777215"/>
+            <Threshold Value=" 100" Color="33023"/>
+          </Display>
+        </Screen>
+      </Category>
+    </ds:Categories>
+  </ddt:Target>
+</xml>

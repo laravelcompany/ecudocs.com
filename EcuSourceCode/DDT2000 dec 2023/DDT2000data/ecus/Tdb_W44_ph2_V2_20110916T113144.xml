@@ -1,0 +1,4736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.0.0.1" date="2011-09-16T09:58"/>
+<ddt:Target Name="Tdb_W44_ph2" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="jean-louis.laffont@renault.com" href="Tdb_W44_ph2_V2_20110916T113144.xml" upload="9/16/2011" group="Tableau de bord"><Description><![CDATA[status  :  Définition PS
+version : V2.00 du 15/07/2010
+                auteur  : Jean-Louis Laffont
+
+Projet Véhicule C44 Phase 2
+CdC fonctionnel V9.0
+CdC diag  V9.00
+
+
+Modification pour Ph2 (AMBS Florent) :
+
+V1 :
+
+- Ajout Configuration Inhibition page ADAC
+- Correction Mnémonique pour configuration ESP (CFG_PRESESP au lieu de CFG_MONTRE)
+- Modification VDiag dans l'auto-ident
+
+
+V2 :
+
+- Renseignement des réponses manquantes aux requêtes d'écriture des configurations
+- Modification de la Mnemonique de la configuration Rhéostat (CFG_CT devient CFG_RHEO)]]></Description><Projects xmlns=""><x44Ph2/></Projects>
+
+<Function Name="Tableau de bord" Address="81"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>14/09/2005 10:05:08</DateOfficialisation>
+<Failures Name="DTC Failures" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="20800" Multipoint="1">
+<SendId>
+<CANId Value="1859"/>
+</SendId><ReceiveId>
+<CANId Value="1891"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="12" Supplier="BT2" Soft="002C" Version="1100"/></AutoIdents>
+<Datas>
+
+<Data Name="ABS absent">
+<Mnemonic>ABSE_ABS</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Présent"/>
+<Item Value="1" Text="absent"/></List>
+</Bits>
+</Data>
+<Data Name="Adresse en mémoire">
+<Bytes count="4"/>
+</Data>
+<Data Name="AIRBAG absent">
+<Mnemonic>ABSE_AIRBAG</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Présent"/>
+<Item Value="1" Text="Absent"/></List>
+</Bits>
+</Data>
+<Data Name="Appui sur bouton Heure">
+<Mnemonic>DATA10</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non activée"/>
+<Item Value="1" Text="activée"/></List>
+</Bits>
+</Data>
+<Data Name="AT absent">
+<Mnemonic>ABSE_AT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Présent"/>
+<Item Value="1" Text="Absent"/></List>
+</Bits>
+</Data>
+<Data Name="Autonomie de vidange courante en km">
+<Mnemonic>VAL_AUTONO_KM</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="Autonomie de vidange courante en mois">
+<Mnemonic>VAL_AUTONO_TEMPS</Mnemonic>
+<Bits>
+<Scaled Unit="mois"/>
+</Bits>
+</Data>
+<Data Name="Avec ou sans réponse">
+<Mnemonic>RSPREQ</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Réponse demandée"/>
+<Item Value="2" Text="pas de réponse demandée"/></List>
+</Bits>
+</Data>
+<Data Name="BCM absent">
+<Mnemonic>ABSE_BCM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Présent"/>
+<Item Value="1" Text="Absent"/></List>
+</Bits>
+</Data>
+<Data Name="Cluster absent">
+<Mnemonic>ABSE_CLUSTER</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Code identification constructeur">
+<Mnemonic>ID_CONSTR</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Code constructeur par défaut"/></List>
+</Bits>
+</Data>
+<Data Name="Code identification diagnostic">
+<Mnemonic>ID_DIAG</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Commande SERVICE">
+<Mnemonic>DATA5</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Non activée"/>
+<Item Value="1" Text="activée"/></List>
+</Bits>
+</Data>
+<Data Name="Commande STOP">
+<Mnemonic>DATA4</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Non activée"/>
+<Item Value="1" Text="activée"/></List>
+</Bits>
+</Data>
+<Data Name="Compteur ABS absent">
+<Mnemonic>COMPT_ABSE_ABS</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur AIRBAG absent">
+<Mnemonic>COMPT_ABSE_AIRBAG</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur AT absent">
+<Mnemonic>COMPT_ABSE_AT</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur BCM absent">
+<Mnemonic>COMPT_ABSE_BCM</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur ECMabsent">
+<Mnemonic>COMPT_ABSE_ECM</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur EPS absent">
+<Mnemonic>COMPT_ABSE_EPS</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur état BUS">
+<Mnemonic>BUS_OFF</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur GCU absent">
+<Mnemonic>COMPT_ABSE_GCU</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur MODULE MUET">
+<Mnemonic>MUTE</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur TPMS absent">
+<Mnemonic>COMPT_ABSE_SSPP</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur USM absent">
+<Mnemonic>COMPT_ABSE_USM</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Contact frein de parking">
+<Mnemonic>DATA1</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="frein desserré"/>
+<Item Value="1" Text="frein serré"/></List>
+</Bits>
+</Data>
+<Data Name="Date à ecrire">
+<Mnemonic>AA\MM\DD_APV</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="Date à lire">
+<Mnemonic>AA\MM\DD_APV</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="Diag Interne voyant Airbag Passager">
+<Mnemonic>DATA155</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Voyant Airbag Off OK"/>
+<Item Value="1" Text="Voyant Airbag Off NOK"/></List>
+</Bits>
+</Data>
+<Data Name="Diagnostic interne voyant Air-bag">
+<Mnemonic>DATA153</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="voyant airbag OK"/>
+<Item Value="1" Text="Voyant Air-bag défectueux"/></List>
+</Bits>
+</Data>
+<Data Name="DV_1">
+<Mnemonic>DV_1</Mnemonic>
+<Bits>
+<Scaled Unit="Litres" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="ECMabsent">
+<Mnemonic>ABSE_ECM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Présent"/>
+<Item Value="1" Text="absent"/></List>
+</Bits>
+</Data>
+<Data Name="EPS absent">
+<Mnemonic>ABSE_EPS</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Présent"/>
+<Item Value="1" Text="absent"/></List>
+</Bits>
+</Data>
+<Data Name="Erreur EEProm">
+<Mnemonic>ST_CHKSUM_EEPROM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Pas d'erreur de checksum sur l'EEPROM"/>
+<Item Value="1" Text="Erreur de checksum sur l'EEPROM"/></List>
+</Bits>
+</Data>
+<Data Name="Etat Activation">
+<Bits>
+<List>
+<Item Value="1" Text="Avec"/>
+<Item Value="2" Text="Sans"/></List>
+</Bits>
+</Data>
+<Data Name="Etat BUS">
+<Mnemonic>BUS_OFF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Bus ON"/>
+<Item Value="1" Text="Bus OFF"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant Air-bag">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant REF/défaut G1">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant REF/en calibration">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant REF/frein de parking">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant REF/nivocod">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant SERVICE/ABS">
+<Mnemonic>DATA91</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant SERVICE/CAN (absence trame)">
+<Mnemonic>DATA105</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant SERVICE/faire vidange">
+<Mnemonic>DATA99</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant SERVICE/injection">
+<Mnemonic>DATA89</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant SERVICE/OBD">
+<Mnemonic>DATA93</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant SERVICE/RV/LV">
+<Mnemonic>DATA97</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant STOP/charge batterie">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant STOP/DAE">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant STOP/injection">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant STOP/nivocod">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant STOP/pression huile">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant STOP/REF (ABS)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant STOP/température eau">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="GCU absent">
+<Mnemonic>ABSE_GCU</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Présent"/>
+<Item Value="1" Text="absent"/></List>
+</Bits>
+</Data>
+<Data Name="Incident frein (NIVOCOD)">
+<Mnemonic>DATA2</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Contact ouvert"/>
+<Item Value="1" Text="Contact fermé (niveau&lt;minimum)"/></List>
+</Bits>
+</Data>
+<Data Name="Maxi Compteur ABS absent">
+<Mnemonic>MAXI_ABSE_ABS</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="inférieur au max"/>
+<Item Value="1" Text="Maximum atteint"/></List>
+</Bits>
+</Data>
+<Data Name="Maxi compteur AIRBAG absent">
+<Mnemonic>MAXI_ABSE_AIRBAG</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="inférieur au max"/>
+<Item Value="1" Text="Maximum atteint"/></List>
+</Bits>
+</Data>
+<Data Name="Maxi compteur AT absent">
+<Mnemonic>MAXI_ABSE_AT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="inférieur au max"/>
+<Item Value="1" Text="Maximum atteint"/></List>
+</Bits>
+</Data>
+<Data Name="maxi compteur BCM absent">
+<Mnemonic>MAXI_ABSE_BCM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="inférieur au max"/>
+<Item Value="1" Text="Maximum atteint"/></List>
+</Bits>
+</Data>
+<Data Name="Maxi Compteur ECM absent">
+<Mnemonic>MAXI_ABSE_ECM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="inférieur au max"/>
+<Item Value="1" Text="Maximum atteint"/></List>
+</Bits>
+</Data>
+<Data Name="Maxi compteur EPSabsent">
+<Mnemonic>MAXI_ABSE_EPS</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="inférieur au max"/>
+<Item Value="1" Text="Maximum atteint"/></List>
+</Bits>
+</Data>
+<Data Name="Maxi compteur état BUS">
+<Mnemonic>BUS_OFF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inférieur au maxi"/>
+<Item Value="1" Text="Maximum atteint"/></List>
+</Bits>
+</Data>
+<Data Name="Maxi compteur GCU absent">
+<Mnemonic>MAXI_ABSE_GCU</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="inférieur au max"/>
+<Item Value="1" Text="Maximum atteint"/></List>
+</Bits>
+</Data>
+<Data Name="Maxi compteur MODULE MUET">
+<Mnemonic>MUTE</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inférieur au maxi"/>
+<Item Value="1" Text="Maximum atteint"/></List>
+</Bits>
+</Data>
+<Data Name="Maxi compteur TPMS absent">
+<Mnemonic>MAXI_ABSE_SSPP</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="inférieur au max"/>
+<Item Value="1" Text="Maximum atteint"/></List>
+</Bits>
+</Data>
+<Data Name="Maxi compteur USM absent">
+<Mnemonic>MAXI_ABSE_USM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="inférieur au max"/>
+<Item Value="1" Text="Maximum atteint"/></List>
+</Bits>
+</Data>
+<Data Name="Memo Diag Interne Airbag Passager">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Airbag Off NOK non mémorisé"/>
+<Item Value="1" Text="Airbag Off NOK mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="Memo Diag Interne voyant Airbag">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Défaut NOK non mémorisé"/>
+<Item Value="1" Text="Défaut NOK mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant Air-bag">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant REF/défaut G1">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant REF/en calibration">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant REF/frein de parking">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant REF/nivocod">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant SERV /CAN (absence trame)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant SERV /faire vidange">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant SERV /RV/LV">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant STOP/charge batt">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant STOP/DAE">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant STOP/injection">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant STOP/nivocod">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant STOP/pression huile">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant STOP/REF( ABS)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant STOP/tempéra eau">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation validité info Air-bag">
+<Bits count="1">
+<List>
+<Item Value="0" Text="info toujours valide"/>
+<Item Value="1" Text="mémorisation info invalide"/></List>
+</Bits>
+</Data>
+<Data Name="MODULE MUET">
+<Mnemonic>MUTE</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Module présent"/>
+<Item Value="1" Text="module muet"/></List>
+</Bits>
+</Data>
+<Data Name="MoreDTC">
+<Mnemonic>MoreDTC</Mnemonic>
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="NDTC">
+<Comment><![CDATA[Nombre de pannes pour DDT2000]]></Comment>
+<Mnemonic>#DTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Niveau d'eclairage.mode">
+<Mnemonic>NSP_ALLUM_AFFICH</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Nombre d'octets">
+<Comment><![CDATA[Nombre d'octets]]></Comment>
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Numéro de calibration">
+<Mnemonic>CAL</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Numéro de pièce MPR (en BCD)">
+<Mnemonic>PIECE</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Numéro de version">
+<Mnemonic>VERS_MSB</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Numéro d'homologation ( en ASCII)">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="Numéro du logiciel">
+<Mnemonic>SW</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="44" Text="W44"/></List>
+</Bits>
+</Data>
+<Data Name="Numéro fournisseur (code ITG)">
+<Mnemonic>ITG</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Numéro hardware (en BCD)">
+<Mnemonic>HW</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Odomètre Total">
+<Mnemonic>ODO_GENE</Mnemonic>
+<Bits count="24">
+<Scaled Unit="Km"/>
+</Bits>
+</Data>
+<Data Name="Output Control Command">
+<Comment><![CDATA[Testing output : Command enumeration]]></Comment>
+<Mnemonic>PARAPIL1</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Status"/>
+<Item Value="17" Text="Stop"/>
+<Item Value="32" Text="Start Permanent"/></List>
+</Bits>
+</Data>
+<Data Name="Output Control Status">
+<Bits>
+<List>
+<Item Value="1" Text="Running"/>
+<Item Value="2" Text="Stopped"/>
+<Item Value="17" Text="Manually Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Output Control.Driving">
+<Mnemonic>AIGUILLES_CT</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Output Permanent Control List">
+<Bits>
+<List>
+<Item Value="1" Text="VOYANTS"/>
+<Item Value="2" Text="LCD instrum + A2"/>
+<Item Value="4" Text="Niveau d'eclairage"/>
+<Item Value="5" Text="Buzzer"/>
+<Item Value="6" Text="maintien aiguille"/></List>
+</Bits>
+</Data>
+<Data Name="Panne type jauge">
+<Bits>
+<List>
+<Item Value="1" Text="Recalage en +APC"/>
+<Item Value="2" Text="Recalage du à L2off"/>
+<Item Value="3" Text="Recalage du à L3"/></List>
+</Bits>
+</Data>
+<Data Name="Prestation Survitesse Arabie">
+<Mnemonic>CFG_PRESSURV</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Sans (par défaut)"/>
+<Item Value="16" Text="Avec"/></List>
+</Bits>
+</Data>
+<Data Name="R0 (max)">
+<Mnemonic>R0</Mnemonic>
+<Bits>
+<Scaled Unit="Ohms" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="R1">
+<Mnemonic>R1</Mnemonic>
+<Bits>
+<Scaled Unit="Ohms" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="R10">
+<Mnemonic>R10</Mnemonic>
+<Bits>
+<Scaled Unit="Ohms" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="R2">
+<Mnemonic>R2</Mnemonic>
+<Bits>
+<Scaled Unit="Ohms" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="R3">
+<Mnemonic>R3</Mnemonic>
+<Bits>
+<Scaled Unit="Ohms" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="R4">
+<Mnemonic>R4</Mnemonic>
+<Bits>
+<Scaled Unit="Ohms" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="R5">
+<Mnemonic>R5</Mnemonic>
+<Bits>
+<Scaled Unit="Ohms" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="R6">
+<Mnemonic>R6</Mnemonic>
+<Bits>
+<Scaled Unit="Ohms" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="R7">
+<Mnemonic>R7</Mnemonic>
+<Bits>
+<Scaled Unit="Ohms" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="R8">
+<Mnemonic>R8</Mnemonic>
+<Bits>
+<Scaled Unit="Ohms" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="R9">
+<Mnemonic>R9</Mnemonic>
+<Bits>
+<Scaled Unit="Ohms" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="Référence version messagerie">
+<Mnemonic>VER_MESS</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Réponse LID utilisés">
+<Mnemonic>REPONSE</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="Status EEProm">
+<Mnemonic>ST_EEPROM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Valeurs par défaut en EEProm"/>
+<Item Value="1" Text="Valeurs reprogrammées en EEProm"/></List>
+</Bits>
+</Data>
+<Data Name="TPMS absent">
+<Mnemonic>ABSE_SSPP</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Présent"/>
+<Item Value="1" Text="absent"/></List>
+</Bits>
+</Data>
+<Data Name="Tracabilité">
+<Mnemonic>TRACA</Mnemonic>
+<Bytes count="16" ascii="1"/>
+</Data>
+<Data Name="Type de boîte">
+<Mnemonic>CFG_TYPBOIT</Mnemonic>
+<Bits>
+<List>
+<Item Value="16" Text="BVM"/>
+<Item Value="32" Text="BVR (par défaut)"/></List>
+</Bits>
+</Data>
+<Data Name="Type de carburation">
+<Mnemonic>CFG_TYPCARB</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Essence (par défaut)"/>
+<Item Value="16" Text="Diesel"/></List>
+</Bits>
+</Data>
+<Data Name="Type de session ouverte">
+<Bits>
+<List>
+<Item Value="129" Text="Session par défaut"/>
+<Item Value="134" Text="Session développement"/>
+<Item Value="192" Text="Session contrôle en chaîne et diagnostic après-vente"/>
+<Item Value="250" Text="Session fournisseur"/></List>
+</Bits>
+</Data>
+<Data Name="Unité de distance">
+<Mnemonic>CFG_UNITDIST</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Km (par défaut)"/>
+<Item Value="16" Text="Miles"/></List>
+</Bits>
+</Data>
+<Data Name="UPC absent">
+<Mnemonic>ABSE_UPC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="présent"/>
+<Item Value="1" Text="absent"/></List>
+</Bits>
+</Data>
+<Data Name="USM absent">
+<Mnemonic>ABSE_USM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Présent"/>
+<Item Value="1" Text="absent"/></List>
+</Bits>
+</Data>
+<Data Name="valeur ohmique jauge">
+<Mnemonic>R_JAUGE</Mnemonic>
+<Bits count="16">
+<Scaled Unit="ohms"/>
+</Bits>
+</Data>
+<Data Name="etat voyant SERVICE/BVR">
+<Mnemonic>DATA98</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant SERV /BVR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="appui sur bouton minutes">
+<Mnemonic>DATA11</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non activée"/>
+<Item Value="1" Text="activée"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant SERVICE/airbag (conducteur et passager)">
+<Mnemonic>DATA95</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant SERV /Injection">
+<Mnemonic>DATA115</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant SERV /ABS">
+<Mnemonic>DATA117</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant SERVICE/OBD">
+<Mnemonic>DATA119</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant SERV /airbag (pass et cond)">
+<Mnemonic>DATA121</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="VécartL0L1">
+<Mnemonic>RECALL0_L1</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="etat voyant SERVICE/ESP">
+<Mnemonic>DATA90</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant SERVICE/Défaut majeur FAP">
+<Mnemonic>DATA157</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="etat voyant SERVICE/Défaut VSU">
+<Mnemonic>DATA159</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant SERV/ESP">
+<Mnemonic>DATA116</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant SERV /Défaut majeur FAP">
+<Mnemonic>DATA158</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant SERV/Défaut VSU">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="configDiesel">
+<Bytes count="11"/>
+</Data>
+<Data Name="etat voyant SERVICE/présence eau dans gasoil">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non demandé"/>
+<Item Value="1" Text="Allumage demandé"/></List>
+</Bits>
+</Data>
+<Data Name="mémorisation allumage voyant SERV/eau dand gasoil">
+<Bits count="1">
+<List>
+<Item Value="0" Text="allumage non mémorisé"/>
+<Item Value="1" Text="Allumage mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="km_Calcul_Autonomie_Catburant">
+<Mnemonic>KM_CALCUL_AUTONO</Mnemonic>
+<Bits>
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="valeur standard ou système">
+<Bits count="1">
+<List>
+<Item Value="0" Text="valeur standard"/>
+<Item Value="1" Text="Valeur système"/></List>
+</Bits>
+</Data>
+<Data Name="Validité info  Air-bag">
+<Bits count="1">
+<List>
+<Item Value="0" Text="information valide"/>
+<Item Value="1" Text="Information invalide"/></List>
+</Bits>
+</Data>
+<Data Name="Vdiesel_0">
+<Mnemonic>VDIESEL0</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vdiesel_1">
+<Mnemonic>VDIESEL1</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vdiesel_10 (max)">
+<Mnemonic>VDIESEL10_MAX</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vdiesel_2">
+<Mnemonic>VDIESEL2</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vdiesel_3">
+<Mnemonic>VDIESEL3</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vdiesel_4">
+<Mnemonic>VDIESEL4</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vdiesel_5">
+<Mnemonic>VDIESEL5</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vdiesel_6">
+<Mnemonic>VDIESEL6</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vdiesel_7">
+<Mnemonic>VDIESEL7</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vdiesel_8">
+<Mnemonic>VDIESEL8</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vdiesel_9">
+<Mnemonic>VDIESEL9</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vessence_0">
+<Mnemonic>VESSENCE0</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vessence_1">
+<Mnemonic>VESSENCE1</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vessence_10 (max)">
+<Mnemonic>VESSENCE10_MAX</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vessence_2">
+<Mnemonic>VESSENCE2</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vessence_3">
+<Mnemonic>VESSENCE3</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vessence_4">
+<Mnemonic>VESSENCE4</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vessence_5">
+<Mnemonic>VESSENCE5</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vessence_6">
+<Mnemonic>VESSENCE6</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vessence_7">
+<Mnemonic>VESSENCE7</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="Vessence_8">
+<Mnemonic>VESSENCE8</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="VappointMiseContact">
+<Mnemonic>RECALL1OFF_L0</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="VappointNonCoupé">
+<Mnemonic>RECALL1_APC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Valeur Tension Entrée Nivocod">
+<Mnemonic>V_NIVOCOD</Mnemonic>
+<Bits count="16">
+<Scaled Unit="Volts" DivideBy=" 1000"/>
+</Bits>
+</Data>
+<Data Name="Valeur odometre dernier allumage STOP">
+<Mnemonic>DATA158</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Valeur odometre dernier allumage SERVICE">
+<Mnemonic>DATA158</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Valeur L0">
+<Mnemonic>FUEL_L0</Mnemonic>
+<Bits count="16">
+<Scaled Unit="litres" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Valeur L1">
+<Mnemonic>FUEL_L1</Mnemonic>
+<Bits count="16">
+<Scaled Unit="litres" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Valeur Tension Batterie">
+<Mnemonic>V_BAT</Mnemonic>
+<Bits count="16">
+<Scaled Unit="Volts" DivideBy=" 1000"/>
+</Bits>
+</Data>
+<Data Name="Valeur Tension Entrée Rhéostat">
+<Mnemonic>V_RHEO</Mnemonic>
+<Bits count="16">
+<Scaled Unit="Volts" DivideBy=" 1000"/>
+</Bits>
+</Data>
+<Data Name="Valeur de la température extérieure (CAN)">
+<Mnemonic>TEMP_EXT</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Vessence_9">
+<Mnemonic>VESSENCE9</Mnemonic>
+<Bits>
+<Scaled Unit="Litres"/>
+</Bits>
+</Data>
+<Data Name="VIN (CRC)">
+<Mnemonic>CRC</Mnemonic>
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="TremiseRoute 1LSB=1s">
+<Mnemonic>TREMISEROUTE</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Temps affichage Montre">
+<Mnemonic>TEMPS</Mnemonic>
+<Bits count="24">
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="Status voyant def airbags">
+<Mnemonic>ST_AIRBAG</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="pas de défaut détecté"/>
+<Item Value="1" Text="Défaut CC détecté présent sur la LED/lampe du témoin de défaut Airbag"/>
+<Item Value="2" Text="Défaut CO détecté présent sur la LED/lampe du témoin de défaut Airbag"/>
+<Item Value="4" Text="LED/lampe du témoin de défaut Airbag mesurée éteinte"/>
+<Item Value="8" Text="LED/lampe du témoin de défaut Airbag mesurée allumé"/>
+<Item Value="19" Text="mesure de la LED/lampe du témoin de défaut Airbag  invalide"/></List>
+</Bits>
+</Data>
+<Data Name="Status voyant airbag passager OFF">
+<Mnemonic>ST_PASSAIRBAGOFF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="pas de défaut détecté"/>
+<Item Value="1" Text="Défaut CC détecté présent sur la LED/lampe du témoin Airbag Passager OFF"/>
+<Item Value="2" Text="Défaut CO détecté présent sur la LED/lampe du témoin Airbag Passager OFF"/>
+<Item Value="4" Text="LED/lampe du témoin de Airbag Passager OFF mesurée allumée"/>
+<Item Value="8" Text="LED/lampe du témoin de Airbag Passager OFF mesurée éteinte"/>
+<Item Value="19" Text="mesure de la LED/lampe du témoin de Airbag Passager OFF invalide"/></List>
+</Bits>
+</Data>
+<Data Name="Touche défilement ADAC/ODO">
+<Mnemonic>DATA9</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Non activée"/>
+<Item Value="1" Text="activée"/></List>
+</Bits>
+</Data>
+<Data Name="Seuil pression d'huile (val*100rpm)">
+<Mnemonic>CFG_SEUILPH</Mnemonic>
+<Bits>
+<Scaled Unit="tr/mn" Step=" 100"/>
+</Bits>
+</Data>
+<Data Name="V0 (Alerte)">
+<Mnemonic>DV0</Mnemonic>
+<Bits>
+<Scaled Unit="Litres" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Seuil alerte charge batterie(val*100rpm)">
+<Mnemonic>CFG_SEUILCB</Mnemonic>
+<Bits>
+<Scaled Unit="tr/mn" Step=" 100"/>
+</Bits>
+</Data>
+<Data Name="Seuil alerte température moteur val*100rpm)">
+<Mnemonic>CFG_SEUILTM</Mnemonic>
+<Bits>
+<Scaled Unit="tr/mn" Step=" 100"/>
+</Bits>
+</Data>
+<Data Name="TarretMin1LSB=10s">
+<Mnemonic>TARRET_MIN</Mnemonic>
+<Bits>
+<Scaled Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Seuil vitesse alerte porte ouverte (Val x 1Km/h)">
+<Mnemonic>CFG_VPORTOUVERT</Mnemonic>
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="Tau (période du filtre) par pas de 100s">
+<Mnemonic>TAUFILTRE_JAUGE</Mnemonic>
+<Bits>
+<Scaled Unit="SECONDES" Step=" 100"/>
+</Bits>
+</Data>
+<Data Name="Standard Fault">
+<Mnemonic>TROUBLE_CODE</Mnemonic>
+<Bits count="5">
+<List>
+<Item Value="1" Text="Circuit Ouvert"/>
+<Item Value="6" Text="Circuit ouvert moteur arrêté"/>
+<Item Value="8" Text="En Dessous du Seuil Min"/>
+<Item Value="12" Text="Ligne en Court-Circuit"/>
+<Item Value="13" Text="Anomalie Electronique Interne"/>
+<Item Value="18" Text="Tension Anormale"/>
+<Item Value="19" Text="Valeur Hors Limite"/></List>
+</Bits>
+</Data>
+<Data Name="VIN (Numéro d'Identification)">
+<Mnemonic>VIN</Mnemonic>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="Numéro de version LSB (évolutions)">
+<Mnemonic>VERS_LSB</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Date de fabrication">
+<Mnemonic>NS</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="Cause dernier recalage jaugeage essence ou diesel">
+<Mnemonic>ST_RECAL</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="L1 réinitialisé par coupure et remise batterie en APC ON"/>
+<Item Value="1" Text="L1initialisé en APC ON"/>
+<Item Value="2" Text="L1 initialisé par recalage du à L1coupure"/>
+<Item Value="3" Text="L1 initialisé par recalage du à L0coupureStable"/>
+<Item Value="4" Text="L1 initialisé par ordre diagnostic"/>
+<Item Value="5" Text="L1 initialisé suite à sortie d'un mode dégradé"/>
+<Item Value="6" Text="L1 est en mode dégradé sur info jauge carburant"/>
+<Item Value="7" Text="L1 initialisé suite à 1er mise APC"/>
+<Item Value="8" Text="L1 recalé par vitesse nulle puis non nulle"/>
+<Item Value="9" Text="L1 recalé par vitesse nulle puis remise APC"/>
+<Item Value="255" Text="Hors APC"/></List>
+</Bits>
+</Data>
+<Data Name="Etat manocontact pression d'huile">
+<Mnemonic>DATA"</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Contact ouvert"/>
+<Item Value="1" Text="Contact fermé"/></List>
+</Bits>
+</Data>
+<Data Name="Détection défaut DAE">
+<Mnemonic>DATA"</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Contact ouvert"/>
+<Item Value="1" Text="Contact fermé"/></List>
+</Bits>
+</Data>
+<Data Name="Clignotant gauche ou droite">
+<Mnemonic>DATA21</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="absent"/>
+<Item Value="1" Text="présent"/></List>
+</Bits>
+</Data>
+<Data Name="+APC filaire">
+<Mnemonic>DATA23</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="absent"/>
+<Item Value="1" Text="présent"/></List>
+</Bits>
+</Data>
+<Data Name="+Lanterne filaire">
+<Mnemonic>DATA24</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="absent"/>
+<Item Value="1" Text="présent"/></List>
+</Bits>
+</Data>
+<Data Name="Prestation RV/LV/ACC">
+<Mnemonic>CFG_PRESRVLV</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Sans"/>
+<Item Value="16" Text="Avec (par défaut)"/></List>
+</Bits>
+</Data>
+<Data Name="Inhibition buzzer oubli ceinture conducteur">
+<Mnemonic>CFG_BUZZERCEINTURE</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="non inhibe avec Mute Radio (defaut)"/>
+<Item Value="16" Text="inhibe"/>
+<Item Value="32" Text="Non inhibe sans Mute Radio"/></List>
+</Bits>
+</Data>
+<Data Name="Présence Rhéostatage">
+<Mnemonic>CFG_RHEO</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Absente  (par défaut)"/>
+<Item Value="16" Text="Présente"/></List>
+</Bits>
+</Data>
+<Data Name="Présence Montre">
+<Mnemonic>CFG_MONTRE</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Absente  (par défaut)"/>
+<Item Value="16" Text="Présente"/></List>
+</Bits>
+</Data>
+<Data Name="Présence Température extérieure">
+<Mnemonic>CFG_TEMP</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Absente  (par défaut)"/>
+<Item Value="16" Text="Présente"/></List>
+</Bits>
+</Data>
+<Data Name="DV_2">
+<Mnemonic>DV_2</Mnemonic>
+<Bits>
+<Scaled Unit="Litres" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="DV_3">
+<Mnemonic>DV_3</Mnemonic>
+<Bits>
+<Scaled Unit="Litres" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="DV_5">
+<Mnemonic>DV_5</Mnemonic>
+<Bits>
+<Scaled Unit="Litres" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="DV_4">
+<Mnemonic>DV_4</Mnemonic>
+<Bits>
+<Scaled Unit="Litres" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="DV_6">
+<Mnemonic>DV_6</Mnemonic>
+<Bits>
+<Scaled Unit="Litres" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Mnemonic>FirstDTC</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="37890" Text="(jauge) Capteur Jauge Carburant"/>
+<Item Value="37892" Text="(Vbat) Valeur mesurée"/>
+<Item Value="37893" Text="(EEProm) Status EEPROM"/>
+<Item Value="37895" Text="[PH] : Prestation pression d'huile"/></List>
+</Bits>
+</Data>
+<Data Name="Filtre vitesse (val x 50ms)">
+<Mnemonic>CFGFILTRE_CV</Mnemonic>
+<Bits>
+<Scaled Unit="ms" Step=" 50"/>
+</Bits>
+</Data>
+<Data Name="Rh9">
+<Mnemonic>RH9</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" .4"/>
+</Bits>
+</Data>
+<Data Name="Rh8">
+<Mnemonic>RH8</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" .4"/>
+</Bits>
+</Data>
+<Data Name="Rh6">
+<Mnemonic>RH6</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" .4"/>
+</Bits>
+</Data>
+<Data Name="Rh7">
+<Mnemonic>RH7</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" .4"/>
+</Bits>
+</Data>
+<Data Name="Rh5">
+<Mnemonic>RH5</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" .4"/>
+</Bits>
+</Data>
+<Data Name="Rh4">
+<Mnemonic>RH4</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" .4"/>
+</Bits>
+</Data>
+<Data Name="Rh3">
+<Mnemonic>RH3</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" .4"/>
+</Bits>
+</Data>
+<Data Name="Rh2">
+<Mnemonic>RH2</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" .4"/>
+</Bits>
+</Data>
+<Data Name="Rh1">
+<Mnemonic>RH1</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" .4"/>
+</Bits>
+</Data>
+<Data Name="Rh0">
+<Mnemonic>RH0</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" .4"/>
+</Bits>
+</Data>
+<Data Name="ECLNuitSansRh">
+<Mnemonic>ECL_NUIT_SANS_RH</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" .4"/>
+</Bits>
+</Data>
+<Data Name="Présence ABS / ESP / VSU">
+<Mnemonic>CFG_PRESESP</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="ABS sans ESP"/>
+<Item Value="16" Text="ABS avec ESP"/>
+<Item Value="32" Text="VSU ( sans ABS et sans ESP)"/></List>
+</Bits>
+</Data>
+<Data Name="Présence DAE">
+<Mnemonic>CFG_DAE</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Absente  (par défaut)"/>
+<Item Value="16" Text="Présente"/></List>
+</Bits>
+</Data>
+<Data Name="Odomètre Partiel">
+<Mnemonic>ODO_PART</Mnemonic>
+<Bits count="31" signed="1">
+<Scaled Unit="cm" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Mesure tension LED défaut Airbag">
+<Mnemonic>V_DEF_AIRBAG</Mnemonic>
+<Bits count="16">
+<Scaled Unit="Volts" DivideBy=" 1000"/>
+</Bits>
+</Data>
+<Data Name="Mesure tension LED Airbag_OFF">
+<Mnemonic>V_DEF_AIRBAG</Mnemonic>
+<Bits count="16">
+<Scaled Unit="Volts" DivideBy=" 1000"/>
+</Bits>
+</Data>
+<Data Name="Current Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Historical Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Présence autonomie de vidange personnalisée">
+<Mnemonic>CFG_VIDPERSO</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Absente  (par défaut)"/>
+<Item Value="16" Text="Présente"/></List>
+</Bits>
+</Data>
+<Data Name="Configuration LCD">
+<Mnemonic>CFG_LCD</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Ancien LCD"/>
+<Item Value="16" Text="Nouveau LCD"/></List>
+</Bits>
+</Data>
+<Data Name="Inhibition ADAC">
+<Mnemonic>CFG_INHIBADAC</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Non Inhibé"/>
+<Item Value="16" Text="Inhibé"/></List>
+</Bits>
+</Data>
+<Data Name="L1_ALRT">
+<Mnemonic>L1_ALRT</Mnemonic>
+<Bits>
+<Scaled Unit="dL"/>
+</Bits>
+</Data>
+<Data Name="Coeff_ALRT">
+<Mnemonic>COEFF_ALRT</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Session Name">
+<Mnemonic>DIAGMODE</Mnemonic>
+<Bits>
+<List>
+<Item Value="129" Text="par défaut"/>
+<Item Value="134" Text="développement"/>
+<Item Value="192" Text="contrôle en chaîne et diagnostic après-vente"/>
+<Item Value="250" Text="Mode fournisseur"/></List>
+</Bits>
+</Data>
+<Data Name="Buzzer oubli ceinture TBOC1 (Val x 2s)">
+<Mnemonic>CFG_TBOC1</Mnemonic>
+<Bits>
+<Scaled Unit="Sec" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="Buzzer oubli ceinture TBOC2 (Val x 2s)">
+<Mnemonic>CFG_TBOC2</Mnemonic>
+<Bits>
+<Scaled Unit="Sec" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="Buzzer oubli ceinture fréquence fBOC1 (Val x 50 Hz)">
+<Mnemonic>CFG_FBOC1</Mnemonic>
+<Bits>
+<Scaled Unit="Hz" Step=" 50"/>
+</Bits>
+</Data>
+<Data Name="Buzzer oubli ceinture fréquence fBOC2 (Val x 50 Hz)">
+<Mnemonic>CFG_FBOC2</Mnemonic>
+<Bits>
+<Scaled Unit="Hz" Step=" 50"/>
+</Bits>
+</Data>
+<Data Name="Buzzer oubli ceinture seuil vitesse (Val x 1Km/h)">
+<Mnemonic>CFG_VBOC</Mnemonic>
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="Autonomie de vidange initiale en distance">
+<Mnemonic>CFG_AUTONVID</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="Autonomie de vidange initiale en mois">
+<Mnemonic>CFG_MOISVID</Mnemonic>
+<Bits>
+<Scaled Unit="mois"/>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="Demande identificateurs de LECTURE">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2100</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6100</ReplyBytes>
+<DataItem Name="Réponse LID utilisés" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Ecriture Autonomie de vidange en km">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Ecriture de la valeur de l'autonomie de vidange en km]]></Comment>
+<Sent>
+<SentBytes>3B197530</SentBytes>
+<DataItem Name="Autonomie de vidange courante en km" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B19</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Autonomie de vidange en mois">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Ecriture de la valeur de l'autonomie de vidange en mois]]></Comment>
+<Sent>
+<SentBytes>3B1AFC</SentBytes>
+<DataItem Name="Autonomie de vidange courante en mois" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1A</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Autonomie de vidange Km">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B11117530</SentBytes>
+<DataItem Name="Autonomie de vidange initiale en distance" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Autonomie de vidange Mois">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1112FC</SentBytes>
+<DataItem Name="Autonomie de vidange initiale en mois" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Inhibition SBR">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B111B00</SentBytes>
+<DataItem Name="Inhibition buzzer oubli ceinture conducteur" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Option RV/LV">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B110E10</SentBytes>
+<DataItem Name="Prestation RV/LV/ACC" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Option Survitesse Arabie">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B110F00</SentBytes>
+<DataItem Name="Prestation Survitesse Arabie" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Type de boîte">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Type de boite]]></Comment>
+<Sent>
+<SentBytes>3B110420</SentBytes>
+<DataItem Name="Type de boîte" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Type de carburation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B110500</SentBytes>
+<DataItem Name="Type de carburation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Unité de distance ADAC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B110C00</SentBytes>
+<DataItem Name="Unité de distance" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Date Dernière Intervention APV">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3BB0000000</SentBytes>
+<DataItem Name="Date à ecrire" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7BB0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Odomètre">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B18000000</SentBytes>
+<DataItem Name="Odomètre Total" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B18</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param jaugeage : partie 2 Diesel">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Ecriture de la table de litrage Diesel ( loi V = f(R) )]]></Comment>
+<Sent>
+<SentBytes>3B16022A2A29241C16100C050300</SentBytes>
+<DataItem Name="Vdiesel_0" FirstByte="14"/>
+<DataItem Name="Vdiesel_1" FirstByte="13"/>
+<DataItem Name="Vdiesel_10 (max)" FirstByte="4"/>
+<DataItem Name="Vdiesel_2" FirstByte="12"/>
+<DataItem Name="Vdiesel_3" FirstByte="11"/>
+<DataItem Name="Vdiesel_4" FirstByte="10"/>
+<DataItem Name="Vdiesel_5" FirstByte="9"/>
+<DataItem Name="Vdiesel_6" FirstByte="8"/>
+<DataItem Name="Vdiesel_7" FirstByte="7"/>
+<DataItem Name="Vdiesel_8" FirstByte="6"/>
+<DataItem Name="Vdiesel_9" FirstByte="5"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B16</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param jaugeage : partie 2 Essence">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Ecriture de la table de litrage Essence ( loi V = f(R) )]]></Comment>
+<Sent>
+<SentBytes>3B16012A2A29241C16100C050300</SentBytes>
+<DataItem Name="Vessence_0" FirstByte="14"/>
+<DataItem Name="Vessence_1" FirstByte="13"/>
+<DataItem Name="Vessence_10 (max)" FirstByte="4"/>
+<DataItem Name="Vessence_2" FirstByte="12"/>
+<DataItem Name="Vessence_3" FirstByte="11"/>
+<DataItem Name="Vessence_4" FirstByte="10"/>
+<DataItem Name="Vessence_5" FirstByte="9"/>
+<DataItem Name="Vessence_6" FirstByte="8"/>
+<DataItem Name="Vessence_7" FirstByte="7"/>
+<DataItem Name="Vessence_8" FirstByte="6"/>
+<DataItem Name="Vessence_9" FirstByte="5"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B16</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param jaugeage : partie 2 Visu">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Ecriture des tables d'affichage niveau carburant]]></Comment>
+<Sent>
+<SentBytes>3B1603FFFF3246463C281E32</SentBytes>
+<DataItem Name="DV_1" FirstByte="11"/>
+<DataItem Name="V0 (Alerte)" FirstByte="12"/>
+<DataItem Name="DV_2" FirstByte="10"/>
+<DataItem Name="DV_3" FirstByte="9"/>
+<DataItem Name="DV_4" FirstByte="8"/>
+<DataItem Name="DV_5" FirstByte="7"/>
+<DataItem Name="DV_6" FirstByte="6"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B16</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture VIN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B8101020304050607080910111213141516170000</SentBytes>
+<DataItem Name="VIN (CRC)" FirstByte="20"/>
+<DataItem Name="VIN (Numéro d'Identification)" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B81</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Effacement des défauts">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Lecture activation alerte">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2113</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<ReplyBytes>6113</ReplyBytes>
+<DataItem Name="Diag Interne voyant Airbag Passager" Ref="1" FirstByte="16" BitOffset="6"/>
+<DataItem Name="Diagnostic interne voyant Air-bag" Ref="1" FirstByte="16" BitOffset="4"/>
+<DataItem Name="etat voyant Air-bag" Ref="1" FirstByte="16"/>
+<DataItem Name="etat voyant REF/défaut G1" Ref="1" FirstByte="15" BitOffset="4"/>
+<DataItem Name="etat voyant REF/en calibration" Ref="1" FirstByte="15" BitOffset="6"/>
+<DataItem Name="etat voyant REF/frein de parking" Ref="1" FirstByte="15"/>
+<DataItem Name="etat voyant REF/nivocod" Ref="1" FirstByte="15" BitOffset="2"/>
+<DataItem Name="etat voyant SERVICE/ABS" Ref="1" FirstByte="7" BitOffset="2"/>
+<DataItem Name="etat voyant SERVICE/airbag (conducteur et passager)" Ref="1" FirstByte="7" BitOffset="6"/>
+<DataItem Name="etat voyant SERVICE/BVR" Ref="1" FirstByte="8" BitOffset="1"/>
+<DataItem Name="etat voyant SERVICE/CAN (absence trame)" Ref="1" FirstByte="9"/>
+<DataItem Name="etat voyant SERVICE/injection" Ref="1" FirstByte="7"/>
+<DataItem Name="etat voyant SERVICE/OBD" Ref="1" FirstByte="7" BitOffset="4"/>
+<DataItem Name="etat voyant SERVICE/RV/LV" Ref="1" FirstByte="8"/>
+<DataItem Name="etat voyant STOP/charge batterie" Ref="1" FirstByte="3" BitOffset="4"/>
+<DataItem Name="etat voyant STOP/DAE" Ref="1" FirstByte="3" BitOffset="3"/>
+<DataItem Name="etat voyant STOP/injection" Ref="1" FirstByte="3"/>
+<DataItem Name="etat voyant STOP/nivocod" Ref="1" FirstByte="3" BitOffset="1"/>
+<DataItem Name="etat voyant STOP/pression huile" Ref="1" FirstByte="3" BitOffset="5"/>
+<DataItem Name="etat voyant STOP/REF (ABS)" Ref="1" FirstByte="3" BitOffset="2"/>
+<DataItem Name="etat voyant STOP/température eau" Ref="1" FirstByte="3" BitOffset="6"/>
+<DataItem Name="Memo Diag Interne Airbag Passager" Ref="1" FirstByte="16" BitOffset="7"/>
+<DataItem Name="Memo Diag Interne voyant Airbag" Ref="1" FirstByte="16" BitOffset="5"/>
+<DataItem Name="mémorisation allumage voyant Air-bag" Ref="1" FirstByte="16" BitOffset="1"/>
+<DataItem Name="mémorisation allumage voyant REF/défaut G1" Ref="1" FirstByte="15" BitOffset="5"/>
+<DataItem Name="mémorisation allumage voyant REF/en calibration" Ref="1" FirstByte="15" BitOffset="7"/>
+<DataItem Name="mémorisation allumage voyant REF/frein de parking" Ref="1" FirstByte="15" BitOffset="1"/>
+<DataItem Name="mémorisation allumage voyant REF/nivocod" Ref="1" FirstByte="15" BitOffset="3"/>
+<DataItem Name="mémorisation allumage voyant SERV /BVR" Ref="1" FirstByte="12" BitOffset="1"/>
+<DataItem Name="mémorisation allumage voyant SERV /CAN (absence trame)" Ref="1" FirstByte="13"/>
+<DataItem Name="mémorisation allumage voyant SERV /faire vidange" Ref="1" FirstByte="12" BitOffset="2"/>
+<DataItem Name="mémorisation allumage voyant SERV /RV/LV" Ref="1" FirstByte="12"/>
+<DataItem Name="mémorisation allumage voyant STOP/charge batt" Ref="1" FirstByte="5" BitOffset="4"/>
+<DataItem Name="mémorisation allumage voyant STOP/DAE" Ref="1" FirstByte="5" BitOffset="3"/>
+<DataItem Name="mémorisation allumage voyant STOP/injection" Ref="1" FirstByte="5"/>
+<DataItem Name="mémorisation allumage voyant STOP/nivocod" Ref="1" FirstByte="5" BitOffset="1"/>
+<DataItem Name="mémorisation allumage voyant STOP/pression huile" Ref="1" FirstByte="5" BitOffset="5"/>
+<DataItem Name="mémorisation allumage voyant STOP/REF( ABS)" Ref="1" FirstByte="5" BitOffset="2"/>
+<DataItem Name="mémorisation allumage voyant STOP/tempéra eau" Ref="1" FirstByte="5" BitOffset="6"/>
+<DataItem Name="mémorisation validité info Air-bag" Ref="1" FirstByte="16" BitOffset="3"/>
+<DataItem Name="Validité info  Air-bag" Ref="1" FirstByte="16" BitOffset="2"/>
+<DataItem Name="etat voyant SERVICE/faire vidange" Ref="1" FirstByte="8" BitOffset="2"/>
+<DataItem Name="Valeur odometre dernier allumage STOP" Ref="1" FirstByte="18"/>
+<DataItem Name="Valeur odometre dernier allumage SERVICE" Ref="1" FirstByte="20"/>
+<DataItem Name="mémorisation allumage voyant SERV /Injection" Ref="1" FirstByte="11"/>
+<DataItem Name="mémorisation allumage voyant SERV /ABS" Ref="1" FirstByte="11" BitOffset="2"/>
+<DataItem Name="mémorisation allumage voyant SERVICE/OBD" Ref="1" FirstByte="11" BitOffset="4"/>
+<DataItem Name="mémorisation allumage voyant SERV /airbag (pass et cond)" Ref="1" FirstByte="11" BitOffset="6"/>
+<DataItem Name="etat voyant SERVICE/ESP" Ref="1" FirstByte="7" BitOffset="1"/>
+<DataItem Name="etat voyant SERVICE/Défaut majeur FAP" FirstByte="10" BitOffset="3"/>
+<DataItem Name="etat voyant SERVICE/Défaut VSU" FirstByte="10" BitOffset="4"/>
+<DataItem Name="mémorisation allumage voyant SERV/ESP" FirstByte="11" BitOffset="1"/>
+<DataItem Name="mémorisation allumage voyant SERV /Défaut majeur FAP" FirstByte="14" BitOffset="3"/>
+<DataItem Name="mémorisation allumage voyant SERV/Défaut VSU" FirstByte="14" BitOffset="4"/>
+<DataItem Name="etat voyant SERVICE/présence eau dans gasoil" FirstByte="10" BitOffset="5"/>
+<DataItem Name="mémorisation allumage voyant SERV/eau dand gasoil" FirstByte="14" BitOffset="5"/>
+</Received>
+</Request>
+<Request Name="Lecture Configuration">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2111</SentBytes>
+</Sent>
+<Received MinBytes="47">
+<ReplyBytes>6111</ReplyBytes>
+<DataItem Name="Inhibition buzzer oubli ceinture conducteur" Ref="1" FirstByte="29"/>
+<DataItem Name="Prestation RV/LV/ACC" Ref="1" FirstByte="16"/>
+<DataItem Name="Prestation Survitesse Arabie" Ref="1" FirstByte="17"/>
+<DataItem Name="Type de boîte" Ref="1" FirstByte="6"/>
+<DataItem Name="Type de carburation" Ref="1" FirstByte="7"/>
+<DataItem Name="Unité de distance" Ref="1" FirstByte="14"/>
+<DataItem Name="Configuration LCD" Ref="1" FirstByte="10"/>
+<DataItem Name="Seuil pression d'huile (val*100rpm)" Ref="1" FirstByte="30"/>
+<DataItem Name="Présence Rhéostatage" Ref="1" FirstByte="43"/>
+<DataItem Name="Présence Montre" Ref="1" FirstByte="44"/>
+<DataItem Name="Présence Température extérieure" Ref="1" FirstByte="45"/>
+<DataItem Name="Présence ABS / ESP / VSU" Ref="1" FirstByte="12"/>
+<DataItem Name="Présence DAE" Ref="1" FirstByte="11"/>
+<DataItem Name="Autonomie de vidange initiale en distance" Ref="1" FirstByte="18"/>
+<DataItem Name="Autonomie de vidange initiale en mois" Ref="1" FirstByte="20"/>
+<DataItem Name="Présence autonomie de vidange personnalisée" Ref="1" FirstByte="21"/>
+<DataItem Name="Inhibition ADAC" Ref="1" FirstByte="47"/>
+</Received>
+</Request>
+<Request Name="Lecture Date Dernière Intervention APV">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21B0</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>61B0</ReplyBytes>
+<DataItem Name="Date à lire" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture de l'autonomie de vidange en km">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Lecture de l'autonomie de vidange en km]]></Comment>
+<Sent>
+<SentBytes>2119</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6119</ReplyBytes>
+<DataItem Name="Autonomie de vidange courante en km" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture de l'autonomie de vidange en temps">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Lecture de l'autonomie de vidange en mois]]></Comment>
+<Sent>
+<SentBytes>211A</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>611A</ReplyBytes>
+<DataItem Name="Autonomie de vidange courante en mois" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture de l'odomètre général">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Lecture de la valeur de l'odomètre général en km]]></Comment>
+<Sent>
+<SentBytes>2118</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>6118</ReplyBytes>
+<DataItem Name="Odomètre Total" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture Données CAN Inter-systèmes">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2182</SentBytes>
+</Sent>
+<Received MinBytes="31">
+<ReplyBytes>6182</ReplyBytes>
+<DataItem Name="ABS absent" Ref="1" FirstByte="8"/>
+<DataItem Name="AIRBAG absent" Ref="1" FirstByte="11"/>
+<DataItem Name="AT absent" Ref="1" FirstByte="15"/>
+<DataItem Name="BCM absent" Ref="1" FirstByte="10"/>
+<DataItem Name="Cluster absent" Ref="1" FirstByte="9"/>
+<DataItem Name="Compteur ABS absent" Ref="1" FirstByte="8" BitOffset="2"/>
+<DataItem Name="Compteur AIRBAG absent" Ref="1" FirstByte="11" BitOffset="2"/>
+<DataItem Name="Compteur AT absent" Ref="1" FirstByte="15" BitOffset="2"/>
+<DataItem Name="Compteur BCM absent" Ref="1" FirstByte="10" BitOffset="2"/>
+<DataItem Name="Compteur ECMabsent" Ref="1" FirstByte="7" BitOffset="2"/>
+<DataItem Name="Compteur EPS absent" Ref="1" FirstByte="24" BitOffset="2"/>
+<DataItem Name="Compteur état BUS" Ref="1" FirstByte="5" BitOffset="2"/>
+<DataItem Name="Compteur GCU absent" Ref="1" FirstByte="18" BitOffset="2"/>
+<DataItem Name="Compteur MODULE MUET" Ref="1" FirstByte="6" BitOffset="2"/>
+<DataItem Name="Compteur TPMS absent" Ref="1" FirstByte="27" BitOffset="2"/>
+<DataItem Name="Compteur USM absent" Ref="1" FirstByte="26" BitOffset="2"/>
+<DataItem Name="ECMabsent" Ref="1" FirstByte="7"/>
+<DataItem Name="EPS absent" Ref="1" FirstByte="24"/>
+<DataItem Name="Etat BUS" Ref="1" FirstByte="5"/>
+<DataItem Name="GCU absent" Ref="1" FirstByte="18"/>
+<DataItem Name="Maxi Compteur ABS absent" Ref="1" FirstByte="8" BitOffset="1"/>
+<DataItem Name="Maxi compteur AIRBAG absent" Ref="1" FirstByte="11" BitOffset="1"/>
+<DataItem Name="Maxi compteur AT absent" Ref="1" FirstByte="15" BitOffset="1"/>
+<DataItem Name="maxi compteur BCM absent" Ref="1" FirstByte="10" BitOffset="1"/>
+<DataItem Name="Maxi Compteur ECM absent" Ref="1" FirstByte="7" BitOffset="1"/>
+<DataItem Name="Maxi compteur EPSabsent" Ref="1" FirstByte="24" BitOffset="1"/>
+<DataItem Name="Maxi compteur état BUS" Ref="1" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Maxi compteur GCU absent" Ref="1" FirstByte="18" BitOffset="1"/>
+<DataItem Name="Maxi compteur MODULE MUET" Ref="1" FirstByte="6" BitOffset="1"/>
+<DataItem Name="Maxi compteur TPMS absent" Ref="1" FirstByte="27" BitOffset="1"/>
+<DataItem Name="Maxi compteur USM absent" Ref="1" FirstByte="26" BitOffset="1"/>
+<DataItem Name="MODULE MUET" Ref="1" FirstByte="6"/>
+<DataItem Name="Référence version messagerie" Ref="1" FirstByte="3"/>
+<DataItem Name="TPMS absent" Ref="1" FirstByte="27"/>
+<DataItem Name="UPC absent" Ref="1" FirstByte="5" BitOffset="1"/>
+<DataItem Name="USM absent" Ref="1" FirstByte="26"/>
+</Received>
+</Request>
+<Request Name="Lecture Etat des Entrées/Sorties">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2110</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>6110</ReplyBytes>
+<DataItem Name="Appui sur bouton Heure" Ref="1" FirstByte="5"/>
+<DataItem Name="Commande SERVICE" Ref="1" FirstByte="3" BitOffset="4"/>
+<DataItem Name="Commande STOP" Ref="1" FirstByte="3" BitOffset="3"/>
+<DataItem Name="Contact frein de parking" Ref="1" FirstByte="3"/>
+<DataItem Name="Incident frein (NIVOCOD)" Ref="1" FirstByte="3" BitOffset="1"/>
+<DataItem Name="Etat manocontact pression d'huile" Ref="1" FirstByte="3" BitOffset="2"/>
+<DataItem Name="Détection défaut DAE" Ref="1" FirstByte="3" BitOffset="5"/>
+<DataItem Name="Touche défilement ADAC/ODO" Ref="1" FirstByte="4"/>
+<DataItem Name="appui sur bouton minutes" Ref="1" FirstByte="4" BitOffset="2"/>
+<DataItem Name="Clignotant gauche ou droite" Ref="1" FirstByte="5" BitOffset="4"/>
+<DataItem Name="+APC filaire" Ref="1" FirstByte="5" BitOffset="6"/>
+<DataItem Name="+Lanterne filaire" Ref="1" FirstByte="5" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="Lecture Identification Calculateur">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>6180</ReplyBytes>
+<DataItem Name="Code identification constructeur" Ref="1" FirstByte="26"/>
+<DataItem Name="Code identification diagnostic" Ref="1" FirstByte="8"/>
+<DataItem Name="Numéro de calibration" Ref="1" FirstByte="21"/>
+<DataItem Name="Numéro de pièce MPR (en BCD)" Ref="1" FirstByte="3"/>
+<DataItem Name="Date de fabrication" Ref="1" FirstByte="23"/>
+<DataItem Name="Numéro de version" Ref="1" FirstByte="19"/>
+<DataItem Name="Numéro de version LSB (évolutions)" Ref="1" FirstByte="20"/>
+<DataItem Name="Numéro du logiciel" Ref="1" FirstByte="17"/>
+<DataItem Name="Numéro fournisseur (code ITG)" Ref="1" FirstByte="9"/>
+<DataItem Name="Numéro hardware (en BCD)" Ref="1" FirstByte="12"/>
+</Received>
+</Request>
+<Request Name="Lecture numéro d'homologation">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Lecture remontées causes d'allumage des témoins STOP et/ou SERVICE]]></Comment>
+<Sent>
+<SentBytes>2117</SentBytes>
+</Sent>
+<Received MinBytes="12">
+<ReplyBytes>6117</ReplyBytes>
+<DataItem Name="Numéro d'homologation ( en ASCII)" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture paramètres jaugeage partie 2">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Lecture des tables de jaugeages Essence, Diesel et Affichage]]></Comment>
+<Sent>
+<SentBytes>2116</SentBytes>
+</Sent>
+<Received MinBytes="43">
+<ReplyBytes>6116</ReplyBytes>
+<DataItem Name="DV_1" Ref="1" FirstByte="32"/>
+<DataItem Name="V0 (Alerte)" Ref="1" FirstByte="33"/>
+<DataItem Name="Vdiesel_0" Ref="1" FirstByte="24"/>
+<DataItem Name="Vdiesel_1" Ref="1" FirstByte="23"/>
+<DataItem Name="Vdiesel_10 (max)" Ref="1" FirstByte="14"/>
+<DataItem Name="Vdiesel_2" Ref="1" FirstByte="22"/>
+<DataItem Name="Vdiesel_3" Ref="1" FirstByte="21"/>
+<DataItem Name="Vdiesel_4" Ref="1" FirstByte="20"/>
+<DataItem Name="Vdiesel_5" Ref="1" FirstByte="19"/>
+<DataItem Name="Vdiesel_6" Ref="1" FirstByte="18"/>
+<DataItem Name="Vdiesel_7" Ref="1" FirstByte="17"/>
+<DataItem Name="Vdiesel_8" Ref="1" FirstByte="16"/>
+<DataItem Name="Vdiesel_9" Ref="1" FirstByte="15"/>
+<DataItem Name="Vessence_0" Ref="1" FirstByte="13"/>
+<DataItem Name="Vessence_1" Ref="1" FirstByte="12"/>
+<DataItem Name="Vessence_10 (max)" Ref="1" FirstByte="3"/>
+<DataItem Name="Vessence_2" Ref="1" FirstByte="11"/>
+<DataItem Name="Vessence_3" Ref="1" FirstByte="10"/>
+<DataItem Name="Vessence_4" Ref="1" FirstByte="9"/>
+<DataItem Name="Vessence_5" Ref="1" FirstByte="8"/>
+<DataItem Name="Vessence_6" Ref="1" FirstByte="7"/>
+<DataItem Name="Vessence_7" Ref="1" FirstByte="6"/>
+<DataItem Name="Vessence_8" Ref="1" FirstByte="5"/>
+<DataItem Name="Vessence_9" Ref="1" FirstByte="4"/>
+<DataItem Name="DV_2" Ref="1" FirstByte="31"/>
+<DataItem Name="DV_3" Ref="1" FirstByte="30"/>
+<DataItem Name="DV_4" Ref="1" FirstByte="29"/>
+<DataItem Name="DV_5" Ref="1" FirstByte="28"/>
+<DataItem Name="DV_6" Ref="1" FirstByte="27"/>
+</Received>
+</Request>
+<Request Name="Lecture status systeme">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Lecture remontées causes d'allumage des témoins STOP et/ou SERVICE]]></Comment>
+<Sent>
+<SentBytes>2114</SentBytes>
+</Sent>
+<Received MinBytes="8">
+<ReplyBytes>6114</ReplyBytes>
+<DataItem Name="Cause dernier recalage jaugeage essence ou diesel" Ref="1" FirstByte="3"/>
+<DataItem Name="Erreur EEProm" Ref="1" FirstByte="6" BitOffset="6"/>
+<DataItem Name="Status voyant def airbags" Ref="1" FirstByte="7"/>
+<DataItem Name="Status EEProm" Ref="1" FirstByte="6" BitOffset="7"/>
+<DataItem Name="Status voyant airbag passager OFF" Ref="1" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="Lecture Traçabilité">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>61840000000000000000000000000000000020202020</ReplyBytes>
+<DataItem Name="Tracabilité" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture Valeurs Mesurées">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2112</SentBytes>
+</Sent>
+<Received MinBytes="49">
+<ReplyBytes>6112</ReplyBytes>
+<DataItem Name="Valeur L0" Ref="1" FirstByte="7"/>
+<DataItem Name="Valeur L1" Ref="1" FirstByte="3"/>
+<DataItem Name="Temps affichage Montre" Ref="1" FirstByte="45"/>
+<DataItem Name="Valeur Tension Batterie" Ref="1" FirstByte="26"/>
+<DataItem Name="valeur ohmique jauge" Ref="1" FirstByte="9"/>
+<DataItem Name="Valeur Tension Entrée Rhéostat" Ref="1" FirstByte="28"/>
+<DataItem Name="Valeur Tension Entrée Nivocod" Ref="1" FirstByte="48"/>
+<DataItem Name="Valeur de la température extérieure (CAN)" Ref="1" FirstByte="30"/>
+<DataItem Name="Odomètre Partiel" Ref="1" FirstByte="33"/>
+<DataItem Name="Mesure tension LED défaut Airbag" Ref="1" FirstByte="41"/>
+<DataItem Name="Mesure tension LED Airbag_OFF" Ref="1" FirstByte="43"/>
+</Received>
+</Request>
+<Request Name="Lecture VIN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<ReplyBytes>6181</ReplyBytes>
+<DataItem Name="VIN (CRC)" Ref="1" FirstByte="20"/>
+<DataItem Name="VIN (Numéro d'Identification)" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Local Identifiers de COMMANDE SORTIES">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3000</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>7000</ReplyBytes>
+<DataItem Name="Réponse LID utilisés" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Local Identifiers de ECRITURE">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3B00</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>7B00</ReplyBytes>
+<DataItem Name="Réponse LID utilisés" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Local Identifiers de ROUTINES">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3100</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>7100</ReplyBytes>
+<DataItem Name="Réponse LID utilisés" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Output Control">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic testing screen]]></Comment>
+<Sent>
+<SentBytes>30000001</SentBytes>
+<DataItem Name="Niveau d'eclairage.mode" FirstByte="4"/>
+<DataItem Name="Output Control Command" FirstByte="3"/>
+<DataItem Name="Output Control.Driving" FirstByte="4"/>
+<DataItem Name="Output Permanent Control List" FirstByte="2"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700000</ReplyBytes>
+<DataItem Name="Output Control Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+<DataItem Name="MoreDTC" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<ReplyBytes>57</ReplyBytes>
+<DataItem Name="NDTC" FirstByte="2"/>
+<DataItem Name="FirstDTC" FirstByte="3"/>
+<DataItem Name="Historical Failure" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Current Failure" FirstByte="5" BitOffset="2"/>
+<DataItem Name="Standard Fault" FirstByte="5" BitOffset="3"/>
+</Received>
+</Request>
+<Request Name="ReadFreezeFrame">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>1200040000</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<ReplyBytes>5200040000</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadMemoryByAddress">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Lecture en mémoire]]></Comment>
+<Sent>
+<SentBytes>23000000000001</SentBytes>
+<DataItem Name="Adresse en mémoire" FirstByte="2"/>
+<DataItem Name="Nombre d'octets" FirstByte="6"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Routine RESTART TDB">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>310200</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710200</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Start Diagnostic Session">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>1081</SentBytes>
+<DataItem Name="Session Name" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5081</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Stop ROUTINES">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>320000</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>720000</ReplyBytes>
+</Received>
+</Request>
+<Request Name="TesterPresent">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3E</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="TesterPresent avec demande de réponse">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3E01</SentBytes>
+<DataItem Name="Avec ou sans réponse" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="TesterPresent sans réponse demandée">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3E02</SentBytes>
+<DataItem Name="Avec ou sans réponse" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WriteMemoryByAddress">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Comment><![CDATA[Ecriture en mémoire]]></Comment>
+<Sent>
+<VariableLength/>
+<SentBytes>3D000000000001</SentBytes>
+<DataItem Name="Adresse en mémoire" FirstByte="2"/>
+<DataItem Name="Nombre d'octets" FirstByte="6"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7D00</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Lecture param jaugeage partie 3">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>211B</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>611B</ReplyBytes>
+<DataItem Name="Tau (période du filtre) par pas de 100s" Ref="1" FirstByte="3"/>
+<DataItem Name="TremiseRoute 1LSB=1s" Ref="1" FirstByte="5"/>
+<DataItem Name="TarretMin1LSB=10s" Ref="1" FirstByte="4"/>
+<DataItem Name="VappointMiseContact" Ref="1" FirstByte="7"/>
+<DataItem Name="VécartL0L1" Ref="1" FirstByte="6"/>
+<DataItem Name="VappointNonCoupé" Ref="1" FirstByte="8"/>
+<DataItem Name="R10" Ref="1" FirstByte="9"/>
+<DataItem Name="R9" Ref="1" FirstByte="10"/>
+<DataItem Name="R8" Ref="1" FirstByte="11"/>
+<DataItem Name="R7" Ref="1" FirstByte="12"/>
+<DataItem Name="R6" Ref="1" FirstByte="13"/>
+<DataItem Name="R5" Ref="1" FirstByte="14"/>
+<DataItem Name="R4" Ref="1" FirstByte="15"/>
+<DataItem Name="R3" Ref="1" FirstByte="16"/>
+<DataItem Name="R2" Ref="1" FirstByte="17"/>
+<DataItem Name="R1" Ref="1" FirstByte="18"/>
+<DataItem Name="R0 (max)" Ref="1" FirstByte="19"/>
+<DataItem Name="km_Calcul_Autonomie_Catburant" Ref="1" FirstByte="20"/>
+<DataItem Name="L1_ALRT" Ref="1" FirstByte="21"/>
+<DataItem Name="Coeff_ALRT" Ref="1" FirstByte="22"/>
+</Received>
+</Request>
+<Request Name="Ouverture session AV">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Plant/></DenyAccess>
+<Sent>
+<SentBytes>10C0</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50C0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ouverture session BE">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>1086</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5086</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ouverture session fournisseur">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>10FA</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50FA</ReplyBytes>
+<DataItem Name="Type de session ouverte" FirstByte="2"/>
+</Received>
+</Request>
+<Request Name="Ecriture Param jaugeage: partie 3 filtre">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1B0109060C0F04081E3C0A</SentBytes>
+<DataItem Name="Tau (période du filtre) par pas de 100s" FirstByte="4"/>
+<DataItem Name="TremiseRoute 1LSB=1s" FirstByte="6"/>
+<DataItem Name="TarretMin1LSB=10s" FirstByte="5"/>
+<DataItem Name="VappointMiseContact" FirstByte="8"/>
+<DataItem Name="VappointNonCoupé" FirstByte="9"/>
+<DataItem Name="VécartL0L1" FirstByte="7"/>
+<DataItem Name="km_Calcul_Autonomie_Catburant" FirstByte="10"/>
+<DataItem Name="L1_ALRT" FirstByte="11"/>
+<DataItem Name="Coeff_ALRT" FirstByte="12"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B1B</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param jaugeage: partie 3 résistances">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1B03000A10142E3E4D5B828AA0</SentBytes>
+<DataItem Name="R10" FirstByte="4"/>
+<DataItem Name="R9" FirstByte="5"/>
+<DataItem Name="R0 (max)" FirstByte="14"/>
+<DataItem Name="R1" FirstByte="13"/>
+<DataItem Name="R2" FirstByte="12"/>
+<DataItem Name="R3" FirstByte="11"/>
+<DataItem Name="R4" FirstByte="10"/>
+<DataItem Name="R5" FirstByte="9"/>
+<DataItem Name="R6" FirstByte="8"/>
+<DataItem Name="R7" FirstByte="7"/>
+<DataItem Name="R8" FirstByte="6"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B1B</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Routine recalage carburant">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>310300</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7103</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Seuil alerte Phu (tr/mn)">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B111C10</SentBytes>
+<DataItem Name="Seuil pression d'huile (val*100rpm)" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Présence Rhéostatage">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B112900</SentBytes>
+<DataItem Name="Présence Rhéostatage" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Présence montre">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B112A00</SentBytes>
+<DataItem Name="Présence Montre" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Présence température extérieure">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B112B00</SentBytes>
+<DataItem Name="Présence Température extérieure" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture memoire">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Comment><![CDATA[Ecriture en mémoire]]></Comment>
+<Sent>
+<SentBytes>3D00001F2D00037F6102</SentBytes>
+</Sent>
+<Received MinBytes="2">
+</Received>
+</Request>
+<Request Name="Lever Securite des Buzzers">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>3D1825B9E7000315C7B3</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son Cligno Tic">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F2817</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son Cligno Tac">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F5217</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Silence Buzzer">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D0003008201</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son Bip Stop">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F1917</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son Bip Essai">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F6103</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son SBR Ph 1">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F4203</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son SBR Ph 2">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F2C03</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son SBR Ph 3">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F1E17</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son Mini-carb">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F2217</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son Activ 1">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F2C17</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son Activ 2">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F2802</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son Desact 1">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F2C17</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son Desact 2">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F4202</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son Oubli Lant Bip 1">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F1603</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son Oubli Lant Bip 2">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F2103</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son SBR Ph 2 lent">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F2C04</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son SBR Ph 3 lent">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D00037F1D04</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son SBR Ph 1 vol">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D0003151D05</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Son SBR Ph 2 vol">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3D00001F2D0003251D05</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Lecture param MAP et études">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>211C</SentBytes>
+</Sent>
+<Received MinBytes="28">
+<ReplyBytes>611C</ReplyBytes>
+<DataItem Name="Seuil alerte charge batterie(val*100rpm)" Ref="1" FirstByte="3"/>
+<DataItem Name="Seuil alerte température moteur val*100rpm)" Ref="1" FirstByte="4"/>
+<DataItem Name="Seuil vitesse alerte porte ouverte (Val x 1Km/h)" Ref="1" FirstByte="11"/>
+<DataItem Name="Filtre vitesse (val x 50ms)" Ref="1" FirstByte="5"/>
+<DataItem Name="Buzzer oubli ceinture TBOC1 (Val x 2s)" Ref="1" FirstByte="6"/>
+<DataItem Name="Buzzer oubli ceinture fréquence fBOC1 (Val x 50 Hz)" Ref="1" FirstByte="7"/>
+<DataItem Name="Buzzer oubli ceinture TBOC2 (Val x 2s)" Ref="1" FirstByte="8"/>
+<DataItem Name="Buzzer oubli ceinture fréquence fBOC2 (Val x 50 Hz)" Ref="1" FirstByte="9"/>
+<DataItem Name="Buzzer oubli ceinture seuil vitesse (Val x 1Km/h)" Ref="1" FirstByte="10"/>
+<DataItem Name="Rh9" Ref="1" FirstByte="12"/>
+<DataItem Name="Rh0" Ref="1" FirstByte="21"/>
+<DataItem Name="Rh1" Ref="1" FirstByte="20"/>
+<DataItem Name="Rh2" Ref="1" FirstByte="19"/>
+<DataItem Name="Rh3" Ref="1" FirstByte="18"/>
+<DataItem Name="Rh4" Ref="1" FirstByte="17"/>
+<DataItem Name="Rh5" Ref="1" FirstByte="16"/>
+<DataItem Name="Rh6" Ref="1" FirstByte="15"/>
+<DataItem Name="Rh7" Ref="1" FirstByte="14"/>
+<DataItem Name="Rh8" Ref="1" FirstByte="13"/>
+<DataItem Name="ECLNuitSansRh" Ref="1" FirstByte="22"/>
+</Received>
+</Request>
+<Request Name="Ecriture Param seuil alerte ch batterie">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C0101</SentBytes>
+<DataItem Name="Seuil alerte charge batterie(val*100rpm)" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param seuil alerte temp moteur">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C0204</SentBytes>
+<DataItem Name="Seuil alerte température moteur val*100rpm)" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param filtre vitesse">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C030F</SentBytes>
+<DataItem Name="Filtre vitesse (val x 50ms)" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param BOC durée TBOC1">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C040F</SentBytes>
+<DataItem Name="Buzzer oubli ceinture TBOC1 (Val x 2s)" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param BOC durée TBOC2">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C062E</SentBytes>
+<DataItem Name="Buzzer oubli ceinture TBOC2 (Val x 2s)" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param BOC frequence fBOC1">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C050A</SentBytes>
+<DataItem Name="Buzzer oubli ceinture fréquence fBOC1 (Val x 50 Hz)" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param BOC frequence fBOC2">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C0746</SentBytes>
+<DataItem Name="Buzzer oubli ceinture fréquence fBOC2 (Val x 50 Hz)" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param BOC seuil vitesse">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C080A</SentBytes>
+<DataItem Name="Buzzer oubli ceinture seuil vitesse (Val x 1Km/h)" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param seuil alerte porte ouverte">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C0914</SentBytes>
+<DataItem Name="Seuil vitesse alerte porte ouverte (Val x 1Km/h)" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param Rh9">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C0AFA</SentBytes>
+<DataItem Name="Rh9" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param Rh7">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C0C91</SentBytes>
+<DataItem Name="Rh7" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param Rh8">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C0BC0</SentBytes>
+<DataItem Name="Rh8" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param Rh6">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C0D6C</SentBytes>
+<DataItem Name="Rh6" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param Rh5">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C0E4F</SentBytes>
+<DataItem Name="Rh5" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param Rh4">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C0F39</SentBytes>
+<DataItem Name="Rh4" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param Rh3">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C1028</SentBytes>
+<DataItem Name="Rh3" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param Rh2">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C111B</SentBytes>
+<DataItem Name="Rh2" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param Rh1">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C1212</SentBytes>
+<DataItem Name="Rh1" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param Rh0">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C1309</SentBytes>
+<DataItem Name="Rh0" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Param ECLNuitSansRh">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B1C1437</SentBytes>
+<DataItem Name="ECLNuitSansRh" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B1C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Présence ABS / ESP / VSU">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B110A00</SentBytes>
+<DataItem Name="Présence ABS / ESP / VSU" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Présence DAE">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B110910</SentBytes>
+<DataItem Name="Présence DAE" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : prés Auto vidange perso">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B111300</SentBytes>
+<DataItem Name="Présence autonomie de vidange personnalisée" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Type LCD">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B110810</SentBytes>
+<DataItem Name="Configuration LCD" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecriture Config : Inhibition ADAC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B112D00</SentBytes>
+<DataItem Name="Inhibition ADAC" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="(EEProm) Status EEPROM" DTC="37893">
+<DeviceData Name="Status EEProm" FailureFlag="0"/><DeviceData Name="Erreur EEProm" FailureFlag="0"/><DeviceData Name="Type de boîte" FailureFlag="0"/><DeviceData Name="Type de carburation" FailureFlag="0"/><DeviceData Name="Configuration LCD" FailureFlag="0"/><DeviceData Name="Présence DAE" FailureFlag="0"/><DeviceData Name="Présence ABS / ESP / VSU" FailureFlag="0"/><DeviceData Name="Unité de distance" FailureFlag="0"/><DeviceData Name="Prestation RV/LV/ACC" FailureFlag="0"/><DeviceData Name="Prestation Survitesse Arabie" FailureFlag="0"/><DeviceData Name="Autonomie de vidange initiale en distance" FailureFlag="0"/><DeviceData Name="Autonomie de vidange initiale en mois" FailureFlag="0"/><DeviceData Name="Inhibition buzzer oubli ceinture conducteur" FailureFlag="0"/><DeviceData Name="Présence Rhéostatage" FailureFlag="0"/><DeviceData Name="Présence Montre" FailureFlag="0"/><DeviceData Name="Présence Température extérieure" FailureFlag="0"/><DeviceData Name="Présence autonomie de vidange personnalisée" FailureFlag="0"/><DeviceData Name="Inhibition ADAC" FailureFlag="0"/>
+
+</Device>
+<Device Name="(jauge) Capteur Jauge Carburant" DTC="37890">
+<DeviceData Name="Valeur L0" FailureFlag="0"/><DeviceData Name="Valeur L1" FailureFlag="0"/><DeviceData Name="Cause dernier recalage jaugeage essence ou diesel" FailureFlag="0"/><DeviceData Name="Vessence_10 (max)" FailureFlag="0"/><DeviceData Name="Vessence_9" FailureFlag="0"/><DeviceData Name="Vessence_8" FailureFlag="0"/><DeviceData Name="Vessence_7" FailureFlag="0"/><DeviceData Name="Vessence_6" FailureFlag="0"/><DeviceData Name="Vessence_5" FailureFlag="0"/><DeviceData Name="Vessence_4" FailureFlag="0"/><DeviceData Name="Vessence_3" FailureFlag="0"/><DeviceData Name="Vessence_2" FailureFlag="0"/><DeviceData Name="Vessence_1" FailureFlag="0"/><DeviceData Name="Vessence_0" FailureFlag="0"/><DeviceData Name="Vdiesel_10 (max)" FailureFlag="0"/><DeviceData Name="Vdiesel_9" FailureFlag="0"/><DeviceData Name="Vdiesel_8" FailureFlag="0"/><DeviceData Name="Vdiesel_7" FailureFlag="0"/><DeviceData Name="Vdiesel_6" FailureFlag="0"/><DeviceData Name="Vdiesel_5" FailureFlag="0"/><DeviceData Name="Vdiesel_4" FailureFlag="0"/><DeviceData Name="Vdiesel_3" FailureFlag="0"/><DeviceData Name="Vdiesel_2" FailureFlag="0"/><DeviceData Name="Vdiesel_1" FailureFlag="0"/><DeviceData Name="Vdiesel_0" FailureFlag="0"/><DeviceData Name="DV_1" FailureFlag="0"/><DeviceData Name="V0 (Alerte)" FailureFlag="0"/><DeviceData Name="valeur ohmique jauge" FailureFlag="0"/><DeviceData Name="DV_2" FailureFlag="0"/><DeviceData Name="DV_3" FailureFlag="0"/><DeviceData Name="DV_4" FailureFlag="0"/><DeviceData Name="DV_5" FailureFlag="0"/><DeviceData Name="DV_6" FailureFlag="0"/>
+
+</Device>
+<Device Name="(Vbat) Valeur mesurée" DTC="37892">
+<DeviceData Name="Valeur Tension Batterie" FailureFlag="0"/>
+
+</Device>
+<Device Name="[PH] : Prestation pression d'huile" DTC="37895">
+<DeviceData Name="etat voyant STOP/pression huile" FailureFlag="0"/><DeviceData Name="mémorisation allumage voyant STOP/pression huile" FailureFlag="0"/><DeviceData Name="Valeur odometre dernier allumage STOP" FailureFlag="0"/><DeviceData Name="Seuil pression d'huile (val*100rpm)" FailureFlag="0"/>
+
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Conditions allumage voyants">
+
+<Screen Name="Allumage voyant AIRBAG" Color="16777215" WindowState="0" Width="7980" Height="5220">
+
+<Label Text="Remontés causes d'allumage AIRBAG" Color="16777215" Alignment="2">
+<Rectangle Left="360" Top="360" Height="300" Width="7848"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Lecture paramètres voyant Airbag">
+<Rectangle Left="4320" Top="4320" Height="615" Width="2745"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture activation alerte"/>
+</Button>
+<Button Text="RAZ défauts mémorisés">
+<Rectangle Left="240" Top="4200" Height="615" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture ident"/>
+<Send Delay="0" RequestName="Effacement des défauts"/>
+</Button>
+
+<Display Width="3560" Color="16777215" DataName="etat voyant Air-bag" RequestName="Lecture activation alerte">
+<Rectangle Left="360" Top="750" Height="426" Width="6805"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="mémorisation allumage voyant Air-bag" RequestName="Lecture activation alerte">
+<Rectangle Left="360" Top="1176" Height="426" Width="6805"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="Validité info  Air-bag" RequestName="Lecture activation alerte">
+<Rectangle Left="360" Top="1601" Height="426" Width="6805"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="mémorisation validité info Air-bag" RequestName="Lecture activation alerte">
+<Rectangle Left="360" Top="2027" Height="426" Width="6805"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="Diagnostic interne voyant Air-bag" RequestName="Lecture activation alerte">
+<Rectangle Left="360" Top="2452" Height="426" Width="6805"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="Memo Diag Interne voyant Airbag" RequestName="Lecture activation alerte">
+<Rectangle Left="360" Top="2878" Height="426" Width="6805"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="Diag Interne voyant Airbag Passager" RequestName="Lecture activation alerte">
+<Rectangle Left="360" Top="3304" Height="426" Width="6805"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="Memo Diag Interne Airbag Passager" RequestName="Lecture activation alerte">
+<Rectangle Left="360" Top="3729" Height="426" Width="6805"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Allumage voyant REF" Color="16777215" WindowState="0" Width="10620" Height="4860">
+
+<Label Text="Remontés causes d'allumage du voyant REF" Color="16777215" Alignment="2">
+<Rectangle Left="600" Top="240" Height="300" Width="7848"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Lecture votant REF">
+<Rectangle Left="5760" Top="3840" Height="615" Width="4065"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture activation alerte"/>
+</Button>
+<Button Text="RAZ défauts mémorisés">
+<Rectangle Left="960" Top="3840" Height="615" Width="3657"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture ident"/>
+<Send Delay="0" RequestName="Effacement des défauts"/>
+</Button>
+
+<Display Width="2756" Color="16777215" DataName="etat voyant REF/en calibration" RequestName="Lecture activation alerte">
+<Rectangle Left="120" Top="1320" Height="504" Width="5160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2756" Color="16777215" DataName="etat voyant REF/défaut G1" RequestName="Lecture activation alerte">
+<Rectangle Left="120" Top="1824" Height="504" Width="5160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2756" Color="16777215" DataName="etat voyant REF/nivocod" RequestName="Lecture activation alerte">
+<Rectangle Left="120" Top="2328" Height="504" Width="5160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2756" Color="16777215" DataName="etat voyant REF/frein de parking" RequestName="Lecture activation alerte">
+<Rectangle Left="120" Top="2832" Height="504" Width="5160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2777" Color="16777215" DataName="mémorisation allumage voyant REF/en calibration" RequestName="Lecture activation alerte">
+<Rectangle Left="5400" Top="1320" Height="528" Width="5148"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2777" Color="16777215" DataName="mémorisation allumage voyant REF/défaut G1" RequestName="Lecture activation alerte">
+<Rectangle Left="5400" Top="1848" Height="528" Width="5148"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2777" Color="16777215" DataName="mémorisation allumage voyant REF/nivocod" RequestName="Lecture activation alerte">
+<Rectangle Left="5400" Top="2376" Height="528" Width="5148"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2777" Color="16777215" DataName="mémorisation allumage voyant REF/frein de parking" RequestName="Lecture activation alerte">
+<Rectangle Left="5400" Top="2904" Height="528" Width="5148"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Allumage voyant SERVICE" Color="16777215" WindowState="0" Width="12780" Height="9660">
+
+<Label Text="Remontés causes d'allumage SERVICE" Color="16777215" Alignment="2">
+<Rectangle Left="2400" Top="120" Height="300" Width="7848"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Lecture voyant SERVICE">
+<Rectangle Left="2400" Top="6480" Height="615" Width="2325"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture ident"/>
+<Send Delay="0" RequestName="Lecture activation alerte"/>
+</Button>
+<Button Text="RAZ défauts mémorisés">
+<Rectangle Left="7485" Top="6480" Height="615" Width="2700"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture ident"/>
+<Send Delay="0" RequestName="Effacement des défauts"/>
+</Button>
+
+<Display Width="3470" Color="16777215" DataName="etat voyant SERVICE/injection" RequestName="Lecture activation alerte">
+<Rectangle Left="0" Top="600" Height="480" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="16777215" DataName="etat voyant SERVICE/ABS" RequestName="Lecture activation alerte">
+<Rectangle Left="-1" Top="1560" Height="480" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="16777215" DataName="etat voyant SERVICE/OBD" RequestName="Lecture activation alerte">
+<Rectangle Left="-1" Top="2040" Height="480" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="16777215" DataName="etat voyant SERVICE/airbag (conducteur et passager)" RequestName="Lecture activation alerte">
+<Rectangle Left="-1" Top="2520" Height="480" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="16777215" DataName="etat voyant SERVICE/RV/LV" RequestName="Lecture activation alerte">
+<Rectangle Left="-1" Top="3000" Height="480" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="16777215" DataName="etat voyant SERVICE/BVR" RequestName="Lecture activation alerte">
+<Rectangle Left="-1" Top="3480" Height="480" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3461" Color="16777215" DataName="etat voyant SERVICE/CAN (absence trame)" RequestName="Lecture activation alerte">
+<Rectangle Left="-1" Top="4440" Height="480" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4943" Color="16777215" DataName="mémorisation allumage voyant SERV /RV/LV" RequestName="Lecture activation alerte">
+<Rectangle Left="5760" Top="3000" Height="480" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4943" Color="16777215" DataName="mémorisation allumage voyant SERV /BVR" RequestName="Lecture activation alerte">
+<Rectangle Left="5760" Top="3480" Height="480" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4943" Color="16777215" DataName="mémorisation allumage voyant SERV /faire vidange" RequestName="Lecture activation alerte">
+<Rectangle Left="5760" Top="3960" Height="480" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4949" Color="16777215" DataName="mémorisation allumage voyant SERV /CAN (absence trame)" RequestName="Lecture activation alerte">
+<Rectangle Left="5760" Top="4440" Height="480" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="16777215" DataName="etat voyant SERVICE/faire vidange" RequestName="Lecture activation alerte">
+<Rectangle Left="-1" Top="3960" Height="480" Width="5641"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4955" Color="16777215" DataName="mémorisation allumage voyant SERV /Injection" RequestName="Lecture activation alerte">
+<Rectangle Left="5760" Top="600" Height="480" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4955" Color="16777215" DataName="mémorisation allumage voyant SERV /ABS" RequestName="Lecture activation alerte">
+<Rectangle Left="5760" Top="1080" Height="480" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4955" Color="16777215" DataName="mémorisation allumage voyant SERV/ESP" RequestName="Lecture activation alerte">
+<Rectangle Left="5760" Top="1560" Height="476" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="16777215" DataName="etat voyant SERVICE/ESP" RequestName="Lecture activation alerte">
+<Rectangle Left="-1" Top="1080" Height="480" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4955" Color="16777215" DataName="mémorisation allumage voyant SERVICE/OBD" RequestName="Lecture activation alerte">
+<Rectangle Left="5760" Top="2040" Height="473" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4955" Color="16777215" DataName="mémorisation allumage voyant SERV /airbag (pass et cond)" RequestName="Lecture activation alerte">
+<Rectangle Left="5760" Top="2520" Height="480" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="16777215" DataName="etat voyant SERVICE/Défaut VSU" RequestName="Lecture activation alerte">
+<Rectangle Left="-1" Top="4920" Height="480" Width="5641"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="16777215" DataName="etat voyant SERVICE/présence eau dans gasoil" RequestName="Lecture activation alerte">
+<Rectangle Left="-1" Top="5400" Height="480" Width="5641"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4950" Color="16777215" DataName="mémorisation allumage voyant SERV/Défaut VSU" RequestName="Lecture activation alerte">
+<Rectangle Left="5760" Top="4920" Height="480" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4955" Color="16777215" DataName="mémorisation allumage voyant SERV/eau dand gasoil" RequestName="Lecture activation alerte">
+<Rectangle Left="5760" Top="5400" Height="480" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Allumage voyant STOP" Color="16777215" WindowState="0" Width="12060" Height="6540">
+
+<Label Text="Remontés causes d'allumage STOP" Color="16777215" Alignment="2">
+<Rectangle Left="2280" Top="240" Height="300" Width="7848"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Lecture votant STOP">
+<Rectangle Left="3600" Top="4560" Height="615" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture activation alerte"/>
+</Button>
+<Button Text="RAZ défauts mémorisés">
+<Rectangle Left="4320" Top="5640" Height="615" Width="3384"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture ident"/>
+<Send Delay="0" RequestName="Effacement des défauts"/>
+</Button>
+
+<Display Width="2945" Color="16777215" DataName="etat voyant STOP/nivocod" RequestName="Lecture activation alerte">
+<Rectangle Left="120" Top="1440" Height="453" Width="6120"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2945" Color="16777215" DataName="etat voyant STOP/REF (ABS)" RequestName="Lecture activation alerte">
+<Rectangle Left="120" Top="1920" Height="453" Width="6120"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2942" Color="16777215" DataName="etat voyant STOP/DAE" RequestName="Lecture activation alerte">
+<Rectangle Left="120" Top="2400" Height="453" Width="6120"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2939" Color="16777215" DataName="etat voyant STOP/charge batterie" RequestName="Lecture activation alerte">
+<Rectangle Left="120" Top="2880" Height="453" Width="6120"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2951" Color="16777215" DataName="etat voyant STOP/pression huile" RequestName="Lecture activation alerte">
+<Rectangle Left="120" Top="3360" Height="453" Width="6120"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2957" Color="16777215" DataName="etat voyant STOP/température eau" RequestName="Lecture activation alerte">
+<Rectangle Left="120" Top="3840" Height="453" Width="6120"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2945" Color="16777215" DataName="etat voyant STOP/injection" RequestName="Lecture activation alerte">
+<Rectangle Left="120" Top="960" Height="453" Width="6120"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2501" Color="16777215" DataName="mémorisation allumage voyant STOP/charge batt" RequestName="Lecture activation alerte">
+<Rectangle Left="6480" Top="2880" Height="453" Width="5400"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2513" Color="16777215" DataName="mémorisation allumage voyant STOP/injection" RequestName="Lecture activation alerte">
+<Rectangle Left="6480" Top="960" Height="453" Width="5400"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2501" Color="16777215" DataName="mémorisation allumage voyant STOP/nivocod" RequestName="Lecture activation alerte">
+<Rectangle Left="6480" Top="1440" Height="453" Width="5400"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2510" Color="16777215" DataName="mémorisation allumage voyant STOP/REF( ABS)" RequestName="Lecture activation alerte">
+<Rectangle Left="6480" Top="1920" Height="453" Width="5400"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2501" Color="16777215" DataName="mémorisation allumage voyant STOP/DAE" RequestName="Lecture activation alerte">
+<Rectangle Left="6480" Top="2400" Height="453" Width="5400"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2501" Color="16777215" DataName="mémorisation allumage voyant STOP/pression huile" RequestName="Lecture activation alerte">
+<Rectangle Left="6480" Top="3360" Height="453" Width="5400"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2510" Color="16777215" DataName="mémorisation allumage voyant STOP/tempéra eau" RequestName="Lecture activation alerte">
+<Rectangle Left="6480" Top="3840" Height="453" Width="5400"/>
+<Font Name="Arial" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Ecrans étude">
+
+<Screen Name="Lecture défauts CAN" Color="16777215" WindowState="0" Width="11580" Height="5940">
+
+<Send Delay="0" RequestName="Ouverture session BE"/><Send Delay="20" RequestName="Lecture Données CAN Inter-systèmes"/>
+<Button Text="RAZ défauts mémorisés">
+<Rectangle Left="1200" Top="360" Height="615" Width="9990"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture ident"/>
+<Send Delay="0" RequestName="Effacement des défauts"/>
+</Button>
+
+<Display Width="1655" Color="16777215" DataName="MODULE MUET" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="240" Top="1800" Height="480" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1625" Color="16777215" DataName="ABS absent" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="240" Top="3000" Height="510" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1625" Color="16777215" DataName="AIRBAG absent" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="240" Top="3720" Height="510" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1640" Color="16777215" DataName="BCM absent" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="240" Top="5160" Height="510" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1319" Color="16777215" DataName="Etat BUS" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="240" Top="1080" Height="540" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2525" Color="16777215" DataName="Compteur MODULE MUET" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="3840" Top="1800" Height="480" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2060" Color="16777215" DataName="Compteur état BUS" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="3840" Top="1080" Height="480" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2180" Color="16777215" DataName="Compteur AIRBAG absent" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="4080" Top="3720" Height="522" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2165" Color="16777215" DataName="Compteur ABS absent" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="4080" Top="3000" Height="522" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2156" Color="16777215" DataName="Compteur BCM absent" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="4080" Top="5160" Height="522" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1850" Color="16777215" DataName="Maxi compteur état BUS" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="7680" Top="1080" Height="480" Width="3600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1865" Color="16777215" DataName="Maxi compteur MODULE MUET" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="7680" Top="1800" Height="480" Width="3600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1976" Color="16777215" DataName="maxi compteur BCM absent" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="7800" Top="5160" Height="546" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1976" Color="16777215" DataName="Maxi Compteur ABS absent" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="7800" Top="3000" Height="546" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1976" Color="16777215" DataName="Maxi compteur AIRBAG absent" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="7800" Top="3720" Height="546" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1635" Color="16777215" DataName="AT absent" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="240" Top="4440" Height="480" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1970" Color="16777215" DataName="Maxi compteur AT absent" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="7800" Top="4440" Height="540" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2180" Color="16777215" DataName="Compteur AT absent" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="4080" Top="4440" Height="540" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture info filaire" Color="16777215" WindowState="0" Width="7260" Height="5940">
+
+<Send Delay="0" RequestName="Ouverture session AV"/>
+<Button Text="Lecture Infos Filaires">
+<Rectangle Left="5880" Top="120" Height="3960" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture Etat des Entrées/Sorties"/>
+</Button>
+
+<Display Width="3140" Color="16777215" DataName="Appui sur bouton Heure" RequestName="Lecture Etat des Entrées/Sorties">
+<Rectangle Left="480" Top="2640" Height="360" Width="5295"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3134" Color="16777215" DataName="Contact frein de parking" RequestName="Lecture Etat des Entrées/Sorties">
+<Rectangle Left="480" Top="120" Height="360" Width="5295"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3134" Color="16777215" DataName="Incident frein (NIVOCOD)" RequestName="Lecture Etat des Entrées/Sorties">
+<Rectangle Left="480" Top="480" Height="360" Width="5295"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3134" Color="16777215" DataName="Commande STOP" RequestName="Lecture Etat des Entrées/Sorties">
+<Rectangle Left="480" Top="1200" Height="360" Width="5295"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3134" Color="16777215" DataName="Commande SERVICE" RequestName="Lecture Etat des Entrées/Sorties">
+<Rectangle Left="480" Top="1560" Height="360" Width="5295"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3230" Color="16777215" DataName="valeur ohmique jauge" RequestName="Lecture Valeurs Mesurées">
+<Rectangle Left="450" Top="4440" Height="405" Width="5310"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3230" Color="16777215" DataName="Valeur Tension Batterie" RequestName="Lecture Valeurs Mesurées">
+<Rectangle Left="450" Top="4800" Height="420" Width="5310"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="16777215" DataName="Valeur Tension Entrée Rhéostat" RequestName="Lecture Valeurs Mesurées">
+<Rectangle Left="480" Top="5160" Height="420" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="+Lanterne filaire" RequestName="Lecture Etat des Entrées/Sorties">
+<Rectangle Left="480" Top="3720" Height="360" Width="5295"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="Etat manocontact pression d'huile" RequestName="Lecture Etat des Entrées/Sorties">
+<Rectangle Left="480" Top="840" Height="360" Width="5295"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="Détection défaut DAE" RequestName="Lecture Etat des Entrées/Sorties">
+<Rectangle Left="480" Top="1920" Height="360" Width="5295"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="Touche défilement ADAC/ODO" RequestName="Lecture Etat des Entrées/Sorties">
+<Rectangle Left="480" Top="2280" Height="360" Width="5295"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="Clignotant gauche ou droite" RequestName="Lecture Etat des Entrées/Sorties">
+<Rectangle Left="480" Top="3000" Height="360" Width="5295"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="+APC filaire" RequestName="Lecture Etat des Entrées/Sorties">
+<Rectangle Left="480" Top="3360" Height="360" Width="5295"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Ecrans ident et config">
+
+<Screen Name="Ecriture Options &amp; Config" Color="16777215" WindowState="0" Width="13740" Height="9780">
+
+<Send Delay="0" RequestName="Ouverture session AV"/>
+<Button Text="Ecriture RV\LV">
+<Rectangle Left="8760" Top="1920" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture ident"/>
+<Send Delay="0" RequestName="Ecriture Config : Option RV/LV"/>
+</Button>
+<Button Text="Ecriture Survitesse">
+<Rectangle Left="8760" Top="1560" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture ident"/>
+<Send Delay="1400" RequestName="Ecriture Config : Option Survitesse Arabie"/>
+</Button>
+<Button Text="Ecriture boite">
+<Rectangle Left="8760" Top="2280" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture ident"/>
+<Send Delay="0" RequestName="Ecriture Config : Type de boîte"/>
+</Button>
+<Button Text="Ecriture carburation">
+<Rectangle Left="8760" Top="2640" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture type carburation"/>
+<Send Delay="200" RequestName="Ecriture Config : Type de carburation"/>
+</Button>
+<Button Text="Ecriture Unité">
+<Rectangle Left="8760" Top="120" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture ident"/>
+<Send Delay="400" RequestName="Ecriture Config : Unité de distance ADAC"/>
+</Button>
+<Button Text="Ecriture vid Km">
+<Rectangle Left="8760" Top="840" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture vidange en millier de Km"/>
+<Send Delay="200" RequestName="Ecriture Config : Autonomie de vidange Km"/>
+</Button>
+<Button Text="Ecriture vid temps">
+<Rectangle Left="8760" Top="480" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture vidange en mois"/>
+<Send Delay="200" RequestName="Ecriture Config : Autonomie de vidange Mois"/>
+</Button>
+<Button Text="Inhibition SBR">
+<Rectangle Left="8760" Top="1200" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Config : Inhibition SBR"/>
+</Button>
+<Button Text="Ecriture prés temp ext">
+<Rectangle Left="8760" Top="3000" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture type carburation"/>
+<Send Delay="0" RequestName="Ecriture Config : Présence température extérieure"/>
+</Button>
+<Button Text="Ecriture Cfg ABS/ESP/VSU">
+<Rectangle Left="8760" Top="3360" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Config : Présence ABS / ESP / VSU"/>
+</Button>
+<Button Text="Ecriture pré rhéostat">
+<Rectangle Left="8760" Top="3720" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Config : Présence Rhéostatage"/>
+</Button>
+<Button Text="Ecriture prés montre">
+<Rectangle Left="8760" Top="4080" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Config : Présence montre"/>
+</Button>
+<Button Text="Prise en compte config">
+<Rectangle Left="120" Top="5640" Height="900" Width="10860"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine RESTART TDB"/>
+</Button>
+<Button Text="Ecriture pré DAE">
+<Rectangle Left="8760" Top="4440" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Config : Présence DAE"/>
+</Button>
+<Button Text="Ecriture pré Auto vid perso">
+<Rectangle Left="8760" Top="4800" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Config : prés Auto vidange perso"/>
+</Button>
+<Button Text="Ecriture Inhibition ADAC">
+<Rectangle Left="8760" Top="5160" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Config : Inhibition ADAC"/>
+</Button>
+
+<Input Width="5066" Color="16777215" DataName="Prestation Survitesse Arabie" RequestName="Ecriture Config : Option Survitesse Arabie">
+<Rectangle Left="120" Top="1560" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5066" Color="16777215" DataName="Unité de distance" RequestName="Ecriture Config : Unité de distance ADAC">
+<Rectangle Left="120" Top="120" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5066" Color="16777215" DataName="Inhibition buzzer oubli ceinture conducteur" RequestName="Ecriture Config : Inhibition SBR">
+<Rectangle Left="120" Top="1200" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5066" Color="16777215" DataName="Prestation RV/LV/ACC" RequestName="Ecriture Config : Option RV/LV">
+<Rectangle Left="120" Top="1920" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5066" Color="16777215" DataName="Type de boîte" RequestName="Ecriture Config : Type de boîte">
+<Rectangle Left="120" Top="2280" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5066" Color="16777215" DataName="Type de carburation" RequestName="Ecriture Config : Type de carburation">
+<Rectangle Left="120" Top="2640" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5066" Color="16777215" DataName="Présence Température extérieure" RequestName="Ecriture Config : Présence température extérieure">
+<Rectangle Left="120" Top="3000" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5066" Color="16777215" DataName="Présence ABS / ESP / VSU" RequestName="Ecriture Config : Présence ABS / ESP / VSU">
+<Rectangle Left="120" Top="3360" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5066" Color="16777215" DataName="Présence Rhéostatage" RequestName="Ecriture Config : Présence Rhéostatage">
+<Rectangle Left="120" Top="3720" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5066" Color="16777215" DataName="Présence Montre" RequestName="Ecriture Config : Présence montre">
+<Rectangle Left="120" Top="4080" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5066" Color="16777215" DataName="Présence DAE" RequestName="Ecriture Config : Présence DAE">
+<Rectangle Left="120" Top="4440" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5066" Color="16777215" DataName="Autonomie de vidange initiale en distance" RequestName="Ecriture Config : Autonomie de vidange Km">
+<Rectangle Left="120" Top="840" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5066" Color="16777215" DataName="Autonomie de vidange initiale en mois" RequestName="Ecriture Config : Autonomie de vidange Mois">
+<Rectangle Left="120" Top="480" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5066" Color="16777215" DataName="Présence autonomie de vidange personnalisée" RequestName="Ecriture Config : prés Auto vidange perso">
+<Rectangle Left="120" Top="4800" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5075" Color="16777215" DataName="Inhibition ADAC" RequestName="Ecriture Config : Inhibition ADAC">
+<Rectangle Left="120" Top="5160" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Identification TdB" Color="16777215" WindowState="0" Width="10260" Height="6660">
+
+<Label Text="IDENTIFICATION TABLEAU" Color="16777215" Alignment="2">
+<Rectangle Left="1800" Top="120" Height="300" Width="6960"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session AV"/>
+<Button Text="Lecture indentification Tdb">
+<Rectangle Left="5640" Top="5760" Height="780" Width="4080"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture VIN"/><Send Delay="0" RequestName="Lecture Identification Calculateur"/><Send Delay="0" RequestName="Lecture Données CAN Inter-systèmes"/><Send Delay="0" RequestName="Lecture numéro d'homologation"/>
+</Button>
+
+<Display Width="1967" Color="16777215" DataName="Numéro fournisseur (code ITG)" RequestName="Lecture Identification Calculateur">
+<Rectangle Left="120" Top="1560" Height="720" Width="5151"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1964" Color="16777215" DataName="Code identification diagnostic" RequestName="Lecture Identification Calculateur">
+<Rectangle Left="120" Top="2400" Height="720" Width="5151"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1949" Color="16777215" DataName="Numéro de pièce MPR (en BCD)" RequestName="Lecture Identification Calculateur">
+<Rectangle Left="120" Top="3240" Height="720" Width="5151"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1970" Color="16777215" DataName="Code identification constructeur" RequestName="Lecture Identification Calculateur">
+<Rectangle Left="120" Top="4080" Height="720" Width="5160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1964" Color="16777215" DataName="Numéro hardware (en BCD)" RequestName="Lecture Identification Calculateur">
+<Rectangle Left="120" Top="4920" Height="720" Width="5151"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1970" Color="16777215" DataName="Numéro d'homologation ( en ASCII)" RequestName="Lecture numéro d'homologation">
+<Rectangle Left="120" Top="5760" Height="780" Width="5151"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="Référence version messagerie" RequestName="Lecture Données CAN Inter-systèmes">
+<Rectangle Left="5520" Top="840" Height="480" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2015" Color="16777215" DataName="Numéro de version" RequestName="Lecture Identification Calculateur">
+<Rectangle Left="5520" Top="2400" Height="480" Width="3360"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Date de fabrication" RequestName="Lecture Identification Calculateur">
+<Rectangle Left="5520" Top="3000" Height="480" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Numéro de calibration" RequestName="Lecture Identification Calculateur">
+<Rectangle Left="5520" Top="3600" Height="480" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="VIN (Numéro d'Identification)" RequestName="Lecture VIN">
+<Rectangle Left="5520" Top="4200" Height="480" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1994" Color="16777215" DataName="Numéro du logiciel" RequestName="Lecture Identification Calculateur">
+<Rectangle Left="5520" Top="4920" Height="480" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Numéro de version LSB (évolutions)" RequestName="Lecture Identification Calculateur">
+<Rectangle Left="8880" Top="2400" Height="480" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture Configuration et options" Color="16777215" WindowState="0" Width="9660" Height="7500">
+
+<Label Text="Lecture Configuration et Options" Color="16777215" Alignment="2">
+<Rectangle Left="885" Top="120" Height="534" Width="6270"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session AV"/><Send Delay="20" RequestName="Lecture Configuration"/>
+<Button Text="Lecture Config &amp; Options">
+<Rectangle Left="240" Top="6240" Height="600" Width="8640"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture Configuration"/>
+</Button>
+
+<Display Width="4190" Color="16777215" DataName="Type de carburation" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="3120" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4184" Color="16777215" DataName="Unité de distance" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="600" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4184" Color="16777215" DataName="Prestation RV/LV/ACC" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="2400" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4190" Color="16777215" DataName="Inhibition buzzer oubli ceinture conducteur" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="1680" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4190" Color="16777215" DataName="Présence Température extérieure" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="3480" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4190" Color="16777215" DataName="Présence ABS / ESP / VSU" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="3840" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4190" Color="16777215" DataName="Présence Rhéostatage" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="4200" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4190" Color="16777215" DataName="Présence Montre" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="4560" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4190" Color="16777215" DataName="Autonomie de vidange initiale en distance" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="960" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4190" Color="16777215" DataName="Autonomie de vidange initiale en mois" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="1320" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4190" Color="16777215" DataName="Présence DAE" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="4920" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4190" Color="16777215" DataName="Prestation Survitesse Arabie" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="2040" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4190" Color="16777215" DataName="Type de boîte" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="2760" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4190" Color="16777215" DataName="Présence autonomie de vidange personnalisée" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="5280" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4190" Color="16777215" DataName="Inhibition ADAC" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="5640" Height="360" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture Tracabilite et AV" Color="16777215" WindowState="0" Width="7200" Height="4800">
+
+<Label Text="Date de dernière intervention Après-Vente" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="2760" Height="300" Width="5604"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Traçabilité Pïèce" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="1440" Height="300" Width="3564"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session AV"/>
+<Button Text="Lecture traçabilité et AV">
+<Rectangle Left="3240" Top="240" Height="840" Width="3600"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture Date Dernière Intervention APV"/><Send Delay="0" RequestName="Lecture Traçabilité"/>
+</Button>
+
+<Display Width="2000" Color="16777215" DataName="Tracabilité" RequestName="Lecture Traçabilité">
+<Rectangle Left="564" Top="1956" Height="324" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Date à lire" RequestName="Lecture Date Dernière Intervention APV">
+<Rectangle Left="600" Top="3240" Height="360" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Ecrans MAP jaugeage">
+
+<Screen Name="Visualisation Jauge, Batterie et NHU(0)" Color="16777215" WindowState="0" Width="9420" Height="6660">
+
+<Label Text="Batterie" Color="16777215" Alignment="0">
+<Rectangle Left="5640" Top="240" Height="300" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0" Color="255"/></Label>
+<Label Text="Jauge Carburant" Color="16777215" Alignment="0">
+<Rectangle Left="840" Top="120" Height="360" Width="2880"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0" Color="255"/></Label>
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Lecture des Mesures">
+<Rectangle Left="480" Top="2040" Height="960" Width="3000"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture Valeurs Mesurées"/>
+</Button>
+<Button Text="Recalage jaugeage (31 03 00)">
+<Rectangle Left="480" Top="3360" Height="720" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine recalage carburant"/>
+</Button>
+<Button Text="RAZ défauts mémorisés (14 FF 00)">
+<Rectangle Left="480" Top="5640" Height="660" Width="3240"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Effacement des défauts"/>
+</Button>
+
+<Display Width="1985" Color="16777215" DataName="Valeur L0" RequestName="Lecture Valeurs Mesurées">
+<Rectangle Left="120" Top="600" Height="300" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1991" Color="16777215" DataName="Valeur L1" RequestName="Lecture Valeurs Mesurées">
+<Rectangle Left="120" Top="960" Height="360" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2015" Color="16777215" DataName="valeur ohmique jauge" RequestName="Lecture Valeurs Mesurées">
+<Rectangle Left="120" Top="1440" Height="480" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2090" Color="16777215" DataName="Valeur Tension Batterie" RequestName="Lecture Valeurs Mesurées">
+<Rectangle Left="4545" Top="705" Height="720" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1085" Color="16777215" DataName="Valeur L0" RequestName="Lecture Valeurs Mesurées">
+<Rectangle Left="7440" Top="-3360" Height="300" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1085" Color="16777215" DataName="Valeur L0" RequestName="Lecture Valeurs Mesurées">
+<Rectangle Left="7440" Top="-3360" Height="300" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1085" Color="16777215" DataName="Valeur L0" RequestName="Lecture Valeurs Mesurées">
+<Rectangle Left="7560" Top="-3480" Height="300" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2330" Color="16777215" DataName="Cause dernier recalage jaugeage essence ou diesel" RequestName="Lecture status systeme">
+<Rectangle Left="4080" Top="2040" Height="960" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Table d'entrée jauge" Color="16777215" WindowState="0" Width="7980" Height="6060">
+
+<Label Text="Lecture de la table de conversion jauge" Color="16777088" Alignment="2">
+<Rectangle Left="120" Top="120" Height="4920" Width="3600"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Ecriture de la table de conversion jauge" Color="16744448" Alignment="2">
+<Rectangle Left="3960" Top="120" Height="5640" Width="3720"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Lecture table de conversion de jauge">
+<Rectangle Left="360" Top="4200" Height="636" Width="3000"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture paramètres jaugeage partie 2"/>
+</Button>
+<Button Text="Ecriture table de conversion de Jauge">
+<Rectangle Left="4200" Top="4200" Height="636" Width="3240"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param jaugeage: partie 3 résistances"/>
+</Button>
+<Button Text="Prise en compte des changements">
+<Rectangle Left="4200" Top="5040" Height="612" Width="3240"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine RESTART TDB"/>
+</Button>
+
+<Display Width="1670" Color="16777215" DataName="R10" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="720" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1670" Color="16777215" DataName="R9" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="1020" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1670" Color="16777215" DataName="R8" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="1320" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1670" Color="16777215" DataName="R7" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="1620" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1670" Color="16777215" DataName="R6" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="1920" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1670" Color="16777215" DataName="R5" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="2220" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1670" Color="16777215" DataName="R4" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="2520" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1670" Color="16777215" DataName="R3" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="2820" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1670" Color="16777215" DataName="R2" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="3120" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1670" Color="16777215" DataName="R1" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="3420" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1670" Color="16777215" DataName="R0 (max)" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="3720" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2000" Color="16777215" DataName="R10" RequestName="Ecriture Param jaugeage: partie 3 résistances">
+<Rectangle Left="4200" Top="720" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="R9" RequestName="Ecriture Param jaugeage: partie 3 résistances">
+<Rectangle Left="4200" Top="960" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="R8" RequestName="Ecriture Param jaugeage: partie 3 résistances">
+<Rectangle Left="4200" Top="1260" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="R7" RequestName="Ecriture Param jaugeage: partie 3 résistances">
+<Rectangle Left="4200" Top="1560" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="R6" RequestName="Ecriture Param jaugeage: partie 3 résistances">
+<Rectangle Left="4200" Top="1860" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="R5" RequestName="Ecriture Param jaugeage: partie 3 résistances">
+<Rectangle Left="4200" Top="2160" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="R4" RequestName="Ecriture Param jaugeage: partie 3 résistances">
+<Rectangle Left="4200" Top="2460" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="R3" RequestName="Ecriture Param jaugeage: partie 3 résistances">
+<Rectangle Left="4200" Top="2760" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="R2" RequestName="Ecriture Param jaugeage: partie 3 résistances">
+<Rectangle Left="4200" Top="3060" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="R1" RequestName="Ecriture Param jaugeage: partie 3 résistances">
+<Rectangle Left="4200" Top="3360" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="R0 (max)" RequestName="Ecriture Param jaugeage: partie 3 résistances">
+<Rectangle Left="4200" Top="3660" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Table Conversion Essence" Color="16777215" WindowState="0" Width="11940" Height="6540">
+
+<Label Text="Ecriture des tables de conversion de la Jauge" Color="16744448" Alignment="2">
+<Rectangle Left="3960" Top="0" Height="5880" Width="3600"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Lecture des tables de conversion de la Jauge" Color="16777088" Alignment="2">
+<Rectangle Left="120" Top="0" Height="5880" Width="3480"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="10" RequestName="Lecture paramètres jaugeage partie 2"/>
+<Button Text="Ecriture Table Volume Essence">
+<Rectangle Left="4320" Top="4680" Height="540" Width="3000"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param jaugeage : partie 2 Essence"/>
+</Button>
+<Button Text="Prise en compte des changements">
+<Rectangle Left="4320" Top="5280" Height="492" Width="3000"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine RESTART TDB"/>
+</Button>
+
+<Input Width="1943" Color="16777215" DataName="Vessence_10 (max)" RequestName="Ecriture Param jaugeage : partie 2 Essence">
+<Rectangle Left="4320" Top="570" Height="450" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1943" Color="16777215" DataName="Vessence_9" RequestName="Ecriture Param jaugeage : partie 2 Essence">
+<Rectangle Left="4440" Top="1080" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1928" Color="16777215" DataName="Vessence_8" RequestName="Ecriture Param jaugeage : partie 2 Essence">
+<Rectangle Left="4320" Top="1440" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1928" Color="16777215" DataName="Vessence_7" RequestName="Ecriture Param jaugeage : partie 2 Essence">
+<Rectangle Left="4440" Top="1800" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1928" Color="16777215" DataName="Vessence_6" RequestName="Ecriture Param jaugeage : partie 2 Essence">
+<Rectangle Left="4320" Top="2160" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1928" Color="16777215" DataName="Vessence_5" RequestName="Ecriture Param jaugeage : partie 2 Essence">
+<Rectangle Left="4440" Top="2520" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1913" Color="16777215" DataName="Vessence_4" RequestName="Ecriture Param jaugeage : partie 2 Essence">
+<Rectangle Left="4320" Top="2880" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1913" Color="16777215" DataName="Vessence_3" RequestName="Ecriture Param jaugeage : partie 2 Essence">
+<Rectangle Left="4440" Top="3240" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1898" Color="16777215" DataName="Vessence_2" RequestName="Ecriture Param jaugeage : partie 2 Essence">
+<Rectangle Left="4320" Top="3600" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1898" Color="16777215" DataName="Vessence_0" RequestName="Ecriture Param jaugeage : partie 2 Essence">
+<Rectangle Left="4320" Top="4320" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="1943" Color="16777215" DataName="Vessence_10 (max)" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="225" Top="540" Height="480" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1958" Color="16777215" DataName="Vessence_9" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="360" Top="1080" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1958" Color="16777215" DataName="Vessence_8" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="240" Top="1440" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1943" Color="16777215" DataName="Vessence_7" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="360" Top="1800" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1943" Color="16777215" DataName="Vessence_6" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="240" Top="2160" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1943" Color="16777215" DataName="Vessence_5" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="360" Top="2520" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1928" Color="16777215" DataName="Vessence_2" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="240" Top="3600" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1913" Color="16777215" DataName="Vessence_1" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="360" Top="3960" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1898" Color="16777215" DataName="Vessence_0" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="240" Top="4320" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1940" Color="16777215" DataName="Vessence_3" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="360" Top="3240" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1970" Color="16777215" DataName="Vessence_4" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="240" Top="2880" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="1910" Color="16777215" DataName="Vessence_1" RequestName="Ecriture Param jaugeage : partie 2 Essence">
+<Rectangle Left="4440" Top="3960" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Table Conversion Diesel" Color="16777215" WindowState="0" Width="11940" Height="6180">
+
+<Label Text="Ecriture Tables conversion Diesel" Color="16744448" Alignment="2">
+<Rectangle Left="4800" Top="120" Height="6120" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Lecture Tables configuration Diesel" Color="16777088" Alignment="2">
+<Rectangle Left="240" Top="120" Height="5640" Width="4200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="10" RequestName="Lecture paramètres jaugeage partie 2"/>
+<Button Text="Ecriture Table Volume Diesel">
+<Rectangle Left="5160" Top="4800" Height="540" Width="2520"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param jaugeage : partie 2 Diesel"/>
+</Button>
+<Button Text="Prise en compte des changements">
+<Rectangle Left="5160" Top="5400" Height="612" Width="2520"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine RESTART TDB"/>
+</Button>
+
+<Input Width="1610" Color="16777215" DataName="Vdiesel_10 (max)" RequestName="Ecriture Param jaugeage : partie 2 Diesel">
+<Rectangle Left="5040" Top="360" Height="480" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1625" Color="16777215" DataName="Vdiesel_9" RequestName="Ecriture Param jaugeage : partie 2 Diesel">
+<Rectangle Left="5280" Top="960" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1640" Color="16777215" DataName="Vdiesel_8" RequestName="Ecriture Param jaugeage : partie 2 Diesel">
+<Rectangle Left="5040" Top="1320" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1655" Color="16777215" DataName="Vdiesel_7" RequestName="Ecriture Param jaugeage : partie 2 Diesel">
+<Rectangle Left="5280" Top="1680" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1655" Color="16777215" DataName="Vdiesel_6" RequestName="Ecriture Param jaugeage : partie 2 Diesel">
+<Rectangle Left="5040" Top="2040" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1670" Color="16777215" DataName="Vdiesel_5" RequestName="Ecriture Param jaugeage : partie 2 Diesel">
+<Rectangle Left="5280" Top="2400" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1670" Color="16777215" DataName="Vdiesel_4" RequestName="Ecriture Param jaugeage : partie 2 Diesel">
+<Rectangle Left="4920" Top="2760" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1670" Color="16777215" DataName="Vdiesel_3" RequestName="Ecriture Param jaugeage : partie 2 Diesel">
+<Rectangle Left="5280" Top="3120" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1670" Color="16777215" DataName="Vdiesel_2" RequestName="Ecriture Param jaugeage : partie 2 Diesel">
+<Rectangle Left="5040" Top="3480" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1670" Color="16777215" DataName="Vdiesel_1" RequestName="Ecriture Param jaugeage : partie 2 Diesel">
+<Rectangle Left="5280" Top="3840" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1670" Color="16777215" DataName="Vdiesel_0" RequestName="Ecriture Param jaugeage : partie 2 Diesel">
+<Rectangle Left="4920" Top="4200" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="1625" Color="16777215" DataName="Vdiesel_10 (max)" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="600" Top="360" Height="540" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1625" Color="16777215" DataName="Vdiesel_9" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="840" Top="960" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1625" Color="16777215" DataName="Vdiesel_8" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="600" Top="1320" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1640" Color="16777215" DataName="Vdiesel_7" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="840" Top="1680" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1670" Color="16777215" DataName="Vdiesel_6" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="600" Top="2040" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1670" Color="16777215" DataName="Vdiesel_5" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="840" Top="2400" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1685" Color="16777215" DataName="Vdiesel_4" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="600" Top="2760" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1700" Color="16777215" DataName="Vdiesel_3" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="840" Top="3120" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1700" Color="16777215" DataName="Vdiesel_2" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="600" Top="3480" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1700" Color="16777215" DataName="Vdiesel_1" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="840" Top="3840" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1700" Color="16777215" DataName="Vdiesel_0" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="600" Top="4200" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Table d'affichage" Color="16777215" WindowState="0" Width="7980" Height="6060">
+
+<Label Text="Lecture de la table d'affichage de la Jauge" Color="16777088" Alignment="2">
+<Rectangle Left="120" Top="120" Height="4920" Width="3600"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Ecriture de la table d'affichage de la Jauge" Color="16744448" Alignment="2">
+<Rectangle Left="3960" Top="120" Height="5640" Width="3720"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Lecture table d'affichage de la Jauge">
+<Rectangle Left="240" Top="4200" Height="636" Width="3000"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture paramètres jaugeage partie 2"/>
+</Button>
+<Button Text="Ecriture table d'affichage de la Jauge">
+<Rectangle Left="4440" Top="4200" Height="636" Width="2880"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param jaugeage : partie 2 Visu"/>
+</Button>
+<Button Text="Prise en compte des changements">
+<Rectangle Left="4320" Top="4920" Height="612" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine RESTART TDB"/>
+</Button>
+
+<Display Width="2000" Color="16777215" DataName="DV_6" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="255" Top="825" Height="300" Width="3040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="DV_5" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="255" Top="1290" Height="300" Width="3025"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="DV_4" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="255" Top="1755" Height="300" Width="3010"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="DV_3" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="240" Top="2280" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="DV_2" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="240" Top="2760" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1980" Color="16777215" DataName="DV_1" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="240" Top="3240" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="V0 (Alerte)" RequestName="Lecture paramètres jaugeage partie 2">
+<Rectangle Left="240" Top="3720" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="1715" Color="16777215" DataName="DV_6" RequestName="Ecriture Param jaugeage : partie 2 Visu">
+<Rectangle Left="4560" Top="840" Height="300" Width="2640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1715" Color="16777215" DataName="DV_5" RequestName="Ecriture Param jaugeage : partie 2 Visu">
+<Rectangle Left="4560" Top="1320" Height="300" Width="2640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1715" Color="16777215" DataName="DV_4" RequestName="Ecriture Param jaugeage : partie 2 Visu">
+<Rectangle Left="4560" Top="1800" Height="300" Width="2640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1730" Color="16777215" DataName="DV_3" RequestName="Ecriture Param jaugeage : partie 2 Visu">
+<Rectangle Left="4560" Top="2280" Height="300" Width="2640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1730" Color="16777215" DataName="DV_2" RequestName="Ecriture Param jaugeage : partie 2 Visu">
+<Rectangle Left="4560" Top="2760" Height="300" Width="2640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1718" Color="16777215" DataName="DV_1" RequestName="Ecriture Param jaugeage : partie 2 Visu">
+<Rectangle Left="4560" Top="3240" Height="300" Width="2640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1718" Color="16777215" DataName="V0 (Alerte)" RequestName="Ecriture Param jaugeage : partie 2 Visu">
+<Rectangle Left="4560" Top="3720" Height="300" Width="2640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="coefs Algo Jaugeage" Color="16777215" WindowState="0" Width="8100" Height="5700">
+
+<Label Text="Ecriture des coeff Algo" Color="16744448" Alignment="2">
+<Rectangle Left="4440" Top="240" Height="5280" Width="3480"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Lecture des Coeff Algo" Color="16777088" Alignment="2">
+<Rectangle Left="120" Top="240" Height="4320" Width="4080"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Ecriture de coefficients Jaugeage">
+<Rectangle Left="4560" Top="3840" Height="612" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param jaugeage: partie 3 filtre"/>
+</Button>
+<Button Text="Prise en compte des changements">
+<Rectangle Left="4560" Top="4800" Height="612" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine RESTART TDB"/>
+</Button>
+<Button Text="Lecture des coefficients jaugeage">
+<Rectangle Left="300" Top="3840" Height="636" Width="3750"/>
+<Font Name="MS Sans Serif" Size=" 7.8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture param jaugeage partie 3"/>
+</Button>
+
+<Input Width="2060" Color="16777215" DataName="Tau (période du filtre) par pas de 100s" RequestName="Ecriture Param jaugeage: partie 3 filtre">
+<Rectangle Left="4680" Top="600" Height="480" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2060" Color="16777215" DataName="TremiseRoute 1LSB=1s" RequestName="Ecriture Param jaugeage: partie 3 filtre">
+<Rectangle Left="4680" Top="1200" Height="480" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2060" Color="16777215" DataName="TarretMin1LSB=10s" RequestName="Ecriture Param jaugeage: partie 3 filtre">
+<Rectangle Left="4680" Top="1800" Height="360" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2060" Color="16777215" DataName="VappointMiseContact" RequestName="Ecriture Param jaugeage: partie 3 filtre">
+<Rectangle Left="4680" Top="2280" Height="360" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2060" Color="16777215" DataName="VécartL0L1" RequestName="Ecriture Param jaugeage: partie 3 filtre">
+<Rectangle Left="4680" Top="2760" Height="360" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2060" Color="16777215" DataName="VappointNonCoupé" RequestName="Ecriture Param jaugeage: partie 3 filtre">
+<Rectangle Left="4680" Top="3240" Height="360" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2045" Color="16777215" DataName="Tau (période du filtre) par pas de 100s" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="600" Height="480" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2060" Color="16777215" DataName="TremiseRoute 1LSB=1s" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="1200" Height="480" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2060" Color="16777215" DataName="TarretMin1LSB=10s" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="1800" Height="360" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2060" Color="16777215" DataName="VappointMiseContact" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="2280" Height="360" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2060" Color="16777215" DataName="VécartL0L1" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="2760" Height="360" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2075" Color="16777215" DataName="VappointNonCoupé" RequestName="Lecture param jaugeage partie 3">
+<Rectangle Left="360" Top="3240" Height="360" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="paramètres courants">
+
+<Screen Name="Lecture ODO et Autonomies" Color="16777215" WindowState="0" Width="6540" Height="4620">
+
+<Send Delay="0" RequestName="Ouverture session AV"/>
+<Button Text="Lecture des paramètres courants">
+<Rectangle Left="960" Top="720" Height="720" Width="4694"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture de l'odomètre général"/><Send Delay="0" RequestName="Lecture de l'autonomie de vidange en km"/><Send Delay="0" RequestName="Lecture de l'autonomie de vidange en temps"/>
+</Button>
+
+<Display Width="2648" Color="16777215" DataName="Odomètre Total" RequestName="Lecture de l'odomètre général">
+<Rectangle Left="960" Top="1800" Height="449" Width="4694"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2648" Color="16777215" DataName="Autonomie de vidange courante en mois" RequestName="Lecture de l'autonomie de vidange en temps">
+<Rectangle Left="960" Top="2640" Height="449" Width="4694"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2648" Color="16777215" DataName="Autonomie de vidange courante en km" RequestName="Lecture de l'autonomie de vidange en km">
+<Rectangle Left="960" Top="3480" Height="449" Width="4694"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Ecriture param courants" Color="16777215" WindowState="0" Width="9180" Height="3900">
+
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Ecriture Autonomie Vidange (km)">
+<Rectangle Left="5760" Top="1080" Height="645" Width="2640"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Autonomie de vidange en km"/>
+</Button>
+<Button Text="Ecriture Autonomie Vidange (mois)">
+<Rectangle Left="5760" Top="2040" Height="645" Width="2640"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Autonomie de vidange en mois"/>
+</Button>
+<Button Text="Ecriture ODOMETRIE">
+<Rectangle Left="5760" Top="240" Height="645" Width="2640"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Ecriture ident"/>
+<Send Delay="0" RequestName="Ecriture Odomètre"/>
+</Button>
+<Button Text="Prise en compte changements">
+<Rectangle Left="240" Top="2880" Height="705" Width="8175"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text="Ecriture ident"/>
+<Send Delay="200" RequestName="Routine RESTART TDB"/>
+</Button>
+
+<Input Width="2564" Color="16777215" DataName="Autonomie de vidange courante en mois" RequestName="Ecriture Autonomie de vidange en mois">
+<Rectangle Left="240" Top="2040" Height="660" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2585" Color="16777215" DataName="Autonomie de vidange courante en km" RequestName="Ecriture Autonomie de vidange en km">
+<Rectangle Left="240" Top="1080" Height="720" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2570" Color="16777215" DataName="Odomètre Total" RequestName="Ecriture Odomètre">
+<Rectangle Left="240" Top="240" Height="660" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+</Category><Category Name="Local Identifiers">
+
+<Screen Name="Lecture local identifier" Color="16777215" WindowState="0" Width="8460" Height="4020">
+
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Lecture de L.I. de InputOutputControlBy...">
+<Rectangle Left="120" Top="2490" Height="465" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Local Identifiers de COMMANDE SORTIES"/>
+</Button>
+<Button Text="Lecture de L.I. de ReadByLocalIdentifier">
+<Rectangle Left="120" Top="1560" Height="465" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Demande identificateurs de LECTURE"/>
+</Button>
+<Button Text="Lecture de L.I. de StartRoutineByLocalIdentifier">
+<Rectangle Left="120" Top="2955" Height="465" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Local Identifiers de ROUTINES"/>
+</Button>
+<Button Text="Lecture de L.I. de WriteDataByLocalIdentifier">
+<Rectangle Left="120" Top="2025" Height="465" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Local Identifiers de ECRITURE"/>
+</Button>
+<Button Text="Ouverture session fournisseur">
+<Rectangle Left="1680" Top="360" Height="660" Width="3720"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+
+</Button>
+
+<Display Width="2000" Color="16777215" DataName="Réponse LID utilisés" RequestName="Demande identificateurs de LECTURE">
+<Rectangle Left="4200" Top="1680" Height="360" Width="4080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Réponse LID utilisés" RequestName="Local Identifiers de ECRITURE">
+<Rectangle Left="4200" Top="2160" Height="360" Width="4080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Réponse LID utilisés" RequestName="Local Identifiers de COMMANDE SORTIES">
+<Rectangle Left="4200" Top="2640" Height="360" Width="4080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Réponse LID utilisés" RequestName="Local Identifiers de ROUTINES">
+<Rectangle Left="4200" Top="3120" Height="360" Width="4080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Status Systeme">
+
+<Screen Name="Lecture Status Systeme" Color="16777215" WindowState="0" Width="8700" Height="5940">
+
+<Label Text="Cause du dernier recalage jaugeage" Color="14145924" Alignment="2">
+<Rectangle Left="240" Top="120" Height="1320" Width="7560"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Status EEPROM" Color="7404275" Alignment="2">
+<Rectangle Left="240" Top="1440" Height="1440" Width="7560"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Lecture Status Système">
+<Rectangle Left="240" Top="2880" Height="912" Width="7560"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture status systeme"/>
+</Button>
+
+<Display Width="3053" Color="16777215" DataName="Cause dernier recalage jaugeage essence ou diesel" RequestName="Lecture status systeme">
+<Rectangle Left="360" Top="600" Height="600" Width="7320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 6" Color="255"/></Display>
+<Display Width="2363" Color="16777215" DataName="Status EEProm" RequestName="Lecture status systeme">
+<Rectangle Left="360" Top="1800" Height="427" Width="7320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="33023"/></Display>
+<Display Width="2363" Color="16777215" DataName="Erreur EEProm" RequestName="Lecture status systeme">
+<Rectangle Left="360" Top="2280" Height="427" Width="7320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 1" Color="255"/></Display>
+<Display Width="2375" Color="16777215" DataName="Status voyant def airbags" RequestName="Lecture status systeme">
+<Rectangle Left="360" Top="3960" Height="780" Width="7320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2360" Color="16777215" DataName="Status voyant airbag passager OFF" RequestName="Lecture status systeme">
+<Rectangle Left="360" Top="4920" Height="780" Width="7320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Ecrans MAP LCD Eclairage">
+
+<Screen Name="Table Rhéostatage" Color="16777215" WindowState="0" Width="8100" Height="6180">
+
+<Label Text="Ecriture des coeff Algo" Color="16744448" Alignment="2">
+<Rectangle Left="3480" Top="225" Height="5160" Width="4440"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Lecture des Coeff Algo" Color="16777088" Alignment="2">
+<Rectangle Left="0" Top="240" Height="5160" Width="3240"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Ecriture RH9">
+<Rectangle Left="6480" Top="600" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param Rh9"/>
+</Button>
+<Button Text="Lecture table">
+<Rectangle Left="135" Top="4875" Height="435" Width="2880"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture param MAP et études"/>
+</Button>
+<Button Text="Prise en compte nouvelle table">
+<Rectangle Left="3720" Top="4920" Height="420" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine RESTART TDB"/>
+</Button>
+<Button Text="Ecriture RH8">
+<Rectangle Left="6480" Top="945" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param Rh8"/>
+</Button>
+<Button Text="Ecriture RH7">
+<Rectangle Left="6480" Top="1290" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param Rh7"/>
+</Button>
+<Button Text="Ecriture RH6">
+<Rectangle Left="6480" Top="1650" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param Rh6"/>
+</Button>
+<Button Text="Ecriture RH5">
+<Rectangle Left="6480" Top="2010" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param Rh5"/>
+</Button>
+<Button Text="Ecriture RH4">
+<Rectangle Left="6480" Top="2385" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param Rh4"/>
+</Button>
+<Button Text="Ecriture RH3">
+<Rectangle Left="6480" Top="2760" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param Rh3"/>
+</Button>
+<Button Text="Ecriture RH2">
+<Rectangle Left="6480" Top="3120" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param Rh2"/>
+</Button>
+<Button Text="Ecriture RH1">
+<Rectangle Left="6480" Top="3465" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param Rh1"/>
+</Button>
+<Button Text="Ecriture RH0">
+<Rectangle Left="6480" Top="3840" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param Rh0"/>
+</Button>
+<Button Text="Ecriture eclNuitSansRH">
+<Rectangle Left="6480" Top="4230" Height="495" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param ECLNuitSansRh"/>
+</Button>
+
+<Display Width="1595" Color="16777215" DataName="Rh9" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="600" Height="296" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1595" Color="16777215" DataName="Rh8" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="955" Height="296" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1595" Color="16777215" DataName="Rh7" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="1310" Height="296" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1595" Color="16777215" DataName="Rh6" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="1664" Height="296" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1595" Color="16777215" DataName="Rh5" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="2019" Height="296" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1595" Color="16777215" DataName="Rh4" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="2374" Height="296" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1595" Color="16777215" DataName="Rh3" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="2729" Height="296" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1595" Color="16777215" DataName="Rh2" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="3083" Height="296" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1595" Color="16777215" DataName="Rh1" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="3438" Height="296" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1595" Color="16777215" DataName="Rh0" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="3793" Height="296" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1595" Color="16777215" DataName="ECLNuitSansRh" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="4148" Height="532" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="1655" Color="16777215" DataName="Rh9" RequestName="Ecriture Param Rh9">
+<Rectangle Left="3600" Top="600" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1655" Color="16777215" DataName="Rh8" RequestName="Ecriture Param Rh8">
+<Rectangle Left="3600" Top="960" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1655" Color="16777215" DataName="Rh7" RequestName="Ecriture Param Rh7">
+<Rectangle Left="3600" Top="1320" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1655" Color="16777215" DataName="Rh6" RequestName="Ecriture Param Rh6">
+<Rectangle Left="3600" Top="1680" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1655" Color="16777215" DataName="Rh5" RequestName="Ecriture Param Rh5">
+<Rectangle Left="3600" Top="2040" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1655" Color="16777215" DataName="Rh4" RequestName="Ecriture Param Rh4">
+<Rectangle Left="3600" Top="2400" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1655" Color="16777215" DataName="Rh3" RequestName="Ecriture Param Rh3">
+<Rectangle Left="3600" Top="2760" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1655" Color="16777215" DataName="Rh2" RequestName="Ecriture Param Rh2">
+<Rectangle Left="3600" Top="3120" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1655" Color="16777215" DataName="Rh1" RequestName="Ecriture Param Rh1">
+<Rectangle Left="3600" Top="3480" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1655" Color="16777215" DataName="Rh0" RequestName="Ecriture Param Rh0">
+<Rectangle Left="3600" Top="3840" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1655" Color="16777215" DataName="ECLNuitSansRh" RequestName="Ecriture Param ECLNuitSansRh">
+<Rectangle Left="3600" Top="4200" Height="525" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Types de verres" Color="16777215" WindowState="0" Width="8100" Height="4860">
+
+<Label Text="Lecture du type de LCD" Color="16744448" Alignment="2">
+<Rectangle Left="240" Top="120" Height="840" Width="7680"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Ecriture du type de LCD" Color="16744448" Alignment="2">
+<Rectangle Left="240" Top="1200" Height="3480" Width="7680"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Prise en compte type de LCD">
+<Rectangle Left="720" Top="3240" Height="960" Width="6480"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine RESTART TDB"/>
+</Button>
+<Button Text="Ecriture type LCD">
+<Rectangle Left="2880" Top="2160" Height="360" Width="4320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Config : Type LCD"/>
+</Button>
+
+<Input Width="2015" Color="16777215" DataName="Configuration LCD" RequestName="Ecriture Config : Type LCD">
+<Rectangle Left="840" Top="1680" Height="360" Width="6360"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2000" Color="16777215" DataName="Configuration LCD" RequestName="Lecture Configuration">
+<Rectangle Left="840" Top="480" Height="360" Width="6360"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Ecrans MAP Filtrages">
+
+<Screen Name="Seuils d'alerte" Color="16777215" WindowState="0" Width="8100" Height="6180">
+
+<Label Text="Ecriture des Seuils d'alerte" Color="16744448" Alignment="2">
+<Rectangle Left="3480" Top="-120" Height="6120" Width="4440"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Lecture des Seuils d'alerte" Color="16777088" Alignment="2">
+<Rectangle Left="120" Top="0" Height="6000" Width="3240"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Ecriture nouveaux seuils">
+<Rectangle Left="6840" Top="240" Height="4920" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param filtre vitesse"/><Send Delay="20" RequestName="Ecriture Config : Seuil alerte Phu (tr/mn)"/><Send Delay="20" RequestName="Ecriture Param BOC seuil vitesse"/><Send Delay="20" RequestName="Ecriture Param seuil alerte ch batterie"/><Send Delay="20" RequestName="Ecriture Param seuil alerte porte ouverte"/><Send Delay="20" RequestName="Ecriture Param seuil alerte temp moteur"/>
+</Button>
+<Button Text="Prise en compte nouveaux seuils">
+<Rectangle Left="3600" Top="5280" Height="660" Width="4080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine RESTART TDB"/>
+</Button>
+
+<Display Width="2000" Color="16777215" DataName="Seuil alerte charge batterie(val*100rpm)" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="1080" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Seuil alerte température moteur val*100rpm)" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="1920" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Filtre vitesse (val x 50ms)" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="240" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2015" Color="16777215" DataName="Seuil vitesse alerte porte ouverte (Val x 1Km/h)" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="3600" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2015" Color="16777215" DataName="Buzzer oubli ceinture seuil vitesse (Val x 1Km/h)" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="4440" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2060" Color="16777215" DataName="Seuil alerte charge batterie(val*100rpm)" RequestName="Ecriture Param seuil alerte ch batterie">
+<Rectangle Left="3600" Top="1080" Height="720" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2060" Color="16777215" DataName="Seuil alerte température moteur val*100rpm)" RequestName="Ecriture Param seuil alerte temp moteur">
+<Rectangle Left="3600" Top="1920" Height="720" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2060" Color="16777215" DataName="Filtre vitesse (val x 50ms)" RequestName="Ecriture Param filtre vitesse">
+<Rectangle Left="3600" Top="240" Height="720" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2075" Color="16777215" DataName="Seuil vitesse alerte porte ouverte (Val x 1Km/h)" RequestName="Ecriture Param seuil alerte porte ouverte">
+<Rectangle Left="3600" Top="3600" Height="720" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2090" Color="16777215" DataName="Buzzer oubli ceinture seuil vitesse (Val x 1Km/h)" RequestName="Ecriture Param BOC seuil vitesse">
+<Rectangle Left="3600" Top="4440" Height="720" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2000" Color="16777215" DataName="Seuil pression d'huile (val*100rpm)" RequestName="Lecture Configuration">
+<Rectangle Left="240" Top="2760" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2060" Color="16777215" DataName="Seuil pression d'huile (val*100rpm)" RequestName="Ecriture Config : Seuil alerte Phu (tr/mn)">
+<Rectangle Left="3600" Top="2760" Height="720" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+</Category><Category Name="Ecrans MAP BOC">
+
+<Screen Name="Paramètres BOC" Color="16777215" WindowState="0" Width="8100" Height="6180">
+
+<Label Text="Ecriture des coeff Algo" Color="16744448" Alignment="2">
+<Rectangle Left="3480" Top="0" Height="6240" Width="4440"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Lecture des Coeff Algo" Color="16777088" Alignment="2">
+<Rectangle Left="120" Top="0" Height="6240" Width="3240"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Ouverture session BE"/>
+<Button Text="Ecriture table">
+<Rectangle Left="6840" Top="480" Height="4560" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture Param BOC durée TBOC1"/><Send Delay="20" RequestName="Ecriture Param BOC durée TBOC2"/><Send Delay="20" RequestName="Ecriture Param BOC frequence fBOC1"/><Send Delay="20" RequestName="Ecriture Param BOC frequence fBOC2"/><Send Delay="20" RequestName="Ecriture Param BOC seuil vitesse"/>
+</Button>
+<Button Text="Prise en compte nouvelle table">
+<Rectangle Left="3720" Top="5280" Height="780" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine RESTART TDB"/>
+</Button>
+
+<Display Width="2000" Color="16777215" DataName="Buzzer oubli ceinture TBOC1 (Val x 2s)" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="2400" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1985" Color="16777215" DataName="Buzzer oubli ceinture fréquence fBOC1 (Val x 50 Hz)" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="1440" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1985" Color="16777215" DataName="Buzzer oubli ceinture TBOC2 (Val x 2s)" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="4320" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Buzzer oubli ceinture fréquence fBOC2 (Val x 50 Hz)" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="3360" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Buzzer oubli ceinture seuil vitesse (Val x 1Km/h)" RequestName="Lecture param MAP et études">
+<Rectangle Left="240" Top="480" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2000" Color="16777215" DataName="Buzzer oubli ceinture TBOC1 (Val x 2s)" RequestName="Ecriture Param BOC durée TBOC1">
+<Rectangle Left="3720" Top="2400" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Buzzer oubli ceinture fréquence fBOC1 (Val x 50 Hz)" RequestName="Ecriture Param BOC frequence fBOC1">
+<Rectangle Left="3720" Top="1440" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1985" Color="16777215" DataName="Buzzer oubli ceinture TBOC2 (Val x 2s)" RequestName="Ecriture Param BOC durée TBOC2">
+<Rectangle Left="3720" Top="4320" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Buzzer oubli ceinture fréquence fBOC2 (Val x 50 Hz)" RequestName="Ecriture Param BOC frequence fBOC2">
+<Rectangle Left="3720" Top="3360" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1985" Color="16777215" DataName="Buzzer oubli ceinture seuil vitesse (Val x 1Km/h)" RequestName="Ecriture Param BOC seuil vitesse">
+<Rectangle Left="3720" Top="480" Height="720" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

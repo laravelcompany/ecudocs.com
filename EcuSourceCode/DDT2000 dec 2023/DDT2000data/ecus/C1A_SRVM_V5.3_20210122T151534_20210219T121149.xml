@@ -1,0 +1,3558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+  <Generator name="DDT2000 XML library" version="2.2.0.0" date="2021-02-17T12:41"/>
+  <ddt:Target Name="C1A_SRVM_V5.3" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="IONESCU Andreea-Roxana (renexter) &lt;andreea-roxana.ionescu-extern@renault.com&gt;" href="C1A_SRVM_V5.3_20210122T151534_20210219T121149.xml" upload="2/19/2021" group="SRVM"><Description><![CDATA[29.03.2019: V1 database creation(I.ALMARII)
+19.09.2019 : V2 database update (I.ALMARII)
+07.01.2020 : V3 database update (I.ALMARII) --> IO routines added for APV diag tool(ADT)
+06.02.2020 : V4 database update (I.ALMARII) --> Added DTC $C075 $00- DTC_Bus_Off
+19.10.2020 : V5 database updated (A. IONESCU)
+   --> Updated Auto-identification
+   --> Added new values for Calib_Cam_Vehicle_Type
+   --> Updated screens with new parameters
+15.01.2021 : V5.2 database updated (A. IONESCU)
+   --> Updated Auto-identification
+   --> Updated screens
+17.02.2021 : V5.3 database updated (A. IONESCU)
+   --> Updated Auto-identification for SW8
+]]></Description>
+    <Projects xmlns=""><xFK/></Projects><Checks Version="V1.11" Date="20210219T120642">
+      <Ctrl Type="DDT2000" Warning="0" Error="0"/>
+      <Ctrl Type="CPDD" Warning="74" Error="0"/>
+      <Ctrl Type="DAIMLER-ODX" Warning="0" Error="0"/>
+      <Ctrl Type="ALLIANCE-ODX" Warning="0" Error="0"/>
+    </Checks>
+    
+    <Function Name="BEV - SRVM" Address="108" LogicalAddress="006C"/>
+    <Language Name="Français" Reference="1"/>
+    
+    <DateOfficialisation>10/23/2020 9:16:58 AM</DateOfficialisation>
+    <Failures Name="DTC Failures" Id="3"/>
+    <PowerSupply>
+      <Ground/>
+      <Vbat/>
+      <AfterContact/>
+    </PowerSupply>
+    <CAN BaudRate="10400" Multipoint="1">
+      <SendId>
+        <CANId Value="416967922" Extended="1"/>
+      </SendId>
+      <ReceiveId>
+        <CANId Value="417002092" Extended="1"/>
+      </ReceiveId>
+    </CAN>
+    <AutoIdents>
+      <AutoIdent DiagVersion="4" Supplier="FICOSA    " Soft="SW4.1     " Version="01071001                        "/>
+      <AutoIdent DiagVersion="4" Supplier="FICOSA    " Soft="SW10      " Version="01097100                        "/>
+      <AutoIdent DiagVersion="4" Supplier="FICOSA    " Soft="SW11      " Version="01099100                        "/>
+      <AutoIdent DiagVersion="4" Supplier="FICOSA    " Soft="SW8       " Version="01095101                        "/>
+    </AutoIdents>
+    <Datas>
+      <Data Name="programmingOperationFingerPrint">
+        <Comment><![CDATA[Only for programmable ECU]]></Comment>
+        <Mnemonic>DID_$F010</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>The value is written by the ECU when executing the SendKey SecurityAccess service</FONT></P>
+<P><FONT size=2>The value can be read in boot loader mode.</FONT></P>]]></Description>
+        <Bytes count="16"/>
+      </Data>
+      <Data Name="security accessFingerPrint">
+        <Mnemonic>DID_$F011</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="diagnosticVersion">
+        <Comment><![CDATA[VDIAG]]></Comment>
+        <Mnemonic>DID_$F1A0</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the diagnostic version of the ECU.</FONT></P>
+<P><FONT size=2>It is defined by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>Refer to manufacture ECU designer.</FONT></P>]]></Description>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareVersionNumber">
+        <Comment><![CDATA[Software Version (Supplier)]]></Comment>
+        <Mnemonic>DID_$F195</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software version number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="32" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareNumber">
+        <Comment><![CDATA[Software Number (Supplier)]]></Comment>
+        <Mnemonic>DID_$F194</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUHardwareNumber">
+        <Comment><![CDATA[Hardware Number]]></Comment>
+        <Mnemonic>DID_$F191</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used by reading services to reference the vehicle-manufacturer-specific ECU (server) hardware number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be serverspecific and defined by vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="VIN">
+        <Comment><![CDATA[Vehicle Identification Number]]></Comment>
+        <Mnemonic>DID_$F190</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the VIN number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be specified by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>It shall not be erased when the ECU is reprogrammed.</FONT></P>]]></Description>
+        <Bytes count="17" ascii="1"/>
+      </Data>
+      <Data Name="ECUSerialNumber">
+        <Comment><![CDATA[ECU serial number]]></Comment>
+        <Mnemonic>DID_$F18C</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the ECU (server) serial number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific.</FONT></P>]]></Description>
+        <Bytes count="20" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierIdentifier">
+        <Comment><![CDATA[Name and address information of the supplier.]]></Comment>
+        <Mnemonic>DID_$F18A</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier name and address information.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUSoftwareNumber">
+        <Mnemonic>DID_$F188</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerSparePartNumber">
+        <Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM]]></Comment>
+        <Mnemonic>DID_$F187</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer spare part number. </FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="DTCCount">
+        <Comment><![CDATA[DTC count]]></Comment>
+        <Mnemonic>DTCC</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCFormatIdentifier">
+        <Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+        <Mnemonic>DTCFID</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="SAE_J2012-DA_DTC"/>
+            <Item Value="1" Text="ISO_14229-1_DTC"/>
+            <Item Value="2" Text="SAE_J1939-73_DTC"/>
+            <Item Value="3" Text="ISO_11992-4_DTC"/>
+            <Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatusAvailabilityMask">
+        <Mnemonic>DTCSAM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="StatusOfDTC">
+        <Mnemonic>DTCASR_SODTC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailed">
+        <Mnemonic>TF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedThisMonitoringCycle">
+        <Mnemonic>TFTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.pendingDTC">
+        <Mnemonic>PDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.confirmedDTC">
+        <Mnemonic>CDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedSinceLastClear">
+        <Mnemonic>TNCSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedSinceLastClear">
+        <Mnemonic>TFSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+        <Mnemonic>TNCTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.warningIndicatorRequested">
+        <Mnemonic>WIR</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.Category">
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="General Failure Information"/>
+            <Item Value="1" Text="General Electrical Failures"/>
+            <Item Value="2" Text="General Signal Failures"/>
+            <Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="10" Text="General Electrical Failures - 2"/>
+            <Item Value="15" Text="Vehicle manufacturer / System supplier specific"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Device and failure type ODB codding"/>
+            <Item Value="1" Text="General Electrical Failure"/>
+            <Item Value="2" Text="General signal failure"/>
+            <Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="10" Text="General Electrical Failures - 2"/>
+            <Item Value="17" Text="circuit short to ground"/>
+            <Item Value="18" Text="circuit short to battery"/>
+            <Item Value="19" Text="circuit open"/>
+            <Item Value="20" Text="circuit short to ground or open"/>
+            <Item Value="21" Text="circuit short to battery or open"/>
+            <Item Value="22" Text="circuit voltage below threshold"/>
+            <Item Value="23" Text="circuit voltage above threshold"/>
+            <Item Value="24" Text="circuit current below threshold"/>
+            <Item Value="25" Text="circuit current above threshold"/>
+            <Item Value="26" Text="circuit resistance below threshold"/>
+            <Item Value="27" Text="circuit resistance above threshold"/>
+            <Item Value="28" Text="circuit voltage out of range"/>
+            <Item Value="29" Text="circuit current out of range"/>
+            <Item Value="30" Text="circuit resistance out of range"/>
+            <Item Value="31" Text="circuit intermittent"/>
+            <Item Value="33" Text="signal amplitude &lt; minimum"/>
+            <Item Value="34" Text="signal amplitude &gt; maximum"/>
+            <Item Value="35" Text="signal stuck low"/>
+            <Item Value="36" Text="signal stuck high"/>
+            <Item Value="37" Text="signal shape / waveform failure"/>
+            <Item Value="38" Text="signal rate of change below threshold"/>
+            <Item Value="39" Text="signal rate of change above threshold"/>
+            <Item Value="40" Text="signal bias level out of range / zero adj. failure"/>
+            <Item Value="41" Text="signal signal invalid"/>
+            <Item Value="42" Text="signal stuck in range"/>
+            <Item Value="43" Text="signal cross coupled"/>
+            <Item Value="47" Text="signal erratic"/>
+            <Item Value="49" Text="no signal"/>
+            <Item Value="50" Text="signal low time &lt; minimum"/>
+            <Item Value="51" Text="signal low time &gt; maximum"/>
+            <Item Value="52" Text="signal high time &lt; minimum"/>
+            <Item Value="53" Text="signal high time &gt; maximum"/>
+            <Item Value="54" Text="signal frequency too low"/>
+            <Item Value="55" Text="signal frequency too high"/>
+            <Item Value="56" Text="signal frequency incorrect"/>
+            <Item Value="57" Text="incorrect has too few pulses"/>
+            <Item Value="58" Text="incorrect has too many pulses"/>
+            <Item Value="65" Text="general checksum failure"/>
+            <Item Value="66" Text="general memory failure"/>
+            <Item Value="67" Text="special memory failure"/>
+            <Item Value="68" Text="data memory failure"/>
+            <Item Value="69" Text="program memory failure"/>
+            <Item Value="70" Text="calibration / parameter memory failure"/>
+            <Item Value="71" Text="watchdog / safety µC failure"/>
+            <Item Value="72" Text="supervision software failure"/>
+            <Item Value="73" Text="internal electronic failure"/>
+            <Item Value="74" Text="incorrect component installed"/>
+            <Item Value="75" Text="over temperature"/>
+            <Item Value="81" Text="not programmed"/>
+            <Item Value="82" Text="not activated"/>
+            <Item Value="83" Text="deactivated"/>
+            <Item Value="84" Text="missing calibration"/>
+            <Item Value="85" Text="not configured"/>
+            <Item Value="86" Text="invalid or incompatible configuration"/>
+            <Item Value="87" Text="invalid or incompatible software component"/>
+            <Item Value="97" Text="signal calculation failure"/>
+            <Item Value="98" Text="signal compare failure"/>
+            <Item Value="99" Text="circuit / component protection time-out"/>
+            <Item Value="100" Text="signal plausibility failure"/>
+            <Item Value="101" Text="signal has too few transitions / events"/>
+            <Item Value="102" Text="signal has too many transitions / events"/>
+            <Item Value="103" Text="signal incorrect after event"/>
+            <Item Value="104" Text="event information"/>
+            <Item Value="113" Text="actuator stuck"/>
+            <Item Value="114" Text="actuator stuck open"/>
+            <Item Value="115" Text="actuator stuck closed"/>
+            <Item Value="116" Text="actuator slipping"/>
+            <Item Value="117" Text="emergency position not reachable"/>
+            <Item Value="118" Text="wrong mounting position"/>
+            <Item Value="119" Text="commanded position not reachable"/>
+            <Item Value="120" Text="alignment or adjustment incorrect"/>
+            <Item Value="121" Text="mechanical linkage failure"/>
+            <Item Value="122" Text="fluid leak or seal failure"/>
+            <Item Value="123" Text="low fluid level"/>
+            <Item Value="124" Text="Slow Response"/>
+            <Item Value="125" Text="Actuator Stuck On"/>
+            <Item Value="127" Text="Actuator Stuck Off"/>
+            <Item Value="129" Text="invalid serial data received"/>
+            <Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+            <Item Value="131" Text="value of signal protection calculation incorrect"/>
+            <Item Value="132" Text="signal below allowable range"/>
+            <Item Value="133" Text="signal above allowable range"/>
+            <Item Value="134" Text="signal invalid"/>
+            <Item Value="135" Text="missing message"/>
+            <Item Value="136" Text="bus off"/>
+            <Item Value="143" Text="erratic"/>
+            <Item Value="145" Text="parametric"/>
+            <Item Value="146" Text="performance or incorrect operation"/>
+            <Item Value="147" Text="no operation"/>
+            <Item Value="148" Text="unexpected operation"/>
+            <Item Value="149" Text="incorrect assembly"/>
+            <Item Value="150" Text="component internal failure"/>
+            <Item Value="151" Text="Component or sys. operation obstructed or blocked"/>
+            <Item Value="152" Text="component or system over temperature"/>
+            <Item Value="153" Text="Exceeded Learning Limit"/>
+            <Item Value="154" Text="component or system operating conditions"/>
+            <Item Value="155" Text="High/Excessive Flow"/>
+            <Item Value="156" Text="Low/Insufficient Flow"/>
+            <Item Value="158" Text="Stuck On"/>
+            <Item Value="159" Text="Stuck Off"/>
+            <Item Value="161" Text="System Voltage"/>
+            <Item Value="162" Text="System Voltage Low"/>
+            <Item Value="163" Text="System Voltage High"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceIdentifier">
+        <Bits count="16">
+          <List>
+            <Item Value="43568" Text="DTC_Internal_Failure"/>
+            <Item Value="43569" Text="DTC_ECU_Voltage_Out_Of_Range"/>
+            <Item Value="43572" Text="DTC_Sensor_Failure"/>
+            <Item Value="43576" Text="DTC_RVC_Video_Signal_Missing"/>
+            <Item Value="43577" Text="DTC_RVC_Voltage_Out_Of_Range"/>
+            <Item Value="43584" Text="DTC_PRVC_Calibration_Missing"/>
+            <Item Value="43585" Text="DTC_PRV_Voltage_Out_Of_Range"/>
+            <Item Value="43586" Text="DTC_PRV_Video_Signal_Missing"/>
+            <Item Value="49269" Text="DTC_Bus_Off"/>
+            <Item Value="57604" Text="DTC_Lost_Communication_4WS"/>
+            <Item Value="57672" Text="DTC_Lost_Communication_VDC"/>
+            <Item Value="57678" Text="DTC_Lost_Communication_METER"/>
+            <Item Value="57679" Text="DTC_Lost_Communication_BCM"/>
+            <Item Value="57686" Text="DTC_Lost_Communication_STRG"/>
+            <Item Value="57691" Text="DTC_Lost_Communication_USM"/>
+            <Item Value="57701" Text="DTC_Lost_Communication_SONAR"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceAndFailureTypeOBD">
+        <Bits count="16">
+          <List>
+            <Item Value="0" Text="NA"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.ManufacturerOrSupplier">
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="NA"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="OperationnalReference">
+        <Mnemonic>OPERATIONNAL_REFERENCE</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="Speed_Pitch_VS_1">
+        <Comment><![CDATA[Speed_Pitch_VS_1]]></Comment>
+        <Mnemonic>Speed_Pitch_VS_1</Mnemonic>
+        <Bits>
+          <Scaled Unit="km/h"/>
+        </Bits>
+      </Data>
+      <Data Name="Speed_Pitch_VS_2">
+        <Comment><![CDATA[Speed_Pitch_VS_2]]></Comment>
+        <Mnemonic>Speed_Pitch_VS_2</Mnemonic>
+        <Bits>
+          <Scaled Unit="km/h"/>
+        </Bits>
+      </Data>
+      <Data Name="Speed_Pitch_Crop_Ofs">
+        <Comment><![CDATA[Speed_Pitch_Crop_Ofs]]></Comment>
+        <Mnemonic>Speed_Pitch_Crop_Ofs</Mnemonic>
+        <Bits>
+          <Scaled Unit="°" Step=" .25"/>
+        </Bits>
+      </Data>
+      <Data Name="Speed_Pitch_Crop_Tim">
+        <Comment><![CDATA[Speed_Pitch_Crop_Tim]]></Comment>
+        <Mnemonic>Speed_Pitch_Crop_Tim</Mnemonic>
+        <Bits>
+          <Scaled Unit="ms" Step=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="Timeout_Menu_Back">
+        <Comment><![CDATA[Timeout_Menu_Back]]></Comment>
+        <Mnemonic>Timeout_Menu_Back</Mnemonic>
+        <Bits>
+          <Scaled Unit="s"/>
+        </Bits>
+      </Data>
+      <Data Name="UPA_Display_On_PRV">
+        <Comment><![CDATA[UPA_Display_On_PRV]]></Comment>
+        <Mnemonic>UPA_Display_On_PRV</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="UPA not present"/>
+            <Item Value="1" Text="UPA present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Powerlatch_Tempo">
+        <Comment><![CDATA[Powerlatch_Tempo]]></Comment>
+        <Mnemonic>Powerlatch_Tempo</Mnemonic>
+        <Bits>
+          <Scaled Unit="s" Step=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="Menu_Hor_Adj_Mask">
+        <Comment><![CDATA[Menu_Hor_Adj_Mask]]></Comment>
+        <Mnemonic>Menu_Hor_Adj_Mask</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Menu masked"/>
+            <Item Value="1" Text="Menu displayed"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RVC_Linger_Time">
+        <Comment><![CDATA[RVC_Linger_Time]]></Comment>
+        <Mnemonic>RVC_Linger_Time</Mnemonic>
+        <Bits>
+          <Scaled Unit="ms" Step=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="Trunk_Open_Handling">
+        <Comment><![CDATA[Trunk_Open_Handling]]></Comment>
+        <Mnemonic>Trunk_Open_Handling</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="No special handling"/>
+            <Item Value="1" Text="Pictogram displayed on RVC screen"/>
+            <Item Value="2" Text="Black screen displayed on RVC screen"/>
+            <Item Value="3" Text="Black screen and pictogram displayed on RVC screen"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RVC_Debouncing_Time">
+        <Comment><![CDATA[RVC_Debouncing_Time]]></Comment>
+        <Mnemonic>RVC_Debouncing_Time</Mnemonic>
+        <Bits>
+          <Scaled Unit="ms" Step=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="Value_VehicleSpeedThresholdForAutomaticDeactivation_Front">
+        <Comment><![CDATA[Value_VehicleSpeedThresholdForAutomaticDeactivation_Front]]></Comment>
+        <Mnemonic>Value_VehicleSpeedThresholdForAutomaticDeactivatio</Mnemonic>
+        <Bits>
+          <Scaled Unit="km/h"/>
+        </Bits>
+      </Data>
+      <Data Name="Value_VehicleSpeedThresholdForAutomaticDeactivation_Rear">
+        <Comment><![CDATA[Value_VehicleSpeedThresholdForAutomaticDeactivation_Rear]]></Comment>
+        <Mnemonic>Value_VehicleSpeedThresholdForAutomaticDeactivatio</Mnemonic>
+        <Bits>
+          <Scaled Unit="km/h"/>
+        </Bits>
+      </Data>
+      <Data Name="Value_VehicleSpeedThresholdForAutomaticActivation_Rear">
+        <Comment><![CDATA[Value_VehicleSpeedThresholdForAutomaticActivation_Rear]]></Comment>
+        <Mnemonic>Value_VehicleSpeedThresholdForAutomaticActivation_</Mnemonic>
+        <Bits>
+          <Scaled Unit="km/h"/>
+        </Bits>
+      </Data>
+      <Data Name="Sensor_Value">
+        <Comment><![CDATA[Sensor_Value]]></Comment>
+        <Mnemonic>Sensor_Value</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="RVC_Connection_To_PRV">
+        <Mnemonic>RVC_CONNEXION_TO_PRV</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="RVC not connected"/>
+            <Item Value="1" Text="RVC connected"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Vehicle_type">
+        <Mnemonic>Vehicle_type</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Not configured"/>
+            <Item Value="1" Text="XFK type 1"/>
+            <Item Value="2" Text="XFK type 2"/>
+            <Item Value="3" Text="X82ph2 type 1"/>
+            <Item Value="4" Text="X82ph2 type 2"/>
+            <Item Value="5" Text="X82ph2 type 3"/>
+            <Item Value="6" Text="X82ph2 type 4"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Guidelines_type">
+        <Mnemonic>Guidelines_type</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="No guidelines set"/>
+            <Item Value="1" Text="Static guidelines set"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RoutineStatusRecord">
+        <Comment><![CDATA[Routine information]]></Comment>
+        <Mnemonic>RSR_RIF</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="48" Text="RoutineCompleted"/>
+            <Item Value="49" Text="RoutineAborted"/>
+            <Item Value="50" Text="RoutineActive"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RoutineOptionalData">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Calibration OK"/>
+            <Item Value="1" Text="Calibration Failed"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VehicleManufacturerECUSoftwareNumber_DAI">
+        <Mnemonic>VEHICLE_MANUFACTURER_ECUSOFTWARE_NUMBER_DAI</Mnemonic>
+        <Bytes count="20" ascii="1"/>
+      </Data>
+      <Data Name="bootSoftwareIdentification">
+        <Mnemonic>BOOT_SOFTWARE_IDENTIFICATION</Mnemonic>
+        <Bytes count="5"/>
+      </Data>
+      <Data Name="ConfigDataReferenceAfterConfigProcess">
+        <Mnemonic>CONFIG_DATA_REFERENCE_AFTER_CONFIG_PROCESS</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="DTCMaskRecord">
+        <Mnemonic>DTCMASK_RECORD</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="DTCRecord">
+        <Mnemonic>DTCRECORD</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="DTCOccurenceCounter">
+        <Mnemonic>DTCOCCURENCE_COUNTER</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Battery_Voltage">
+        <Comment><![CDATA[Battery_Voltage]]></Comment>
+        <Mnemonic>Battery_Voltage</Mnemonic>
+        <Bits>
+          <Scaled Unit="V" Step=" .1"/>
+        </Bits>
+      </Data>
+      <Data Name="Blind_Spot_Pictogram">
+        <Comment><![CDATA[Blind_Spot_Pictogram]]></Comment>
+        <Mnemonic>Blind_Spot_Pictogram</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Pictogram displayed on the left"/>
+            <Item Value="1" Text="Pictogram displayed on the right"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Backlight_Brighteness_Manual">
+        <Comment><![CDATA[Backlight_Brighteness_Manual]]></Comment>
+        <Mnemonic>Backlight_Brighteness_Manual</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Button_1_state">
+        <Comment><![CDATA[Button_1_state]]></Comment>
+        <Mnemonic>Button_1_state</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Button_2_state">
+        <Comment><![CDATA[Button_2_state]]></Comment>
+        <Mnemonic>Button_2_state</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Button_3_state">
+        <Comment><![CDATA[Button_2_state]]></Comment>
+        <Mnemonic>Button_2_state</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Off"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Calib_Cam_Pos_Adjust_Pitch">
+        <Comment><![CDATA[Calib_Cam_Pos_Adjust_Pitch]]></Comment>
+        <Mnemonic>Calib_Cam_Pos_Adjust_Pitch</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Calib_Cam_Pos_Adjust_Roll">
+        <Comment><![CDATA[Calib_Cam_Pos_Adjust_Pitch]]></Comment>
+        <Mnemonic>Calib_Cam_Pos_Adjust_Pitch</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Calib_Cam_Pos_Adjust_Yaw">
+        <Comment><![CDATA[Calib_Cam_Pos_Adjust_Pitch]]></Comment>
+        <Mnemonic>Calib_Cam_Pos_Adjust_Pitch</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="CamImage_Mirror_H">
+        <Mnemonic>CamImage_Mirror_H</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Do nothing"/>
+            <Item Value="1" Text="Mirror image horizontally"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Calib_Cam_Vehicle_Type">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Not configured"/>
+            <Item Value="1" Text="L1C - FFK - ESS ou DIESEL - CHGAUG - TRSEV1"/>
+            <Item Value="2" Text="L1C - FFK - ELEC - CHGAUG - TRSEV1"/>
+            <Item Value="3" Text="L1C - FFK - ESS ou DIESEL - CHGNOR - TRSEV2"/>
+            <Item Value="4" Text="L1C - FFK - ESS ou DIESEL - CHGAUG - TRSEV2"/>
+            <Item Value="5" Text="L1C - FFK - ELEC - CHGAUG - TRSEV2"/>
+            <Item Value="6" Text="L1C - FFK - ESS ou DIESEL - CHGNOR - TRSEV1"/>
+            <Item Value="7" Text="L2C - FFK - ELEC - CHGNOR - TRSEV1"/>
+            <Item Value="8" Text="L2C - FFK - ESS ou DIESEL - CHGNOR - TRSEV1"/>
+            <Item Value="9" Text="L2C - FFK - ESS ou DIESEL - CHGAUG - TRSEV1"/>
+            <Item Value="10" Text="L2C - FFK - ELEC - CHGNOR - TRSEV2"/>
+            <Item Value="11" Text="L2C - FFK - ESS OU DIESEL - CHGNOR - TRSEV2"/>
+            <Item Value="12" Text="L2C - FFK - ESS ou DIESEL - CHGAUG - TRSEV2"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCMileage">
+        <Mnemonic>DTCMILEAGE</Mnemonic>
+        <Bits count="24">
+          <Scaled Unit="km"/>
+        </Bits>
+      </Data>
+      <Data Name="Routine Control Subfunction">
+        <Comment><![CDATA[Routine control type - VALUES OTHER THAN 1, 2 & 3 ARE RESERVED AND SHOULD NOT BE USED.]]></Comment>
+        <Mnemonic>RCSF</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Start Routine"/>
+            <Item Value="2" Text="Stop Routine"/>
+            <Item Value="3" Text="Request Routine Results"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IO_Test_Display_Mode_400">
+        <Comment><![CDATA[IO_Test_Display_Mode_400]]></Comment>
+        <Mnemonic>IO_Test_Display_Mode_400</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Alternative Pattern"/>
+            <Item Value="2" Text="Fixed pattern 1"/>
+            <Item Value="4" Text="Fixed pattern 2"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IO_Test_Camera_Mode">
+        <Mnemonic>IO_Test_Camera_Mode</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Black (No RGB)"/>
+            <Item Value="2" Text="Full white image"/>
+            <Item Value="4" Text="Color Bar Chart"/>
+            <Item Value="16" Text="Full Red Image"/>
+            <Item Value="18" Text="Full Green Image"/>
+            <Item Value="20" Text="Full Blue Image"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IO_Backlight_Brightness">
+        <Comment><![CDATA[Backlight_Brightness]]></Comment>
+        <Mnemonic>Backlight_Brightness</Mnemonic>
+        <Bits>
+          <Scaled Unit="%"/>
+        </Bits>
+      </Data>
+      <Data Name="IO_Test_Display_Mode_010">
+        <Comment><![CDATA[IO_Test_Display_Mode_010]]></Comment>
+        <Mnemonic>IO_Test_Display_Mode_010</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Whole FOV"/>
+            <Item Value="255" Text="Standard FOV"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IO_Display_Control">
+        <Mnemonic>IO_Display_Control</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Main Display Black Image"/>
+            <Item Value="2" Text="Main Display White Image"/>
+            <Item Value="4" Text="Main Display - All pixels ON color 1 (red)"/>
+            <Item Value="6" Text="Main Display - All pixels ON color 2 (green)"/>
+            <Item Value="8" Text="Main Display - All pixels ON color 3 (blue)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IO_RVC_Display">
+        <Mnemonic>IO_RVC_Display</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Do nothing"/>
+            <Item Value="1" Text="Display RVC"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IO_SRVM_Service_Mode">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Do nothing"/>
+            <Item Value="1" Text="Switch To After Sales Mode"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IO_Test_Display_Mode_020">
+        <Comment><![CDATA[Test_Display_Mode_020]]></Comment>
+        <Mnemonic>Test_Display_Mode_020</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="15:9 reticle(15 squares)"/>
+            <Item Value="2" Text="10:10 dividing lines"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="OutputControlCommand">
+        <Comment><![CDATA[Input Output control parameter list]]></Comment>
+        <Mnemonic>COR_IOCP</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Stop"/>
+            <Item Value="3" Text="Start"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="OutputPermanentControlList">
+        <Mnemonic>OutputPermanentControlList </Mnemonic>
+        <Bits count="16">
+          <List>
+            <Item Value="272" Text="4"/>
+            <Item Value="337" Text="3"/>
+            <Item Value="338" Text="2"/>
+            <Item Value="339" Text="1"/>
+            <Item Value="340" Text="5"/>
+            <Item Value="341" Text="6"/>
+            <Item Value="342" Text="8"/>
+            <Item Value="369" Text="7"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="CALIB_CAM_POS_AS_ADJUST_PITCH">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="CALIB_CAM_POS_AS_ADJUST_ROLL">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="CALIB_CAM_POS_AS_ADJUST_YAW">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="RVC_GUIDELINE_POS_ADJUST_X">
+        <Comment><![CDATA[RVC_Guidelines_Pos_Adj_X]]></Comment>
+        <Mnemonic>RVC_Guidelines_Pos_Adj_X</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="RVC_GUIDELINE_POS_ADJUST_Y">
+        <Comment><![CDATA[RVC_Guidelines_Pos_Adj_Y]]></Comment>
+        <Mnemonic>RVC_Guidelines_Pos_Adj_Y</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="RVC_GUIDELINE_POS_ADJUST_Rotation">
+        <Comment><![CDATA[RVC_Guidelines_Pos_Adj_Rotation]]></Comment>
+        <Mnemonic>RVC_Guidelines_Pos_Adj_Rotation</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="RoutineIdentifier">
+        <Comment><![CDATA[Routine identifier - This is an example. See documentation for more information.]]></Comment>
+        <Mnemonic>RIL</Mnemonic>
+        <Description><![CDATA[<FONT size=2>
+<P><FONT size=2><STRONG><U>Definition of RoutineControl</U></STRONG></FONT></P>
+<P><FONT size=2>Data: RoutineIdentifierList</FONT></P>
+<P><FONT size=2>&nbsp; Contains the list of all routine identifier that may be&nbsp;used with InputOutputControl service.<BR>&nbsp; <BR>&nbsp; Example:<BR>&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;0x4501 -&nbsp;ROUTINE_Temperature_Wave<BR></FONT></P>
+<P><FONT size=2>If some of these routine identifer have parameters, you should defined a data with the same name as the&nbsp;routine identifer followed by a dot and a text</FONT></P>
+<P><FONT size=2>&nbsp; Example:<BR>&nbsp; <BR>&nbsp; Data: ROUTINE_Temperature_Wave.Min<BR>&nbsp; Data: ROUTINE_Temperature_Wave.Max<BR>&nbsp; Data: ROUTINE_Temperature_Wave.Freq<BR></FONT><FONT size=2></P></FONT>
+<P><FONT size=2>Then, you should add theses data in the "Send tab" of the&nbsp;RoutineControl request, after the RoutineIdentifierList data.</FONT></P></FONT>]]></Description>
+        <Bits count="16">
+          <List>
+            <Item Value="36866" Text="Calibrate_SRVM_Camera_Plant"/>
+            <Item Value="36868" Text="Calibrate_SRVM_Camera_APV"/>
+            <Item Value="36871" Text="CheckVideoCableHF"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RoutineControlType">
+        <Comment><![CDATA[RoutineControlType]]></Comment>
+        <Mnemonic>RoutineControlType</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="StartRoutine"/>
+            <Item Value="2" Text="StopRoutine"/>
+            <Item Value="3" Text="RequestRoutineResults"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RoutineIdentifier Recived data">
+        <Comment><![CDATA[Routine identifier - This is an example. See documentation for more information.]]></Comment>
+        <Mnemonic>RIL</Mnemonic>
+        <Description><![CDATA[<FONT size=2>
+<P><FONT size=2><STRONG><U>Definition of RoutineControl</U></STRONG></FONT></P>
+<P><FONT size=2>Data: RoutineIdentifierList</FONT></P>
+<P><FONT size=2>&nbsp; Contains the list of all routine identifier that may be&nbsp;used with InputOutputControl service.<BR>&nbsp; <BR>&nbsp; Example:<BR>&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;0x4501 -&nbsp;ROUTINE_Temperature_Wave<BR></FONT></P>
+<P><FONT size=2>If some of these routine identifer have parameters, you should defined a data with the same name as the&nbsp;routine identifer followed by a dot and a text</FONT></P>
+<P><FONT size=2>&nbsp; Example:<BR>&nbsp; <BR>&nbsp; Data: ROUTINE_Temperature_Wave.Min<BR>&nbsp; Data: ROUTINE_Temperature_Wave.Max<BR>&nbsp; Data: ROUTINE_Temperature_Wave.Freq<BR></FONT><FONT size=2></P></FONT>
+<P><FONT size=2>Then, you should add theses data in the "Send tab" of the&nbsp;RoutineControl request, after the RoutineIdentifierList data.</FONT></P></FONT>]]></Description>
+        <Bits count="16">
+          <List>
+            <Item Value="36866" Text="Calibrate_SRVM_Camera_Plant"/>
+            <Item Value="36868" Text="Calibrate_SRVM_Camera_APV"/>
+            <Item Value="36871" Text="CheckVideoCableHF"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VehicleManufacturerECUHardwareNumber_DAI">
+        <Mnemonic>VEHICLE_MANUFACTURER_ECUHARDWARE_NUMBER_DAI</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+    </Datas>
+    <Requests Endian="Big">
+      <Request Name="DataRead.programmingOperationFingerPrint">
+        <Comment><![CDATA[Read programmingOperationFingerPrint]]></Comment>
+        <Sent>
+          <SentBytes>22F010</SentBytes>
+        </Sent>
+        <Received MinBytes="19">
+          <ReplyBytes>62F010</ReplyBytes>
+          <DataItem Name="programmingOperationFingerPrint" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.security accessFingerPrint">
+        <Comment><![CDATA[Read security access FingerPrint]]></Comment>
+        <Sent>
+          <SentBytes>22F011</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F011</ReplyBytes>
+          <DataItem Name="security accessFingerPrint" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.diagnosticVersion">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read diagnosticVersion]]></Comment>
+        <Sent>
+          <SentBytes>22F1A0</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F1A0</ReplyBytes>
+          <DataItem Name="diagnosticVersion" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierECUVersionNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F195</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62F195</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareVersionNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierECUSoftwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F194</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F194</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUHardwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerECUHardwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F191</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F191</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUHardwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VIN">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read VIN]]></Comment>
+        <Sent>
+          <SentBytes>22F190</SentBytes>
+        </Sent>
+        <Received MinBytes="20">
+          <ReplyBytes>62F190</ReplyBytes>
+          <DataItem Name="VIN" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.VIN">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write VIN]]></Comment>
+        <Sent>
+          <SentBytes>2EF1900000000000000000000000000000000000</SentBytes>
+          <DataItem Name="VIN" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF190</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ECUSerialNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read ECUSerialNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F18C</SentBytes>
+        </Sent>
+        <Received MinBytes="23">
+          <ReplyBytes>62F18C</ReplyBytes>
+          <DataItem Name="ECUSerialNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierIdentifier">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierIdentifier]]></Comment>
+        <Sent>
+          <SentBytes>22F18A</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F18A</ReplyBytes>
+          <DataItem Name="systemSupplierIdentifier" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUSoftwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read autoconfigurationFingerPrint]]></Comment>
+        <Sent>
+          <SentBytes>22F188</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F188</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerSparePartNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerSparePartNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F187</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F187</ReplyBytes>
+          <DataItem Name="vehicleManufacturerSparePartNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="TesterPresent.WithResponse">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+        <Sent>
+          <SentBytes>3E00</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>7E</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.Default">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1001</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5001</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.Programming">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1002</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5002</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.ExtendedDiagnostic">
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1003</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5003</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ClearDiagnosticInformation.All">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+        <Sent>
+          <SentBytes>14FFFFFF</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>54</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report number of DTC]]></Comment>
+        <Sent>
+          <SentBytes>1901FF</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>5901FF000000</ReplyBytes>
+          <DataItem Name="DTCCount" FirstByte="5"/>
+          <DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTC">
+        <Comment><![CDATA[DDT2000 Failures page requests / DDT : Unusable for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1902FF</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>59020000000000</ReplyBytes>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+          <DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+          <DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+          <DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+          <DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+          <DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+          <DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+          <DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+          <DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+          <DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSupportedDTC">
+        <Comment><![CDATA[Report supported DTC]]></Comment>
+        <Sent>
+          <SentBytes>190A</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>590AFF00000000</ReplyBytes>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.OperationnalReference">
+        <Sent>
+          <SentBytes>22F012</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F012</ReplyBytes>
+          <DataItem Name="OperationnalReference" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.bootSoftwareIdentification">
+        <Sent>
+          <SentBytes>22F180</SentBytes>
+        </Sent>
+        <Received MinBytes="8">
+          <ReplyBytes>62F180</ReplyBytes>
+          <DataItem Name="bootSoftwareIdentification" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ConfigDataReferenceAfterConfigProcess">
+        <Sent>
+          <SentBytes>22F1A2</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F1A2</ReplyBytes>
+          <DataItem Name="ConfigDataReferenceAfterConfigProcess" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.ConfigDataReferenceAfterConfigProcess">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2EF1A200000000000000000000</SentBytes>
+          <DataItem Name="ConfigDataReferenceAfterConfigProcess" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF1A2</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTCSnapshotIdentification">
+        <Sent>
+          <SentBytes>1903000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>590300000000</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSnapshot">
+        <Sent>
+          <SentBytes>1904000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>590400000000</ReplyBytes>
+          <DataItem Name="DTCRecord" Ref="1" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+          <DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="6"/>
+          <DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="6" BitOffset="1"/>
+          <DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="6" BitOffset="2"/>
+          <DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="6" BitOffset="3"/>
+          <DataItem Name="DTCStatus.confirmedDTC" FirstByte="6" BitOffset="4"/>
+          <DataItem Name="DTCStatus.pendingDTC" FirstByte="6" BitOffset="5"/>
+          <DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="6" BitOffset="6"/>
+          <DataItem Name="DTCStatus.testFailed" FirstByte="6" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DTCOccurenceCounter">
+        <Sent>
+          <SentBytes>22F0D1</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F0D1</ReplyBytes>
+          <DataItem Name="DTCOccurenceCounter" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DTCMileage">
+        <Sent>
+          <SentBytes>22F0D0</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>62F0D0</ReplyBytes>
+          <DataItem Name="DTCMileage" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Battery_Voltage">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220138</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620138</ReplyBytes>
+          <DataItem Name="Battery_Voltage" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Speed_Pitch_VS_1">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220410</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620410</ReplyBytes>
+          <DataItem Name="Speed_Pitch_VS_1" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Speed_Pitch_VS_1">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E041000</SentBytes>
+          <DataItem Name="Speed_Pitch_VS_1" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0410</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Speed_Pitch_VS_2">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220411</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620411</ReplyBytes>
+          <DataItem Name="Speed_Pitch_VS_2" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Speed_Pitch_VS_2">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E041100</SentBytes>
+          <DataItem Name="Speed_Pitch_VS_2" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0411</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Speed_Pitch_Crop_Ofs">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220412</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620412</ReplyBytes>
+          <DataItem Name="Speed_Pitch_Crop_Ofs" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Speed_Pitch_Crop_Ofs">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E041200</SentBytes>
+          <DataItem Name="Speed_Pitch_Crop_Ofs" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0412</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Speed_Pitch_Crop_Tim">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220413</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620413</ReplyBytes>
+          <DataItem Name="Speed_Pitch_Crop_Tim" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Speed_Pitch_Crop_Tim">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E041300</SentBytes>
+          <DataItem Name="Speed_Pitch_Crop_Tim" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0413</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Timeout_Menu_Back">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22040D</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62040D</ReplyBytes>
+          <DataItem Name="Timeout_Menu_Back" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Timeout_Menu_Back">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E040D00</SentBytes>
+          <DataItem Name="Timeout_Menu_Back" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E040D</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.UPA_Display_On_PRV">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22040F</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62040F</ReplyBytes>
+          <DataItem Name="UPA_Display_On_PRV" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.UPA_Display_On_PRV">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E040F00</SentBytes>
+          <DataItem Name="UPA_Display_On_PRV" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E040F</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Powerlatch_Tempo">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220134</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620134</ReplyBytes>
+          <DataItem Name="Powerlatch_Tempo" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Powerlatch_Tempo">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E013400</SentBytes>
+          <DataItem Name="Powerlatch_Tempo" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0134</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Menu_Hor_Adj_Mask">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22015D</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62015D</ReplyBytes>
+          <DataItem Name="Menu_Hor_Adj_Mask" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Menu_Hor_Adj_Mask">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E015D00</SentBytes>
+          <DataItem Name="Menu_Hor_Adj_Mask" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E015D</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Blind_Spot_Pictogram">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220159</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620159</ReplyBytes>
+          <DataItem Name="Blind_Spot_Pictogram" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Blind_Spot_Pictogram">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E015900</SentBytes>
+          <DataItem Name="Blind_Spot_Pictogram" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0159</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Backlight_Brighteness_Manual">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220111</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620111</ReplyBytes>
+          <DataItem Name="Backlight_Brighteness_Manual" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Backlight_Brighteness_Manual">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E011100</SentBytes>
+          <DataItem Name="Backlight_Brighteness_Manual" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0111</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.RVC_Linger_Time">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22018A</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62018A</ReplyBytes>
+          <DataItem Name="RVC_Linger_Time" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.RVC_Linger_Time">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E018A00</SentBytes>
+          <DataItem Name="RVC_Linger_Time" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E018A</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Trunk_Open_Handling">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220150</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620150</ReplyBytes>
+          <DataItem Name="Trunk_Open_Handling" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Trunk_Open_Handling">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E015000</SentBytes>
+          <DataItem Name="Trunk_Open_Handling" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0150</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.RVC_Debouncing_Time">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220189</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620189</ReplyBytes>
+          <DataItem Name="RVC_Debouncing_Time" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.RVC_Debouncing_Time">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E018900</SentBytes>
+          <DataItem Name="RVC_Debouncing_Time" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0189</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Value_VehicleSpeedThresholdForAutomaticDeactivation_Front">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22E000</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62E000</ReplyBytes>
+          <DataItem Name="Value_VehicleSpeedThresholdForAutomaticDeactivation_Front" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Value_VehicleSpeedThresholdForAutomaticDeactivation_Front">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2EE00000</SentBytes>
+          <DataItem Name="Value_VehicleSpeedThresholdForAutomaticDeactivation_Front" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EE000</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Value_VehicleSpeedThresholdForAutomaticDeactivation_Rear">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22E001</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62E001</ReplyBytes>
+          <DataItem Name="Value_VehicleSpeedThresholdForAutomaticDeactivation_Rear" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Value_VehicleSpeedThresholdForAutomaticDeactivation_Rear">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2EE00100</SentBytes>
+          <DataItem Name="Value_VehicleSpeedThresholdForAutomaticDeactivation_Rear" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EE001</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Value_VehicleSpeedThresholdForAutomaticActivation_Rear">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220175</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620175</ReplyBytes>
+          <DataItem Name="Value_VehicleSpeedThresholdForAutomaticActivation_Rear" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Value_VehicleSpeedThresholdForAutomaticActivation_Rear">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E017500</SentBytes>
+          <DataItem Name="Value_VehicleSpeedThresholdForAutomaticActivation_Rear" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0175</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Sensor_Value">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220121</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>620121</ReplyBytes>
+          <DataItem Name="Sensor_Value" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Button_1_state">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220124</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620124</ReplyBytes>
+          <DataItem Name="Button_1_state" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Button_2_state">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220125</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620125</ReplyBytes>
+          <DataItem Name="Button_2_state" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Button_3_state">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220126</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620126</ReplyBytes>
+          <DataItem Name="Button_3_state" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Calib_Cam_Pos_Adjust_Pitch">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220400</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620400</ReplyBytes>
+          <DataItem Name="Calib_Cam_Pos_Adjust_Pitch" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Calib_Cam_Pos_Adjust_Roll">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220401</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620401</ReplyBytes>
+          <DataItem Name="Calib_Cam_Pos_Adjust_Roll" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Calib_Cam_Pos_Adjust_Yaw">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220402</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620402</ReplyBytes>
+          <DataItem Name="Calib_Cam_Pos_Adjust_Yaw" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.RVC_Connection_To_PRV">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22040E</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62040E</ReplyBytes>
+          <DataItem Name="RVC_Connection_To_PRV" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.RVC_Connection_To_PRV">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E040E00</SentBytes>
+          <DataItem Name="RVC_Connection_To_PRV" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E040E</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Vehicle_type">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220177</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620177</ReplyBytes>
+          <DataItem Name="Vehicle_type" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Vehicle_type">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E017700</SentBytes>
+          <DataItem Name="Vehicle_type" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0177</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.CamImage_Mirror_H">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220179</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620179</ReplyBytes>
+          <DataItem Name="CamImage_Mirror_H" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.CamImage_Mirror_H">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E017900</SentBytes>
+          <DataItem Name="CamImage_Mirror_H" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0179</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Calib_Cam_Vehicle_Type">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Calib_Cam_Vehicle_Type]]></Comment>
+        <Sent>
+          <SentBytes>220403</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620403</ReplyBytes>
+          <DataItem Name="Calib_Cam_Vehicle_Type" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Calib_Cam_Vehicle_Type">
+        <ManuelSend/>
+        <Comment><![CDATA[Write Calib_Cam_Vehicle_Type]]></Comment>
+        <Sent>
+          <SentBytes>2E040300</SentBytes>
+          <DataItem Name="Calib_Cam_Vehicle_Type" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0403</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Guidelines_type">
+        <Comment><![CDATA[Read Guidelines_type]]></Comment>
+        <Sent>
+          <SentBytes>220178</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620178</ReplyBytes>
+          <DataItem Name="Guidelines_type" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Guidelines_type">
+        <ManuelSend/>
+        <Comment><![CDATA[Write Guidelines_type]]></Comment>
+        <Sent>
+          <SentBytes>2E017800</SentBytes>
+          <DataItem Name="Guidelines_type" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0178</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>31010000</SentBytes>
+          <DataItem Name="RoutineIdentifier" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101000000</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Stop">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>31020000</SentBytes>
+          <DataItem Name="RoutineIdentifier" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7102000000</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.RequestRoutineResults">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>31030000</SentBytes>
+          <DataItem Name="RoutineIdentifier" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7103000000</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>31000000</SentBytes>
+          <DataItem Name="RoutineControlType" FirstByte="2"/>
+          <DataItem Name="RoutineIdentifier" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>710000000000</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+          <DataItem Name="RoutineOptionalData" FirstByte="6"/>
+          <DataItem Name="Routine Control Subfunction" FirstByte="2"/>
+          <DataItem Name="RoutineIdentifier Recived data" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IO_Test_Camera_Mode">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220151</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620151</ReplyBytes>
+          <DataItem Name="IO_Test_Camera_Mode" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IO_Backlight_Brightness">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220110</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620110</ReplyBytes>
+          <DataItem Name="IO_Backlight_Brightness" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.IO_Backlight_Brightness">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E011000</SentBytes>
+          <DataItem Name="IO_Backlight_Brightness" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0110</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IO_Test_Display_Mode_010">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read IO_Test_Display_Mode_010]]></Comment>
+        <Sent>
+          <SentBytes>220152</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620152</ReplyBytes>
+          <DataItem Name="IO_Test_Display_Mode_010" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.IO_Test_Display_Mode_010">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write IO_Test_Display_Mode_010]]></Comment>
+        <Sent>
+          <SentBytes>2E015200</SentBytes>
+          <DataItem Name="IO_Test_Display_Mode_010" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0152</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IO_Test_Display_Mode_020">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220153</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620153</ReplyBytes>
+          <DataItem Name="IO_Test_Display_Mode_020" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="IO_Test_Display_Mode_020_Short_Term_Adjustment">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F01530300</SentBytes>
+          <DataItem Name="IO_Test_Display_Mode_020" FirstByte="5"/>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015303</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_Test_Display_Mode_020_Return_Control_To_ECU">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F015300</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015300</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_Test_Display_Mode_010_Return_Control_To_ECU">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F015200</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015200</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_Test_Display_Mode_010_Short_Term_Adjustment">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F01520300</SentBytes>
+          <DataItem Name="IO_Test_Display_Mode_010" FirstByte="5"/>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015203</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_Control_Test_Camera_Mode_Short_Term_Adjustment">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F01510300</SentBytes>
+          <DataItem Name="IO_Test_Camera_Mode" FirstByte="5"/>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015103</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_Control_Test_Camera_Mode_Return_Control_To_ECU">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F015100</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015100</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IO_Test_Display_Mode_400">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read IO_Test_Display_Mode_400]]></Comment>
+        <Sent>
+          <SentBytes>220154</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620154</ReplyBytes>
+          <DataItem Name="IO_Test_Display_Mode_400" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.IO_Test_Display_Mode_400">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write IO_Test_Display_Mode_400]]></Comment>
+        <Sent>
+          <SentBytes>2E015400</SentBytes>
+          <DataItem Name="IO_Test_Display_Mode_400" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0154</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_Test_Display_Mode_400_Short_Term_Adjustment">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F01540300</SentBytes>
+          <DataItem Name="IO_Test_Display_Mode_400" FirstByte="5"/>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015403</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_Test_Display_Mode_400_Return_Control_To_ECU">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F015400</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015400</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_Display_Control_Short_Term_Adjustment">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F01550300</SentBytes>
+          <DataItem Name="IO_Display_Control" FirstByte="5"/>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015503</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IO_Display_Control">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read IO_Display_Control]]></Comment>
+        <Sent>
+          <SentBytes>220155</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620155</ReplyBytes>
+          <DataItem Name="IO_Display_Control" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.IO_Display_Control">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write IO_Display_Control]]></Comment>
+        <Sent>
+          <SentBytes>2E015500</SentBytes>
+          <DataItem Name="IO_Display_Control" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0155</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_Display_Control_Return_Control_To_ECU">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F015500</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015500</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_RVC_Display_Short_Term_Adjustment">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F01560300</SentBytes>
+          <DataItem Name="IO_RVC_Display" FirstByte="5"/>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015603</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IO_RVC_Display">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read IO_RVC_Display]]></Comment>
+        <Sent>
+          <SentBytes>220156</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620156</ReplyBytes>
+          <DataItem Name="IO_RVC_Display" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.IO_RVC_Display">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write IO_RVC_Display]]></Comment>
+        <Sent>
+          <SentBytes>2E015600</SentBytes>
+          <DataItem Name="IO_RVC_Display" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0156</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_RVC_Display_Return_Control_To_ECU">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F015600</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015600</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IO_SRVM_Service_Mode">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read IO_SRVM_Service_Mode]]></Comment>
+        <Sent>
+          <SentBytes>220171</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620171</ReplyBytes>
+          <DataItem Name="IO_SRVM_Service_Mode" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.IO_SRVM_Service_Mode">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write IO_SRVM_Service_Mode]]></Comment>
+        <Sent>
+          <SentBytes>2E017100</SentBytes>
+          <DataItem Name="IO_SRVM_Service_Mode" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0171</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_SRVM_Service_Mode_Short_Term_Adjustment">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F01710300</SentBytes>
+          <DataItem Name="IO_SRVM_Service_Mode" FirstByte="5"/>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F017103</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_SRVM_Service_Mode_Return_Control_To_ECU">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F017100</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F017100</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ECU_Reset.HWReset">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>1101</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5101</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ECU_Reset.SWReset">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>1103</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5103</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="OutputControl">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2F000000</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F000000</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VehicleManufacturerECUHardwareNumber_DAI">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F111</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F111</ReplyBytes>
+          <DataItem Name="VehicleManufacturerECUHardwareNumber_DAI" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VehicleManufacturerECUSoftwareNumber_DAI">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F121</SentBytes>
+        </Sent>
+        <Received MinBytes="23">
+          <ReplyBytes>62F121</ReplyBytes>
+          <DataItem Name="VehicleManufacturerECUSoftwareNumber_DAI" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="IO_Control_Display_Backlight_Brightness_Return_Control_To_ECU">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F011000</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F011000</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO_Control_Display_Backlight_Brightness_Short_Term_Adjustment">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F01100300</SentBytes>
+          <DataItem Name="IO_Backlight_Brightness" FirstByte="5"/>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F011003</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_STOP_DISPLAY_BACKLIGHT_BRIGHTNESS">
+        <Sent>
+          <SentBytes>2F011000</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F011000</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_START_DISPLAY_BACKLIGHT_BRIGHTNESS">
+        <Sent>
+          <SentBytes>2F01100300</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6F01100300</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_STOP_TEST_CAMERA_MODE">
+        <Sent>
+          <SentBytes>2F015100</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015100</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_START_TEST_CAMERA_MODE">
+        <Sent>
+          <SentBytes>2F01510300</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6F01510300</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_STOP_DISPLAY_MODE_010">
+        <Sent>
+          <SentBytes>2F015200</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015200</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_START_DISPLAY_MODE_010">
+        <Sent>
+          <SentBytes>2F01520300</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6F01520300</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_STOP_DISPLAY_MODE_020">
+        <Sent>
+          <SentBytes>2F015300</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015300</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_START_DISPLAY_MODE_020">
+        <Sent>
+          <SentBytes>2F01530300</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6F01530300</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_STOP_DISPLAY_MODE_030">
+        <Sent>
+          <SentBytes>2F015400</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015400</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_START_DISPLAY_MODE_030">
+        <Sent>
+          <SentBytes>2F01540300</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6F01540300</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_STOP_DISPLAY_CONTROL">
+        <Sent>
+          <SentBytes>2F015500</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015500</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_START_DISPLAY_CONTROL">
+        <Sent>
+          <SentBytes>2F01550300</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6F01550300</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_STOP_REAR_VIEW_CAMERA">
+        <Sent>
+          <SentBytes>2F015600</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F015600</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_START_REAR_VIEW_CAMERA">
+        <Sent>
+          <SentBytes>2F01560300</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6F01560300</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_STOP_SRVM_SERVICE_MODE">
+        <Sent>
+          <SentBytes>2F017100</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F017100</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_START_SRVM_SERVICE_MODE">
+        <Sent>
+          <SentBytes>2F01710300</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6F01710300</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_Routine_START_CALIBRATE_CAMERA">
+        <Sent>
+          <SentBytes>31019004</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>71019004</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_Routine_STOP_CALIBRATE_CAMERA">
+        <Sent>
+          <SentBytes>31029004</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>71029004</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_Routine_RESULTS_CALIBRATE_CAMERA">
+        <Sent>
+          <SentBytes>31039004</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7103900400</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_Routine_START_CHECK_VIDEO_CABLE_HIGH_FREQUENCY">
+        <Sent>
+          <SentBytes>31019007</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>71019007</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_Routine_STOP_CHECK_VIDEO_CABLE_HIGH_FREQUENCY">
+        <Sent>
+          <SentBytes>31029007</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>71029007</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_Routine_RESULTS_CHECK_VIDEO_CABLE_HIGH_FREQUENCY">
+        <Sent>
+          <SentBytes>31039007</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7103900700</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.CALIB_CAM_POS_AS_ADJUST_PITCH">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220500</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620500</ReplyBytes>
+          <DataItem Name="CALIB_CAM_POS_AS_ADJUST_PITCH" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.CALIB_CAM_POS_AS_ADJUST_YAW">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220502</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620502</ReplyBytes>
+          <DataItem Name="CALIB_CAM_POS_AS_ADJUST_YAW" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.CALIB_CAM_POS_AS_ADJUST_ROLL">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220501</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620501</ReplyBytes>
+          <DataItem Name="CALIB_CAM_POS_AS_ADJUST_ROLL" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.RVC_GUIDELINE_POS_ADJUST_Rotation">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220161</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620161</ReplyBytes>
+          <DataItem Name="RVC_GUIDELINE_POS_ADJUST_Rotation" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.RVC_GUIDELINE_POS_ADJUST_Rotation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E016100</SentBytes>
+          <DataItem Name="RVC_GUIDELINE_POS_ADJUST_Rotation" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0161</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.RVC_GUIDELINE_POS_ADJUST_X">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22015C</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62015C</ReplyBytes>
+          <DataItem Name="RVC_GUIDELINE_POS_ADJUST_X" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.RVC_GUIDELINE_POS_ADJUST_X">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E015C00</SentBytes>
+          <DataItem Name="RVC_GUIDELINE_POS_ADJUST_X" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E015C</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.RVC_GUIDELINE_POS_ADJUST_Y">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220160</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620160</ReplyBytes>
+          <DataItem Name="RVC_GUIDELINE_POS_ADJUST_Y" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.RVC_GUIDELINE_POS_ADJUST_Y">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E016000</SentBytes>
+          <DataItem Name="RVC_GUIDELINE_POS_ADJUST_Y" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0160</ReplyBytes>
+        </Received>
+      </Request>
+    </Requests>
+    <Devices>
+      <Device Name="DTC_Sensor_Failure" DTC="43572" Type="2">
+        <Mnemonic>DTC_Sensor_Failure</Mnemonic>
+        <Test Type="73">
+          <Description>DTC_Sensor_Failure</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_Internal_Failure" DTC="43568" Type="2">
+        <Mnemonic>DTC_Internal_Failure</Mnemonic>
+        <Test Type="69">
+          <Description>DTC_SRVM_ROM</Description>
+        </Test>
+        <Test Type="71">
+          <Description>DTC_SRVM_Reset</Description>
+        </Test>
+        <Test Type="73">
+          <Description>DTC_Buttons_Failure</Description>
+        </Test>
+        <Test Type="75">
+          <Description>DTC_ECU_OVER_TEMPERATURE</Description>
+        </Test>
+        <Test Type="85">
+          <Description>DTC_ECU_NOT_CONFIGURED</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_ECU_Voltage_Out_Of_Range" DTC="43569" Type="2">
+        <Mnemonic>DTC_ECU_Voltage_Out_Of_Range</Mnemonic>
+        <Test Type="162">
+          <Description>DTC_ECU_Voltage_Below_Threshold</Description>
+        </Test>
+        <Test Type="163">
+          <Description>DTC_ECU_Voltage_Above_Threshold</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_PRV_Video_Signal_Missing" DTC="43586">
+        <Mnemonic>DTC_PRV_Video_Signal_Missing</Mnemonic>
+        <Test Type="49">
+          <Description>DTC_PRV_Video_Signal_Missing</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_RVC_Video_Signal_Missing" DTC="43576">
+        <Mnemonic>DTC_RVC_Video_Signal_Missing</Mnemonic>
+        <Test Type="49">
+          <Description>DTC_RVC_Video_Signal_Missing</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_PRV_Voltage_Out_Of_Range" DTC="43585" Type="3">
+        <Mnemonic>DTC_PRV_Voltage_Out_Of_Range</Mnemonic>
+        <Test Type="162">
+          <Description>DTC_PRV_Voltage_Below_Threshold</Description>
+        </Test>
+        <Test Type="163">
+          <Description>DTC_PRV_Voltage_Above_Threshold</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_RVC_Voltage_Out_Of_Range" DTC="43577" Type="3">
+        <Mnemonic>DTC_RVC_Voltage_Out_Of_Range</Mnemonic>
+        <Test Type="23">
+          <Description>DTC_RVC_Voltage_Above_Threshold</Description>
+        </Test>
+        <Test Type="22">
+          <Description>DTC_RVC_Voltage_Below_Threshold</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_Lost_Communication_BCM" DTC="57679">
+        <Mnemonic>DTC_Lost_Communication_BCM</Mnemonic>
+        <Test Type="135">
+          <Description>DTC_Lost_Communication_BCM</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_Lost_Communication_4WS" DTC="57604">
+        <Mnemonic>DTC_Lost_Communication_4WS</Mnemonic>
+        <Test Type="135">
+          <Description>DTC_Lost_Communication_4WS</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_Lost_Communication_METER" DTC="57678">
+        <Mnemonic>DTC_Lost_Communication_METER</Mnemonic>
+        <Test Type="135">
+          <Description>DTC_Lost_Communication_METER</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_Lost_Communication_SONAR" DTC="57701">
+        <Mnemonic>DTC_Lost_Communication_SONAR</Mnemonic>
+        <Test Type="135">
+          <Description>DTC_Lost_Communication_SONAR</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_Lost_Communication_STRG" DTC="57686">
+        <Mnemonic>DTC_Lost_Communication_STRG</Mnemonic>
+        <Test Type="135">
+          <Description>DTC_Lost_Communication_STRG</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_Lost_Communication_USM" DTC="57691">
+        <Mnemonic>DTC_Lost_Communication_USM</Mnemonic>
+        <Test Type="135">
+          <Description>DTC_Lost_Communication_USM</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_Lost_Communication_VDC" DTC="57672">
+        <Mnemonic>DTC_Lost_Communication_VDC</Mnemonic>
+        <Test Type="135">
+          <Description>DTC_Lost_Communication_VDC</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_PRVC_Calibration_Missing" DTC="43584" Type="2">
+        <Mnemonic>DTC_PRVC_Calibration_Missing</Mnemonic>
+        <Test Type="84" Severity="0">
+          <Description>SRVM Camera Calibration missing</Description>
+        </Test>
+      </Device>
+      <Device Name="DTC_Bus_Off" DTC="49269">
+        <Mnemonic>DTC_Bus_Off</Mnemonic>
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+    </Devices>
+    <ds:Categories xmlns="http://www-diag.renault.com/2002/screens">
+      <Category Name="IO Controls">
+        <Screen Name="Test IO Controls" Color="12615680" WindowState="0" Width="15540" Height="11580">
+          <Label Text="" Color="16744448" Alignment="0">
+            <Rectangle Left="15" Top="120" Height="10560" Width="15450"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="" Color="15587218" Alignment="0">
+            <Rectangle Left="240" Top="120" Height="10320" Width="14595"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="Test_Backlight_Brightness (Start)">
+            <Rectangle Left="7920" Top="2160" Height="429" Width="3258"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_Control_Display_Backlight_Brightness_Short_Term_Adjustment"/>
+          </Button>
+          <Button Text="Test_Camera_Mode (Start)">
+            <Rectangle Left="360" Top="2160" Height="429" Width="3255"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_Control_Test_Camera_Mode_Short_Term_Adjustment"/>
+          </Button>
+          <Button Text="Test_Backlight_Brightness (Stop)">
+            <Rectangle Left="11280" Top="2160" Height="429" Width="3150"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_Control_Test_Camera_Mode_Return_Control_To_ECU"/>
+          </Button>
+          <Button Text="Test_Display_Control (Start)">
+            <Rectangle Left="360" Top="4680" Height="429" Width="3255"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_Display_Control_Short_Term_Adjustment"/>
+          </Button>
+          <Button Text="Test_Display_Control (Stop)">
+            <Rectangle Left="3720" Top="4680" Height="429" Width="3150"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_Display_Control_Return_Control_To_ECU"/>
+          </Button>
+          <Button Text="Test_RVC_Display (Start)">
+            <Rectangle Left="8040" Top="4680" Height="429" Width="3255"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_RVC_Display_Short_Term_Adjustment"/>
+          </Button>
+          <Button Text="Test_RVC_Display (Stop)">
+            <Rectangle Left="11400" Top="4680" Height="429" Width="3180"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_RVC_Display_Return_Control_To_ECU"/>
+          </Button>
+          <Button Text="Test_SRVM_Service_Mode (Start)">
+            <Rectangle Left="360" Top="7200" Height="429" Width="3255"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_SRVM_Service_Mode_Short_Term_Adjustment"/>
+          </Button>
+          <Button Text="Test_SRVM_Service_Mode (Stop)">
+            <Rectangle Left="3720" Top="7200" Height="429" Width="3150"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_SRVM_Service_Mode_Return_Control_To_ECU"/>
+          </Button>
+          <Button Text="Test_Display_Mode_010 (Start)">
+            <Rectangle Left="8040" Top="7200" Height="429" Width="3255"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_Test_Display_Mode_010_Short_Term_Adjustment"/>
+          </Button>
+          <Button Text="Test_Display_Mode_010 (Stop)">
+            <Rectangle Left="11400" Top="7200" Height="429" Width="3135"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_Test_Display_Mode_010_Return_Control_To_ECU"/>
+          </Button>
+          <Button Text="Test_Display_Mode_020 (Start)">
+            <Rectangle Left="480" Top="9720" Height="429" Width="3270"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_Test_Display_Mode_020_Short_Term_Adjustment"/>
+          </Button>
+          <Button Text="Test_Display_Mode_020 (Stop)">
+            <Rectangle Left="3840" Top="9720" Height="429" Width="3150"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_Test_Display_Mode_020_Return_Control_To_ECU"/>
+          </Button>
+          <Button Text="Test_Display_Mode_400 (Start)">
+            <Rectangle Left="8040" Top="9720" Height="429" Width="3285"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_Test_Display_Mode_400_Short_Term_Adjustment"/>
+          </Button>
+          <Button Text="Test_Display_Mode_400 (Stop)">
+            <Rectangle Left="11520" Top="9720" Height="429" Width="3150"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_Test_Display_Mode_400_Return_Control_To_ECU"/>
+          </Button>
+          <Button Text="Test_Camera_Mode (Stop)">
+            <Rectangle Left="3720" Top="2160" Height="420" Width="3255"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IO_Control_Test_Camera_Mode_Return_Control_To_ECU"/>
+          </Button>
+          <Input Width="2735" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_Control_Test_Camera_Mode_Short_Term_Adjustment">
+            <Rectangle Left="480" Top="600" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2765" Color="16777215" DataName="OutputControlCommand" RequestName="IO_Control_Test_Camera_Mode_Short_Term_Adjustment">
+            <Rectangle Left="480" Top="960" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2780" Color="16777215" DataName="IO_Test_Camera_Mode" RequestName="IO_Control_Test_Camera_Mode_Short_Term_Adjustment">
+            <Rectangle Left="480" Top="240" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2795" Color="16777215" DataName="IO_Backlight_Brightness" RequestName="IO_Control_Display_Backlight_Brightness_Short_Term_Adjustment">
+            <Rectangle Left="7920" Top="240" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2855" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_Control_Display_Backlight_Brightness_Short_Term_Adjustment">
+            <Rectangle Left="7920" Top="600" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2825" Color="16777215" DataName="OutputControlCommand" RequestName="IO_Control_Display_Backlight_Brightness_Short_Term_Adjustment">
+            <Rectangle Left="7920" Top="1680" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2885" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_Control_Test_Camera_Mode_Return_Control_To_ECU">
+            <Rectangle Left="7920" Top="1320" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2855" Color="16777215" DataName="OutputControlCommand" RequestName="IO_Control_Test_Camera_Mode_Return_Control_To_ECU">
+            <Rectangle Left="7920" Top="960" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2825" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_Display_Control_Short_Term_Adjustment">
+            <Rectangle Left="480" Top="3120" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2840" Color="16777215" DataName="OutputControlCommand" RequestName="IO_Display_Control_Short_Term_Adjustment">
+            <Rectangle Left="480" Top="3480" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2840" Color="16777215" DataName="IO_Display_Control" RequestName="IO_Display_Control_Short_Term_Adjustment">
+            <Rectangle Left="480" Top="2760" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2855" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_Display_Control_Return_Control_To_ECU">
+            <Rectangle Left="480" Top="3840" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2855" Color="16777215" DataName="OutputControlCommand" RequestName="IO_Display_Control_Return_Control_To_ECU">
+            <Rectangle Left="480" Top="4200" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2735" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_RVC_Display_Short_Term_Adjustment">
+            <Rectangle Left="8040" Top="3120" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2720" Color="16777215" DataName="OutputControlCommand" RequestName="IO_RVC_Display_Short_Term_Adjustment">
+            <Rectangle Left="8040" Top="3480" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2750" Color="16777215" DataName="IO_RVC_Display" RequestName="IO_RVC_Display_Short_Term_Adjustment">
+            <Rectangle Left="8040" Top="2760" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2750" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_RVC_Display_Return_Control_To_ECU">
+            <Rectangle Left="8040" Top="3840" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2765" Color="16777215" DataName="OutputControlCommand" RequestName="IO_RVC_Display_Return_Control_To_ECU">
+            <Rectangle Left="8040" Top="4200" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2870" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_SRVM_Service_Mode_Short_Term_Adjustment">
+            <Rectangle Left="480" Top="5640" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2900" Color="16777215" DataName="OutputControlCommand" RequestName="IO_SRVM_Service_Mode_Short_Term_Adjustment">
+            <Rectangle Left="480" Top="6000" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2885" Color="16777215" DataName="IO_SRVM_Service_Mode" RequestName="IO_SRVM_Service_Mode_Short_Term_Adjustment">
+            <Rectangle Left="480" Top="5280" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2915" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_SRVM_Service_Mode_Return_Control_To_ECU">
+            <Rectangle Left="480" Top="6360" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2885" Color="16777215" DataName="OutputControlCommand" RequestName="IO_SRVM_Service_Mode_Return_Control_To_ECU">
+            <Rectangle Left="480" Top="6720" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2705" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_Test_Display_Mode_010_Short_Term_Adjustment">
+            <Rectangle Left="8040" Top="5640" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2705" Color="16777215" DataName="OutputControlCommand" RequestName="IO_Test_Display_Mode_010_Short_Term_Adjustment">
+            <Rectangle Left="8040" Top="6000" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2705" Color="16777215" DataName="IO_Test_Display_Mode_010" RequestName="IO_Test_Display_Mode_010_Short_Term_Adjustment">
+            <Rectangle Left="8040" Top="5280" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2690" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_Test_Display_Mode_010_Return_Control_To_ECU">
+            <Rectangle Left="8040" Top="6360" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2690" Color="16777215" DataName="OutputControlCommand" RequestName="IO_Test_Display_Mode_010_Return_Control_To_ECU">
+            <Rectangle Left="8040" Top="6720" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2885" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_Test_Display_Mode_020_Short_Term_Adjustment">
+            <Rectangle Left="480" Top="8160" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2870" Color="16777215" DataName="OutputControlCommand" RequestName="IO_Test_Display_Mode_020_Short_Term_Adjustment">
+            <Rectangle Left="480" Top="8520" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2885" Color="16777215" DataName="IO_Test_Display_Mode_020" RequestName="IO_Test_Display_Mode_020_Short_Term_Adjustment">
+            <Rectangle Left="480" Top="7800" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2870" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_Test_Display_Mode_020_Return_Control_To_ECU">
+            <Rectangle Left="480" Top="8880" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2870" Color="16777215" DataName="OutputControlCommand" RequestName="IO_Test_Display_Mode_020_Return_Control_To_ECU">
+            <Rectangle Left="480" Top="9240" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2705" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_Test_Display_Mode_400_Short_Term_Adjustment">
+            <Rectangle Left="8040" Top="8160" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2720" Color="16777215" DataName="OutputControlCommand" RequestName="IO_Test_Display_Mode_400_Short_Term_Adjustment">
+            <Rectangle Left="8040" Top="8520" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2720" Color="16777215" DataName="IO_Test_Display_Mode_400" RequestName="IO_Test_Display_Mode_400_Short_Term_Adjustment">
+            <Rectangle Left="8040" Top="7800" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2720" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_Test_Display_Mode_400_Return_Control_To_ECU">
+            <Rectangle Left="8040" Top="8880" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2705" Color="16777215" DataName="OutputControlCommand" RequestName="IO_Test_Display_Mode_400_Return_Control_To_ECU">
+            <Rectangle Left="8040" Top="9240" Height="300" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2735" Color="16777215" DataName="OutputPermanentControlList" RequestName="IO_Control_Test_Camera_Mode_Return_Control_To_ECU">
+            <Rectangle Left="480" Top="1320" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2735" Color="16777215" DataName="OutputControlCommand" RequestName="IO_Control_Test_Camera_Mode_Return_Control_To_ECU">
+            <Rectangle Left="480" Top="1680" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+        </Screen>
+      </Category>
+      <Category Name="Identification">
+        <Screen Name="SRVM Identification" Color="16776960" WindowState="0" Width="10260" Height="7860">
+          <Label Text="SRVM Identification" Color="0" Alignment="2">
+            <Rectangle Left="120" Top="120" Height="480" Width="9960"/>
+            <Font Name="MS Sans Serif" Size=" 12.375" Bold="1" Italic="0" Color="65535"/>
+          </Label>
+          <Label Text="" Color="13619151" Alignment="0">
+            <Rectangle Left="120" Top="840" Height="3720" Width="9960"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="3890" Color="16777215" DataName="VIN" RequestName="DataRead.VIN">
+            <Rectangle Left="360" Top="1080" Height="300" Width="9480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3890" Color="16777215" DataName="ECUSerialNumber" RequestName="DataRead.ECUSerialNumber">
+            <Rectangle Left="360" Top="1320" Height="300" Width="9480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3890" Color="16777215" DataName="vehicleManufacturerSparePartNumber" RequestName="DataRead.vehicleManufacturerSparePartNumber">
+            <Rectangle Left="360" Top="1680" Height="300" Width="9480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3890" Color="16777215" DataName="systemSupplierIdentifier" RequestName="DataRead.systemSupplierIdentifier">
+            <Rectangle Left="360" Top="1920" Height="300" Width="9480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3890" Color="16777215" DataName="diagnosticVersion" RequestName="DataRead.diagnosticVersion">
+            <Rectangle Left="360" Top="2280" Height="300" Width="9480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3890" Color="16777215" DataName="vehicleManufacturerECUHardwareNumber" RequestName="DataRead.vehicleManufacturerECUHardwareNumber">
+            <Rectangle Left="360" Top="2520" Height="300" Width="9480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3890" Color="16777215" DataName="systemSupplierECUSoftwareNumber" RequestName="DataRead.systemSupplierECUSoftwareNumber">
+            <Rectangle Left="360" Top="2880" Height="300" Width="9480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3890" Color="16777215" DataName="systemSupplierECUSoftwareVersionNumber" RequestName="DataRead.systemSupplierECUSoftwareVersionNumber">
+            <Rectangle Left="360" Top="3120" Height="300" Width="9480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3890" Color="16777215" DataName="OperationnalReference" RequestName="DataRead.OperationnalReference">
+            <Rectangle Left="360" Top="3480" Height="300" Width="9480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3890" Color="16777215" DataName="ConfigDataReferenceAfterConfigProcess" RequestName="DataRead.ConfigDataReferenceAfterConfigProcess">
+            <Rectangle Left="360" Top="3720" Height="300" Width="9480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3890" Color="16777215" DataName="bootSoftwareIdentification" RequestName="DataRead.bootSoftwareIdentification">
+            <Rectangle Left="360" Top="4080" Height="300" Width="9480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+      </Category>
+      <Category Name="Routine">
+        <Screen Name="Calibrate SRVM Camera Plant" Color="16776960" WindowState="0" Width="15420" Height="11580">
+          <Label Text="SRVM Camera Calibration" Color="6250335" Alignment="2">
+            <Rectangle Left="-360" Top="0" Height="11640" Width="15840"/>
+            <Font Name="MS Sans Serif" Size=" 12.375" Bold="1" Italic="0" Color="8454143"/>
+          </Label>
+          <Label Text="" Color="12566463" Alignment="0">
+            <Rectangle Left="960" Top="720" Height="10080" Width="13560"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Routine Start:" Color="12566463" Alignment="0">
+            <Rectangle Left="1080" Top="5280" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="255"/>
+          </Label>
+          <Label Text="- Select the Routine subfunction $01 - Start Routine" Color="12566463" Alignment="0">
+            <Rectangle Left="1080" Top="5880" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- Select the Routine identifier $9002- Calibrate_ SRVM_Camera_Plant" Color="12566463" Alignment="0">
+            <Rectangle Left="1080" Top="6240" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- Click the Run Routine button" Color="12566463" Alignment="0">
+            <Rectangle Left="1080" Top="6600" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Routine Status Check:" Color="12566463" Alignment="0">
+            <Rectangle Left="1080" Top="6840" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="255"/>
+          </Label>
+          <Label Text="- Select the Routine subfunction $03 - Request Routine Results" Color="12566463" Alignment="0">
+            <Rectangle Left="1080" Top="7200" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- Select the Routine identifier $9002- Calibrate_ SRVM_Camera_Plant" Color="12566463" Alignment="0">
+            <Rectangle Left="1080" Top="7560" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- Click the Run Routine button" Color="12566463" Alignment="0">
+            <Rectangle Left="1080" Top="7920" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="SRVM Camera Calibration Plant" Color="12566463" Alignment="2">
+            <Rectangle Left="1080" Top="4680" Height="360" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="255"/>
+          </Label>
+          <Label Text="Roll" Color="12566463" Alignment="0">
+            <Rectangle Left="8760" Top="1560" Height="300" Width="600"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Yaw" Color="12566463" Alignment="0">
+            <Rectangle Left="8760" Top="2040" Height="300" Width="600"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Pitch" Color="12566463" Alignment="0">
+            <Rectangle Left="8760" Top="1080" Height="300" Width="600"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- Start extended session 1003" Color="12566463" Alignment="0">
+            <Rectangle Left="1080" Top="5520" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="Start extended session">
+            <Rectangle Left="6000" Top="840" Height="720" Width="2280"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+          </Button>
+          <Button Text="Read camera position">
+            <Rectangle Left="9600" Top="2520" Height="360" Width="3120"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataRead.Calib_Cam_Pos_Adjust_Pitch"/>
+            <Send Delay="0" RequestName="DataRead.Calib_Cam_Pos_Adjust_Roll"/>
+            <Send Delay="0" RequestName="DataRead.Calib_Cam_Pos_Adjust_Yaw"/>
+          </Button>
+          <Button Text="Run Routine">
+            <Rectangle Left="6480" Top="1800" Height="720" Width="1320"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="RoutineControl"/>
+          </Button>
+          <Display Width="0" Color="16777215" DataName="Calib_Cam_Pos_Adjust_Pitch" RequestName="DataRead.Calib_Cam_Pos_Adjust_Pitch">
+            <Rectangle Left="9360" Top="1080" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16777215" DataName="Calib_Cam_Pos_Adjust_Roll" RequestName="DataRead.Calib_Cam_Pos_Adjust_Roll">
+            <Rectangle Left="9360" Top="1560" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16777215" DataName="Calib_Cam_Pos_Adjust_Yaw" RequestName="DataRead.Calib_Cam_Pos_Adjust_Yaw">
+            <Rectangle Left="9360" Top="2040" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="2000" Color="12566463" DataName="RoutineControlType" RequestName="RoutineControl">
+            <Rectangle Left="2040" Top="2520" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="12566463" DataName="RoutineIdentifier" RequestName="RoutineControl">
+            <Rectangle Left="2040" Top="3000" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="2000" Color="12566463" DataName="RoutineStatusRecord" RequestName="RoutineControl">
+            <Rectangle Left="2040" Top="3480" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="12566463" DataName="RoutineOptionalData" RequestName="RoutineControl">
+            <Rectangle Left="2040" Top="3960" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Calibrate SRVM Camera APV" Color="16776960" WindowState="0" Width="15420" Height="11580">
+          <Label Text="SRVM Camera Calibration" Color="6250335" Alignment="2">
+            <Rectangle Left="-360" Top="0" Height="11640" Width="15840"/>
+            <Font Name="MS Sans Serif" Size=" 12.375" Bold="1" Italic="0" Color="8454143"/>
+          </Label>
+          <Label Text="" Color="12566463" Alignment="0">
+            <Rectangle Left="960" Top="600" Height="10080" Width="13560"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Routine Start:" Color="12566463" Alignment="0">
+            <Rectangle Left="8520" Top="5280" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="255"/>
+          </Label>
+          <Label Text="- Select the Routine subfunction $01 - Start Routine" Color="12566463" Alignment="0">
+            <Rectangle Left="8520" Top="5880" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- Select the Routine identifier $9004- Calibrate_ SRVM_Camera_APV" Color="12566463" Alignment="0">
+            <Rectangle Left="8520" Top="6240" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- Click the Run Routine button" Color="12566463" Alignment="0">
+            <Rectangle Left="8520" Top="6600" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Routine Status Check:" Color="12566463" Alignment="0">
+            <Rectangle Left="8520" Top="6840" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="255"/>
+          </Label>
+          <Label Text="- Select the Routine subfunction $03 - Request Routine Results" Color="12566463" Alignment="0">
+            <Rectangle Left="8520" Top="7200" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- Select the Routine identifier $9004- Calibrate_ SRVM_Camera_APV" Color="12566463" Alignment="0">
+            <Rectangle Left="8520" Top="7560" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- Click the Run Routine button" Color="12566463" Alignment="0">
+            <Rectangle Left="8520" Top="7920" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="SRVM Camera Calibration APV" Color="12566463" Alignment="2">
+            <Rectangle Left="8520" Top="4680" Height="360" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="255"/>
+          </Label>
+          <Label Text="Roll" Color="12566463" Alignment="0">
+            <Rectangle Left="8760" Top="1560" Height="300" Width="600"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Yaw" Color="12566463" Alignment="0">
+            <Rectangle Left="8760" Top="2040" Height="300" Width="600"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Pitch" Color="12566463" Alignment="0">
+            <Rectangle Left="8760" Top="1080" Height="300" Width="600"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- Start extended session 1003" Color="12566463" Alignment="0">
+            <Rectangle Left="8520" Top="5520" Height="240" Width="6000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="Run Routine">
+            <Rectangle Left="6480" Top="1800" Height="720" Width="1320"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="RoutineControl"/>
+          </Button>
+          <Button Text="Start extended session">
+            <Rectangle Left="6000" Top="840" Height="720" Width="2280"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+          </Button>
+          <Button Text="Read camera position">
+            <Rectangle Left="9600" Top="2520" Height="360" Width="3120"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataRead.Calib_Cam_Pos_Adjust_Pitch"/>
+            <Send Delay="0" RequestName="DataRead.Calib_Cam_Pos_Adjust_Roll"/>
+            <Send Delay="0" RequestName="DataRead.Calib_Cam_Pos_Adjust_Yaw"/>
+          </Button>
+          <Display Width="0" Color="16777215" DataName="CALIB_CAM_POS_AS_ADJUST_PITCH" RequestName="DataRead.CALIB_CAM_POS_AS_ADJUST_PITCH">
+            <Rectangle Left="9360" Top="1080" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16777215" DataName="CALIB_CAM_POS_AS_ADJUST_ROLL" RequestName="DataRead.CALIB_CAM_POS_AS_ADJUST_ROLL">
+            <Rectangle Left="9360" Top="1560" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16777215" DataName="CALIB_CAM_POS_AS_ADJUST_YAW" RequestName="DataRead.CALIB_CAM_POS_AS_ADJUST_YAW">
+            <Rectangle Left="9360" Top="2040" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="12566463" DataName="RoutineStatusRecord" RequestName="RoutineControl">
+            <Rectangle Left="2040" Top="3480" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="12566463" DataName="RoutineOptionalData" RequestName="RoutineControl">
+            <Rectangle Left="2040" Top="3960" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="2000" Color="12566463" DataName="RoutineControlType" RequestName="RoutineControl">
+            <Rectangle Left="2040" Top="2520" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="12566463" DataName="RoutineIdentifier" RequestName="RoutineControl">
+            <Rectangle Left="2040" Top="3000" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+        </Screen>
+      </Category>
+      <Category Name="SRVM Configuration">
+        <Screen Name="Configuration parameters" Color="8404992" WindowState="0" Width="20460" Height="12180">
+          <Label Text="DID Read" Color="13619151" Alignment="2">
+            <Rectangle Left="3000" Top="360" Height="360" Width="2160"/>
+            <Font Name="Times New Roman" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="DID Write" Color="13619151" Alignment="2">
+            <Rectangle Left="11160" Top="480" Height="360" Width="2160"/>
+            <Font Name="Times New Roman" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="" Color="13619151" Alignment="0">
+            <Rectangle Left="240" Top="240" Height="11760" Width="8280"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="" Color="13619151" Alignment="0">
+            <Rectangle Left="8640" Top="240" Height="11760" Width="7560"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="" Color="13619151" Alignment="0">
+            <Rectangle Left="16320" Top="240" Height="11760" Width="3960"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="Write.Speed_Pitch_VS_1">
+            <Rectangle Left="16440" Top="960" Height="390" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Speed_Pitch_VS_1"/>
+          </Button>
+          <Button Text="Write.Speed_Pitch_VS_2">
+            <Rectangle Left="16440" Top="1440" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Speed_Pitch_VS_2"/>
+          </Button>
+          <Button Text="Write.Speed_Pitch_Crop_Ofs">
+            <Rectangle Left="16440" Top="1920" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Speed_Pitch_Crop_Ofs"/>
+          </Button>
+          <Button Text="Write.Trunk_Open_Handling">
+            <Rectangle Left="16440" Top="2880" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Trunk_Open_Handling"/>
+          </Button>
+          <Button Text="Write.Blind_Spot_Pictogram">
+            <Rectangle Left="16440" Top="3360" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Blind_Spot_Pictogram"/>
+          </Button>
+          <Button Text="Write.Menu_Hor_Adjust_Mask">
+            <Rectangle Left="16440" Top="7200" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Menu_Hor_Adj_Mask"/>
+          </Button>
+          <Button Text="Write.Vehicle_Type">
+            <Rectangle Left="16440" Top="3840" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Vehicle_type"/>
+          </Button>
+          <Button Text="Write.Guidelines_Type">
+            <Rectangle Left="16440" Top="4320" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Guidelines_type"/>
+          </Button>
+          <Button Text="Write.RVC_Linger_Time">
+            <Rectangle Left="16440" Top="5280" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.RVC_Linger_Time"/>
+          </Button>
+          <Button Text="Write.Calib_Cam_Vehicle_Type">
+            <Rectangle Left="16440" Top="5760" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Calib_Cam_Vehicle_Type"/>
+          </Button>
+          <Button Text="Write.RVC_Connection_To_PRV">
+            <Rectangle Left="16440" Top="6240" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.RVC_Connection_To_PRV"/>
+          </Button>
+          <Button Text="Write.UPA_Display_On_PRV">
+            <Rectangle Left="16440" Top="6720" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.UPA_Display_On_PRV"/>
+          </Button>
+          <Button Text="Write.Powerlatch_Tempo">
+            <Rectangle Left="16440" Top="2400" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Powerlatch_Tempo"/>
+          </Button>
+          <Button Text="Write.VehicleSpeedThresholdForAutomaticActivation_Rear">
+            <Rectangle Left="16440" Top="8640" Height="390" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Value_VehicleSpeedThresholdForAutomaticActivation_Rear"/>
+          </Button>
+          <Button Text="Write.VehicleSpeedThresholdForAutomaticDeactivation_Front">
+            <Rectangle Left="16440" Top="7680" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Value_VehicleSpeedThresholdForAutomaticDeactivation_Front"/>
+          </Button>
+          <Button Text="Write.VehicleSpeedThresholdForAutomaticDeactivation_Rear">
+            <Rectangle Left="16440" Top="8160" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Value_VehicleSpeedThresholdForAutomaticDeactivation_Rear"/>
+          </Button>
+          <Button Text="Write.ConfigDataReferenceAfterConfigProcess">
+            <Rectangle Left="16440" Top="9120" Height="391" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.ConfigDataReferenceAfterConfigProcess"/>
+          </Button>
+          <Button Text="Write.Timeout_Menu_Back">
+            <Rectangle Left="16440" Top="9600" Height="420" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Timeout_Menu_Back"/>
+          </Button>
+          <Button Text="Write.Backlight_Brighteness_Manual">
+            <Rectangle Left="16440" Top="10080" Height="420" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.Backlight_Brighteness_Manual"/>
+          </Button>
+          <Button Text="Write.Backlight_Brightness">
+            <Rectangle Left="16440" Top="4800" Height="420" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.IO_Backlight_Brightness"/>
+          </Button>
+          <Button Text="Write.RVC_Guidelines_Pos_Adj_X">
+            <Rectangle Left="16440" Top="11040" Height="420" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.RVC_GUIDELINE_POS_ADJUST_X"/>
+          </Button>
+          <Button Text="Write.RVC_Guidelines_Pos_Adj_Y">
+            <Rectangle Left="16440" Top="11520" Height="420" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.RVC_GUIDELINE_POS_ADJUST_Y"/>
+          </Button>
+          <Button Text="Write.RVC_Guidelines_Pos_Adj_Rotation">
+            <Rectangle Left="16440" Top="10560" Height="420" Width="3720"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.RVC_GUIDELINE_POS_ADJUST_Rotation"/>
+          </Button>
+          <Input Width="5495" Color="13619151" DataName="Speed_Pitch_VS_1" RequestName="DataWrite.Speed_Pitch_VS_1">
+            <Rectangle Left="8760" Top="960" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="5495" Color="13619151" DataName="Speed_Pitch_VS_2" RequestName="DataWrite.Speed_Pitch_VS_2">
+            <Rectangle Left="8760" Top="1440" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="5510" Color="13619151" DataName="Speed_Pitch_Crop_Ofs" RequestName="DataWrite.Speed_Pitch_Crop_Ofs">
+            <Rectangle Left="8760" Top="1920" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="3635" Color="13619151" DataName="UPA_Display_On_PRV" RequestName="DataWrite.UPA_Display_On_PRV">
+            <Rectangle Left="8760" Top="6720" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="3620" Color="13619151" DataName="RVC_Connection_To_PRV" RequestName="DataWrite.RVC_Connection_To_PRV">
+            <Rectangle Left="8760" Top="6240" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="3605" Color="13619151" DataName="Calib_Cam_Vehicle_Type" RequestName="DataWrite.Calib_Cam_Vehicle_Type">
+            <Rectangle Left="8760" Top="5760" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="5600" Color="13619151" DataName="RVC_Linger_Time" RequestName="DataWrite.RVC_Linger_Time">
+            <Rectangle Left="8760" Top="5280" Height="390" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="3605" Color="13619151" DataName="Guidelines_type" RequestName="DataWrite.Guidelines_type">
+            <Rectangle Left="8760" Top="4320" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="3590" Color="13619151" DataName="Vehicle_type" RequestName="DataWrite.Vehicle_type">
+            <Rectangle Left="8760" Top="3840" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="6095" Color="13619151" DataName="Value_VehicleSpeedThresholdForAutomaticActivation_Rear" RequestName="DataWrite.Value_VehicleSpeedThresholdForAutomaticActivation_Rear">
+            <Rectangle Left="8760" Top="7680" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="3650" Color="13619151" DataName="Menu_Hor_Adj_Mask" RequestName="DataWrite.Menu_Hor_Adj_Mask">
+            <Rectangle Left="8760" Top="7200" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="3605" Color="13619151" DataName="Blind_Spot_Pictogram" RequestName="DataWrite.Blind_Spot_Pictogram">
+            <Rectangle Left="8760" Top="3360" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="3590" Color="13619151" DataName="Trunk_Open_Handling" RequestName="DataWrite.Trunk_Open_Handling">
+            <Rectangle Left="8760" Top="2880" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="5510" Color="13619151" DataName="Powerlatch_Tempo" RequestName="DataWrite.Powerlatch_Tempo">
+            <Rectangle Left="8760" Top="2400" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="6110" Color="13619151" DataName="Value_VehicleSpeedThresholdForAutomaticDeactivation_Front" RequestName="DataWrite.Value_VehicleSpeedThresholdForAutomaticDeactivation_Front">
+            <Rectangle Left="8760" Top="8160" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="6125" Color="13619151" DataName="Value_VehicleSpeedThresholdForAutomaticDeactivation_Rear" RequestName="DataWrite.Value_VehicleSpeedThresholdForAutomaticDeactivation_Rear">
+            <Rectangle Left="8760" Top="8640" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="6155" Color="13619151" DataName="ConfigDataReferenceAfterConfigProcess" RequestName="DataWrite.ConfigDataReferenceAfterConfigProcess">
+            <Rectangle Left="8760" Top="9120" Height="391" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="6050" Color="16777215" DataName="Speed_Pitch_VS_1" RequestName="DataRead.Speed_Pitch_VS_1">
+            <Rectangle Left="480" Top="960" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="6050" Color="16777215" DataName="Speed_Pitch_VS_2" RequestName="DataRead.Speed_Pitch_VS_2">
+            <Rectangle Left="480" Top="1440" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="6050" Color="16777215" DataName="Speed_Pitch_Crop_Ofs" RequestName="DataRead.Speed_Pitch_Crop_Ofs">
+            <Rectangle Left="480" Top="1920" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="6065" Color="16777215" DataName="Powerlatch_Tempo" RequestName="DataRead.Powerlatch_Tempo">
+            <Rectangle Left="480" Top="2400" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3860" Color="16777215" DataName="Trunk_Open_Handling" RequestName="DataRead.Trunk_Open_Handling">
+            <Rectangle Left="480" Top="2880" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3860" Color="16777215" DataName="Blind_Spot_Pictogram" RequestName="DataRead.Blind_Spot_Pictogram">
+            <Rectangle Left="480" Top="3360" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3860" Color="16777215" DataName="Vehicle_type" RequestName="DataRead.Vehicle_type">
+            <Rectangle Left="480" Top="3840" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3845" Color="16777215" DataName="Guidelines_type" RequestName="DataRead.Guidelines_type">
+            <Rectangle Left="480" Top="4320" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="6125" Color="16777215" DataName="RVC_Linger_Time" RequestName="DataRead.RVC_Linger_Time">
+            <Rectangle Left="480" Top="5280" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3860" Color="16777215" DataName="Calib_Cam_Vehicle_Type" RequestName="DataRead.Calib_Cam_Vehicle_Type">
+            <Rectangle Left="480" Top="5760" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3860" Color="16777215" DataName="RVC_Connection_To_PRV" RequestName="DataRead.RVC_Connection_To_PRV">
+            <Rectangle Left="480" Top="6240" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3875" Color="16777215" DataName="UPA_Display_On_PRV" RequestName="DataRead.UPA_Display_On_PRV">
+            <Rectangle Left="480" Top="6720" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3860" Color="16777215" DataName="Menu_Hor_Adj_Mask" RequestName="DataRead.Menu_Hor_Adj_Mask">
+            <Rectangle Left="480" Top="7200" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="6110" Color="16777215" DataName="Value_VehicleSpeedThresholdForAutomaticActivation_Rear" RequestName="DataRead.Value_VehicleSpeedThresholdForAutomaticActivation_Rear">
+            <Rectangle Left="480" Top="7680" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="6140" Color="16777215" DataName="Value_VehicleSpeedThresholdForAutomaticDeactivation_Front" RequestName="DataRead.Value_VehicleSpeedThresholdForAutomaticDeactivation_Front">
+            <Rectangle Left="480" Top="8160" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="6125" Color="16777215" DataName="Value_VehicleSpeedThresholdForAutomaticDeactivation_Rear" RequestName="DataRead.Value_VehicleSpeedThresholdForAutomaticDeactivation_Rear">
+            <Rectangle Left="480" Top="8640" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="6140" Color="16777215" DataName="ConfigDataReferenceAfterConfigProcess" RequestName="DataRead.ConfigDataReferenceAfterConfigProcess">
+            <Rectangle Left="480" Top="9120" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="6125" Color="16777215" DataName="Timeout_Menu_Back" RequestName="DataRead.Timeout_Menu_Back">
+            <Rectangle Left="480" Top="9600" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="6155" Color="13619151" DataName="Timeout_Menu_Back" RequestName="DataWrite.Timeout_Menu_Back">
+            <Rectangle Left="8760" Top="9600" Height="360" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="6125" Color="16777215" DataName="Backlight_Brighteness_Manual" RequestName="DataRead.Backlight_Brighteness_Manual">
+            <Rectangle Left="480" Top="10080" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="6125" Color="16777215" DataName="IO_Backlight_Brightness" RequestName="DataRead.IO_Backlight_Brightness">
+            <Rectangle Left="480" Top="4800" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="6155" Color="13619151" DataName="Backlight_Brighteness_Manual" RequestName="DataWrite.Backlight_Brighteness_Manual">
+            <Rectangle Left="8760" Top="10080" Height="360" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="6155" Color="13619151" DataName="IO_Backlight_Brightness" RequestName="DataWrite.IO_Backlight_Brightness">
+            <Rectangle Left="8760" Top="4800" Height="360" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="6125" Color="16777215" DataName="RVC_GUIDELINE_POS_ADJUST_X" RequestName="DataRead.RVC_GUIDELINE_POS_ADJUST_X">
+            <Rectangle Left="480" Top="11040" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="6140" Color="13619151" DataName="RVC_GUIDELINE_POS_ADJUST_X" RequestName="DataWrite.RVC_GUIDELINE_POS_ADJUST_X">
+            <Rectangle Left="8760" Top="11040" Height="360" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="6125" Color="16777215" DataName="RVC_GUIDELINE_POS_ADJUST_Y" RequestName="DataRead.RVC_GUIDELINE_POS_ADJUST_Y">
+            <Rectangle Left="480" Top="11520" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="6170" Color="13619151" DataName="RVC_GUIDELINE_POS_ADJUST_Y" RequestName="DataWrite.RVC_GUIDELINE_POS_ADJUST_Y">
+            <Rectangle Left="8760" Top="11520" Height="360" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="6170" Color="13619151" DataName="RVC_GUIDELINE_POS_ADJUST_Rotation" RequestName="DataWrite.RVC_GUIDELINE_POS_ADJUST_Rotation">
+            <Rectangle Left="8760" Top="10560" Height="360" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="6125" Color="16777215" DataName="RVC_GUIDELINE_POS_ADJUST_Rotation" RequestName="DataRead.RVC_GUIDELINE_POS_ADJUST_Rotation">
+            <Rectangle Left="480" Top="10560" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Data Read" Color="8404992" WindowState="0" Width="20460" Height="12420">
+          <Label Text="DID Read" Color="13619151" Alignment="2">
+            <Rectangle Left="3000" Top="360" Height="360" Width="2160"/>
+            <Font Name="Times New Roman" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="" Color="13619151" Alignment="0">
+            <Rectangle Left="240" Top="240" Height="12000" Width="8280"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="6035" Color="16777215" DataName="Sensor_Value" RequestName="DataRead.Sensor_Value">
+            <Rectangle Left="480" Top="960" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="6035" Color="16777215" DataName="Button_1_state" RequestName="DataRead.Button_1_state">
+            <Rectangle Left="480" Top="1440" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="6065" Color="16777215" DataName="Button_2_state" RequestName="DataRead.Button_2_state">
+            <Rectangle Left="480" Top="1920" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="6050" Color="16777215" DataName="Button_3_state" RequestName="DataRead.Button_3_state">
+            <Rectangle Left="480" Top="2400" Height="360" Width="7800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+      </Category>
+    </ds:Categories>
+  </ddt:Target>
+</xml>

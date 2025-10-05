@@ -1,0 +1,1802 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TEMPLATES-LOCATIONS Version="2.4">
+  <!-- Revision History
+    *==============================================================================*
+    |    DATE    | VERSION  |  COMMENTS                                            |
+    *==============================================================================*
+    | 2019/03/13 |   0.1.0  | Draft release.                                       |
+    *____________*__________*______________________________________________________*
+    | 2019/03/14 |   0.1.1  | Comparam section correction                          |
+    *____________*__________*______________________________________________________*
+    | 2019/03/15 |   0.1.2  | Change <DEFAULT-PATH> value for ESD/PROT file        |
+    *____________*__________*______________________________________________________*
+    |            |          | Add <TOOLS> section to have information on ODX-D     |
+    | 2019/03/26 |   0.1.3  |    converter and ODX-V generator.                    |
+    |            |          | Add <SPECIFICATIONS> section to group specification  |
+    *____________*__________*______________________________________________________*
+    | 2019/06/21 |   0.2    | Add RFQ 9.0 part.                                    |
+    |            |          | Add 'RelativePath' attribute on <TOOL> element.      |
+    *____________*__________*______________________________________________________*
+    | 2019/07/02 |   0.3    | Update RFQ 9.0 AllianceOdxV from 20.1.0.0 to 20.1.0.1|
+    *____________*__________*______________________________________________________*
+    | 2019/07/25 |   0.4    | Update RFQ 9.0 ODX-D tool release from 1.0.0.0 to    |
+    |            |          |   1.0.0.1                                            |
+    *____________*__________*______________________________________________________*
+    | 2019/08/09 |   0.5    | Add RFQ 9.1 to create a // convertor 1.0.0.2 release |
+    |            |          |  for Bosch COMPARAMs on BASE-VARIANT tests           |
+    *____________*__________*______________________________________________________*
+    | 2019/09/30 |   0.6    | Add RFQ 10.0 to introduce UDS support check V2       |
+    |            |          |     == > All supported DID are manage by $22 SID     |
+    *____________*__________*______________________________________________________*
+    | 2019/10/30 |   1.0    | Add element <DESC> and descendants for each          |
+    |            |          |      element <RFQ>                                   |
+    |            |          | Link RFQ 9.1 and 10.0 to:                            |
+    |            |          |   o New converter V1.0.0.3                           |
+    |            |          |   o New Template BC 02.1.0.1                         |
+    |            |          |     == > Add Nissan identification structure N1 to N4|
+    *____________*__________*______________________________________________________*
+    | 2019/11/26 |   1.1    | Remove RFQ 7.0                                       |
+    |            |          | Update RFQ 9.1:                                      |
+    |            |          |   o Update converter version from 1.0.0.3 to 1.0.0.4 |
+    |            |          |   o SPEC_UDS: from AGL 01.1.0.0 to AGL 01.3.0.0      |
+    |            |          |   o SPEC_BC:  from AGL 02.1.0.1 to AGL 02.2.0.0      |
+    |            |          | Update RFQ 10.0:                                     |
+    |            |          |   o Update converter version from 1.0.0.3 to 1.0.0.4 |
+    |            |          |   o SPEC_UDS: from AGL 01.2.0.0 to AGL 01.4.0.0      |
+    |            |          |   o SPEC_BC:  from AGL 02.1.0.1 to AGL 02.2.0.0      |
+    *____________*__________*______________________________________________________*
+    | 2020/02/28 |   1.2    | Add RFQ 9.2 for template update:                     |
+    |            |          |  _Corrections services $19                           |
+    |            |          |   o SPEC_UDS: use AGL 01.5.0.0                       |
+    |            |          |   o SPEC_BC:  use AGL 02.3.0.0                       |
+    |            |          |   o Update converter: use 1.0.0.5                    |
+    |            |          |  _New ODX-V strategy                                 |
+    |            |          |   o Update ODX-V generator: use 20.1.0.3             |
+    |            |          | Add RFQ 10.1 for new label file format:              |
+    [            |          |   o Update label XSD: use 7.2                        |
+    |            |          | Add RFQ 10.2 for template update:                    |
+    |            |          |  _Corrections services $19                           |
+    |            |          |   o SPEC_UDS: use AGL 01.6.0.0                       |
+    |            |          |   o SPEC_BC:  use AGL 02.3.0.0                       |
+    |            |          |   o Update converter: use 1.0.0.5                    |
+    |            |          |  _New ODX-V strategy                                 |
+    |            |          |   o Update ODX-V generator: use 20.1.0.3             |
+    |            |          | Add RFQ 14.0 for template update                     |
+    |            |          |   o New AutoIdent format                             |
+    *____________*__________*______________________________________________________*
+    | 2020/03/02 |   1.3    | Update ODX-V release from 20.1.0.3 to 20.1.0.4 for:  |
+    |            |          |   o RFQ 9.2                                          |
+    |            |          |   o RFQ 10.1                                         |
+    |            |          |   o RFQ 10.2                                         |
+    |            |          |   o RFQ 13.0                                         |
+    |            |          |  ==> Issue correction on CAN LL generation           |
+    *____________*__________*______________________________________________________*
+    | 2020/03/03 |   1.4    |Update ODX-D release from 1.0.0.5 to 1.0.0.6 for:     |
+    |            |          |   o RFQ 9.2                                          |
+    |            |          |   o RFQ 10.1                                         |
+    |            |          |   o RFQ 10.2                                         |
+    |            |          |   o RFQ 13.0                                         |
+    |            |          |  ==> Evolution: keep also EV ref in case of -previous|
+    *____________*__________*______________________________________________________*
+    | 2020/03/24 |   1.5    |Create new RFQ 9.3/10.3 and update RFQ 13 to take into|
+    |            |          | account the new AllianceOdxV command line.           |
+    |            |          |   ==> Allow keeping previous ODX-V reference         |
+    *____________*__________*______________________________________________________*
+    | 2020/04/20 |   1.6    | Update parameter CP_RC21CompletionTimeout on         |
+    |            |          |  file ISO_14229_5_DIS_2015.odx-cs                    |
+    |            |          |  ==> Add new RFQ 9.4/10.4 to link with new comparams |
+    |            |          |    folder 1.0.1 and update the not yet used 13.0     |    
+    *____________*__________*______________________________________________________*
+    | 2020/04/24 |   1.7    | Create a new RFQ 10.5                                |
+    |            |          |   o Correction of service Supported Writeable DIDs   |
+    |            |          |     for Supported check V2 UDS ECUs.                 |
+    *____________*__________*______________________________________________________*
+    | 2020/12/02 |   1.8    | Create a new RFQ 9.5                                 |
+    |            |          |   o Add KWP2000 and DiagOnCAN spec A files reference |
+    |            |          | Create a new RFQ 10.6                                |
+    |            |          |   o Add KWP2000 and DiagOnCAN spec A files reference |
+    |            |          |   o Correction of service Supported Writeable SID    |
+    |            |          |     for Supported check V2 UDS ECUs.                 |
+    |            |          | Create a new RFQ 13.1                                |
+    |            |          |   o Add KWP2000 and DiagOnCAN spec A files reference |
+    *____________*__________*______________________________________________________*
+    | 2021/03/04 |   1.9    | Remove all no more used RFQ:                         |
+    |            |          |   + 9.0 to 9.5                                       |
+    |            |          |   + 10.0 to 10.5                                     |
+    |            |          |   + 13.0                                             |
+    *____________*__________*______________________________________________________*
+    | 2021/03/24 |   2.0    | Add AGL version for ODX template files               |
+    *____________*__________*______________________________________________________*
+    | 2021/04/30 |   2.1    | Add new RFQ 10.7 and 13.2 for:                       |
+    |            |          |  + New release 1.0.0.8 converter software            |
+    |            |          |  + New release 20.1.0.7                              |
+    |            |          |  + New templates:                                    |
+    |            |          |     o Integrate CANFD (A, BC, UDS)                   |
+    |            |          |     o Updating allowed snapshot record nb (BC, UDS)  |
+    *____________*__________*______________________________________________________*
+    | 2021/06/02 |   2.2    | Replace ODX-D convertor version on RFQ 10.7          |
+    |            |          |  + New release 1.0.0.9 converter software            |
+    *____________*__________*______________________________________________________*
+    | 2021/07/08 |   2.3    | Create new RFQ 10.8 for converter software           |
+    |            |          |  release 1.0.0.10                                    |
+    *____________*__________*______________________________________________________*
+    | 2021/09/14 |   2.4    | Create new RFQ 10.9 for converter software           |
+    |            |          |  release 1.0.0.11                                    |
+    *____________*__________*______________________________________________________*
+    | yyyy/mm/dd |   x.y    |                                                      |
+    *==============================================================================*	
+  -->
+  <!-- File Format - Global view
+    <TEMPLATES-LOCATIONS>
+      <COMMUN-FILES>
+          List of <FILE>
+      </COMMUN-FILES>
+      <RFQS>
+          List of <RFQ>
+      </RFQS>
+    </TEMPLATES-LOCATIONS>
+  -->
+  <!-- File Format - Elements description
+    TEMPLATES-LOCATIONS: Main element
+        List of attribute(s):
+          N.A.
+        List of element(s):
+          COMMUN-FILES  [1:1]
+          RFQS          [1:1]
+
+    COMMUN-FILES: List of files commun to all RFQ and specification
+        List of attribute(s):
+          N.A.
+        List of element(s):
+          FILE [0:unbounded]
+
+    RFQS: List of available RFQ
+        List of attribute(s):
+          N.A.
+        List of element(s):
+          RFQ  [0:unbounded]
+
+    RFQ: Information concerning a specific RFQ
+        List of attribute(s):
+          Release  [1:1]: Release of the RFQ concerning by the information bellow
+        List of element(s):
+          DESC              [1:1]
+          TOOLS             [1:1]
+          SPECIFICATIONS    [1:1]
+
+    DESC: Description of RFQ content.
+        List of attribute(s):
+          N.A.
+        List of element(s):
+          HISTORY     [1:1]
+          INFOS       [1:1]
+          PROJECTS    [1:1]
+          LABEL-XSD   [1:1]
+
+    HISTORY : Short description of RFQ content
+        List of attribute(s):
+          N.A.
+        List of element(s):
+          N.A.
+
+    INFOS : More information to describe RFQ content
+        List of attribute(s):
+          N.A.
+        List of element(s):
+          <p> : to define a new line.
+
+    PROJECTS : List of vehicle project separate by charactet '/'
+        List of attribute(s):
+          N.A.
+        List of element(s):
+          N.A.
+
+    LABEL-XSD : XSD file version of label file
+        List of attribute(s):
+          N.A.
+        List of element(s):
+          N.A.
+
+    TOOLS: Information about all softwares to use
+        List of attribute(s):
+          N.A.
+        List of element(s)
+          TOOL  [0:unbounded]
+
+    TOOL: Information about software to use
+        List of attribute(s):
+          Type      [1:1]: Type of tool
+              + ODX-D: DDT to ODX-D converter
+              + ODX-V: ODX-V file generator
+          SofName      [1:1]: Name of the software
+          RelativePath [1:1]: Define the sub-folder(s) where the versioned folder is.
+                              ex(1) : RelativePath="AllianceOdxD" Release="w.x.y.z" means
+                              the software is store on .\DDT2ODXR\AllianceOdxD\w.x.y.z
+                              ex(2) : RelativePath="Converter\AllianceOdxD" Release="w.x.y.z" means
+                              the software is store on .\DDT2ODXR\Converter\AllianceOdxD\w.x.y.z
+          Release      [1:1]: Release of the software to use
+          Arguments    [1:1]: The format of software required arguments
+        List of element(s):
+          N.A.
+
+    SPECIFICATIONS: Information on all specifications available for selected RFQ
+        List of attribute(s):
+          N.A.
+        List of Element(s):
+          SPECIFICATION [0:unbounded]
+
+    SPECIFICATION: Information on specification
+        List of attribute(s):
+          Name [1:1] : name of the specification
+              + SPEC_KWP2000 : indicate a 01-58-108 ECU
+              + SPEC_A       : indicate a 36-00-013_A ECU
+              + SPEC_BC      : indicate a 36-00-013_C ECU (both CAN and DoIP)
+              + SPEC_UDS     : indicate a 36-00-011 ECU (both CAN and DoIP)
+          AGL [1:1] : the version of AGL document for this specification
+        List of element(s):
+          FILE [0:unbounded]
+
+    FILE: Information about file
+        List of attribute(s) :
+          Name          [1:1]: Name of the file
+          Category      [1:1]: Type of the file
+              + PROJECTS      : indicate the file listing vehicle project, protocol and ECU function
+              + DATAS-FORMAT  :  indicate the template ODX-D file defining generic data format
+              + DDT2ODX-UNIT  : indicate the relationship between DDT2000 unit and ODX unit
+              + ODX-UNIT      : indicate the template ODX-D file defining unit
+              + TEMPLATE      : indicate a template ODX-D file (containing ECU-SHARED-DATA and PROTOCOL levels)
+              + COMPARAM      : indicate a ODX comparam-spec or comparam-subset file
+          PDX-MANDATORY [1:1]
+              + YES : the file is mandatory for PDX file
+              + NO  : the file is useless fo PDX file
+        List of element(s) :
+          DEFAULT-PATH  [1:1] : relative path of the file from Template folder.
+          SPECIFIC-PATH [1:1] : absolute path in case of <DEFAULT-PATH> is not valid. Could be empty
+  -->
+  <!-- AllianceOdxD (converter) arguments type
+    Type_001 :
+      + Param1: DDT file to convert.
+      + Param2: Result files folder.
+      + Param3: ODX template file name and full location path .
+      + Param4: RFQ package release to use.
+    Type_002 :
+      Mandatory parameters:
+        -ddt [Full path DDT file name]
+        -out [Full path output directory]
+        -rfq [RFQ version to use]
+        -template [Full path TemplatesLocations.xml file]
+      Optionnal parameters:
+        -previous [Full path of previous ODX files to keep reference]
+  -->
+  <!-- AllianceOdxD (ODX-V generator) arguments type
+    Type_001 :
+      + Param1: ODX project folder
+      + Param2: ODX template file name and full location path .
+    Type_002 :
+      Mandatory parameters:
+        -io [Full path ODX project folder]
+        -template [Full path TemplatesLocations.xml file]
+      Optionnal parameters:
+        -previous [Full path of previous ODX files to keep reference]
+  -->
+  <COMMON-FILES>
+    <FILE Name="Projects.xml" Category="PROJECTS" PDX-MANDATORY="NO">
+      <DEFAULT-PATH>.</DEFAULT-PATH>
+      <SPECIFIC-PATH />
+    </FILE>
+    <FILE Name="Alliance_DatasFormat.odx-d" Category="DATAS-FORMAT" PDX-MANDATORY="YES">
+      <DEFAULT-PATH>.</DEFAULT-PATH>
+      <SPECIFIC-PATH />
+    </FILE>
+    <FILE Name="Ddt2OdxUnit.xml" Category="DDT2ODX-UNIT" PDX-MANDATORY="NO">
+      <DEFAULT-PATH>.</DEFAULT-PATH>
+      <SPECIFIC-PATH />
+    </FILE>
+    <FILE Name="ODX_RS_UNIT_LIB.odx-d" Category="ODX-UNIT" PDX-MANDATORY="YES">
+      <DEFAULT-PATH>.</DEFAULT-PATH>
+      <SPECIFIC-PATH />
+    </FILE>
+  </COMMON-FILES>
+  <RFQS>
+    <RFQ Release="9.1">
+      <DESC>
+        <HISTORY>Update label file format.</HISTORY>
+        <INFOS>
+          <p>Converter: Add protocol link on defined BASE-VARIANT COMPARAM.</p>
+          <p>Converter: Improve Nissan identification (Add N1 to N4 format)</p>
+          <p>Converter: Convert all services into flat service</p>
+        </INFOS>
+        <PROJECTS>XFK</PROJECTS>
+        <LABEL-XSD>7.1</LABEL-XSD>
+      </DESC>
+      <TOOLS>
+        <TOOL Type="ODX-D" SoftName="AllianceOdxD.exe" RelativePath="AllianceOdxD" Release="1.0.0.4" Arguments="Type_002" />
+        <TOOL Type="ODX-V" SoftName="AllianceOdxV.exe" RelativePath="AllianceOdxV" Release="20.1.0.1" Arguments="Type_001" />
+      </TOOLS>
+      <SPECIFICATIONS>
+        <SPECIFICATION Name="SPEC_BC">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_02_2_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_BC</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_UDS">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_01_3_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_UDS</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+      </SPECIFICATIONS>
+    </RFQ>
+    <RFQ Release="10.0">
+      <DESC>
+        <HISTORY>Support Check V2 implementation</HISTORY>
+        <INFOS>
+          <p>Improve Nissan identification (Add N1 to N4 format)</p>
+          <p>Convert all services into flat service</p>
+        </INFOS>
+        <PROJECTS></PROJECTS>
+        <LABEL-XSD>??</LABEL-XSD>
+      </DESC>
+      <TOOLS>
+        <TOOL Type="ODX-D" SoftName="AllianceOdxD.exe" RelativePath="AllianceOdxD" Release="1.0.0.4" Arguments="Type_002" />
+        <TOOL Type="ODX-V" SoftName="AllianceOdxV.exe" RelativePath="AllianceOdxV" Release="20.1.0.1" Arguments="Type_001" />
+      </TOOLS>
+      <SPECIFICATIONS>
+        <SPECIFICATION Name="SPEC_BC">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_02_2_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_BC</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_UDS">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_01_4_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_UDS</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+      </SPECIFICATIONS>
+    </RFQ>
+    <RFQ Release="10.1">
+      <DESC>
+        <HISTORY>Update labe file format to 7.2</HISTORY>
+        <INFOS>
+          <p>Improve Nissan identification (Add N1 to N4 format)</p>
+          <p>Convert all services into flat service</p>
+        </INFOS>
+        <PROJECTS>XFK</PROJECTS>
+        <LABEL-XSD>7.2</LABEL-XSD>
+      </DESC>
+      <TOOLS>
+        <TOOL Type="ODX-D" SoftName="AllianceOdxD.exe" RelativePath="AllianceOdxD" Release="1.0.0.4" Arguments="Type_002" />
+        <TOOL Type="ODX-V" SoftName="AllianceOdxV.exe" RelativePath="AllianceOdxV" Release="20.1.0.4" Arguments="Type_001" />
+      </TOOLS>
+      <SPECIFICATIONS>
+        <SPECIFICATION Name="SPEC_BC">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_02_2_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_BC</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_UDS">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_01_4_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_UDS</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.0</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+      </SPECIFICATIONS>
+    </RFQ>
+    <RFQ Release="10.6">
+      <DESC>
+        <HISTORY>"Supported Writeable DIDs" correction (SID) / Add KWP2000/DiagOnCAN Spec A support.</HISTORY>
+        <INFOS>
+          <p>Support check V2</p>
+          <p>Autoident by Vdiag(UDS $F1A0)/ Supplier(UDS $F18A) / Soft(UDS $F194) / Version(UDS $F195)</p>
+          <p>Generate ODX-V with information from project.xml</p>
+          <p>Support KWP2000/DiagOnCAN Spec A</p>
+        </INFOS>
+        <PROJECTS></PROJECTS>
+        <LABEL-XSD>7.2</LABEL-XSD>
+      </DESC>
+      <TOOLS>
+        <TOOL Type="ODX-D" SoftName="AllianceOdxD.exe" RelativePath="AllianceOdxD" Release="1.0.0.7" Arguments="Type_002" />
+        <TOOL Type="ODX-V" SoftName="AllianceOdxV.exe" RelativePath="AllianceOdxV" Release="20.1.0.6" Arguments="Type_002" />
+      </TOOLS>
+      <SPECIFICATIONS>
+        <SPECIFICATION Name="SPEC_KWP2000" AGL="03.1.0.0">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_03_1_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_KWP2000</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_14230_3_on_ISO_14230_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_14230_1_UART.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_A" AGL="04.1.0.0">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_04_1_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_A</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_14230_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_BC" AGL="02.3.0.0">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_02_3_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_BC</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_UDS" AGL="01.6.0.2">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_01_6_0_2.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_UDS</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+      </SPECIFICATIONS>
+    </RFQ>
+    <RFQ Release="10.7">
+      <DESC>
+        <HISTORY>Change the allowed snapshot record number. Add ODX template information into RF file.</HISTORY>
+        <INFOS>
+          <p>Support check V2</p>
+          <p>Autoident by Vdiag(UDS $F1A0)/ Supplier(UDS $F18A) / Soft(UDS $F194) / Version(UDS $F195)</p>
+          <p>Generate FUNCTIONAL-GROUP with information from project.xml</p>
+          <p>Generate ODX-V with information from project.xml</p>
+          <p>Support KWP2000/DiagOnCAN Spec A</p>
+          <p>Add ODX template information into RF file</p>
+        </INFOS>
+        <PROJECTS></PROJECTS>
+        <LABEL-XSD>7.2</LABEL-XSD>
+      </DESC>
+      <TOOLS>
+        <TOOL Type="ODX-D" SoftName="AllianceOdxD.exe" RelativePath="AllianceOdxD" Release="1.0.0.9" Arguments="Type_002" />
+        <TOOL Type="ODX-V" SoftName="AllianceOdxV.exe" RelativePath="AllianceOdxV" Release="20.1.0.7" Arguments="Type_002" />
+      </TOOLS>
+      <SPECIFICATIONS>
+        <SPECIFICATION Name="SPEC_KWP2000" AGL="03.1.0.0">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_03_1_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_KWP2000</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_14230_3_on_ISO_14230_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_14230_1_UART.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_A" AGL="04.1.0.1">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_04_1_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_A</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_14230_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_BC" AGL="02.3.0.1">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_02_3_0_1.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_BC</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_UDS" AGL="01.6.0.3">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_01_6_0_3.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_UDS</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+      </SPECIFICATIONS>
+    </RFQ>
+    <RFQ Release="10.8">
+      <DESC>
+        <HISTORY>Correction of variable length autoidentification problem</HISTORY>
+        <INFOS>
+          <p>Support check V2</p>
+          <p>Autoident by Vdiag(UDS $F1A0)/ Supplier(UDS $F18A) / Soft(UDS $F194) / Version(UDS $F195)</p>
+          <p>Generate FUNCTIONAL-GROUP with information from project.xml</p>
+          <p>Generate ODX-V with information from project.xml</p>
+          <p>Support KWP2000/DiagOnCAN Spec A</p>
+          <p>Add ODX template information into RF file</p>
+        </INFOS>
+        <PROJECTS></PROJECTS>
+        <LABEL-XSD>7.2</LABEL-XSD>
+      </DESC>
+      <TOOLS>
+        <TOOL Type="ODX-D" SoftName="AllianceOdxD.exe" RelativePath="AllianceOdxD" Release="1.0.0.10" Arguments="Type_002" />
+        <TOOL Type="ODX-V" SoftName="AllianceOdxV.exe" RelativePath="AllianceOdxV" Release="20.1.0.7" Arguments="Type_002" />
+      </TOOLS>
+      <SPECIFICATIONS>
+        <SPECIFICATION Name="SPEC_KWP2000" AGL="03.1.0.0">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_03_1_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_KWP2000</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_14230_3_on_ISO_14230_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_14230_1_UART.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_A" AGL="04.1.0.1">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_04_1_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_A</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_14230_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_BC" AGL="02.3.0.1">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_02_3_0_1.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_BC</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_UDS" AGL="01.6.0.3">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_01_6_0_3.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_UDS</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+      </SPECIFICATIONS>
+    </RFQ>
+    <RFQ Release="10.9">
+      <DESC>
+        <HISTORY>Correction service $21 issues. Correction of UDS template services managment.</HISTORY>
+        <INFOS>
+          <p>Support check V2</p>
+          <p>Autoident by Vdiag(UDS $F1A0)/ Supplier(UDS $F18A) / Soft(UDS $F194) / Version(UDS $F195)</p>
+          <p>Generate FUNCTIONAL-GROUP with information from project.xml</p>
+          <p>Generate ODX-V with information from project.xml</p>
+          <p>Support KWP2000/DiagOnCAN Spec A</p>
+          <p>Add ODX template information into RF file</p>
+        </INFOS>
+        <PROJECTS></PROJECTS>
+        <LABEL-XSD>7.2</LABEL-XSD>
+      </DESC>
+      <TOOLS>
+        <TOOL Type="ODX-D" SoftName="AllianceOdxD.exe" RelativePath="AllianceOdxD" Release="1.0.0.11" Arguments="Type_002" />
+        <TOOL Type="ODX-V" SoftName="AllianceOdxV.exe" RelativePath="AllianceOdxV" Release="20.1.0.7" Arguments="Type_002" />
+      </TOOLS>
+      <SPECIFICATIONS>
+        <SPECIFICATION Name="SPEC_KWP2000" AGL="03.1.0.0">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_03_1_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_KWP2000</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_14230_3_on_ISO_14230_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_14230_1_UART.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_A" AGL="04.1.0.1">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_04_1_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_A</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_14230_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_BC" AGL="02.3.0.1">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_02_3_0_1.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_BC</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_UDS" AGL="01.6.0.3">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_01_6_0_3.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_UDS</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+      </SPECIFICATIONS>
+    </RFQ>
+    <RFQ Release="13.1">
+      <DESC>
+        <HISTORY>Add KWP2000/DiagOnCAN Spec A support.</HISTORY>
+        <INFOS>
+          <p>Support check V2</p>
+          <p>Autoident by Vdiag(UDS $F1A0) / IndexSrvData(UDS $F011) / vehicleManufacturerECUSoftwareNumberDataIdentifier (UDS $F188)</p>
+          <p>Generate ODX-V with information from project.xml</p>
+          <p>Support KWP2000/DiagOnCAN Spec A</p>
+        </INFOS>
+        <PROJECTS>TBD</PROJECTS>
+        <LABEL-XSD>7.2</LABEL-XSD>
+      </DESC>
+      <TOOLS>
+        <TOOL Type="ODX-D" SoftName="AllianceOdxD.exe" RelativePath="AllianceOdxD" Release="1.0.0.7" Arguments="Type_002" />
+        <TOOL Type="ODX-V" SoftName="AllianceOdxV.exe" RelativePath="AllianceOdxV" Release="20.1.0.6" Arguments="Type_002" />
+      </TOOLS>
+      <SPECIFICATIONS>
+        <SPECIFICATION Name="SPEC_KWP2000" AGL="03.1.0.0">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_03_1_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_KWP2000</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_14230_3_on_ISO_14230_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_14230_1_UART.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_A" AGL="04.1.0.0">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_04_1_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_A</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_14230_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_BC" AGL="02.3.0.0">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_02_3_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_BC</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_UDS" AGL="01.7.0.0">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_01_7_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_UDS</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+      </SPECIFICATIONS>
+    </RFQ>
+    <RFQ Release="13.2">
+      <DESC>
+        <HISTORY>Change the allowed snapshot record number. Add ODX template information into RF file.</HISTORY>
+        <INFOS>
+          <p>Support check V2</p>
+          <p>Autoident by Vdiag(UDS $F1A0) / IndexSrvData(UDS $F011) / vehicleManufacturerECUSoftwareNumberDataIdentifier (UDS $F188)</p>
+          <p>Generate FUNCTIONAL-GROUP with information from project.xml</p>
+          <p>Generate ODX-V with information from project.xml</p>
+          <p>Support KWP2000/DiagOnCAN Spec A</p>
+          <p>Add ODX template information into RF file</p>
+        </INFOS>
+        <PROJECTS>TBD</PROJECTS>
+        <LABEL-XSD>7.2</LABEL-XSD>
+      </DESC>
+      <TOOLS>
+        <TOOL Type="ODX-D" SoftName="AllianceOdxD.exe" RelativePath="AllianceOdxD" Release="1.0.0.8" Arguments="Type_002" />
+        <TOOL Type="ODX-V" SoftName="AllianceOdxV.exe" RelativePath="AllianceOdxV" Release="20.1.0.7" Arguments="Type_002" />
+      </TOOLS>
+      <SPECIFICATIONS>
+        <SPECIFICATION Name="SPEC_KWP2000" AGL="03.1.0.0">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_03_1_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_KWP2000</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_14230_3_on_ISO_14230_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_14230_1_UART.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_A" AGL="04.1.0.1">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_04_1_0_0.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_A</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_14230_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14230_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_BC" AGL="02.3.0.1">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_02_3_0_1.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_BC</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+        <SPECIFICATION Name="SPEC_UDS" AGL="01.7.0.1">
+          <!-- TEMPLATE -->
+          <FILE Name="Alliance_ECUs_01_7_0_1.odx-d" Category="TEMPLATE" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\SPECIFICATION_UDS</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SPECS -->
+          <FILE Name="ISO_15765_3_on_ISO_15765_2.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_on_ISO_13400_2_DIS_2015.odx-c" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <!-- COMPARAM-SUBSETS -->
+          <FILE Name="ISO_11898_2_DWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_11898_3_DWFTCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_2.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_15765_3.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="SAE_J2411_SWCAN.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="IEEE_802_3_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_13400_2_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+          <FILE Name="ISO_14229_5_DIS_2015.odx-cs" Category="COMPARAM" PDX-MANDATORY="YES">
+            <DEFAULT-PATH>.\COMPARAMS\Release-1.0.1</DEFAULT-PATH>
+            <SPECIFIC-PATH />
+          </FILE>
+        </SPECIFICATION>
+      </SPECIFICATIONS>
+    </RFQ>
+  </RFQS>
+</TEMPLATES-LOCATIONS>

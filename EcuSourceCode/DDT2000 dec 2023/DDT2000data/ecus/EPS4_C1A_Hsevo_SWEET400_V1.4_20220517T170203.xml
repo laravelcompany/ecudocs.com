@@ -1,0 +1,2905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+  <Generator name="DDT2000 XML library" version="2.3.0.0" date="2022-05-12T18:25"/>
+  <ddt:Target Name="EPS4_C1A_Hsevo_SWEET400_V1.4" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="maroine.negraoui-extern@renault.com" href="EPS4_C1A_Hsevo_SWEET400_V1.4_20220517T170203.xml" upload="5/17/2022" group="EPS4_SWEET400"><Description><![CDATA[Creation of DDT Base of EPS4
+
+v1.2 update of DID :   ConfigurationDataReferenceAfterConfigurationProcess
+                                   Wheelspeed_index_map_selector (Front)
+                                   Wheelspeed_index_map_selector (Rear)
+]]></Description>
+    <Projects xmlns=""><xDD/><xDE/></Projects><Checks Version="V1.12.006" Date="20220517T170038">
+      <Ctrl Type="DDT2000" Warning="28" Error="1"/>
+      <Ctrl Type="CPDD" Warning="76" Error="0"/>
+      <Ctrl Type="DAIMLER-ODX" Warning="21" Error="9"/>
+      <Ctrl Type="ALLIANCE-ODX" Warning="0" Error="0"/>
+    </Checks>
+    
+    <Function Name="EPS" Address="4" LogicalAddress="0004"/>
+    <Language Name="Francais" Reference="1"/>
+    
+    <DateOfficialisation>28/02/2022</DateOfficialisation>
+    <Failures Name="No failures" Id="0"/>
+    <PowerSupply>
+      <Ground/>
+      <Vbat/>
+      <AfterContact/>
+    </PowerSupply>
+    <CAN BaudRate="10400" Multipoint="1">
+      <SendId>
+        <CANId Value="1858"/>
+      </SendId>
+      <ReceiveId>
+        <CANId Value="1890"/>
+      </ReceiveId>
+    </CAN>
+    <AutoIdents>
+      <AutoIdent DiagVersion="4" Supplier="ZF GROUP  " Soft="A023D935  " Version="A                               "/>
+      <AutoIdent DiagVersion="4" Supplier="ZF GROUP  " Soft="A023D935  " Version="B                               "/>
+      <AutoIdent DiagVersion="4" Supplier="ZF GROUP  " Soft="A023D935  " Version="C                               "/>
+      <AutoIdent DiagVersion="4" Supplier="ZF GROUP  " Soft="A023D935  " Version="D                               "/>
+      <AutoIdent DiagVersion="4" Supplier="ZF GROUP  " Soft="A023E244  " Version="A                               "/>
+    </AutoIdents>
+    <Datas>
+      <Data Name="OperationnalReference">
+        <Mnemonic>DID_$F012</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerSparePartNumber">
+        <Mnemonic>DID_$F187</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUSoftwareNumber">
+        <Mnemonic>DID_$F188</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierIdentifier">
+        <Mnemonic>DID_$F18A</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="ECUSerialNumber">
+        <Mnemonic>DID_$F18C</Mnemonic>
+        <Bytes count="20" ascii="1"/>
+      </Data>
+      <Data Name="VIN">
+        <Mnemonic>DID_$F190</Mnemonic>
+        <Bytes count="17" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareNumber">
+        <Mnemonic>DID_$F194</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareVersionNumber">
+        <Mnemonic>DID_$F195</Mnemonic>
+        <Bytes count="32" ascii="1"/>
+      </Data>
+      <Data Name="diagnosticVersion">
+        <Mnemonic>DID_$F1A0</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="Steering wheel velocity">
+        <Comment><![CDATA[$0101]]></Comment>
+        <Mnemonic>DID_$0101</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="°/s" Step=" .1" Offset="-3276.7"/>
+        </Bits>
+      </Data>
+      <Data Name="Steering wheel angle sensor internal status">
+        <Comment><![CDATA[$0102]]></Comment>
+        <Mnemonic>DID_$0102</Mnemonic>
+        <Bits count="3">
+          <List>
+            <Item Value="0" Text="not initialised"/>
+            <Item Value="1" Text="initialised"/>
+            <Item Value="2" Text="failure"/>
+            <Item Value="3" Text="not calibrated"/>
+            <Item Value="4" Text="calibrated"/>
+            <Item Value="5" Text="no failure"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="System mode">
+        <Mnemonic>DID_$0119</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="(TBD)System_Stop(01h)"/>
+            <Item Value="2" Text="(TBD)PowerUp_WaitForAssist(02h)"/>
+            <Item Value="3" Text="(TBD)RampUp_NormalOperation(03h)"/>
+            <Item Value="4" Text="(TBD)Unknown_Vehicle_State(04h)"/>
+            <Item Value="5" Text="(TBD)Ramp_Down(05h)"/>
+            <Item Value="6" Text="(TBD)System_PowerDown(06h)"/>
+            <Item Value="7" Text="(TBD)Park Assist mode (substate of 03)(07h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="TJP Activation">
+        <Mnemonic>DID_$01CB</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="disabled (default)(00h)"/>
+            <Item Value="1" Text="enabled(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VehicleSpeed">
+        <Mnemonic>DID_$01D1</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="km/h" Step=" .01"/>
+        </Bits>
+      </Data>
+      <Data Name="programmingOperationFingerPrint">
+        <Comment><![CDATA[Only for programmable ECU]]></Comment>
+        <Mnemonic>DID_$F010</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>The value is written by the ECU when executing the SendKey SecurityAccess service</FONT></P>
+<P><FONT size=2>The value can be read in boot loader mode.</FONT></P>]]></Description>
+        <Bytes count="16"/>
+      </Data>
+      <Data Name="secutity accessFingerPrint">
+        <Mnemonic>DID_$F011</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="Wakeup status">
+        <Comment><![CDATA[hardware wakeup status]]></Comment>
+        <Mnemonic>DID_$0131</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="off(00h)"/>
+            <Item Value="1" Text="on(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="offset torque">
+        <Mnemonic>DID_$0111</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="N·m" Step=" .1" Offset="-20"/>
+        </Bits>
+      </Data>
+      <Data Name="Torque Steer compensation Activation">
+        <Mnemonic>DID_$0136</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Disabled"/>
+            <Item Value="1" Text="Enabled"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RoutinestatusRecord">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Completed"/>
+            <Item Value="1" Text="Aborted"/>
+            <Item Value="2" Text="Active"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Wheelspeed_index_map_selector (Front)">
+        <Mnemonic>DID_$0168</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Wheelspeed_index_map_selector (Rear)">
+        <Mnemonic>DID_$0268</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="vehicleManufacturerECUHardwareNumber">
+        <Mnemonic>DID_$F191</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="Absolute steering wheel angle">
+        <Mnemonic>DID_$0104</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="°" Step=" .1" Offset="-3276.7"/>
+        </Bits>
+      </Data>
+      <Data Name="Assistance Level">
+        <Mnemonic>DID_$0115</Mnemonic>
+        <Bits>
+          <Scaled Unit="%"/>
+        </Bits>
+      </Data>
+      <Data Name="Filtered Vehicle Speed">
+        <Mnemonic>DID_$0118</Mnemonic>
+        <Bits>
+          <Scaled Unit="km/h"/>
+        </Bits>
+      </Data>
+      <Data Name="Motor current demand">
+        <Mnemonic>DID_$0113</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="A" Offset="-200"/>
+        </Bits>
+      </Data>
+      <Data Name="IgnitionSwitchCounter">
+        <Mnemonic>DID_$011E</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Battery Voltage">
+        <Mnemonic>DID_$012F</Mnemonic>
+        <Bits>
+          <Scaled Unit="V" Step=" .1"/>
+        </Bits>
+      </Data>
+      <Data Name="ECU temperature">
+        <Mnemonic>DID_$012E</Mnemonic>
+        <Bits>
+          <Scaled Unit="°C" Offset="-50"/>
+        </Bits>
+      </Data>
+      <Data Name="Motor temperature">
+        <Mnemonic>DID_$012D</Mnemonic>
+        <Bits>
+          <Scaled Unit="°C" Offset="-50"/>
+        </Bits>
+      </Data>
+      <Data Name="RackEndStop currently active">
+        <Mnemonic>DID_$0151</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="(TBD)No limitation of assistance(00h)"/>
+            <Item Value="1" Text="(TBD)Limitation of assistance due(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="FOTA Function Activation">
+        <Mnemonic>DID_$0135</Mnemonic>
+        <Bits count="2">
+          <List>
+            <Item Value="0" Text="disabled (default)(00h)"/>
+            <Item Value="1" Text="FOTA enabled(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="External Angle sensor">
+        <Comment><![CDATA[DID_$015A]]></Comment>
+        <Mnemonic>DID_$015A</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="no absolute angle signal available(00h)"/>
+            <Item Value="1" Text="absolute angle signal available (default)(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="MultiDrive Activation">
+        <Mnemonic>DID_$017D</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="disabled (default)(00h)"/>
+            <Item Value="1" Text="enabled(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LDW Activation">
+        <Mnemonic>DID_$01B1</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Disabled(default)(00h)"/>
+            <Item Value="1" Text="enabled(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LKA Activation">
+        <Mnemonic>DID_$01BD</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Disabled(default)(00h)"/>
+            <Item Value="1" Text="enabled(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LDW_VibrationIntensity_Master">
+        <Mnemonic>DID_$01BE</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="LDW_VibrationIntensityReq from METER(00h)"/>
+            <Item Value="1" Text="LDW_VibrationIntensityReq from IVI (01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Dongle Frames Activation">
+        <Mnemonic>DID_$01C3</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="dongle frames not sent (00h)"/>
+            <Item Value="1" Text="dongle frames sent (default at SOP)(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ClusterWarningLampCheck Activation">
+        <Mnemonic>DID_$01C7</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="disabled (default)(00h)"/>
+            <Item Value="1" Text="enabled(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ISS Status">
+        <Mnemonic>DID_$01C8</Mnemonic>
+        <Bits count="2">
+          <List>
+            <Item Value="0" Text="(TBD)Not Stop Auto Phase(00h)"/>
+            <Item Value="1" Text="(TBD)Auto Start(01h)"/>
+            <Item Value="2" Text="(TBD)Idle Stop(02h)"/>
+            <Item Value="3" Text="(TBD)Auto Phase Aborted(03h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="AntiKickBack Activation">
+        <Mnemonic>DID_$01CA</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="disabled (default)(00h)"/>
+            <Item Value="1" Text="enabled(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="PullDrift_dynamic_compensation Activation">
+        <Mnemonic>DID_$01D0</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="disabled (default)(00h)"/>
+            <Item Value="1" Text="enabled(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="EngineStatus">
+        <Mnemonic>DID_$01D2</Mnemonic>
+        <Bits count="2">
+          <List>
+            <Item Value="0" Text="(TBD)engine stopped(00h)"/>
+            <Item Value="1" Text="(TBD)Reserved"/>
+            <Item Value="2" Text="(TBD)independant running engine(02h)"/>
+            <Item Value="3" Text="(TBD)running engine-driven(03h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="AntiKickBack_currently_active">
+        <Mnemonic>DID_$01E0</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="(TBD)function not running(00h)"/>
+            <Item Value="1" Text="(TBD)function currently running(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IdleStop Activation">
+        <Mnemonic>DID_$01E7</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="ISCS and TorqueOnFlag disable(00h)"/>
+            <Item Value="5" Text="IS and TorqueOnFlag enable(05h)"/>
+            <Item Value="6" Text="CS and TorqueOnFlag enable(06h)"/>
+            <Item Value="7" Text="ISCS and TorqueOnFlag enable(07h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="PullDriftCompensation currently active">
+        <Mnemonic>DID_$01E6</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="(TBD)function not running(00h)"/>
+            <Item Value="1" Text="(TBD)function currently running(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LaneKeepingAssist currently active">
+        <Mnemonic>DID_$01E2</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="(TBD)function not running(00h)"/>
+            <Item Value="1" Text="(TBD)function currently running(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="LaneDepartureWarning currently active">
+        <Mnemonic>DID_$01E3</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="(TBD)function not running(00h)"/>
+            <Item Value="1" Text="(TBD)function currently running(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Debug_info">
+        <Mnemonic>DID_$D002</Mnemonic>
+        <Bytes count="6"/>
+      </Data>
+      <Data Name="Activation of BatteryDisconnection">
+        <Mnemonic>DID_$01EE</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="disabled (default)(00h)"/>
+            <Item Value="1" Text="enabled(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Input torque from torque sensor">
+        <Mnemonic>DID_$0112</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="N·m" Step=" .1" Offset="-20"/>
+        </Bits>
+      </Data>
+      <Data Name="$F180 BootVersion">
+        <Mnemonic>DID_$F180</Mnemonic>
+        <Bytes count="32" ascii="1"/>
+      </Data>
+      <Data Name="$01E8 Mileage at first occurrence">
+        <Comment><![CDATA[the mileage of the first occurence given by the steering wheel]]></Comment>
+        <Mnemonic>DID_$01E8</Mnemonic>
+        <Bits count="28">
+          <Scaled Unit="km" Step=" .01"/>
+        </Bits>
+      </Data>
+      <Data Name="$132 CAN Ignition status for state machine (main)">
+        <Comment><![CDATA[The Ignition / AutoACC logical value, as received through CAN network.]]></Comment>
+        <Mnemonic>DID_$0132</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="off"/>
+            <Item Value="1" Text="on"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="$01EA CAN_DTC_filter1 (main)">
+        <Comment><![CDATA[the value of the internal corresponding parameter.]]></Comment>
+        <Mnemonic>DID_$01EA</Mnemonic>
+        <Bits count="1">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="CAN CCP Activation">
+        <Mnemonic>DID_$0179</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="disabled (default)(00h)"/>
+            <Item Value="1" Text="enabled(01h)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="$01EB CAN_DTC_filter2 (main)">
+        <Comment><![CDATA[the value of the internal corresponding parameter.]]></Comment>
+        <Mnemonic>DID_$01EB</Mnemonic>
+        <Bits count="1">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="EPS warning">
+        <Mnemonic>DID_$011A</Mnemonic>
+        <Bits count="2">
+          <List>
+            <Item Value="0" Text="No serious failure"/>
+            <Item Value="1" Text="Micro failure"/>
+            <Item Value="2" Text="Major failure"/>
+            <Item Value="3" Text="not used"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Assistance torque demand">
+        <Mnemonic>DID_$011F</Mnemonic>
+        <Bits count="16">
+          <Scaled Step=" .1" Offset="-150"/>
+        </Bits>
+      </Data>
+      <Data Name="Initial right RES position">
+        <Mnemonic>DID_$0153</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="°" Offset=" 300"/>
+        </Bits>
+      </Data>
+      <Data Name="Initial left RES position">
+        <Mnemonic>DID_$0154</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="°" Offset=" 300"/>
+        </Bits>
+      </Data>
+      <Data Name="Current left RES position">
+        <Mnemonic>DID_$0156</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="°" Offset=" 300"/>
+        </Bits>
+      </Data>
+      <Data Name="Current right RES position">
+        <Mnemonic>DID_$0157</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="°" Offset=" 300"/>
+        </Bits>
+      </Data>
+      <Data Name="PullDrift_dynamic_compensation Value_long">
+        <Mnemonic>DID_$015B</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="N·m" Step=" .1" Offset="-150"/>
+        </Bits>
+      </Data>
+      <Data Name="Derating assistance level">
+        <Mnemonic>DID_$0160</Mnemonic>
+        <Bits>
+          <Scaled Unit="%"/>
+        </Bits>
+      </Data>
+      <Data Name="Internal fault store">
+        <Mnemonic>DID_$0161</Mnemonic>
+        <Bytes count="20"/>
+      </Data>
+      <Data Name="Multidrive tunning map">
+        <Mnemonic>DID_$0162</Mnemonic>
+        <Bits count="3">
+          <List>
+            <Item Value="0" Text="slot #0 is currently used"/>
+            <Item Value="1" Text="slot #1 is currently used"/>
+            <Item Value="2" Text="slot #2 is currently used"/>
+            <Item Value="3" Text="slot #3 is currently used"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="EPS dongle state">
+        <Mnemonic>DID_$0164</Mnemonic>
+        <Bits count="2">
+          <List>
+            <Item Value="1" Text="operationnal/learnt"/>
+            <Item Value="2" Text="operationnal/blank"/>
+            <Item Value="3" Text="not operationnal"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Dongle pairing counter">
+        <Mnemonic>DID_$0165</Mnemonic>
+        <Bits count="2">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Dongle error">
+        <Mnemonic>DID_$0166</Mnemonic>
+        <Bits count="2">
+          <List>
+            <Item Value="0" Text="no error"/>
+            <Item Value="1" Text="EEPROM error on DOGGLE_ID"/>
+            <Item Value="2" Text="EEPROM error on DOGGLE_pairing_counter"/>
+            <Item Value="3" Text="motor disconnected from ECU"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Max CPU load">
+        <Mnemonic>DID_$0169</Mnemonic>
+        <Bits>
+          <Scaled Unit="%"/>
+        </Bits>
+      </Data>
+      <Data Name="Internal EPS steering wheel velocity">
+        <Mnemonic>DID_$0185</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="°/s" Step=" .1" Offset="-3276.7"/>
+        </Bits>
+      </Data>
+      <Data Name="ISS sub-SystemMode">
+        <Mnemonic>DID_$01E9</Mnemonic>
+        <Bits count="3">
+          <List>
+            <Item Value="0" Text="Ramp Up to Normal Assist"/>
+            <Item Value="1" Text="Normal Assist"/>
+            <Item Value="2" Text="CS EPS"/>
+            <Item Value="3" Text="IS EPS"/>
+            <Item Value="7" Text="Invalid (Whenever SystemMode != 3 NormalOperation)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="CAN_GADE signal">
+        <Mnemonic>DID_$01EC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="disabled"/>
+            <Item Value="1" Text="enabled"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Reset NVM data">
+        <Mnemonic>DID_$0152</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="NVM not reseted, normale state"/>
+            <Item Value="1" Text="NVMreseted successfully"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Reset RES">
+        <Mnemonic>DID_$0158</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Reset not done"/>
+            <Item Value="1" Text="Reset done"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Reset Pull-Drift long-term assisance torque">
+        <Mnemonic>DID_$0159</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Disabled"/>
+            <Item Value="1" Text="enabled"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Derating_Counter">
+        <Mnemonic>DID_$01D4</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="RackEndStop_Counter">
+        <Mnemonic>DID_$01D5</Mnemonic>
+        <Bits count="24">
+          <Scaled Offset=" 1"/>
+        </Bits>
+      </Data>
+      <Data Name="AntiKickBack_Counter">
+        <Mnemonic>DID_$01D6</Mnemonic>
+        <Bits count="24">
+          <Scaled Offset=" 1"/>
+        </Bits>
+      </Data>
+      <Data Name="InternalReset_Counter">
+        <Mnemonic>DID_$01DE</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="BatteryDisconnection_Counter">
+        <Mnemonic>DID_$01EF</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Internal EPS steering wheel angle">
+        <Mnemonic>DID_$0100</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="°" Step=" .1" Offset="-3276.7"/>
+        </Bits>
+      </Data>
+      <Data Name="SessionName">
+        <Comment><![CDATA[Diagnostic session values. See documentation for more information.]]></Comment>
+        <Mnemonic>LEV_DS</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>[0x00] : ISO / SAE Reserved<BR>[0x01] : Default session<BR>[0x02] : Programming session<BR>[0x03] : Extended diagnostic session<BR>[0x04] : Safety system diagnostic session<BR>[0x05 - 0x3F] : ISO / SAE Reserved<BR>[0x40 - 0x5F] : Vehicle manufacturer specific<BR>[0x60 - 0x7E] : System supplier specific<BR>[0x7F] : ISO / SAE Reserved</FONT></P>]]></Description>
+        <Bits>
+          <List>
+            <Item Value="1" Text="DefaultSession"/>
+            <Item Value="2" Text="ProgrammingSession"/>
+            <Item Value="3" Text="ExtendedDiagnosticSession"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCCount">
+        <Comment><![CDATA[DTC count]]></Comment>
+        <Mnemonic>DTCC</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCFormatIdentifier">
+        <Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+        <Mnemonic>DTCFID</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="SAE_J2012-DA_DTC"/>
+            <Item Value="1" Text="ISO_14229-1_DTC"/>
+            <Item Value="2" Text="SAE_J1939-73_DTC"/>
+            <Item Value="3" Text="ISO_11992-4_DTC"/>
+            <Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatusAvailabilityMask">
+        <Mnemonic>DTCSAM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="StatusOfDTC">
+        <Mnemonic>DTCASR_SODTC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailed">
+        <Mnemonic>TF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedThisMonitoringCycle">
+        <Mnemonic>TFTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.pendingDTC">
+        <Mnemonic>PDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.confirmedDTC">
+        <Mnemonic>CDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedSinceLastClear">
+        <Mnemonic>TNCSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedSinceLastClear">
+        <Mnemonic>TFSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+        <Mnemonic>TNCTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.warningIndicatorRequested">
+        <Mnemonic>WIR</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.Category">
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="General Failure Information"/>
+            <Item Value="1" Text="General Electrical Failures"/>
+            <Item Value="2" Text="General Signal Failures"/>
+            <Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="10" Text="General Electrical Failures - 2"/>
+            <Item Value="15" Text="Vehicle manufacturer / System supplier specific"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Device and failure type ODB codding"/>
+            <Item Value="1" Text="General Electrical Failure"/>
+            <Item Value="2" Text="General signal failure"/>
+            <Item Value="3" Text="FM / PWM Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="10" Text="General Electrical Failures - 2"/>
+            <Item Value="15" Text="Vehicle manufacturer / System supplier specific"/>
+            <Item Value="17" Text="circuit short to ground"/>
+            <Item Value="18" Text="circuit short to battery"/>
+            <Item Value="19" Text="circuit open"/>
+            <Item Value="20" Text="circuit short to ground or open"/>
+            <Item Value="21" Text="circuit short to battery or open"/>
+            <Item Value="22" Text="circuit voltage below threshold"/>
+            <Item Value="23" Text="circuit voltage above threshold"/>
+            <Item Value="24" Text="circuit current below threshold"/>
+            <Item Value="25" Text="circuit current above threshold"/>
+            <Item Value="26" Text="circuit resistance below threshold"/>
+            <Item Value="27" Text="circuit resistance above threshold"/>
+            <Item Value="28" Text="circuit voltage out of range"/>
+            <Item Value="29" Text="circuit current out of range"/>
+            <Item Value="30" Text="circuit resistance out of range"/>
+            <Item Value="31" Text="circuit intermittent"/>
+            <Item Value="33" Text="signal amplitude &lt; minimum"/>
+            <Item Value="34" Text="signal amplitude &gt; maximum"/>
+            <Item Value="35" Text="signal stuck low"/>
+            <Item Value="36" Text="signal stuck high"/>
+            <Item Value="37" Text="signal shape / waveform failure"/>
+            <Item Value="38" Text="signal rate of change below threshold"/>
+            <Item Value="39" Text="signal rate of change above threshold"/>
+            <Item Value="40" Text="signal bias level OutOfRange/0 adjustment failure"/>
+            <Item Value="41" Text="signal signal invalid"/>
+            <Item Value="47" Text="signal erratic"/>
+            <Item Value="49" Text="no signal"/>
+            <Item Value="50" Text="signal low time &lt; minimum"/>
+            <Item Value="51" Text="signal low time &gt; maximum"/>
+            <Item Value="52" Text="signal high time &lt; minimum"/>
+            <Item Value="53" Text="signal high time &gt; maximum"/>
+            <Item Value="54" Text="signal frequency too low"/>
+            <Item Value="55" Text="signal frequency too high"/>
+            <Item Value="56" Text="signal frequency incorrect"/>
+            <Item Value="57" Text="incorrect has too few pulses"/>
+            <Item Value="58" Text="incorrect has too many pulses"/>
+            <Item Value="65" Text="general checksum failure"/>
+            <Item Value="66" Text="general memory failure"/>
+            <Item Value="67" Text="special memory failure"/>
+            <Item Value="68" Text="data memory failure"/>
+            <Item Value="69" Text="program memory failure"/>
+            <Item Value="70" Text="calibration / parameter memory failure"/>
+            <Item Value="71" Text="watchdog / safety µC failure"/>
+            <Item Value="72" Text="supervision software failure"/>
+            <Item Value="73" Text="internal electronic failure"/>
+            <Item Value="74" Text="incorrect component installed"/>
+            <Item Value="75" Text="over temperature"/>
+            <Item Value="81" Text="not programmed"/>
+            <Item Value="82" Text="not activated"/>
+            <Item Value="83" Text="deactivated"/>
+            <Item Value="84" Text="missing calibration"/>
+            <Item Value="85" Text="not configured"/>
+            <Item Value="97" Text="signal calculation failure"/>
+            <Item Value="98" Text="signal compare failure"/>
+            <Item Value="99" Text="circuit / component protection time-out"/>
+            <Item Value="100" Text="signal plausibility failure"/>
+            <Item Value="101" Text="signal has too few transitions / events"/>
+            <Item Value="102" Text="signal has too many transitions / events"/>
+            <Item Value="103" Text="signal incorrect after event"/>
+            <Item Value="104" Text="event information"/>
+            <Item Value="113" Text="actuator stuck"/>
+            <Item Value="114" Text="actuator stuck open"/>
+            <Item Value="115" Text="actuator stuck closed"/>
+            <Item Value="116" Text="actuator slipping"/>
+            <Item Value="117" Text="emergency position not reachable"/>
+            <Item Value="118" Text="wrong mounting position"/>
+            <Item Value="119" Text="commanded position not reachable"/>
+            <Item Value="120" Text="alignment or adjustment incorrect"/>
+            <Item Value="121" Text="mechanical linkage failure"/>
+            <Item Value="122" Text="fluid leak or seal failure"/>
+            <Item Value="123" Text="low fluid level"/>
+            <Item Value="129" Text="invalid serial data received"/>
+            <Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+            <Item Value="131" Text="value of signal protection calculation incorrect"/>
+            <Item Value="132" Text="signal below allowable range"/>
+            <Item Value="133" Text="signal above allowable range"/>
+            <Item Value="134" Text="signal invalid"/>
+            <Item Value="135" Text="missing message"/>
+            <Item Value="136" Text="bus off"/>
+            <Item Value="143" Text="erratic"/>
+            <Item Value="145" Text="parametric"/>
+            <Item Value="146" Text="performance or incorrect operation"/>
+            <Item Value="147" Text="no operation"/>
+            <Item Value="148" Text="unexpected operation"/>
+            <Item Value="149" Text="incorrect assembly"/>
+            <Item Value="150" Text="component internal failure"/>
+            <Item Value="151" Text="Component or system operation obstructed / blocked"/>
+            <Item Value="152" Text="component or system over temperature"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.ManufacturerOrSupplier">
+        <Bits count="4">
+          <List/>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceIdentifier">
+        <Bits count="16">
+          <List>
+            <Item Value="16465" Text="[C0051]SWA Faults"/>
+            <Item Value="22017" Text="[C1601]BATTERY VOLT"/>
+            <Item Value="22020" Text="(C1604)Torque sensor internal failure"/>
+            <Item Value="22022" Text="(C1606)Motor Failure"/>
+            <Item Value="22024" Text="[C1608]CONTROL UNIT"/>
+            <Item Value="22037" Text="[C1615]Control unit over heat"/>
+            <Item Value="22042" Text="CAN VDC communication"/>
+            <Item Value="22044" Text="CAN STRG communication fault"/>
+            <Item Value="22048" Text="CAN CDM communication"/>
+            <Item Value="22049" Text="[C1621]BCM system"/>
+            <Item Value="22051" Text="[C1623]ECM system"/>
+            <Item Value="22052" Text="[C1624]Very_soft_ramp_down"/>
+            <Item Value="22057" Text="lost communication USM"/>
+            <Item Value="22058" Text="Missing Frame UserPreference signal (METER)"/>
+            <Item Value="22074" Text="ADAS failure"/>
+            <Item Value="49267" Text="DTCmux Off"/>
+            <Item Value="54049" Text="[U1321]Configuration unfinished"/>
+            <Item Value="57664" Text="[U2140]DTCmux ECM"/>
+            <Item Value="57672" Text="[U2148]DTCmux VDC"/>
+            <Item Value="57678" Text="[U214E]DTCmux METER"/>
+            <Item Value="57679" Text="[U214F]DTCmux BCM"/>
+            <Item Value="57682" Text="[U2152]DTCmux ADAS"/>
+            <Item Value="57684" Text="[U2154]DTCmux IVI"/>
+            <Item Value="57686" Text="[U2156]DTCmux STRG"/>
+            <Item Value="57691" Text="[U215B]DTCmux USM"/>
+            <Item Value="57718" Text="[U2176]DTCmux CDM"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceAndFailureTypeOBD">
+        <Bits count="16">
+          <List>
+            <Item Value="42809" Text="APA_UPAFKP_PSMSwitch"/>
+            <Item Value="42813" Text="APA_UPAFKP_PSMSwitchLED"/>
+            <Item Value="42816" Text="ATCU_ECU"/>
+            <Item Value="42820" Text="BCM_ECU"/>
+            <Item Value="42817" Text="BRAKE_ECU"/>
+            <Item Value="42804" Text="BSWLeftLED"/>
+            <Item Value="42805" Text="BSWRightLED"/>
+            <Item Value="42814" Text="BSWSwitch"/>
+            <Item Value="42802" Text="BSWSwitchLED"/>
+            <Item Value="42822" Text="4WS_ECU"/>
+            <Item Value="42828" Text="ADAS_ECU"/>
+            <Item Value="42830" Text="CAMERA_ECU"/>
+            <Item Value="42834" Text="AUDIOamp"/>
+            <Item Value="57665" Text="DTC_MUX_ATCU_A3"/>
+            <Item Value="57657" Text="DTC_MUX_ECM_A13"/>
+            <Item Value="57664" Text="DTC_MUX_ECM_A8"/>
+            <Item Value="57679" Text="DTC_MUX_BCM_A4"/>
+            <Item Value="57682" Text="DTC_MUX_ADAS_A6"/>
+            <Item Value="57685" Text="DTC_MUX_EPKB_A1"/>
+            <Item Value="57604" Text="DTC_MUX_FWS_R3"/>
+            <Item Value="57689" Text="DTC_MUX_EPS_R4"/>
+            <Item Value="57684" Text="DTC_MUX_IVI_A5"/>
+            <Item Value="57678" Text="DTC_MUX_METER_A3"/>
+            <Item Value="57695" Text="DTC_MUX_RADAR_A2"/>
+            <Item Value="57691" Text="DTC_MUX_USM_A1"/>
+            <Item Value="57672" Text="DTC_MUX_VDC_A3"/>
+            <Item Value="42823" Text="ECM_ECU"/>
+            <Item Value="42810" Text="ECU Configuration"/>
+            <Item Value="42824" Text="EPBK_ECU"/>
+            <Item Value="42821" Text="EPS_ECU"/>
+            <Item Value="42797" Text="FrontBuzzer"/>
+            <Item Value="42794" Text="FrontInnerLeftSensor"/>
+            <Item Value="42795" Text="FrontInnerRightSensor"/>
+            <Item Value="42793" Text="FrontOuterLeftSensor"/>
+            <Item Value="42796" Text="FrontOuterRightSensor"/>
+            <Item Value="42798" Text="FrontSideLeftSensor"/>
+            <Item Value="42799" Text="FrontSideRightSensor"/>
+            <Item Value="42825" Text="IDM_ECU"/>
+            <Item Value="42832" Text="IVI_ECU"/>
+            <Item Value="42829" Text="METER_ECU"/>
+            <Item Value="42819" Text="MM_ECU"/>
+            <Item Value="42790" Text="PLC_SafetyBag"/>
+            <Item Value="42815" Text="PSMSwitch"/>
+            <Item Value="42803" Text="PSMSwitchLED"/>
+            <Item Value="42831" Text="RADAR_ECU"/>
+            <Item Value="42789" Text="RearBuzzer"/>
+            <Item Value="42785" Text="RearInnerLeftSensor"/>
+            <Item Value="42786" Text="RearInnerRightSensor"/>
+            <Item Value="42784" Text="RearOuterLeftSensor"/>
+            <Item Value="42787" Text="RearOuterRightSensor"/>
+            <Item Value="42800" Text="RearSideLeftSensor"/>
+            <Item Value="42801" Text="RearSideRightSensor"/>
+            <Item Value="42808" Text="SensorPower(Front)"/>
+            <Item Value="42811" Text="SensorPower(Rear)"/>
+            <Item Value="42826" Text="STRG_ECU"/>
+            <Item Value="43007" Text="USA_Bootloader"/>
+            <Item Value="42788" Text="USA_ECU"/>
+            <Item Value="42818" Text="USM_ECU"/>
+            <Item Value="42833" Text="UTA Configuration"/>
+            <Item Value="42827" Text="VDC_ECU"/>
+            <Item Value="57707" Text="DTC_MUX_FRCAMERA_A1"/>
+            <Item Value="57717" Text="DTC_MUX_AVM_A8"/>
+            <Item Value="57718" Text="DTC_MUX_IDM_A3"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCMaskRecord">
+        <Mnemonic>DTCMREC_DTC</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="DTCRecord">
+        <Mnemonic>DTCASR_DTC</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="DTCSnapshotRecordNumber">
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="DTCExtendedData.AgingCounter">
+        <Comment><![CDATA[Description of the extendedData AgingCounter (use by Failure Page to decode data)]]></Comment>
+        <Mnemonic>AGINGCOUNTER</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCExtendedData.DTCOccurrenceCounter">
+        <Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+        <Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCExtendedData.Mileage">
+        <Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+        <Mnemonic>MILEAGE</Mnemonic>
+        <Bits count="24" signed="1">
+          <Scaled Unit="km"/>
+        </Bits>
+      </Data>
+      <Data Name="DTCExtendedDataRecordNumber">
+        <Mnemonic>DTCEDRN</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="128" Text="Mileage"/>
+            <Item Value="129" Text="AgingCounter"/>
+            <Item Value="130" Text="DTCOccurrenceCounter"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFaultDetectionCounter">
+        <Comment><![CDATA[DTC fault detction counter]]></Comment>
+        <Mnemonic>DTCFDC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="OutputControlCommand">
+        <Comment><![CDATA[Input Output control parameter list]]></Comment>
+        <Mnemonic>IO_Option_Record</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="returnControlToECU (Stop)"/>
+            <Item Value="1" Text="resetToDefault"/>
+            <Item Value="2" Text="freezeCurrentState"/>
+            <Item Value="3" Text="shortTermAdjustment(Start)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="OutputControlCommandOptionalData">
+        <Comment><![CDATA[Input Output control parameter list]]></Comment>
+        <Mnemonic>IO_Optional_Data</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="OutputPermanentControlList">
+        <Comment><![CDATA[List of Data Identifiers for Input Output Control - The list defined here is AN EXAMPLE.]]></Comment>
+        <Mnemonic>IOI_DID</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2><STRONG><U>Definition of IOControl</U></STRONG></FONT></P>
+<P><FONT size=2>Data: IOCTL.DataIdentifierList</FONT></P>
+<P><FONT size=2>&nbsp; Contains the list of all IO devices that may be<BR>&nbsp; controlled by InputOutputControl service.<BR>&nbsp; <BR>&nbsp; Example:<BR>&nbsp; <BR>&nbsp;&nbsp;&nbsp; 0 - DID_Pump<BR>&nbsp;&nbsp;&nbsp; 1 - DID_Wiper</FONT></P>
+<P><FONT size=2>If some of these IO devices have parameters, you should defined a data with the same name as the IO devices followed by a dot and a text</FONT></P>
+<P><FONT size=2>&nbsp; Example:<BR>&nbsp; <BR>&nbsp; Data: DID_Wiper.Mode<BR>&nbsp;&nbsp;&nbsp;&nbsp; Type: List<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 - Slow speed<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 - High speed</FONT></P>
+<P><FONT size=2>Then, you should add theses data in the "Send tab" of the&nbsp;InputOutpuControl request, after the IOCTL.OptionRecord.Parameter data.</FONT></P>]]></Description>
+        <Bits count="16">
+          <List>
+            <Item Value="8454" Text="'LED ON/OFF"/>
+            <Item Value="8455" Text="'Lateral button"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RoutineIdentifierList">
+        <Comment><![CDATA[Routine identifier - This is an example. See documentation for more information.]]></Comment>
+        <Mnemonic>RIL</Mnemonic>
+        <Description><![CDATA[<FONT size=2>
+<P><FONT size=2><STRONG><U>Definition of RoutineControl</U></STRONG></FONT></P>
+<P><FONT size=2>Data: RoutineIdentifierList</FONT></P>
+<P><FONT size=2>&nbsp; Contains the list of all routine identifier that may be&nbsp;used with InputOutputControl service.<BR>&nbsp; <BR>&nbsp; Example:<BR>&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;0x4501 -&nbsp;ROUTINE_Temperature_Wave<BR></FONT></P>
+<P><FONT size=2>If some of these routine identifer have parameters, you should defined a data with the same name as the&nbsp;routine identifer followed by a dot and a text</FONT></P>
+<P><FONT size=2>&nbsp; Example:<BR>&nbsp; <BR>&nbsp; Data: ROUTINE_Temperature_Wave.Min<BR>&nbsp; Data: ROUTINE_Temperature_Wave.Max<BR>&nbsp; Data: ROUTINE_Temperature_Wave.Freq<BR></FONT><FONT size=2></P></FONT>
+<P><FONT size=2>Then, you should add theses data in the "Send tab" of the&nbsp;RoutineControl request, after the RoutineIdentifierList data.</FONT></P></FONT>]]></Description>
+        <Bits count="16">
+          <List>
+            <Item Value="641" Text="configuration reset"/>
+            <Item Value="63749" Text="Torque sensor calibration"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RoutineControlType">
+        <Comment><![CDATA[Routine control type - VALUES OTHER THAN 1, 2 & 3 ARE RESERVED AND SHOULD NOT BE USED.]]></Comment>
+        <Mnemonic>RCTP</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="StartRoutine"/>
+            <Item Value="2" Text="StopRoutine"/>
+            <Item Value="3" Text="RequestRoutineResults"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RoutineStatus">
+        <Comment><![CDATA[Routine Status (Routine Info)]]></Comment>
+        <Mnemonic>RoutineStatus</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="48" Text="Completed, OK"/>
+            <Item Value="49" Text="Completed/Aborted, NOK"/>
+            <Item Value="50" Text="In progress"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ConfigurationDataReferenceAfterConfigurationProcess">
+        <Comment><![CDATA[DRC14 - (when delivery 0000000000)]]></Comment>
+        <Mnemonic>DID_$F1A2</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="RoutineOptionalData">
+        <Mnemonic>RoutineOptionalData</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="No error"/>
+            <Item Value="1" Text="Friction torque excess"/>
+            <Item Value="2" Text="No HOD during calibration"/>
+            <Item Value="3" Text="Steering angle not following to command"/>
+            <Item Value="4" Text="EPS Not Ready"/>
+            <Item Value="5" Text="Fail detected"/>
+            <Item Value="6" Text="Innappropriate gear position"/>
+            <Item Value="7" Text="Steering wheel angle excess"/>
+            <Item Value="8" Text="Main SW ON"/>
+            <Item Value="9" Text="Low engine rotation"/>
+            <Item Value="16" Text="Vehicle not stopped"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Mileage of the last occurence">
+        <Mnemonic>DID_$F0D0</Mnemonic>
+        <Bits count="24" signed="1">
+          <Scaled Unit="km" Format="0000000.00"/>
+        </Bits>
+      </Data>
+      <Data Name="DTC Occurence Counter">
+        <Mnemonic>DID_$F0D1</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LKA counter">
+        <Mnemonic>DID_$01D9</Mnemonic>
+        <Bytes count="31"/>
+      </Data>
+      <Data Name="LDW counter">
+        <Mnemonic>DID_$01DA</Mnemonic>
+        <Bytes count="31"/>
+      </Data>
+      <Data Name="Supplier InternalFaultCode">
+        <Mnemonic>DID_$0195</Mnemonic>
+        <Bytes count="20"/>
+      </Data>
+      <Data Name="UnmanagedShutdown counter">
+        <Mnemonic>DID_$01DF</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="vehicleManufacturerKitAssemblyPartNumber">
+        <Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM.]]></Comment>
+        <Mnemonic>DID_$F18E</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer order number for a kit (assembled parts bought as a whole for production e.g. cockpit), when the spare part number designates only the server (e.g. for aftersales).</FONT></P>
+<P><FONT size=2>The record data content and format shall be server specific and defined by the vehicle manufacturer.<BR></FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+    </Datas>
+    <Requests Endian="Big">
+      <Request Name="StartDiagnosticSession">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[SDS]]></Comment>
+        <Sent>
+          <SentBytes>1000</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5000</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.DefaultSession">
+        <ManuelSend/>
+        <Comment><![CDATA[SDS]]></Comment>
+        <Sent>
+          <SentBytes>1001</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5001</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.ReprogrammingSession">
+        <ManuelSend/>
+        <Comment><![CDATA[SDS]]></Comment>
+        <Sent>
+          <SentBytes>1002</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5002</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.ExtendedDiagSession">
+        <ManuelSend/>
+        <Comment><![CDATA[SDS]]></Comment>
+        <Sent>
+          <SentBytes>1003</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5003</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ClearDiagnosticInformation.All">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[ClearDiagnosticInformation]]></Comment>
+        <Sent>
+          <SentBytes>14FFFFFF</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>54</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUSoftwareNumber">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>22F188</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F18800000000000000000000</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUSoftwareNumber" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierIdentifier">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F18A</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F18A00000000</ReplyBytes>
+          <DataItem Name="systemSupplierIdentifier" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ECUSerialNumber">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F18C</SentBytes>
+        </Sent>
+        <Received MinBytes="23">
+          <ReplyBytes>62F18C0000000000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="ECUSerialNumber" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VIN">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F190</SentBytes>
+        </Sent>
+        <Received MinBytes="20">
+          <ReplyBytes>62F1900000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="VIN" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareNumber">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F194</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F1940000000000000000000000000000000000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F195</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62F1950000000000000000000000000000000000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareVersionNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.diagnosticVersion">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F1A0</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F1A000</ReplyBytes>
+          <DataItem Name="diagnosticVersion" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="TesterPresent.WithResponse">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[TesterPresent]]></Comment>
+        <Sent>
+          <SentBytes>3E00</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>7E</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Steering wheel velocity">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Steering wheel velocity]]></Comment>
+        <Sent>
+          <SentBytes>220101</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201010000</ReplyBytes>
+          <DataItem Name="Steering wheel velocity" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Steering wheel angle sensor internal status">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220102</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62010200</ReplyBytes>
+          <DataItem Name="Steering wheel angle sensor internal status" FirstByte="4" BitOffset="5"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Absolute steering wheel angle">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220104</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201040000</ReplyBytes>
+          <DataItem Name="Absolute steering wheel angle" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.System mode">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>220119</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62011900</ReplyBytes>
+          <DataItem Name="System mode" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Motor current demand">
+        <Sent>
+          <SentBytes>220113</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62011300</ReplyBytes>
+          <DataItem Name="Motor current demand" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Filtered Vehicle Speed">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220118</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62011800</ReplyBytes>
+          <DataItem Name="Filtered Vehicle Speed" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Assistance Level">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>220115</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62011500</ReplyBytes>
+          <DataItem Name="Assistance Level" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IgnitionSwitchCounter">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22011E</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62011E00</ReplyBytes>
+          <DataItem Name="IgnitionSwitchCounter" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Motor temperature">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>22012D</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62012D00</ReplyBytes>
+          <DataItem Name="Motor temperature" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ECU temperature">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>22012E</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62012E00</ReplyBytes>
+          <DataItem Name="ECU temperature" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Battery Voltage">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>22012F</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62012F00</ReplyBytes>
+          <DataItem Name="Battery Voltage" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.FOTA Function Activation">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220135</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62013500</ReplyBytes>
+          <DataItem Name="FOTA Function Activation" Ref="1" FirstByte="4" BitOffset="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.FOTA Function Activation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E013500</SentBytes>
+          <DataItem Name="FOTA Function Activation" FirstByte="4" BitOffset="6"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0135</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.RackEndStop currently active">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220151</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62015100</ReplyBytes>
+          <DataItem Name="RackEndStop currently active" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.External Angle sensor">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22015A</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62015A00</ReplyBytes>
+          <DataItem Name="External Angle sensor" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.External Angle sensor">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E015A00</SentBytes>
+          <DataItem Name="External Angle sensor" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E015A</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.MultiDrive Activation">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22017D</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62017D00</ReplyBytes>
+          <DataItem Name="MultiDrive Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.MultiDrive Activation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E017D00</SentBytes>
+          <DataItem Name="MultiDrive Activation" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E017D</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LDW Activation">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201B1</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201B100</ReplyBytes>
+          <DataItem Name="LDW Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.LDW Activation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E01B100</SentBytes>
+          <DataItem Name="LDW Activation" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01B1</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LKA Activation">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201BD</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201BD00</ReplyBytes>
+          <DataItem Name="LKA Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.LKA Activation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E01BD00</SentBytes>
+          <DataItem Name="LKA Activation" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01BD</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LDW_VibrationIntensity_Master">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201BE</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201BE00</ReplyBytes>
+          <DataItem Name="LDW_VibrationIntensity_Master" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.LDW_VibrationIntensity_Master">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E01BE00</SentBytes>
+          <DataItem Name="LDW_VibrationIntensity_Master" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01BE</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Dongle Frames Activation">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201C3</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201C300</ReplyBytes>
+          <DataItem Name="Dongle Frames Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Dongle Frames Activation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E01C300</SentBytes>
+          <DataItem Name="Dongle Frames Activation" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01C3</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ClusterWarningLampCheck Activation">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201C7</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201C700</ReplyBytes>
+          <DataItem Name="ClusterWarningLampCheck Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.ClusterWarningLampCheck Activation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E01C700</SentBytes>
+          <DataItem Name="ClusterWarningLampCheck Activation" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01C7</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ISS Status">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201C8</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201C800</ReplyBytes>
+          <DataItem Name="ISS Status" Ref="1" FirstByte="4" BitOffset="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.AntiKickBack Activation">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201CA</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201CA00</ReplyBytes>
+          <DataItem Name="AntiKickBack Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.AntiKickBack Activation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E01CA00</SentBytes>
+          <DataItem Name="AntiKickBack Activation" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01CA</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.TJP Activation">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201CB</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201CB00</ReplyBytes>
+          <DataItem Name="TJP Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.TJP Activation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E01CB00</SentBytes>
+          <DataItem Name="TJP Activation" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01CB</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.PullDrift_dynamic_compensation Activation">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201D0</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201D000</ReplyBytes>
+          <DataItem Name="PullDrift_dynamic_compensation Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.PullDrift_dynamic_compensation Activation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E01D000</SentBytes>
+          <DataItem Name="PullDrift_dynamic_compensation Activation" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01D0</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VehicleSpeed">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201D1</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201D10000</ReplyBytes>
+          <DataItem Name="VehicleSpeed" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EngineStatus">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2201D2</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201D200</ReplyBytes>
+          <DataItem Name="EngineStatus" FirstByte="4" BitOffset="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.AntiKickBack_currently_active">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201E0</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201E000</ReplyBytes>
+          <DataItem Name="AntiKickBack_currently_active" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LaneKeepingAssist currently active">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201E2</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201E200</ReplyBytes>
+          <DataItem Name="LaneKeepingAssist currently active" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LaneDepartureWarning currently active">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201E3</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201E300</ReplyBytes>
+          <DataItem Name="LaneDepartureWarning currently active" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.PullDriftCompensation currently active">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201E6</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201E600</ReplyBytes>
+          <DataItem Name="PullDriftCompensation currently active" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IdleStop Activation">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201E7</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201E700</ReplyBytes>
+          <DataItem Name="IdleStop Activation" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.IdleStop Activation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E01E700</SentBytes>
+          <DataItem Name="IdleStop Activation" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01E7</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Debug_info">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>22D002</SentBytes>
+        </Sent>
+        <Received MinBytes="9">
+          <ReplyBytes>62D00200000000</ReplyBytes>
+          <DataItem Name="Debug_info" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Activation of BatteryDisconnection">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E01EE00</SentBytes>
+          <DataItem Name="Activation of BatteryDisconnection" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01EE</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Activation of BatteryDisconnection">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2201EE</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201EE00</ReplyBytes>
+          <DataItem Name="Activation of BatteryDisconnection" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Input torque from torque sensor">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220112</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201120000</ReplyBytes>
+          <DataItem Name="Input torque from torque sensor" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.$F180 BootVersion">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read $F180 BootVersion]]></Comment>
+        <Sent>
+          <SentBytes>22F180</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62F18000000000</ReplyBytes>
+          <DataItem Name="$F180 BootVersion" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.$132 CAN Ignition status for state machine (main)">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read $132 CAN Ignition status for state machine (main)]]></Comment>
+        <Sent>
+          <SentBytes>220132</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62013200</ReplyBytes>
+          <DataItem Name="$132 CAN Ignition status for state machine (main)" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.$01EA CAN_DTC_filter1 (main)">
+        <ManuelSend/>
+        <Comment><![CDATA[Read $01EA CAN_DTC_filter1 (main)]]></Comment>
+        <Sent>
+          <SentBytes>2201EA</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201EA00</ReplyBytes>
+          <DataItem Name="$01EA CAN_DTC_filter1 (main)" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.CAN CCP Activation">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read CAN CCP Activation]]></Comment>
+        <Sent>
+          <SentBytes>220179</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62017900</ReplyBytes>
+          <DataItem Name="CAN CCP Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.CAN CCP Activation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write CAN CCP Activation]]></Comment>
+        <Sent>
+          <SentBytes>2E017900</SentBytes>
+          <DataItem Name="CAN CCP Activation" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0179</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.$01EB CAN_DTC_filter2 (main)">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read $01EB CAN_DTC_filter2 (main)]]></Comment>
+        <Sent>
+          <SentBytes>2201EB</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201EB00</ReplyBytes>
+          <DataItem Name="$01EB CAN_DTC_filter2 (main)" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.$01E8 Mileage at first occurrence">
+        <ManuelSend/>
+        <Comment><![CDATA[Read $01E8 Mileage at first occurrence]]></Comment>
+        <Sent>
+          <SentBytes>2201E8</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>6201E800000000</ReplyBytes>
+          <DataItem Name="$01E8 Mileage at first occurrence" FirstByte="4" BitOffset="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.secutity accessFingerPrint">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read secutity accessFingerPrint]]></Comment>
+        <Sent>
+          <SentBytes>22F011</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F01100000000</ReplyBytes>
+          <DataItem Name="secutity accessFingerPrint" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.programmingOperationFingerPrint">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read programmingOperationFingerPrint]]></Comment>
+        <Sent>
+          <SentBytes>22F010</SentBytes>
+        </Sent>
+        <Received MinBytes="19">
+          <ReplyBytes>62F01000000000</ReplyBytes>
+          <DataItem Name="programmingOperationFingerPrint" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.VIN">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write VIN]]></Comment>
+        <Sent>
+          <SentBytes>2EF1900000000000000000000000000000000000</SentBytes>
+          <DataItem Name="VIN" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF190</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Wakeup status">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220131</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62013100</ReplyBytes>
+          <DataItem Name="Wakeup status" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.offset torque">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read offset torque]]></Comment>
+        <Sent>
+          <SentBytes>220111</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201110000</ReplyBytes>
+          <DataItem Name="offset torque" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EPS warning">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read EPS warning]]></Comment>
+        <Sent>
+          <SentBytes>22011A</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62011A00</ReplyBytes>
+          <DataItem Name="EPS warning" Ref="1" FirstByte="4" BitOffset="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Assistance torque demand">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Assistance torque demand]]></Comment>
+        <Sent>
+          <SentBytes>22011F</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62011F0000</ReplyBytes>
+          <DataItem Name="Assistance torque demand" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Initial right RES position">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Initial right RES position]]></Comment>
+        <Sent>
+          <SentBytes>220153</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201530000</ReplyBytes>
+          <DataItem Name="Initial right RES position" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Initial left RES position">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Initial left RES position]]></Comment>
+        <Sent>
+          <SentBytes>220154</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201540000</ReplyBytes>
+          <DataItem Name="Initial left RES position" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Current left RES position">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Current left RES position]]></Comment>
+        <Sent>
+          <SentBytes>220156</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201560000</ReplyBytes>
+          <DataItem Name="Current left RES position" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Current right RES position">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Current right RES position]]></Comment>
+        <Sent>
+          <SentBytes>220157</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201570000</ReplyBytes>
+          <DataItem Name="Current right RES position" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.PullDrift_dynamic_compensation Value_long">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read PullDrift_dynamic_compensation Value_long]]></Comment>
+        <Sent>
+          <SentBytes>22015B</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62015B0000</ReplyBytes>
+          <DataItem Name="PullDrift_dynamic_compensation Value_long" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Derating assistance level">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Derating assistance level]]></Comment>
+        <Sent>
+          <SentBytes>220160</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62016000</ReplyBytes>
+          <DataItem Name="Derating assistance level" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Internal fault store">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Internal fault store]]></Comment>
+        <Sent>
+          <SentBytes>220161</SentBytes>
+        </Sent>
+        <Received MinBytes="23">
+          <ReplyBytes>62016100000000</ReplyBytes>
+          <DataItem Name="Internal fault store" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Multidrive tunning map">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Multidrive tunning map]]></Comment>
+        <Sent>
+          <SentBytes>220162</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62016200</ReplyBytes>
+          <DataItem Name="Multidrive tunning map" Ref="1" FirstByte="4" BitOffset="5"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EPS dongle state">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read EPS dongle state]]></Comment>
+        <Sent>
+          <SentBytes>220164</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62016400</ReplyBytes>
+          <DataItem Name="EPS dongle state" Ref="1" FirstByte="4" BitOffset="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Dongle pairing counter">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Dongle pairing counter]]></Comment>
+        <Sent>
+          <SentBytes>220165</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201650000</ReplyBytes>
+          <DataItem Name="Dongle pairing counter" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Dongle error">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Dongle error]]></Comment>
+        <Sent>
+          <SentBytes>220166</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62016600</ReplyBytes>
+          <DataItem Name="Dongle error" Ref="1" FirstByte="4" BitOffset="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Max CPU load">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Max CPU load]]></Comment>
+        <Sent>
+          <SentBytes>220169</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62016900</ReplyBytes>
+          <DataItem Name="Max CPU load" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Internal EPS steering wheel velocity">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Internal EPS steering wheel velocity]]></Comment>
+        <Sent>
+          <SentBytes>220185</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201850000</ReplyBytes>
+          <DataItem Name="Internal EPS steering wheel velocity" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ISS sub-SystemMode">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read ISS sub-SystemMode]]></Comment>
+        <Sent>
+          <SentBytes>2201E9</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201E900</ReplyBytes>
+          <DataItem Name="ISS sub-SystemMode" Ref="1" FirstByte="4" BitOffset="5"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.CAN_GADE signal">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read CAN_GADE signal]]></Comment>
+        <Sent>
+          <SentBytes>2201EC</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6201EC00</ReplyBytes>
+          <DataItem Name="CAN_GADE signal" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Reset NVM data">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Reset NVM data]]></Comment>
+        <Sent>
+          <SentBytes>220152</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62015200</ReplyBytes>
+          <DataItem Name="Reset NVM data" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Reset NVM data">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write Reset NVM data]]></Comment>
+        <Sent>
+          <SentBytes>2E015200</SentBytes>
+          <DataItem Name="Reset NVM data" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0152</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Reset RES">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Reset RES]]></Comment>
+        <Sent>
+          <SentBytes>220158</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62015800</ReplyBytes>
+          <DataItem Name="Reset RES" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Reset RES">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write Reset RES]]></Comment>
+        <Sent>
+          <SentBytes>2E015800</SentBytes>
+          <DataItem Name="Reset RES" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0158</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Reset Pull-Drift long-term assisance torque">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Reset Pull-Drift long-term assisance torque]]></Comment>
+        <Sent>
+          <SentBytes>220159</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62015900</ReplyBytes>
+          <DataItem Name="Reset Pull-Drift long-term assisance torque" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Reset Pull-Drift long-term assisance torque">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write Reset Pull-Drift long-term assisance torque]]></Comment>
+        <Sent>
+          <SentBytes>2E015900</SentBytes>
+          <DataItem Name="Reset Pull-Drift long-term assisance torque" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0159</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Torque Steer compensation Activation">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Torque Steer compensation Activation]]></Comment>
+        <Sent>
+          <SentBytes>220136</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62013600</ReplyBytes>
+          <DataItem Name="Torque Steer compensation Activation" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Torque Steer compensation Activation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write Torque Steer compensation Activation]]></Comment>
+        <Sent>
+          <SentBytes>2E013600</SentBytes>
+          <DataItem Name="Torque Steer compensation Activation" FirstByte="4" BitOffset="7"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0136</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Derating_Counter">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Derating_Counter]]></Comment>
+        <Sent>
+          <SentBytes>2201D4</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201D40000</ReplyBytes>
+          <DataItem Name="Derating_Counter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Derating_Counter">
+        <ManuelSend/>
+        <Comment><![CDATA[Write Derating_Counter]]></Comment>
+        <Sent>
+          <SentBytes>2E01D40000</SentBytes>
+          <DataItem Name="Derating_Counter" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01D4</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.RackEndStop_Counter">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read RackEndStop_Counter]]></Comment>
+        <Sent>
+          <SentBytes>2201D5</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>6201D5000000</ReplyBytes>
+          <DataItem Name="RackEndStop_Counter" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.RackEndStop_Counter">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write RackEndStop_Counter]]></Comment>
+        <Sent>
+          <SentBytes>2E01D5000000</SentBytes>
+          <DataItem Name="RackEndStop_Counter" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01D5</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.AntiKickBack_Counter">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read AntiKickBack_Counter]]></Comment>
+        <Sent>
+          <SentBytes>2201D6</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>6201D6000000</ReplyBytes>
+          <DataItem Name="AntiKickBack_Counter" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.AntiKickBack_Counter">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write AntiKickBack_Counter]]></Comment>
+        <Sent>
+          <SentBytes>2E01D6000000</SentBytes>
+          <DataItem Name="AntiKickBack_Counter" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01D6</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LaneKeepingAssist_Counter">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read LaneKeepingAssist_Counter]]></Comment>
+        <Sent>
+          <SentBytes>2201DA</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>6201DA00000000</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.LaneKeepingAssist_Counter">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write LaneKeepingAssist_Counter]]></Comment>
+        <Sent>
+          <SentBytes>2E01DA00000000</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01DA</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.InternalReset_Counter">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read InternalReset_Counter]]></Comment>
+        <Sent>
+          <SentBytes>2201DE</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201DE0000</ReplyBytes>
+          <DataItem Name="InternalReset_Counter" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.InternalReset_Counter">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write InternalReset_Counter]]></Comment>
+        <Sent>
+          <SentBytes>2E01DE0000</SentBytes>
+          <DataItem Name="InternalReset_Counter" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01DE</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.BatteryDisconnection_Counter">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read BatteryDisconnection_Counter]]></Comment>
+        <Sent>
+          <SentBytes>2201EF</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6201EF0000</ReplyBytes>
+          <DataItem Name="BatteryDisconnection_Counter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.BatteryDisconnection_Counter">
+        <ManuelSend/>
+        <Comment><![CDATA[Write BatteryDisconnection_Counter]]></Comment>
+        <Sent>
+          <SentBytes>2E01EF0000</SentBytes>
+          <DataItem Name="BatteryDisconnection_Counter" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E01EF</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUHardwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerECUHardwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F191</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F19100000000</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUHardwareNumber" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerSparePartNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerSparePartNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F187</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F18700000000000000000000</ReplyBytes>
+          <DataItem Name="vehicleManufacturerSparePartNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Internal EPS steering wheel angle">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Internal EPS steering wheel angle]]></Comment>
+        <Sent>
+          <SentBytes>220100</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>620100</ReplyBytes>
+          <DataItem Name="Internal EPS steering wheel angle" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.OperationnalReference">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read OperationnalReference]]></Comment>
+        <Sent>
+          <SentBytes>22F012</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F01200000000000000000000</ReplyBytes>
+          <DataItem Name="OperationnalReference" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Offset_torque">
+        <Comment><![CDATA[Read Offset_torque]]></Comment>
+        <Sent>
+          <SentBytes>220111</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>620111</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="Routine.Torque_sensor_calibration">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>3101F90500000000</SentBytes>
+          <DataItem Name="Input torque from torque sensor" FirstByte="5"/>
+          <DataItem Name="offset torque" FirstByte="7"/>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101F90500</ReplyBytes>
+          <DataItem Name="RoutinestatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="Routine.configuration_reset">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>31010281</SentBytes>
+          <DataItem Name="RoutineStatus" FirstByte="2"/>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101028100</ReplyBytes>
+          <DataItem Name="RoutinestatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="ResetECU.HardReset">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <DenyAccess>
+          <Plant/>
+          <AfterSales/>
+        </DenyAccess>
+        <Sent>
+          <SentBytes>1101</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5101</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ResetECU.Key">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>1102</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5102</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report number of DTC]]></Comment>
+        <Sent>
+          <SentBytes>1901FF</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>5901FF000000</ReplyBytes>
+          <DataItem Name="DTCCount" FirstByte="5"/>
+          <DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTC">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+        <Sent>
+          <SentBytes>1902FF</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>59020000000000</ReplyBytes>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+          <DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+          <DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+          <DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+          <DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+          <DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+          <DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+          <DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+          <DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+          <DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTCSnapshotIdentification">
+        <Comment><![CDATA[Read snapshot identification]]></Comment>
+        <Sent>
+          <SentBytes>1903000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>590300000001</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="DTCSnapshotRecordNumber" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSnapshot">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+        <Sent>
+          <SentBytes>1904000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>590400000000</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData">
+        <Comment><![CDATA[DDT2000 Failures page requests : Unusable in the standard tools of DDT2000 nor for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1906000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="10">
+          <ReplyBytes>590600000000</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+          <DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+          <DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+          <DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+          <DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSupportedDTC">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report supported DTC]]></Comment>
+        <Sent>
+          <SentBytes>190A</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>590AFF00000000</ReplyBytes>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="ReportDTCInformation.ReportDTCFaultDetectionCounter_CPDD Import">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report DTC fault detection counter counter for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1914</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>591400000000</ReplyBytes>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="3"/>
+          <DataItem Name="DTCFailureType" FirstByte="5"/>
+          <DataItem Name="DTCFaultDetectionCounter" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="OutputControl">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F00000000</SentBytes>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+          <DataItem Name="OutputControlCommandOptionalData" FirstByte="5"/>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6F00000000</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>31000000</SentBytes>
+          <DataItem Name="RoutineIdentifierList" FirstByte="3"/>
+          <DataItem Name="RoutineControlType" FirstByte="2"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>71000000000000</ReplyBytes>
+          <DataItem Name="RoutineStatus" FirstByte="5"/>
+          <DataItem Name="RoutineOptionalData" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ConfigurationDataReferenceAfterConfigurationProcess">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read ConfigurationDataReferenceAfterConfigProcess]]></Comment>
+        <Sent>
+          <SentBytes>22F1A2</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F1A200000000</ReplyBytes>
+          <DataItem Name="ConfigurationDataReferenceAfterConfigurationProcess" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.ConfigurationDataReferenceAfterConfigurationProcess">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write ConfigurationDataReferenceAfterConfigProcess]]></Comment>
+        <Sent>
+          <SentBytes>2EF1A200000000000000000000</SentBytes>
+          <DataItem Name="ConfigurationDataReferenceAfterConfigurationProcess" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF1A2</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Wheelspeed_index_map_selector (Front)">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220168</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62016800</ReplyBytes>
+          <DataItem Name="Wheelspeed_index_map_selector (Front)" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Wheelspeed_index_map_selector (Front)">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E016800</SentBytes>
+          <DataItem Name="Wheelspeed_index_map_selector (Front)" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0168</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Wheelspeed_index_map_selector (Rear)">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Wheelspeed_index_map_selector_Rear]]></Comment>
+        <Sent>
+          <SentBytes>220268</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62026800</ReplyBytes>
+          <DataItem Name="Wheelspeed_index_map_selector (Rear)" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Wheelspeed_index_map_selector (Rear)">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write Wheelspeed_index_map_selector_Rear]]></Comment>
+        <Sent>
+          <SentBytes>2E026800</SentBytes>
+          <DataItem Name="Wheelspeed_index_map_selector (Rear)" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0268</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Mileage of the last occurence">
+        <ManuelSend/>
+        <Comment><![CDATA[Read Mileage]]></Comment>
+        <Sent>
+          <SentBytes>22F0D0</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>62F0D0</ReplyBytes>
+          <DataItem Name="Mileage of the last occurence" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DTC Occurence Counter">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>22F0D1</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F0D1</ReplyBytes>
+          <DataItem Name="DTC Occurence Counter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="EcuReset.SoftReset">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>1103</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5103</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerKitAssemblyPartNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerKitAssemblyPartNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F18E</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F18E</ReplyBytes>
+          <DataItem Name="vehicleManufacturerKitAssemblyPartNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+    </Requests>
+    <Devices>
+      <Device Name="[C1608]CONTROL UNIT" DTC="22024" OBD="22024">
+        <Test Type="70">
+        </Test>
+        <Test Type="73">
+        </Test>
+        <Test Type="84">
+        </Test>
+        <Test Type="69">
+        </Test>
+        <Test Type="68">
+        </Test>
+      </Device>
+      <Device Name="[U1321]Configuration unfinished" DTC="54049" OBD="54049">
+        <Test Type="85" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[C1615]Control unit over heat" DTC="22037" OBD="22037">
+        <Test Type="75" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[C1601]BATTERY VOLT" DTC="22017" OBD="22017">
+        <Test Type="22" Severity="0">
+        </Test>
+        <Test Type="23" Severity="0">
+        </Test>
+        <Test Type="19" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[C1623]ECM system" DTC="22051" OBD="22051">
+        <Test Type="134" Severity="0">
+        </Test>
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[C1621]BCM system" DTC="22049" OBD="22049">
+        <Test Type="134" Severity="0">
+        </Test>
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[C1624]Very_soft_ramp_down" DTC="22052" OBD="22052">
+        <Test Type="0">
+        </Test>
+      </Device>
+      <Device Name="[C0051]SWA Faults" DTC="16465" OBD="16465">
+        <Test Type="98" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U2176]DTCmux CDM" DTC="57718" OBD="57718">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U215B]DTCmux USM" DTC="57691" OBD="57691">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U2156]DTCmux STRG" DTC="57686" OBD="57686">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U2154]DTCmux IVI" DTC="57684" OBD="57684">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U2152]DTCmux ADAS" DTC="57682" OBD="57682">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U214F]DTCmux BCM" DTC="57679" OBD="57679">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U214E]DTCmux METER" DTC="57678" OBD="57678">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U2148]DTCmux VDC" DTC="57672" OBD="57672">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U2140]DTCmux ECM" DTC="57664" OBD="57664">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="(C1606)Motor Failure" DTC="22022" OBD="22022">
+        <Test Type="150" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="CAN VDC communication" DTC="22042" OBD="22042">
+        <Test Type="134" Severity="0">
+        </Test>
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="CAN CDM communication" DTC="22048" OBD="22048">
+        <Test Type="134" Severity="0">
+        </Test>
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="CAN STRG communication fault" DTC="22044" OBD="22044">
+        <Test Type="134" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="lost communication USM" DTC="22057" OBD="22057">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="DTCmux Off" DTC="49267" OBD="49267">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="(C1604)Torque sensor internal failure" DTC="22020" OBD="22020">
+        <Test Type="150" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="ADAS failure" DTC="22074">
+        <Mnemonic>CRC failure ADAS_A113</Mnemonic>
+        <Test Type="134" OBD="22074" Severity="0">
+        </Test>
+        <Test Type="130" Severity="0" Autocheck="0">
+        </Test>
+        <Test Type="131" Severity="0" Autocheck="0">
+        </Test>
+        <Test Type="100">
+          <Description>Irreversable LKA faiure during IGN cycle</Description>
+        </Test>
+      </Device>
+      <Device Name="Missing Frame UserPreference signal (METER)" DTC="22058" OBD="22058">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+    </Devices>
+    <ds:Categories xmlns="http://www-diag.renault.com/2002/screens">
+      <Category Name="EPS">
+        <Screen Name="configuration" Color="16777215" WindowState="0" Width="14820" Height="10500">
+          <Display Width="4235" Color="16777215" RequestName="DataRead.Activation of BatteryDisconnection">
+            <Rectangle Left="360" Top="240" Height="267" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.AntiKickBack Activation">
+            <Rectangle Left="360" Top="960" Height="267" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.ClusterWarningLampCheck Activation">
+            <Rectangle Left="360" Top="1680" Height="267" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.Dongle Frames Activation">
+            <Rectangle Left="360" Top="2040" Height="267" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.External Angle sensor">
+            <Rectangle Left="360" Top="3480" Height="267" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.FOTA Function Activation">
+            <Rectangle Left="360" Top="3840" Height="267" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.IdleStop Activation">
+            <Rectangle Left="360" Top="4200" Height="267" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.PullDrift_dynamic_compensation Activation">
+            <Rectangle Left="360" Top="4560" Height="267" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.Wheelspeed_index_map_selector (Front)">
+            <Rectangle Left="360" Top="6360" Height="267" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.TJP Activation">
+            <Rectangle Left="360" Top="6720" Height="300" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.LDW Activation">
+            <Rectangle Left="360" Top="7080" Height="300" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.LDW_VibrationIntensity_Master">
+            <Rectangle Left="360" Top="7440" Height="300" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.LKA Activation">
+            <Rectangle Left="360" Top="7800" Height="300" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.CAN CCP Activation">
+            <Rectangle Left="360" Top="8880" Height="300" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.ConfigurationDataReferenceAfterConfigurationProcess">
+            <Rectangle Left="360" Top="9600" Height="300" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4235" Color="16777215" RequestName="DataRead.MultiDrive Activation">
+            <Rectangle Left="360" Top="9960" Height="300" Width="4920"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+      </Category>
+    </ds:Categories>
+  </ddt:Target>
+</xml>

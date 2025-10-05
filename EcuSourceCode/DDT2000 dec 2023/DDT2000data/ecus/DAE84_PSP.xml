@@ -1,0 +1,2067 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<ddt:Target Name="DAE84_PSP" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" upload="9/26/02" href="DAE84_PSP.xml" email=""><Description><![CDATA[Base DDT2000 pour le Diag On CAN de la DAE 84
+Projet:X84
+Version 1.5 (07/01/02)
+Maj: 19/4/2002
+
+CdC correspondant : ref. 65630/2001/1007 version 1.6
+Base associée au soft PPP3_5 (415a7788) des PSP
+
+Gurvan CROGUENNEC (tél : 53119)
+DIESE - 65630
+]]></Description><Projects xmlns=""><x84/><x84Ph2/><x84bugABS/></Projects>
+<Function Name="Direction assistée" Address="4"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation/>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="500000" Multipoint="1">
+<SendId>
+<CANId Value="1858"/>
+</SendId><ReceiveId>
+<CANId Value="1890"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="4" Supplier="DL7" Soft="7788" Version="0000"/><AutoIdent DiagVersion="4" Supplier="DL7" Soft="7788" Version="0001"/></AutoIdents>
+<Datas>
+
+<Data Name="Angle">
+<Comment><![CDATA[Value of angle sensor]]></Comment>
+<Bits count="16" signed="1">
+<Scaled Unit="Degrees" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Angle volant">
+<Comment><![CDATA[angle qd le DTC apparait (data Freeze Frame)]]></Comment>
+<Bits count="16" signed="1">
+<Scaled Unit="°" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Année">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="BUS OFF parameter">
+<Bytes count="1"/>
+</Data>
+<Data Name="Calibration status">
+<Bits count="2">
+<List>
+<Item Value="0" Text="non calibré et non indexé"/>
+<Item Value="1" Text="non calibré mais indexé"/>
+<Item Value="2" Text="calibré mais non initialisé"/>
+<Item Value="3" Text="calibré et initialisé"/></List>
+</Bits>
+</Data>
+<Data Name="Code de défaut interne">
+<Bytes count="1"/>
+</Data>
+<Data Name="Compteur">
+<Comment><![CDATA[nb de +APC après disparition du DTC (data Freeze Frame)]]></Comment>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Consigned Power">
+<Comment><![CDATA[Motor Consigned Power]]></Comment>
+<Bits signed="1">
+<Scaled Unit="A"/>
+</Bits>
+</Data>
+<Data Name="Consigned Torque">
+<Comment><![CDATA[Consigned Assistance Torque]]></Comment>
+<Bits signed="1">
+<Scaled Unit="N.m" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Courant moteur">
+<Comment><![CDATA[Courant qd le DTC apparait (data Freeze Frame)]]></Comment>
+<Bits signed="1">
+<Scaled Unit="A"/>
+</Bits>
+</Data>
+<Data Name="CRC VIN">
+<Comment><![CDATA[Check]]></Comment>
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="Data A">
+<Bits>
+<List>
+<Item Value="0" Text="00000000"/>
+<Item Value="1" Text="00000001"/>
+<Item Value="2" Text="00000010"/>
+<Item Value="3" Text="00000011"/>
+<Item Value="4" Text="00000100"/>
+<Item Value="5" Text="00000101"/>
+<Item Value="6" Text="00000110"/>
+<Item Value="7" Text="00000111"/>
+<Item Value="8" Text="00001000"/>
+<Item Value="9" Text="00001001"/>
+<Item Value="10" Text="00001010"/>
+<Item Value="11" Text="00001011"/>
+<Item Value="12" Text="00001100"/>
+<Item Value="13" Text="00001101"/>
+<Item Value="14" Text="00001110"/>
+<Item Value="15" Text="00001111"/>
+<Item Value="16" Text="00010000"/>
+<Item Value="17" Text="00010001"/>
+<Item Value="18" Text="00010010"/>
+<Item Value="19" Text="00010011"/>
+<Item Value="20" Text="00010100"/>
+<Item Value="21" Text="00010101"/>
+<Item Value="22" Text="00010110"/>
+<Item Value="23" Text="00010111"/>
+<Item Value="24" Text="00011000"/>
+<Item Value="25" Text="00011001"/>
+<Item Value="26" Text="00011010"/>
+<Item Value="27" Text="00011011"/>
+<Item Value="28" Text="00011100"/>
+<Item Value="29" Text="00011101"/>
+<Item Value="30" Text="00011110"/>
+<Item Value="31" Text="00011111"/>
+<Item Value="32" Text="00100000"/>
+<Item Value="33" Text="00100001"/>
+<Item Value="34" Text="00100010"/>
+<Item Value="35" Text="00100011"/>
+<Item Value="36" Text="00100100"/>
+<Item Value="37" Text="00100101"/>
+<Item Value="38" Text="00100110"/>
+<Item Value="39" Text="00100111"/>
+<Item Value="40" Text="00101000"/>
+<Item Value="41" Text="00101001"/>
+<Item Value="42" Text="00101010"/>
+<Item Value="43" Text="00101011"/>
+<Item Value="44" Text="00101100"/>
+<Item Value="45" Text="00101101"/>
+<Item Value="46" Text="00101110"/>
+<Item Value="47" Text="00101111"/>
+<Item Value="48" Text="00110000"/>
+<Item Value="49" Text="00110001"/>
+<Item Value="50" Text="00110010"/>
+<Item Value="51" Text="00110011"/>
+<Item Value="52" Text="00110100"/>
+<Item Value="53" Text="00110101"/>
+<Item Value="54" Text="00110110"/>
+<Item Value="55" Text="00110111"/>
+<Item Value="56" Text="00111000"/>
+<Item Value="57" Text="00111001"/>
+<Item Value="58" Text="00111010"/>
+<Item Value="59" Text="00111011"/>
+<Item Value="60" Text="00111100"/>
+<Item Value="61" Text="00111101"/>
+<Item Value="62" Text="00111110"/>
+<Item Value="63" Text="00111111"/>
+<Item Value="64" Text="01000000"/>
+<Item Value="65" Text="01000001"/>
+<Item Value="66" Text="01000010"/>
+<Item Value="67" Text="01000011"/>
+<Item Value="68" Text="01000100"/>
+<Item Value="69" Text="01000101"/>
+<Item Value="70" Text="01000110"/>
+<Item Value="71" Text="01000111"/>
+<Item Value="72" Text="01001000"/>
+<Item Value="73" Text="01001001"/>
+<Item Value="74" Text="01001010"/>
+<Item Value="75" Text="01001011"/>
+<Item Value="76" Text="01001100"/>
+<Item Value="77" Text="01001101"/>
+<Item Value="78" Text="01001110"/>
+<Item Value="79" Text="01001111"/>
+<Item Value="80" Text="01010000"/>
+<Item Value="81" Text="01010001"/>
+<Item Value="82" Text="01010010"/>
+<Item Value="83" Text="01010011"/>
+<Item Value="84" Text="01010100"/>
+<Item Value="85" Text="01010101"/>
+<Item Value="86" Text="01010110"/>
+<Item Value="87" Text="01010111"/>
+<Item Value="88" Text="01011000"/>
+<Item Value="89" Text="01011001"/>
+<Item Value="90" Text="01011010"/>
+<Item Value="91" Text="01011011"/>
+<Item Value="92" Text="01011100"/>
+<Item Value="93" Text="01011101"/>
+<Item Value="94" Text="01011110"/>
+<Item Value="95" Text="01011111"/>
+<Item Value="96" Text="01100000"/>
+<Item Value="97" Text="01100001"/>
+<Item Value="98" Text="01100010"/>
+<Item Value="99" Text="01100011"/>
+<Item Value="100" Text="01100100"/>
+<Item Value="101" Text="01100101"/>
+<Item Value="102" Text="01100110"/>
+<Item Value="103" Text="01100111"/>
+<Item Value="104" Text="01101000"/>
+<Item Value="105" Text="01101001"/>
+<Item Value="106" Text="01101010"/>
+<Item Value="107" Text="01101011"/>
+<Item Value="108" Text="01101100"/>
+<Item Value="109" Text="01101101"/>
+<Item Value="110" Text="01101110"/>
+<Item Value="111" Text="01101111"/>
+<Item Value="112" Text="01110000"/>
+<Item Value="113" Text="01110001"/>
+<Item Value="114" Text="01110010"/>
+<Item Value="115" Text="01110011"/>
+<Item Value="116" Text="01110100"/>
+<Item Value="117" Text="01110101"/>
+<Item Value="118" Text="01110110"/>
+<Item Value="119" Text="01110111"/>
+<Item Value="120" Text="01111000"/>
+<Item Value="121" Text="01111001"/>
+<Item Value="122" Text="01111010"/>
+<Item Value="123" Text="01111011"/>
+<Item Value="124" Text="01111100"/>
+<Item Value="125" Text="01111101"/>
+<Item Value="126" Text="01111110"/>
+<Item Value="127" Text="01111111"/>
+<Item Value="128" Text="10000000"/>
+<Item Value="129" Text="10000001"/>
+<Item Value="130" Text="10000010"/>
+<Item Value="131" Text="10000011"/>
+<Item Value="132" Text="10000100"/>
+<Item Value="133" Text="10000101"/>
+<Item Value="134" Text="10000110"/>
+<Item Value="135" Text="10000111"/>
+<Item Value="136" Text="10001000"/>
+<Item Value="137" Text="10001001"/>
+<Item Value="138" Text="10001010"/>
+<Item Value="139" Text="10001011"/>
+<Item Value="140" Text="10001100"/>
+<Item Value="141" Text="10001101"/>
+<Item Value="142" Text="10001110"/>
+<Item Value="143" Text="10001111"/>
+<Item Value="144" Text="10010000"/>
+<Item Value="145" Text="10010001"/>
+<Item Value="146" Text="10010010"/>
+<Item Value="147" Text="10010011"/>
+<Item Value="148" Text="10010100"/>
+<Item Value="149" Text="10010101"/>
+<Item Value="150" Text="10010110"/>
+<Item Value="151" Text="10010111"/>
+<Item Value="152" Text="10011000"/>
+<Item Value="153" Text="10011001"/>
+<Item Value="154" Text="10011010"/>
+<Item Value="155" Text="10011011"/>
+<Item Value="156" Text="10011100"/>
+<Item Value="157" Text="10011101"/>
+<Item Value="158" Text="10011110"/>
+<Item Value="159" Text="10011111"/>
+<Item Value="160" Text="10100000"/>
+<Item Value="161" Text="10100001"/>
+<Item Value="162" Text="10100010"/>
+<Item Value="163" Text="10100011"/>
+<Item Value="164" Text="10100100"/>
+<Item Value="165" Text="10100101"/>
+<Item Value="166" Text="10100110"/>
+<Item Value="167" Text="10100111"/>
+<Item Value="168" Text="10101000"/>
+<Item Value="169" Text="10101001"/>
+<Item Value="170" Text="10101010"/>
+<Item Value="171" Text="10101011"/>
+<Item Value="172" Text="10101100"/>
+<Item Value="173" Text="10101101"/>
+<Item Value="174" Text="10101110"/>
+<Item Value="175" Text="10101111"/>
+<Item Value="176" Text="10110000"/>
+<Item Value="177" Text="10110001"/>
+<Item Value="178" Text="10110010"/>
+<Item Value="179" Text="10110011"/>
+<Item Value="180" Text="10110100"/>
+<Item Value="181" Text="10110101"/>
+<Item Value="182" Text="10110110"/>
+<Item Value="183" Text="10110111"/>
+<Item Value="184" Text="10111000"/>
+<Item Value="185" Text="10111001"/>
+<Item Value="186" Text="10111010"/>
+<Item Value="187" Text="10111011"/>
+<Item Value="188" Text="10111100"/>
+<Item Value="189" Text="10111101"/>
+<Item Value="190" Text="10111110"/>
+<Item Value="191" Text="10111111"/>
+<Item Value="192" Text="11000000"/>
+<Item Value="193" Text="11000001"/>
+<Item Value="194" Text="11000010"/>
+<Item Value="195" Text="11000011"/>
+<Item Value="196" Text="11000100"/>
+<Item Value="197" Text="11000101"/>
+<Item Value="198" Text="11000110"/>
+<Item Value="199" Text="11000111"/>
+<Item Value="200" Text="11001000"/>
+<Item Value="201" Text="11001001"/>
+<Item Value="202" Text="11001010"/>
+<Item Value="203" Text="11001011"/>
+<Item Value="204" Text="11001100"/>
+<Item Value="205" Text="11001101"/>
+<Item Value="206" Text="11001110"/>
+<Item Value="207" Text="11001111"/>
+<Item Value="208" Text="11010000"/>
+<Item Value="209" Text="11010001"/>
+<Item Value="210" Text="11010010"/>
+<Item Value="211" Text="11010011"/>
+<Item Value="212" Text="11010100"/>
+<Item Value="213" Text="11010101"/>
+<Item Value="214" Text="11010110"/>
+<Item Value="215" Text="11010111"/>
+<Item Value="216" Text="11011000"/>
+<Item Value="217" Text="11011001"/>
+<Item Value="218" Text="11011010"/>
+<Item Value="219" Text="11011011"/>
+<Item Value="220" Text="11011100"/>
+<Item Value="221" Text="11011101"/>
+<Item Value="222" Text="11011110"/>
+<Item Value="223" Text="11011111"/>
+<Item Value="224" Text="11100000"/>
+<Item Value="225" Text="11100001"/>
+<Item Value="226" Text="11100010"/>
+<Item Value="227" Text="11100011"/>
+<Item Value="228" Text="11100100"/>
+<Item Value="229" Text="11100101"/>
+<Item Value="230" Text="11100110"/>
+<Item Value="231" Text="11100111"/>
+<Item Value="232" Text="11101000"/>
+<Item Value="233" Text="11101001"/>
+<Item Value="234" Text="11101010"/>
+<Item Value="235" Text="11101011"/>
+<Item Value="236" Text="11101100"/>
+<Item Value="237" Text="11101101"/>
+<Item Value="238" Text="11101110"/>
+<Item Value="239" Text="11101111"/>
+<Item Value="240" Text="11110000"/>
+<Item Value="241" Text="11110001"/>
+<Item Value="242" Text="11110010"/>
+<Item Value="243" Text="11110011"/>
+<Item Value="244" Text="11110100"/>
+<Item Value="245" Text="11110101"/>
+<Item Value="246" Text="11110110"/>
+<Item Value="247" Text="11110111"/>
+<Item Value="248" Text="11111000"/>
+<Item Value="249" Text="11111001"/>
+<Item Value="250" Text="11111010"/>
+<Item Value="251" Text="11111011"/>
+<Item Value="252" Text="11111100"/>
+<Item Value="253" Text="11111101"/>
+<Item Value="254" Text="11111110"/>
+<Item Value="255" Text="11111111"/></List>
+</Bits>
+</Data>
+<Data Name="Data B">
+<Bits>
+<List>
+<Item Value="0" Text="00000000"/>
+<Item Value="1" Text="00000001"/>
+<Item Value="2" Text="00000010"/>
+<Item Value="3" Text="00000011"/>
+<Item Value="4" Text="00000100"/>
+<Item Value="5" Text="00000101"/>
+<Item Value="6" Text="00000110"/>
+<Item Value="7" Text="00000111"/>
+<Item Value="8" Text="00001000"/>
+<Item Value="9" Text="00001001"/>
+<Item Value="10" Text="00001010"/>
+<Item Value="11" Text="00001011"/>
+<Item Value="12" Text="00001100"/>
+<Item Value="13" Text="00001101"/>
+<Item Value="14" Text="00001110"/>
+<Item Value="15" Text="00001111"/>
+<Item Value="16" Text="00010000"/>
+<Item Value="17" Text="00010001"/>
+<Item Value="18" Text="00010010"/>
+<Item Value="19" Text="00010011"/>
+<Item Value="20" Text="00010100"/>
+<Item Value="21" Text="00010101"/>
+<Item Value="22" Text="00010110"/>
+<Item Value="23" Text="00010111"/>
+<Item Value="24" Text="00011000"/>
+<Item Value="25" Text="00011001"/>
+<Item Value="26" Text="00011010"/>
+<Item Value="27" Text="00011011"/>
+<Item Value="28" Text="00011100"/>
+<Item Value="29" Text="00011101"/>
+<Item Value="30" Text="00011110"/>
+<Item Value="31" Text="00011111"/>
+<Item Value="32" Text="00100000"/>
+<Item Value="33" Text="00100001"/>
+<Item Value="34" Text="00100010"/>
+<Item Value="35" Text="00100011"/>
+<Item Value="36" Text="00100100"/>
+<Item Value="37" Text="00100101"/>
+<Item Value="38" Text="00100110"/>
+<Item Value="39" Text="00100111"/>
+<Item Value="40" Text="00101000"/>
+<Item Value="41" Text="00101001"/>
+<Item Value="42" Text="00101010"/>
+<Item Value="43" Text="00101011"/>
+<Item Value="44" Text="00101100"/>
+<Item Value="45" Text="00101101"/>
+<Item Value="46" Text="00101110"/>
+<Item Value="47" Text="00101111"/>
+<Item Value="48" Text="00110000"/>
+<Item Value="49" Text="00110001"/>
+<Item Value="50" Text="00110010"/>
+<Item Value="51" Text="00110011"/>
+<Item Value="52" Text="00110100"/>
+<Item Value="53" Text="00110101"/>
+<Item Value="54" Text="00110110"/>
+<Item Value="55" Text="00110111"/>
+<Item Value="56" Text="00111000"/>
+<Item Value="57" Text="00111001"/>
+<Item Value="58" Text="00111010"/>
+<Item Value="59" Text="00111011"/>
+<Item Value="60" Text="00111100"/>
+<Item Value="61" Text="00111101"/>
+<Item Value="62" Text="00111110"/>
+<Item Value="63" Text="00111111"/>
+<Item Value="64" Text="01000000"/>
+<Item Value="65" Text="01000001"/>
+<Item Value="66" Text="01000010"/>
+<Item Value="67" Text="01000011"/>
+<Item Value="68" Text="01000100"/>
+<Item Value="69" Text="01000101"/>
+<Item Value="70" Text="01000110"/>
+<Item Value="71" Text="01000111"/>
+<Item Value="72" Text="01001000"/>
+<Item Value="73" Text="01001001"/>
+<Item Value="74" Text="01001010"/>
+<Item Value="75" Text="01001011"/>
+<Item Value="76" Text="01001100"/>
+<Item Value="77" Text="01001101"/>
+<Item Value="78" Text="01001110"/>
+<Item Value="79" Text="01001111"/>
+<Item Value="80" Text="01010000"/>
+<Item Value="81" Text="01010001"/>
+<Item Value="82" Text="01010010"/>
+<Item Value="83" Text="01010011"/>
+<Item Value="84" Text="01010100"/>
+<Item Value="85" Text="01010101"/>
+<Item Value="86" Text="01010110"/>
+<Item Value="87" Text="01010111"/>
+<Item Value="88" Text="01011000"/>
+<Item Value="89" Text="01011001"/>
+<Item Value="90" Text="01011010"/>
+<Item Value="91" Text="01011011"/>
+<Item Value="92" Text="01011100"/>
+<Item Value="93" Text="01011101"/>
+<Item Value="94" Text="01011110"/>
+<Item Value="95" Text="01011111"/>
+<Item Value="96" Text="01100000"/>
+<Item Value="97" Text="01100001"/>
+<Item Value="98" Text="01100010"/>
+<Item Value="99" Text="01100011"/>
+<Item Value="100" Text="01100100"/>
+<Item Value="101" Text="01100101"/>
+<Item Value="102" Text="01100110"/>
+<Item Value="103" Text="01100111"/>
+<Item Value="104" Text="01101000"/>
+<Item Value="105" Text="01101001"/>
+<Item Value="106" Text="01101010"/>
+<Item Value="107" Text="01101011"/>
+<Item Value="108" Text="01101100"/>
+<Item Value="109" Text="01101101"/>
+<Item Value="110" Text="01101110"/>
+<Item Value="111" Text="01101111"/>
+<Item Value="112" Text="01110000"/>
+<Item Value="113" Text="01110001"/>
+<Item Value="114" Text="01110010"/>
+<Item Value="115" Text="01110011"/>
+<Item Value="116" Text="01110100"/>
+<Item Value="117" Text="01110101"/>
+<Item Value="118" Text="01110110"/>
+<Item Value="119" Text="01110111"/>
+<Item Value="120" Text="01111000"/>
+<Item Value="121" Text="01111001"/>
+<Item Value="122" Text="01111010"/>
+<Item Value="123" Text="01111011"/>
+<Item Value="124" Text="01111100"/>
+<Item Value="125" Text="01111101"/>
+<Item Value="126" Text="01111110"/>
+<Item Value="127" Text="01111111"/>
+<Item Value="128" Text="10000000"/>
+<Item Value="129" Text="10000001"/>
+<Item Value="130" Text="10000010"/>
+<Item Value="131" Text="10000011"/>
+<Item Value="132" Text="10000100"/>
+<Item Value="133" Text="10000101"/>
+<Item Value="134" Text="10000110"/>
+<Item Value="135" Text="10000111"/>
+<Item Value="136" Text="10001000"/>
+<Item Value="137" Text="10001001"/>
+<Item Value="138" Text="10001010"/>
+<Item Value="139" Text="10001011"/>
+<Item Value="140" Text="10001100"/>
+<Item Value="141" Text="10001101"/>
+<Item Value="142" Text="10001110"/>
+<Item Value="143" Text="10001111"/>
+<Item Value="144" Text="10010000"/>
+<Item Value="145" Text="10010001"/>
+<Item Value="146" Text="10010010"/>
+<Item Value="147" Text="10010011"/>
+<Item Value="148" Text="10010100"/>
+<Item Value="149" Text="10010101"/>
+<Item Value="150" Text="10010110"/>
+<Item Value="151" Text="10010111"/>
+<Item Value="152" Text="10011000"/>
+<Item Value="153" Text="10011001"/>
+<Item Value="154" Text="10011010"/>
+<Item Value="155" Text="10011011"/>
+<Item Value="156" Text="10011100"/>
+<Item Value="157" Text="10011101"/>
+<Item Value="158" Text="10011110"/>
+<Item Value="159" Text="10011111"/>
+<Item Value="160" Text="10100000"/>
+<Item Value="161" Text="10100001"/>
+<Item Value="162" Text="10100010"/>
+<Item Value="163" Text="10100011"/>
+<Item Value="164" Text="10100100"/>
+<Item Value="165" Text="10100101"/>
+<Item Value="166" Text="10100110"/>
+<Item Value="167" Text="10100111"/>
+<Item Value="168" Text="10101000"/>
+<Item Value="169" Text="10101001"/>
+<Item Value="170" Text="10101010"/>
+<Item Value="171" Text="10101011"/>
+<Item Value="172" Text="10101100"/>
+<Item Value="173" Text="10101101"/>
+<Item Value="174" Text="10101110"/>
+<Item Value="175" Text="10101111"/>
+<Item Value="176" Text="10110000"/>
+<Item Value="177" Text="10110001"/>
+<Item Value="178" Text="10110010"/>
+<Item Value="179" Text="10110011"/>
+<Item Value="180" Text="10110100"/>
+<Item Value="181" Text="10110101"/>
+<Item Value="182" Text="10110110"/>
+<Item Value="183" Text="10110111"/>
+<Item Value="184" Text="10111000"/>
+<Item Value="185" Text="10111001"/>
+<Item Value="186" Text="10111010"/>
+<Item Value="187" Text="10111011"/>
+<Item Value="188" Text="10111100"/>
+<Item Value="189" Text="10111101"/>
+<Item Value="190" Text="10111110"/>
+<Item Value="191" Text="10111111"/>
+<Item Value="192" Text="11000000"/>
+<Item Value="193" Text="11000001"/>
+<Item Value="194" Text="11000010"/>
+<Item Value="195" Text="11000011"/>
+<Item Value="196" Text="11000100"/>
+<Item Value="197" Text="11000101"/>
+<Item Value="198" Text="11000110"/>
+<Item Value="199" Text="11000111"/>
+<Item Value="200" Text="11001000"/>
+<Item Value="201" Text="11001001"/>
+<Item Value="202" Text="11001010"/>
+<Item Value="203" Text="11001011"/>
+<Item Value="204" Text="11001100"/>
+<Item Value="205" Text="11001101"/>
+<Item Value="206" Text="11001110"/>
+<Item Value="207" Text="11001111"/>
+<Item Value="208" Text="11010000"/>
+<Item Value="209" Text="11010001"/>
+<Item Value="210" Text="11010010"/>
+<Item Value="211" Text="11010011"/>
+<Item Value="212" Text="11010100"/>
+<Item Value="213" Text="11010101"/>
+<Item Value="214" Text="11010110"/>
+<Item Value="215" Text="11010111"/>
+<Item Value="216" Text="11011000"/>
+<Item Value="217" Text="11011001"/>
+<Item Value="218" Text="11011010"/>
+<Item Value="219" Text="11011011"/>
+<Item Value="220" Text="11011100"/>
+<Item Value="221" Text="11011101"/>
+<Item Value="222" Text="11011110"/>
+<Item Value="223" Text="11011111"/>
+<Item Value="224" Text="11100000"/>
+<Item Value="225" Text="11100001"/>
+<Item Value="226" Text="11100010"/>
+<Item Value="227" Text="11100011"/>
+<Item Value="228" Text="11100100"/>
+<Item Value="229" Text="11100101"/>
+<Item Value="230" Text="11100110"/>
+<Item Value="231" Text="11100111"/>
+<Item Value="232" Text="11101000"/>
+<Item Value="233" Text="11101001"/>
+<Item Value="234" Text="11101010"/>
+<Item Value="235" Text="11101011"/>
+<Item Value="236" Text="11101100"/>
+<Item Value="237" Text="11101101"/>
+<Item Value="238" Text="11101110"/>
+<Item Value="239" Text="11101111"/>
+<Item Value="240" Text="11110000"/>
+<Item Value="241" Text="11110001"/>
+<Item Value="242" Text="11110010"/>
+<Item Value="243" Text="11110011"/>
+<Item Value="244" Text="11110100"/>
+<Item Value="245" Text="11110101"/>
+<Item Value="246" Text="11110110"/>
+<Item Value="247" Text="11110111"/>
+<Item Value="248" Text="11111000"/>
+<Item Value="249" Text="11111001"/>
+<Item Value="250" Text="11111010"/>
+<Item Value="251" Text="11111011"/>
+<Item Value="252" Text="11111100"/>
+<Item Value="253" Text="11111101"/>
+<Item Value="254" Text="11111110"/>
+<Item Value="255" Text="11111111"/></List>
+</Bits>
+</Data>
+<Data Name="Data C">
+<Bits>
+<List>
+<Item Value="0" Text="00000000"/>
+<Item Value="1" Text="00000001"/>
+<Item Value="2" Text="00000010"/>
+<Item Value="3" Text="00000011"/>
+<Item Value="4" Text="00000100"/>
+<Item Value="5" Text="00000101"/>
+<Item Value="6" Text="00000110"/>
+<Item Value="7" Text="00000111"/>
+<Item Value="8" Text="00001000"/>
+<Item Value="9" Text="00001001"/>
+<Item Value="10" Text="00001010"/>
+<Item Value="11" Text="00001011"/>
+<Item Value="12" Text="00001100"/>
+<Item Value="13" Text="00001101"/>
+<Item Value="14" Text="00001110"/>
+<Item Value="15" Text="00001111"/>
+<Item Value="16" Text="00010000"/>
+<Item Value="17" Text="00010001"/>
+<Item Value="18" Text="00010010"/>
+<Item Value="19" Text="00010011"/>
+<Item Value="20" Text="00010100"/>
+<Item Value="21" Text="00010101"/>
+<Item Value="22" Text="00010110"/>
+<Item Value="23" Text="00010111"/>
+<Item Value="24" Text="00011000"/>
+<Item Value="25" Text="00011001"/>
+<Item Value="26" Text="00011010"/>
+<Item Value="27" Text="00011011"/>
+<Item Value="28" Text="00011100"/>
+<Item Value="29" Text="00011101"/>
+<Item Value="30" Text="00011110"/>
+<Item Value="31" Text="00011111"/>
+<Item Value="32" Text="00100000"/>
+<Item Value="33" Text="00100001"/>
+<Item Value="34" Text="00100010"/>
+<Item Value="35" Text="00100011"/>
+<Item Value="36" Text="00100100"/>
+<Item Value="37" Text="00100101"/>
+<Item Value="38" Text="00100110"/>
+<Item Value="39" Text="00100111"/>
+<Item Value="40" Text="00101000"/>
+<Item Value="41" Text="00101001"/>
+<Item Value="42" Text="00101010"/>
+<Item Value="43" Text="00101011"/>
+<Item Value="44" Text="00101100"/>
+<Item Value="45" Text="00101101"/>
+<Item Value="46" Text="00101110"/>
+<Item Value="47" Text="00101111"/>
+<Item Value="48" Text="00110000"/>
+<Item Value="49" Text="00110001"/>
+<Item Value="50" Text="00110010"/>
+<Item Value="51" Text="00110011"/>
+<Item Value="52" Text="00110100"/>
+<Item Value="53" Text="00110101"/>
+<Item Value="54" Text="00110110"/>
+<Item Value="55" Text="00110111"/>
+<Item Value="56" Text="00111000"/>
+<Item Value="57" Text="00111001"/>
+<Item Value="58" Text="00111010"/>
+<Item Value="59" Text="00111011"/>
+<Item Value="60" Text="00111100"/>
+<Item Value="61" Text="00111101"/>
+<Item Value="62" Text="00111110"/>
+<Item Value="63" Text="00111111"/>
+<Item Value="64" Text="01000000"/>
+<Item Value="65" Text="01000001"/>
+<Item Value="66" Text="01000010"/>
+<Item Value="67" Text="01000011"/>
+<Item Value="68" Text="01000100"/>
+<Item Value="69" Text="01000101"/>
+<Item Value="70" Text="01000110"/>
+<Item Value="71" Text="01000111"/>
+<Item Value="72" Text="01001000"/>
+<Item Value="73" Text="01001001"/>
+<Item Value="74" Text="01001010"/>
+<Item Value="75" Text="01001011"/>
+<Item Value="76" Text="01001100"/>
+<Item Value="77" Text="01001101"/>
+<Item Value="78" Text="01001110"/>
+<Item Value="79" Text="01001111"/>
+<Item Value="80" Text="01010000"/>
+<Item Value="81" Text="01010001"/>
+<Item Value="82" Text="01010010"/>
+<Item Value="83" Text="01010011"/>
+<Item Value="84" Text="01010100"/>
+<Item Value="85" Text="01010101"/>
+<Item Value="86" Text="01010110"/>
+<Item Value="87" Text="01010111"/>
+<Item Value="88" Text="01011000"/>
+<Item Value="89" Text="01011001"/>
+<Item Value="90" Text="01011010"/>
+<Item Value="91" Text="01011011"/>
+<Item Value="92" Text="01011100"/>
+<Item Value="93" Text="01011101"/>
+<Item Value="94" Text="01011110"/>
+<Item Value="95" Text="01011111"/>
+<Item Value="96" Text="01100000"/>
+<Item Value="97" Text="01100001"/>
+<Item Value="98" Text="01100010"/>
+<Item Value="99" Text="01100011"/>
+<Item Value="100" Text="01100100"/>
+<Item Value="101" Text="01100101"/>
+<Item Value="102" Text="01100110"/>
+<Item Value="103" Text="01100111"/>
+<Item Value="104" Text="01101000"/>
+<Item Value="105" Text="01101001"/>
+<Item Value="106" Text="01101010"/>
+<Item Value="107" Text="01101011"/>
+<Item Value="108" Text="01101100"/>
+<Item Value="109" Text="01101101"/>
+<Item Value="110" Text="01101110"/>
+<Item Value="111" Text="01101111"/>
+<Item Value="112" Text="01110000"/>
+<Item Value="113" Text="01110001"/>
+<Item Value="114" Text="01110010"/>
+<Item Value="115" Text="01110011"/>
+<Item Value="116" Text="01110100"/>
+<Item Value="117" Text="01110101"/>
+<Item Value="118" Text="01110110"/>
+<Item Value="119" Text="01110111"/>
+<Item Value="120" Text="01111000"/>
+<Item Value="121" Text="01111001"/>
+<Item Value="122" Text="01111010"/>
+<Item Value="123" Text="01111011"/>
+<Item Value="124" Text="01111100"/>
+<Item Value="125" Text="01111101"/>
+<Item Value="126" Text="01111110"/>
+<Item Value="127" Text="01111111"/>
+<Item Value="128" Text="10000000"/>
+<Item Value="129" Text="10000001"/>
+<Item Value="130" Text="10000010"/>
+<Item Value="131" Text="10000011"/>
+<Item Value="132" Text="10000100"/>
+<Item Value="133" Text="10000101"/>
+<Item Value="134" Text="10000110"/>
+<Item Value="135" Text="10000111"/>
+<Item Value="136" Text="10001000"/>
+<Item Value="137" Text="10001001"/>
+<Item Value="138" Text="10001010"/>
+<Item Value="139" Text="10001011"/>
+<Item Value="140" Text="10001100"/>
+<Item Value="141" Text="10001101"/>
+<Item Value="142" Text="10001110"/>
+<Item Value="143" Text="10001111"/>
+<Item Value="144" Text="10010000"/>
+<Item Value="145" Text="10010001"/>
+<Item Value="146" Text="10010010"/>
+<Item Value="147" Text="10010011"/>
+<Item Value="148" Text="10010100"/>
+<Item Value="149" Text="10010101"/>
+<Item Value="150" Text="10010110"/>
+<Item Value="151" Text="10010111"/>
+<Item Value="152" Text="10011000"/>
+<Item Value="153" Text="10011001"/>
+<Item Value="154" Text="10011010"/>
+<Item Value="155" Text="10011011"/>
+<Item Value="156" Text="10011100"/>
+<Item Value="157" Text="10011101"/>
+<Item Value="158" Text="10011110"/>
+<Item Value="159" Text="10011111"/>
+<Item Value="160" Text="10100000"/>
+<Item Value="161" Text="10100001"/>
+<Item Value="162" Text="10100010"/>
+<Item Value="163" Text="10100011"/>
+<Item Value="164" Text="10100100"/>
+<Item Value="165" Text="10100101"/>
+<Item Value="166" Text="10100110"/>
+<Item Value="167" Text="10100111"/>
+<Item Value="168" Text="10101000"/>
+<Item Value="169" Text="10101001"/>
+<Item Value="170" Text="10101010"/>
+<Item Value="171" Text="10101011"/>
+<Item Value="172" Text="10101100"/>
+<Item Value="173" Text="10101101"/>
+<Item Value="174" Text="10101110"/>
+<Item Value="175" Text="10101111"/>
+<Item Value="176" Text="10110000"/>
+<Item Value="177" Text="10110001"/>
+<Item Value="178" Text="10110010"/>
+<Item Value="179" Text="10110011"/>
+<Item Value="180" Text="10110100"/>
+<Item Value="181" Text="10110101"/>
+<Item Value="182" Text="10110110"/>
+<Item Value="183" Text="10110111"/>
+<Item Value="184" Text="10111000"/>
+<Item Value="185" Text="10111001"/>
+<Item Value="186" Text="10111010"/>
+<Item Value="187" Text="10111011"/>
+<Item Value="188" Text="10111100"/>
+<Item Value="189" Text="10111101"/>
+<Item Value="190" Text="10111110"/>
+<Item Value="191" Text="10111111"/>
+<Item Value="192" Text="11000000"/>
+<Item Value="193" Text="11000001"/>
+<Item Value="194" Text="11000010"/>
+<Item Value="195" Text="11000011"/>
+<Item Value="196" Text="11000100"/>
+<Item Value="197" Text="11000101"/>
+<Item Value="198" Text="11000110"/>
+<Item Value="199" Text="11000111"/>
+<Item Value="200" Text="11001000"/>
+<Item Value="201" Text="11001001"/>
+<Item Value="202" Text="11001010"/>
+<Item Value="203" Text="11001011"/>
+<Item Value="204" Text="11001100"/>
+<Item Value="205" Text="11001101"/>
+<Item Value="206" Text="11001110"/>
+<Item Value="207" Text="11001111"/>
+<Item Value="208" Text="11010000"/>
+<Item Value="209" Text="11010001"/>
+<Item Value="210" Text="11010010"/>
+<Item Value="211" Text="11010011"/>
+<Item Value="212" Text="11010100"/>
+<Item Value="213" Text="11010101"/>
+<Item Value="214" Text="11010110"/>
+<Item Value="215" Text="11010111"/>
+<Item Value="216" Text="11011000"/>
+<Item Value="217" Text="11011001"/>
+<Item Value="218" Text="11011010"/>
+<Item Value="219" Text="11011011"/>
+<Item Value="220" Text="11011100"/>
+<Item Value="221" Text="11011101"/>
+<Item Value="222" Text="11011110"/>
+<Item Value="223" Text="11011111"/>
+<Item Value="224" Text="11100000"/>
+<Item Value="225" Text="11100001"/>
+<Item Value="226" Text="11100010"/>
+<Item Value="227" Text="11100011"/>
+<Item Value="228" Text="11100100"/>
+<Item Value="229" Text="11100101"/>
+<Item Value="230" Text="11100110"/>
+<Item Value="231" Text="11100111"/>
+<Item Value="232" Text="11101000"/>
+<Item Value="233" Text="11101001"/>
+<Item Value="234" Text="11101010"/>
+<Item Value="235" Text="11101011"/>
+<Item Value="236" Text="11101100"/>
+<Item Value="237" Text="11101101"/>
+<Item Value="238" Text="11101110"/>
+<Item Value="239" Text="11101111"/>
+<Item Value="240" Text="11110000"/>
+<Item Value="241" Text="11110001"/>
+<Item Value="242" Text="11110010"/>
+<Item Value="243" Text="11110011"/>
+<Item Value="244" Text="11110100"/>
+<Item Value="245" Text="11110101"/>
+<Item Value="246" Text="11110110"/>
+<Item Value="247" Text="11110111"/>
+<Item Value="248" Text="11111000"/>
+<Item Value="249" Text="11111001"/>
+<Item Value="250" Text="11111010"/>
+<Item Value="251" Text="11111011"/>
+<Item Value="252" Text="11111100"/>
+<Item Value="253" Text="11111101"/>
+<Item Value="254" Text="11111110"/>
+<Item Value="255" Text="11111111"/></List>
+</Bits>
+</Data>
+<Data Name="Data D">
+<Bits>
+<List>
+<Item Value="0" Text="00000000"/>
+<Item Value="1" Text="00000001"/>
+<Item Value="2" Text="00000010"/>
+<Item Value="3" Text="00000011"/>
+<Item Value="4" Text="00000100"/>
+<Item Value="5" Text="00000101"/>
+<Item Value="6" Text="00000110"/>
+<Item Value="7" Text="00000111"/>
+<Item Value="8" Text="00001000"/>
+<Item Value="9" Text="00001001"/>
+<Item Value="10" Text="00001010"/>
+<Item Value="11" Text="00001011"/>
+<Item Value="12" Text="00001100"/>
+<Item Value="13" Text="00001101"/>
+<Item Value="14" Text="00001110"/>
+<Item Value="15" Text="00001111"/>
+<Item Value="16" Text="00010000"/>
+<Item Value="17" Text="00010001"/>
+<Item Value="18" Text="00010010"/>
+<Item Value="19" Text="00010011"/>
+<Item Value="20" Text="00010100"/>
+<Item Value="21" Text="00010101"/>
+<Item Value="22" Text="00010110"/>
+<Item Value="23" Text="00010111"/>
+<Item Value="24" Text="00011000"/>
+<Item Value="25" Text="00011001"/>
+<Item Value="26" Text="00011010"/>
+<Item Value="27" Text="00011011"/>
+<Item Value="28" Text="00011100"/>
+<Item Value="29" Text="00011101"/>
+<Item Value="30" Text="00011110"/>
+<Item Value="31" Text="00011111"/>
+<Item Value="32" Text="00100000"/>
+<Item Value="33" Text="00100001"/>
+<Item Value="34" Text="00100010"/>
+<Item Value="35" Text="00100011"/>
+<Item Value="36" Text="00100100"/>
+<Item Value="37" Text="00100101"/>
+<Item Value="38" Text="00100110"/>
+<Item Value="39" Text="00100111"/>
+<Item Value="40" Text="00101000"/>
+<Item Value="41" Text="00101001"/>
+<Item Value="42" Text="00101010"/>
+<Item Value="43" Text="00101011"/>
+<Item Value="44" Text="00101100"/>
+<Item Value="45" Text="00101101"/>
+<Item Value="46" Text="00101110"/>
+<Item Value="47" Text="00101111"/>
+<Item Value="48" Text="00110000"/>
+<Item Value="49" Text="00110001"/>
+<Item Value="50" Text="00110010"/>
+<Item Value="51" Text="00110011"/>
+<Item Value="52" Text="00110100"/>
+<Item Value="53" Text="00110101"/>
+<Item Value="54" Text="00110110"/>
+<Item Value="55" Text="00110111"/>
+<Item Value="56" Text="00111000"/>
+<Item Value="57" Text="00111001"/>
+<Item Value="58" Text="00111010"/>
+<Item Value="59" Text="00111011"/>
+<Item Value="60" Text="00111100"/>
+<Item Value="61" Text="00111101"/>
+<Item Value="62" Text="00111110"/>
+<Item Value="63" Text="00111111"/>
+<Item Value="64" Text="01000000"/>
+<Item Value="65" Text="01000001"/>
+<Item Value="66" Text="01000010"/>
+<Item Value="67" Text="01000011"/>
+<Item Value="68" Text="01000100"/>
+<Item Value="69" Text="01000101"/>
+<Item Value="70" Text="01000110"/>
+<Item Value="71" Text="01000111"/>
+<Item Value="72" Text="01001000"/>
+<Item Value="73" Text="01001001"/>
+<Item Value="74" Text="01001010"/>
+<Item Value="75" Text="01001011"/>
+<Item Value="76" Text="01001100"/>
+<Item Value="77" Text="01001101"/>
+<Item Value="78" Text="01001110"/>
+<Item Value="79" Text="01001111"/>
+<Item Value="80" Text="01010000"/>
+<Item Value="81" Text="01010001"/>
+<Item Value="82" Text="01010010"/>
+<Item Value="83" Text="01010011"/>
+<Item Value="84" Text="01010100"/>
+<Item Value="85" Text="01010101"/>
+<Item Value="86" Text="01010110"/>
+<Item Value="87" Text="01010111"/>
+<Item Value="88" Text="01011000"/>
+<Item Value="89" Text="01011001"/>
+<Item Value="90" Text="01011010"/>
+<Item Value="91" Text="01011011"/>
+<Item Value="92" Text="01011100"/>
+<Item Value="93" Text="01011101"/>
+<Item Value="94" Text="01011110"/>
+<Item Value="95" Text="01011111"/>
+<Item Value="96" Text="01100000"/>
+<Item Value="97" Text="01100001"/>
+<Item Value="98" Text="01100010"/>
+<Item Value="99" Text="01100011"/>
+<Item Value="100" Text="01100100"/>
+<Item Value="101" Text="01100101"/>
+<Item Value="102" Text="01100110"/>
+<Item Value="103" Text="01100111"/>
+<Item Value="104" Text="01101000"/>
+<Item Value="105" Text="01101001"/>
+<Item Value="106" Text="01101010"/>
+<Item Value="107" Text="01101011"/>
+<Item Value="108" Text="01101100"/>
+<Item Value="109" Text="01101101"/>
+<Item Value="110" Text="01101110"/>
+<Item Value="111" Text="01101111"/>
+<Item Value="112" Text="01110000"/>
+<Item Value="113" Text="01110001"/>
+<Item Value="114" Text="01110010"/>
+<Item Value="115" Text="01110011"/>
+<Item Value="116" Text="01110100"/>
+<Item Value="117" Text="01110101"/>
+<Item Value="118" Text="01110110"/>
+<Item Value="119" Text="01110111"/>
+<Item Value="120" Text="01111000"/>
+<Item Value="121" Text="01111001"/>
+<Item Value="122" Text="01111010"/>
+<Item Value="123" Text="01111011"/>
+<Item Value="124" Text="01111100"/>
+<Item Value="125" Text="01111101"/>
+<Item Value="126" Text="01111110"/>
+<Item Value="127" Text="01111111"/>
+<Item Value="128" Text="10000000"/>
+<Item Value="129" Text="10000001"/>
+<Item Value="130" Text="10000010"/>
+<Item Value="131" Text="10000011"/>
+<Item Value="132" Text="10000100"/>
+<Item Value="133" Text="10000101"/>
+<Item Value="134" Text="10000110"/>
+<Item Value="135" Text="10000111"/>
+<Item Value="136" Text="10001000"/>
+<Item Value="137" Text="10001001"/>
+<Item Value="138" Text="10001010"/>
+<Item Value="139" Text="10001011"/>
+<Item Value="140" Text="10001100"/>
+<Item Value="141" Text="10001101"/>
+<Item Value="142" Text="10001110"/>
+<Item Value="143" Text="10001111"/>
+<Item Value="144" Text="10010000"/>
+<Item Value="145" Text="10010001"/>
+<Item Value="146" Text="10010010"/>
+<Item Value="147" Text="10010011"/>
+<Item Value="148" Text="10010100"/>
+<Item Value="149" Text="10010101"/>
+<Item Value="150" Text="10010110"/>
+<Item Value="151" Text="10010111"/>
+<Item Value="152" Text="10011000"/>
+<Item Value="153" Text="10011001"/>
+<Item Value="154" Text="10011010"/>
+<Item Value="155" Text="10011011"/>
+<Item Value="156" Text="10011100"/>
+<Item Value="157" Text="10011101"/>
+<Item Value="158" Text="10011110"/>
+<Item Value="159" Text="10011111"/>
+<Item Value="160" Text="10100000"/>
+<Item Value="161" Text="10100001"/>
+<Item Value="162" Text="10100010"/>
+<Item Value="163" Text="10100011"/>
+<Item Value="164" Text="10100100"/>
+<Item Value="165" Text="10100101"/>
+<Item Value="166" Text="10100110"/>
+<Item Value="167" Text="10100111"/>
+<Item Value="168" Text="10101000"/>
+<Item Value="169" Text="10101001"/>
+<Item Value="170" Text="10101010"/>
+<Item Value="171" Text="10101011"/>
+<Item Value="172" Text="10101100"/>
+<Item Value="173" Text="10101101"/>
+<Item Value="174" Text="10101110"/>
+<Item Value="175" Text="10101111"/>
+<Item Value="176" Text="10110000"/>
+<Item Value="177" Text="10110001"/>
+<Item Value="178" Text="10110010"/>
+<Item Value="179" Text="10110011"/>
+<Item Value="180" Text="10110100"/>
+<Item Value="181" Text="10110101"/>
+<Item Value="182" Text="10110110"/>
+<Item Value="183" Text="10110111"/>
+<Item Value="184" Text="10111000"/>
+<Item Value="185" Text="10111001"/>
+<Item Value="186" Text="10111010"/>
+<Item Value="187" Text="10111011"/>
+<Item Value="188" Text="10111100"/>
+<Item Value="189" Text="10111101"/>
+<Item Value="190" Text="10111110"/>
+<Item Value="191" Text="10111111"/>
+<Item Value="192" Text="11000000"/>
+<Item Value="193" Text="11000001"/>
+<Item Value="194" Text="11000010"/>
+<Item Value="195" Text="11000011"/>
+<Item Value="196" Text="11000100"/>
+<Item Value="197" Text="11000101"/>
+<Item Value="198" Text="11000110"/>
+<Item Value="199" Text="11000111"/>
+<Item Value="200" Text="11001000"/>
+<Item Value="201" Text="11001001"/>
+<Item Value="202" Text="11001010"/>
+<Item Value="203" Text="11001011"/>
+<Item Value="204" Text="11001100"/>
+<Item Value="205" Text="11001101"/>
+<Item Value="206" Text="11001110"/>
+<Item Value="207" Text="11001111"/>
+<Item Value="208" Text="11010000"/>
+<Item Value="209" Text="11010001"/>
+<Item Value="210" Text="11010010"/>
+<Item Value="211" Text="11010011"/>
+<Item Value="212" Text="11010100"/>
+<Item Value="213" Text="11010101"/>
+<Item Value="214" Text="11010110"/>
+<Item Value="215" Text="11010111"/>
+<Item Value="216" Text="11011000"/>
+<Item Value="217" Text="11011001"/>
+<Item Value="218" Text="11011010"/>
+<Item Value="219" Text="11011011"/>
+<Item Value="220" Text="11011100"/>
+<Item Value="221" Text="11011101"/>
+<Item Value="222" Text="11011110"/>
+<Item Value="223" Text="11011111"/>
+<Item Value="224" Text="11100000"/>
+<Item Value="225" Text="11100001"/>
+<Item Value="226" Text="11100010"/>
+<Item Value="227" Text="11100011"/>
+<Item Value="228" Text="11100100"/>
+<Item Value="229" Text="11100101"/>
+<Item Value="230" Text="11100110"/>
+<Item Value="231" Text="11100111"/>
+<Item Value="232" Text="11101000"/>
+<Item Value="233" Text="11101001"/>
+<Item Value="234" Text="11101010"/>
+<Item Value="235" Text="11101011"/>
+<Item Value="236" Text="11101100"/>
+<Item Value="237" Text="11101101"/>
+<Item Value="238" Text="11101110"/>
+<Item Value="239" Text="11101111"/>
+<Item Value="240" Text="11110000"/>
+<Item Value="241" Text="11110001"/>
+<Item Value="242" Text="11110010"/>
+<Item Value="243" Text="11110011"/>
+<Item Value="244" Text="11110100"/>
+<Item Value="245" Text="11110101"/>
+<Item Value="246" Text="11110110"/>
+<Item Value="247" Text="11110111"/>
+<Item Value="248" Text="11111000"/>
+<Item Value="249" Text="11111001"/>
+<Item Value="250" Text="11111010"/>
+<Item Value="251" Text="11111011"/>
+<Item Value="252" Text="11111100"/>
+<Item Value="253" Text="11111101"/>
+<Item Value="254" Text="11111110"/>
+<Item Value="255" Text="11111111"/></List>
+</Bits>
+</Data>
+<Data Name="Derating Level">
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="Diagnostic Identification Code">
+<Bytes count="1"/>
+</Data>
+<Data Name="DTC status - code panne">
+<Bits count="5">
+<List>
+<Item Value="0" Text="not used"/>
+<Item Value="1" Text="circuit ouvert"/>
+<Item Value="2" Text="court circuit à la masse"/>
+<Item Value="3" Text="court circuit au +BATT"/>
+<Item Value="4" Text="paramètre à la limite min"/>
+<Item Value="5" Text="paramètre à la limite max"/>
+<Item Value="6" Text="incohérence"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="8" Text="sous le seuil min"/>
+<Item Value="9" Text="au dessus du seuil max"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="12" Text="lignes court-circuitées"/>
+<Item Value="13" Text="problème électronique interne"/>
+<Item Value="14" Text="problème réseau"/>
+<Item Value="15" Text="Remote diagnostic"/>
+<Item Value="16" Text="communication perturbée"/>
+<Item Value="17" Text="microcoupures"/>
+<Item Value="18" Text="tension anormale"/>
+<Item Value="19" Text="valeur hors plage"/>
+<Item Value="20" Text="CO ou CC à la masse"/>
+<Item Value="21" Text="CO ou CC au +BATT"/>
+<Item Value="22" Text="init ou config invalide"/></List>
+</Bits>
+</Data>
+<Data Name="DTC status - flag memorisé">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non mémorisé"/>
+<Item Value="1" Text="mémorisé"/></List>
+</Bits>
+</Data>
+<Data Name="DTC status - flag present">
+<Bits count="1">
+<List>
+<Item Value="0" Text="non présent"/>
+<Item Value="1" Text="présent"/></List>
+</Bits>
+</Data>
+<Data Name="DTC status - type">
+<Bits count="1">
+<List>
+<Item Value="0" Text="standard status"/>
+<Item Value="1" Text="specific status"/></List>
+</Bits>
+</Data>
+<Data Name="ECU production date">
+<Bytes count="4"/>
+</Data>
+<Data Name="Edition Number">
+<Bytes count="2"/>
+</Data>
+<Data Name="Engine status">
+<Bits count="2">
+<List>
+<Item Value="0" Text="moteur arreté"/>
+<Item Value="1" Text="moteur calé"/>
+<Item Value="2" Text="moteur tournant"/>
+<Item Value="3" Text="moteur démarrant"/></List>
+</Bits>
+</Data>
+<Data Name="EPAS Temperature">
+<Bits>
+<Scaled Unit="°C"/>
+</Bits>
+</Data>
+<Data Name="Fault indicator">
+<Bits count="2">
+<List>
+<Item Value="0" Text="normal mode"/>
+<Item Value="1" Text="défaut mineur"/>
+<Item Value="2" Text="défaut majeur"/>
+<Item Value="3" Text="mode diagnostic"/></List>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Mnemonic>FirstDTC</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="22017" Text="Battery voltage"/>
+<Item Value="22018" Text="No tuning set"/>
+<Item Value="22019" Text="EPS Transient fault"/>
+<Item Value="22020" Text="EPS fault - Torque Sensor"/>
+<Item Value="22021" Text="EPS fault - Angle sensor"/>
+<Item Value="22022" Text="EPS fault - Motor"/>
+<Item Value="22023" Text="EPS fault - NVM"/>
+<Item Value="22024" Text="EPS Fault - ECU"/>
+<Item Value="22025" Text="CAN vehicle speed Fault"/>
+<Item Value="22033" Text="CAN RearGearEngaged Invalid"/>
+<Item Value="53248" Text="CAN bus fault"/></List>
+</Bits>
+</Data>
+<Data Name="Hardware Number">
+<Bytes count="5"/>
+</Data>
+<Data Name="Jour">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="Last A Fault">
+<Bytes count="1"/>
+</Data>
+<Data Name="Last BC Fault">
+<Bytes count="1"/>
+</Data>
+<Data Name="Manufacturer Identification Code">
+<Bytes count="1"/>
+</Data>
+<Data Name="Mois">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="MoreDTC">
+<Mnemonic>MoreDTC</Mnemonic>
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Mute Module parameter">
+<Bytes count="1"/>
+</Data>
+<Data Name="MUX messaging reference">
+<Bytes count="2"/>
+</Data>
+<Data Name="NDTC">
+<Mnemonic>#DTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Other System Features ">
+<Bytes count="3"/>
+</Data>
+<Data Name="Power assistance">
+<Comment><![CDATA[Motor Assistance Power]]></Comment>
+<Bits signed="1">
+<Scaled Unit="A"/>
+</Bits>
+</Data>
+<Data Name="Producer ABS/ESP absent parameter">
+<Bytes count="1"/>
+</Data>
+<Data Name="Producer DAE absent parameter">
+<Bytes count="1"/>
+</Data>
+<Data Name="Producer ECM Absent parameter">
+<Bytes count="1"/>
+</Data>
+<Data Name="Producer TdB absent parameter">
+<Bytes count="1"/>
+</Data>
+<Data Name="Producer UCH absent parameter">
+<Bytes count="1"/>
+</Data>
+<Data Name="Producers 19 -&gt; 25 absent parameter">
+<Bytes count="7"/>
+</Data>
+<Data Name="Producers 5 -&gt; 17 absent parameter">
+<Bytes count="13"/>
+</Data>
+<Data Name="Reverse Gear Status">
+<Bits count="2">
+<List>
+<Item Value="0" Text="non engagé"/>
+<Item Value="1" Text="engagé"/>
+<Item Value="2" Text="invalide"/>
+<Item Value="3" Text="réservé"/></List>
+</Bits>
+</Data>
+<Data Name="Routine Option">
+<Bits>
+<List>
+<Item Value="0" Text="Execution"/>
+<Item Value="1" Text="Status"/></List>
+</Bits>
+</Data>
+<Data Name="Routine Status">
+<Bits>
+<List>
+<Item Value="0" Text="Routine not activated"/>
+<Item Value="1" Text="Routine in progress"/>
+<Item Value="2" Text="Routine terminated OK"/>
+<Item Value="4" Text="Routine terminated NOK"/>
+<Item Value="8" Text="Routine terminated and global problem"/></List>
+</Bits>
+</Data>
+<Data Name="SoftWare Number">
+<Bytes count="2"/>
+</Data>
+<Data Name="Spare Parts Number">
+<Comment><![CDATA[Reference]]></Comment>
+<Bytes count="5"/>
+</Data>
+<Data Name="Supplier Number">
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Tension batterie">
+<Comment><![CDATA[tension qd DTC apparait (data Freeze Frame)]]></Comment>
+<Bits signed="1">
+<Scaled Unit="Volt"/>
+</Bits>
+</Data>
+<Data Name="Torque">
+<Comment><![CDATA[Value of torque sensor]]></Comment>
+<Bits signed="1">
+<Scaled Unit="N.m" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Tuning Identification">
+<Bytes count="1"/>
+</Data>
+<Data Name="Tuning Number">
+<Comment><![CDATA[Data utilisée pour sélectionner le numéro de tuning]]></Comment>
+<Bits>
+<List>
+<Item Value="1" Text="n°1"/>
+<Item Value="2" Text="n°2"/>
+<Item Value="3" Text="n°3"/>
+<Item Value="4" Text="n°4"/>
+<Item Value="5" Text="n°5"/></List>
+</Bits>
+</Data>
+<Data Name="Tuning Number (Syst Ident)">
+<Comment><![CDATA[Numero de tuning présent dans la trame Identification]]></Comment>
+<Bytes count="2"/>
+</Data>
+<Data Name="Tuning version">
+<Bytes count="1"/>
+</Data>
+<Data Name="Vehicle Speed">
+<Comment><![CDATA[valeur du CAN]]></Comment>
+<Bits count="16">
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="Velocity Steering">
+<Bits count="16" signed="1">
+<Scaled Unit="°/s" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="VIN">
+<Comment><![CDATA[Vehicle Identification Number]]></Comment>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="Vitesse véhicule">
+<Comment><![CDATA[data de la Freeze Frame]]></Comment>
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="Voltage">
+<Comment><![CDATA[Supply voltage]]></Comment>
+<Bits count="16" signed="1">
+<Scaled Unit="Volt" DivideBy=" 256" Format="##.##"/>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="ClearDTC">
+
+<Comment><![CDATA[Clear Diagnostic Information]]></Comment>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RDBLI - Date of After Sales">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Reading of After Sales Date]]></Comment>
+<Sent>
+<SentBytes>21B0</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="Année" Ref="1" FirstByte="5"/>
+<DataItem Name="Jour" Ref="1" FirstByte="3"/>
+<DataItem Name="Mois" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="RDBLI - Date of production">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/><Engineering/></DenyAccess>
+<Sent>
+<SentBytes>2192</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<DataItem Name="ECU production date" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLI - Internal Code Fault">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/><Engineering/></DenyAccess>
+<Sent>
+<SentBytes>2193</SentBytes>
+</Sent>
+<Received MinBytes="9">
+<DataItem Name="Last A Fault" Ref="1" FirstByte="8"/>
+<DataItem Name="Last BC Fault" Ref="1" FirstByte="9"/>
+</Received>
+</Request>
+<Request Name="RDBLI - Network Diagnostic">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Intersystem Multiplex Network Diagnostic]]></Comment>
+<Sent>
+<SentBytes>2182</SentBytes>
+</Sent>
+<Received MinBytes="31">
+<DataItem Name="BUS OFF parameter" Ref="1" FirstByte="5"/>
+<DataItem Name="Mute Module parameter" Ref="1" FirstByte="6"/>
+<DataItem Name="MUX messaging reference" Ref="1" FirstByte="3"/>
+<DataItem Name="Producer ABS/ESP absent parameter" Ref="1" FirstByte="8"/>
+<DataItem Name="Producer DAE absent parameter" Ref="1" FirstByte="24"/>
+<DataItem Name="Producer ECM Absent parameter" Ref="1" FirstByte="7"/>
+<DataItem Name="Producer TdB absent parameter" Ref="1" FirstByte="9"/>
+<DataItem Name="Producer UCH absent parameter" Ref="1" FirstByte="10"/>
+<DataItem Name="Producers 19 -&gt; 25 absent parameter" Ref="1" FirstByte="25"/>
+<DataItem Name="Producers 5 -&gt; 17 absent parameter" Ref="1" FirstByte="11"/>
+</Received>
+</Request>
+<Request Name="RDBLI - System Frame">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Reading of system parameters]]></Comment>
+<Sent>
+<SentBytes>2101</SentBytes>
+</Sent>
+<Received MinBytes="17">
+<DataItem Name="Angle" Ref="1" FirstByte="6"/>
+<DataItem Name="Calibration status" Ref="1" FirstByte="17" BitOffset="4"/>
+<DataItem Name="Consigned Power" Ref="1" FirstByte="11"/>
+<DataItem Name="Consigned Torque" Ref="1" FirstByte="12"/>
+<DataItem Name="Derating Level" Ref="1" FirstByte="14"/>
+<DataItem Name="Engine status" Ref="1" FirstByte="17" BitOffset="2"/>
+<DataItem Name="EPAS Temperature" Ref="1" FirstByte="13"/>
+<DataItem Name="Fault indicator" Ref="1" FirstByte="17"/>
+<DataItem Name="Power assistance" Ref="1" FirstByte="10"/>
+<DataItem Name="Reverse Gear Status" Ref="1" FirstByte="17" BitOffset="6"/>
+<DataItem Name="Torque" Ref="1" FirstByte="5"/>
+<DataItem Name="Vehicle Speed" Ref="1" FirstByte="15"/>
+<DataItem Name="Velocity Steering" Ref="1" FirstByte="8"/>
+<DataItem Name="Voltage" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLI - System Identification RENAULT">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read System Identifiaction for Renault EPS]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="Diagnostic Identification Code" Ref="1" FirstByte="8"/>
+<DataItem Name="Edition Number" Ref="1" FirstByte="19"/>
+<DataItem Name="Hardware Number" Ref="1" FirstByte="12"/>
+<DataItem Name="Manufacturer Identification Code" Ref="1" FirstByte="26"/>
+<DataItem Name="Other System Features " Ref="1" FirstByte="23"/>
+<DataItem Name="SoftWare Number" Ref="1" FirstByte="17"/>
+<DataItem Name="Spare Parts Number" Ref="1" FirstByte="3"/>
+<DataItem Name="Supplier Number" Ref="1" FirstByte="9"/>
+<DataItem Name="Tuning Number (Syst Ident)" Ref="1" FirstByte="21"/>
+</Received>
+</Request>
+<Request Name="RDBLI - Tune version">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2197</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Tuning Identification" Ref="1" FirstByte="4"/>
+<DataItem Name="Tuning version" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLI - VIN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="CRC VIN" Ref="1" FirstByte="20"/>
+<DataItem Name="VIN" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLI- Supported LI">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Supported Local Identifiers for Reading]]></Comment>
+<Sent>
+<SentBytes>2100</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<DataItem Name="Data A" Ref="1" FirstByte="3"/>
+<DataItem Name="Data B" Ref="1" FirstByte="4"/>
+<DataItem Name="Data C" Ref="1" FirstByte="5"/>
+<DataItem Name="Data D" Ref="1" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="RDFFD - Freeze Frame">
+
+<Sent>
+<SentBytes>1200040000</SentBytes>
+<DataItem Name="FirstDTC" FirstByte="4"/>
+</Sent>
+<Received MinBytes="12">
+<DataItem Name="Angle volant" FirstByte="6"/>
+<DataItem Name="Code de défaut interne" FirstByte="9"/>
+<DataItem Name="Compteur" FirstByte="3"/>
+<DataItem Name="Courant moteur" FirstByte="8"/>
+<DataItem Name="Tension batterie" FirstByte="5"/>
+<DataItem Name="Vitesse véhicule" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read Status of DTC]]></Comment>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+<DataItem Name="MoreDTC" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<DataItem Name="DTC status - code panne" FirstByte="5" BitOffset="3"/>
+<DataItem Name="DTC status - flag memorisé" FirstByte="5" BitOffset="1"/>
+<DataItem Name="DTC status - flag present" FirstByte="5" BitOffset="2"/>
+<DataItem Name="DTC status - type" FirstByte="5"/>
+<DataItem Name="FirstDTC" FirstByte="3"/>
+<DataItem Name="NDTC" Ref="1" FirstByte="2"/>
+</Received>
+</Request>
+<Request Name="SDS - Start Diagnostic $86">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>1086</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="SDS - Start Diagnostic $FA">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>10FA</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="SDS - Start Diagnostic Def $81">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>1081</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="SDS - Start Diagnostic Mode $C0">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="SRBLID - Angle Calibration">
+
+<ManuelSend/>
+<Comment><![CDATA[Start Routine for angle calibration]]></Comment>
+<Sent>
+<SentBytes>310100</SentBytes>
+<DataItem Name="Routine Option" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Routine Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="SRBLID - Calibration Status">
+
+<Comment><![CDATA[Start Routine for angle calibration]]></Comment>
+<Sent>
+<SentBytes>310101</SentBytes>
+<DataItem Name="Routine Option" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Routine Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="WDBLI - Date of After-Sales">
+
+<ManuelSend/>
+<Comment><![CDATA[Writing of the last date of after-sales]]></Comment>
+<Sent>
+<SentBytes>3BB0000000</SentBytes>
+<DataItem Name="Année" FirstByte="5"/>
+<DataItem Name="Jour" FirstByte="3"/>
+<DataItem Name="Mois" FirstByte="4"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WDBLI - EPS Tuning">
+
+<ManuelSend/>
+<Comment><![CDATA[Select EPS Tuning Number]]></Comment>
+<Sent>
+<SentBytes>3B0200</SentBytes>
+<DataItem Name="Tuning Number" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WDBLI - Supported LI">
+
+<Comment><![CDATA[Supported Local Identifiers for Writing ?]]></Comment>
+<Sent>
+<SentBytes>3B00</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<DataItem Name="Data A" FirstByte="3"/>
+<DataItem Name="Data B" FirstByte="4"/>
+<DataItem Name="Data C" FirstByte="5"/>
+<DataItem Name="Data D" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="WDBLI - VIN">
+
+<ManuelSend/>
+<Comment><![CDATA[VIN Writing]]></Comment>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="CRC VIN" FirstByte="20"/>
+<DataItem Name="VIN" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Battery voltage" DTC="22017" FreezeFrame="RDFFD - Freeze Frame">
+<DeviceData Name="Voltage" FailureFlag="0"/>
+</Device>
+<Device Name="CAN bus fault" DTC="53248" FreezeFrame="RDFFD - Freeze Frame">
+<DeviceData Name="BUS OFF parameter" FailureFlag="0"/><DeviceData Name="Mute Module parameter" FailureFlag="0"/><DeviceData Name="MUX messaging reference" FailureFlag="0"/><DeviceData Name="Producer ECM Absent parameter" FailureFlag="0"/><DeviceData Name="Engine status" FailureFlag="0"/>
+</Device>
+<Device Name="CAN RearGearEngaged Invalid" DTC="22033" FreezeFrame="RDFFD - Freeze Frame">
+<DeviceData Name="Reverse Gear Status" FailureFlag="0"/><DeviceData Name="Producer UCH absent parameter" FailureFlag="0"/>
+</Device>
+<Device Name="CAN vehicle speed Fault" DTC="22025" FreezeFrame="RDFFD - Freeze Frame">
+<DeviceData Name="Vehicle Speed" FailureFlag="0"/><DeviceData Name="Producer ABS/ESP absent parameter" FailureFlag="0"/>
+</Device>
+<Device Name="EPS fault - Angle sensor" DTC="22021" Type="2" FreezeFrame="RDFFD - Freeze Frame">
+<DeviceData Name="Angle" FailureFlag="0"/><DeviceData Name="Calibration status" FailureFlag="0"/><DeviceData Name="Velocity Steering" FailureFlag="0"/>
+</Device>
+<Device Name="EPS Fault - ECU" DTC="22024" Type="2" FreezeFrame="RDFFD - Freeze Frame">
+
+</Device>
+<Device Name="EPS fault - Motor" DTC="22022" Type="2" FreezeFrame="RDFFD - Freeze Frame">
+
+</Device>
+<Device Name="EPS fault - NVM" DTC="22023" Type="2" FreezeFrame="RDFFD - Freeze Frame">
+
+</Device>
+<Device Name="EPS fault - Torque Sensor" DTC="22020" Type="2" FreezeFrame="RDFFD - Freeze Frame">
+<DeviceData Name="Torque" FailureFlag="0"/>
+</Device>
+<Device Name="EPS Transient fault" DTC="22019" Type="2" FreezeFrame="RDFFD - Freeze Frame">
+
+</Device>
+<Device Name="No tuning set" DTC="22018" Type="4" FreezeFrame="RDFFD - Freeze Frame">
+<DeviceData Name="Tuning Number (Syst Ident)" FailureFlag="0"/>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Diagnostic">
+
+<Screen Name="Calibration" Color="8355711" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Routine de calibration" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="360" Height="5040" Width="6840"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Etat de la Calibration">
+<Rectangle Left="2400" Top="1080" Height="720" Width="3240"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="SRBLID - Calibration Status"/>
+</Button>
+<Button Text="Lancement Calibration (si index repéré)">
+<Rectangle Left="1320" Top="1920" Height="720" Width="5520"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="SRBLID - Angle Calibration"/>
+</Button>
+
+<Display Width="2000" Color="16777215" DataName="Calibration status" RequestName="RDBLI - System Frame">
+<Rectangle Left="1800" Top="3000" Height="300" Width="4590"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Routine Status" RequestName="SRBLID - Calibration Status">
+<Rectangle Left="1800" Top="3720" Height="300" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Angle" RequestName="RDBLI - System Frame">
+<Rectangle Left="1800" Top="4440" Height="300" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Info systeme" Color="8355711" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Trame Infos système" Color="13619151" Alignment="2">
+<Rectangle Left="2040" Top="240" Height="5280" Width="5640"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+
+
+<Display Width="2000" Color="16777215" DataName="Voltage" RequestName="RDBLI - System Frame">
+<Rectangle Left="2591" Top="960" Height="300" Width="4585"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Torque" RequestName="RDBLI - System Frame">
+<Rectangle Left="2591" Top="1260" Height="300" Width="4585"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Angle" RequestName="RDBLI - System Frame">
+<Rectangle Left="2591" Top="1560" Height="300" Width="4585"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Velocity Steering" RequestName="RDBLI - System Frame">
+<Rectangle Left="2591" Top="1860" Height="300" Width="4585"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Power assistance" RequestName="RDBLI - System Frame">
+<Rectangle Left="2591" Top="2160" Height="300" Width="4585"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Consigned Power" RequestName="RDBLI - System Frame">
+<Rectangle Left="2591" Top="2460" Height="300" Width="4585"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2300" Color="16777215" DataName="Consigned Torque" RequestName="RDBLI - System Frame">
+<Rectangle Left="2591" Top="2760" Height="300" Width="4585"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2300" Color="16777215" DataName="EPAS Temperature" RequestName="RDBLI - System Frame">
+<Rectangle Left="2591" Top="3060" Height="300" Width="4585"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Derating Level" RequestName="RDBLI - System Frame">
+<Rectangle Left="2591" Top="3360" Height="300" Width="4585"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Vehicle Speed" RequestName="RDBLI - System Frame">
+<Rectangle Left="2591" Top="3660" Height="300" Width="4585"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Fault indicator" RequestName="RDBLI - System Frame">
+<Rectangle Left="2591" Top="3960" Height="300" Width="4585"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Engine status" RequestName="RDBLI - System Frame">
+<Rectangle Left="2591" Top="4260" Height="300" Width="4585"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Calibration status" RequestName="RDBLI - System Frame">
+<Rectangle Left="2595" Top="4560" Height="300" Width="4590"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Reverse Gear Status" RequestName="RDBLI - System Frame">
+<Rectangle Left="2595" Top="4860" Height="300" Width="4585"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Network Diagnostic" Color="8355711" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Intersystem multiplex network" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="360" Height="5280" Width="9000"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Clear Diag Info">
+<Rectangle Left="5760" Top="1560" Height="1275" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="ClearDTC"/>
+</Button>
+
+<Display Width="2360" Color="16777215" DataName="MUX messaging reference" RequestName="RDBLI - Network Diagnostic">
+<Rectangle Left="480" Top="1200" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2360" Color="16777215" DataName="BUS OFF parameter" RequestName="RDBLI - Network Diagnostic">
+<Rectangle Left="480" Top="1560" Height="300" Width="3960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2360" Color="16777215" DataName="Mute Module parameter" RequestName="RDBLI - Network Diagnostic">
+<Rectangle Left="480" Top="1920" Height="300" Width="3960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2345" Color="16777215" DataName="Producer ECM Absent parameter" RequestName="RDBLI - Network Diagnostic">
+<Rectangle Left="480" Top="2280" Height="300" Width="3960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2345" Color="16777215" DataName="Producer ABS/ESP absent parameter" RequestName="RDBLI - Network Diagnostic">
+<Rectangle Left="480" Top="2640" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2345" Color="16777215" DataName="Producer TdB absent parameter" RequestName="RDBLI - Network Diagnostic">
+<Rectangle Left="480" Top="3000" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2345" Color="16777215" DataName="Producer UCH absent parameter" RequestName="RDBLI - Network Diagnostic">
+<Rectangle Left="480" Top="3360" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2540" Color="16777215" DataName="Producers 5 -&gt; 17 absent parameter" RequestName="RDBLI - Network Diagnostic">
+<Rectangle Left="480" Top="3720" Height="300" Width="6480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2525" Color="16777215" DataName="Producer DAE absent parameter" RequestName="RDBLI - Network Diagnostic">
+<Rectangle Left="480" Top="4080" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2540" Color="16777215" DataName="Producers 19 -&gt; 25 absent parameter" RequestName="RDBLI - Network Diagnostic">
+<Rectangle Left="480" Top="4440" Height="300" Width="6480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read Syst Identification" Color="8355711" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Identification systeme" Color="14671839" Alignment="2">
+<Rectangle Left="1320" Top="120" Height="3960" Width="5040"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+
+
+<Display Width="2840" Color="16777215" DataName="Spare Parts Number" RequestName="RDBLI - System Identification RENAULT">
+<Rectangle Left="1440" Top="720" Height="300" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2825" Color="16777215" DataName="Diagnostic Identification Code" RequestName="RDBLI - System Identification RENAULT">
+<Rectangle Left="1440" Top="1080" Height="300" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2825" Color="16777215" DataName="Supplier Number" RequestName="RDBLI - System Identification RENAULT">
+<Rectangle Left="1440" Top="1440" Height="300" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="16777215" DataName="Hardware Number" RequestName="RDBLI - System Identification RENAULT">
+<Rectangle Left="1440" Top="1800" Height="300" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="16777215" DataName="SoftWare Number" RequestName="RDBLI - System Identification RENAULT">
+<Rectangle Left="1440" Top="2160" Height="300" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="16777215" DataName="Edition Number" RequestName="RDBLI - System Identification RENAULT">
+<Rectangle Left="1440" Top="2520" Height="300" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="16777215" DataName="Tuning Number (Syst Ident)" RequestName="RDBLI - System Identification RENAULT">
+<Rectangle Left="1440" Top="2880" Height="300" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="16777215" DataName="Other System Features " RequestName="RDBLI - System Identification RENAULT">
+<Rectangle Left="1440" Top="3240" Height="300" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="16777215" DataName="Manufacturer Identification Code" RequestName="RDBLI - System Identification RENAULT">
+<Rectangle Left="1440" Top="3600" Height="300" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read/Write Date AV" Color="8355711" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Ecriture Date Après Vente" Color="14671839" Alignment="2">
+<Rectangle Left="480" Top="2280" Height="2160" Width="6240"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Lecture Date Après Vente" Color="14671839" Alignment="2">
+<Rectangle Left="480" Top="360" Height="1680" Width="6240"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Write Date">
+<Rectangle Left="4800" Top="3240" Height="765" Width="1740"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WDBLI - Date of After-Sales"/>
+</Button>
+
+<Input Width="2000" Color="16777215" DataName="Jour" RequestName="WDBLI - Date of After-Sales">
+<Rectangle Left="600" Top="3120" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="255"/><Threshold Value=" 1" Color="16777215"/><Threshold Value=" 32" Color="255"/></Input>
+<Input Width="2000" Color="16777215" DataName="Mois" RequestName="WDBLI - Date of After-Sales">
+<Rectangle Left="600" Top="3480" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Année" RequestName="WDBLI - Date of After-Sales">
+<Rectangle Left="600" Top="3840" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2000" Color="16777215" DataName="Jour" RequestName="RDBLI - Date of After Sales">
+<Rectangle Left="1560" Top="840" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Mois" RequestName="RDBLI - Date of After Sales">
+<Rectangle Left="1560" Top="1140" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Année" RequestName="RDBLI - Date of After Sales">
+<Rectangle Left="1560" Top="1440" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read/Write VIN" Color="8355711" WindowState="0" Width="9000" Height="5760">
+
+<Label Text="Ecriture VIN" Color="14671839" Alignment="2">
+<Rectangle Left="840" Top="3000" Height="1800" Width="7440"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Lecture VIN" Color="14671839" Alignment="2">
+<Rectangle Left="1800" Top="720" Height="1200" Width="5520"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="WRITE">
+<Rectangle Left="6000" Top="3600" Height="960" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WDBLI - VIN"/>
+</Button>
+
+<Input Width="1055" Color="16777215" DataName="VIN" RequestName="WDBLI - VIN">
+<Rectangle Left="1080" Top="3720" Height="300" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1025" Color="16777215" DataName="CRC VIN" RequestName="WDBLI - VIN">
+<Rectangle Left="1080" Top="4200" Height="300" Width="2040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2000" Color="16777215" DataName="VIN" RequestName="RDBLI - VIN">
+<Rectangle Left="2040" Top="1200" Height="300" Width="5160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="CRC VIN" RequestName="RDBLI - VIN">
+<Rectangle Left="2040" Top="1500" Height="300" Width="2760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Select tuning" Color="8355711" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Ecriture du tuning" Color="15724527" Alignment="2">
+<Rectangle Left="1560" Top="1920" Height="1560" Width="5040"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Lecture du tuning" Color="15724527" Alignment="2">
+<Rectangle Left="1560" Top="480" Height="1320" Width="5040"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Write">
+<Rectangle Left="4800" Top="2400" Height="900" Width="1560"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WDBLI - EPS Tuning"/>
+</Button>
+
+<Input Width="1670" Color="16777215" DataName="Tuning Number" RequestName="WDBLI - EPS Tuning">
+<Rectangle Left="1680" Top="2760" Height="360" Width="2880"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2465" Color="16777215" DataName="Tuning Number (Syst Ident)" RequestName="RDBLI - System Identification RENAULT">
+<Rectangle Left="2640" Top="1080" Height="480" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Start/Stop Diagnostic" Color="8355711" WindowState="0" Width="9000" Height="6000">
+
+
+<Button Text="START DIAGNOSTIC 81 = STOP">
+<Rectangle Left="1680" Top="3240" Height="735" Width="5640"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="SDS - Start Diagnostic Def $81"/>
+</Button>
+<Button Text="START DIAGNOSTIC 86 (Développement)">
+<Rectangle Left="1680" Top="1560" Height="735" Width="5640"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="SDS - Start Diagnostic $86"/>
+</Button>
+<Button Text="START DIAGNOSTIC C0 (APV)">
+<Rectangle Left="1680" Top="480" Height="735" Width="5640"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="SDS - Start Diagnostic Mode $C0"/>
+</Button>
+
+</Screen>
+<Screen Name="Supported LIds" Color="8355711" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="LIds for Reading" Color="12566463" Alignment="2">
+<Rectangle Left="1440" Top="360" Height="2040" Width="6840"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="LIds for Writing" Color="12566463" Alignment="2">
+<Rectangle Left="1440" Top="2640" Height="2040" Width="6840"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+
+
+<Display Width="2000" Color="16777215" DataName="Data A" RequestName="RDBLI- Supported LI">
+<Rectangle Left="2760" Top="960" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Data B" RequestName="RDBLI- Supported LI">
+<Rectangle Left="2760" Top="1260" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Data C" RequestName="RDBLI- Supported LI">
+<Rectangle Left="2760" Top="1560" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Data D" RequestName="RDBLI- Supported LI">
+<Rectangle Left="2760" Top="1860" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Data A" RequestName="WDBLI - Supported LI">
+<Rectangle Left="2760" Top="3240" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Data B" RequestName="WDBLI - Supported LI">
+<Rectangle Left="2760" Top="3540" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Data C" RequestName="WDBLI - Supported LI">
+<Rectangle Left="2760" Top="3840" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Data D" RequestName="WDBLI - Supported LI">
+<Rectangle Left="2760" Top="4140" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Supplier">
+
+<Screen Name="Read Supplier Data" Color="8355711" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Dans ce mode de diag, PAS D' ASSISTANCE !!" Color="16777215" Alignment="0">
+<Rectangle Left="240" Top="120" Height="480" Width="7680"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="255"/></Label>
+<Label Text="Supplier Data" Color="13619151" Alignment="2">
+<Rectangle Left="120" Top="840" Height="4680" Width="7920"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="START DIAGNOSTIC FA (Fournisseur)">
+<Rectangle Left="1080" Top="1680" Height="735" Width="5880"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="SDS - Start Diagnostic $FA"/>
+</Button>
+
+<Display Width="2000" Color="16777215" DataName="Tuning version" RequestName="RDBLI - Tune version">
+<Rectangle Left="1920" Top="3240" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Tuning Identification" RequestName="RDBLI - Tune version">
+<Rectangle Left="1920" Top="3720" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Last A Fault" RequestName="RDBLI - Internal Code Fault">
+<Rectangle Left="1920" Top="4560" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Last BC Fault" RequestName="RDBLI - Internal Code Fault">
+<Rectangle Left="1920" Top="5040" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

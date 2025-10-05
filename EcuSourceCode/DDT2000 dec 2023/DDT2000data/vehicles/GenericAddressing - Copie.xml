@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<?xml-stylesheet type="text/xsl" href="DiagnosticAddressing.xsl"?>
+<!--
+  2016-10-07 ; JCB ; Add function $2D (45) ASB on 29bits CAN ID 18DA2DF1 and 18DAF12D
+
+  2016-10-07 ; JCB ; Add function $E2 (226) E-ACT EBA on 29bits CAN ID 18DAE2F1 and 18DAF1E2
+
+  2016-10-07 ; JCB ; Add function $E0 (224) EVAP on 29bits CAN ID 18DAE0F1 and 18DAF1E0
+
+  2016-10-07 ; JCB ; Add function $DF (223) INV-ME on 29bits CAN ID 18DADFF1 and 18DAF1DF
+
+  2016-10-07 ; JCB ; Add function $DE (222) BCB on 29bits CAN ID 18DADEF1 and 18DAF1DE
+
+  2016-10-07 ; JCB ; Add function $DD (221) DCDC convertor on 29bits CAN ID 18DADDF1 and 18DAF1DD
+
+  2016-10-07 ; JCB ; Add function $DC (220) LBC2 on 29bits CAN ID 18DADCF1 and 18DAF1DC
+
+  2016-10-07 ; JCB ; Add function $DB (219) LBC on 29bits CAN ID 18DADBF1 and 18DAF1DB
+
+  2016-10-07 ; JCB ; Add function $DA (218) VCM on 29bits CAN ID 18DADAF1 and 18DAF1DA
+
+  2016-10-07 ; JCB ; Add function $E3 (27) NJG,HSG,LPG,SSG on 29bits CAN ID 18DAE3F1 and 18DAF1E3
+
+  2016-10-07 : JCB : Add function $18 (24) BVA on 29bits CAN ID : 18DA18FA and 18DAF118
+
+  2016-10-07 : JCB : Add fiunction $E1 (226) UDM on 29bits CANID : 18DAE1F1 and 18DAF1E1
+
+  2016-10-07 : JCB : Switch Function $D2 (210) to Function $D3 (211) same CAN ID
+  
+  2016-10-06 : JCB : Add function $15 (21) ECM on 29bits CANID : 18DA15F1 and 18DAF115
+
+  2016-03-18 : JCB : Delete function $0B (11) ACC X73 replaced by LIB 12V ID CAN 18DAF10B  18DA0BF1 
+
+  2015-11-25 : JCB : Delete function $53 (83) for AFS Auto Front Lighting  ID Can 75C  77C -> replaced by TA $7C (124)
+
+  2015-10-22 : JCB : Add function $48 (72) WSU Wind Shield Unit ID CAN $7C6 and $7D1  
+
+  2015-09-16 : JCB : Add function $6F (111) Meter sub ECU  ID CAN $18DA6FF2 and $18DAF26F  
+ 
+  2015-09-16 : JCB : Add function $74 (116) Hospitality Light ECU  ID CAN $18DA70F2 and $18DAF270  
+  
+  2015-07-07 : JCB : Add function $76 (118) SIB Secured Interface Box with Data Logger  ID CAN 7C3   7D3 
+
+  2015-05-21 : JCB : Delete function $57 (87) ITM, UCC Replaced by function $58 (88) Navigation same ID Can 747  767
+  
+  2015-05-21 : JCB : Add function $3D (61) for EPS (HEV)  Electric Power Steering (HEV)  ID Can 7A1  7A9
+
+  2015-05-21 : JCB : Add function $30 (48) for SMB  Side Magic Bumper  ID Can 18DA30F2  18DAF230
+
+  2015-05-20 : JCB : Add function $33 (51) for ATR  Active Torque Rod  ID Can 18DA00F2  18DAF200
+
+  2015-05-20 : JCB : Add function $72 (114) for ADB-RH  Adaptive driving beam - Right  ID Can 18DA72F2  18DAF272
+
+  2015-05-20 : JCB : Add function $71 (113) for ADB-LH  Adaptive driving beam - Left  ID Can 18DA71F2  18DAF271
+
+  2015-05-20 : JCB : Add function $D1 (209) for S-GW  Security Gateway  ID Can 18DAD1F1  18DAF1D1
+
+  2015-05-20 : JCB : Switch Function $D1 (209) UDM to Function $D2 (210) UDM   Same ID CAN
+
+  2015-05-20 : JCB : Add function $F9 (249) for DDR  Diagnostic Data Recorder  ID Can 70B  72B
+
+  2015-05-20 : JCB : Add function $95 (149) for EVC-VCM Vehicle Control Module  ID Can 7E4  7EC
+
+  2015-05-20 : JCB : Add function $96 (150) for VCM Vehicle Control Module  ID Can 797  79A
+
+  2015-05-20 : JCB : Add function $65 (101) for PPS Pedestrian Protection System  ID Can 70A  72A
+
+  2015-05-20 : JCB : Add function $53 (83) for AFS Auto Front Lighting  ID Can 75C  77C
+
+  2015-05-20 : JCB : Add function $23 (35) for 4WS 4 wheel Steering  ID Can 753  773
+
+  2015-05-20 : JCB : Add function $40 (64) for LKS Lane Keep System  ID Can 707  727
+
+  2015-05-20 : JCB : Add function $39 (57) for MB Magic Bumper  ID Can 71A  73A
+
+  2015-05-20 : JCB : Add function $12(18) for ASD   ID Can 759  779
+
+  2015-05-20 : JCB : Add function $11 (17) ADAS-Sub   ID Can 7C3 7C9
+
+  2015-05-18 : JCB : Add on funcion 79 LNG the label HSG for High Voltage Starter Generator
+
+  2015-05-18 : JCB : Add TA $90(144) for Smart FOB CAN ID : 18DA90F1   18DAF190 
+
+  2015-05-18 : JCB : Add TA $91(145) for Lithium Battery Controller (HEV) CAN ID : 7E5  7ED
+  
+  2015-05-18 : JCB : Delete Regulateur de vitesse or SFF on TA 37 ($25) ID can $18DA34F1 and replaced by "IDM" ID Can 70C and 700
+
+  2015-05-12 : JCB : Delete DCM function TA 120 ($78) Can ID $79D - 7BD  not use and in conflict with TA 4D SCU
+
+  2015-04-27 : JCB : Add TA 09 for Motor Control (Hybrid Vehicle) CAN ID : 7E3  7EB
+
+  2015-04-23 : JCB : Add TA 63 for Side Obstacle Warning Left CAN ID : 73D 73E
+
+  2015-04-23 : JCB : Add TA 64 for Side Obstacle Warning Right CAN ID : 7D4 7D5
+
+  2015-04-07 : JCB : Add Id Can for TA 26  (1809, 1841)   
+
+  2015-03-05 : JCB : Move DCDC Convertor from TA $35 to $32 
+  
+  2014-09-19 : CH : Add RADAR ecu ($2B) Can Id 723 , 735
+  
+  2014-09-19 : CH : Add AVM ecu ($61) Can Id 7B7 , 7BA
+  
+  2014-09-19 : CH : Add DLOCK ecu ($1B) Can Id 7A4 , 7AC
+
+  2014-09-18 : JCB : Add VCCU ecu ($66) Can Id 719 , 739
+  
+  2014-08-13 : OB : bad format
+
+  2014-08-05 : JCB : add PLC ecu ($97) Can Id 7D8 , 7C8
+
+  2013-08-06 : JCB. : added for HEVC ($95) CAN id : 7E4,7EC
+
+  2012-12-13 : JCB. : Modification for BAC (4A->3A) CAN id : 7D6,7D2
+
+  2012-11-20 : CH  : added UDM (Urea Dosing Module) ($D1)
+
+  2012-06-29 : JCB  : added DCDC (DCDC converter) ($35)
+
+  2012-06-29 : JCB  : added CSHV (Airbag vehicle stopped) ($28)
+
+  2012-06-29 : JCB  : added Magic folder in place of RDCM ($F8)
+
+  2012-06-29 : JCB  : added Seat Passenger in place of LDCM ($F7)
+
+  2012-04-13 : JCB.  : added ECU 02 VADA (Variable Damping)
+
+  2012-02-28 : JCB.  : added ECU 167 PBD (Power Back Door)
+
+  2012-01-09 : OB.  : 29Bits in hexa, and then in negative decimal
+
+  2011-19-12 : OB.  : 29Bits in decimal
+
+  2011-11-07 : JCB. : Modified ECU name ShBW to SCU  ($4D)
+
+  2011-10-14 : JCB. : added ECU 209 ($D1) BSW (Blind Spot Warning)
+
+  2011-10-14 : JCB. : added ECU 77 ($4D) ShBW (Shift by Wire - Shift Control Unit)
+
+  2011-06-28 : L.T. : added ECU 107 ($6B) BSW (Blind Spot Warning)
+
+  2010-09-23 : L.T. : added ECU 6 ($06) EMCU (Energy Management Control Unit)
+
+  2010-06-24 : L.T. : added ECU 98 ($62) FCAM (Front Camera)
+
+  2010-04-15 : L.T. : added ECU 192 ($C0) HFM
+
+  2010-04-15 : L.T. : added ECU 65 ($41) GATEWAY
+
+  2009-10-12 : L.T. : removed ECU 137 ($89) M-SCRN
+
+  2009-09-02 : L.T. : added ECU 120 ($78) DCM (Data Communication Module) (will contain TCU - Telematic Control Unit)
+
+  2009-01-14 : L.T. : added ECU  63 ($3F) SVT (Stolen Vehicle Tracker)
+
+  2008-08-04 : L.T. : added ECU  90 ($5A) ODS (Occupant Detection System) - Nissan
+                      added ECU  91 ($5B) INSULATOR
+
+  2008-05-20 : L.T. : added ECU 137 ($89) M-SCRN
+                      added ECU 113 ($71) HLL (DDL2)
+-->
+<Functions xmlns="DiagnosticAddressingSchema.xml">
+	<description>
+		<Name xml:lang="en">Generic addressing</Name>
+		<Name xml:lang="fr">Enveloppe générique des fonctions</Name>
+	</description>
+	<Tool Address="241">
+		<XId>2000</XId>
+	</Tool>
+
+	<SpecificationsList>
+		<Specification>A</Specification>
+		<Specification>B</Specification>
+	</SpecificationsList>
+
+	<ProtocolList>
+		<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		<Protocol Code="4" InitMode="2" MultiPoint="0" Name="KWP2000 FastInit MonoPoint"><Search/></Protocol>
+		<Protocol Code="5" InitMode="2" MultiPoint="1" Name="KWP2000 FastInit MultiPoint"></Protocol>
+		<Protocol Code="1" InitMode="0" MultiPoint="0" Name="ISO8"><Search/></Protocol>
+		<Protocol Code="2" InitMode="1" MultiPoint="0" Name="KWP2000 Init 5 Baud Type I"><Search/></Protocol>
+		<Protocol Code="3" InitMode="1" MultiPoint="1" Name="KWP2000 Init 5 Baud Type I and II"></Protocol>
+		<Protocol Code="7" InitMode="255" MultiPoint="1" Name="CAN Messaging"/>
+	</ProtocolList>
+	<Function Address="0" Name="CAN">
+		<Name xml:lang="en">Primary CAN network</Name>
+		<Name xml:lang="fr">Réseau CAN primaire</Name>
+	</Function>
+	<Function Address="255" Name="CAN2">
+		<Name xml:lang="en">Secondary CAN network</Name>
+		<Name xml:lang="fr">Réseau CAN secondaire</Name>
+	</Function>
+	<Function Address="1" Name="ABS-VDC">
+		<Name xml:lang="en">ABS-VDC</Name>
+		<Name xml:lang="fr">ABS-ESP</Name>
+		<XId>1856</XId>
+		<RId>1888</RId>
+	</Function>
+	<Function Address="2" Name="ESUS/VADA">
+		<Name xml:lang="en">Suspension Power Module/Variable Damping</Name>
+		<Name xml:lang="fr">Suspension pilotée/Amortissement Variable</Name>
+		<XId>1796</XId>
+		<RId>1828</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+			<Protocol Code="4" InitMode="2" MultiPoint="0" Name="KWP2000 FastInit MonoPoint"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="4" Name="EPS">
+		<Name xml:lang="en">Electric Power Steering</Name>
+		<Name xml:lang="fr">Direction assistée</Name>
+		<XId>1858</XId>
+		<RId>1890</RId>
+	</Function>
+	<Function Address="6" Name="EMCU">
+		<Name xml:lang="en">Energy Management Control Unit</Name>
+		<Name xml:lang="fr">Unité de contrôle de l'énergie</Name>
+		<XId>1936</XId>
+		<RId>1937</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="7" Name="HLS">
+		<Name xml:lang="en">High Beam Lighting System</Name>
+		<Name xml:lang="fr">Lampes à décharge</Name>
+		<XId>1873</XId>
+		<RId>1905</RId>
+	</Function>
+	<Function Address="8" Name="TPMS">
+		<Name xml:lang="en">Tyre Pressure Measurement System</Name>
+		<Name xml:lang="fr">Système de Surveillance de la Pression des Pneumatiques</Name>
+		<XId>1880</XId>
+		<RId>1912</RId>
+	</Function>
+	<Function Address="9" Name="MC HEV">
+		<Name xml:lang="en">Motor Control (Hybrid Vehicle)</Name>
+		<Name xml:lang="fr">Motor Control (Hybrid Vehicle)</Name>
+		<XId>2019</XId>
+		<RId>2027</RId>
+	</Function>
+	<Function Address="11" Name="LIB 12v">
+		<Name xml:lang="en">LIB</Name>
+		<Name xml:lang="fr">LIB</Name>
+		<XId>-1730540559</XId>
+		<RId>-1730481909</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="0"/>
+			</Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="13" Name="APB">
+		<Name xml:lang="en">Automatic Parking Brake</Name>
+		<Name xml:lang="fr">Frein de Parking Automatique</Name>
+		<XId>1877</XId>
+		<RId>1909</RId>
+	</Function>
+	<Function Address="14" Name="Parking Sonar">
+		<Name xml:lang="en">Parking Sonar</Name>
+		<Name xml:lang="fr">Aide au parking</Name>
+		<XId>1870</XId>
+		<RId>1902</RId>
+	</Function>
+	<Function Address="15" Name="HFCK">
+		<Name xml:lang="en">Hand Free Car Kit</Name>
+		<Name xml:lang="fr">Kit mains libres</Name>
+		<XId>1872</XId>
+		<RId>1904</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="0"/>
+			</Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="16" Name="Injection - NISSAN">
+		<Name xml:lang="en">ECM - NISSAN</Name>
+		<Name xml:lang="fr">Injection - NISSAN</Name>
+	</Function>
+	<Function Address="17" Name="ADAS-Sub">
+		<Name xml:lang="en">ADAS-SUB</Name>
+		<Name xml:lang="fr">ADAS-SUB</Name>
+		<XId>1987</XId>
+		<RId>1993</RId>
+	</Function>
+	<Function Address="18" Name="ASD">
+		<Name xml:lang="en">ASD</Name>
+		<Name xml:lang="fr">ASD</Name>
+		<XId>1881</XId>
+		<RId>1913</RId>
+	</Function>
+	<Function Address="19" Name="Audio">
+		<Name xml:lang="en">Audio Unit</Name>
+		<Name xml:lang="fr">Radio</Name>
+		<XId>1810</XId>
+		<RId>1842</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="0"/>
+			</Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="21" Name="ECM_29">
+		<Name xml:lang="en">Engine Control Module_29bits</Name>
+		<Name xml:lang="fr">Injection_29bits</Name>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+		<XId>-1730537999</XId>
+		<RId>-1730481899</RId>
+	</Function>
+	<Function Address="22" Name="ADB-LH">
+		<Name xml:lang="en">Adaptive driving beam - Left</Name>
+		<Name xml:lang="fr">Adaptive driving beam - Left</Name>
+		<XId>-1730514446</XId>
+		<RId>-1730481551</RId>
+	</Function>
+	<Function Address="24" Name="BVA_29b">
+		<Name xml:lang="en">Automatic Gearbox_29bits</Name>
+		<Name xml:lang="fr">Automatic Gearbox_29bits</Name>
+		<XId>-1730537231</XId>
+		<RId>-1730481896</RId>
+	</Function>
+	<Function Address="23" Name="ADB-RH">
+		<Name xml:lang="en">Adaptive driving beam - Right</Name>
+		<Name xml:lang="fr">Adaptive driving beam - Right</Name>
+		<XId>-1730514190</XId>
+		<RId>-1730481550</RId>
+	</Function>
+	<Function Address="26" Name="Additional Heater">
+		<Name xml:lang="en">Heat Controller</Name>
+		<Name xml:lang="fr">Chaudière</Name>
+		<XId>1809</XId>
+		<RId>1841</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="0"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="27" Name="DLOCK">
+		<Name xml:lang="en">Diff Lock Control System</Name>
+		<Name xml:lang="fr">Diff Lock Control System</Name>
+		<XId>1956</XId>
+		<RId>1964</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="28" Name="TCU">
+		<Name xml:lang="en">Top Control Unit</Name>
+		<Name xml:lang="fr">Unité de Contrôle de Toit</Name>
+		<XId>1867</XId>
+		<RId>1899</RId>
+	</Function>
+	<Function Address="30" Name="4WD">
+		<Name xml:lang="en">4 wheels Drive</Name>
+		<Name xml:lang="fr">4 roues motrices</Name>
+		<XId>1864</XId>
+		<RId>1896</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/>
+			</Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="32" Name="ST1">
+		<Name xml:lang="en">Steer Control Unit 1</Name>
+		<Name xml:lang="fr">Commande de Direction Filaire 1</Name>
+		<XId>-1730530831</XId>
+		<RId>-1730481871</RId>
+	</Function>
+	<Function Address="34" Name="ST2">
+		<Name xml:lang="en">Steer Control Unit 2</Name>
+		<Name xml:lang="fr">Commande de Direction Filaire 2</Name>
+		<XId>-1730530575</XId>
+		<RId>-1730481870</RId>
+	</Function>
+	<Function Address="35" Name="4WS">
+		<Name xml:lang="en">4 wheels Steering</Name>
+		<Name xml:lang="fr">4 roues directrices</Name>
+		<XId>1875</XId>
+		<RId>1907</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="36" Name="ACC">
+		<Name xml:lang="en">ACC</Name>
+		<Name xml:lang="fr">ACC</Name>
+		<XId>1885</XId>
+		<RId>1917</RId>
+	</Function>
+	<Function Address="37" Name="IDM">
+		<Name xml:lang="en">Integrated Dynamics Control Module</Name>
+		<Name xml:lang="fr">Integrated Dynamics Control Module</Name>
+		<XId>1804</XId>
+		<RId>1792</RId>
+	</Function>
+	<Function Address="38" Name="UCH">
+		<Name xml:lang="en">Body Control Module</Name>
+		<Name xml:lang="fr">Unité de Controle Habitacle</Name>
+		<XId>1861</XId>
+		<RId>1893</RId>
+		<ISO8>174</ISO8>
+	</Function>
+	<Function Address="39" Name="UPC-EMM">
+		<Name xml:lang="en">USM</Name>
+		<Name xml:lang="fr">UPC</Name>
+		<XId>1869</XId>
+		<RId>1901</RId>
+	</Function>
+	<Function Address="40" Name="CSHV Airbag Vehicle stopped">
+		<Name xml:lang="en">CSHV</Name>
+		<Name xml:lang="fr">CSHV</Name>
+		<XId>1930</XId>
+		<RId>2007</RId>
+	</Function>
+	<Function Address="41" Name="HVAC">
+		<Name xml:lang="en">Climate Control</Name>
+		<Name xml:lang="fr">Climatisation</Name>
+		<XId>1860</XId>
+		<RId>1892</RId>
+	</Function>
+	<Function Address="42" Name="ADP">
+		<Name xml:lang="en">Auto Drive Positioner</Name>
+		<Name xml:lang="fr">Memo siège</Name>
+		<XId>1871</XId>
+		<RId>1903</RId>
+	</Function>
+	<Function Address="43" Name="FRRAD">
+		<Name xml:lang="en">Laser radar for Adaptive Cruise Control System</Name>
+		<Name xml:lang="fr">Laser radar for Adaptive Cruise Control System</Name>
+		<XId>1827</XId>
+		<RId>1845</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="44" Name="Airbag-SRS">
+		<Name xml:lang="en">Airbag-SRS</Name>
+		<Name xml:lang="fr">Airbag-SRS</Name>
+		<XId>1874</XId>
+		<RId>1906</RId>
+	</Function>
+	<Function Address="45" Name="ABS-VDC_29b">
+		<Name xml:lang="en">ABS-VDC_29b</Name>
+		<Name xml:lang="fr">ABS-ESP_29b</Name>
+		<XId>-1730531855</XId>
+		<RId>-1730481875</RId>
+	</Function>
+	<Function Address="46" Name="UBP">
+		<Name xml:lang="en">Uncoupled Brake Pedal</Name>
+		<Name xml:lang="fr">Pédale de frein découplée</Name>
+		<XId>1948</XId>
+		<RId>1980</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="47" Name="Renault RemoteEntry">
+		<Name xml:lang="en">Intelligent KEY</Name>
+		<Name xml:lang="fr">Accès Mains Libres</Name>
+		<XId>1868</XId>
+		<RId>1900</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+			<Protocol Code="3" InitMode="1" MultiPoint="1" Name="KWP2000 Init 5 Baud Type I and II"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="48" Name="SMB">
+		<Name xml:lang="en">Side Magic Bumper</Name>
+		<Name xml:lang="fr">Side Magic Bumper</Name>
+		<XId>-1730531086</XId>
+		<RId>-1731071440</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="49" Name="Transpondeur">
+		<Name xml:lang="en">Immobilizer</Name>
+		<Name xml:lang="fr">Transpondeur</Name>
+		<ISO8>176</ISO8>
+	</Function>
+	<Function Address="50" Name="Superviseur-DCDC">
+		<Name xml:lang="en">Supervisor-DCDC</Name>
+		<Name xml:lang="fr">Superviseur-DCDC</Name>
+		<XId>1878</XId>
+		<RId>1910</RId>
+	</Function>
+	<Function Address="51" Name="ATR">
+		<Name xml:lang="en">Active Torque Rod</Name>
+		<Name xml:lang="fr">Active Torque Rod</Name>
+		<XId>-1730543374</XId>
+		<RId>-1730481664</RId>
+	</Function>
+	<Function Address="52" Name="Chargeur">
+		<Name xml:lang="en">Battery Charger</Name>
+		<Name xml:lang="fr">Chargeur</Name>
+	</Function>
+	<Function Address="55" Name="Onduleur">
+		<Name xml:lang="en">Battery Controller</Name>
+		<Name xml:lang="fr">Onduleur</Name>
+	</Function>
+	<Function Address="56" Name="Alarm">
+		<Name xml:lang="en">Alarm</Name>
+		<Name xml:lang="fr">Alarme</Name>
+	</Function>
+	<Function Address="57" Name="MB">
+		<Name xml:lang="en">Magic Bumper</Name>
+		<Name xml:lang="fr">Magic Bumper</Name>
+		<XId>1818</XId>
+		<RId>1850</RId>
+	</Function>
+	<Function Address="58" Name="CAN Adapter / BAC">
+		<Name xml:lang="en">Network CAN Adapter</Name>
+		<Name xml:lang="fr">Adaptateur réseau CAN</Name>
+		<XId>1953</XId>
+		<RId>1961</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="0"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="60" Name="PTC-AMP">
+		<Name xml:lang="en">Positive Temperature Coefficient heater amplifier</Name>
+		<Name xml:lang="fr">Positive Temperature Coefficient heater amplifier</Name>
+		<XId>2009</XId>
+		<RId>2011</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="61" Name="EPS (HEV)">
+		<Name xml:lang="en">Electric Power Steering (HEV)</Name>
+		<Name xml:lang="fr">Electric Power Steering (HEV)</Name>
+		<XId>2006</XId>
+		<RId>2002</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="0"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="63" Name="SVT">
+		<Name xml:lang="en">Stolen Vehicle Tracker</Name>
+		<Name xml:lang="fr">Stolen Vehicle Tracker</Name>
+		<ProtocolList>
+			<Protocol Code="4" InitMode="2" MultiPoint="0" Name="KWP2000 FastInit MonoPoint"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="64" Name="LKS">
+		<Name xml:lang="en">Lane Keep System</Name>
+		<Name xml:lang="fr">Lane Keep System</Name>
+		<XId>1799</XId>
+		<RId>1831</RId>
+	</Function>
+	<Function Address="65" Name="GATEWAY">
+		<Name xml:lang="en">Gateway</Name>
+		<Name xml:lang="fr">Passerelle</Name>
+		<XId>1808</XId>
+		<RId>1840</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="67" Name="ASDL">
+		<Name xml:lang="en">Automatic Sliding Door Left</Name>
+		<Name xml:lang="fr">Porte Coulissante Automatique Gauche</Name>
+		<XId>1881</XId>
+		<RId>1913</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="0"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="69" Name="ASDR">
+		<Name xml:lang="en">Automatic Sliding Door Right</Name>
+		<Name xml:lang="fr">Porte Coulissante Automatique Droite</Name>
+		<XId>1801</XId>
+		<RId>1833</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="0"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="70" Name="Engineering">
+		<Name xml:lang="en">Engineering module</Name>
+		<Name xml:lang="fr">Calculateur d'ingénierie</Name>
+		<XId>1997</XId>
+		<RId>1999</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="0"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="71" Name="SR">
+	<Name xml:lang="en">Scene Recorder</Name>
+	 <Name xml:lang="fr">Scene Recorder</Name>
+	 <XId>1928</XId>
+	 <RId>1960</RId>  
+		  <ProtocolList>
+				 <Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN" Format="11b"><Search/></Protocol>
+		   </ProtocolList>
+	</Function>
+	<Function Address="72" Name="WSU">
+		<Name xml:lang="en">Wind Shield Unit</Name>
+		<Name xml:lang="fr">Wind Shield Unit</Name>
+		<XId>1990</XId>
+		<RId>2001</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="0"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="74" Name="AAM">
+		<Name xml:lang="en">Additionnal Adaptation Module</Name>
+		<Name xml:lang="fr">Boitier d'Adaptations Complementaires</Name>
+		<XId>2006</XId>
+		<RId>2002</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="0"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="77" Name="SCU">
+		<Name xml:lang="en">Shift By Wire</Name>
+		<Name xml:lang="fr">Commande Boite Electrique</Name>
+		<XId>1949</XId>
+		<RId>1981</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="0"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="80" Name="Tachometer">
+		<Name xml:lang="en">Tachometer</Name>
+		<Name xml:lang="fr">Compte tours</Name>
+		<XId>1816</XId>
+		<RId>1848</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="81" Name="Tableau de bord">
+		<Name xml:lang="en">Meter Cluster</Name>
+		<Name xml:lang="fr">Tableau de bord</Name>
+		<XId>1859</XId>
+		<RId>1891</RId>
+	</Function>
+	<Function Address="82" Name="Synthèse de la parole">
+		<Name xml:lang="en">Speech Controller</Name>
+		<Name xml:lang="fr">Synthèse de la parole</Name>
+	</Function>
+	<Function Address="88" Name="Navigation-UCC-ITM">
+		<Name xml:lang="en">Navigation-UCC-ITM</Name>
+		<Name xml:lang="fr">Navigation-UCC-ITM</Name>
+		<XId>1863</XId>
+		<RId>1895</RId>
+	</Function>
+	<Function Address="89" Name="MIU">
+		<Name xml:lang="en">Multimedia Interface Unit</Name>
+		<Name xml:lang="fr">Interface Multimedia</Name>
+		<XId>1812</XId>
+		<RId>1844</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="90" Name="ODS">
+		<Name xml:lang="en">Occupant Detection System</Name>
+		<Name xml:lang="fr">Détection d'occupants</Name>
+	</Function>
+	<Function Address="91" Name="INSULATOR">
+		<Name xml:lang="en">CAN1-CAN2 Gateway</Name>
+		<Name xml:lang="fr">Passerelle CAN1-CAN2</Name>
+		<XId>1925</XId>
+		<RId>1957</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="96" Name="HMD">
+		<Name xml:lang="en">Head Up Display</Name>
+		<Name xml:lang="fr">Affichage Tête Haute</Name>
+		<XId>-1730518799</XId>
+		<RId>-1730481824</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="97" Name="AVM">
+		<Name xml:lang="en">Around View Monitoring System</Name>
+		<Name xml:lang="fr">Around View Monitoring System</Name>
+		<XId>1975</XId>
+		<RId>1978</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="98" Name="FCAM">
+		<Name xml:lang="en">Front camera</Name>
+		<Name xml:lang="fr">Caméra frontale</Name>
+		<XId>2012</XId>
+		<RId>2013</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="99" Name="SOW Left">
+		<Name xml:lang="en">Side Obstacle Warning Left</Name>
+		<Name xml:lang="fr">Side Obstacle Warning Left</Name>
+		<XId>1853</XId>
+		<RId>1854</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="100" Name="SOW Right">
+		<Name xml:lang="en">Side Obstacle Warning Right</Name>
+		<Name xml:lang="fr">Side Obstacle Warning Right</Name>
+		<XId>2004</XId>
+		<RId>2005</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="101" Name="PPS">
+		<Name xml:lang="en">Pedestrian Protection System</Name>
+		<Name xml:lang="fr">Pedestrian Protection System</Name>
+		<XId>1802</XId>
+		<RId>1834</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="102" Name="VCCU">
+		<Name xml:lang="en">Vehicle Charger Controler Unit</Name>
+		<Name xml:lang="fr">Vehicle Charger Controler Unit</Name>
+		<XId>1817</XId>
+		<RId>1849</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="103" Name="BCB">
+		<Name xml:lang="en">Battery Charger Block</Name>
+		<Name xml:lang="fr">Module Chargeur Batterie</Name>
+		<XId>1938</XId>
+		<RId>1939</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="104" Name="PEB">
+		<Name xml:lang="en">Power Electronic Box</Name>
+		<Name xml:lang="fr">Module électronique de puissance</Name>
+		<XId>1882</XId>
+		<RId>1918</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="107" Name="BSW">
+		<Name xml:lang="en">Blind Spot Warning</Name>
+		<Name xml:lang="fr">Détection d'angle mort</Name>
+		<XId>1941</XId>
+		<RId>1973</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="110" Name="AT">
+		<Name xml:lang="en">Automatic Transmission</Name>
+		<Name xml:lang="fr">BVA-BVR</Name>
+		<XId>2017</XId>
+		<RId>2025</RId>
+	</Function>
+	<Function Address="111" Name="METER-Sub">
+		<Name xml:lang="en">Meter - Sub ECU</Name>
+		<Name xml:lang="fr">Meter - Sub ECU</Name>
+		<XId>-1730514958</XId>
+		<RId>-1730481553</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="113" Name="HLL">
+		<Name xml:lang="en">HLL</Name>
+		<Name xml:lang="fr">HLL</Name>
+		<ProtocolList>
+			<Protocol Code="4" InitMode="2" MultiPoint="0" Name="KWP2000 FastInit MonoPoint"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="115" Name="Clutch Controller">
+		<Name xml:lang="en">Clutch Controller</Name>
+		<Name xml:lang="fr">Embrayage piloté</Name>
+		<ISO8>241</ISO8>
+	</Function>
+	<Function Address="116" Name="HSPL">
+		<Name xml:lang="en">Hospitality Light ECU</Name>
+		<Name xml:lang="fr">Hospitality Light ECU</Name>
+		<XId>-1730514702</XId>
+		<RId>-1730481552</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="117" Name="SB">
+		<Name xml:lang="en">Smart Beam</Name>
+		<Name xml:lang="fr">Unité d'optimisation d'éclairage</Name>
+		<XId>-1730513423</XId>
+		<RId>-1730481803</RId>
+	</Function>
+	<Function Address="118" Name="SIB">
+		<Name xml:lang="en">Secured Interface Box</Name>
+		<Name xml:lang="fr">Secured Interface Box</Name>
+		<XId>1991</XId>
+		<RId>2003</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="119" Name="DCM Renault">
+		<Name xml:lang="en">Data Communication Module</Name>
+		<Name xml:lang="fr">Module télématique de communication</Name>
+		<XId>1994</XId>
+		<RId>2010</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="121" Name="HSG - LNG">
+		<Name xml:lang="en">High Voltage Starter Generator - LNG</Name>
+		<Name xml:lang="fr">High Voltage Starter Generator - GPL</Name>
+		<XId>2018</XId>
+		<RId>2026</RId>
+	</Function>
+	<Function Address="122" Name="ECM">
+		<Name xml:lang="en">Engine Control Module</Name>
+		<Name xml:lang="fr">Injection</Name>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+		<XId>2016</XId>
+		<RId>2024</RId>
+	</Function>
+	<Function Address="124" Name="AFS">
+		<Name xml:lang="en">Auto FrontLighting System</Name>
+		<Name xml:lang="fr">AFS</Name>
+		<XId>1884</XId>
+		<RId>1916</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="0" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="128" Name="ANC">
+		<Name xml:lang="en">Active Noise Control unit</Name>
+		<Name xml:lang="fr">ANC</Name>
+		<XId>1865</XId>
+		<RId>1866</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="0" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="129" Name="VSP">
+		<Name xml:lang="en">Vehicle Sound for Pedestrian</Name>
+		<Name xml:lang="fr">VSP</Name>
+		<XId>1855</XId>
+		<RId>1889</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="0" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="130" Name="WCGS">
+		<Name xml:lang="en">Wireless Charger Smartphone</Name>
+		<Name xml:lang="fr">Wireless Charger Smartphone</Name>
+		<XId>1962</XId>
+		<RId>1965</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="131" Name="WBCB">
+	<Name xml:lang="en">Wireless Charger Base Station</Name>
+	 <Name xml:lang="fr">Wireless Charger Base Station</Name>
+	 <XId>-1730509838</XId>
+	 <RId>-1730481533</RId>  
+		  <ProtocolList>
+				 <Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		   </ProtocolList>
+	</Function>
+
+	<Function Address="134" Name="AAU">
+		<Name xml:lang="en">Audio Amplifier Unit</Name>
+		<Name xml:lang="fr">Amplificateur Audio</Name>
+		<XId>1922</XId>
+		<RId>1954</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="0"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="135" Name="C-Box">
+		<Name xml:lang="en">C-Box</Name>
+		<Name xml:lang="fr">C-Box</Name>
+		<XId>1920</XId>
+		<RId>1952</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="0" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="144" Name="S-FOB">
+		<Name xml:lang="en">Smart FOB</Name>
+		<Name xml:lang="fr">Smart FOB</Name>
+		<XId>-1730506510</XId>
+		<RId>-1730481520</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="145" Name="LBC (HEV)">
+		<Name xml:lang="en">Lithium Battery Controller</Name>
+		<Name xml:lang="fr">Controleur de Batterie Lithium</Name>
+		<XId>2021</XId>
+		<RId>2029</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="147" Name="LBC (EV)">
+		<Name xml:lang="en">Lithium Battery Controller</Name>
+		<Name xml:lang="fr">Controleur de Batterie Lithium</Name>
+		<XId>1947</XId>
+		<RId>1979</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="149" Name="EVC-VCM">
+		<Name xml:lang="en">Vehicle Control Module</Name>
+		<Name xml:lang="fr">Vehicle Control Module</Name>
+		<XId>2020</XId>
+		<RId>2028</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="150" Name="VCM">
+		<Name xml:lang="en">Vehicle Control Module</Name>
+		<Name xml:lang="fr">Vehicle Control Module</Name>
+		<XId>1943</XId>
+		<RId>1946</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="151" Name="PLC/PLGW">
+		<Name xml:lang="en">Power Line connection/ Power Line GateWay</Name>
+		<Name xml:lang="fr">Power Line connection/ Power Line GateWay</Name>
+		<XId>2008</XId>
+		<RId>1992</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="149" Name="(H)EVC">
+		<Name xml:lang="en">Electrical Vehicle Control module</Name>
+		<Name xml:lang="fr">Module de controle du VE</Name>
+		<XId>2020</XId>
+		<RId>2028</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="165" Name="DDCM">
+		<Name xml:lang="en">Driver Door Control module</Name>
+		<Name xml:lang="fr">Module de porte conducteur</Name>
+		<XId>1797</XId>
+		<RId>1829</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="166" Name="PDCM">
+		<Name xml:lang="en">Passenger Door Control module</Name>
+		<Name xml:lang="fr">Module de porte passager</Name>
+		<XId>1798</XId>
+		<RId>1830</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="167" Name="PBD">
+		<Name xml:lang="en">Power Back Door</Name>
+		<Name xml:lang="fr">Power Back Door</Name>
+		<XId>1811</XId>
+		<RId>1843</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="168" Name="LBC2">
+		<Name xml:lang="en">Lithium Battery Controller 2</Name>
+		<Name xml:lang="fr">Controleur de Batterie Lithium 2</Name>
+		<XId>1942</XId>
+		<RId>1974</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="192" Name="HFM">
+		<Name xml:lang="en">Hand Free Module</Name>
+		<Name xml:lang="fr">Module Mains Libres</Name>
+		<XId>1945</XId>
+		<RId>1977</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="208" Name="CGW2">
+		<Name xml:lang="en">Central Gateway 2</Name>
+		<Name xml:lang="fr">Central Gateway 2</Name>
+		<XId>-1730490127</XId>
+		<RId>-1730481712</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="209" Name="S-GW">
+		<Name xml:lang="en">Security Gateway</Name>
+		<Name xml:lang="fr">Security Gateway</Name>
+		<XId>-1730489871</XId>
+		<RId>-1730481711</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="210" Name="S-GW3">
+		<Name xml:lang="en">Security Gateway3</Name>
+		<Name xml:lang="fr">Security Gateway3</Name>
+		<XId>-1730489615</XId>
+		<RId>-1730481710</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="211" Name="UDM/UPCU">
+		<Name xml:lang="en">Urea dosing Control Module</Name>
+		<Name xml:lang="fr">Module de controle d'urée</Name>
+		<XId>2022</XId>
+		<RId>2030</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="218" Name="EVC-HCM-VCM_29b">
+		<Name xml:lang="en">Vehicle Control Module_29bits</Name>
+		<Name xml:lang="fr">Vehicle Control Module_29bits</Name>
+		<XId>-1730487567</XId>
+		<RId>-1730481702</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="219" Name="LBC (HEV)_29b">
+		<Name xml:lang="en">Lithium Battery Controller_29bits</Name>
+		<Name xml:lang="fr">Controleur de Batterie Lithium_29bits</Name>
+		<XId>-1730487311</XId>
+		<RId>-1730481701</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="220" Name="LBC2_29b">
+		<Name xml:lang="en">Lithium Battery Controller 2_29bits</Name>
+		<Name xml:lang="fr">Controleur de Batterie Lithium 2_29bits</Name>
+		<XId>-1730487055</XId>
+		<RId>-1730481700</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="221" Name="Superviseur-DCDC_29b">
+		<Name xml:lang="en">Supervisor-DCDC_29bits</Name>
+		<Name xml:lang="fr">Superviseur-DCDC_29bits</Name>
+		<XId>-1730486799</XId>
+		<RId>-1730481699</RId>
+	</Function>
+	<Function Address="222" Name="BCB-OBC_29b">
+		<Name xml:lang="en">Battery Charger Block_29bits</Name>
+		<Name xml:lang="fr">Module Chargeur Batterie_29bits</Name>
+		<XId>-1730486543</XId>
+		<RId>-1730481698</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="223" Name="INV-ME_29b">
+		<Name xml:lang="en">INV-ME_29bits</Name>
+		<Name xml:lang="fr">INV-ME_29bits</Name>
+		<XId>-1730486287</XId>
+		<RId>-1730481697</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="224" Name="EVAP_29b">
+		<Name xml:lang="en">EVAP_29bits</Name>
+		<Name xml:lang="fr">EVAP_29bits</Name>
+		<XId>-1730486031</XId>
+		<RId>-1730481696</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="225" Name="UDM_29b/UPCU_29b">
+		<Name xml:lang="en">Urea dosing Control Module_29bits</Name>
+		<Name xml:lang="fr">Module de controle d'urée_29bits</Name>
+		<XId>-1730485775</XId>
+		<RId>-1730481695</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="226" Name="E-ACT-EBA_29b">
+		<Name xml:lang="en">E-ACT-EBA_29b_29bits</Name>
+		<Name xml:lang="fr">E-ACT-EBA_29b_29bits</Name>
+		<XId>-1730485519</XId>
+		<RId>-1730481694</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="227" Name="HSG-LNG-SSG_29b">
+		<Name xml:lang="en">High Voltage Starter Generator - LNG _29bits</Name>
+		<Name xml:lang="fr">High Voltage Starter Generator - GPL_29bits</Name>
+		<XId>-1730485263</XId>
+		<RId>-1730481693</RId>
+	</Function>
+	<Function Address="238" Name="Controlographe">
+		<Name xml:lang="en">Tachograph</Name>
+		<Name xml:lang="fr">Controlographe</Name>
+	</Function>
+	<Function Address="247" Name="LDCM/SeatPassenger">
+		<Name xml:lang="en">Left Door Control module/Seat Passenger</Name>
+		<Name xml:lang="fr">Module de porte Gauche/Seat passenger</Name>
+		<XId>1814</XId>
+		<RId>1846</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="248" Name="RDCM/Magic Folding">
+		<Name xml:lang="en">Right Door Control module/Magic Folding</Name>
+		<Name xml:lang="fr">Module de porte Droite/Magic Folding</Name>
+		<XId>1815</XId>
+		<RId>1847</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function>
+	<Function Address="249" Name="DDR">
+		<Name xml:lang="en">Diagnostic Data Recorder</Name>
+		<Name xml:lang="fr">Diagnostic Data Recorder</Name>
+		<XId>1803</XId>
+		<RId>1835</RId>
+		<ProtocolList>
+			<Protocol Code="6" InitMode="3" MultiPoint="1" Name="DiagOnCAN"><Search/><Ident id80="1" id83="1"/></Protocol>
+		</ProtocolList>
+	</Function></Functions>

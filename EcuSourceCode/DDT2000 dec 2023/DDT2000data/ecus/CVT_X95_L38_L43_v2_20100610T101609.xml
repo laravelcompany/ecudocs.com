@@ -1,0 +1,1923 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.0.0.1" date="2010-06-10T10:10"/>
+<ddt:Target Name="CVT_X95_L38_L43_v2" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="leehyoung.cho@renaultsamsungM.com" href="CVT_X95_L38_L43_v2_20100610T101609.xml" upload="6/10/2010" group="ALA AFJ"><Description><![CDATA[Control for CK1[CVT1]/FK0 (CVT2) 
+Vehicle : X95/L38/L43
+Software version : 6B53 (Diag On Can)
+
+June. 2010
+
+Authors :
+Cho, Lee-Hyoung leehyoung.cho@renaultsamsungM.com
+Kyoung, Heechul  heechul.kyung@renaultsamsungM.com
+
+PCTT/PTEO/RSTC/RSM]]></Description>
+<Projects xmlns=""><x38/><x43/><x95/></Projects>
+<Function Name="BVA" Address="110"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>2010-02-10 ?? 10:40:10</DateOfficialisation>
+<Failures Name="DTC Failures" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="2017"/>
+</SendId><ReceiveId>
+<CANId Value="2025"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="36" Supplier="APY" Soft="006B" Version="0053"/><AutoIdent DiagVersion="4" Supplier="APY" Soft="006B" Version="0053"/><AutoIdent DiagVersion="20" Supplier="APY" Soft="006B" Version="0053"/></AutoIdents>
+<Datas>
+
+<Data Name="CRC">
+<Mnemonic>CRC</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Producer ECM absent">
+<Bytes count="1"/>
+</Data>
+<Data Name="Producer ABS absent">
+<Bytes count="1"/>
+</Data>
+<Data Name="Producer BCM absent">
+<Bytes count="1"/>
+</Data>
+<Data Name="Producer ACC absent">
+<Bytes count="1"/>
+</Data>
+<Data Name="ResetMode">
+<Mnemonic>RSTOPT</Mnemonic>
+<Bits>
+<List>
+<Item Value="255" Text="All teach-ins"/></List>
+</Bits>
+</Data>
+<Data Name="Record values">
+<Mnemonic>RECVAL</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="After-sales month">
+<Mnemonic>MM</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="After-sales day">
+<Mnemonic>DD</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="After-sales year">
+<Mnemonic>YY</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Ratio">
+<Comment><![CDATA[Current gear ratio (primary pulley speed/secondary pulley speed)]]></Comment>
+<Mnemonic>Ratio</Mnemonic>
+<Bits count="16">
+<Scaled DivideBy=" 25600" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Vehicle Identification Number">
+<Mnemonic>VIN</Mnemonic>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="BrakeInfoStatus (CAN)">
+<Comment><![CDATA[Brake information status received from ABS]]></Comment>
+<Mnemonic>BrkswCAN</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Not pressed"/>
+<Item Value="2" Text="Pressed"/>
+<Item Value="4" Text="Confirmed pressed"/>
+<Item Value="7" Text="Unavailable"/></List>
+</Bits>
+</Data>
+<Data Name="AT_TorqueControlType (CAN)">
+<Comment><![CDATA[Type of torque control performed to the engine]]></Comment>
+<Mnemonic>SipPtn</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Normal"/>
+<Item Value="1" Text="Upper limitation"/>
+<Item Value="2" Text="Lower limitation"/>
+<Item Value="7" Text="Full limitation"/></List>
+</Bits>
+</Data>
+<Data Name="CrankingAuthorization_AT (CAN)">
+<Comment><![CDATA[Autorization by the gearbox for engine to crank]]></Comment>
+<Mnemonic>CkrAtr</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Forbidden"/>
+<Item Value="1" Text="Authorized"/>
+<Item Value="3" Text="Unavailable"/></List>
+</Bits>
+</Data>
+<Data Name="CruiseControlStatus_forTM (CAN)">
+<Comment><![CDATA[Type of cruise control running (speed limiter or cruise control)]]></Comment>
+<Mnemonic>CanRXSIG7</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="CC and SL inactive"/>
+<Item Value="1" Text="Pedal recovery"/>
+<Item Value="2" Text="CC or SL active"/></List>
+</Bits>
+</Data>
+<Data Name="ECM_TorqueRequestStatus (CAN)">
+<Comment><![CDATA[Type of torque request sent by gearbox to the engine]]></Comment>
+<Mnemonic>CanRXSW1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Normal"/>
+<Item Value="1" Text="Measure imprecision"/>
+<Item Value="2" Text="Transient state"/>
+<Item Value="3" Text="Can not be achieved"/></List>
+</Bits>
+</Data>
+<Data Name="EngineRPM (CAN)">
+<Mnemonic>EngREVC</Mnemonic>
+<Bits count="16">
+<Scaled Unit="rpm" Format="0000"/>
+</Bits>
+</Data>
+<Data Name="EngineTorque_WithoutGBRequest (CAN)">
+<Mnemonic>TTePTD</Mnemonic>
+<Bits>
+<Scaled Unit="Nm" Step=" 2" Offset="-100"/>
+</Bits>
+</Data>
+<Data Name="FastTorqueRequest (CAN)">
+<Mnemonic>CanTRQDYN</Mnemonic>
+<Bits count="16">
+<Scaled Unit="Nm" Step=" .5" Offset="-400"/>
+</Bits>
+</Data>
+<Data Name="Limit_SlowTorqueRequest (CAN)">
+<Mnemonic>CanTRQSTA</Mnemonic>
+<Bits count="16">
+<Scaled Unit="Nm" Step=" .5" Offset="-400"/>
+</Bits>
+</Data>
+<Data Name="MeanEffectiveTorque (CAN)">
+<Mnemonic>TENGcan</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="Nm" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="PowerTrainSetPoint (CAN)">
+<Mnemonic>PTDAPOcan</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" 100" DivideBy=" 256" Format="#0.0"/>
+</Bits>
+</Data>
+<Data Name="RawSensor (CAN)">
+<Mnemonic>ApsSEN</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" 100" DivideBy=" 256" Format="#0.0"/>
+</Bits>
+</Data>
+<Data Name="Battery voltage">
+<Comment><![CDATA[Potential voltage on battery]]></Comment>
+<Mnemonic>VignADBUF</Mnemonic>
+<Bits>
+<Scaled Unit="V" Step=" 20" DivideBy=" 255" Format="#0.00"/>
+</Bits>
+</Data>
+<Data Name="Bus OFF parameter">
+<Bytes count="1"/>
+</Data>
+<Data Name="Date of production">
+<Bytes count="6" ascii="1"/>
+</Data>
+<Data Name="Group of diagnostic information">
+<Mnemonic>GODIN</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Input output control parameter">
+<Mnemonic>IOCP</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Return Control to ECU"/>
+<Item Value="1" Text="Report Current Status"/>
+<Item Value="7" Text="Short Term Adjustement"/></List>
+</Bits>
+</Data>
+<Data Name="Line pressure solenoid current">
+<Comment><![CDATA[Current detected value of line pressure solenoid]]></Comment>
+<Mnemonic>PLImon</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" DivideBy=" 1000" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Lock-up area">
+<Mnemonic>LuAREA</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Open"/>
+<Item Value="1" Text="Closed"/></List>
+</Bits>
+</Data>
+<Data Name="Lock-up pattern">
+<Mnemonic>LuPTN</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Open"/>
+<Item Value="16" Text="Is closing"/>
+<Item Value="32" Text="Is opening"/>
+<Item Value="48" Text="Closed"/>
+<Item Value="96" Text="Slip control"/></List>
+</Bits>
+</Data>
+<Data Name="Memory address">
+<Comment><![CDATA[Data encoded with 4 bytes]]></Comment>
+<Mnemonic>MEMADDRESS</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="Memory size">
+<Mnemonic>MEMSIZE</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Mute module parameter">
+<Bytes count="1"/>
+</Data>
+<Data Name="Mux messaging reference">
+<Bytes count="2"/>
+</Data>
+<Data Name="Primary pulley speed">
+<Comment><![CDATA[Primary axle revolution speed]]></Comment>
+<Mnemonic>InpREV</Mnemonic>
+<Bits count="16">
+<Scaled Unit="rpm" Format="0000"/>
+</Bits>
+</Data>
+<Data Name="Producer AT FK0-001">
+<Bytes count="1"/>
+</Data>
+<Data Name="Production number">
+<Bytes count="6" ascii="1"/>
+</Data>
+<Data Name="Record local identifier">
+<Comment><![CDATA[Record Local Identifier]]></Comment>
+<Mnemonic>RLOCID</Mnemonic>
+<Bits>
+<List>
+<Item Value="16" Text="L/U &amp; SEL Solenoid"/>
+<Item Value="17" Text="PL Solenoid"/>
+<Item Value="18" Text="SEC Solenoid"/>
+<Item Value="19" Text="L/U &amp; SEL ON/OFF Solenoid"/>
+<Item Value="20" Text="P Shift Lock Solenoid"/></List>
+</Bits>
+</Data>
+<Data Name="Secondary pressure solenoid current">
+<Comment><![CDATA[Current detected value of secondary pressure solenoid]]></Comment>
+<Mnemonic>PHImon</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" DivideBy=" 1000" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Secondary pulley speed">
+<Comment><![CDATA[Secondary axle revolution speed]]></Comment>
+<Mnemonic>OutREV</Mnemonic>
+<Bits count="16">
+<Scaled Unit="rpm" Format="0000"/>
+</Bits>
+</Data>
+<Data Name="Self-learning flag">
+<Comment><![CDATA[Flag to known if ROM data are learnt by ATCU]]></Comment>
+<Mnemonic>EEPEndFLG</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Deleted"/>
+<Item Value="3" Text="Performed"/></List>
+</Bits>
+</Data>
+<Data Name="Software name">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="Supplier number">
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Supplier production line">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Turbine speed">
+<Comment><![CDATA[Output speed of torque converter]]></Comment>
+<Mnemonic>TbnSpd</Mnemonic>
+<Bits count="16">
+<Scaled Unit="rpm" Format="0000"/>
+</Bits>
+</Data>
+<Data Name="Target ratio">
+<Mnemonic>DRatio</Mnemonic>
+<Bits count="16">
+<Scaled DivideBy=" 25600" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="EngineCoolantTemp (CAN)">
+<Mnemonic>WTemp</Mnemonic>
+<Bits>
+<Scaled Unit="°C" Offset="-40"/>
+</Bits>
+</Data>
+<Data Name="Engine torque">
+<Comment><![CDATA[Actual torque delivered by the engine]]></Comment>
+<Mnemonic>EngTRQ</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="Nm" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Comment><![CDATA[List of DTCs]]></Comment>
+<Bits count="16">
+<List>
+<Item Value="6144" Text="Line pressure solenoid failure (performance)"/>
+<Item Value="49153" Text="High speed CAN communication bus"/>
+<Item Value="1824" Text="Secondary revolution speed sensor failure"/>
+<Item Value="50176" Text="Invalid data received"/>
+<Item Value="50177" Text="Invalid data received from ECM"/>
+<Item Value="1797" Text="Inhibitor switch failure"/>
+<Item Value="1878" Text="Line pressure solenoid failure"/>
+<Item Value="1857" Text="Lock-up linear solenoid failure (performance)"/>
+<Item Value="1856" Text="Lock-up select on/off solenoid failure"/>
+<Item Value="2085" Text="Manual mode switches failure"/>
+<Item Value="1542" Text="Memory back up failure"/>
+<Item Value="1808" Text="Oil temperature sensor failure"/>
+<Item Value="5923" Text="Revolution speed sensors functional failure"/>
+<Item Value="6146" Text="Primary or secondary pressure sensor failure (performance)"/>
+<Item Value="2117" Text="Secondary pressure sensor failure"/>
+<Item Value="1813" Text="Primary revolution speed sensor failure"/>
+<Item Value="2112" Text="Primary pressure sensor failure"/>
+<Item Value="1873" Text="Secondary pressure solenoid failure"/>
+<Item Value="5472" Text="Sensor ground or sensor power failure"/>
+<Item Value="2134" Text="Step motor failure"/>
+<Item Value="1859" Text="Lock-up linear solenoid failure"/>
+<Item Value="1920" Text="Monitoring of change rate for shift ratio"/>
+<Item Value="2118" Text="Secondary pressure solenoid failure (performance)"/>
+<Item Value="536" Text="Oil temperature overheat"/>
+<Item Value="49441" Text="Invalid data received from VDC"/>
+<Item Value="50198" Text="Vehicle body speed failure"/></List>
+</Bits>
+</Data>
+<Data Name="Current Failure">
+<Comment><![CDATA[Indicating if the failure is always present or not]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Standard Fault">
+<Bits count="5">
+<List>
+<Item Value="0" Text="No possible classification about the type of fault"/>
+<Item Value="1" Text="Open circuit"/>
+<Item Value="2" Text="Short circuit to ground"/>
+<Item Value="3" Text="Short circuit to power supply"/>
+<Item Value="4" Text="Parameter at minimum value"/>
+<Item Value="5" Text="Parameter at maximum value"/>
+<Item Value="6" Text="Incoherency, not plausible"/>
+<Item Value="7" Text="No signal"/>
+<Item Value="8" Text="Below minimum threshold"/>
+<Item Value="9" Text="Above maximum threshold"/>
+<Item Value="10" Text="Permanent low level"/>
+<Item Value="11" Text="Permanent high level"/>
+<Item Value="12" Text="Lines short-circuited"/>
+<Item Value="13" Text="Internal electronic anomaly"/>
+<Item Value="14" Text="Network default"/>
+<Item Value="15" Text="Remote diagnostic"/>
+<Item Value="16" Text="Disturbed communication"/>
+<Item Value="17" Text="Microcuts"/>
+<Item Value="18" Text="Abnormal voltage"/>
+<Item Value="19" Text="Value out of range"/>
+<Item Value="20" Text="Open circuit or short circuit to ground"/>
+<Item Value="21" Text="Open circuit or short circuit to power supply"/>
+<Item Value="22" Text="Initialization / configuration not valid"/></List>
+</Bits>
+</Data>
+<Data Name="Historical Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Type Of Fault">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Standard"/>
+<Item Value="1" Text="Specific"/></List>
+</Bits>
+</Data>
+<Data Name="Shift mode">
+<Mnemonic>CurSFT</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Automatic"/>
+<Item Value="3" Text="Manual"/>
+<Item Value="5" Text="Linear"/></List>
+</Bits>
+</Data>
+<Data Name="Throttle valve opening">
+<Comment><![CDATA[Engine throttle valve opening]]></Comment>
+<Mnemonic>TvoSEN</Mnemonic>
+<Bits>
+<Scaled Unit="%" Step=" 100" DivideBy=" 256" Format="#0.0"/>
+</Bits>
+</Data>
+<Data Name="Target secondary pressure">
+<Mnemonic>PHprsLD</Mnemonic>
+<Bits>
+<Scaled Unit="MPa" DivideBy=" 40" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="OBD memorized failures 1">
+<Mnemonic>LFail1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="OBD memorized failures 2">
+<Mnemonic>LFail2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="OBD memorized failures 3">
+<Mnemonic>LFail3</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="OBD memorized failures 4">
+<Mnemonic>LFail4</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="OBD pending failures 1">
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="OBD pending failures 2">
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="OBD pending failures 3">
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="OBD pending failures 4">
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Target primary pulley speed">
+<Comment><![CDATA[Desire engine revolution speed]]></Comment>
+<Mnemonic>DsrREV</Mnemonic>
+<Bits count="16">
+<Scaled Unit="rpm"/>
+</Bits>
+</Data>
+<Data Name="Target step motor displacement">
+<Comment><![CDATA[Desired step motor displacement regarding initial position]]></Comment>
+<Mnemonic>DsrSTP</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="%" Step=" 100" DivideBy=" 177" Format="#0.0"/>
+</Bits>
+</Data>
+<Data Name="Target line pressure">
+<Mnemonic>TGTprs</Mnemonic>
+<Bits>
+<Scaled Unit="MPa" DivideBy=" 40" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Vehicle speed">
+<Comment><![CDATA[Physisal value of vehicle speed]]></Comment>
+<Mnemonic>VspSEN</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km/h" DivideBy=" 256" Format="0000"/>
+</Bits>
+</Data>
+<Data Name="NDTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AT_MinimumIdleSpeedRequest (CAN)">
+<Comment><![CDATA[Minimum requested value of engine idle speed]]></Comment>
+<Bits>
+<Scaled Unit="rpm"/>
+</Bits>
+</Data>
+<Data Name="Actual secondary pressure">
+<Comment><![CDATA[Real mesured secondary pressure]]></Comment>
+<Mnemonic>ACTHprs</Mnemonic>
+<Bits>
+<Scaled Unit="MPa" DivideBy=" 40" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="KickDownActivated (CAN)">
+<Mnemonic>SftSupCSR</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="NO"/>
+<Item Value="1" Text="YES"/></List>
+</Bits>
+</Data>
+<Data Name="Confirmed failures 1">
+<Mnemonic>LFail1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Confirmed failures 2">
+<Mnemonic>LFail2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Confirmed failures 3">
+<Mnemonic>LFail3</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Confirmed failures 4">
+<Mnemonic>LFail4</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="MoreDTC">
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Specific Fault">
+<Bits count="5">
+<List>
+<Item Value="0" Text="Engine revolution speed failure"/>
+<Item Value="1" Text="Brake switch failure"/>
+<Item Value="2" Text="Engine torque control failure"/>
+<Item Value="3" Text="Ergonomic pedal failure"/>
+<Item Value="4" Text="OBD failure"/>
+<Item Value="5" Text="Short DLC"/>
+<Item Value="6" Text="Control unit failure"/>
+<Item Value="7" Text="Belt damaged"/>
+<Item Value="8" Text="ABS malfunction"/>
+<Item Value="9" Text="Abnormal wheel spin"/></List>
+</Bits>
+</Data>
+<Data Name="CalibrationNumber">
+<Comment><![CDATA[Numero de calibration en Hexa]]></Comment>
+<Mnemonic>NCAL</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="DiagnosticIdentificationCode">
+<Comment><![CDATA[Diag evolution number]]></Comment>
+<Mnemonic>VDIAG</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="SoftwareNumber">
+<Comment><![CDATA[Software identification number]]></Comment>
+<Mnemonic>NPGRGM</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Step motor displacement">
+<Mnemonic>Astep</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="%" Step=" 100" DivideBy=" 177" Format="#0.0"/>
+</Bits>
+</Data>
+<Data Name="SupplierNumber.ITG">
+<Comment><![CDATA[Supplier ITG code]]></Comment>
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="EditionNumber">
+<Comment><![CDATA[Software version(edition) number]]></Comment>
+<Mnemonic>NVERS</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="PartNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="1" Text="31032"/>
+<Item Value="2" Text="31039"/></List>
+</Bits>
+</Data>
+<Data Name="HardwareNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="1" Text="31032"/></List>
+</Bits>
+</Data>
+<Data Name="PartNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="HardwareNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="Gearbox pattern">
+<Comment><![CDATA[Mechnical current position]]></Comment>
+<Mnemonic>CurRNG</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Engaged forward"/>
+<Item Value="3" Text="Neutral state"/>
+<Item Value="4" Text="Engaged reverse"/></List>
+</Bits>
+</Data>
+<Data Name="Lock-up linear solenoid current">
+<Comment><![CDATA[Current detected value of lock-up solenoid]]></Comment>
+<Mnemonic>LUImon</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" DivideBy=" 1000" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Lock-up inhibition 1">
+<Mnemonic>LUINHno</Mnemonic>
+<Bits count="16">
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Lock-up inhibition 2">
+<Mnemonic>LUINHno2</Mnemonic>
+<Bits count="16">
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Gear engaged (manual mode)">
+<Comment><![CDATA[Gear engaged (from 1 to 6) when gearbox running in manual mode]]></Comment>
+<Mnemonic>SftPOS</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="1st"/>
+<Item Value="1" Text="2nd"/>
+<Item Value="2" Text="3th"/>
+<Item Value="3" Text="4th"/>
+<Item Value="4" Text="5th"/>
+<Item Value="5" Text="6th"/></List>
+</Bits>
+</Data>
+<Data Name="Manual mode: tip up">
+<Mnemonic>fTIPUPSW</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="Pressed"/></List>
+</Bits>
+</Data>
+<Data Name="Manual mode: tip down">
+<Mnemonic>fTIPDWSW</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not pressed"/>
+<Item Value="1" Text="Pressed"/></List>
+</Bits>
+</Data>
+<Data Name="Actual primary pressure">
+<Comment><![CDATA[Real mesured line (primary) pressure]]></Comment>
+<Mnemonic>ACTLprs</Mnemonic>
+<Bits>
+<Scaled Unit="MPa" DivideBy=" 40" Format="#0.000"/>
+</Bits>
+</Data>
+<Data Name="Current situation">
+<Bits>
+<List>
+<Item Value="1" Text="Normal status"/>
+<Item Value="2" Text="Inhibited (ready for bench)"/></List>
+</Bits>
+</Data>
+<Data Name="ManufacturerIdentificationCode">
+<Bits>
+<List>
+<Item Value="0" Text="Renault R1"/>
+<Item Value="128" Text="Nissan N1"/>
+<Item Value="129" Text="Nissan N2"/>
+<Item Value="130" Text="Nissan N3"/>
+<Item Value="136" Text="5DIGITS"/>
+<Item Value="255" Text="Renault R3"/></List>
+</Bits>
+</Data>
+<Data Name="EngineRPM">
+<Mnemonic>EngREV</Mnemonic>
+<Bits count="16">
+<Scaled Unit="rpm" Format="0000"/>
+</Bits>
+</Data>
+<Data Name="Oil temperature">
+<Mnemonic>TempSEN</Mnemonic>
+<Bits>
+<Scaled Unit="°C" Offset="-55" Format="#0"/>
+</Bits>
+</Data>
+<Data Name="Gear lever position">
+<Mnemonic>LvrPOS</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Drive / Manual"/>
+<Item Value="3" Text="Neutral"/>
+<Item Value="4" Text="Reverse"/>
+<Item Value="5" Text="Parking"/>
+<Item Value="13" Text="not defined"/></List>
+</Bits>
+</Data>
+<Data Name="DistanceTotalizer (CAN)">
+<Mnemonic>OdoMileage</Mnemonic>
+<Bits count="32" signed="1">
+<Scaled Unit="km" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Command current of line pressure solenoid">
+<Bits count="16">
+<Scaled Unit="mA" Format="000"/>
+</Bits>
+</Data>
+<Data Name="Command current of lock-up linear solenoid">
+<Bits count="16">
+<Scaled Unit="mA" Format="000"/>
+</Bits>
+</Data>
+<Data Name="Command current of secondary pressure solenoid">
+<Bits count="16">
+<Scaled Unit="mA" Format="000"/>
+</Bits>
+</Data>
+<Data Name="Command status of select on/off solenoid">
+<Bits>
+<List>
+<Item Value="0" Text="off"/>
+<Item Value="1" Text="on"/></List>
+</Bits>
+</Data>
+<Data Name="Command status of shift lock solenoid">
+<Bits>
+<List>
+<Item Value="0" Text="off"/>
+<Item Value="1" Text="on"/></List>
+</Bits>
+</Data>
+<Data Name="ApprovalNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="82010"/>
+<Item Value="1" Text="82009"/></List>
+</Bits>
+</Data>
+<Data Name="Vehicle speed for shift ratio">
+<Comment><![CDATA[Physisal value of vehicle speed]]></Comment>
+<Mnemonic>SftVSP</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km/h" DivideBy=" 256" Format="###"/>
+</Bits>
+</Data>
+<Data Name="ApprovalNumber">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="SessionName">
+<Bits>
+<List>
+<Item Value="129" Text="DefaultSession"/>
+<Item Value="160" Text="EngineeringSession"/>
+<Item Value="192" Text="AfterSaleSession"/></List>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="Read VIN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="Vehicle Identification Number" Ref="1" FirstByte="3"/>
+<DataItem Name="CRC" Ref="1" FirstByte="20"/>
+</Received>
+</Request>
+<Request Name="ECUReset">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ECUReset]]></Comment>
+<Sent>
+<SentBytes>11FF</SentBytes>
+<DataItem Name="ResetMode" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5100</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+<DataItem Name="MoreDTC" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<DataItem Name="Historical Failure" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Current Failure" FirstByte="5" BitOffset="2"/>
+<DataItem Name="FirstDTC" FirstByte="3"/>
+<DataItem Name="Standard Fault" FirstByte="5" BitOffset="3"/>
+<DataItem Name="NDTC" FirstByte="2"/>
+<DataItem Name="Type Of Fault" FirstByte="5"/>
+<DataItem Name="Specific Fault" FirstByte="5" BitOffset="3"/>
+</Received>
+</Request>
+<Request Name="Read Memory By Address">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>23000000000000</SentBytes>
+<DataItem Name="Memory address" FirstByte="2"/>
+<DataItem Name="Memory size" FirstByte="6"/>
+</Sent>
+<Received MinBytes="2">
+<DataItem Name="Record values" FirstByte="2"/>
+</Received>
+</Request>
+<Request Name="Write VIN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="Vehicle Identification Number" FirstByte="3"/>
+<DataItem Name="CRC" FirstByte="20"/>
+</Sent>
+<Received MinBytes="2">
+</Received>
+</Request>
+<Request Name="Write date of last after-sales operation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3BB0000000</SentBytes>
+<DataItem Name="After-sales year" FirstByte="3"/>
+<DataItem Name="After-sales day" FirstByte="5"/>
+<DataItem Name="After-sales month" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+</Received>
+</Request>
+<Request Name="Read date of last after-sales operation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21B0</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="After-sales year" FirstByte="3"/>
+<DataItem Name="After-sales month" FirstByte="4"/>
+<DataItem Name="After-sales day" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="Read Freeze Frame">
+
+<Sent>
+<SentBytes>1200040000</SentBytes>
+<DataItem Name="FirstDTC" FirstByte="4"/>
+</Sent>
+<Received MinBytes="31">
+<DataItem Name="EngineRPM (CAN)" FirstByte="3"/>
+<DataItem Name="Primary pulley speed" FirstByte="5"/>
+<DataItem Name="Vehicle speed" FirstByte="7"/>
+<DataItem Name="Actual secondary pressure" FirstByte="9"/>
+<DataItem Name="Ratio" FirstByte="11"/>
+<DataItem Name="Step motor displacement" FirstByte="13"/>
+<DataItem Name="Lock-up linear solenoid current" FirstByte="19"/>
+<DataItem Name="Gearbox pattern" FirstByte="21"/>
+<DataItem Name="Throttle valve opening" FirstByte="22"/>
+<DataItem Name="Battery voltage" FirstByte="26"/>
+<DataItem Name="Target ratio" FirstByte="15"/>
+<DataItem Name="Target primary pulley speed" FirstByte="17"/>
+<DataItem Name="EngineCoolantTemp (CAN)" FirstByte="25"/>
+<DataItem Name="Engine torque" FirstByte="23"/>
+<DataItem Name="Oil temperature" FirstByte="10"/>
+<DataItem Name="DistanceTotalizer (CAN)" FirstByte="27"/>
+</Received>
+</Request>
+<Request Name="Read software name">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2190</SentBytes>
+</Sent>
+<Received MinBytes="12">
+<DataItem Name="Software name" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Clear diagnostic information">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ClearDiagnosticInformation]]></Comment>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Group of diagnostic information" FirstByte="2"/>
+</Received>
+</Request>
+<Request Name="Multiplex network diagnostic">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2182</SentBytes>
+</Sent>
+<Received MinBytes="62">
+<DataItem Name="Mux messaging reference" Ref="1" FirstByte="3"/>
+<DataItem Name="Bus OFF parameter" Ref="1" FirstByte="5"/>
+<DataItem Name="Mute module parameter" Ref="1" FirstByte="6"/>
+<DataItem Name="Producer ECM absent" Ref="1" FirstByte="7"/>
+<DataItem Name="Producer ABS absent" Ref="1" FirstByte="8"/>
+<DataItem Name="Producer BCM absent" Ref="1" FirstByte="10"/>
+<DataItem Name="Producer ACC absent" Ref="1" FirstByte="13"/>
+<DataItem Name="Producer AT FK0-001" Ref="1" FirstByte="15"/>
+</Received>
+</Request>
+<Request Name="Output control (solenoid active test)">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[Solenoid Active Test]]></Comment>
+<Sent>
+<VariableLength/>
+<SentBytes>3000000000</SentBytes>
+<DataItem Name="Input output control parameter" FirstByte="3"/>
+<DataItem Name="Record local identifier" FirstByte="2"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700000</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Traceability information">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<DataItem Name="Supplier number" FirstByte="3"/>
+<DataItem Name="Supplier production line" FirstByte="6"/>
+<DataItem Name="Date of production" FirstByte="7"/>
+<DataItem Name="Production number" FirstByte="13"/>
+</Received>
+</Request>
+<Request Name="DataRead.Identification.RenaultR2">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="CalibrationNumber" Ref="1" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" Ref="1" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" Ref="1" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" Ref="1" FirstByte="9"/>
+<DataItem Name="EditionNumber" Ref="1" FirstByte="19"/>
+<DataItem Name="PartNumber.BasicPartList" Ref="1" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" Ref="1" FirstByte="24"/>
+<DataItem Name="PartNumber.LowerPart" Ref="1" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" Ref="1" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" Ref="1" FirstByte="26"/>
+<DataItem Name="ApprovalNumber.BasicPartList" Ref="1" FirstByte="25"/>
+</Received>
+</Request>
+<Request Name="Start line pressure solenoid control">
+
+<Sent>
+<SentBytes>3010070190</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Start secondary pressure solenoid control">
+
+<Sent>
+<SentBytes>3011070190</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Start lock-up linear solenoid control">
+
+<Sent>
+<SentBytes>3012070190</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Start lock-up select on/off solenoid control">
+
+<Sent>
+<SentBytes>30130701</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Start shift lock solenoid control">
+
+<Sent>
+<SentBytes>30140701</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Stop line pressure solenoid control">
+
+<Sent>
+<SentBytes>301000</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Stop secondary pressure solenoid control">
+
+<Sent>
+<SentBytes>301100</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Stop lock-up linear solenoid control">
+
+<Sent>
+<SentBytes>301200</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Stop lock-up select on/off solenoid control">
+
+<Sent>
+<SentBytes>301300</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Stop shift lock solenoid control">
+
+<Sent>
+<SentBytes>301400</SentBytes>
+</Sent>
+<Received MinBytes="4">
+</Received>
+</Request>
+<Request Name="Report current control of line pressure solenoid">
+
+<Sent>
+<SentBytes>301001</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="Command current of line pressure solenoid" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Report current control of secondary pressure solenoid">
+
+<Sent>
+<SentBytes>301101</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="Command current of secondary pressure solenoid" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Report current control of lock-up linear solenoid">
+
+<Sent>
+<SentBytes>301201</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="Command current of lock-up linear solenoid" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Report current control of lock-up select on/off solenoid">
+
+<Sent>
+<SentBytes>301301</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Command status of select on/off solenoid" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Report current control of shift lock solenoid">
+
+<Sent>
+<SentBytes>301401</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Command status of shift lock solenoid" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Start shift lock solenoid control (0-1-0-1-0)">
+
+<Sent>
+<SentBytes>30140702</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Read after sale frame A0">
+
+<Sent>
+<SentBytes>21A0</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<DataItem Name="Primary pulley speed" FirstByte="3"/>
+<DataItem Name="Secondary pulley speed" FirstByte="5"/>
+<DataItem Name="KickDownActivated (CAN)" FirstByte="22"/>
+<DataItem Name="AT_MinimumIdleSpeedRequest (CAN)" FirstByte="18"/>
+<DataItem Name="ECM_TorqueRequestStatus (CAN)" FirstByte="17"/>
+<DataItem Name="PowerTrainSetPoint (CAN)" FirstByte="21"/>
+<DataItem Name="EngineTorque_WithoutGBRequest (CAN)" FirstByte="16"/>
+<DataItem Name="MeanEffectiveTorque (CAN)" FirstByte="14"/>
+<DataItem Name="Limit_SlowTorqueRequest (CAN)" FirstByte="12"/>
+<DataItem Name="FastTorqueRequest (CAN)" FirstByte="10"/>
+<DataItem Name="AT_TorqueControlType (CAN)" FirstByte="9"/>
+<DataItem Name="CruiseControlStatus_forTM (CAN)" FirstByte="8"/>
+<DataItem Name="RawSensor (CAN)" FirstByte="7"/>
+<DataItem Name="EngineRPM" FirstByte="19"/>
+</Received>
+</Request>
+<Request Name="Read after sale frame A1">
+
+<Sent>
+<SentBytes>21A1</SentBytes>
+</Sent>
+<Received MinBytes="20">
+<DataItem Name="Shift mode" FirstByte="3"/>
+<DataItem Name="Ratio" FirstByte="10"/>
+<DataItem Name="Target step motor displacement" FirstByte="16"/>
+<DataItem Name="Lock-up inhibition 2" FirstByte="8"/>
+<DataItem Name="Lock-up inhibition 1" FirstByte="6"/>
+<DataItem Name="Gear engaged (manual mode)" FirstByte="5"/>
+<DataItem Name="Gearbox pattern" FirstByte="4"/>
+<DataItem Name="Lock-up pattern" FirstByte="15"/>
+<DataItem Name="Lock-up area" FirstByte="14"/>
+<DataItem Name="CrankingAuthorization_AT (CAN)" FirstByte="13"/>
+<DataItem Name="BrakeInfoStatus (CAN)" FirstByte="12"/>
+<DataItem Name="Manual mode: tip down" FirstByte="19"/>
+<DataItem Name="Manual mode: tip up" FirstByte="18"/>
+<DataItem Name="Gear lever position" FirstByte="20"/>
+</Received>
+</Request>
+<Request Name="Read after sale frame A2">
+
+<Sent>
+<SentBytes>21A2</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<DataItem Name="Lock-up linear solenoid current" FirstByte="7"/>
+<DataItem Name="Throttle valve opening" FirstByte="21"/>
+<DataItem Name="Step motor displacement" FirstByte="19"/>
+<DataItem Name="Actual primary pressure" FirstByte="6"/>
+<DataItem Name="Actual secondary pressure" FirstByte="5"/>
+<DataItem Name="Target line pressure" FirstByte="4"/>
+<DataItem Name="Target secondary pressure" FirstByte="3"/>
+<DataItem Name="Secondary pressure solenoid current" FirstByte="9"/>
+<DataItem Name="Line pressure solenoid current" FirstByte="11"/>
+<DataItem Name="Self-learning flag" FirstByte="22"/>
+<DataItem Name="Battery voltage" FirstByte="18"/>
+<DataItem Name="Turbine speed" FirstByte="15"/>
+<DataItem Name="Oil temperature" FirstByte="17"/>
+<DataItem Name="Vehicle speed for shift ratio" FirstByte="13"/>
+</Received>
+</Request>
+<Request Name="Read after sale frame A3">
+
+<Sent>
+<SentBytes>21A3</SentBytes>
+</Sent>
+<Received MinBytes="14">
+<DataItem Name="OBD memorized failures 4" FirstByte="14"/>
+<DataItem Name="OBD memorized failures 3" FirstByte="13"/>
+<DataItem Name="OBD memorized failures 2" FirstByte="12"/>
+<DataItem Name="OBD memorized failures 1" FirstByte="11"/>
+<DataItem Name="OBD pending failures 4" FirstByte="10"/>
+<DataItem Name="OBD pending failures 3" FirstByte="9"/>
+<DataItem Name="OBD pending failures 2" FirstByte="8"/>
+<DataItem Name="OBD pending failures 1" FirstByte="7"/>
+<DataItem Name="Confirmed failures 4" FirstByte="6"/>
+<DataItem Name="Confirmed failures 3" FirstByte="5"/>
+<DataItem Name="Confirmed failures 2" FirstByte="4"/>
+<DataItem Name="Confirmed failures 1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Inhibition request">
+
+<Sent>
+<SentBytes>31F002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Re-activation request">
+
+<Sent>
+<SentBytes>31F001</SentBytes>
+</Sent>
+<Received MinBytes="3">
+</Received>
+</Request>
+<Request Name="Read current situation">
+
+<Sent>
+<SentBytes>31F000</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Current situation" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="DataRead.Identification.F">
+
+<Sent>
+<SentBytes>21FF</SentBytes>
+</Sent>
+<Received MinBytes="26">
+</Received>
+</Request>
+<Request Name="DataRead.Identification.E">
+
+<Sent>
+<SentBytes>21FE</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Read approval number">
+
+<Sent>
+<SentBytes>23000E4BFC0010</SentBytes>
+</Sent>
+<Received MinBytes="15">
+<ShiftBytesCount>6</ShiftBytesCount>
+<ReplyBytes>63</ReplyBytes>
+<DataItem Name="ApprovalNumber" FirstByte="2"/>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic session selector in DDT2000 tool-Spec A]]></Comment>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="SessionName" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="StartDevelopmentSession">
+
+<Sent>
+<SentBytes>1086</SentBytes>
+</Sent>
+<Received MinBytes="2">
+</Received>
+</Request>
+<Request Name="New">
+
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Read">
+
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Read VIN" Type="4">
+<Mnemonic>Request 2181</Mnemonic>
+<DeviceData Name="Vehicle Identification Number" FailureFlag="0"/><DeviceData Name="CRC" FailureFlag="0"/>
+
+</Device>
+<Device Name="Oil temperature sensor failure" DTC="1808" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail1 bit 5</Mnemonic>
+
+
+</Device>
+<Device Name="Inhibitor switch failure" DTC="1797" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail1 bit 4</Mnemonic>
+
+
+</Device>
+<Device Name="Secondary pressure solenoid failure" DTC="1873" Type="3" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail2 bit 6</Mnemonic>
+
+
+</Device>
+<Device Name="Line pressure solenoid failure" DTC="1878" Type="3" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail2 bit 5</Mnemonic>
+
+
+</Device>
+<Device Name="Step motor failure" DTC="2134" Type="3" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail2 bit 3 / LFail4 bit 4</Mnemonic>
+
+
+</Device>
+<Device Name="Sensor ground or sensor power failure" DTC="5472" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail3 bit 4</Mnemonic>
+
+
+</Device>
+<Device Name="Secondary revolution speed sensor failure" DTC="1824" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail1 bit 2</Mnemonic>
+
+
+</Device>
+<Device Name="Monitoring of change rate for shift ratio" DTC="1920" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail3 bit 3</Mnemonic>
+
+
+</Device>
+<Device Name="Oil temperature overheat" DTC="536" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail3 bit 5</Mnemonic>
+
+
+</Device>
+<Device Name="Primary revolution speed sensor failure" DTC="1813" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail1 bit 1</Mnemonic>
+
+
+</Device>
+<Device Name="Primary or secondary pressure sensor failure (performance)" DTC="6146" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail3 bit 2</Mnemonic>
+
+
+</Device>
+<Device Name="Lock-up linear solenoid failure" DTC="1859" Type="3" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail2 bit 4</Mnemonic>
+
+
+</Device>
+<Device Name="Invalid data received from ECM" DTC="50177" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail1 bit 0 / LFail2 bit 1 / LFail2 bit 2</Mnemonic>
+
+
+</Device>
+<Device Name="Lock-up select on/off solenoid failure" DTC="1856" Type="3" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail2 bit 7</Mnemonic>
+
+
+</Device>
+<Device Name="Lock-up linear solenoid failure (performance)" DTC="1857" Type="3" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail3 bit 0</Mnemonic>
+
+
+</Device>
+<Device Name="Manual mode switches failure" DTC="2085" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail3 bit 6</Mnemonic>
+
+
+</Device>
+<Device Name="Secondary pressure sensor failure" DTC="2117" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail1 bit 6</Mnemonic>
+
+
+</Device>
+<Device Name="Invalid data received" DTC="50176" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail3 bit 7</Mnemonic>
+
+
+</Device>
+<Device Name="Revolution speed sensors functional failure" DTC="5923" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail4 bit 3</Mnemonic>
+
+
+</Device>
+<Device Name="High speed CAN communication bus" DTC="49153" Type="4" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail1 bit 3 / LFail4 bit 0</Mnemonic>
+
+
+</Device>
+<Device Name="Vehicle body speed failure" DTC="50198" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail2 bit 0</Mnemonic>
+
+
+</Device>
+<Device Name="Memory back up failure" DTC="1542" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail4 bit 1</Mnemonic>
+
+
+</Device>
+<Device Name="Line pressure solenoid failure (performance)" DTC="6144" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail3 bit 1</Mnemonic>
+
+
+</Device>
+<Device Name="Secondary pressure solenoid failure (performance)" DTC="2118" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail4 bit 6 / LFail4 bit 5 / LFail4 bit 7</Mnemonic>
+
+
+</Device>
+<Device Name="Primary pressure sensor failure" DTC="2112" FreezeFrame="Read Freeze Frame">
+<Mnemonic>LFail1 bit 7</Mnemonic>
+
+
+</Device>
+<Device Name="Invalid data received from VDC" DTC="49441" FreezeFrame="Read Freeze Frame">
+
+
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="After-sales / Plants">
+
+<Screen Name="Identification" Color="8454143" WindowState="0" Width="11220" Height="7740">
+
+<Label Text="Writing" Color="16711680" Alignment="2">
+<Rectangle Left="-240" Top="6240" Height="1560" Width="11760"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="1" Color="65535"/></Label>
+<Label Text="Reading" Color="4259584" Alignment="2">
+<Rectangle Left="-120" Top="5040" Height="1080" Width="11640"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="1" Color="65535"/></Label>
+<Label Text="Identification" Color="16711680" Alignment="2">
+<Rectangle Left="-240" Top="0" Height="360" Width="11760"/>
+<Font Name="Times New Roman" Size=" 16" Bold="0" Italic="1" Color="65535"/></Label>
+<Send Delay="20" RequestName="Read VIN"/><Send Delay="0" RequestName="StartDiagnosticSession"/>
+<Button Text="Write">
+<Rectangle Left="4920" Top="7200" Height="360" Width="1560"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write VIN"/>
+</Button>
+
+<Display Width="3065" Color="16777215" DataName="Vehicle Identification Number" RequestName="Read VIN">
+<Rectangle Left="360" Top="5520" Height="300" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="545" Color="16777215" DataName="CRC" RequestName="Read VIN">
+<Rectangle Left="8520" Top="5520" Height="300" Width="1800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Input Width="3080" Color="16777215" DataName="Vehicle Identification Number" RequestName="Write VIN">
+<Rectangle Left="360" Top="6720" Height="300" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="545" Color="16777215" DataName="CRC" RequestName="Write VIN">
+<Rectangle Left="8520" Top="6720" Height="300" Width="1800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Input>
+<Display Width="3080" Color="16777215" DataName="Mux messaging reference" RequestName="Multiplex network diagnostic">
+<Rectangle Left="6120" Top="2520" Height="279" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="ManufacturerIdentificationCode" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="360" Top="840" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="HardwareNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="360" Top="3720" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="PartNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="360" Top="2760" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="CalibrationNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="360" Top="2280" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="EditionNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="360" Top="1800" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="SoftwareNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="360" Top="1320" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="HardwareNumber.LowerPart" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="360" Top="4200" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="16777215" DataName="SupplierNumber.ITG" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="6120" Top="1080" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="16777215" DataName="DiagnosticIdentificationCode" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="6120" Top="1560" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="PartNumber.LowerPart" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="360" Top="3240" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="16777215" DataName="Supplier production line" RequestName="Traceability information">
+<Rectangle Left="6120" Top="3000" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="16777215" DataName="Date of production" RequestName="Traceability information">
+<Rectangle Left="6120" Top="3480" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="16777215" DataName="Production number" RequestName="Traceability information">
+<Rectangle Left="6120" Top="3960" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="16777215" DataName="ApprovalNumber" RequestName="Read approval number">
+<Rectangle Left="6120" Top="2040" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Multiplex network diagnostic" Color="13619151" WindowState="0" Width="8580" Height="5100">
+
+<Label Text="Multiplex network diagnosis" Color="8454143" Alignment="2">
+<Rectangle Left="120" Top="120" Height="5040" Width="8280"/>
+<Font Name="Times New Roman" Size=" 16" Bold="1" Italic="1" Color="4227072"/></Label>
+
+<Button Text="Clear all failure groups">
+<Rectangle Left="2880" Top="3960" Height="630" Width="2805"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Clear diagnostic information"/>
+</Button>
+
+<Display Width="3980" Color="16777215" DataName="Bus OFF parameter" RequestName="Multiplex network diagnostic">
+<Rectangle Left="840" Top="960" Height="300" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3980" Color="16777215" DataName="Mute module parameter" RequestName="Multiplex network diagnostic">
+<Rectangle Left="840" Top="1320" Height="300" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3980" Color="16777215" DataName="Producer ECM absent" RequestName="Multiplex network diagnostic">
+<Rectangle Left="840" Top="1680" Height="300" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3980" Color="16777215" DataName="Producer ABS absent" RequestName="Multiplex network diagnostic">
+<Rectangle Left="840" Top="2040" Height="300" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3980" Color="16777215" DataName="Producer BCM absent" RequestName="Multiplex network diagnostic">
+<Rectangle Left="840" Top="2400" Height="300" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3980" Color="16777215" DataName="Producer ACC absent" RequestName="Multiplex network diagnostic">
+<Rectangle Left="840" Top="2760" Height="300" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3980" Color="16777215" DataName="Producer AT FK0-001" RequestName="Multiplex network diagnostic">
+<Rectangle Left="840" Top="3120" Height="300" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Reset ECU (self-learning)" Color="8454143" WindowState="0" Width="10500" Height="6300">
+
+<Label Text="When ignition is switched ON, put gear lever in Parking position" Color="8454143" Alignment="0">
+<Rectangle Left="1920" Top="720" Height="360" Width="6840"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Reset ECU to perform self-learning deleting" Color="8454016" Alignment="2">
+<Rectangle Left="-480" Top="0" Height="450" Width="11400"/>
+<Font Name="MS Sans Serif" Size=" 16" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Switch ignition OFF and wait at least 3 seconds" Color="8454143" Alignment="2">
+<Rectangle Left="1560" Top="2520" Height="360" Width="7200"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Switch ignition ON (lever always in Parking position) and wait until the flag displays &quot;performed&quot; " Color="8454143" Alignment="2">
+<Rectangle Left="240" Top="4080" Height="375" Width="9960"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Automatic self-learning at ignition switched ON" Color="4227327" Alignment="2">
+<Rectangle Left="-360" Top="3360" Height="450" Width="11160"/>
+<Font Name="MS Sans Serif" Size=" 16" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Warning : it's not possible to check the writing of values in EEPROM" Color="8454143" Alignment="0">
+<Rectangle Left="2280" Top="5760" Height="360" Width="6975"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="0" Italic="0" Color="255"/></Label>
+<Label Text="Switch ignition OFF again and wait at least 3 seconds, at next ignition ON the FK0-001 system is operational" Color="8454143" Alignment="2">
+<Rectangle Left="-360" Top="5160" Height="360" Width="11160"/>
+<Font Name="MS Sans Serif" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Reset ECU / Delete self-learning">
+<Rectangle Left="3000" Top="1200" Height="480" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="10" RequestName="ECUReset"/>
+</Button>
+
+<Display Width="3215" Color="16744576" DataName="Self-learning flag" RequestName="Read after sale frame A2">
+<Rectangle Left="2280" Top="1920" Height="300" Width="5880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Display>
+<Display Width="3215" Color="16744576" DataName="Self-learning flag" RequestName="Read after sale frame A2">
+<Rectangle Left="2280" Top="4560" Height="300" Width="5880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Developpement">
+
+<Screen Name="A0 : Torque management" Color="32768" WindowState="0" Width="9660" Height="7260">
+
+<Label Text="A0 : Torque management" Color="32768" Alignment="2">
+<Rectangle Left="360" Top="240" Height="360" Width="9000"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="1" Color="65535"/></Label>
+
+
+<Display Width="5180" Color="15724527" DataName="Primary pulley speed" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="1200" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5180" Color="16777215" DataName="Secondary pulley speed" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="1560" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5180" Color="16777215" DataName="RawSensor (CAN)" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="5160" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5180" Color="16777215" DataName="CruiseControlStatus_forTM (CAN)" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="6480" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5180" Color="16777215" DataName="AT_TorqueControlType (CAN)" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="3480" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5180" Color="16777215" DataName="FastTorqueRequest (CAN)" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="3840" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5180" Color="16777215" DataName="Limit_SlowTorqueRequest (CAN)" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="4200" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5180" Color="16777215" DataName="MeanEffectiveTorque (CAN)" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="2520" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5180" Color="16777215" DataName="EngineTorque_WithoutGBRequest (CAN)" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="2160" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5180" Color="16777215" DataName="ECM_TorqueRequestStatus (CAN)" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="3120" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5180" Color="16777215" DataName="AT_MinimumIdleSpeedRequest (CAN)" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="4560" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5180" Color="16777215" DataName="PowerTrainSetPoint (CAN)" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="5520" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5180" Color="16777215" DataName="KickDownActivated (CAN)" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="5880" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5180" Color="16777215" DataName="EngineRPM" RequestName="Read after sale frame A0">
+<Rectangle Left="960" Top="840" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="A1 : Gear shifts management" Color="12615680" WindowState="0" Width="9660" Height="7260">
+
+<Label Text="A1 : Gear shifts management" Color="12615680" Alignment="2">
+<Rectangle Left="2400" Top="240" Height="300" Width="4440"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="1" Color="8454143"/></Label>
+
+
+<Display Width="5330" Color="15724527" DataName="Shift mode" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="840" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5330" Color="16777215" DataName="Gearbox pattern" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="1560" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5330" Color="16777215" DataName="Gear engaged (manual mode)" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="1920" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5330" Color="16777215" DataName="Lock-up inhibition 1" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="3960" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5330" Color="16777215" DataName="Lock-up inhibition 2" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="4320" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5330" Color="16777215" DataName="Ratio" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="4920" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5330" Color="16777215" DataName="BrakeInfoStatus (CAN)" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="5880" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5330" Color="16777215" DataName="CrankingAuthorization_AT (CAN)" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="6240" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5330" Color="16777215" DataName="Lock-up area" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="3240" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5330" Color="16777215" DataName="Lock-up pattern" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="3600" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5330" Color="16777215" DataName="Target step motor displacement" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="5280" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5330" Color="16777215" DataName="Manual mode: tip up" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="2280" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5330" Color="16777215" DataName="Manual mode: tip down" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="2640" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5330" Color="16777215" DataName="Gear lever position" RequestName="Read after sale frame A1">
+<Rectangle Left="840" Top="1200" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="A2 : ATCU inputs/outputs management" Color="12615680" WindowState="0" Width="9660" Height="6900">
+
+<Label Text="A2 : ATCU inputs/outputs management" Color="12615680" Alignment="2">
+<Rectangle Left="1680" Top="240" Height="300" Width="5640"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="1" Color="8454143"/></Label>
+
+
+<Display Width="5420" Color="16777215" DataName="Lock-up linear solenoid current" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="3600" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5420" Color="16777215" DataName="Target secondary pressure" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="1560" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5420" Color="16777215" DataName="Target line pressure" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="840" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5420" Color="16777215" DataName="Actual secondary pressure" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="1920" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5420" Color="16777215" DataName="Actual primary pressure" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="1200" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5420" Color="16777215" DataName="Secondary pressure solenoid current" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="3240" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5420" Color="16777215" DataName="Line pressure solenoid current" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="2880" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5420" Color="16777215" DataName="Turbine speed" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="4200" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5420" Color="16777215" DataName="Battery voltage" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="5880" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5420" Color="16777215" DataName="Step motor displacement" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="4560" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5420" Color="16777215" DataName="Throttle valve opening" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="5520" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5420" Color="16777215" DataName="Self-learning flag" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="6240" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5420" Color="16777215" DataName="Vehicle speed for shift ratio" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="4920" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5420" Color="16777215" DataName="Oil temperature" RequestName="Read after sale frame A2">
+<Rectangle Left="720" Top="2280" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="A3 : ATCU failure management" Color="12615680" WindowState="0" Width="9660" Height="7260">
+
+<Label Text="A3 : ATCU failure management" Color="12615680" Alignment="2">
+<Rectangle Left="2040" Top="240" Height="300" Width="4920"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="1" Color="255"/></Label>
+
+
+<Display Width="5690" Color="15724527" DataName="OBD memorized failures 4" RequestName="Read after sale frame A3">
+<Rectangle Left="720" Top="5640" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5690" Color="16777215" DataName="Confirmed failures 2" RequestName="Read after sale frame A3">
+<Rectangle Left="720" Top="1320" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5690" Color="16777215" DataName="Confirmed failures 1" RequestName="Read after sale frame A3">
+<Rectangle Left="720" Top="960" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5690" Color="16777215" DataName="Confirmed failures 3" RequestName="Read after sale frame A3">
+<Rectangle Left="720" Top="1680" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5690" Color="16777215" DataName="Confirmed failures 4" RequestName="Read after sale frame A3">
+<Rectangle Left="720" Top="2040" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5690" Color="16777215" DataName="OBD pending failures 1" RequestName="Read after sale frame A3">
+<Rectangle Left="720" Top="2760" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5690" Color="16777215" DataName="OBD pending failures 2" RequestName="Read after sale frame A3">
+<Rectangle Left="720" Top="3120" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5690" Color="16777215" DataName="OBD pending failures 3" RequestName="Read after sale frame A3">
+<Rectangle Left="720" Top="3480" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5690" Color="16777215" DataName="OBD pending failures 4" RequestName="Read after sale frame A3">
+<Rectangle Left="720" Top="3840" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5690" Color="16777215" DataName="OBD memorized failures 1" RequestName="Read after sale frame A3">
+<Rectangle Left="720" Top="4560" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5690" Color="16777215" DataName="OBD memorized failures 2" RequestName="Read after sale frame A3">
+<Rectangle Left="720" Top="4920" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5690" Color="16777215" DataName="OBD memorized failures 3" RequestName="Read after sale frame A3">
+<Rectangle Left="720" Top="5280" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Dynamo bench 2WD - Scenario error" Color="8454016" WindowState="0" Width="8820" Height="4620">
+
+<Label Text="This screen allow to ignore ABS malfunction due to run on dynamo bench with rear wheels fixed" Color="8454016" Alignment="2">
+<Rectangle Left="240" Top="240" Height="600" Width="8280"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="If the screen isn't displayed in real time, you can use manual reporting request" Color="8454016" Alignment="0">
+<Rectangle Left="360" Top="3840" Height="300" Width="5880"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="16711680"/></Label>
+<Label Text="Don't forget to initialize screen with green button then start reading" Color="8454016" Alignment="0">
+<Rectangle Left="2040" Top="960" Height="300" Width="7080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="255"/></Label>
+<Send Delay="10" RequestName="StartDevelopmentSession"/>
+<Button Text="To ignore ABS malfunction, to get normal lock-up behavior">
+<Rectangle Left="1560" Top="1680" Height="300" Width="5640"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="10" RequestName="Inhibition request"/>
+</Button>
+<Button Text="To come back to complete diagnostic (normal status)">
+<Rectangle Left="1560" Top="2160" Height="300" Width="5640"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="10" RequestName="Re-activation request"/>
+</Button>
+<Button Text="Read current situation">
+<Rectangle Left="6120" Top="3720" Height="420" Width="2040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="10" RequestName="Read current situation"/>
+</Button>
+
+<Display Width="1805" Color="12632256" DataName="Current situation" RequestName="Read current situation">
+<Rectangle Left="2040" Top="3000" Height="300" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Display>
+</Screen>
+<Screen Name="Output control" Color="8454143" WindowState="0" Width="11580" Height="6420">
+
+<Label Text="You can stop a permanent control before its safety end (5 seconds) using stop button" Color="8454143" Alignment="2">
+<Rectangle Left="720" Top="480" Height="360" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Using following buttons, linear solenoids are commanded to 400mA" Color="8454143" Alignment="2">
+<Rectangle Left="720" Top="240" Height="240" Width="9600"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Start lock-up linear solenoid control">
+<Rectangle Left="840" Top="1080" Height="360" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Start lock-up linear solenoid control"/><Send Delay="1500" RequestName="Report current control of lock-up linear solenoid"/>
+</Button>
+<Button Text="Start line pressure solenoid control">
+<Rectangle Left="840" Top="1920" Height="360" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Start line pressure solenoid control"/><Send Delay="1500" RequestName="Report current control of line pressure solenoid"/>
+</Button>
+<Button Text="Start secondary pressure solenoid control">
+<Rectangle Left="840" Top="2760" Height="360" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Start secondary pressure solenoid control"/><Send Delay="1500" RequestName="Report current control of secondary pressure solenoid"/>
+</Button>
+<Button Text="Start lock-up select on/off solenoid control">
+<Rectangle Left="840" Top="3960" Height="360" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Start lock-up select on/off solenoid control"/><Send Delay="1500" RequestName="Report current control of lock-up select on/off solenoid"/>
+</Button>
+<Button Text="Start shift lock solenoid control">
+<Rectangle Left="840" Top="4800" Height="360" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Start shift lock solenoid control"/><Send Delay="1500" RequestName="Report current control of shift lock solenoid"/>
+</Button>
+<Button Text="Stop shift lock solenoid control">
+<Rectangle Left="1320" Top="5760" Height="240" Width="3720"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Stop shift lock solenoid control"/>
+</Button>
+<Button Text="Stop lock-up select on/off solenoid control">
+<Rectangle Left="1320" Top="4440" Height="240" Width="3720"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Stop lock-up select on/off solenoid control"/>
+</Button>
+<Button Text="Stop secondary pressure solenoid control">
+<Rectangle Left="1320" Top="3240" Height="240" Width="3720"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Stop secondary pressure solenoid control"/>
+</Button>
+<Button Text="Stop line pressure solenoid control">
+<Rectangle Left="1320" Top="2400" Height="240" Width="3720"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+
+</Button>
+<Button Text="Stop lock-up linear solenoid control">
+<Rectangle Left="1320" Top="1560" Height="240" Width="3720"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Stop lock-up linear solenoid control"/>
+</Button>
+<Button Text="Start shift lock solenoid control (0-1-0-1-0)">
+<Rectangle Left="840" Top="5280" Height="360" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Start shift lock solenoid control (0-1-0-1-0)"/><Send Delay="850" RequestName="Report current control of shift lock solenoid"/><Send Delay="850" RequestName="Report current control of shift lock solenoid"/><Send Delay="850" RequestName="Report current control of shift lock solenoid"/><Send Delay="850" RequestName="Report current control of shift lock solenoid"/><Send Delay="850" RequestName="Report current control of shift lock solenoid"/><Send Delay="850" RequestName="Report current control of shift lock solenoid"/>
+</Button>
+
+<Display Width="4340" Color="16744448" DataName="Command current of line pressure solenoid" RequestName="Report current control of line pressure solenoid">
+<Rectangle Left="5880" Top="2160" Height="300" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="1" Color="0"/></Display>
+<Display Width="4355" Color="16744448" DataName="Command current of secondary pressure solenoid" RequestName="Report current control of secondary pressure solenoid">
+<Rectangle Left="5880" Top="3000" Height="300" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="1" Color="0"/></Display>
+<Display Width="4325" Color="16744448" DataName="Command current of lock-up linear solenoid" RequestName="Report current control of lock-up linear solenoid">
+<Rectangle Left="5880" Top="1320" Height="300" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="1" Color="0"/></Display>
+<Display Width="4355" Color="16744448" DataName="Command status of select on/off solenoid" RequestName="Report current control of lock-up select on/off solenoid">
+<Rectangle Left="5880" Top="4200" Height="300" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="1" Color="0"/></Display>
+<Display Width="4355" Color="16744448" DataName="Command status of shift lock solenoid" RequestName="Report current control of shift lock solenoid">
+<Rectangle Left="5880" Top="5040" Height="300" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="1" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

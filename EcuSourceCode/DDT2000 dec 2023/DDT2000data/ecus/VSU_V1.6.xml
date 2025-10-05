@@ -1,0 +1,1164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="1.2.0.5" date="2007-04-12T12:51"/>
+<ddt:Target Name="VSU_V1.6" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="etienne.leclercq-renexter@renault" href="VSU_V1.6.xml" upload="4/12/07" group="VSU"><Description><![CDATA[Base DiagOnCAN VSU J77/X85/X44/X61.
+Maj: 03/04/2007.
+Etienne Leclercq - iDVU - 3042 
+Tel : 97276
+e-mail etienne.leclercq-renexter@renault.com]]></Description><Projects xmlns=""><x44/><x61/><x77/><x77Ph2/></Projects>
+
+<Function Name="ABS" Address="1"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>03/04/2007 14:00:54</DateOfficialisation>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="500000" Multipoint="1">
+<SendId>
+<CANId Value="1856"/>
+</SendId><ReceiveId>
+<CANId Value="1888"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="12" Supplier="ANC" Soft="0300" Version="0000"/></AutoIdents>
+<Datas>
+
+<Data Name="Activation Processus Status">
+<Bits>
+<List>
+<Item Value="1" Text="Control in progress"/>
+<Item Value="2" Text="Control terminated"/>
+<Item Value="17" Text="Control Stopped"/>
+<Item Value="128" Text="Trouble during actuation"/>
+<Item Value="129" Text="Actuation aborted"/>
+<Item Value="130" Text="Actuation available"/></List>
+</Bits>
+</Data>
+<Data Name="Activation Time Selection (Xx20ms)">
+<Bits>
+<List>
+<Item Value="25" Text="0,5s"/>
+<Item Value="50" Text="1s"/>
+<Item Value="125" Text="2,5s"/>
+<Item Value="250" Text="5s"/></List>
+</Bits>
+</Data>
+<Data Name="Activation Type Selection">
+<Bits>
+<List>
+<Item Value="0" Text="Start temporary control"/>
+<Item Value="1" Text="Status request"/>
+<Item Value="17" Text="Stop Control"/>
+<Item Value="32" Text="Start permanent control"/></List>
+</Bits>
+</Data>
+<Data Name="Brake Pedal Info">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Not brake"/>
+<Item Value="1" Text="Brake"/>
+<Item Value="3" Text="Invalid"/></List>
+</Bits>
+</Data>
+<Data Name="Bus Off Compter Parameter">
+<Bits count="6">
+<Scaled Format="000"/>
+</Bits>
+</Data>
+<Data Name="Bus Off Status Parameter">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Bus On"/>
+<Item Value="1" Text="Bus Off"/></List>
+</Bits>
+</Data>
+<Data Name="C_Bus Off Parameter">
+<Bits count="1">
+<List>
+<Item Value="0" Text="C_Mute != 255"/>
+<Item Value="1" Text="C_Mute = 255"/></List>
+</Bits>
+</Data>
+<Data Name="C_Mute Parameter">
+<Bits count="1">
+<List>
+<Item Value="0" Text="C_Mute != 255"/>
+<Item Value="1" Text="C_Mute = 255"/></List>
+</Bits>
+</Data>
+<Data Name="CAN Messaging">
+<Bytes count="2"/>
+</Data>
+<Data Name="Day">
+<Bytes count="1"/>
+</Data>
+<Data Name="DTC Number">
+<Bytes count="2"/>
+</Data>
+<Data Name="Failure Group">
+<Bits>
+<List>
+<Item Value="64" Text="Chassis Failure group"/>
+<Item Value="255" Text="All Failure groups"/></List>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Bits count="16">
+<List>
+<Item Value="20495" Text="Front Right wheel speed sensor"/>
+<Item Value="20511" Text="Front Left wheel speed sensor"/>
+<Item Value="20675" Text="Control unit"/>
+<Item Value="20684" Text="Control Unit Supply"/>
+<Item Value="20685" Text="Wire Speed Output"/>
+<Item Value="20867" Text="CAN - UCH"/></List>
+</Bits>
+</Data>
+<Data Name="Front Left wheel speed">
+<Bits count="16">
+<Scaled Unit="Km/H" DivideBy=" 100" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Front left wheel speed.">
+<Bits>
+<Scaled Unit="Km/h" Format="000"/>
+</Bits>
+</Data>
+<Data Name="Front Right wheel speed">
+<Bits count="16">
+<Scaled Unit="Km/H" DivideBy=" 100" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Front right wheel speed.">
+<Bits>
+<Scaled Unit="Km/h" Format="000"/>
+</Bits>
+</Data>
+<Data Name="Index">
+<Bits>
+<List>
+<Item Value="115" Text="165/65 R15"/>
+<Item Value="139" Text="185/60 R15"/>
+<Item Value="157" Text="175/65 R15"/>
+<Item Value="178" Text="185/70 R14"/>
+<Item Value="236" Text="195/65 R15"/>
+<Item Value="255" Text="Valeur Invalide (FFh)"/></List>
+</Bits>
+</Data>
+<Data Name="Locking Wheel Detection">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Not detection and normal mode"/>
+<Item Value="1" Text="Not detection and degraded mode"/>
+<Item Value="2" Text="Detection in normal mode"/>
+<Item Value="3" Text="Detection in degraded mode"/></List>
+</Bits>
+</Data>
+<Data Name="Maximum Tire Circonf">
+<Bits count="16">
+<Scaled Unit="mm" Format="000000"/>
+</Bits>
+</Data>
+<Data Name="Minimum Tire Circonf">
+<Bits count="16">
+<Scaled Unit="mm" Format="000000"/>
+</Bits>
+</Data>
+<Data Name="Module Mute Compter Parameter">
+<Bits count="6">
+<Scaled Format="000"/>
+</Bits>
+</Data>
+<Data Name="Module Mute Statut Parameter">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No Mute"/>
+<Item Value="1" Text="Mute"/></List>
+</Bits>
+</Data>
+<Data Name="Month">
+<Bytes count="1"/>
+</Data>
+<Data Name="NDTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Odometer">
+<Bits count="16">
+<Scaled Unit="cm" Step=" 10" Format="000000"/>
+</Bits>
+</Data>
+<Data Name="Poles Number">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="Power supply">
+<Bits>
+<Scaled Unit="V" Step=" 8" DivideBy=" 100" Format="00.00"/>
+</Bits>
+</Data>
+<Data Name="Producer VSU C_absent">
+<Bits count="1">
+<List>
+<Item Value="0" Text="C_Absent = 255"/>
+<Item Value="1" Text="C_Absent != 255"/></List>
+</Bits>
+</Data>
+<Data Name="Producer VSU Compter">
+<Bits count="6">
+<Scaled Format="000"/>
+</Bits>
+</Data>
+<Data Name="Producer VSU Status">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Present"/>
+<Item Value="1" Text="Absent"/></List>
+</Bits>
+</Data>
+<Data Name="True Tire Circonf">
+<Bits count="16">
+<Scaled Unit="mm" Format="000000"/>
+</Bits>
+</Data>
+<Data Name="Vehicle speed">
+<Bits count="16">
+<Scaled Unit="Km/H" DivideBy=" 100" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Vehicle speed.">
+<Bits>
+<Scaled Unit="Km/h" Format="000"/>
+</Bits>
+</Data>
+<Data Name="VSU Status">
+<Bits count="2">
+<List>
+<Item Value="0" Text="VSU Operational"/>
+<Item Value="1" Text="VSU Failure"/>
+<Item Value="2" Text="VSU Operational not programmed"/></List>
+</Bits>
+</Data>
+<Data Name="Wheel Selection">
+<Bits>
+<List>
+<Item Value="1" Text="Front Left wheel"/>
+<Item Value="2" Text="Front Right wheel"/></List>
+</Bits>
+</Data>
+<Data Name="Write Time out detect jamming Time">
+<Bytes count="1"/>
+</Data>
+<Data Name="Write Detect jamming Coefficient">
+<Bytes count="1"/>
+</Data>
+<Data Name="Write Detect jamming Time">
+<Bytes count="1"/>
+</Data>
+<Data Name="VIN">
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="Vdiag">
+<Bytes count="1"/>
+</Data>
+<Data Name="Software N°">
+<Bytes count="2"/>
+</Data>
+<Data Name="Type Of Fault">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Standard"/>
+<Item Value="1" Text="Specific"/></List>
+</Bits>
+</Data>
+<Data Name="Write threshold of speed">
+<Bytes count="1"/>
+</Data>
+<Data Name="Year">
+<Bytes count="1"/>
+</Data>
+<Data Name="Read Time out detect jamming Time">
+<Bytes count="1"/>
+</Data>
+<Data Name="Read Detect jamming Coefficient">
+<Bytes count="1"/>
+</Data>
+<Data Name="Read Detect jamming Time">
+<Bytes count="1"/>
+</Data>
+<Data Name="Producer BCM C_absent">
+<Bits count="1">
+<List>
+<Item Value="0" Text="C_Absent = 255"/>
+<Item Value="1" Text="C_Absent != 255"/></List>
+</Bits>
+</Data>
+<Data Name="Producer BCM Compter">
+<Bits count="6">
+<Scaled Format="000"/>
+</Bits>
+</Data>
+<Data Name="Diagnostic Session">
+<Bits>
+<List>
+<Item Value="250" Text="Development session"/></List>
+</Bits>
+</Data>
+<Data Name="CRC VIN">
+<Bytes count="2"/>
+</Data>
+<Data Name="MPR Code">
+<Bytes count="5"/>
+</Data>
+<Data Name="ITG Code">
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Hardware N°">
+<Bytes count="5"/>
+</Data>
+<Data Name="Current Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Producer BCM Statut">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Present"/>
+<Item Value="1" Text="Absent"/></List>
+</Bits>
+</Data>
+<Data Name="Historical Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Standard Fault">
+<Bits count="5">
+<List>
+<Item Value="2" Text="Short_circuit_to_ground"/>
+<Item Value="3" Text="Short_circuit_to_+bat"/>
+<Item Value="7" Text="No_signal"/>
+<Item Value="8" Text="Below_min_threshold"/>
+<Item Value="9" Text="Above_max_threshold"/>
+<Item Value="13" Text="Internal_electronic_anomaly"/></List>
+</Bits>
+</Data>
+<Data Name="Read threshold of speed">
+<Bytes count="1"/>
+</Data>
+<Data Name="Session Name">
+<Bits>
+<List>
+<Item Value="192" Text="Après vente"/>
+<Item Value="250" Text="StartDiagnosticDevelopment"/></List>
+</Bits>
+</Data>
+<Data Name="Odometer Frame Index">
+<Bits>
+<List>
+<Item Value="115" Text="165/65 R15"/>
+<Item Value="139" Text="185/60 R15"/>
+<Item Value="157" Text="175/65 R15"/>
+<Item Value="178" Text="185/70 R14"/>
+<Item Value="236" Text="195/65 R15"/>
+<Item Value="255" Text="Valeur Invalide (FFh)"/></List>
+</Bits>
+</Data>
+<Data Name="Specific Fault">
+<Bits count="5">
+<List>
+<Item Value="1" Text="Speed_wheels_incoherency"/>
+<Item Value="2" Text="Wheel_speed_continuity"/>
+<Item Value="4" Text="Tire index initialisation missing"/>
+<Item Value="5" Text="Disturbed signal"/></List>
+</Bits>
+</Data>
+<Data Name="Week number">
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="Status failure">
+<Bits count="3">
+<List>
+<Item Value="1" Text="Present"/>
+<Item Value="2" Text="Memorised"/>
+<Item Value="3" Text="Present and memorised"/>
+<Item Value="5" Text="Present."/>
+<Item Value="6" Text="Memorised."/>
+<Item Value="7" Text="Present and memorised."/></List>
+</Bits>
+</Data>
+<Data Name="Stamp final test">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Digital serial number">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="Year number">
+<Bytes count="2" ascii="1"/>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="CDI_Failure">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+<DataItem Name="Failure Group" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="IOCBLI - VSOonWire">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>30010105</SentBytes>
+<DataItem Name="Activation Time Selection (Xx20ms)" FirstByte="4"/>
+<DataItem Name="Activation Type Selection" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Activation Processus Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLI - IndexTire">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2101</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6101</ReplyBytes>
+<DataItem Name="Index" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLI - OdometerFrame">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2103</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<DataItem Name="Odometer Frame Index" Ref="1" FirstByte="9"/>
+<DataItem Name="Maximum Tire Circonf" Ref="1" FirstByte="7"/>
+<DataItem Name="Minimum Tire Circonf" Ref="1" FirstByte="5"/>
+<DataItem Name="Odometer" Ref="1" FirstByte="10"/>
+<DataItem Name="True Tire Circonf" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLI - SpeedsFrame">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2102</SentBytes>
+</Sent>
+<Received MinBytes="8">
+<DataItem Name="Front Left wheel speed" Ref="1" FirstByte="3"/>
+<DataItem Name="Front Right wheel speed" Ref="1" FirstByte="5"/>
+<DataItem Name="Vehicle speed" Ref="1" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="RDBLI_DateAfterSale">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21B0</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="Day" Ref="1" FirstByte="5"/>
+<DataItem Name="Month" Ref="1" FirstByte="4"/>
+<DataItem Name="Year" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RDBLI_NetworkDiag">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2182</SentBytes>
+</Sent>
+<Received MinBytes="62">
+<DataItem Name="Bus Off Compter Parameter" Ref="1" FirstByte="5" BitOffset="2"/>
+<DataItem Name="Bus Off Status Parameter" Ref="1" FirstByte="5"/>
+<DataItem Name="C_Bus Off Parameter" Ref="1" FirstByte="5" BitOffset="1"/>
+<DataItem Name="C_Mute Parameter" Ref="1" FirstByte="6" BitOffset="1"/>
+<DataItem Name="CAN Messaging" Ref="1" FirstByte="3"/>
+<DataItem Name="Module Mute Compter Parameter" Ref="1" FirstByte="6" BitOffset="2"/>
+<DataItem Name="Module Mute Statut Parameter" Ref="1" FirstByte="6"/>
+<DataItem Name="Producer BCM C_absent" Ref="1" FirstByte="10" BitOffset="1"/>
+<DataItem Name="Producer BCM Compter" Ref="1" FirstByte="10" BitOffset="2"/>
+<DataItem Name="Producer BCM Statut" Ref="1" FirstByte="10"/>
+<DataItem Name="Producer VSU C_absent" Ref="1" FirstByte="8" BitOffset="1"/>
+<DataItem Name="Producer VSU Compter" Ref="1" FirstByte="8" BitOffset="2"/>
+<DataItem Name="Producer VSU Status" Ref="1" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="RDBLI_SystemStatusFrame">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2104</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Brake Pedal Info" Ref="1" FirstByte="4" BitOffset="2"/>
+<DataItem Name="Locking Wheel Detection" Ref="1" FirstByte="4" BitOffset="4"/>
+<DataItem Name="Power supply" Ref="1" FirstByte="3"/>
+<DataItem Name="VSU Status" Ref="1" FirstByte="4" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<DataItem Name="Type Of Fault" FirstByte="5"/>
+<DataItem Name="FirstDTC" FirstByte="3"/>
+<DataItem Name="Historical Failure" FirstByte="5" BitOffset="1"/>
+<DataItem Name="NDTC" FirstByte="2"/>
+<DataItem Name="Current Failure" FirstByte="5" BitOffset="2"/>
+<DataItem Name="Standard Fault" FirstByte="5" BitOffset="3"/>
+<DataItem Name="Specific Fault" FirstByte="5" BitOffset="3"/>
+</Received>
+</Request>
+<Request Name="ReadFreezeFrame">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>1200040000</SentBytes>
+<DataItem Name="FirstDTC" FirstByte="4"/>
+</Sent>
+<Received MinBytes="10">
+<DataItem Name="Brake Pedal Info" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTC Number" FirstByte="9"/>
+<DataItem Name="Front left wheel speed." FirstByte="4"/>
+<DataItem Name="Front right wheel speed." FirstByte="5"/>
+<DataItem Name="Locking Wheel Detection" FirstByte="7" BitOffset="4"/>
+<DataItem Name="Power supply" FirstByte="6" Endian="Little"/>
+<DataItem Name="Vehicle speed." FirstByte="3"/>
+<DataItem Name="VSU Status" FirstByte="7" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="RMBA - Detect jamming Coefficient">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>230100003E01</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<DataItem Name="Read Detect jamming Coefficient" FirstByte="2"/>
+</Received>
+</Request>
+<Request Name="RMBA - Detect jamming Time">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>230100003D01</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<DataItem Name="Read Detect jamming Time" FirstByte="2"/>
+</Received>
+</Request>
+<Request Name="Start Diagnostic Session">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="Session Name" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="StartRBLI - StartPolesCounting">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010001</SentBytes>
+<DataItem Name="Wheel Selection" FirstByte="4"/>
+</Sent>
+<Received MinBytes="4">
+</Received>
+</Request>
+<Request Name="StartRBLI - StopPolesCounting">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>310200</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Poles Number" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="StopDiagnosticSession">
+
+<Sent>
+<SentBytes>1081</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WDBLI - DateAfterSales">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3BB0010101</SentBytes>
+<DataItem Name="Day" FirstByte="5"/>
+<DataItem Name="Month" FirstByte="4"/>
+<DataItem Name="Year" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WDBLI - IndexTire">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B0100</SentBytes>
+<DataItem Name="Index" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B01</ReplyBytes>
+</Received>
+</Request>
+<Request Name="WMBA - Detect jamming Coefficient">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>3D0100003E0100</SentBytes>
+<DataItem Name="Write Detect jamming Coefficient" FirstByte="7"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WMBA - Detect jamming Time">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>3D0100003D0100</SentBytes>
+<DataItem Name="Write Detect jamming Time" FirstByte="7"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RDBLI - Traceabilityinformation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<DataItem Name="Year number" FirstByte="10"/>
+<DataItem Name="Week number" FirstByte="8"/>
+<DataItem Name="Stamp final test" FirstByte="13"/>
+<DataItem Name="Digital serial number" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RMBA - Time out detect jamming Time">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>230100003C01</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<DataItem Name="Read Time out detect jamming Time" FirstByte="2"/>
+</Received>
+</Request>
+<Request Name="WMBA - Time out detect jamming Time">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>3D0100003C0100</SentBytes>
+<DataItem Name="Write Time out detect jamming Time" FirstByte="7"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="StartDiagnosticDevelopmentSession">
+
+<Sent>
+<SentBytes>10FA</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<DataItem Name="Diagnostic Session" FirstByte="2"/>
+</Received>
+</Request>
+<Request Name="RDBLI - VIN">
+
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="VIN" Ref="1" FirstByte="3"/>
+<DataItem Name="CRC VIN" Ref="1" FirstByte="20"/>
+</Received>
+</Request>
+<Request Name="RDBLI - Renault's system identification">
+
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="MPR Code" Ref="1" FirstByte="3"/>
+<DataItem Name="Vdiag" Ref="1" FirstByte="8"/>
+<DataItem Name="ITG Code" Ref="1" FirstByte="9"/>
+<DataItem Name="Hardware N°" Ref="1" FirstByte="12"/>
+<DataItem Name="Software N°" Ref="1" FirstByte="17"/>
+</Received>
+</Request>
+<Request Name="WDBLI - VIN">
+
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="VIN" FirstByte="3"/>
+<DataItem Name="CRC VIN" FirstByte="20"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RMBA - Threshold of speed to detect the blocking">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>230100003501</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<DataItem Name="Read threshold of speed" FirstByte="2"/>
+</Received>
+</Request>
+<Request Name="WMBA - Threshold of speed to detect the blocking">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>3D010000350100</SentBytes>
+<DataItem Name="Write threshold of speed" FirstByte="7"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Front Right wheel speed sensor" DTC="20495" FreezeFrame="ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Front Left wheel speed sensor" DTC="20511" FreezeFrame="ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Control unit" DTC="20675" Type="2" FreezeFrame="ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Control Unit Supply" DTC="20684" FreezeFrame="ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Wire Speed Output" DTC="20685" Type="3" FreezeFrame="ReadFreezeFrame">
+
+
+</Device>
+<Device Name="CAN - UCH" DTC="20867" FreezeFrame="ReadFreezeFrame">
+
+
+</Device>
+<Device Name="RDBLI - IndexTire" Type="4">
+<Mnemonic>Request 2101</Mnemonic>
+
+
+</Device>
+<Device Name="RDBLI - SpeedsFrame" Type="4">
+<Mnemonic>Request 2102</Mnemonic>
+<DeviceData Name="Front Left wheel speed" FailureFlag="0"/><DeviceData Name="Front Right wheel speed" FailureFlag="0"/><DeviceData Name="Vehicle speed" FailureFlag="0"/>
+
+</Device>
+<Device Name="RDBLI - OdometerFrame" Type="4">
+<Mnemonic>Request 2103</Mnemonic>
+<DeviceData Name="Odometer Frame Index" FailureFlag="0"/><DeviceData Name="Maximum Tire Circonf" FailureFlag="0"/><DeviceData Name="Minimum Tire Circonf" FailureFlag="0"/><DeviceData Name="Odometer" FailureFlag="0"/><DeviceData Name="True Tire Circonf" FailureFlag="0"/>
+
+</Device>
+<Device Name="RDBLI_SystemStatusFrame" Type="4">
+<Mnemonic>Request 2104</Mnemonic>
+<DeviceData Name="Brake Pedal Info" FailureFlag="0"/><DeviceData Name="Locking Wheel Detection" FailureFlag="0"/><DeviceData Name="Power supply" FailureFlag="0"/><DeviceData Name="VSU Status" FailureFlag="0"/>
+
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Diag Check">
+
+<Screen Name="After Sale Date" Color="16777215" WindowState="0" Width="9210" Height="3780">
+
+<Label Text="After Sales Date" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="9000"/>
+<Font Name="Times New Roman" Size=" 18" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Read After Sales Date" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="1080" Height="2400" Width="4440"/>
+<Font Name="Times New Roman" Size=" 14" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Write After Sales Date" Color="14671839" Alignment="2">
+<Rectangle Left="4680" Top="1080" Height="2400" Width="4440"/>
+<Font Name="Times New Roman" Size=" 14" Bold="1" Italic="1" Color="4227072"/></Label>
+
+<Button Text="Write date">
+<Rectangle Left="4920" Top="3000" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WDBLI - DateAfterSales"/>
+</Button>
+
+<Display Width="2000" Color="16777215" DataName="Year" RequestName="RDBLI_DateAfterSale">
+<Rectangle Left="480" Top="1560" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Month" RequestName="RDBLI_DateAfterSale">
+<Rectangle Left="480" Top="2040" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Day" RequestName="RDBLI_DateAfterSale">
+<Rectangle Left="480" Top="2520" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2000" Color="16777215" DataName="Year" RequestName="WDBLI - DateAfterSales">
+<Rectangle Left="4920" Top="1560" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1995" Color="16777215" DataName="Month" RequestName="WDBLI - DateAfterSales">
+<Rectangle Left="4920" Top="2040" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16777215" DataName="Day" RequestName="WDBLI - DateAfterSales">
+<Rectangle Left="4920" Top="2520" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Tire Informations_simple" Color="16777215" WindowState="0" Width="8370" Height="4770">
+
+<Label Text="Tire Informations" Color="16777215" Alignment="2">
+<Rectangle Left="1680" Top="120" Height="480" Width="5640"/>
+<Font Name="Times New Roman" Size=" 18" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Tire Informations" Color="14671839" Alignment="2">
+<Rectangle Left="1680" Top="720" Height="2400" Width="5640"/>
+<Font Name="Times New Roman" Size=" 14" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Write Index" Color="14671839" Alignment="2">
+<Rectangle Left="1680" Top="3240" Height="1440" Width="5640"/>
+<Font Name="Times New Roman" Size=" 14" Bold="1" Italic="1" Color="4227072"/></Label>
+
+<Button Text="Write Index">
+<Rectangle Left="1800" Top="4080" Height="420" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WDBLI - IndexTire"/>
+</Button>
+
+<Display Width="2825" Color="16777215" DataName="True Tire Circonf" RequestName="RDBLI - OdometerFrame">
+<Rectangle Left="1800" Top="1200" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2825" Color="16777215" DataName="Minimum Tire Circonf" RequestName="RDBLI - OdometerFrame">
+<Rectangle Left="1800" Top="1560" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2825" Color="16777215" DataName="Maximum Tire Circonf" RequestName="RDBLI - OdometerFrame">
+<Rectangle Left="1800" Top="1920" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2825" Color="16777215" DataName="Odometer Frame Index" RequestName="RDBLI - OdometerFrame">
+<Rectangle Left="1800" Top="2280" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2825" Color="16777215" DataName="Odometer" RequestName="RDBLI - OdometerFrame">
+<Rectangle Left="1800" Top="2640" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2825" Color="16777215" DataName="Index" RequestName="WDBLI - IndexTire">
+<Rectangle Left="1800" Top="3600" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+</Category><Category Name="Repair">
+
+<Screen Name="VSU CAN Check" Color="16777215" WindowState="0" Width="10170" Height="5730">
+
+<Label Text="General Status" Color="14671839" Alignment="2">
+<Rectangle Left="0" Top="840" Height="2880" Width="5160"/>
+<Font Name="Times New Roman" Size=" 14" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="BCM Status" Color="14671839" Alignment="2">
+<Rectangle Left="5160" Top="840" Height="1440" Width="5160"/>
+<Font Name="Times New Roman" Size=" 14" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="VSU CAN Check" Color="16777215" Alignment="2">
+<Rectangle Left="0" Top="120" Height="480" Width="9960"/>
+<Font Name="Times New Roman" Size=" 18" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Vsu Status" Color="14671839" Alignment="2">
+<Rectangle Left="-120" Top="3720" Height="1560" Width="5280"/>
+<Font Name="Times New Roman" Size=" 14" Bold="1" Italic="1" Color="32768"/></Label>
+
+
+<Display Width="2570" Color="16777215" DataName="Producer VSU Status" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="0" Top="4080" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2570" Color="16777215" DataName="Producer VSU C_absent" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="0" Top="4440" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2570" Color="16777215" DataName="Producer VSU Compter" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="0" Top="4800" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2570" Color="16777215" DataName="CAN Messaging" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="120" Top="1200" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2570" Color="16777215" DataName="Bus Off Status Parameter" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="120" Top="1560" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2570" Color="16777215" DataName="C_Bus Off Parameter" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="120" Top="1920" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2570" Color="16777215" DataName="Bus Off Compter Parameter" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="120" Top="2280" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3020" Color="16777215" DataName="Module Mute Statut Parameter" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="120" Top="2640" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3020" Color="16777215" DataName="C_Mute Parameter" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="120" Top="3000" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3035" Color="16777215" DataName="Module Mute Compter Parameter" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="120" Top="3360" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2435" Color="16777215" DataName="Producer BCM Statut" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="5160" Top="1200" Height="300" Width="4750"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2435" Color="16777215" DataName="Producer BCM C_absent" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="5160" Top="1560" Height="300" Width="4750"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2450" Color="16777215" DataName="Producer BCM Compter" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="5160" Top="1935" Height="285" Width="4750"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="VSU State" Color="16777215" WindowState="0" Width="11610" Height="4740">
+
+<Label Text="Read ECU informations" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="960" Height="1650" Width="11400"/>
+<Font Name="Times New Roman" Size=" 14" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Read Speeds" Color="14671839" Alignment="2">
+<Rectangle Left="135" Top="2745" Height="1275" Width="11400"/>
+<Font Name="Times New Roman" Size=" 14" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="VSU State" Color="16777215" Alignment="2">
+<Rectangle Left="135" Top="120" Height="480" Width="11160"/>
+<Font Name="Times New Roman" Size=" 18" Bold="1" Italic="1" Color="8421440"/></Label>
+
+
+<Display Width="2900" Color="16777215" DataName="Front Left wheel speed" RequestName="RDBLI - SpeedsFrame">
+<Rectangle Left="300" Top="3135" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1535" Color="16777215" DataName="Power supply" RequestName="RDBLI_SystemStatusFrame">
+<Rectangle Left="825" Top="1395" Height="300" Width="3295"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1535" Color="16777215" DataName="Brake Pedal Info" RequestName="RDBLI_SystemStatusFrame">
+<Rectangle Left="840" Top="1800" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3560" Color="16777215" DataName="Vehicle speed" RequestName="RDBLI - SpeedsFrame">
+<Rectangle Left="2490" Top="3600" Height="300" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1130" Color="16777215" DataName="VSU Status" RequestName="RDBLI_SystemStatusFrame">
+<Rectangle Left="2745" Top="2235" Height="300" Width="4975"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2345" Color="16777215" DataName="Locking Wheel Detection" RequestName="RDBLI_SystemStatusFrame">
+<Rectangle Left="5130" Top="1785" Height="300" Width="5955"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="CAN Messaging" RequestName="RDBLI_NetworkDiag">
+<Rectangle Left="5475" Top="1380" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2900" Color="16777215" DataName="Front Right wheel speed" RequestName="RDBLI - SpeedsFrame">
+<Rectangle Left="6030" Top="3135" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="VSU Tire Configuration/Informations" Color="16777215" WindowState="0" Width="9090" Height="5220">
+
+<Label Text="Tire Informations" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="8880"/>
+<Font Name="Times New Roman" Size=" 18" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Tire Informations" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="1080" Height="2182" Width="8880"/>
+<Font Name="Times New Roman" Size=" 14" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Write Index" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="3371" Height="1309" Width="8880"/>
+<Font Name="Times New Roman" Size=" 14" Bold="1" Italic="1" Color="4227072"/></Label>
+
+<Button Text="Write Index">
+<Rectangle Left="240" Top="4080" Height="382" Width="8502"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WDBLI - IndexTire"/>
+</Button>
+
+<Input Width="2825" Color="16777215" DataName="Index" RequestName="WDBLI - IndexTire">
+<Rectangle Left="270" Top="3690" Height="273" Width="8502"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2825" Color="16777215" DataName="True Tire Circonf" RequestName="RDBLI - OdometerFrame">
+<Rectangle Left="309" Top="1516" Height="273" Width="8502"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2825" Color="16777215" DataName="Maximum Tire Circonf" RequestName="RDBLI - OdometerFrame">
+<Rectangle Left="309" Top="2171" Height="273" Width="8502"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2825" Color="16777215" DataName="Odometer Frame Index" RequestName="RDBLI - OdometerFrame">
+<Rectangle Left="309" Top="2498" Height="273" Width="8502"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2825" Color="16777215" DataName="Odometer" RequestName="RDBLI - OdometerFrame">
+<Rectangle Left="309" Top="2825" Height="273" Width="8502"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2825" Color="16777215" DataName="Minimum Tire Circonf" RequestName="RDBLI - OdometerFrame">
+<Rectangle Left="315" Top="1845" Height="273" Width="8502"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Routine">
+
+<Screen Name="Routine - Poles Counting" Color="16777215" WindowState="0" Width="9210" Height="8250">
+
+<Label Text="Poles Counting" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="0" Height="600" Width="9000"/>
+<Font Name="Times New Roman" Size=" 18" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Start counting" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="840" Height="1920" Width="9000"/>
+<Font Name="Times New Roman" Size=" 14" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Stop counting" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="3120" Height="2160" Width="9000"/>
+<Font Name="Times New Roman" Size=" 14" Bold="1" Italic="1" Color="32768"/></Label>
+<Send Delay="10" RequestName="StartRBLI - StopPolesCounting"/>
+<Button Text="Start poles counting">
+<Rectangle Left="240" Top="1800" Height="360" Width="8731"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartRBLI - StartPolesCounting"/>
+</Button>
+<Button Text="Stop poles counting">
+<Rectangle Left="240" Top="3600" Height="360" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartRBLI - StopPolesCounting"/>
+</Button>
+
+<Input Width="2375" Color="16777215" DataName="Wheel Selection" RequestName="StartRBLI - StartPolesCounting">
+<Rectangle Left="240" Top="1320" Height="360" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3110" Color="16777215" DataName="Poles Number" RequestName="StartRBLI - StopPolesCounting">
+<Rectangle Left="240" Top="4200" Height="360" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Development">
+
+<Screen Name="Jamming parameters" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="" Color="14671839" Alignment="2">
+<Rectangle Left="0" Top="1680" Height="960" Width="8520"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="14671839" Alignment="2">
+<Rectangle Left="0" Top="600" Height="960" Width="8520"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="14671839" Alignment="2">
+<Rectangle Left="0" Top="2760" Height="960" Width="8520"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="14671839" Alignment="2">
+<Rectangle Left="0" Top="5040" Height="720" Width="8640"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="" Color="14671839" Alignment="2">
+<Rectangle Left="0" Top="3840" Height="960" Width="8520"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="JAMMING PARAMETERS" Color="16777215" Alignment="2">
+<Rectangle Left="-480" Top="0" Height="360" Width="9000"/>
+<Font Name="Times New Roman" Size=" 18" Bold="1" Italic="1" Color="8421440"/></Label>
+
+<Button Text="Read Detect jamming coefficient">
+<Rectangle Left="360" Top="1800" Height="300" Width="3000"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="RMBA - Detect jamming Coefficient"/>
+</Button>
+<Button Text="Read Detect jamming Time">
+<Rectangle Left="360" Top="2880" Height="300" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="RMBA - Detect jamming Time"/>
+</Button>
+<Button Text="Read Time out detect jamming Time">
+<Rectangle Left="360" Top="720" Height="300" Width="3000"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="RMBA - Time out detect jamming Time"/>
+</Button>
+<Button Text="Write Detect jamming coefficient">
+<Rectangle Left="360" Top="2160" Height="300" Width="3000"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WMBA - Detect jamming Coefficient"/>
+</Button>
+<Button Text="Write Detect jamming Time">
+<Rectangle Left="360" Top="3240" Height="300" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WMBA - Detect jamming Time"/>
+</Button>
+<Button Text="Write Time out detect jamming Time">
+<Rectangle Left="360" Top="1080" Height="300" Width="3000"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WMBA - Time out detect jamming Time"/>
+</Button>
+<Button Text="Start Diagnostic Development">
+<Rectangle Left="720" Top="5280" Height="300" Width="2325"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticDevelopmentSession"/>
+</Button>
+<Button Text="Read Threshold of speed to detect the blocking">
+<Rectangle Left="120" Top="3960" Height="300" Width="4200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="RMBA - Threshold of speed to detect the blocking"/>
+</Button>
+<Button Text="Write Threshold of speed to detect the blocking">
+<Rectangle Left="120" Top="4320" Height="300" Width="4200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="WMBA - Threshold of speed to detect the blocking"/>
+</Button>
+
+<Display Width="3350" Color="16777215" DataName="Read Detect jamming Coefficient" RequestName="RMBA - Detect jamming Coefficient">
+<Rectangle Left="3840" Top="1800" Height="300" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2690" Color="16777215" DataName="Read Detect jamming Time" RequestName="RMBA - Detect jamming Time">
+<Rectangle Left="4440" Top="2880" Height="300" Width="3960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3290" Color="16777215" DataName="Read Time out detect jamming Time" RequestName="RMBA - Time out detect jamming Time">
+<Rectangle Left="3840" Top="720" Height="300" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="3470" Color="16777215" DataName="Write Detect jamming Coefficient" RequestName="WMBA - Detect jamming Coefficient">
+<Rectangle Left="3720" Top="2160" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2810" Color="16777215" DataName="Write Detect jamming Time" RequestName="WMBA - Detect jamming Time">
+<Rectangle Left="4320" Top="3240" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3305" Color="16777215" DataName="Write Time out detect jamming Time" RequestName="WMBA - Time out detect jamming Time">
+<Rectangle Left="3840" Top="1080" Height="300" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="1790" Color="16777215" DataName="Diagnostic Session" RequestName="StartDiagnosticDevelopmentSession">
+<Rectangle Left="4560" Top="5280" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2540" Color="16777215" DataName="Write threshold of speed" RequestName="WMBA - Threshold of speed to detect the blocking">
+<Rectangle Left="4560" Top="4320" Height="300" Width="3840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2555" Color="16777215" DataName="Read threshold of speed" RequestName="RMBA - Threshold of speed to detect the blocking">
+<Rectangle Left="4560" Top="3960" Height="300" Width="3840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

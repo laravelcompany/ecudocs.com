@@ -1,0 +1,3290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<ddt:Target Name="GPL 2000 - A8.50" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" upload="12/1/03" href="GPL_2000___A8.50.xml" email=""><Description><![CDATA[Injection multipoint GPL système - GPL2000 / SAGEM
+Véhicules : X76 - X74 - J66 - X64 - X06
+Motorisations : D7F - F4R - K4M
+Logiciel : A8.50
+Responsable fonction : Pascal Rey
+Auteur : Florent Quintard
+Version : 25/10/2000]]></Description>
+<Projects xmlns=""><x06/><x64/><x66/><x74/><x76/></Projects><Function Name="GPL" Address="121"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation/>
+<Failures Name="Flags de pannes" Id="1"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<K BaudRate="10400">
+<KWP Multipoint="0">
+<FastInit><KW1 Value="208"/>
+<KW2 Value="143"/></FastInit>
+</KWP>
+<InterByte Delay="0"/>
+<ReplyToRequest Delay="5"/>
+<RequestToReply Timeout="300"/>
+<TesterPresent Delay="3000"/>
+<OnError Delay="300"/>
+</K>
+<AutoIdents>
+</AutoIdents>
+<Datas>
+
+<Data Name="Autorisation calcul de la température GPL">
+<Comment><![CDATA[Autorisation du calcul de la température GPL]]></Comment>
+<Mnemonic>Aut_calc_tgpl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Configuration capteur de température GPL">
+<Comment><![CDATA[Configuration capteur température GPL (0= absent ; 1= présent)]]></Comment>
+<Mnemonic>Cfg_capt_tgpl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Configuration monocarburation">
+<Comment><![CDATA[Configuration monocarburation (0= bi ; 1= mono)]]></Comment>
+<Mnemonic>Config_mono</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Consigne de débit GPL">
+<Comment><![CDATA[Valeur de l'info consigne de débit transmise en liaison intersystème]]></Comment>
+<Mnemonic>Cons_qgpl</Mnemonic>
+<Bits count="16">
+<Scaled Unit="g/h" Step=" 2"/>
+</Bits>
+</Data>
+<Data Name="Consigne essence">
+<Comment><![CDATA[Indicateur de fonctionnement en mode essence]]></Comment>
+<Mnemonic>Cons_ess</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Consigne GPL">
+<Comment><![CDATA[Indicateur de fonctionnement en mode GPL]]></Comment>
+<Mnemonic>Cons_gpl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Coupure de pompe à essence effective">
+<Comment><![CDATA[Indicateur de coupure effective de la pompe à essence en fonctionnement GPL]]></Comment>
+<Mnemonic>Coup_pmp_ess</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CRC_vin">
+<Mnemonic>CRC_vin</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="CRC_VINwrite">
+<Bytes count="2"/>
+</Data>
+<Data Name="Défaut grave système GPL">
+<Comment><![CDATA[Défaut grave du système GPL]]></Comment>
+<Mnemonic>Defg_sgpl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Défaut mineur système GPL">
+<Comment><![CDATA[Défaut mineur du système GPL]]></Comment>
+<Mnemonic>Defm_sgpl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Demande activation système GPL">
+<Comment><![CDATA[Demande d'activation du système GPL]]></Comment>
+<Mnemonic>Dmd_act_gpl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Demande désactivation système GPL">
+<Comment><![CDATA[Demande de désactivation du système GPL]]></Comment>
+<Mnemonic>Dmd_desact_gpl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="diag mode">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Echoservice generic">
+<Mnemonic>Echo</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="ECUR">
+<Bytes count="1"/>
+</Data>
+<Data Name="ECUROK">
+<Mnemonic>ECUROK</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="ETAIN">
+<Comment><![CDATA[Etat des entrées logiques]]></Comment>
+<Mnemonic>ETAIN</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="ETALOG1">
+<Comment><![CDATA[Etat n°1 des stratégies logiciel]]></Comment>
+<Mnemonic>ETALOG1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="ETALOG2">
+<Comment><![CDATA[Etat n°2 des stratégies logiciel]]></Comment>
+<Mnemonic>ETALOG2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="ETAMOD1">
+<Comment><![CDATA[Etat n°1 des modes de fonctionnement moteur]]></Comment>
+<Mnemonic>ETAMOD1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="ETAMOD2">
+<Comment><![CDATA[Etat n°2 des modes de fonctionnement moteur]]></Comment>
+<Mnemonic>ETAMOD2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="ETAMOD3">
+<Comment><![CDATA[Etat n°3 des modes de fonctionnement moteur]]></Comment>
+<Mnemonic>ETAMOD3</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="ETAMOD4">
+<Comment><![CDATA[Etat n°4 des modes de fonctionnement moteur]]></Comment>
+<Mnemonic>ETAMOD4</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="ETAOUT">
+<Comment><![CDATA[Etat des sorties]]></Comment>
+<Mnemonic>ETAOUT</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Etat de la demande client GPL">
+<Comment><![CDATA[Etat de la demande client]]></Comment>
+<Mnemonic>Etat_client</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Etat de sortie de la led">
+<Comment><![CDATA[Actif lorsque la sortie led doit être active (led allumée)]]></Comment>
+<Mnemonic>Etat_sort_led</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Etat de sortie du voyant">
+<Comment><![CDATA[Actif lorsque la sortie voyant doit être active (voyant allumé)]]></Comment>
+<Mnemonic>Etat_sort_voy</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Etat du bouton GPL">
+<Comment><![CDATA[Indicateur de l'état du bouton GPL]]></Comment>
+<Mnemonic>Etat_btn_gpl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Etat du relais général">
+<Comment><![CDATA[Etat demandé de l'électrovanne réservoir (1=ouvert, 0=fermé)]]></Comment>
+<Mnemonic>Etat_regen</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Etat électrovanne principale">
+<Comment><![CDATA[Etat demandé de l'électrovanne principale (1=ouvert, 0=fermé)]]></Comment>
+<Mnemonic>Etat_ev_prcp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="FLGECM">
+<Comment><![CDATA[Porteur des flags de pannes des entrées en court-circuit à la masse]]></Comment>
+<Mnemonic>FLGECM</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGECO">
+<Comment><![CDATA[Porteur des flags de pannes des entrées en circuit ouvert]]></Comment>
+<Mnemonic>FLGECO</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGECP">
+<Comment><![CDATA[Porteur des flags de pannes des entrées en court-circuit au +bat]]></Comment>
+<Mnemonic>FLGECP</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPME1">
+<Comment><![CDATA[Porteur n°1 des flags de pannes mémorisées des entrées]]></Comment>
+<Mnemonic>FLGPME1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPME2">
+<Comment><![CDATA[Porteur n°2 des flags de pannes mémorisées des entrées]]></Comment>
+<Mnemonic>FLGPME2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPME3">
+<Comment><![CDATA[Porteur n°3 des flags de pannes mémorisées des entrées]]></Comment>
+<Mnemonic>FLGPME3</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPMF1">
+<Comment><![CDATA[Porteur n°1 des flags de pannes fonctionnelles mémorisées]]></Comment>
+<Mnemonic>FLGPMF1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPMF2">
+<Comment><![CDATA[Porteur n°2 des flags de pannes fonctionnelles mémorisées]]></Comment>
+<Mnemonic>FLGPMF2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPMS1">
+<Comment><![CDATA[Porteur n°1 des flags de pannes mémorisées des sorties]]></Comment>
+<Mnemonic>FLGPMS1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPMS2">
+<Comment><![CDATA[Porteur n°2 des flags de pannes mémorisées des sorties]]></Comment>
+<Mnemonic>FLGPMS2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPPE1">
+<Comment><![CDATA[Porteur n°1 des flags de pannes présentes des entrées]]></Comment>
+<Mnemonic>FLGPPE1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPPE2">
+<Comment><![CDATA[Porteur n°2 des flags de pannes présentes des entrées]]></Comment>
+<Mnemonic>FLGPPE2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPPE3">
+<Comment><![CDATA[Porteur n°3 des flags de pannes présentes des entrées]]></Comment>
+<Mnemonic>FLGPPE3</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPPF1">
+<Comment><![CDATA[Porteur n°1 des flags de pannes fonctionnelles présentes]]></Comment>
+<Mnemonic>FLGPPF1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPPF2">
+<Comment><![CDATA[Porteur n°2 des flags de pannes fonctionnelles présentes]]></Comment>
+<Mnemonic>FLGPPF2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPPS1">
+<Comment><![CDATA[Porteur n°1 des flags de pannes présentes des sorties]]></Comment>
+<Mnemonic>FLGPPS1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGPPS2">
+<Comment><![CDATA[Porteur n°2 des flags de pannes présentes des sorties]]></Comment>
+<Mnemonic>FLGPPS2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGSCM1">
+<Comment><![CDATA[Porteur n°1 des flags de pannes des sorties en court-circuit à la masse]]></Comment>
+<Mnemonic>FLGSCM1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGSCM2">
+<Comment><![CDATA[Porteur n°2 des flags de pannes des sorties en court-circuit à la masse]]></Comment>
+<Mnemonic>FLGSCM2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGSCO1">
+<Comment><![CDATA[Porteur n°1 des flags de pannes des sorties en circuit ouvert]]></Comment>
+<Mnemonic>FLGSCO1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGSCO2">
+<Comment><![CDATA[Porteur n°2 des flags de pannes des sorties en circuit ouvert]]></Comment>
+<Mnemonic>FLGSCO2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGSCP1">
+<Comment><![CDATA[Porteur n°1 des flags de pannes des sorties en court-circuit au +bat]]></Comment>
+<Mnemonic>FLGSCP1</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGSCP2">
+<Comment><![CDATA[Porteur n°2 des flags de pannes des sorties en court-circuit au +bat]]></Comment>
+<Mnemonic>FLGSCP2</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGSCP3">
+<Comment><![CDATA[Porteur n°3 des flags de pannes des sorties en court-circuit au +bat]]></Comment>
+<Mnemonic>FLGSCP3</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="FLGSCP4">
+<Comment><![CDATA[Porteur n°4 des flags de pannes des sorties en court-circuit au +bat]]></Comment>
+<Mnemonic>FLGSCP4</Mnemonic>
+<Bits>
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Fonction à surveiller">
+<Bits>
+<List>
+<Item Value="161" Text="Arrêt power latch"/>
+<Item Value="163" Text="Réinit mémoire sauvegardée"/>
+<Item Value="166" Text="Test statique"/></List>
+</Bits>
+</Data>
+<Data Name="Fonction particulière">
+<Bits>
+<List>
+<Item Value="161" Text="Arrêt power latch"/>
+<Item Value="163" Text="Réinit mémoire sauvegardée"/>
+<Item Value="166" Text="Test statique"/></List>
+</Bits>
+</Data>
+<Data Name="generic function">
+<Bytes count="1"/>
+</Data>
+<Data Name="IOCBLI">
+<Bytes count="1"/>
+</Data>
+<Data Name="IOCBLIOK">
+<Mnemonic>IOCBLIOK</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Local ident">
+<Bytes count="1"/>
+</Data>
+<Data Name="local ident OK">
+<Mnemonic>RIOK</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Local mux">
+<Bytes count="1"/>
+</Data>
+<Data Name="local mux OK">
+<Mnemonic>RIOK</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="LocallvinOK">
+<Bytes count="1"/>
+</Data>
+<Data Name="Mode essence">
+<Comment><![CDATA[Indicateur de fonctionnement essence]]></Comment>
+<Mnemonic>Mod_ess</Mnemonic>
+<Bits count="1">
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Mode essence forcée condition GPL">
+<Comment><![CDATA[Indicateur de fonctionnement essence forcée sur condition GPL]]></Comment>
+<Mnemonic>Mod_essf_cgpl</Mnemonic>
+<Bits count="1">
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Mode essence forcée défaut GPL">
+<Comment><![CDATA[Indicateur de fonctionnement essence forcée sur défaut GPL]]></Comment>
+<Mnemonic>Mod_essf_def</Mnemonic>
+<Bits count="1">
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Mode essence forcée réservoir vide">
+<Comment><![CDATA[Indicateur de fonctionnement essence forcée sur réservoir vide]]></Comment>
+<Mnemonic>Mod_essf_vide</Mnemonic>
+<Bits count="1">
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Mode GPL">
+<Comment><![CDATA[Indicateur de fonctionnement GPL]]></Comment>
+<Mnemonic>Mod_gpl</Mnemonic>
+<Bits count="1">
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Mode GPL forcé">
+<Comment><![CDATA[Indicateur de fonctionnement GPL forcé]]></Comment>
+<Mnemonic>Mod_gplf</Mnemonic>
+<Bits count="1">
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Mode transition essence GPL">
+<Comment><![CDATA[Indicateur de transition essence vers GPL]]></Comment>
+<Mnemonic>Modt_essgpl</Mnemonic>
+<Bits count="1">
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="Mode transition GPL essence">
+<Comment><![CDATA[Indicateur de transition GPL vers essence]]></Comment>
+<Mnemonic>Modt_gpless</Mnemonic>
+<Bits count="1">
+<Scaled Format="bin"/>
+</Bits>
+</Data>
+<Data Name="module absent 1">
+<Mnemonic>DIAGUCX1</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 10">
+<Mnemonic>DIAGUCXA</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 11">
+<Mnemonic>DIAGUCXB</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 12">
+<Mnemonic>DIAGUCXC</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 13">
+<Mnemonic>DIAGUCXD</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 14">
+<Mnemonic>DIAGUCXE</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 15">
+<Mnemonic>DIAGUCXF</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 2">
+<Mnemonic>DIAGUCX2</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 3">
+<Mnemonic>DIAGUCX3</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 4">
+<Mnemonic>DIAGUCX4</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 5">
+<Mnemonic>DIAGUCX5</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 6">
+<Mnemonic>DIAGUCX6</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 7">
+<Mnemonic>DIAGUCX7</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 8">
+<Mnemonic>DIAGUCX8</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="module absent 9">
+<Mnemonic>DIAGUCX9</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Moteur calé">
+<Comment><![CDATA[Indicateur de moteur calé]]></Comment>
+<Mnemonic>Mot_cale</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Nombre de cycles de commande">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Nombre de départ essence usine">
+<Comment><![CDATA[Nombre de départs max autorisés en essence pour véhicules monocarburation]]></Comment>
+<Mnemonic>Nb_dep_ess</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Numéro de calibration">
+<Comment><![CDATA[Numero de calibration]]></Comment>
+<Mnemonic>NCAL</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Numéro de calibration mise au point">
+<Comment><![CDATA[Version de calibration MAP]]></Comment>
+<Mnemonic>VMAP</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Numéro de fournisseur">
+<Comment><![CDATA[Numero ITG du fournisseur]]></Comment>
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="Numéro de hardware">
+<Comment><![CDATA[reference HARD du calculateur]]></Comment>
+<Mnemonic>NHARD</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Numéro de version logiciel">
+<Comment><![CDATA[Niveau de calibration]]></Comment>
+<Mnemonic>NVERS</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Numéro diagnostic">
+<Mnemonic>VDIAG</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Numéro du programme">
+<Comment><![CDATA[Application logiciel]]></Comment>
+<Mnemonic>NPRGM</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Numéro RENAULT du calculateur">
+<Comment><![CDATA[Reference du boitier programme (hard + soft + calib)]]></Comment>
+<Mnemonic>NPIECE</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Panne mémorisée alimentation">
+<Comment><![CDATA[Panne mémorisée de l'alimentation]]></Comment>
+<Mnemonic>Pm_alim</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée alimentation capteur">
+<Comment><![CDATA[Panne mémorisée de l'alimentation capteur de pression GPL]]></Comment>
+<Mnemonic>Pm_alim_capteur</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée batterie">
+<Comment><![CDATA[Panne mémorisée de la tension batterie]]></Comment>
+<Mnemonic>Pm_batt</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée batterie basse">
+<Comment><![CDATA[Panne mémorisée baisse de tension batterie]]></Comment>
+<Mnemonic>Pm_batt_b</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée batterie haute">
+<Comment><![CDATA[Panne mémorisée hausse de tension batterie]]></Comment>
+<Mnemonic>Pm_batt_h</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée capteur de pression GPL">
+<Comment><![CDATA[Panne mémorisée du capteur de pression GPL]]></Comment>
+<Mnemonic>Pm_pression</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée clef">
+<Comment><![CDATA[Panne mémorisée de la clef de contact]]></Comment>
+<Mnemonic>Pm_clef</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée clef en court-circuit">
+<Comment><![CDATA[Panne mémorisée de la clef de contact en court-circuit]]></Comment>
+<Mnemonic>Pm_clef_cc</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée cohérence clef">
+<Comment><![CDATA[Panne mémorisée sur la cohérence clef de contact]]></Comment>
+<Mnemonic>Pm_clef_coh</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée cohérence période">
+<Comment><![CDATA[Panne mémorisée sur la cohérence période]]></Comment>
+<Mnemonic>Pm_coh_per</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée cohérence période pmh">
+<Comment><![CDATA[Panne mémorisée sur la cohérence période pmh]]></Comment>
+<Mnemonic>Pm_coh_pmh</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée cohérence pression GPL">
+<Comment><![CDATA[Panne mémorisée sur la cohérence de pression GPL]]></Comment>
+<Mnemonic>Pm_prs_coh</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée cohérence régime">
+<Comment><![CDATA[Panne mémorisée sur la cohérence régime]]></Comment>
+<Mnemonic>Pm_coh_reg</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée électrovanne principale">
+<Comment><![CDATA[Panne mémorisée de l'électrovanne principale]]></Comment>
+<Mnemonic>Pm_ev</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée électrovanne principale en court-circuit au +bat">
+<Comment><![CDATA[Panne mémorisée de l'électrovanne principale en court-circuit au +bat]]></Comment>
+<Mnemonic>Pm_ev_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée ev principale en court-circuit à la masse">
+<Comment><![CDATA[Panne mémorisée de l'électrovanne principale en court-circuit à la masse]]></Comment>
+<Mnemonic>Pm_ev_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée fonction cohérence régime">
+<Comment><![CDATA[Panne mémorisée sur la fonction cohérence régime]]></Comment>
+<Mnemonic>Pm_coh_reg_fct</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée fonction information pmh">
+<Comment><![CDATA[Panne mémorisée sur la fonction information pmh]]></Comment>
+<Mnemonic>Pm_info_pmh_fct</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée information pmh">
+<Comment><![CDATA[Panne mémorisée sur l'information pmh]]></Comment>
+<Mnemonic>Pm_info_pmh</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée injecteur a">
+<Comment><![CDATA[Panne mémorisée de l'injecteur a]]></Comment>
+<Mnemonic>Pm_inja</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée injecteur a en circuit ouvert">
+<Comment><![CDATA[Panne mémorisée de l'injecteur a en circuit-ouvert]]></Comment>
+<Mnemonic>Pm_inja_co</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée injecteur a en court-circuit">
+<Comment><![CDATA[Panne mémorisée de l'injecteur a en court-circuit]]></Comment>
+<Mnemonic>Pm_inja_cc</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée injecteur b">
+<Comment><![CDATA[Panne mémorisée de l'injecteur b]]></Comment>
+<Mnemonic>Pm_injb</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée injecteur b en circuit ouvert">
+<Comment><![CDATA[Panne mémorisée de l'injecteur b en circuit_ouvert]]></Comment>
+<Mnemonic>Pm_injb_co</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée injecteur b en court-circuit">
+<Comment><![CDATA[Panne mémorisée de l'injecteur b en circuit_ouvert]]></Comment>
+<Mnemonic>Pm_injb_co</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée injecteur c">
+<Comment><![CDATA[Panne mémorisée de l'injecteur c]]></Comment>
+<Mnemonic>Pm_injc</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée injecteur c en circuit ouvert">
+<Comment><![CDATA[Panne mémorisée de l'injecteur c en circuit-ouvert]]></Comment>
+<Mnemonic>Pm_injc_co</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée injecteur c en court-circuit">
+<Comment><![CDATA[Panne mémorisée de l'injecteur c en court-circuit]]></Comment>
+<Mnemonic>Pm_injc_cc</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée injecteur d">
+<Comment><![CDATA[Panne mémorisée de l'injecteur d]]></Comment>
+<Mnemonic>Pm_injd</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée injecteur d en circuit ouvert">
+<Comment><![CDATA[Panne mémorisée de l'injecteur d en circuit-ouvert]]></Comment>
+<Mnemonic>Pm_injd_co</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée injecteur d en court-circuit">
+<Comment><![CDATA[Panne mémorisée de l'injecteur d en court-circuit]]></Comment>
+<Mnemonic>Pm_injd_cc</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée jauge">
+<Comment><![CDATA[Panne mémorisée de la jauge]]></Comment>
+<Mnemonic>Pm_jauge</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée jauge en court-circuit à la masse">
+<Comment><![CDATA[Panne mémorisée de la jauge en court-circuit à la masse]]></Comment>
+<Mnemonic>Pm_jauge_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée jauge en court-circuit au +bat">
+<Comment><![CDATA[Panne mémorisée de la jauge en court-circuit au +bat]]></Comment>
+<Mnemonic>Pm_jauge_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée led GPL">
+<Comment><![CDATA[Panne mémorisée de la led GPL]]></Comment>
+<Mnemonic>Pm_led</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée led GPL en court-circuit au +bat">
+<Comment><![CDATA[Panne mémorisée de la led GPL en court-circuit au +bat]]></Comment>
+<Mnemonic>Pm_led_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée micro">
+<Comment><![CDATA[Panne mémorisée micro]]></Comment>
+<Mnemonic>Pm_micro</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée micro calib">
+<Comment><![CDATA[Panne mémorisée micro calib]]></Comment>
+<Mnemonic>Pm_micro_cal</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée micro code">
+<Comment><![CDATA[Panne mémorisée micro code]]></Comment>
+<Mnemonic>Pm_micro_code</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée micro eeprom">
+<Comment><![CDATA[Panne mémorisée micro eeprom]]></Comment>
+<Mnemonic>Pm_micro_eep</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée module">
+<Comment><![CDATA[Panne mémorisée module]]></Comment>
+<Mnemonic>Pm_module</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée module bus off">
+<Comment><![CDATA[Panne mémorisée module bus off]]></Comment>
+<Mnemonic>Pm_busoff</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée module controle moteur essence">
+<Comment><![CDATA[Panne mémorisée sur le module de contrôle moteur essence]]></Comment>
+<Mnemonic>Pm_m_cmm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée module muet">
+<Comment><![CDATA[Panne mémorisée module muet]]></Comment>
+<Mnemonic>Pm_muet</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée parasite clef">
+<Comment><![CDATA[Panne mémorisée parasite clef]]></Comment>
+<Mnemonic>Pm_clef_para</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée pompe à essence">
+<Comment><![CDATA[Panne mémorisée sur la pompe à essence]]></Comment>
+<Mnemonic>Pm_pompe</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée pompe à essence en court-circuit à la masse">
+<Comment><![CDATA[Panne mémorisée sur la pompe à essence en court-circuit à la masse]]></Comment>
+<Mnemonic>Pm_pompe_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée pompe à essence en court-circuit au +bat">
+<Comment><![CDATA[Panne mémorisée sur la pompe à essence en court-circuit au +bat]]></Comment>
+<Mnemonic>Pm_pompe_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée pression en court-circuit à la masse">
+<Comment><![CDATA[Panne mémorisée sur l'entrée pression GPL en court-circuit à la masse]]></Comment>
+<Mnemonic>Pm_prs_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée pression en court-circuit au +bat">
+<Comment><![CDATA[Panne mémorisée sur l'entrée pression GPL en court-circuit au +bat]]></Comment>
+<Mnemonic>Pm_prs_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée pression GPL">
+<Comment><![CDATA[Panne mémorisée sur l'entrée pression GPL]]></Comment>
+<Mnemonic>Pm_prs</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée pression GPL basse">
+<Comment><![CDATA[Panne mémorisée de pression GPL basse]]></Comment>
+<Mnemonic>Pm_prs_b</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée pression GPL haute">
+<Comment><![CDATA[Panne mémorisée de pression GPL haute]]></Comment>
+<Mnemonic>Pm_prs_h</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée relais alimentation automatique">
+<Comment><![CDATA[Panne mémorisée du relais d'alimentation automatique]]></Comment>
+<Mnemonic>Pm_ralim</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée relais automatique">
+<Comment><![CDATA[Panne mémorisée du relais automatique]]></Comment>
+<Mnemonic>Pm_relau</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée relais général">
+<Comment><![CDATA[Panne mémorisée du relais général]]></Comment>
+<Mnemonic>Pm_regen</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée relais général en court-circuit à la masse">
+<Comment><![CDATA[Panne mémorisée du relais général en court-circuit à la masse]]></Comment>
+<Mnemonic>Pm_regen_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée relais général en court-circuit au +bat">
+<Comment><![CDATA[Panne mémorisée du relais général en court-circuit au +bat]]></Comment>
+<Mnemonic>Pm_regen_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée relais jauge">
+<Comment><![CDATA[Panne mémorisée du relais jauge]]></Comment>
+<Mnemonic>Pm_rejau</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée relais jauge en court-circuit à la masse">
+<Comment><![CDATA[Panne mémorisée du relais jauge en court-circuit à la masse]]></Comment>
+<Mnemonic>Pm_rejau_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée relais jauge en court-circuit au +bat">
+<Comment><![CDATA[Panne mémorisée du relais jauge en court-circuit au +bat]]></Comment>
+<Mnemonic>Pm_rejau_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée température GPL">
+<Comment><![CDATA[Panne mémorisée sur la température GPL]]></Comment>
+<Mnemonic>Pm_tgpl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée température GPL basse">
+<Comment><![CDATA[Panne mémorisée de température GPL basse]]></Comment>
+<Mnemonic>Pm_tgpl_b</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée température GPL haute">
+<Comment><![CDATA[Panne mémorisée de température GPL haute]]></Comment>
+<Mnemonic>Pm_tgpl_h</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée trame base lente">
+<Comment><![CDATA[Panne mémorisée de la trame base lente]]></Comment>
+<Mnemonic>Pm_m_cmm_bl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée trame base rapide">
+<Comment><![CDATA[Panne mémorisée de la trame base rapide]]></Comment>
+<Mnemonic>Pm_m_cmm_br</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée trame injection GPL">
+<Comment><![CDATA[Panne mémorisée de la trame injection GPL]]></Comment>
+<Mnemonic>Pm_m_cmm_igpl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée voyant en court-circuit à la masse">
+<Comment><![CDATA[Panne mémorisée du voyant en court-circuit à la masse]]></Comment>
+<Mnemonic>Pm_voyant_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée voyant GPL">
+<Comment><![CDATA[Panne mémorisée du voyant]]></Comment>
+<Mnemonic>Pm_voyant</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne mémorisée voyant GPL en court-circuit au +bat">
+<Comment><![CDATA[Panne mémorisée du voyant en court-circuit au +bat]]></Comment>
+<Mnemonic>Pm_voyant_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente alimentation">
+<Comment><![CDATA[Panne présente de l'alimentation]]></Comment>
+<Mnemonic>Pp_alim</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente alimentation capteur">
+<Comment><![CDATA[Panne présente de l'alimentation capteur de pression GPL]]></Comment>
+<Mnemonic>Pp_alim_capteur</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente batterie">
+<Comment><![CDATA[Panne prséente de la tension batterie]]></Comment>
+<Mnemonic>Pp_batt</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente batterie basse">
+<Comment><![CDATA[Panne présente baisse de tension batterie]]></Comment>
+<Mnemonic>Pp_batt_b</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente batterie haute">
+<Comment><![CDATA[Panne présente hausse de tension batterie]]></Comment>
+<Mnemonic>Pp_batt_h</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente capteur de pression GPL">
+<Comment><![CDATA[Panne présente du capteur de pression GPL]]></Comment>
+<Mnemonic>Pp_pression</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente clef">
+<Comment><![CDATA[Panne présente de la clef de contact]]></Comment>
+<Mnemonic>Pp_clef</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente clef en court-circuit">
+<Comment><![CDATA[Panne présente de la clef de contact en court-circuit]]></Comment>
+<Mnemonic>Pp_clef_cc</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente cohérence clef">
+<Comment><![CDATA[Panne présente sur la cohérence clef de contact]]></Comment>
+<Mnemonic>Pp_clef_coh</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente cohérence période">
+<Comment><![CDATA[Panne présente sur la cohérence période]]></Comment>
+<Mnemonic>Pp_coh_per</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente cohérence période pmh">
+<Comment><![CDATA[Panne présente sur la cohérence période pmh]]></Comment>
+<Mnemonic>Pp_coh_pmh</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente cohérence pression GPL">
+<Comment><![CDATA[Panne présente sur la cohérence de pression GPL]]></Comment>
+<Mnemonic>Pp_prs_coh</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente cohérence régime">
+<Comment><![CDATA[Panne présente sur la cohérence régime]]></Comment>
+<Mnemonic>Pp_coh_reg</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente électrovanne principale">
+<Comment><![CDATA[Panne présente de l'électrovanne principale]]></Comment>
+<Mnemonic>Pp_ev</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente électrovanne principale en court-circuit au +bat">
+<Comment><![CDATA[Panne présente de l'électrovanne principale en court-circuit au +bat]]></Comment>
+<Mnemonic>Pp_ev_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente ev principale en court-cicuit à la masse">
+<Comment><![CDATA[Panne présente de l'électrovanne principale en court-circuit à la masse]]></Comment>
+<Mnemonic>Pp_ev_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente fonction cohérence régime">
+<Comment><![CDATA[Panne présente sur la fonction cohérence régime]]></Comment>
+<Mnemonic>Pp_coh_reg_fct</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente fonction information pmh">
+<Comment><![CDATA[Panne présente sur la fonction information pmh]]></Comment>
+<Mnemonic>Pp_info_pmh_fct</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente information pmh">
+<Comment><![CDATA[Panne présente sur l'information pmh]]></Comment>
+<Mnemonic>Pp_info_pmh</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente injecteur a">
+<Comment><![CDATA[Panne présente de l'injecteur a]]></Comment>
+<Mnemonic>Pp_inja</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente injecteur a en circuit ouvert">
+<Comment><![CDATA[Panne présente de l'injecteur a en circuit ouvert]]></Comment>
+<Mnemonic>Pp_inja_co</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente injecteur a en court-circuit">
+<Comment><![CDATA[Panne présente de l'injecteur a en court-circuit]]></Comment>
+<Mnemonic>Pp_inja_cc</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente injecteur b">
+<Comment><![CDATA[Panne présente de l'injecteur b]]></Comment>
+<Mnemonic>Pp_injb</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente injecteur b en circuit ouvert">
+<Comment><![CDATA[Panne présente de l'injecteur b en circuit ouvert]]></Comment>
+<Mnemonic>Pp_injb_co</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente injecteur b en court-circuit">
+<Comment><![CDATA[Panne présente de l'injecteur b en court-circuit]]></Comment>
+<Mnemonic>Pp_injb_cc</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente injecteur c">
+<Comment><![CDATA[Panne présente de l'injecteur c]]></Comment>
+<Mnemonic>Pp_injc</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente injecteur c en circuit ouvert">
+<Comment><![CDATA[Panne présente de l'injecteur c en circuit ouvert]]></Comment>
+<Mnemonic>Pp_injc_co</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente injecteur c en court-circuit">
+<Comment><![CDATA[Panne présente de l'injecteur c en court-circuit]]></Comment>
+<Mnemonic>Pp_injc_cc</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente injecteur d">
+<Comment><![CDATA[Panne présente de l'injecteur d]]></Comment>
+<Mnemonic>Pp_injd</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente injecteur d en circuit ouvert">
+<Comment><![CDATA[Panne présente de l'injecteur d en circuit ouvert]]></Comment>
+<Mnemonic>Pp_injd_co</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente injecteur d en court-circuit">
+<Comment><![CDATA[Panne présente de l'injecteur d en court-circuit]]></Comment>
+<Mnemonic>Pp_injd_cc</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente jauge">
+<Comment><![CDATA[Panne présente de la jauge]]></Comment>
+<Mnemonic>Pp_jauge</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente jauge en court-circuit à la masse">
+<Comment><![CDATA[Panne présente de la jauge en court-circuit à la masse]]></Comment>
+<Mnemonic>Pp_jauge_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente jauge en court-circuit au +bat">
+<Comment><![CDATA[Panne présente de la jauge en court-circuit au +bat]]></Comment>
+<Mnemonic>Pp_jauge_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente led GPL">
+<Comment><![CDATA[Panne présente de la led GPL]]></Comment>
+<Mnemonic>Pp_led</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente led GPL en court-circuit au +bat">
+<Comment><![CDATA[Panne présente de la led GPL en court-circuit au +bat]]></Comment>
+<Mnemonic>Pp_led_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente micro">
+<Comment><![CDATA[Panne présente micro]]></Comment>
+<Mnemonic>Pp_micro</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente micro calib">
+<Comment><![CDATA[Panne présente micro calib]]></Comment>
+<Mnemonic>Pp_micro_cal</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente micro code">
+<Comment><![CDATA[Panne présente micro code]]></Comment>
+<Mnemonic>Pp_micro_code</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente micro eeprom">
+<Comment><![CDATA[Panne présente micro eeprom]]></Comment>
+<Mnemonic>Pp_micro_eep</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente module">
+<Comment><![CDATA[Panne présente module]]></Comment>
+<Mnemonic>Pp_module</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente module bus off">
+<Comment><![CDATA[Panne présente module bus off]]></Comment>
+<Mnemonic>Pp_busoff</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente module controle moteur essence">
+<Comment><![CDATA[Panne présente sur le module de contrôle moteur essence]]></Comment>
+<Mnemonic>Pp_m_cmm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente module muet">
+<Comment><![CDATA[Panne présente module muet]]></Comment>
+<Mnemonic>Pp_muet</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente parasite clef">
+<Comment><![CDATA[Panne présente parasite clef]]></Comment>
+<Mnemonic>Pp_clef_para</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente pompe à essence">
+<Comment><![CDATA[Panne présente sur la pompe à essence]]></Comment>
+<Mnemonic>Pp_pompe</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente pompe à essence en court-circuit à la masse">
+<Comment><![CDATA[Panne présente sur la pompe à essence en court-circuit à la masse]]></Comment>
+<Mnemonic>Pp_pompe_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente pompe à essence en court-circuit au +bat">
+<Comment><![CDATA[Panne présente sur la pompe à essence en court-circuit au +bat]]></Comment>
+<Mnemonic>Pp_pompe_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente pression en court-circuit à la masse">
+<Comment><![CDATA[Panne présente sur l'entrée pression GPL en court-circuit à la masse]]></Comment>
+<Mnemonic>Pp_prs_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente pression en court-circuit au +bat">
+<Comment><![CDATA[Panne présente sur l'entrée pression GPL en court-circuit au +bat]]></Comment>
+<Mnemonic>Pp_prs_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente pression GPL">
+<Comment><![CDATA[Panne présente sur l'entrée pression GPL]]></Comment>
+<Mnemonic>Pp_prs</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente pression GPL basse">
+<Comment><![CDATA[Panne présente de pression GPL basse]]></Comment>
+<Mnemonic>Pp_prs_b</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente pression GPL haute">
+<Comment><![CDATA[Panne présente de pression GPL haute]]></Comment>
+<Mnemonic>Pp_prs_h</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente relais alimentation automatique">
+<Comment><![CDATA[Panne présente du relais d'alimentation automatique]]></Comment>
+<Mnemonic>Pp_ralim</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente relais automatique">
+<Comment><![CDATA[Panne présente du relais automatique]]></Comment>
+<Mnemonic>Pp_relau</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente relais général">
+<Comment><![CDATA[Panne présente du relais général]]></Comment>
+<Mnemonic>Pp_regen</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente relais général en court-circuit à la masse">
+<Comment><![CDATA[Panne présente du relais général en court-circuit à la masse]]></Comment>
+<Mnemonic>Pp_regen_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente relais général en court-circuit au +bat">
+<Comment><![CDATA[Panne présente du relais général en court-circuit au +bat]]></Comment>
+<Mnemonic>Pp_regen_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente relais jauge">
+<Comment><![CDATA[Panne présente du relais jauge]]></Comment>
+<Mnemonic>Pp_rejau</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente relais jauge en court-circuit à la masse">
+<Comment><![CDATA[Panne présente du relais jauge en court-circuit à la masse]]></Comment>
+<Mnemonic>Pp_rejau_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente relais jauge en court-circuit au +bat">
+<Comment><![CDATA[Panne présente du relais jauge en court-circuit au +bat]]></Comment>
+<Mnemonic>Pp_rejau_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente température GPL">
+<Comment><![CDATA[Panne présente sur la température GPL]]></Comment>
+<Mnemonic>Pp_tgpl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente température GPL basse">
+<Comment><![CDATA[Panne présente de température GPL basse]]></Comment>
+<Mnemonic>Pp_tgpl_b</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente température GPL haute">
+<Comment><![CDATA[Panne présente de température GPL haute]]></Comment>
+<Mnemonic>Pp_tgpl_h</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente trame base lente">
+<Comment><![CDATA[Panne présente de la trame base lente]]></Comment>
+<Mnemonic>Pp_m_cmm_bl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente trame base rapide">
+<Comment><![CDATA[Panne présente de la trame base rapide]]></Comment>
+<Mnemonic>Pp_m_cmm_br</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente trame injection GPL">
+<Comment><![CDATA[Panne présente de la trame injection GPL]]></Comment>
+<Mnemonic>Pp_m_cmm_igpl</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente voyant en court-circuit à la masse">
+<Comment><![CDATA[Panne présente du voyant en court-circuit à la masse]]></Comment>
+<Mnemonic>Pp_voyant_cm</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente voyant GPL">
+<Comment><![CDATA[Panne présente du voyant]]></Comment>
+<Mnemonic>Pp_voyant</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Panne présente voyant GPL en court-circuit au +bat">
+<Comment><![CDATA[Panne présente du voyant en court-circuit au +bat]]></Comment>
+<Mnemonic>Pp_voyant_cp</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="parametre bus off">
+<Mnemonic>DIAGBUOF</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Paramètre de pilotage">
+<Bits>
+<List>
+<Item Value="0" Text="Commencer"/>
+<Item Value="1" Text="Demander le status"/>
+<Item Value="17" Text="Arrêter pilotage"/></List>
+</Bits>
+</Data>
+<Data Name="Paramètre lancement fonction">
+<Bits>
+<List>
+<Item Value="0" Text="Commencer"/>
+<Item Value="1" Text="Demander le status"/></List>
+</Bits>
+</Data>
+<Data Name="parametre module muet">
+<Mnemonic>DIAGBUMU</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Pression collecteur">
+<Comment><![CDATA[Pression collecteur calculée à partir de l'information de charge moteur]]></Comment>
+<Mnemonic>Prs</Mnemonic>
+<Bits count="16">
+<Scaled Unit="mb" Step=" 3.7" Offset=" 103"/>
+</Bits>
+</Data>
+<Data Name="Pression GPL">
+<Comment><![CDATA[Pression GPL mesurée]]></Comment>
+<Mnemonic>Pgpl</Mnemonic>
+<Bits count="16">
+<Scaled Step=" 3.7"/>
+</Bits>
+</Data>
+<Data Name="RDBLIidentification">
+<Mnemonic>RDBLI</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="RDBLIidentOK">
+<Mnemonic>RDBLIOK</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="RDBLImux">
+<Mnemonic>RDBLImux</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="RDBLImuxOK">
+<Mnemonic>RDBLIOK</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="RDBLIvinOK">
+<Bytes count="1"/>
+</Data>
+<Data Name="Référence de la messagerie multiplexage">
+<Comment><![CDATA[Référence de la messagerie multiplexage]]></Comment>
+<Mnemonic>REFMESAG</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Régime moteur 125 ms">
+<Comment><![CDATA[Régime moteur calculé à partir de l'information PMH]]></Comment>
+<Mnemonic>Reg0125</Mnemonic>
+<Bits count="16">
+<Scaled Step=" .125"/>
+</Bits>
+</Data>
+<Data Name="Régime moteur mux">
+<Comment><![CDATA[Régime moteur lu sur la trame injection base rapide]]></Comment>
+<Mnemonic>Regmux</Mnemonic>
+<Bits count="16">
+<Scaled Step=" .125"/>
+</Bits>
+</Data>
+<Data Name="réinit despannes">
+<Bytes count="2"/>
+</Data>
+<Data Name="Réinitialisation des pannes">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Relais power latch actif">
+<Comment><![CDATA[Actif sous phase de power latch]]></Comment>
+<Mnemonic>Pwl_actif</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Remise à zéro on">
+<Comment><![CDATA[Booléen indiquant si la mise à zéro des mémoires défauts a été effectuée]]></Comment>
+<Mnemonic>Razon</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Réserve id1">
+<Mnemonic>RESERVID1</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Réserve id2">
+<Mnemonic>RESERVID2</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Réserve id3">
+<Mnemonic>RESERVID3</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Reset Status">
+<Mnemonic>Resetstatus</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="ResetMode">
+<Bits>
+<List>
+<Item Value="85" Text="GPL adaptatif temps injection"/>
+<Item Value="86" Text="GPL apprentissage injecteur"/>
+<Item Value="255" Text="Tous les apprentissages"/></List>
+</Bits>
+</Data>
+<Data Name="service generic">
+<Bytes count="1"/>
+</Data>
+<Data Name="Sortie à arrêter">
+<Bits>
+<List>
+<Item Value="172" Text="GPL électrovanne réservoir"/>
+<Item Value="173" Text="GPL électrovanne principale"/>
+<Item Value="175" Text="GPL relais général"/>
+<Item Value="176" Text="GPL relais jauge"/>
+<Item Value="177" Text="Voyant GPL"/>
+<Item Value="187" Text="GPL relais coupure pompe à essence"/></List>
+</Bits>
+</Data>
+<Data Name="Sortie à piloter">
+<Bits>
+<List>
+<Item Value="172" Text="GPL électrovanne réservoir"/>
+<Item Value="173" Text="GPL électrovanne principale"/>
+<Item Value="175" Text="GPL relais général"/>
+<Item Value="176" Text="GPL relais jauge"/>
+<Item Value="177" Text="Voyant GPL"/>
+<Item Value="187" Text="GPL relais coupure pompe à essence"/></List>
+</Bits>
+</Data>
+<Data Name="Sortie à surveiller">
+<Bits>
+<List>
+<Item Value="172" Text="GPL électrovanne réservoir"/>
+<Item Value="173" Text="GPL électrovanne principale"/>
+<Item Value="175" Text="GPL relais général"/>
+<Item Value="176" Text="GPL relais jauge"/>
+<Item Value="177" Text="Voyant GPL"/>
+<Item Value="187" Text="GPL relais coupure pompe à essence"/></List>
+</Bits>
+</Data>
+<Data Name="StaBLIOK">
+<Mnemonic>SBLIOK</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="StaRBLI">
+<Bytes count="1"/>
+</Data>
+<Data Name="Status de la fonction">
+<Comment><![CDATA[Status de la fonction]]></Comment>
+<Mnemonic>Statusfonc</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Fonction non terminée"><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}}
+{\colortbl\red0\green0\blue0;}
+\deflang1036\pard\plain\f0\fs17 
+\par }
+]]></Item>
+<Item Value="2" Text="Fonction terminée"/></List>
+</Bits>
+</Data>
+<Data Name="Status de la sortie">
+<Comment><![CDATA[Status de la sortie]]></Comment>
+<Mnemonic>Statussort</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Pilotage en cours"/>
+<Item Value="2" Text="Pilotage terminé"/></List>
+</Bits>
+</Data>
+<Data Name="Status pilotage sorties">
+<Comment><![CDATA[Status du pilotage]]></Comment>
+<Mnemonic>Statuspilot</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Non terminé"/>
+<Item Value="2" Text="Terminé"/>
+<Item Value="3" Text="Arrêt pilotage"/></List>
+</Bits>
+</Data>
+<Data Name="Status routine à lancer">
+<Mnemonic>STATPIL</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Test non terminé"/>
+<Item Value="2" Text="Test terminé"/></List>
+</Bits>
+</Data>
+<Data Name="Système GPL en défaut">
+<Comment><![CDATA[Système GPL en défaut]]></Comment>
+<Mnemonic>Sgpl_def</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Système GPL prêt">
+<Comment><![CDATA[Système GPL prêt]]></Comment>
+<Mnemonic>Sgpl_pret</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Température air">
+<Comment><![CDATA[Température d'air]]></Comment>
+<Mnemonic>Tair</Mnemonic>
+<Bits>
+<Scaled Unit="°C" Step=" .625" Offset="-40"/>
+</Bits>
+</Data>
+<Data Name="Température eau">
+<Comment><![CDATA[Valeur de la température d'eau calculée à partir de l'information température]]></Comment>
+<Mnemonic>Eau</Mnemonic>
+<Bits>
+<Scaled Unit="°C" Step=" .625" Offset="-40"/>
+</Bits>
+</Data>
+<Data Name="Température GPL injecteur">
+<Comment><![CDATA[Température GPL calculée au niveau des injecteurs]]></Comment>
+<Mnemonic>Tgpl_inj</Mnemonic>
+<Bits>
+<Scaled Unit="°C" Step=" .625" Offset="-40"/>
+</Bits>
+</Data>
+<Data Name="Temps injection">
+<Comment><![CDATA[Temps d'injection]]></Comment>
+<Mnemonic>Tps_inj</Mnemonic>
+<Bits count="16">
+<Scaled Unit="ms" Step=" .0032" Format="bin"/>
+</Bits>
+</Data>
+<Data Name="VINread">
+<Mnemonic>VINread</Mnemonic>
+<Bytes count="17"/>
+</Data>
+<Data Name="VINwrite">
+<Bytes count="17"/>
+</Data>
+<Data Name="CRC">
+<Mnemonic>CRC</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="V.I.N">
+<Mnemonic>V.I.N</Mnemonic>
+<Bytes count="17"/>
+</Data></Datas>
+<Requests Endian="Little">
+<Request Name="Arrêt pilotage sorties">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>30801100</SentBytes>
+<DataItem Name="Sortie à arrêter" Ref="1" FirstByte="2" Endian="Big"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="ClearDiagInfo">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+<DataItem Name="réinit despannes" Ref="1" FirstByte="2" Endian="Big"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Fonctions particulières">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31A000</SentBytes>
+<DataItem Name="Fonction particulière" Ref="1" FirstByte="2" Endian="Big"/>
+<DataItem Name="Paramètre lancement fonction" Ref="1" FirstByte="3" Endian="Big"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status routine à lancer" Ref="1" FirstByte="3" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Pilotage sorties">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>30D0000A</SentBytes>
+<DataItem Name="Nombre de cycles de commande" Ref="1" FirstByte="4" Endian="Big"/>
+<DataItem Name="Paramètre de pilotage" Ref="1" FirstByte="3" Endian="Big"/>
+<DataItem Name="Sortie à piloter" Ref="1" FirstByte="2" Endian="Big"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status pilotage sorties" Ref="1" FirstByte="3" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Réinit des apprentissages">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>11FF</SentBytes>
+<DataItem Name="ResetMode" Ref="1" FirstByte="2" Endian="Big"/>
+</Sent>
+<Received MinBytes="1">
+<DataItem Name="Reset Status" Ref="1" FirstByte="2" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Réinit des pannes">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+<DataItem Name="Réinitialisation des pannes" Ref="1" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="requête générique GPL">
+
+<DossierMaintenabilite/>
+<Sent>
+<VariableLength/>
+<SentBytes>2000</SentBytes>
+<DataItem Name="generic function" Ref="1" FirstByte="2" Endian="Big"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="SComm fast init">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>81</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="SDSession">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="diag mode" Ref="1" FirstByte="2" Endian="Big"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Status fonctions">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31A001</SentBytes>
+<DataItem Name="Fonction à surveiller" Ref="1" FirstByte="2" Endian="Big"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de la fonction" Ref="1" FirstByte="3" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Status pilotage">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>30800100</SentBytes>
+<DataItem Name="Sortie à surveiller" Ref="1" FirstByte="2" Endian="Big"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de la sortie" Ref="1" FirstByte="3" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Trame 1 - Etats et Paramètres">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21A0</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="Autorisation calcul de la température GPL" Ref="1" FirstByte="6" BitOffset="3" Endian="Big"/>
+<DataItem Name="Configuration capteur de température GPL" Ref="1" FirstByte="6" BitOffset="4" Endian="Big"/>
+<DataItem Name="Configuration monocarburation" Ref="1" FirstByte="9" BitOffset="2" Endian="Big"/>
+<DataItem Name="Consigne de débit GPL" Ref="1" FirstByte="14" Endian="Big"/>
+<DataItem Name="Consigne essence" Ref="1" FirstByte="8" Endian="Big"/>
+<DataItem Name="Consigne GPL" Ref="1" FirstByte="8" BitOffset="1" Endian="Big"/>
+<DataItem Name="Coupure de pompe à essence effective" Ref="1" FirstByte="4" BitOffset="2" Endian="Big"/>
+<DataItem Name="Défaut grave système GPL" Ref="1" FirstByte="10" Endian="Big"/>
+<DataItem Name="Défaut mineur système GPL" Ref="1" FirstByte="10" BitOffset="1" Endian="Big"/>
+<DataItem Name="Demande activation système GPL" Ref="1" FirstByte="8" BitOffset="2" Endian="Big"/>
+<DataItem Name="Demande désactivation système GPL" Ref="1" FirstByte="8" BitOffset="3" Endian="Big"/>
+<DataItem Name="ETAIN" Ref="1" FirstByte="3" Endian="Big"/>
+<DataItem Name="ETALOG1" Ref="1" FirstByte="5" Endian="Big"/>
+<DataItem Name="ETALOG2" Ref="1" FirstByte="6" Endian="Big"/>
+<DataItem Name="ETAMOD1" Ref="1" FirstByte="7" Endian="Big"/>
+<DataItem Name="ETAMOD2" Ref="1" FirstByte="8" Endian="Big"/>
+<DataItem Name="ETAMOD3" Ref="1" FirstByte="9" Endian="Big"/>
+<DataItem Name="ETAMOD4" Ref="1" FirstByte="10" Endian="Big"/>
+<DataItem Name="ETAOUT" Ref="1" FirstByte="4" Endian="Big"/>
+<DataItem Name="Etat de la demande client GPL" Ref="1" FirstByte="10" BitOffset="2" Endian="Big"/>
+<DataItem Name="Etat de sortie de la led" Ref="1" FirstByte="4" BitOffset="4" Endian="Big"/>
+<DataItem Name="Etat de sortie du voyant" Ref="1" FirstByte="4" BitOffset="5" Endian="Big"/>
+<DataItem Name="Etat du bouton GPL" Ref="1" FirstByte="3" BitOffset="5" Endian="Big"/>
+<DataItem Name="Etat du relais général" Ref="1" FirstByte="4" Endian="Big"/>
+<DataItem Name="Etat électrovanne principale" Ref="1" FirstByte="4" BitOffset="3" Endian="Big"/>
+<DataItem Name="Mode essence" Ref="1" FirstByte="7" Endian="Big"/>
+<DataItem Name="Mode essence forcée condition GPL" Ref="1" FirstByte="7" BitOffset="1" Endian="Big"/>
+<DataItem Name="Mode essence forcée défaut GPL" Ref="1" FirstByte="7" BitOffset="3" Endian="Big"/>
+<DataItem Name="Mode essence forcée réservoir vide" Ref="1" FirstByte="7" BitOffset="2" Endian="Big"/>
+<DataItem Name="Mode GPL" Ref="1" FirstByte="7" BitOffset="4" Endian="Big"/>
+<DataItem Name="Mode GPL forcé" Ref="1" FirstByte="7" BitOffset="5" Endian="Big"/>
+<DataItem Name="Mode transition essence GPL" Ref="1" FirstByte="7" BitOffset="6" Endian="Big"/>
+<DataItem Name="Mode transition GPL essence" Ref="1" FirstByte="7" BitOffset="7" Endian="Big"/>
+<DataItem Name="Moteur calé" Ref="1" FirstByte="6" BitOffset="5" Endian="Big"/>
+<DataItem Name="Nombre de départ essence usine" Ref="1" FirstByte="13" Endian="Big"/>
+<DataItem Name="Pression collecteur" Ref="1" FirstByte="16" Endian="Big"/>
+<DataItem Name="Pression GPL" Ref="1" FirstByte="18" Endian="Big"/>
+<DataItem Name="Régime moteur 125 ms" Ref="1" FirstByte="20" Endian="Big"/>
+<DataItem Name="Régime moteur mux" Ref="1" FirstByte="22" Endian="Big"/>
+<DataItem Name="Relais power latch actif" Ref="1" FirstByte="4" BitOffset="6" Endian="Big"/>
+<DataItem Name="Remise à zéro on" Ref="1" FirstByte="6" BitOffset="2" Endian="Big"/>
+<DataItem Name="Système GPL en défaut" Ref="1" FirstByte="10" BitOffset="3" Endian="Big"/>
+<DataItem Name="Système GPL prêt" Ref="1" FirstByte="10" BitOffset="4" Endian="Big"/>
+<DataItem Name="Température air" Ref="1" FirstByte="24" Endian="Big"/>
+<DataItem Name="Température eau" Ref="1" FirstByte="25" Endian="Big"/>
+<DataItem Name="Température GPL injecteur" Ref="1" FirstByte="26" Endian="Big"/>
+<DataItem Name="Temps injection" Ref="1" FirstByte="11" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Trame 2 - Pannes">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21A1</SentBytes>
+</Sent>
+<Received MinBytes="27">
+<DataItem Name="FLGECM" Ref="1" FirstByte="9" Endian="Big"/>
+<DataItem Name="FLGECO" Ref="1" FirstByte="11" Endian="Big"/>
+<DataItem Name="FLGECP" Ref="1" FirstByte="10" Endian="Big"/>
+<DataItem Name="FLGPME1" Ref="1" FirstByte="3" Endian="Big"/>
+<DataItem Name="FLGPME2" Ref="1" FirstByte="4" Endian="Big"/>
+<DataItem Name="FLGPME3" Ref="1" FirstByte="5" Endian="Big"/>
+<DataItem Name="FLGPMF1" Ref="1" FirstByte="24" Endian="Big"/>
+<DataItem Name="FLGPMF2" Ref="1" FirstByte="25" Endian="Big"/>
+<DataItem Name="FLGPMS1" Ref="1" FirstByte="12" Endian="Big"/>
+<DataItem Name="FLGPMS2" Ref="1" FirstByte="13" Endian="Big"/>
+<DataItem Name="FLGPPE1" Ref="1" FirstByte="6" Endian="Big"/>
+<DataItem Name="FLGPPE2" Ref="1" FirstByte="7" Endian="Big"/>
+<DataItem Name="FLGPPE3" Ref="1" FirstByte="8" Endian="Big"/>
+<DataItem Name="FLGPPF1" Ref="1" FirstByte="26" Endian="Big"/>
+<DataItem Name="FLGPPF2" Ref="1" FirstByte="27" Endian="Big"/>
+<DataItem Name="FLGPPS1" Ref="1" FirstByte="14" Endian="Big"/>
+<DataItem Name="FLGPPS2" Ref="1" FirstByte="15" Endian="Big"/>
+<DataItem Name="FLGSCM1" Ref="1" FirstByte="16" Endian="Big"/>
+<DataItem Name="FLGSCM2" Ref="1" FirstByte="17" Endian="Big"/>
+<DataItem Name="FLGSCO1" Ref="1" FirstByte="22" Endian="Big"/>
+<DataItem Name="FLGSCO2" Ref="1" FirstByte="23" Endian="Big"/>
+<DataItem Name="FLGSCP1" Ref="1" FirstByte="18" Endian="Big"/>
+<DataItem Name="FLGSCP2" Ref="1" FirstByte="19" Endian="Big"/>
+<DataItem Name="FLGSCP3" Ref="1" FirstByte="20" Endian="Big"/>
+<DataItem Name="FLGSCP4" Ref="1" FirstByte="21" Endian="Big"/>
+<DataItem Name="Panne mémorisée alimentation" Ref="1" FirstByte="3" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne mémorisée alimentation capteur" Ref="1" FirstByte="3" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne mémorisée batterie" Ref="1" FirstByte="4" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne mémorisée batterie basse" Ref="1" FirstByte="5" BitOffset="6" Endian="Big"/>
+<DataItem Name="Panne mémorisée batterie haute" Ref="1" FirstByte="5" BitOffset="7" Endian="Big"/>
+<DataItem Name="Panne mémorisée capteur de pression GPL" Ref="1" FirstByte="4" Endian="Big"/>
+<DataItem Name="Panne mémorisée clef" Ref="1" FirstByte="5" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne mémorisée clef en court-circuit" Ref="1" FirstByte="10" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne mémorisée cohérence clef" Ref="1" FirstByte="5" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne mémorisée cohérence période" Ref="1" FirstByte="24" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne mémorisée cohérence période pmh" Ref="1" FirstByte="24" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne mémorisée cohérence pression GPL" Ref="1" FirstByte="4" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne mémorisée cohérence régime" Ref="1" FirstByte="24" Endian="Big"/>
+<DataItem Name="Panne mémorisée électrovanne principale" Ref="1" FirstByte="12" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne mémorisée électrovanne principale en court-circuit au +bat" Ref="1" FirstByte="20" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne mémorisée ev principale en court-circuit à la masse" Ref="1" FirstByte="16" BitOffset="6" Endian="Big"/>
+<DataItem Name="Panne mémorisée fonction cohérence régime" Ref="1" FirstByte="24" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne mémorisée fonction information pmh" Ref="1" FirstByte="3" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne mémorisée information pmh" Ref="1" FirstByte="3" Endian="Big"/>
+<DataItem Name="Panne mémorisée injecteur a" Ref="1" FirstByte="12" Endian="Big"/>
+<DataItem Name="Panne mémorisée injecteur a en circuit ouvert" Ref="1" FirstByte="23" Endian="Big"/>
+<DataItem Name="Panne mémorisée injecteur a en court-circuit" Ref="1" FirstByte="20" Endian="Big"/>
+<DataItem Name="Panne mémorisée injecteur b" Ref="1" FirstByte="12" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne mémorisée injecteur b en circuit ouvert" Ref="1" FirstByte="23" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne mémorisée injecteur b en court-circuit" Ref="1" FirstByte="20" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne mémorisée injecteur c" Ref="1" FirstByte="12" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne mémorisée injecteur c en circuit ouvert" Ref="1" FirstByte="23" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne mémorisée injecteur c en court-circuit" Ref="1" FirstByte="20" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne mémorisée injecteur d" Ref="1" FirstByte="12" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne mémorisée injecteur d en circuit ouvert" Ref="1" FirstByte="23" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne mémorisée injecteur d en court-circuit" Ref="1" FirstByte="20" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne mémorisée jauge" Ref="1" FirstByte="4" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne mémorisée jauge en court-circuit à la masse" Ref="1" FirstByte="9" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne mémorisée jauge en court-circuit au +bat" Ref="1" FirstByte="10" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne mémorisée led GPL" Ref="1" FirstByte="13" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne mémorisée led GPL en court-circuit au +bat" Ref="1" FirstByte="21" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne mémorisée micro" Ref="1" FirstByte="24" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne mémorisée micro calib" Ref="1" FirstByte="24" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne mémorisée micro code" Ref="1" FirstByte="24" BitOffset="6" Endian="Big"/>
+<DataItem Name="Panne mémorisée micro eeprom" Ref="1" FirstByte="24" BitOffset="7" Endian="Big"/>
+<DataItem Name="Panne mémorisée module" Ref="1" FirstByte="25" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne mémorisée module bus off" Ref="1" FirstByte="25" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne mémorisée module controle moteur essence" Ref="1" FirstByte="25" Endian="Big"/>
+<DataItem Name="Panne mémorisée module muet" Ref="1" FirstByte="25" BitOffset="6" Endian="Big"/>
+<DataItem Name="Panne mémorisée parasite clef" Ref="1" FirstByte="5" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne mémorisée pompe à essence" Ref="1" FirstByte="12" BitOffset="7" Endian="Big"/>
+<DataItem Name="Panne mémorisée pompe à essence en court-circuit à la masse" Ref="1" FirstByte="17" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne mémorisée pompe à essence en court-circuit au +bat" Ref="1" FirstByte="20" BitOffset="7" Endian="Big"/>
+<DataItem Name="Panne mémorisée pression en court-circuit à la masse" Ref="1" FirstByte="9" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne mémorisée pression en court-circuit au +bat" Ref="1" FirstByte="10" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne mémorisée pression GPL" Ref="1" FirstByte="4" BitOffset="6" Endian="Big"/>
+<DataItem Name="Panne mémorisée pression GPL basse" Ref="1" FirstByte="4" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne mémorisée pression GPL haute" Ref="1" FirstByte="4" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne mémorisée relais alimentation automatique" Ref="1" FirstByte="13" Endian="Big"/>
+<DataItem Name="Panne mémorisée relais automatique" Ref="1" FirstByte="13" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne mémorisée relais général" Ref="1" FirstByte="12" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne mémorisée relais général en court-circuit à la masse" Ref="1" FirstByte="16" BitOffset="7" Endian="Big"/>
+<DataItem Name="Panne mémorisée relais général en court-circuit au +bat" Ref="1" FirstByte="20" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne mémorisée relais jauge" Ref="1" FirstByte="12" BitOffset="6" Endian="Big"/>
+<DataItem Name="Panne mémorisée relais jauge en court-circuit à la masse" Ref="1" FirstByte="17" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne mémorisée relais jauge en court-circuit au +bat" Ref="1" FirstByte="20" BitOffset="6" Endian="Big"/>
+<DataItem Name="Panne mémorisée température GPL" Ref="1" FirstByte="5" Endian="Big"/>
+<DataItem Name="Panne mémorisée température GPL basse" Ref="1" FirstByte="5" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne mémorisée température GPL haute" Ref="1" FirstByte="5" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne mémorisée trame base lente" Ref="1" FirstByte="25" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne mémorisée trame base rapide" Ref="1" FirstByte="25" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne mémorisée trame injection GPL" Ref="1" FirstByte="25" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne mémorisée voyant en court-circuit à la masse" Ref="1" FirstByte="17" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne mémorisée voyant GPL" Ref="1" FirstByte="13" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne mémorisée voyant GPL en court-circuit au +bat" Ref="1" FirstByte="21" Endian="Big"/>
+<DataItem Name="Panne présente alimentation" Ref="1" FirstByte="6" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne présente alimentation capteur" Ref="1" FirstByte="6" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne présente batterie" Ref="1" FirstByte="7" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne présente batterie basse" Ref="1" FirstByte="8" BitOffset="6" Endian="Big"/>
+<DataItem Name="Panne présente batterie haute" Ref="1" FirstByte="8" BitOffset="7" Endian="Big"/>
+<DataItem Name="Panne présente capteur de pression GPL" Ref="1" FirstByte="7" Endian="Big"/>
+<DataItem Name="Panne présente clef" Ref="1" FirstByte="8" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne présente clef en court-circuit" Ref="1" FirstByte="10" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne présente cohérence clef" Ref="1" FirstByte="8" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne présente cohérence période" Ref="1" FirstByte="26" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne présente cohérence période pmh" Ref="1" FirstByte="26" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne présente cohérence pression GPL" Ref="1" FirstByte="7" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne présente cohérence régime" Ref="1" FirstByte="26" Endian="Big"/>
+<DataItem Name="Panne présente électrovanne principale" Ref="1" FirstByte="14" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne présente électrovanne principale en court-circuit au +bat" Ref="1" FirstByte="18" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne présente ev principale en court-cicuit à la masse" Ref="1" FirstByte="16" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne présente fonction cohérence régime" Ref="1" FirstByte="26" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne présente fonction information pmh" Ref="1" FirstByte="6" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne présente information pmh" Ref="1" FirstByte="6" BitOffset="7"/>
+<DataItem Name="Panne présente injecteur a" Ref="1" FirstByte="14" Endian="Big"/>
+<DataItem Name="Panne présente injecteur a en circuit ouvert" Ref="1" FirstByte="22" Endian="Big"/>
+<DataItem Name="Panne présente injecteur a en court-circuit" Ref="1" FirstByte="18" Endian="Big"/>
+<DataItem Name="Panne présente injecteur b" Ref="1" FirstByte="14" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne présente injecteur b en circuit ouvert" Ref="1" FirstByte="22" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne présente injecteur b en court-circuit" Ref="1" FirstByte="18" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne présente injecteur c" Ref="1" FirstByte="14" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne présente injecteur c en circuit ouvert" Ref="1" FirstByte="22" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne présente injecteur c en court-circuit" Ref="1" FirstByte="18" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne présente injecteur d" Ref="1" FirstByte="14" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne présente injecteur d en circuit ouvert" Ref="1" FirstByte="22" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne présente injecteur d en court-circuit" Ref="1" FirstByte="18" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne présente jauge" Ref="1" FirstByte="7" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne présente jauge en court-circuit à la masse" Ref="1" FirstByte="9" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne présente jauge en court-circuit au +bat" Ref="1" FirstByte="10" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne présente led GPL" Ref="1" FirstByte="15" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne présente led GPL en court-circuit au +bat" Ref="1" FirstByte="19" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne présente micro" Ref="1" FirstByte="26" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne présente micro calib" Ref="1" FirstByte="26" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne présente micro code" Ref="1" FirstByte="26" BitOffset="6" Endian="Big"/>
+<DataItem Name="Panne présente micro eeprom" Ref="1" FirstByte="26" BitOffset="7" Endian="Big"/>
+<DataItem Name="Panne présente module" Ref="1" FirstByte="27" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne présente module bus off" Ref="1" FirstByte="27" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne présente module controle moteur essence" Ref="1" FirstByte="27" Endian="Big"/>
+<DataItem Name="Panne présente module muet" Ref="1" FirstByte="27" BitOffset="6" Endian="Big"/>
+<DataItem Name="Panne présente parasite clef" Ref="1" FirstByte="8" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne présente pompe à essence" Ref="1" FirstByte="14" BitOffset="7" Endian="Big"/>
+<DataItem Name="Panne présente pompe à essence en court-circuit à la masse" Ref="1" FirstByte="17" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne présente pompe à essence en court-circuit au +bat" Ref="1" FirstByte="18" BitOffset="7" Endian="Big"/>
+<DataItem Name="Panne présente pression en court-circuit à la masse" Ref="1" FirstByte="9" Endian="Big"/>
+<DataItem Name="Panne présente pression en court-circuit au +bat" Ref="1" FirstByte="10" Endian="Big"/>
+<DataItem Name="Panne présente pression GPL" Ref="1" FirstByte="7" BitOffset="6" Endian="Big"/>
+<DataItem Name="Panne présente pression GPL basse" Ref="1" FirstByte="7" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne présente pression GPL haute" Ref="1" FirstByte="7" BitOffset="4" Endian="Big"/>
+<DataItem Name="Panne présente relais alimentation automatique" Ref="1" FirstByte="15" Endian="Big"/>
+<DataItem Name="Panne présente relais automatique" Ref="1" FirstByte="15" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne présente relais général" Ref="1" FirstByte="14" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne présente relais général en court-circuit à la masse" Ref="1" FirstByte="16" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne présente relais général en court-circuit au +bat" Ref="1" FirstByte="18" BitOffset="5" Endian="Big"/>
+<DataItem Name="Panne présente relais jauge" Ref="1" FirstByte="14" BitOffset="6" Endian="Big"/>
+<DataItem Name="Panne présente relais jauge en court-circuit à la masse" Ref="1" FirstByte="17" Endian="Big"/>
+<DataItem Name="Panne présente relais jauge en court-circuit au +bat" Ref="1" FirstByte="18" BitOffset="6" Endian="Big"/>
+<DataItem Name="Panne présente température GPL" Ref="1" FirstByte="8" Endian="Big"/>
+<DataItem Name="Panne présente température GPL basse" Ref="1" FirstByte="8" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne présente température GPL haute" Ref="1" FirstByte="8" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne présente trame base lente" Ref="1" FirstByte="27" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne présente trame base rapide" Ref="1" FirstByte="27" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne présente trame injection GPL" Ref="1" FirstByte="27" BitOffset="3" Endian="Big"/>
+<DataItem Name="Panne présente voyant en court-circuit à la masse" Ref="1" FirstByte="17" BitOffset="2" Endian="Big"/>
+<DataItem Name="Panne présente voyant GPL" Ref="1" FirstByte="15" BitOffset="1" Endian="Big"/>
+<DataItem Name="Panne présente voyant GPL en court-circuit au +bat" Ref="1" FirstByte="19" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Trame Identification">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2180</SentBytes>
+<DataItem Name="Local ident" Ref="1" FirstByte="2" Endian="Big"/>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="Numéro de calibration" Ref="1" FirstByte="21" Endian="Big"/>
+<DataItem Name="Numéro de calibration mise au point" Ref="1" FirstByte="23" Endian="Big"/>
+<DataItem Name="Numéro de fournisseur" Ref="1" FirstByte="9" Endian="Big"/>
+<DataItem Name="Numéro de hardware" Ref="1" FirstByte="12" Endian="Big"/>
+<DataItem Name="Numéro de version logiciel" Ref="1" FirstByte="19" Endian="Big"/>
+<DataItem Name="Numéro diagnostic" Ref="1" FirstByte="8" Endian="Big"/>
+<DataItem Name="Numéro du programme" Ref="1" FirstByte="17" Endian="Big"/>
+<DataItem Name="Numéro RENAULT du calculateur" Ref="1" FirstByte="3" Endian="Big"/>
+<DataItem Name="Réserve id1" Ref="1" FirstByte="24" Endian="Big"/>
+<DataItem Name="Réserve id2" Ref="1" FirstByte="25" Endian="Big"/>
+<DataItem Name="Réserve id3" Ref="1" FirstByte="26" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Trame réseau mux">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2182</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="module absent 1" Ref="1" FirstByte="7" Endian="Big"/>
+<DataItem Name="module absent 10" Ref="1" FirstByte="16" Endian="Big"/>
+<DataItem Name="module absent 11" Ref="1" FirstByte="17" Endian="Big"/>
+<DataItem Name="module absent 12" Ref="1" FirstByte="18" Endian="Big"/>
+<DataItem Name="module absent 13" Ref="1" FirstByte="19" Endian="Big"/>
+<DataItem Name="module absent 14" Ref="1" FirstByte="20" Endian="Big"/>
+<DataItem Name="module absent 15" Ref="1" FirstByte="21" Endian="Big"/>
+<DataItem Name="module absent 2" Ref="1" FirstByte="8" Endian="Big"/>
+<DataItem Name="module absent 3" Ref="1" FirstByte="9" Endian="Big"/>
+<DataItem Name="module absent 4" Ref="1" FirstByte="10" Endian="Big"/>
+<DataItem Name="module absent 5" Ref="1" FirstByte="11" Endian="Big"/>
+<DataItem Name="module absent 6" Ref="1" FirstByte="12" Endian="Big"/>
+<DataItem Name="module absent 7" Ref="1" FirstByte="13" Endian="Big"/>
+<DataItem Name="module absent 8" Ref="1" FirstByte="14" Endian="Big"/>
+<DataItem Name="module absent 9" Ref="1" FirstByte="15" Endian="Big"/>
+<DataItem Name="parametre bus off" Ref="1" FirstByte="5" Endian="Big"/>
+<DataItem Name="parametre module muet" Ref="1" FirstByte="6" Endian="Big"/>
+<DataItem Name="Référence de la messagerie multiplexage" Ref="1" FirstByte="3" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="Trame vin">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="CRC" Ref="1" FirstByte="20" Endian="Big"/>
+<DataItem Name="V.I.N" Ref="1" FirstByte="3" Endian="Big"/>
+</Received>
+</Request>
+<Request Name="V.I.N recording">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Supplier/></DenyAccess>
+<Comment><![CDATA[WriteDataByLocalIdentifier VIN]]></Comment>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="CRC" FirstByte="20" Endian="Big"/>
+<DataItem Name="V.I.N" FirstByte="3" Endian="Big"/>
+</Sent>
+<Received MinBytes="2">
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="information pmh">
+<DeviceData Name="Panne mémorisée information pmh" FailureFlag="1"/><DeviceData Name="Panne mémorisée fonction information pmh" FailureFlag="1"/><DeviceData Name="Panne présente fonction information pmh" FailureFlag="1"/><DeviceData Name="Panne présente information pmh" FailureFlag="1"/>
+</Device>
+<Device Name="Alimentation">
+<DeviceData Name="Panne mémorisée alimentation" FailureFlag="1"/><DeviceData Name="Panne présente alimentation" FailureFlag="1"/>
+</Device>
+<Device Name="Alimentation capteur">
+<DeviceData Name="Panne mémorisée alimentation capteur" FailureFlag="1"/><DeviceData Name="Panne présente alimentation capteur" FailureFlag="1"/>
+</Device>
+<Device Name="batterie">
+<DeviceData Name="Panne mémorisée batterie" FailureFlag="1"/>
+</Device>
+<Device Name="pression GPL basse">
+<DeviceData Name="Panne mémorisée pression GPL basse" FailureFlag="1"/><DeviceData Name="Panne présente pression GPL basse" FailureFlag="1"/>
+</Device>
+<Device Name="cohérence pression GPL">
+<DeviceData Name="Panne mémorisée cohérence pression GPL" FailureFlag="1"/><DeviceData Name="Panne présente cohérence pression GPL" FailureFlag="1"/>
+</Device>
+<Device Name="pression GPL">
+<DeviceData Name="Panne mémorisée pression GPL" FailureFlag="1"/><DeviceData Name="Panne présente pression GPL" FailureFlag="1"/>
+</Device>
+<Device Name="température GPL">
+<DeviceData Name="Panne mémorisée température GPL" FailureFlag="1"/><DeviceData Name="Panne présente température GPL" FailureFlag="1"/>
+</Device>
+<Device Name="température GPL basse">
+<DeviceData Name="Panne mémorisée température GPL basse" FailureFlag="1"/><DeviceData Name="Panne présente température GPL haute" FailureFlag="1"/>
+</Device>
+<Device Name="température GPL haute">
+<DeviceData Name="Panne mémorisée température GPL haute" FailureFlag="1"/><DeviceData Name="Panne présente température GPL basse" FailureFlag="1"/>
+</Device>
+<Device Name="cohérence clef">
+<DeviceData Name="Panne mémorisée cohérence clef" FailureFlag="1"/><DeviceData Name="Panne présente cohérence clef" FailureFlag="1"/>
+</Device>
+<Device Name="parasite clef">
+<DeviceData Name="Panne mémorisée parasite clef" FailureFlag="1"/><DeviceData Name="Panne présente parasite clef" FailureFlag="1"/>
+</Device>
+<Device Name="batterie basse">
+<DeviceData Name="Panne mémorisée batterie basse" FailureFlag="1"/><DeviceData Name="Panne présente batterie basse" FailureFlag="1"/>
+</Device>
+<Device Name="capteur de pression GPL">
+<DeviceData Name="Panne mémorisée capteur de pression GPL" FailureFlag="1"/><DeviceData Name="Panne présente capteur de pression GPL" FailureFlag="1"/>
+</Device>
+<Device Name="jauge">
+<DeviceData Name="Panne mémorisée jauge" FailureFlag="1"/><DeviceData Name="Panne présente jauge" FailureFlag="1"/><DeviceData Name="Panne présente jauge en court-circuit à la masse" FailureFlag="1"/><DeviceData Name="Panne présente jauge en court-circuit au +bat" FailureFlag="1"/><DeviceData Name="Panne mémorisée jauge en court-circuit au +bat" FailureFlag="1"/><DeviceData Name="Panne mémorisée jauge en court-circuit à la masse" FailureFlag="1"/>
+</Device>
+<Device Name="pression GPL haute">
+<DeviceData Name="Panne mémorisée pression GPL haute" FailureFlag="1"/><DeviceData Name="Panne présente pression GPL haute" FailureFlag="1"/>
+</Device>
+<Device Name="clef">
+<DeviceData Name="Panne mémorisée clef" FailureFlag="1"/><DeviceData Name="Panne présente clef" FailureFlag="1"/><DeviceData Name="Panne présente clef en court-circuit" FailureFlag="1"/><DeviceData Name="Panne mémorisée clef en court-circuit" FailureFlag="1"/>
+</Device>
+<Device Name="batterie haute">
+<DeviceData Name="Panne mémorisée batterie haute" FailureFlag="1"/><DeviceData Name="Panne présente batterie haute" FailureFlag="1"/>
+</Device>
+<Device Name="module controle moteur essence">
+<DeviceData Name="Panne mémorisée module controle moteur essence" FailureFlag="1"/><DeviceData Name="Panne présente module controle moteur essence" FailureFlag="1"/>
+</Device>
+<Device Name="relais général" Type="3">
+<DeviceData Name="Panne mémorisée relais général" FailureFlag="1"/><DeviceData Name="Panne présente relais général" FailureFlag="1"/><DeviceData Name="Panne mémorisée relais général en court-circuit à la masse" FailureFlag="1"/><DeviceData Name="Panne présente relais général en court-circuit à la masse" FailureFlag="1"/><DeviceData Name="Panne présente relais général en court-circuit au +bat" FailureFlag="1"/>
+</Device>
+<Device Name="relais automatique" Type="3">
+<DeviceData Name="Panne présente relais alimentation automatique" FailureFlag="1"/><DeviceData Name="Panne présente relais automatique" FailureFlag="1"/><DeviceData Name="Panne mémorisée relais alimentation automatique" FailureFlag="1"/><DeviceData Name="Panne mémorisée relais automatique" FailureFlag="1"/>
+</Device>
+<Device Name="voyant" Type="3">
+<DeviceData Name="Panne présente voyant en court-circuit à la masse" FailureFlag="1"/><DeviceData Name="Panne mémorisée voyant en court-circuit à la masse" FailureFlag="1"/>
+</Device>
+<Device Name="pression">
+<DeviceData Name="Panne présente pression en court-circuit à la masse" FailureFlag="1"/><DeviceData Name="Panne présente pression en court-circuit au +bat" FailureFlag="1"/><DeviceData Name="Panne mémorisée pression en court-circuit à la masse" FailureFlag="1"/><DeviceData Name="Panne mémorisée pression en court-circuit au +bat" FailureFlag="1"/>
+</Device>
+<Device Name="injecteur a" Type="3">
+<DeviceData Name="Panne mémorisée injecteur a" FailureFlag="1"/><DeviceData Name="Panne présente injecteur a" FailureFlag="1"/><DeviceData Name="Panne présente injecteur a en court-circuit" FailureFlag="1"/><DeviceData Name="Panne mémorisée injecteur a en court-circuit" FailureFlag="1"/><DeviceData Name="Panne présente injecteur a en circuit ouvert" FailureFlag="1"/><DeviceData Name="Panne mémorisée injecteur a en circuit ouvert" FailureFlag="1"/>
+</Device>
+<Device Name="injecteur b" Type="3">
+<DeviceData Name="Panne mémorisée injecteur b" FailureFlag="1"/><DeviceData Name="Panne présente injecteur b" FailureFlag="1"/><DeviceData Name="Panne présente injecteur b en court-circuit" FailureFlag="1"/><DeviceData Name="Panne mémorisée injecteur b en court-circuit" FailureFlag="1"/><DeviceData Name="Panne présente injecteur b en circuit ouvert" FailureFlag="1"/><DeviceData Name="Panne mémorisée injecteur b en circuit ouvert" FailureFlag="1"/>
+</Device>
+<Device Name="injecteur c" Type="3">
+<DeviceData Name="Panne mémorisée injecteur c" FailureFlag="1"/><DeviceData Name="Panne présente injecteur c" FailureFlag="1"/><DeviceData Name="Panne présente injecteur c en court-circuit" FailureFlag="1"/><DeviceData Name="Panne mémorisée injecteur c en court-circuit" FailureFlag="1"/><DeviceData Name="Panne présente injecteur c en circuit ouvert" FailureFlag="1"/><DeviceData Name="Panne mémorisée injecteur c en circuit ouvert" FailureFlag="1"/>
+</Device>
+<Device Name="injecteur d" Type="3">
+<DeviceData Name="Panne mémorisée injecteur d" FailureFlag="1"/><DeviceData Name="Panne présente injecteur d" FailureFlag="1"/><DeviceData Name="Panne présente injecteur d en court-circuit" FailureFlag="1"/><DeviceData Name="Panne mémorisée injecteur d en court-circuit" FailureFlag="1"/><DeviceData Name="Panne présente injecteur d en circuit ouvert" FailureFlag="1"/><DeviceData Name="Panne mémorisée injecteur d en circuit ouvert" FailureFlag="1"/>
+</Device>
+<Device Name="électrovanne principale" Type="3">
+<DeviceData Name="Panne mémorisée électrovanne principale" FailureFlag="1"/><DeviceData Name="Panne présente électrovanne principale" FailureFlag="1"/><DeviceData Name="Panne mémorisée électrovanne principale en court-circuit au +bat" FailureFlag="1"/><DeviceData Name="Panne présente ev principale en court-cicuit à la masse" FailureFlag="1"/><DeviceData Name="Panne mémorisée ev principale en court-circuit à la masse" FailureFlag="1"/><DeviceData Name="Panne présente électrovanne principale en court-circuit au +bat" FailureFlag="1"/>
+</Device>
+<Device Name="pompe à essence" Type="3">
+<DeviceData Name="Panne présente pompe à essence en court-circuit au +bat" FailureFlag="1"/><DeviceData Name="Panne mémorisée pompe à essence" FailureFlag="1"/><DeviceData Name="Panne présente pompe à essence" FailureFlag="1"/><DeviceData Name="Panne présente pompe à essence en court-circuit à la masse" FailureFlag="1"/><DeviceData Name="Panne mémorisée pompe à essence en court-circuit à la masse" FailureFlag="1"/><DeviceData Name="Panne mémorisée pompe à essence en court-circuit au +bat" FailureFlag="1"/>
+</Device>
+<Device Name="voyant GPL" Type="3">
+<DeviceData Name="Panne présente voyant GPL en court-circuit au +bat" FailureFlag="1"/><DeviceData Name="Panne mémorisée voyant GPL en court-circuit au +bat" FailureFlag="1"/><DeviceData Name="Panne présente voyant GPL" FailureFlag="1"/><DeviceData Name="Panne mémorisée voyant GPL" FailureFlag="1"/>
+</Device>
+<Device Name="led GPL" Type="3">
+<DeviceData Name="Panne mémorisée led GPL en court-circuit au +bat" FailureFlag="1"/><DeviceData Name="Panne présente led GPL en court-circuit au +bat" FailureFlag="1"/><DeviceData Name="Panne présente led GPL" FailureFlag="1"/><DeviceData Name="Panne mémorisée led GPL" FailureFlag="1"/>
+</Device>
+<Device Name="cohérence régime">
+<DeviceData Name="Panne mémorisée cohérence régime" FailureFlag="1"/><DeviceData Name="Panne mémorisée fonction cohérence régime" FailureFlag="1"/><DeviceData Name="Panne présente cohérence régime" FailureFlag="1"/><DeviceData Name="Panne présente fonction cohérence régime" FailureFlag="1"/>
+</Device>
+<Device Name="cohérence période pmh">
+<DeviceData Name="Panne mémorisée cohérence période" FailureFlag="1"/><DeviceData Name="Panne mémorisée cohérence période pmh" FailureFlag="1"/><DeviceData Name="Panne présente cohérence période" FailureFlag="1"/><DeviceData Name="Panne présente cohérence période pmh" FailureFlag="1"/>
+</Device>
+<Device Name="micro">
+<DeviceData Name="Panne mémorisée micro" FailureFlag="1"/><DeviceData Name="Panne mémorisée micro calib" FailureFlag="1"/><DeviceData Name="Panne mémorisée micro code" FailureFlag="1"/><DeviceData Name="Panne mémorisée micro eeprom" FailureFlag="1"/><DeviceData Name="Panne présente micro" FailureFlag="1"/><DeviceData Name="Panne présente micro calib" FailureFlag="1"/><DeviceData Name="Panne présente micro code" FailureFlag="1"/><DeviceData Name="Panne présente micro eeprom" FailureFlag="1"/>
+</Device>
+<Device Name="trame base lente">
+<DeviceData Name="Panne mémorisée trame base lente" FailureFlag="1"/><DeviceData Name="Panne présente trame base lente" FailureFlag="1"/>
+</Device>
+<Device Name="trame base rapide">
+<DeviceData Name="Panne mémorisée trame base rapide" FailureFlag="1"/><DeviceData Name="Panne présente trame base rapide" FailureFlag="1"/>
+</Device>
+<Device Name="trame injection GPL">
+<DeviceData Name="Panne mémorisée trame injection GPL" FailureFlag="1"/><DeviceData Name="Panne présente trame injection GPL" FailureFlag="1"/>
+</Device>
+<Device Name="module">
+<DeviceData Name="Panne mémorisée module" FailureFlag="1"/><DeviceData Name="Panne présente module" FailureFlag="1"/>
+</Device>
+<Device Name="module bus off">
+<DeviceData Name="Panne mémorisée module bus off" FailureFlag="1"/><DeviceData Name="Panne présente module bus off" FailureFlag="1"/>
+</Device>
+<Device Name="module muet">
+<DeviceData Name="Panne mémorisée module muet" FailureFlag="1"/><DeviceData Name="Panne présente module muet" FailureFlag="1"/>
+</Device>
+<Device Name="relais jauge" Type="3">
+<DeviceData Name="Panne mémorisée relais jauge" FailureFlag="1"/><DeviceData Name="Panne présente relais jauge" FailureFlag="1"/><DeviceData Name="Panne présente relais jauge en court-circuit à la masse" FailureFlag="1"/><DeviceData Name="Panne mémorisée relais jauge en court-circuit à la masse" FailureFlag="1"/><DeviceData Name="Panne présente relais jauge en court-circuit au +bat" FailureFlag="1"/><DeviceData Name="Panne mémorisée relais jauge en court-circuit au +bat" FailureFlag="1"/>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Ecrans">
+
+<Screen Name="Identification" Color="9408399" WindowState="2" Width="11670" Height="8175">
+
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="60" Top="300" Height="2520" Width="4080"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Identification" Color="9408399" Alignment="2">
+<Rectangle Left="1260" Top="0" Height="300" Width="1560"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="65535"/></Label>
+
+
+<Display Width="2580" Color="16777215" DataName="Numéro RENAULT du calculateur" RequestName="Trame Identification">
+<Rectangle Left="120" Top="360" Height="300" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2580" Color="16777215" DataName="Numéro diagnostic" RequestName="Trame Identification">
+<Rectangle Left="120" Top="660" Height="300" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2580" Color="16777215" DataName="Numéro de fournisseur" RequestName="Trame Identification">
+<Rectangle Left="120" Top="960" Height="300" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2580" Color="16777215" DataName="Numéro de hardware" RequestName="Trame Identification">
+<Rectangle Left="120" Top="1260" Height="300" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2580" Color="16777215" DataName="Numéro du programme" RequestName="Trame Identification">
+<Rectangle Left="120" Top="1560" Height="300" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2580" Color="16777215" DataName="Numéro de version logiciel" RequestName="Trame Identification">
+<Rectangle Left="120" Top="1860" Height="300" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2580" Color="16777215" DataName="Numéro de calibration" RequestName="Trame Identification">
+<Rectangle Left="120" Top="2160" Height="300" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2580" Color="16777215" DataName="Numéro de calibration mise au point" RequestName="Trame Identification">
+<Rectangle Left="120" Top="2460" Height="300" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Pilotage et Fonctions" Color="9408399" WindowState="2" Width="11595" Height="10185">
+
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="60" Top="240" Height="1860" Width="5820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="60" Top="2820" Height="420" Width="5820"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="60" Top="4080" Height="780" Width="5820"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="60" Top="5280" Height="420" Width="5820"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="ECRITURE en MEMOIRE calibrations spécifiques" Color="9408399" Alignment="2">
+<Rectangle Left="240" Top="5040" Height="240" Width="5340"/>
+<Font Name="MS Sans Serif" Size=" 9.75" Bold="1" Italic="0" Color="65535"/></Label>
+<Label Text="EXECUTION de FONCTIONS PARTICULIERES" Color="9408399" Alignment="2">
+<Rectangle Left="60" Top="3840" Height="240" Width="5340"/>
+<Font Name="MS Sans Serif" Size=" 9.75" Bold="1" Italic="0" Color="65535"/></Label>
+<Label Text="PILOTAGE des SORTIES" Color="9408399" Alignment="2">
+<Rectangle Left="60" Top="0" Height="240" Width="5340"/>
+<Font Name="MS Sans Serif" Size=" 9.75" Bold="1" Italic="0" Color="65535"/></Label>
+<Label Text="REINITIALISATION des APPRENTISSAGES" Color="9408399" Alignment="2">
+<Rectangle Left="60" Top="2580" Height="240" Width="5340"/>
+<Font Name="MS Sans Serif" Size=" 9.75" Bold="1" Italic="0" Color="65535"/></Label>
+
+<Button Text="Arrêt de pilotage">
+<Rectangle Left="6000" Top="1740" Height="300" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Arrêt pilotage sorties"/>
+</Button>
+<Button Text="Début de pilotage">
+<Rectangle Left="6000" Top="300" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Pilotage sorties"/>
+</Button>
+<Button Text="Exécuter">
+<Rectangle Left="6000" Top="4140" Height="300" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Fonctions particulières"/>
+</Button>
+<Button Text="OK">
+<Rectangle Left="6000" Top="2880" Height="300" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Réinit des apprentissages"/>
+</Button>
+
+<Input Width="2640" Color="16777215" DataName="Sortie à piloter" RequestName="Pilotage sorties">
+<Rectangle Left="120" Top="300" Height="300" Width="5700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3660" Color="16777215" DataName="Nombre de cycles de commande" RequestName="Pilotage sorties">
+<Rectangle Left="120" Top="660" Height="300" Width="5700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2640" Color="16777215" DataName="Sortie à surveiller" RequestName="Status pilotage">
+<Rectangle Left="120" Top="1020" Height="300" Width="5700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3660" Color="16777215" DataName="Status de la sortie" RequestName="Status pilotage">
+<Rectangle Left="120" Top="1380" Height="300" Width="5700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2640" Color="16777215" DataName="Sortie à arrêter" RequestName="Arrêt pilotage sorties">
+<Rectangle Left="120" Top="1740" Height="300" Width="5700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2640" Color="16777215" DataName="ResetMode" RequestName="Réinit des apprentissages">
+<Rectangle Left="120" Top="2880" Height="300" Width="5700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2640" Color="16777215" DataName="Fonction particulière" RequestName="Fonctions particulières">
+<Rectangle Left="120" Top="4140" Height="300" Width="5700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3660" Color="16777215" DataName="Status de la fonction" RequestName="Status fonctions">
+<Rectangle Left="120" Top="4500" Height="300" Width="5700"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Trame 1 - Etats et Paramètres" Color="9408399" WindowState="0" Width="11670" Height="8175">
+
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="4080" Top="4620" Height="720" Width="3540"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="60" Top="5820" Height="420" Width="3480"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="4080" Top="3060" Height="1620" Width="3540"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="4080" Top="5280" Height="1920" Width="3540"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="0" Alignment="0">
+<Rectangle Left="60" Top="300" Height="720" Width="3480"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="7980" Top="480" Height="3120" Width="4140"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="60" Top="1380" Height="2220" Width="3480"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="60" Top="6180" Height="1620" Width="3480"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="4080" Top="300" Height="2820" Width="3540"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Contrôle des PARAMETRES" Color="9408399" Alignment="2">
+<Rectangle Left="8340" Top="0" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="65535"/></Label>
+<Label Text="Etats logiques des ENTREES" Color="9408399" Alignment="2">
+<Rectangle Left="120" Top="0" Height="300" Width="3360"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="65535"/></Label>
+<Label Text="Etats logiques des SORTIES" Color="9408399" Alignment="2">
+<Rectangle Left="180" Top="1080" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="65535"/></Label>
+<Label Text="Etats modes FONCTIONNEMENT" Color="9408399" Alignment="2">
+<Rectangle Left="3960" Top="0" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="65535"/></Label>
+<Label Text="Etats STRATEGIES LOGICIEL" Color="9408399" Alignment="2">
+<Rectangle Left="120" Top="5520" Height="300" Width="3420"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="65535"/></Label>
+
+
+<Display Width="2100" Color="16777215" DataName="ETAIN" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="360" Height="300" Width="3360"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="Etat du bouton GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="660" Height="300" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2100" Color="16777215" DataName="ETAOUT" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="1440" Height="300" Width="3360"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="Etat du relais général" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="1740" Height="300" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="Coupure de pompe à essence effective" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="2040" Height="300" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="Etat électrovanne principale" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="2340" Height="300" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="Etat de sortie de la led" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="2640" Height="300" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="Etat de sortie du voyant" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="2940" Height="300" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="Relais power latch actif" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="3240" Height="300" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2100" Color="16777215" DataName="ETALOG1" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="5880" Height="300" Width="3360"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2100" Color="16777215" DataName="ETALOG2" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="6240" Height="300" Width="3360"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="Remise à zéro on" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="6540" Height="300" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="Autorisation calcul de la température GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="6840" Height="300" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="Configuration capteur de température GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="7140" Height="300" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3120" Color="16777215" DataName="Moteur calé" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="120" Top="7440" Height="300" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2160" Color="16777215" DataName="ETAMOD1" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="360" Height="300" Width="3420"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2640" Color="16777215" DataName="Mode essence" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="660" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2640" Color="16777215" DataName="Mode essence forcée condition GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="960" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2640" Color="16777215" DataName="Mode essence forcée réservoir vide" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="1260" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2640" Color="16777215" DataName="Mode essence forcée défaut GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="1560" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2640" Color="16777215" DataName="Mode GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="1860" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2640" Color="16777215" DataName="Mode GPL forcé" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="2160" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2640" Color="16777215" DataName="Mode transition essence GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="2460" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2640" Color="16777215" DataName="Mode transition GPL essence" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="2760" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2160" Color="16777215" DataName="ETAMOD2" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="3120" Height="300" Width="3420"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Consigne essence" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="3420" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Consigne GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="3720" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Demande activation système GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="4020" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Demande désactivation système GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="4320" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2160" Color="16777215" DataName="ETAMOD3" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="4680" Height="300" Width="3420"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Configuration monocarburation" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="4980" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2160" Color="16777215" DataName="ETAMOD4" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="5340" Height="300" Width="3420"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Défaut grave système GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="5640" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Défaut mineur système GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="5940" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Etat de la demande client GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="6240" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Système GPL en défaut" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="6540" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Système GPL prêt" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="4140" Top="6840" Height="300" Width="3420"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Temps injection" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="8040" Top="540" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Nombre de départ essence usine" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="8040" Top="840" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Régime moteur 125 ms" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="8040" Top="1140" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Régime moteur mux" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="8040" Top="1440" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Consigne de débit GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="8040" Top="1740" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Pression collecteur" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="8040" Top="2040" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Pression GPL" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="8040" Top="2340" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Température air" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="8040" Top="2640" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Température eau" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="8040" Top="2940" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3180" Color="16777215" DataName="Température GPL injecteur" RequestName="Trame 1 - Etats et Paramètres">
+<Rectangle Left="8040" Top="3240" Height="300" Width="4020"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Trame 2 - Pannes 1" Color="9408399" WindowState="2" Width="6045" Height="6525">
+
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="7740" Top="3840" Height="1260" Width="3780"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="11520" Top="300" Height="2280" Width="3840"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="0" Top="300" Height="1320" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="7740" Top="2580" Height="1260" Width="3780"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="7740" Top="5100" Height="1800" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="3840" Top="1620" Height="1740" Width="3780"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="0" Top="1620" Height="1740" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="11520" Top="2580" Height="1260" Width="3840"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="7740" Top="300" Height="2280" Width="3780"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="0" Top="5700" Height="1320" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="11520" Top="3840" Height="1260" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="11520" Top="5100" Height="1260" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="3840" Top="300" Height="1320" Width="3780"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="986895" Alignment="0">
+<Rectangle Left="3780" Top="5580" Height="1740" Width="3840"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Pannes des ENTREES" Color="9408399" Alignment="2">
+<Rectangle Left="2520" Top="0" Height="300" Width="2580"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="65535"/></Label>
+<Label Text="Pannes des SORTIES" Color="9408399" Alignment="2">
+<Rectangle Left="10800" Top="0" Height="300" Width="2520"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="65535"/></Label>
+<Label Text="Titre21" Color="986895" Alignment="0">
+<Rectangle Left="0" Top="3360" Height="2340" Width="3840"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Titre22" Color="986895" Alignment="0">
+<Rectangle Left="3840" Top="3360" Height="2220" Width="3780"/>
+<Font Name="Arial" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Réinitialisation des pannes">
+<Rectangle Left="13080" Top="6600" Height="600" Width="1200"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+<Message Text="Effacement des pannes"/>
+<Send Delay="0" RequestName="Réinit des pannes"/>
+</Button>
+
+<Display Width="2460" Color="16777215" DataName="FLGPPE1" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="360" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente information pmh" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="600" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente fonction information pmh" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="840" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente alimentation" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="1080" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente alimentation capteur" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="1320" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGPPE2" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="1620" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente capteur de pression GPL" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="1920" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente batterie" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="2160" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente jauge" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="2400" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente pression GPL basse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="2640" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente pression GPL haute" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="2880" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente pression GPL" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="3120" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGPPE3" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="3420" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente température GPL" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="3720" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente température GPL basse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="3960" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente température GPL haute" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="4200" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente clef" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="4440" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente cohérence clef" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="4680" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente parasite clef" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="4920" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente batterie basse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="5160" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente batterie haute" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="5400" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGECM" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="5700" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente pression en court-circuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="6000" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente jauge en court-circuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="6240" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée pression en court-circuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="6480" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée jauge en court-circuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="0" Top="6720" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGPME1" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="360" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée information pmh" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="600" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée fonction information pmh" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="840" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée alimentation" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="1080" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée alimentation capteur" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="1320" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGPME2" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="1620" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée capteur de pression GPL" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="1860" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée batterie" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="2100" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée jauge" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="2340" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée pression GPL basse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="2580" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée pression GPL haute" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="2820" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée pression GPL" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="3060" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGPME3" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="3360" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée température GPL" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="3600" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée température GPL basse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="3840" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée température GPL haute" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="4080" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée clef" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="4320" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée cohérence clef" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="4560" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée parasite clef" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="4800" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée batterie basse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="5040" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée batterie haute" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="5280" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGECP" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="5580" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente pression en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="5820" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente jauge en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="6060" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente clef" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="6300" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée pression en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="6540" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée jauge en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="6780" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée clef en court-circuit" RequestName="Trame 2 - Pannes">
+<Rectangle Left="3840" Top="7020" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGPPS1" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="360" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente injecteur a" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="600" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente injecteur b" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="840" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente injecteur c" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="1080" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente injecteur d" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="1320" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente électrovanne principale" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="1560" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente relais général" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="1800" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente relais jauge" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="2040" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente pompe à essence" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="2280" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGPPS2" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="2580" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente relais alimentation automatique" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="2820" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente voyant GPL" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="3060" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente led GPL" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="3300" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente relais automatique" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="3540" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGSCM1" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="3840" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente ev principale en court-cicuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="4080" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente relais général en court-circuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="4320" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée ev principale en court-circuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="4560" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée relais général en court-circuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="4800" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGSCM2" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="5100" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente relais jauge en court-circuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="5400" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente pompe à essence en court-circuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="5640" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente voyant en court-circuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="5880" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée relais jauge en court-circuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="6120" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée pompe à essence en court-circuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="6360" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée voyant en court-circuit à la masse" RequestName="Trame 2 - Pannes">
+<Rectangle Left="7740" Top="6600" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGPMS1" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="360" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée injecteur a" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="600" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée injecteur b" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="840" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée injecteur c" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="1080" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée injecteur d" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="1320" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée électrovanne principale" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="1560" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée relais général" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="1800" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée relais jauge" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="2040" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée pompe à essence" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="2280" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGPMS2" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="2580" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée relais alimentation automatique" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="2820" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée voyant GPL" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="3060" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée led GPL" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="3300" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée relais automatique" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="3540" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGSCO1" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="3840" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente injecteur a en circuit ouvert" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="4080" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente injecteur b en circuit ouvert" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="4320" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente injecteur c en circuit ouvert" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="4560" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne présente injecteur d en circuit ouvert" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="4800" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2460" Color="16777215" DataName="FLGSCO2" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="5100" Height="300" Width="3780"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée injecteur a en circuit ouvert" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="5340" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée injecteur b en circuit ouvert" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="5580" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée injecteur c en circuit ouvert" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="5820" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3540" Color="16777215" DataName="Panne mémorisée injecteur d en circuit ouvert" RequestName="Trame 2 - Pannes">
+<Rectangle Left="11580" Top="6060" Height="240" Width="3780"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Trame 2 - Pannes 2" Color="9408399" WindowState="2" Width="7860" Height="10740">
+
+<Label Text="Titre1" Color="986895" Alignment="0">
+<Rectangle Left="0" Top="0" Height="9000" Width="5100"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Titre2" Color="986895" Alignment="0">
+<Rectangle Left="6420" Top="0" Height="9000" Width="5100"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="-2147483630"/></Label>
+
+
+<Display Width="2520" Color="16777215" DataName="FLGSCP1" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="60" Height="300" Width="4980"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente injecteur a en court-circuit" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="360" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente injecteur b en court-circuit" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="660" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente injecteur c en court-circuit" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="960" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente injecteur d en circuit ouvert" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="1260" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente électrovanne principale en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="1560" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente relais général en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="1860" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente relais jauge en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="2160" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente pompe à essence en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="2460" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="FLGSCP2" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="2820" Height="300" Width="4980"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente voyant GPL en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="3120" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente led GPL en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="3420" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="FLGPPF1" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="3780" Height="300" Width="4980"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente cohérence régime" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="4080" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente fonction cohérence régime" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="4380" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente cohérence période" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="4680" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente cohérence période pmh" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="4980" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente micro" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="5280" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente micro calib" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="5580" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente micro code" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="5880" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente micro eeprom" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="6180" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="FLGPPF2" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="6540" Height="300" Width="4980"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente module controle moteur essence" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="6840" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente trame base lente" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="7140" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente trame base rapide" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="7440" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente trame injection GPL" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="7740" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente module" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="8040" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente module bus off" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="8340" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne présente module muet" RequestName="Trame 2 - Pannes">
+<Rectangle Left="60" Top="8640" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="FLGSCP3" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="60" Height="300" Width="4980"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée injecteur a en court-circuit" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="360" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée injecteur b en court-circuit" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="660" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée injecteur c en court-circuit" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="960" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée injecteur d en court-circuit" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="1260" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée électrovanne principale en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="1560" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée relais général en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="1860" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée relais jauge en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="2160" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée pompe à essence en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="2460" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="FLGSCP4" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="2820" Height="300" Width="4980"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée voyant GPL en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="3120" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée led GPL en court-circuit au +bat" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="3420" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="FLGPMF1" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="3780" Height="300" Width="4980"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée cohérence régime" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="4080" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée fonction cohérence régime" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="4380" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée cohérence période" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="4680" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée cohérence période pmh" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="4980" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée micro" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="5280" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée micro calib" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="5580" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée micro code" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="5880" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée micro eeprom" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="6180" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2520" Color="16777215" DataName="FLGPMF2" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="6540" Height="300" Width="4980"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée module controle moteur essence" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="6840" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée trame base lente" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="7140" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée trame base rapide" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="7440" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée trame injection GPL" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="7740" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée module" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="8040" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée module bus off" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="8340" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4680" Color="16777215" DataName="Panne mémorisée module muet" RequestName="Trame 2 - Pannes">
+<Rectangle Left="6480" Top="8640" Height="300" Width="4980"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

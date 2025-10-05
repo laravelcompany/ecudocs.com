@@ -1,0 +1,1424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.0.0.1" date="2010-05-17T15:11"/>
+<ddt:Target Name="CBox V0.6" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="damien.perrot-renexter@renault.com" href="CBox_V0.6_20100517T151225.xml" upload="5/17/2010" group="CBox"><Description><![CDATA[CBox
+
+X95
+
+V0.1   3 avril 2007, Creation
+V0.2   07 aout 2007, rectification requetes ECU system
+V0.3  04 septembre 2007, rectification USB speed, changement fonction ECU en C-Box ($87)
+V0.4  08 octobre 2007, DTC suppressions, IOControl: ControlOption1 parameter added
+                                    , deletion of one value for HardwareNumber.BasicPartList, correction of PartNumber.BasicPartList
+v0.5 updated vehicule projects list and auto-ident data
+v0.6 updated for only L47 (Delete 1140 double line) 
+ 
+Naike DURAND
+SII
+Plateau integration e/e
+tel: 01768 56859/57806
+naike.durand-renexter@renault.com]]></Description>
+<Projects xmlns=""><H45/><x33/><x38/><x43/><x44/><x47/><x61/><x62/><x83/><x83Ph3/><x85/><x91/><x95/><x96/></Projects>
+<Function Name="C-Box" Address="135"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>9/17/2007 4:01:37 PM</DateOfficialisation>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="1920"/>
+</SendId><ReceiveId>
+<CANId Value="1952"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="4" Supplier="BT2" Soft="0000" Version="0000"/><AutoIdent DiagVersion="4" Supplier="BT2" Soft="0101" Version="0101"/><AutoIdent DiagVersion="4" Supplier="BT2" Soft="0117" Version="0117"/></AutoIdents>
+<Datas>
+
+<Data Name="ECUR: reset type (R)">
+<Comment><![CDATA[Type of reset asked by the tool]]></Comment>
+<Mnemonic>RT_</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Hard reset"/>
+<Item Value="64" Text="Configuration reset"/></List>
+</Bits>
+</Data>
+<Data Name="ECUR: reset type (S)">
+<Comment><![CDATA[Type of reset asked by the tool]]></Comment>
+<Mnemonic>RT_</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Hard reset"/>
+<Item Value="64" Text="Configuration reset"/></List>
+</Bits>
+</Data>
+<Data Name="RDBLID: traceability year of production">
+<Comment><![CDATA[Year of production]]></Comment>
+<Mnemonic>TRAYP</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="RDBLID: traceability week">
+<Comment><![CDATA[week number in the year]]></Comment>
+<Mnemonic>TRAWP</Mnemonic>
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="RDBLID: traceability serial number">
+<Comment><![CDATA[production umber in the week]]></Comment>
+<Mnemonic>TRASN</Mnemonic>
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="RDBLID: traceability supplier number (ITG)">
+<Comment><![CDATA[213]]></Comment>
+<Mnemonic>TRAITG</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="LID: VIN: V.I.N.">
+<Comment><![CDATA[Serial number of the car, written at Renault factory]]></Comment>
+<Mnemonic>VIN</Mnemonic>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="LID: VIN: C.R.C.">
+<Comment><![CDATA[key code confirming the validity of the VIN, written at Renault factory]]></Comment>
+<Mnemonic>CRC</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="IOControl: Availibility">
+<Comment><![CDATA[Request for availibility]]></Comment>
+<Mnemonic>IOLID</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Request for availibility LID from 0 to 19"/>
+<Item Value="32" Text="Request for availibility LID from 21 to 39"/></List>
+</Bits>
+</Data>
+<Data Name="Session Name">
+<Comment><![CDATA[type of diagnostic session to be activated]]></Comment>
+<Mnemonic>DIAGMODE</Mnemonic>
+<Bits>
+<List>
+<Item Value="250" Text="JCAE specific session 1"/>
+<Item Value="192" Text="After sales, development &amp; factory session"/>
+<Item Value="133" Text="Main ECU reprogram session"/>
+<Item Value="129" Text="Default session"/>
+<Item Value="251" Text="JCAE specific session 2"/></List>
+</Bits>
+</Data>
+<Data Name="IOControl: test control">
+<Comment><![CDATA[test control]]></Comment>
+<Mnemonic>TSTCTRL</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Status request"/>
+<Item Value="17" Text="Stop test"/>
+<Item Value="32" Text="Start test"/></List>
+</Bits>
+</Data>
+<Data Name="StatusOfDTC">
+<Mnemonic>DTCASR_SODTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailed">
+<Mnemonic>TF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedThisMonitoringCycle">
+<Mnemonic>TFTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.pendingDTC">
+<Mnemonic>PDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.confirmedDTC">
+<Mnemonic>CDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedSinceLastClear">
+<Mnemonic>TNCSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedSinceLastClear">
+<Mnemonic>TFSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+<Mnemonic>TNCTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.warningIndicatorRequested">
+<Mnemonic>WIR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.Category">
+<Bits count="4">
+<List>
+<Item Value="0" Text="General Failure Information"/>
+<Item Value="1" Text="General Electrical Failures"/>
+<Item Value="2" Text="General Signal Failures"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="15" Text="Vehicle manufacturer / System supplier specific"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType">
+<Bits>
+<List>
+<Item Value="0" Text="Device and failure type ODB codding"/>
+<Item Value="1" Text="General Electrical Failure"/>
+<Item Value="2" Text="General signal failure"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="17" Text="circuit short to ground"/>
+<Item Value="18" Text="circuit short to battery"/>
+<Item Value="19" Text="circuit open"/>
+<Item Value="20" Text="circuit short to ground or open"/>
+<Item Value="21" Text="circuit short to battery or open"/>
+<Item Value="22" Text="circuit voltage below threshold"/>
+<Item Value="23" Text="circuit voltage above threshold"/>
+<Item Value="24" Text="circuit current below threshold"/>
+<Item Value="25" Text="circuit current above threshold"/>
+<Item Value="26" Text="circuit resistance below threshold"/>
+<Item Value="27" Text="circuit resistance above threshold"/>
+<Item Value="28" Text="circuit voltage out of range"/>
+<Item Value="29" Text="circuit current out of range"/>
+<Item Value="30" Text="circuit resistance out of range"/>
+<Item Value="31" Text="circuit intermittent"/>
+<Item Value="33" Text="signal amplitude &lt; minimum"/>
+<Item Value="34" Text="signal amplitude &gt; maximum"/>
+<Item Value="35" Text="signal stuck low"/>
+<Item Value="36" Text="signal stuck high"/>
+<Item Value="37" Text="signal shape / waveform failure"/>
+<Item Value="38" Text="signal rate of change below threshold"/>
+<Item Value="39" Text="signal rate of change above threshold"/>
+<Item Value="40" Text="signal bias level out of range / zero adjustment failure"/>
+<Item Value="41" Text="signal signal invalid"/>
+<Item Value="47" Text="signal erratic"/>
+<Item Value="49" Text="no signal"/>
+<Item Value="50" Text="signal low time &lt; minimum"/>
+<Item Value="51" Text="signal low time &gt; maximum"/>
+<Item Value="52" Text="signal high time &lt; minimum"/>
+<Item Value="53" Text="signal high time &gt; maximum"/>
+<Item Value="54" Text="signal frequency too low"/>
+<Item Value="55" Text="signal frequency too high"/>
+<Item Value="56" Text="signal frequency incorrect"/>
+<Item Value="57" Text="incorrect has too few pulses"/>
+<Item Value="58" Text="incorrect has too many pulses"/>
+<Item Value="65" Text="general checksum failure"/>
+<Item Value="66" Text="general memory failure"/>
+<Item Value="67" Text="special memory failure"/>
+<Item Value="68" Text="data memory failure"/>
+<Item Value="69" Text="program memory failure"/>
+<Item Value="70" Text="calibration / parameter memory failure"/>
+<Item Value="71" Text="watchdog / safety µC failure"/>
+<Item Value="72" Text="supervision software failure"/>
+<Item Value="73" Text="internal electronic failure"/>
+<Item Value="74" Text="incorrect component installed"/>
+<Item Value="75" Text="over temperature"/>
+<Item Value="81" Text="not programmed"/>
+<Item Value="82" Text="not activated"/>
+<Item Value="83" Text="deactivated"/>
+<Item Value="84" Text="missing calibration"/>
+<Item Value="85" Text="not configured"/>
+<Item Value="97" Text="signal calculation failure"/>
+<Item Value="98" Text="signal compare failure"/>
+<Item Value="99" Text="circuit / component protection time-out"/>
+<Item Value="100" Text="signal plausibility failure"/>
+<Item Value="101" Text="signal has too few transitions / events"/>
+<Item Value="102" Text="signal has too many transitions / events"/>
+<Item Value="103" Text="signal incorrect after event"/>
+<Item Value="104" Text="event information"/>
+<Item Value="113" Text="actuator stuck"/>
+<Item Value="114" Text="actuator stuck open"/>
+<Item Value="115" Text="actuator stuck closed"/>
+<Item Value="116" Text="actuator slipping"/>
+<Item Value="117" Text="emergency position not reachable"/>
+<Item Value="118" Text="wrong mounting position"/>
+<Item Value="119" Text="commanded position not reachable"/>
+<Item Value="120" Text="alignment or adjustment incorrect"/>
+<Item Value="121" Text="mechanical linkage failure"/>
+<Item Value="122" Text="fluid leak or seal failure"/>
+<Item Value="123" Text="low fluid level"/>
+<Item Value="129" Text="invalid serial data received"/>
+<Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+<Item Value="131" Text="value of signal protection calculation incorrect"/>
+<Item Value="132" Text="signal below allowable range"/>
+<Item Value="133" Text="signal above allowable range"/>
+<Item Value="134" Text="signal invalid"/>
+<Item Value="135" Text="missing message"/>
+<Item Value="136" Text="bus off"/>
+<Item Value="143" Text="erratic"/>
+<Item Value="145" Text="parametric"/>
+<Item Value="146" Text="performance or incorrect operation"/>
+<Item Value="147" Text="no operation"/>
+<Item Value="148" Text="unexpected operation"/>
+<Item Value="149" Text="incorrect assembly"/>
+<Item Value="150" Text="component internal failure"/>
+<Item Value="151" Text="Component or system operation obstructed or blocked"/>
+<Item Value="152" Text="component or system over temperature"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceAndFailureTypeOBD">
+<Bits count="16">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.ManufacturerOrSupplier">
+<Bits count="4">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCStatusAvailabilityMask">
+<Mnemonic>DTCSAM</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCMaskRecord">
+<Mnemonic>DTCMREC_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCIStatus.testNotCompletedSinceLastClear">
+<Mnemonic>TNCSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCIStatus.testFailedSinceLastClear">
+<Mnemonic>TFSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCIStatus.testFailed">
+<Mnemonic>TF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCIStatus.confirmedDTC">
+<Mnemonic>CDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCRecord">
+<Mnemonic>DTCASR_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCExtendedData.AgingCounter">
+<Comment><![CDATA[Description of the extendedData AgingCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>AGINGCOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.DTCOccurrenceCounter">
+<Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.Mileage">
+<Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>MILEAGE</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedDataRecordNumber">
+<Mnemonic>DTCEDRN</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Mileage"/>
+<Item Value="255" Text="All"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceIdentifier">
+<Bits count="16">
+<List>
+<Item Value="37674" Text="USB power"/>
+<Item Value="37682" Text="Connector panel"/>
+<Item Value="37697" Text="Data"/>
+<Item Value="37699" Text="NAND memory"/>
+<Item Value="37700" Text="SDRAM memory"/>
+<Item Value="37725" Text="USB controller"/>
+<Item Value="37849" Text="USB communication"/>
+<Item Value="37872" Text="Battery"/></List>
+</Bits>
+</Data>
+<Data Name="CalibrationNumber">
+<Comment><![CDATA[Numero de calibration en Hexa]]></Comment>
+<Mnemonic>NCAL</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="DiagnosticIdentificationCode">
+<Comment><![CDATA[Diag evolution number]]></Comment>
+<Mnemonic>VDIAG</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="SoftwareNumber">
+<Comment><![CDATA[Software identification number]]></Comment>
+<Mnemonic>NPGRGM</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="ProgrammingSiteReference">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="ProgrammingToolReference">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="RecordMarking">
+<Bytes count="1"/>
+</Data>
+<Data Name="SupplierNumber.ITG">
+<Comment><![CDATA[Supplier ITG code]]></Comment>
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="EditionNumber">
+<Comment><![CDATA[Software version(edition) number]]></Comment>
+<Mnemonic>NVERS</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="PartNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="1" Text="28024"/>
+<Item Value="2" Text="283C0"/></List>
+</Bits>
+</Data>
+<Data Name="HardwareNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="HARDW"/></List>
+</Bits>
+</Data>
+<Data Name="ApprovalNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/></List>
+</Bits>
+</Data>
+<Data Name="NumberOfReprogramming">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="PartNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="HardwareNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="ApprovalNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="DateOfProgramming">
+<Bytes count="3"/>
+</Data>
+<Data Name="HourMinutesOfProgramming">
+<Bytes count="2"/>
+</Data>
+<Data Name="CRCLogRecord">
+<Bytes count="2"/>
+</Data>
+<Data Name="ManufacturerIdentificationCode">
+<Bits>
+<List>
+<Item Value="0" Text="Renault R1"/>
+<Item Value="128" Text="Nissan N1"/>
+<Item Value="129" Text="Nissan N2"/>
+<Item Value="130" Text="Nissan N3"/>
+<Item Value="136" Text="5DIGITS"/>
+<Item Value="255" Text="Renault R3"/></List>
+</Bits>
+</Data>
+<Data Name="AppleVersion">
+<Comment><![CDATA[Apple accessory protocol identification]]></Comment>
+<Mnemonic>INT_APPLE</Mnemonic>
+<Bytes count="10"/>
+</Data>
+<Data Name="AudioInputLevel.AudioLevelRight">
+<Comment><![CDATA[right channel audio input level]]></Comment>
+<Mnemonic>VAL_AUD</Mnemonic>
+<Bits>
+<Scaled Unit="V" DivideBy=" 50" Format="#00.0"/>
+</Bits>
+</Data>
+<Data Name="AudioInputLevel.AudioLevelLeft">
+<Comment><![CDATA[left channel audio input level]]></Comment>
+<Mnemonic>VAL_AUD</Mnemonic>
+<Bits>
+<Scaled Unit="V" DivideBy=" 50" Format="#00.0"/>
+</Bits>
+</Data>
+<Data Name="AudioOutputLevel">
+<Comment><![CDATA[system configuration]]></Comment>
+<Mnemonic>CNF_AUDLEV</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="0.6V max"/>
+<Item Value="1" Text="1.2V max"/></List>
+</Bits>
+</Data>
+<Data Name="IOControl: AudioTone:ControlStatus">
+<Comment><![CDATA[control status]]></Comment>
+<Mnemonic>CTRLSTAT</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Test in progress"/>
+<Item Value="2" Text="Test completed"/>
+<Item Value="18" Text="problem in the test"/></List>
+</Bits>
+</Data>
+<Data Name="identification: blanking spaces 1">
+<Comment><![CDATA[blanking spaces]]></Comment>
+<Mnemonic>TRABS1</Mnemonic>
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="MMPartVersion">
+<Comment><![CDATA[multimedia part identification]]></Comment>
+<Mnemonic>INT_MM</Mnemonic>
+<Bytes count="10"/>
+</Data>
+<Data Name="PartReference">
+<Comment><![CDATA[référence mise à jour par l'outil de diag]]></Comment>
+<Mnemonic>CNF_REF</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="LIN_IN.AudioAnalogJack">
+<Comment><![CDATA[status of Jack connection]]></Comment>
+<Mnemonic>LIN_IN</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not present"/>
+<Item Value="1" Text="present"/></List>
+</Bits>
+</Data>
+<Data Name="LIN_IN.USB device">
+<Comment><![CDATA[status of SPDIF line]]></Comment>
+<Mnemonic>LIN_IN</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not present"/>
+<Item Value="1" Text="present"/></List>
+</Bits>
+</Data>
+<Data Name="LastAfterSalesOperationDate.LastAfterSaleOperationDay">
+<Comment><![CDATA[Last after sales opertion day]]></Comment>
+<Mnemonic>CNF_LASOD0</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="LastAfterSalesOperationDate.LastAfterSaleOperationMonth">
+<Comment><![CDATA[Last after sales operation month]]></Comment>
+<Mnemonic>CNF_LASOD1</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="LastAfterSalesOperationDate.LastAfterSaleOperationYear">
+<Comment><![CDATA[Last after sales opertion year]]></Comment>
+<Mnemonic>CNF_LASOD2</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="ECUSystem">
+<Comment><![CDATA[system configuration]]></Comment>
+<Mnemonic>CNF_SEL</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="R2"/>
+<Item Value="1" Text="R1"/>
+<Item Value="2" Text="LPN"/>
+<Item Value="3" Text="ITS"/></List>
+</Bits>
+</Data>
+<Data Name="USBSpeed">
+<Comment><![CDATA[USB speed]]></Comment>
+<Mnemonic>CNF_USB</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="low speed"/>
+<Item Value="1" Text="high speed"/></List>
+</Bits>
+</Data>
+<Data Name="IOControl: ControlOption1">
+<Comment><![CDATA[IO Control option 1]]></Comment>
+<Mnemonic>CTRLOPT1</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Left Loudspeakers"/>
+<Item Value="16" Text="Right Loudspeakers"/></List>
+</Bits>
+</Data>
+<Data Name="OutputPermanentControlList">
+<Comment><![CDATA[Testing output : List of all output with permanent test]]></Comment>
+<Bits>
+<List>
+<Item Value="43" Text="Audio output line test tone"/></List>
+</Bits>
+</Data>
+<Data Name="OutputControlCommand">
+<Comment><![CDATA[Testing output : Command enumeration]]></Comment>
+<Bits>
+<List>
+<Item Value="1" Text="Status"/>
+<Item Value="17" Text="Stop"/>
+<Item Value="32" Text="Start Permanent"/></List>
+</Bits>
+</Data>
+<Data Name="OutputControlStatus">
+<Comment><![CDATA[Testing output : Status]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="no test in progress"/>
+<Item Value="1" Text="Running"/>
+<Item Value="2" Text="Stopped"/>
+<Item Value="4" Text="test NOK"/></List>
+</Bits>
+</Data>
+<Data Name="identification: blanking spaces 2">
+<Comment><![CDATA[blanking spaces]]></Comment>
+<Mnemonic>TRABS2</Mnemonic>
+<Bytes count="4" ascii="1"/>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="ECUReset">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[Reset of ECU]]></Comment>
+<Sent>
+<SentBytes>1140</SentBytes>
+<DataItem Name="ECUR: reset type (S)" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5140</ReplyBytes>
+<DataItem Name="ECUR: reset type (R)" FirstByte="2"/>
+</Received>
+</Request>
+<Request Name="ReadDataByLocalIdentifier: traceability">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>6184</ReplyBytes>
+<DataItem Name="identification: blanking spaces 2" Ref="1" FirstByte="19"/>
+<DataItem Name="RDBLID: traceability supplier number (ITG)" Ref="1" FirstByte="3"/>
+<DataItem Name="RDBLID: traceability serial number" Ref="1" FirstByte="9"/>
+<DataItem Name="identification: blanking spaces 1" Ref="1" FirstByte="14"/>
+<DataItem Name="RDBLID: traceability year of production" Ref="1" FirstByte="6"/>
+<DataItem Name="RDBLID: traceability week" Ref="1" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDataByLocalIdentifier: VIN">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="LID: VIN: V.I.N." Ref="1" FirstByte="3"/>
+<DataItem Name="LID: VIN: C.R.C." Ref="1" FirstByte="20"/>
+</Received>
+</Request>
+<Request Name="ClearDiagnosticInformation.All">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+<Sent>
+<SentBytes>14FFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>54</ReplyBytes>
+</Received>
+</Request>
+<Request Name="WriteDataByLocalId.VIN">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[WriteDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="LID: VIN: V.I.N." FirstByte="3"/>
+<DataItem Name="LID: VIN: C.R.C." FirstByte="20"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B81</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTCMask">
+
+<Sent>
+<SentBytes>190200</SentBytes>
+<DataItem Name="DTCIStatus.testFailed" FirstByte="3" BitOffset="7"/>
+<DataItem Name="DTCIStatus.confirmedDTC" FirstByte="3" BitOffset="4"/>
+<DataItem Name="DTCIStatus.testNotCompletedSinceLastClear" FirstByte="3" BitOffset="3"/>
+<DataItem Name="DTCIStatus.testFailedSinceLastClear" FirstByte="3" BitOffset="2"/>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+<DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1902FF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+<DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="DataRead.Identification.RenaultR2">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="CalibrationNumber" Ref="1" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" Ref="1" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" Ref="1" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" Ref="1" FirstByte="9"/>
+<DataItem Name="EditionNumber" Ref="1" FirstByte="19"/>
+<DataItem Name="PartNumber.BasicPartList" Ref="1" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" Ref="1" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" Ref="1" FirstByte="25"/>
+<DataItem Name="PartNumber.LowerPart" Ref="1" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" Ref="1" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" Ref="1" FirstByte="26"/>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+<Sent>
+<SentBytes>3E01</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="Session Name" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Default">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1081</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5081</ReplyBytes>
+</Received>
+</Request>
+<Request Name="OutputControl">
+
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic testing screen]]></Comment>
+<Sent>
+<SentBytes>300100</SentBytes>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="OutputControlCommand" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700000</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Start.Availibility">
+
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic testing screen]]></Comment>
+<Sent>
+<SentBytes>3000</SentBytes>
+<DataItem Name="IOControl: Availibility" FirstByte="2"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>700000000000</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.IdentFirstZone">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>21F0</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="CalibrationNumber" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" FirstByte="9"/>
+<DataItem Name="EditionNumber" FirstByte="19"/>
+<DataItem Name="PartNumber.BasicPartList" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" FirstByte="25"/>
+<DataItem Name="PartNumber.LowerPart" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" FirstByte="26"/>
+</Received>
+</Request>
+<Request Name="DataRead.IdentCurrentZone">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>21FE</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>61FE</ReplyBytes>
+<DataItem Name="CalibrationNumber" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" FirstByte="9"/>
+<DataItem Name="EditionNumber" FirstByte="19"/>
+<DataItem Name="PartNumber.BasicPartList" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" FirstByte="25"/>
+<DataItem Name="PartNumber.LowerPart" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" FirstByte="26"/>
+</Received>
+</Request>
+<Request Name="DataRead.IdentPreviousZone">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>21FC</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="CalibrationNumber" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" FirstByte="9"/>
+<DataItem Name="EditionNumber" FirstByte="19"/>
+<DataItem Name="PartNumber.BasicPartList" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" FirstByte="25"/>
+<DataItem Name="PartNumber.LowerPart" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" FirstByte="26"/>
+</Received>
+</Request>
+<Request Name="DataRead.LogFirstZone">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>21F1</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="ApprovalNumber.LowerPart" Ref="1" FirstByte="3"/>
+<DataItem Name="ProgrammingSiteReference" Ref="1" FirstByte="8"/>
+<DataItem Name="ProgrammingToolReference" Ref="1" FirstByte="13"/>
+<DataItem Name="NumberOfReprogramming" Ref="1" FirstByte="18"/>
+<DataItem Name="DateOfProgramming" Ref="1" FirstByte="19"/>
+<DataItem Name="HourMinutesOfProgramming" Ref="1" FirstByte="22"/>
+<DataItem Name="RecordMarking" Ref="1" FirstByte="24"/>
+<DataItem Name="CRCLogRecord" Ref="1" FirstByte="25"/>
+</Received>
+</Request>
+<Request Name="DataRead.LogPreviousZone">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>21FD</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="ApprovalNumber.LowerPart" FirstByte="3"/>
+<DataItem Name="ProgrammingSiteReference" FirstByte="8"/>
+<DataItem Name="ProgrammingToolReference" FirstByte="13"/>
+<DataItem Name="NumberOfReprogramming" FirstByte="18"/>
+<DataItem Name="DateOfProgramming" FirstByte="19"/>
+<DataItem Name="HourMinutesOfProgramming" FirstByte="22"/>
+<DataItem Name="RecordMarking" FirstByte="24"/>
+<DataItem Name="CRCLogRecord" FirstByte="25"/>
+</Received>
+</Request>
+<Request Name="DataRead.LogCurrentZone">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>21FF</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>61FF</ReplyBytes>
+<DataItem Name="ApprovalNumber.LowerPart" FirstByte="3"/>
+<DataItem Name="ProgrammingSiteReference" FirstByte="8"/>
+<DataItem Name="ProgrammingToolReference" FirstByte="13"/>
+<DataItem Name="NumberOfReprogramming" FirstByte="18"/>
+<DataItem Name="DateOfProgramming" FirstByte="19"/>
+<DataItem Name="HourMinutesOfProgramming" FirstByte="22"/>
+<DataItem Name="RecordMarking" FirstByte="24"/>
+<DataItem Name="CRCLogRecord" FirstByte="25"/>
+</Received>
+</Request>
+<Request Name="ECUReset.Soft">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[Configuration taken into account]]></Comment>
+<Sent>
+<SentBytes>1101</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5101</ReplyBytes>
+<DataItem Name="ECUR: reset type (R)" FirstByte="2"/>
+</Received>
+</Request>
+<Request Name="OutputControl.AudioTone">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>302B2000</SentBytes>
+<DataItem Name="IOControl: ControlOption1" FirstByte="4"/>
+<DataItem Name="OutputControlCommand" FirstByte="3"/>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>702B02</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="OutputControl.StopAudioTone">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>302B11</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>702B02</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="OutputControl.StartAudioTone">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>302B20</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>702B02</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="APVSession">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50C0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1906000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590600000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000080</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>59060000000080000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.LIN_IN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220403</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62040300</ReplyBytes>
+<DataItem Name="LIN_IN.AudioAnalogJack" Ref="1" FirstByte="4" BitOffset="5"/>
+<DataItem Name="LIN_IN.USB device" Ref="1" FirstByte="4" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.AudioInputLevel">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220507</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>6205070000</ReplyBytes>
+<DataItem Name="AudioInputLevel.AudioLevelRight" FirstByte="4"/>
+<DataItem Name="AudioInputLevel.AudioLevelLeft" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="DataRead.MMPartVersion">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[INT_MM]]></Comment>
+<Sent>
+<SentBytes>220833</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62083300000000000000000000</ReplyBytes>
+<DataItem Name="MMPartVersion" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.AppleVersion">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[INT_APPLE]]></Comment>
+<Sent>
+<SentBytes>220834</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62083400000000000000000000</ReplyBytes>
+<DataItem Name="AppleVersion" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.LastAfterSalesOperationDate">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[CNF_LASOD]]></Comment>
+<Sent>
+<SentBytes>220C01</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>620C01000000</ReplyBytes>
+<DataItem Name="LastAfterSalesOperationDate.LastAfterSaleOperationDay" Ref="1" FirstByte="4"/>
+<DataItem Name="LastAfterSalesOperationDate.LastAfterSaleOperationMonth" Ref="1" FirstByte="5"/>
+<DataItem Name="LastAfterSalesOperationDate.LastAfterSaleOperationYear" Ref="1" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.ECUSystem">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[CNF_SEL]]></Comment>
+<Sent>
+<SentBytes>220C33</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620C3300</ReplyBytes>
+<DataItem Name="ECUSystem" Ref="1" FirstByte="4" BitOffset="5"/>
+</Received>
+</Request>
+<Request Name="DataRead.AudioOutputLevel">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[CNF_AUDLEV]]></Comment>
+<Sent>
+<SentBytes>220C34</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620C3400</ReplyBytes>
+<DataItem Name="AudioOutputLevel" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.USBSpeed">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[CNF_USB]]></Comment>
+<Sent>
+<SentBytes>220C36</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620C3600</ReplyBytes>
+<DataItem Name="USBSpeed" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.PartReference">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[CNF_REF]]></Comment>
+<Sent>
+<SentBytes>22F187</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F18730303030303030303030</ReplyBytes>
+<DataItem Name="PartReference" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.LastAfterSalesOperationDate">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[CNF_LASOD]]></Comment>
+<Sent>
+<SentBytes>2E0C01010106</SentBytes>
+<DataItem Name="LastAfterSalesOperationDate.LastAfterSaleOperationDay" FirstByte="4"/>
+<DataItem Name="LastAfterSalesOperationDate.LastAfterSaleOperationMonth" FirstByte="5"/>
+<DataItem Name="LastAfterSalesOperationDate.LastAfterSaleOperationYear" FirstByte="6"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0C01</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.ECUSystem">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[CNF_SEL]]></Comment>
+<Sent>
+<SentBytes>2E0C3300</SentBytes>
+<DataItem Name="ECUSystem" FirstByte="4" BitOffset="5"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0C33</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.AudioOutputLevel">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[CNF_AUDLEV]]></Comment>
+<Sent>
+<SentBytes>2E0C3400</SentBytes>
+<DataItem Name="AudioOutputLevel" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0C34</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.USBSpeed">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[CNF_USB]]></Comment>
+<Sent>
+<SentBytes>2E0C3600</SentBytes>
+<DataItem Name="USBSpeed" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0C36</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.PartReference">
+
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Comment><![CDATA[référence pièce gérée par l'outil]]></Comment>
+<Sent>
+<SentBytes>2EF18730303030303030303030</SentBytes>
+<DataItem Name="PartReference" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6EF187</ReplyBytes>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Data" DTC="37697" Type="2">
+<Mnemonic>DATA</Mnemonic>
+
+<Test Type="85">
+<Description>configuration incomplète ou non prise en compte</Description>
+</Test><Test Type="98">
+<Description>ECU verrouillé par antivol</Description>
+</Test><Test Type="75">
+</Test>
+</Device>
+<Device Name="Battery" DTC="37872">
+<Mnemonic>BAT</Mnemonic>
+
+<Test Type="22">
+</Test><Test Type="23">
+</Test>
+</Device>
+<Device Name="USB power" DTC="37674" Type="3">
+<Mnemonic>USBPOW</Mnemonic>
+
+<Test Type="17">
+<Description>CC-</Description>
+</Test><Test Type="25">
+<Description>CCM</Description>
+</Test>
+</Device>
+<Device Name="Connector panel" DTC="37682" Type="3">
+<Mnemonic>CP</Mnemonic>
+
+<Test Type="19">
+<Description>CC-</Description>
+</Test>
+</Device>
+<Device Name="NAND memory" DTC="37699" Type="2">
+<Mnemonic>NAND</Mnemonic>
+
+<Test Type="65">
+</Test>
+</Device>
+<Device Name="SDRAM memory" DTC="37700" Type="2">
+<Mnemonic>SDRAM</Mnemonic>
+
+<Test Type="65">
+</Test>
+</Device>
+<Device Name="USB controller" DTC="37725" Type="2">
+<Mnemonic>USBCON</Mnemonic>
+
+<Test Type="73">
+</Test>
+</Device>
+<Device Name="USB communication" DTC="37849" Type="3">
+<Mnemonic>USBCOM</Mnemonic>
+
+<Test Type="143" Severity="0">
+</Test>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Screens">
+
+<Screen Name="Configuration" Color="16777215" WindowState="0" Width="9780" Height="7620">
+
+
+<Button Text="Ecrire config">
+<Rectangle Left="4560" Top="1320" Height="960" Width="1920"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="40" RequestName="APVSession"/><Send Delay="40" RequestName="DataWrite.ECUSystem"/><Send Delay="40" RequestName="DataWrite.USBSpeed"/><Send Delay="40" RequestName="DataWrite.AudioOutputLevel"/><Send Delay="40" RequestName="ECUReset.Soft"/>
+</Button>
+<Button Text="Ecrire VIN">
+<Rectangle Left="4560" Top="3120" Height="600" Width="1920"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="100" RequestName="APVSession"/><Send Delay="100" RequestName="WriteDataByLocalId.VIN"/>
+</Button>
+<Button Text="Ecrire last after sales operation date">
+<Rectangle Left="5880" Top="4920" Height="1020" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="100" RequestName="APVSession"/><Send Delay="100" RequestName="DataWrite.LastAfterSalesOperationDate"/>
+</Button>
+
+<Display Width="2000" Color="4259584" DataName="ECUSystem" RequestName="DataRead.ECUSystem">
+<Rectangle Left="120" Top="240" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="4259584" DataName="USBSpeed" RequestName="DataRead.USBSpeed">
+<Rectangle Left="120" Top="600" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="4259584" DataName="AudioOutputLevel" RequestName="DataRead.AudioOutputLevel">
+<Rectangle Left="120" Top="960" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2000" Color="255" DataName="ECUSystem" RequestName="DataWrite.ECUSystem">
+<Rectangle Left="120" Top="1320" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="255" DataName="USBSpeed" RequestName="DataWrite.USBSpeed">
+<Rectangle Left="120" Top="1680" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="255" DataName="AudioOutputLevel" RequestName="DataWrite.AudioOutputLevel">
+<Rectangle Left="120" Top="2040" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2000" Color="4259584" DataName="LID: VIN: V.I.N." RequestName="ReadDataByLocalIdentifier: VIN">
+<Rectangle Left="120" Top="2400" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="4259584" DataName="LID: VIN: C.R.C." RequestName="ReadDataByLocalIdentifier: VIN">
+<Rectangle Left="120" Top="2760" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2000" Color="255" DataName="LID: VIN: V.I.N." RequestName="WriteDataByLocalId.VIN">
+<Rectangle Left="120" Top="3120" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="255" DataName="LID: VIN: C.R.C." RequestName="WriteDataByLocalId.VIN">
+<Rectangle Left="120" Top="3480" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3320" Color="4259584" DataName="LastAfterSalesOperationDate.LastAfterSaleOperationDay" RequestName="DataRead.LastAfterSalesOperationDate">
+<Rectangle Left="120" Top="3840" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="4259584" DataName="LastAfterSalesOperationDate.LastAfterSaleOperationMonth" RequestName="DataRead.LastAfterSalesOperationDate">
+<Rectangle Left="120" Top="4200" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3320" Color="4259584" DataName="LastAfterSalesOperationDate.LastAfterSaleOperationYear" RequestName="DataRead.LastAfterSalesOperationDate">
+<Rectangle Left="120" Top="4560" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="3305" Color="255" DataName="LastAfterSalesOperationDate.LastAfterSaleOperationDay" RequestName="DataWrite.LastAfterSalesOperationDate">
+<Rectangle Left="120" Top="4920" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3305" Color="255" DataName="LastAfterSalesOperationDate.LastAfterSaleOperationMonth" RequestName="DataWrite.LastAfterSalesOperationDate">
+<Rectangle Left="120" Top="5280" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3305" Color="255" DataName="LastAfterSalesOperationDate.LastAfterSaleOperationYear" RequestName="DataWrite.LastAfterSalesOperationDate">
+<Rectangle Left="120" Top="5640" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Reading" Color="16777215" WindowState="0" Width="9780" Height="7380">
+
+
+
+<Display Width="2975" Color="4259584" DataName="LIN_IN.AudioAnalogJack" RequestName="DataRead.LIN_IN">
+<Rectangle Left="240" Top="240" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="4259584" DataName="LIN_IN.USB device" RequestName="DataRead.LIN_IN">
+<Rectangle Left="240" Top="600" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="4259584" DataName="AudioInputLevel.AudioLevelRight" RequestName="DataRead.AudioInputLevel">
+<Rectangle Left="240" Top="960" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="4259584" DataName="AudioInputLevel.AudioLevelLeft" RequestName="DataRead.AudioInputLevel">
+<Rectangle Left="240" Top="1320" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="4259584" DataName="MMPartVersion" RequestName="DataRead.MMPartVersion">
+<Rectangle Left="240" Top="1680" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="4259584" DataName="AppleVersion" RequestName="DataRead.AppleVersion">
+<Rectangle Left="240" Top="2040" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="4259584" DataName="PartReference" RequestName="DataRead.PartReference">
+<Rectangle Left="240" Top="2400" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Actions" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="IOC Audio" Color="16744576" Alignment="2">
+<Rectangle Left="2880" Top="240" Height="300" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Start test tone">
+<Rectangle Left="2040" Top="1800" Height="1155" Width="1665"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="100" RequestName="APVSession"/><Send Delay="100" RequestName="OutputControl.StartAudioTone"/>
+</Button>
+<Button Text="Stop test tone">
+<Rectangle Left="4800" Top="1800" Height="1110" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="100" RequestName="APVSession"/><Send Delay="100" RequestName="OutputControl.StopAudioTone"/>
+</Button>
+
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

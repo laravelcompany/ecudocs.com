@@ -1,0 +1,3095 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.2.0.0" date="2016-02-09T11:15"/>
+<ddt:Target Name="CMF1_CEPS_V1_10" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="fabrice.turban-renexter@renault.com" href="CMF1_CEPS_V1_10_20160225T124409.xml" upload="2/25/2016" group="EPS"><Description><![CDATA[History
+
+v1.0 : original extracted from REPS
+v1.3.h : new DDT screens, cleanup of requests / data, tested successfully with 1.6. WARNING : some DIDs don't work yet / Snapshot's ExtendedReport only works with 1906xxxxxx80 request (manual request only)
+v1.4 : corrections of screens and some DIDs along with SW4
+v1.4.1 : correction of Screen/Measurement/DID ECU & motor temperature (inversion of labels)
+v1.5 : officialization of DDT corrections regarding screens + including of XFB and LFF as applicable projects + integration of the DongleBlanking request (with required field for code)
+v1.5.1 : added XZH, XZI in applicability
+v1.5.2 : corrected a label in DDT screen "Ident" regarding contents of DID $F187
+v1.6 : added Read/Write requests for VIN, added a screen for VIN management (read/write), added applicability for SW6
+v1.6.1 : corrected function activation screen (delay before HardReset, otherwise, it won't work for SW6)
+v1.7 : added timers for every Reset
+v1.8 : added XZG, ZGJ and SW7 in applicability, corrected ClearDTC (conditions to allow Reset - only consistent only from SW7), Identification (comment on $F18E removed), Measurement (DID $0162 removed, comments removed on working SWA DID), and Reset screens, added 2184 data in base, created "ALL IN ONE" screen to get all relevant data in one single screen
+v1.9 : added compatibility with SW7.1 and SW8.0
+V1.10 : added compatibility with SW9 et SW11]]></Description><Projects xmlns=""><HFE/><HFEPh2/><xFB/><xFF/><xZG/><xZH/><xZHPh2/><xZJ/></Projects>
+
+<Function Name="Direction assistée" Address="4"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>12/11/2014 09:54:24</DateOfficialisation>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="1858"/>
+</SendId><ReceiveId>
+<CANId Value="1890"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="17" Supplier="231" Soft="7600" Version="0000"/><AutoIdent DiagVersion="17" Supplier="231" Soft="0104" Version="0000"/><AutoIdent DiagVersion="17" Supplier="231" Soft="0006" Version="0000"/><AutoIdent DiagVersion="17" Supplier="231" Soft="0007" Version="0000"/><AutoIdent DiagVersion="17" Supplier="231" Soft="0007" Version="0001"/><AutoIdent DiagVersion="17" Supplier="231" Soft="0008" Version="0000"/><AutoIdent DiagVersion="17" Supplier="231" Soft="0009" Version="0000"/><AutoIdent DiagVersion="17" Supplier="231" Soft="0011" Version="0000"/></AutoIdents>
+<Datas>
+
+<Data Name="CalibrationNumber">
+<Comment><![CDATA[Numero de calibration en Hexa]]></Comment>
+<Mnemonic>NCAL</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="DiagnosticIdentificationCode">
+<Comment><![CDATA[Diag evolution number]]></Comment>
+<Mnemonic>VDIAG</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="SoftwareNumber">
+<Comment><![CDATA[Software identification number]]></Comment>
+<Mnemonic>NPGRGM</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="SupplierNumber.ITG">
+<Comment><![CDATA[Supplier ITG code]]></Comment>
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="EditionNumber">
+<Comment><![CDATA[Software version(edition) number]]></Comment>
+<Mnemonic>NVERS</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="PartNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="2" Text="28504"/></List>
+</Bits>
+</Data>
+<Data Name="HardwareNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="1" Text="28500"/></List>
+</Bits>
+</Data>
+<Data Name="ApprovalNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/></List>
+</Bits>
+</Data>
+<Data Name="PartNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="HardwareNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="ManufacturerIdentificationCode">
+<Bits>
+<List>
+<Item Value="0" Text="Renault R1"/>
+<Item Value="128" Text="Nissan N1"/>
+<Item Value="129" Text="Nissan N2"/>
+<Item Value="130" Text="Nissan N3"/>
+<Item Value="136" Text="5DIGITS"/>
+<Item Value="255" Text="Renault R3"/></List>
+</Bits>
+</Data>
+<Data Name="SupplierNumber">
+<Comment><![CDATA[Supplier code (hexa)]]></Comment>
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="ApprovalNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="ProgrammingSiteReference">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="ProgrammingToolReference">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="NumberOfReprogrammings">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DateOfReprogramming">
+<Comment><![CDATA[date of the reprogramming yy.mm.dd]]></Comment>
+<Bytes count="3"/>
+</Data>
+<Data Name="SaveMarking">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CrcOfLogSave">
+<Bytes count="2"/>
+</Data>
+<Data Name="TimeOfReprogramming">
+<Comment><![CDATA[Hour, Minute of the reprogramming]]></Comment>
+<Bytes count="2"/>
+</Data>
+<Data Name="VehicleManufacturerKitAssemblyPartNumber">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="SupplierInternalFaultStore.01.List">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="00h Clear DTC"/>
+<Item Value="17" Text="11h TS Main sensor output voltage out of range"/>
+<Item Value="18" Text="12h TS Sub sensor output voltage out of range"/>
+<Item Value="19" Text="13h TS Both sensors output voltage out of range"/>
+<Item Value="20" Text="14h TS Power supply voltage out of range"/>
+<Item Value="22" Text="16h TS Peak Average Error"/>
+<Item Value="23" Text="17h TS Power supply low voltage"/>
+<Item Value="34" Text="22h CAN EngineStatus Absent"/>
+<Item Value="52" Text="34h FUNC Unknown VehicleState"/>
+<Item Value="55" Text="37h CAN BRAKE_CANHS_RNr_02 Checksum/Clock Invalid"/>
+<Item Value="66" Text="42h Motor"/>
+<Item Value="83" Text="53h BATTERY High Voltage"/>
+<Item Value="84" Text="54h BATTERY Low Voltage"/>
+<Item Value="87" Text="57h BATTERY Cut Off"/>
+<Item Value="96" Text="60h CAN BRAKE_CANHS_RNr_02 Absent OSEK"/>
+<Item Value="97" Text="61h CAN VH VehicleSpeed Invalid"/>
+<Item Value="98" Text="62h CAN BUS OFF"/>
+<Item Value="101" Text="65h CAN BRAKE_CANHS_RNr_02 Absent"/>
+<Item Value="100" Text="66h FUNC AngleFinding WheelSpeed Invalid"/>
+<Item Value="102" Text="66h FUNC AngleFinding No Frame Received 29A / 29C"/>
+<Item Value="104" Text="68h CAN SWA SteeringWheelAngle Invalid"/>
+<Item Value="105" Text="69h CAN SWA SwaSensorInternalStatus &lt;&gt; 101"/>
+<Item Value="106" Text="6Ah CAN SWA_CANHS_RNr_01 Absent"/>
+<Item Value="107" Text="6Bh CAN SWA_CANHS_RNr_01 Checksum Invalid"/>
+<Item Value="108" Text="6Ch CAN SWA_CANHS_RNr_01 Clock Invalid"/>
+<Item Value="146" Text="92h FUNC AngleFinding Too Slow"/></List>
+</Bits>
+</Data>
+<Data Name="SupplierInternalFaultStore.02.List">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="00h Clear DTC"/>
+<Item Value="17" Text="11h TS Main sensor output voltage out of range"/>
+<Item Value="18" Text="12h TS Sub sensor output voltage out of range"/>
+<Item Value="19" Text="13h TS Both sensors output voltage out of range"/>
+<Item Value="20" Text="14h TS Power supply voltage out of range"/>
+<Item Value="22" Text="16h TS Peak Average Error"/>
+<Item Value="23" Text="17h TS Power supply low voltage"/>
+<Item Value="34" Text="22h CAN EngineStatus Absent"/>
+<Item Value="52" Text="34h FUNC Unknown VehicleState"/>
+<Item Value="55" Text="37h CAN BRAKE_CANHS_RNr_02 Checksum/Clock Invalid"/>
+<Item Value="66" Text="42h Motor"/>
+<Item Value="83" Text="53h BATTERY High Voltage"/>
+<Item Value="84" Text="54h BATTERY Low Voltage"/>
+<Item Value="87" Text="57h BATTERY Cut Off"/>
+<Item Value="96" Text="60h CAN BRAKE_CANHS_RNr_02 Absent OSEK"/>
+<Item Value="97" Text="61h CAN VH VehicleSpeed Invalid"/>
+<Item Value="98" Text="62h CAN BUS OFF"/>
+<Item Value="101" Text="65h CAN BRAKE_CANHS_RNr_02 Absent"/>
+<Item Value="100" Text="66h FUNC AngleFinding WheelSpeed Invalid"/>
+<Item Value="102" Text="66h FUNC AngleFinding No Frame Received 29A / 29C"/>
+<Item Value="104" Text="68h CAN SWA SteeringWheelAngle Invalid"/>
+<Item Value="105" Text="69h CAN SWA SwaSensorInternalStatus &lt;&gt; 101"/>
+<Item Value="106" Text="6Ah CAN SWA_CANHS_RNr_01 Absent"/>
+<Item Value="107" Text="6Bh CAN SWA_CANHS_RNr_01 Checksum Invalid"/>
+<Item Value="108" Text="6Ch CAN SWA_CANHS_RNr_01 Clock Invalid"/>
+<Item Value="146" Text="92h FUNC AngleFinding Too Slow"/></List>
+</Bits>
+</Data>
+<Data Name="SupplierInternalFaultStore.03.List">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="00h Clear DTC"/>
+<Item Value="17" Text="11h TS Main sensor output voltage out of range"/>
+<Item Value="18" Text="12h TS Sub sensor output voltage out of range"/>
+<Item Value="19" Text="13h TS Both sensors output voltage out of range"/>
+<Item Value="20" Text="14h TS Power supply voltage out of range"/>
+<Item Value="22" Text="16h TS Peak Average Error"/>
+<Item Value="23" Text="17h TS Power supply low voltage"/>
+<Item Value="34" Text="22h CAN EngineStatus Absent"/>
+<Item Value="52" Text="34h FUNC Unknown VehicleState"/>
+<Item Value="55" Text="37h CAN BRAKE_CANHS_RNr_02 Checksum/Clock Invalid"/>
+<Item Value="66" Text="42h Motor"/>
+<Item Value="83" Text="53h BATTERY High Voltage"/>
+<Item Value="84" Text="54h BATTERY Low Voltage"/>
+<Item Value="87" Text="57h BATTERY Cut Off"/>
+<Item Value="96" Text="60h CAN BRAKE_CANHS_RNr_02 Absent OSEK"/>
+<Item Value="97" Text="61h CAN VH VehicleSpeed Invalid"/>
+<Item Value="98" Text="62h CAN BUS OFF"/>
+<Item Value="101" Text="65h CAN BRAKE_CANHS_RNr_02 Absent"/>
+<Item Value="100" Text="66h FUNC AngleFinding WheelSpeed Invalid"/>
+<Item Value="102" Text="66h FUNC AngleFinding No Frame Received 29A / 29C"/>
+<Item Value="104" Text="68h CAN SWA SteeringWheelAngle Invalid"/>
+<Item Value="105" Text="69h CAN SWA SwaSensorInternalStatus &lt;&gt; 101"/>
+<Item Value="106" Text="6Ah CAN SWA_CANHS_RNr_01 Absent"/>
+<Item Value="107" Text="6Bh CAN SWA_CANHS_RNr_01 Checksum Invalid"/>
+<Item Value="108" Text="6Ch CAN SWA_CANHS_RNr_01 Clock Invalid"/>
+<Item Value="146" Text="92h FUNC AngleFinding Too Slow"/></List>
+</Bits>
+</Data>
+<Data Name="SupplierInternalFaultStore.04.List">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="00h Clear DTC"/>
+<Item Value="17" Text="11h TS Main sensor output voltage out of range"/>
+<Item Value="18" Text="12h TS Sub sensor output voltage out of range"/>
+<Item Value="19" Text="13h TS Both sensors output voltage out of range"/>
+<Item Value="20" Text="14h TS Power supply voltage out of range"/>
+<Item Value="22" Text="16h TS Peak Average Error"/>
+<Item Value="23" Text="17h TS Power supply low voltage"/>
+<Item Value="34" Text="22h CAN EngineStatus Absent"/>
+<Item Value="52" Text="34h FUNC Unknown VehicleState"/>
+<Item Value="55" Text="37h CAN BRAKE_CANHS_RNr_02 Checksum/Clock Invalid"/>
+<Item Value="66" Text="42h Motor"/>
+<Item Value="83" Text="53h BATTERY High Voltage"/>
+<Item Value="84" Text="54h BATTERY Low Voltage"/>
+<Item Value="87" Text="57h BATTERY Cut Off"/>
+<Item Value="96" Text="60h CAN BRAKE_CANHS_RNr_02 Absent OSEK"/>
+<Item Value="97" Text="61h CAN VH VehicleSpeed Invalid"/>
+<Item Value="98" Text="62h CAN BUS OFF"/>
+<Item Value="101" Text="65h CAN BRAKE_CANHS_RNr_02 Absent"/>
+<Item Value="100" Text="66h FUNC AngleFinding WheelSpeed Invalid"/>
+<Item Value="102" Text="66h FUNC AngleFinding No Frame Received 29A / 29C"/>
+<Item Value="104" Text="68h CAN SWA SteeringWheelAngle Invalid"/>
+<Item Value="105" Text="69h CAN SWA SwaSensorInternalStatus &lt;&gt; 101"/>
+<Item Value="106" Text="6Ah CAN SWA_CANHS_RNr_01 Absent"/>
+<Item Value="107" Text="6Bh CAN SWA_CANHS_RNr_01 Checksum Invalid"/>
+<Item Value="108" Text="6Ch CAN SWA_CANHS_RNr_01 Clock Invalid"/>
+<Item Value="146" Text="92h FUNC AngleFinding Too Slow"/></List>
+</Bits>
+</Data>
+<Data Name="SupplierInternalFaultStore.05.List">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="00h Clear DTC"/>
+<Item Value="17" Text="11h TS Main sensor output voltage out of range"/>
+<Item Value="18" Text="12h TS Sub sensor output voltage out of range"/>
+<Item Value="19" Text="13h TS Both sensors output voltage out of range"/>
+<Item Value="20" Text="14h TS Power supply voltage out of range"/>
+<Item Value="22" Text="16h TS Peak Average Error"/>
+<Item Value="23" Text="17h TS Power supply low voltage"/>
+<Item Value="34" Text="22h CAN EngineStatus Absent"/>
+<Item Value="52" Text="34h FUNC Unknown VehicleState"/>
+<Item Value="55" Text="37h CAN BRAKE_CANHS_RNr_02 Checksum/Clock Invalid"/>
+<Item Value="66" Text="42h Motor"/>
+<Item Value="83" Text="53h BATTERY High Voltage"/>
+<Item Value="84" Text="54h BATTERY Low Voltage"/>
+<Item Value="87" Text="57h BATTERY Cut Off"/>
+<Item Value="96" Text="60h CAN BRAKE_CANHS_RNr_02 Absent OSEK"/>
+<Item Value="97" Text="61h CAN VH VehicleSpeed Invalid"/>
+<Item Value="98" Text="62h CAN BUS OFF"/>
+<Item Value="101" Text="65h CAN BRAKE_CANHS_RNr_02 Absent"/>
+<Item Value="100" Text="66h FUNC AngleFinding WheelSpeed Invalid"/>
+<Item Value="102" Text="66h FUNC AngleFinding No Frame Received 29A / 29C"/>
+<Item Value="104" Text="68h CAN SWA SteeringWheelAngle Invalid"/>
+<Item Value="105" Text="69h CAN SWA SwaSensorInternalStatus &lt;&gt; 101"/>
+<Item Value="106" Text="6Ah CAN SWA_CANHS_RNr_01 Absent"/>
+<Item Value="107" Text="6Bh CAN SWA_CANHS_RNr_01 Checksum Invalid"/>
+<Item Value="108" Text="6Ch CAN SWA_CANHS_RNr_01 Clock Invalid"/>
+<Item Value="146" Text="92h FUNC AngleFinding Too Slow"/></List>
+</Bits>
+</Data>
+<Data Name="SupplierInternalFaultStore.06.List">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="00h Clear DTC"/>
+<Item Value="17" Text="11h TS Main sensor output voltage out of range"/>
+<Item Value="18" Text="12h TS Sub sensor output voltage out of range"/>
+<Item Value="19" Text="13h TS Both sensors output voltage out of range"/>
+<Item Value="20" Text="14h TS Power supply voltage out of range"/>
+<Item Value="22" Text="16h TS Peak Average Error"/>
+<Item Value="23" Text="17h TS Power supply low voltage"/>
+<Item Value="34" Text="22h CAN EngineStatus Absent"/>
+<Item Value="52" Text="34h FUNC Unknown VehicleState"/>
+<Item Value="55" Text="37h CAN BRAKE_CANHS_RNr_02 Checksum/Clock Invalid"/>
+<Item Value="66" Text="42h Motor"/>
+<Item Value="83" Text="53h BATTERY High Voltage"/>
+<Item Value="84" Text="54h BATTERY Low Voltage"/>
+<Item Value="87" Text="57h BATTERY Cut Off"/>
+<Item Value="96" Text="60h CAN BRAKE_CANHS_RNr_02 Absent OSEK"/>
+<Item Value="97" Text="61h CAN VH VehicleSpeed Invalid"/>
+<Item Value="98" Text="62h CAN BUS OFF"/>
+<Item Value="101" Text="65h CAN BRAKE_CANHS_RNr_02 Absent"/>
+<Item Value="100" Text="66h FUNC AngleFinding WheelSpeed Invalid"/>
+<Item Value="102" Text="66h FUNC AngleFinding No Frame Received 29A / 29C"/>
+<Item Value="104" Text="68h CAN SWA SteeringWheelAngle Invalid"/>
+<Item Value="105" Text="69h CAN SWA SwaSensorInternalStatus &lt;&gt; 101"/>
+<Item Value="106" Text="6Ah CAN SWA_CANHS_RNr_01 Absent"/>
+<Item Value="107" Text="6Bh CAN SWA_CANHS_RNr_01 Checksum Invalid"/>
+<Item Value="108" Text="6Ch CAN SWA_CANHS_RNr_01 Clock Invalid"/>
+<Item Value="146" Text="92h FUNC AngleFinding Too Slow"/></List>
+</Bits>
+</Data>
+<Data Name="SupplierInternalFaultStore.07.List">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="00h Clear DTC"/>
+<Item Value="17" Text="11h TS Main sensor output voltage out of range"/>
+<Item Value="18" Text="12h TS Sub sensor output voltage out of range"/>
+<Item Value="19" Text="13h TS Both sensors output voltage out of range"/>
+<Item Value="20" Text="14h TS Power supply voltage out of range"/>
+<Item Value="22" Text="16h TS Peak Average Error"/>
+<Item Value="23" Text="17h TS Power supply low voltage"/>
+<Item Value="34" Text="22h CAN EngineStatus Absent"/>
+<Item Value="52" Text="34h FUNC Unknown VehicleState"/>
+<Item Value="55" Text="37h CAN BRAKE_CANHS_RNr_02 Checksum/Clock Invalid"/>
+<Item Value="66" Text="42h Motor"/>
+<Item Value="83" Text="53h BATTERY High Voltage"/>
+<Item Value="84" Text="54h BATTERY Low Voltage"/>
+<Item Value="87" Text="57h BATTERY Cut Off"/>
+<Item Value="96" Text="60h CAN BRAKE_CANHS_RNr_02 Absent OSEK"/>
+<Item Value="97" Text="61h CAN VH VehicleSpeed Invalid"/>
+<Item Value="98" Text="62h CAN BUS OFF"/>
+<Item Value="101" Text="65h CAN BRAKE_CANHS_RNr_02 Absent"/>
+<Item Value="100" Text="66h FUNC AngleFinding WheelSpeed Invalid"/>
+<Item Value="102" Text="66h FUNC AngleFinding No Frame Received 29A / 29C"/>
+<Item Value="104" Text="68h CAN SWA SteeringWheelAngle Invalid"/>
+<Item Value="105" Text="69h CAN SWA SwaSensorInternalStatus &lt;&gt; 101"/>
+<Item Value="106" Text="6Ah CAN SWA_CANHS_RNr_01 Absent"/>
+<Item Value="107" Text="6Bh CAN SWA_CANHS_RNr_01 Checksum Invalid"/>
+<Item Value="108" Text="6Ch CAN SWA_CANHS_RNr_01 Clock Invalid"/>
+<Item Value="146" Text="92h FUNC AngleFinding Too Slow"/></List>
+</Bits>
+</Data>
+<Data Name="SupplierInternalFaultStore.08.List">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="00h Clear DTC"/>
+<Item Value="17" Text="11h TS Main sensor output voltage out of range"/>
+<Item Value="18" Text="12h TS Sub sensor output voltage out of range"/>
+<Item Value="19" Text="13h TS Both sensors output voltage out of range"/>
+<Item Value="20" Text="14h TS Power supply voltage out of range"/>
+<Item Value="22" Text="16h TS Peak Average Error"/>
+<Item Value="23" Text="17h TS Power supply low voltage"/>
+<Item Value="34" Text="22h CAN EngineStatus Absent"/>
+<Item Value="52" Text="34h FUNC Unknown VehicleState"/>
+<Item Value="55" Text="37h CAN BRAKE_CANHS_RNr_02 Checksum/Clock Invalid"/>
+<Item Value="66" Text="42h Motor"/>
+<Item Value="83" Text="53h BATTERY High Voltage"/>
+<Item Value="84" Text="54h BATTERY Low Voltage"/>
+<Item Value="87" Text="57h BATTERY Cut Off"/>
+<Item Value="96" Text="60h CAN BRAKE_CANHS_RNr_02 Absent OSEK"/>
+<Item Value="97" Text="61h CAN VH VehicleSpeed Invalid"/>
+<Item Value="98" Text="62h CAN BUS OFF"/>
+<Item Value="101" Text="65h CAN BRAKE_CANHS_RNr_02 Absent"/>
+<Item Value="100" Text="66h FUNC AngleFinding WheelSpeed Invalid"/>
+<Item Value="102" Text="66h FUNC AngleFinding No Frame Received 29A / 29C"/>
+<Item Value="104" Text="68h CAN SWA SteeringWheelAngle Invalid"/>
+<Item Value="105" Text="69h CAN SWA SwaSensorInternalStatus &lt;&gt; 101"/>
+<Item Value="106" Text="6Ah CAN SWA_CANHS_RNr_01 Absent"/>
+<Item Value="107" Text="6Bh CAN SWA_CANHS_RNr_01 Checksum Invalid"/>
+<Item Value="108" Text="6Ch CAN SWA_CANHS_RNr_01 Clock Invalid"/>
+<Item Value="146" Text="92h FUNC AngleFinding Too Slow"/></List>
+</Bits>
+</Data>
+<Data Name="SupplierInternalFaultStore.09.List">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="00h Clear DTC"/>
+<Item Value="17" Text="11h TS Main sensor output voltage out of range"/>
+<Item Value="18" Text="12h TS Sub sensor output voltage out of range"/>
+<Item Value="19" Text="13h TS Both sensors output voltage out of range"/>
+<Item Value="20" Text="14h TS Power supply voltage out of range"/>
+<Item Value="22" Text="16h TS Peak Average Error"/>
+<Item Value="23" Text="17h TS Power supply low voltage"/>
+<Item Value="34" Text="22h CAN EngineStatus Absent"/>
+<Item Value="52" Text="34h FUNC Unknown VehicleState"/>
+<Item Value="55" Text="37h CAN BRAKE_CANHS_RNr_02 Checksum/Clock Invalid"/>
+<Item Value="66" Text="42h Motor"/>
+<Item Value="83" Text="53h BATTERY High Voltage"/>
+<Item Value="84" Text="54h BATTERY Low Voltage"/>
+<Item Value="87" Text="57h BATTERY Cut Off"/>
+<Item Value="96" Text="60h CAN BRAKE_CANHS_RNr_02 Absent OSEK"/>
+<Item Value="97" Text="61h CAN VH VehicleSpeed Invalid"/>
+<Item Value="98" Text="62h CAN BUS OFF"/>
+<Item Value="101" Text="65h CAN BRAKE_CANHS_RNr_02 Absent"/>
+<Item Value="100" Text="66h FUNC AngleFinding WheelSpeed Invalid"/>
+<Item Value="102" Text="66h FUNC AngleFinding No Frame Received 29A / 29C"/>
+<Item Value="104" Text="68h CAN SWA SteeringWheelAngle Invalid"/>
+<Item Value="105" Text="69h CAN SWA SwaSensorInternalStatus &lt;&gt; 101"/>
+<Item Value="106" Text="6Ah CAN SWA_CANHS_RNr_01 Absent"/>
+<Item Value="107" Text="6Bh CAN SWA_CANHS_RNr_01 Checksum Invalid"/>
+<Item Value="108" Text="6Ch CAN SWA_CANHS_RNr_01 Clock Invalid"/>
+<Item Value="146" Text="92h FUNC AngleFinding Too Slow"/></List>
+</Bits>
+</Data>
+<Data Name="SupplierInternalFaultStore.10.List">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="00h Clear DTC"/>
+<Item Value="17" Text="11h TS Main sensor output voltage out of range"/>
+<Item Value="18" Text="12h TS Sub sensor output voltage out of range"/>
+<Item Value="19" Text="13h TS Both sensors output voltage out of range"/>
+<Item Value="20" Text="14h TS Power supply voltage out of range"/>
+<Item Value="22" Text="16h TS Peak Average Error"/>
+<Item Value="23" Text="17h TS Power supply low voltage"/>
+<Item Value="34" Text="22h CAN EngineStatus Absent"/>
+<Item Value="52" Text="34h FUNC Unknown VehicleState"/>
+<Item Value="55" Text="37h CAN BRAKE_CANHS_RNr_02 Checksum/Clock Invalid"/>
+<Item Value="66" Text="42h Motor"/>
+<Item Value="83" Text="53h BATTERY High Voltage"/>
+<Item Value="84" Text="54h BATTERY Low Voltage"/>
+<Item Value="87" Text="57h BATTERY Cut Off"/>
+<Item Value="96" Text="60h CAN BRAKE_CANHS_RNr_02 Absent OSEK"/>
+<Item Value="97" Text="61h CAN VH VehicleSpeed Invalid"/>
+<Item Value="98" Text="62h CAN BUS OFF"/>
+<Item Value="101" Text="65h CAN BRAKE_CANHS_RNr_02 Absent"/>
+<Item Value="100" Text="66h FUNC AngleFinding WheelSpeed Invalid"/>
+<Item Value="102" Text="66h FUNC AngleFinding No Frame Received 29A / 29C"/>
+<Item Value="104" Text="68h CAN SWA SteeringWheelAngle Invalid"/>
+<Item Value="105" Text="69h CAN SWA SwaSensorInternalStatus &lt;&gt; 101"/>
+<Item Value="106" Text="6Ah CAN SWA_CANHS_RNr_01 Absent"/>
+<Item Value="107" Text="6Bh CAN SWA_CANHS_RNr_01 Checksum Invalid"/>
+<Item Value="108" Text="6Ch CAN SWA_CANHS_RNr_01 Clock Invalid"/>
+<Item Value="146" Text="92h FUNC AngleFinding Too Slow"/></List>
+</Bits>
+</Data>
+<Data Name="SupplierInternalFaultStore.01.Hex">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="SupplierInternalFaultStore.02.Hex">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="SupplierInternalFaultStore.03.Hex">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="SupplierInternalFaultStore.04.Hex">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="SupplierInternalFaultStore.05.Hex">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="SupplierInternalFaultStore.06.Hex">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="SupplierInternalFaultStore.07.Hex">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="SupplierInternalFaultStore.08.Hex">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="SupplierInternalFaultStore.09.Hex">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="SupplierInternalFaultStore.10.Hex">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="SupplierInternalFaultStore.ALL.Hex">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_STORE]]></Comment>
+<Bytes count="10"/>
+</Data>
+<Data Name="VehiculeManufacturerSparPartNumber">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="DTCStatusAvailabilityMask">
+<Mnemonic>DTCSAM</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="StatusOfDTC">
+<Mnemonic>DTCASR_SODTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCDeviceIdentifier">
+<Bits count="16">
+<List>
+<Item Value="22020" Text="EPS_TorqueSensor"/>
+<Item Value="22022" Text="EPS_MOTOR"/>
+<Item Value="22024" Text="EPS_ECU"/>
+<Item Value="22036" Text="EPS_Derating_ThermalProtection"/>
+<Item Value="49408" Text="CAN_ECM_EngineStatus"/>
+<Item Value="49731" Text="CAN_ParkAssist"/>
+<Item Value="53248" Text="CAN_Bus"/>
+<Item Value="53249" Text="CAN_WheelSpeed"/>
+<Item Value="53760" Text="CAN_BRAKE_VehicleSpeed"/>
+<Item Value="53803" Text="CAN_SteeringWheelSpeed"/>
+<Item Value="53804" Text="CAN_SteeringWheelAngle"/>
+<Item Value="61443" Text="Battery"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType">
+<Bits>
+<List>
+<Item Value="0" Text="Device and failure type ODB codding"/>
+<Item Value="1" Text="General Electrical Failure"/>
+<Item Value="2" Text="General signal failure"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="17" Text="circuit short to ground"/>
+<Item Value="18" Text="circuit short to battery"/>
+<Item Value="19" Text="circuit open"/>
+<Item Value="20" Text="circuit short to ground or open"/>
+<Item Value="21" Text="circuit short to battery or open"/>
+<Item Value="22" Text="circuit voltage below threshold"/>
+<Item Value="23" Text="circuit voltage above threshold"/>
+<Item Value="24" Text="circuit current below threshold"/>
+<Item Value="25" Text="circuit current above threshold"/>
+<Item Value="26" Text="circuit resistance below threshold"/>
+<Item Value="27" Text="circuit resistance above threshold"/>
+<Item Value="28" Text="circuit voltage out of range"/>
+<Item Value="29" Text="circuit current out of range"/>
+<Item Value="30" Text="circuit resistance out of range"/>
+<Item Value="31" Text="circuit intermittent"/>
+<Item Value="33" Text="signal amplitude &lt; minimum"/>
+<Item Value="34" Text="signal amplitude &gt; maximum"/>
+<Item Value="35" Text="signal stuck low"/>
+<Item Value="36" Text="signal stuck high"/>
+<Item Value="37" Text="signal shape / waveform failure"/>
+<Item Value="38" Text="signal rate of change below threshold"/>
+<Item Value="39" Text="signal rate of change above threshold"/>
+<Item Value="40" Text="signal bias level out of range / zero adjustment failure"/>
+<Item Value="41" Text="signal signal invalid"/>
+<Item Value="47" Text="signal erratic"/>
+<Item Value="49" Text="no signal"/>
+<Item Value="50" Text="signal low time &lt; minimum"/>
+<Item Value="51" Text="signal low time &gt; maximum"/>
+<Item Value="52" Text="signal high time &lt; minimum"/>
+<Item Value="53" Text="signal high time &gt; maximum"/>
+<Item Value="54" Text="signal frequency too low"/>
+<Item Value="55" Text="signal frequency too high"/>
+<Item Value="56" Text="signal frequency incorrect"/>
+<Item Value="57" Text="incorrect has too few pulses"/>
+<Item Value="58" Text="incorrect has too many pulses"/>
+<Item Value="65" Text="general checksum failure"/>
+<Item Value="66" Text="general memory failure"/>
+<Item Value="67" Text="special memory failure"/>
+<Item Value="68" Text="data memory failure"/>
+<Item Value="69" Text="program memory failure"/>
+<Item Value="70" Text="calibration / parameter memory failure"/>
+<Item Value="71" Text="watchdog / safety µC failure"/>
+<Item Value="72" Text="supervision software failure"/>
+<Item Value="73" Text="internal electronic failure"/>
+<Item Value="74" Text="incorrect component installed"/>
+<Item Value="75" Text="over temperature"/>
+<Item Value="81" Text="not programmed"/>
+<Item Value="82" Text="not activated"/>
+<Item Value="83" Text="deactivated"/>
+<Item Value="84" Text="missing calibration"/>
+<Item Value="85" Text="not configured"/>
+<Item Value="97" Text="signal calculation failure"/>
+<Item Value="98" Text="signal compare failure"/>
+<Item Value="99" Text="circuit / component protection time-out"/>
+<Item Value="100" Text="signal plausibility failure"/>
+<Item Value="101" Text="signal has too few transitions / events"/>
+<Item Value="102" Text="signal has too many transitions / events"/>
+<Item Value="103" Text="signal incorrect after event"/>
+<Item Value="104" Text="event information"/>
+<Item Value="113" Text="actuator stuck"/>
+<Item Value="114" Text="actuator stuck open"/>
+<Item Value="115" Text="actuator stuck closed"/>
+<Item Value="116" Text="actuator slipping"/>
+<Item Value="117" Text="emergency position not reachable"/>
+<Item Value="118" Text="wrong mounting position"/>
+<Item Value="119" Text="commanded position not reachable"/>
+<Item Value="120" Text="alignment or adjustment incorrect"/>
+<Item Value="121" Text="mechanical linkage failure"/>
+<Item Value="122" Text="fluid leak or seal failure"/>
+<Item Value="123" Text="low fluid level"/>
+<Item Value="129" Text="invalid serial data received"/>
+<Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+<Item Value="131" Text="value of signal protection calculation incorrect"/>
+<Item Value="132" Text="signal below allowable range"/>
+<Item Value="133" Text="signal above allowable range"/>
+<Item Value="134" Text="signal invalid"/>
+<Item Value="135" Text="missing message"/>
+<Item Value="136" Text="bus off"/>
+<Item Value="143" Text="erratic"/>
+<Item Value="145" Text="parametric"/>
+<Item Value="146" Text="performance or incorrect operation"/>
+<Item Value="147" Text="no operation"/>
+<Item Value="148" Text="unexpected operation"/>
+<Item Value="149" Text="incorrect assembly"/>
+<Item Value="150" Text="component internal failure"/>
+<Item Value="151" Text="Component or system operation obstructed or blocked"/>
+<Item Value="152" Text="component or system over temperature"/></List>
+</Bits>
+</Data>
+<Data Name="DTCMaskRecord">
+<Mnemonic>DTCMREC_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCRecord">
+<Mnemonic>DTCASR_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCCount">
+<Comment><![CDATA[DTC count]]></Comment>
+<Mnemonic>DTCC</Mnemonic>
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCFormatIdentifier">
+<Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+<Mnemonic>DTCFID</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="SAE_J2012-DA_DTC"/>
+<Item Value="1" Text="ISO_14229-1_DTC"/>
+<Item Value="2" Text="SAE_J1939-73_DTC"/>
+<Item Value="3" Text="ISO_11992-4_DTC"/>
+<Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/></List>
+</Bits>
+</Data>
+<Data Name="DTCExtendedDataRecordNumber">
+<Mnemonic>DTCEDRN</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Mileage"/>
+<Item Value="129" Text="AgingCounter"/>
+<Item Value="130" Text="DTCOccurrenceCounter"/></List>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.Mileage">
+<Mnemonic>MILEAGE</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.AgingCounter">
+<Mnemonic>AGINGCOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.DTCOccurrenceCounter">
+<Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailed">
+<Mnemonic>TF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedThisMonitoringCycle">
+<Mnemonic>TFTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.pendingDTC">
+<Mnemonic>PDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.confirmedDTC">
+<Mnemonic>CDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedSinceLastClear">
+<Mnemonic>TNCSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedSinceLastClear">
+<Mnemonic>TFSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+<Mnemonic>TNCTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.warningIndicatorRequested">
+<Mnemonic>WIR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.Category">
+<Bits count="4">
+<List>
+<Item Value="0" Text="General Failure Information"/>
+<Item Value="1" Text="General Electrical Failures"/>
+<Item Value="2" Text="General Signal Failures"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="15" Text="Vehicle manufacturer / System supplier specific"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceAndFailureTypeOBD">
+<Bits count="16">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.ManufacturerOrSupplier">
+<Bits count="4">
+<List/>
+</Bits>
+</Data>
+<Data Name="SessionName">
+<Comment><![CDATA[Diagnostic session values. See documentation for more information.]]></Comment>
+<Mnemonic>LEV_DS</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>[0x00] : ISO / SAE Reserved<BR>[0x01] : Default session<BR>[0x02] : Programming session<BR>[0x03] : Extended diagnostic session<BR>[0x04] : Safety system diagnostic session<BR>[0x05 - 0x3F] : ISO / SAE Reserved<BR>[0x40 - 0x5F] : Vehicle manufacturer specific<BR>[0x60 - 0x7E] : System supplier specific<BR>[0x7F] : ISO / SAE Reserved</FONT></P>]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="DefaultSession"/>
+<Item Value="2" Text="ProgrammingSession"/>
+<Item Value="3" Text="ExtendedDiagnosticSession"/>
+<Item Value="4" Text="SafetySystemDiagnosticSession"/></List>
+</Bits>
+</Data>
+<Data Name="VehicleSpeed">
+<Comment><![CDATA[cf. Spec DiagOnCAN: VEHICULE_SPEED/Vehicle speed (in km/h) from CAN signal]]></Comment>
+<Mnemonic>DID_$0204</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km/h" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="SystemMode">
+<Comment><![CDATA[cf. Spec DiagOnCAN: system mode (renault stateflow)]]></Comment>
+<Mnemonic>DID_$0119</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="SystemStop"/>
+<Item Value="2" Text="PowerUpTests Wait for Assist"/>
+<Item Value="3" Text="RampUpNormalOperation"/>
+<Item Value="4" Text="VerySoftRampDown Unknow Vehicle State"/>
+<Item Value="5" Text="SoftRampDown"/>
+<Item Value="6" Text="WaitForShutdown"/>
+<Item Value="7" Text="ParkAssist"/></List>
+</Bits>
+</Data>
+<Data Name="SWASensorInternalStatus.ALL">
+<Comment><![CDATA[cf. Spec DiagOnCAN: SwaSensorInternalStatus]]></Comment>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SWASensorInternalStatus.CalibrationStatus">
+<Comment><![CDATA[cf. Spec DiagOnCAN: Swa Sensor Internal Status]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NotCalibrated"/>
+<Item Value="1" Text="Calibrated"/></List>
+</Bits>
+</Data>
+<Data Name="SWASensorInternalStatus.FailureStatus">
+<Comment><![CDATA[cf. Spec DiagOnCAN: Swa Sensor Internal Status]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NoFailure"/>
+<Item Value="1" Text="Failure"/></List>
+</Bits>
+</Data>
+<Data Name="SWASensorInternalStatus.InitializationStatus">
+<Comment><![CDATA[cf. Spec DiagOnCAN: Swa Sensor Internal Status]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NotInitialized"/>
+<Item Value="1" Text="Initialized"/></List>
+</Bits>
+</Data>
+<Data Name="SupplyVoltage">
+<Comment><![CDATA[cf. Spec DiagOnCAN: VOLTAGE_ST/Computer supply voltage]]></Comment>
+<Mnemonic>DID_$012F</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" DivideBy=" 256"/>
+</Bits>
+</Data>
+<Data Name="MotorTemperature">
+<Comment><![CDATA[cf. Spec DiagOnCAN: Motor_TEMPERATURE/Value of the temperature sensor]]></Comment>
+<Mnemonic>DID_$012D</Mnemonic>
+<Bits signed="1">
+<Scaled Unit="°C" Step=" 2" Offset="-50"/>
+</Bits>
+</Data>
+<Data Name="MinimumVoltagebySteer">
+<Comment><![CDATA[cf. Spec DiagOnCAN: MinimumVoltagebySteer]]></Comment>
+<Mnemonic>DID_$0172</Mnemonic>
+<Bits count="3">
+<Scaled Unit="V" Step=" .5" Offset=" 12"/>
+</Bits>
+</Data>
+<Data Name="IgnitionStatus">
+<Comment><![CDATA[cf. Spec DiagOnCAN: ignition status]]></Comment>
+<Mnemonic>DID_$0131</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="GADE">
+<Comment><![CDATA[cf. Spec DiagOnCAN: GADE GenericApplicativeDiagEnable]]></Comment>
+<Mnemonic>DID_$0503</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="Only faults reports and alerts that MUST remain active during cranking or sleeping periods are enabled"/>
+<Item Value="1" Text="All  faults reports and alerts not related to APC power level are enabled"/>
+<Item Value="2" Text="All  faults reports and alerts are enabled"/>
+<Item Value="3" Text="Unavailable"/></List>
+</Bits>
+</Data>
+<Data Name="FilteredVehicleSpeed">
+<Comment><![CDATA[cf. Spec DiagOnCAN: FILTERED VEHICLE SPEED/HEPS calculation ; information in use]]></Comment>
+<Mnemonic>DID_$0116</Mnemonic>
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="EPSWarning">
+<Comment><![CDATA[cf. Spec DiagOnCAN: FAULT INDICATOR_ST]]></Comment>
+<Mnemonic>DID_$011A</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="NoWarning"/>
+<Item Value="1" Text="MinorWarning"/>
+<Item Value="2" Text="MajorWarning"/>
+<Item Value="3" Text="NotUsed"/></List>
+</Bits>
+</Data>
+<Data Name="EngineStatus">
+<Comment><![CDATA[cf. Spec DiagOnCAN: ENGINE_STATUS]]></Comment>
+<Mnemonic>DID_$0501</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="Stopped"/>
+<Item Value="1" Text="Reserved"/>
+<Item Value="2" Text="Running"/>
+<Item Value="3" Text="Driven"/></List>
+</Bits>
+</Data>
+<Data Name="ElectricalMotorSpeed">
+<Comment><![CDATA[cf sepc DiagONCAN Electrical Moto rSpeed]]></Comment>
+<Mnemonic>DID_$011D</Mnemonic>
+<Bits count="16">
+<Scaled Unit="deg/s" Step=" 2" Offset="-65534"/>
+</Bits>
+</Data>
+<Data Name="ECUTemperature">
+<Comment><![CDATA[cf. Spec DiagOnCAN: ECU_TEMPERATURE/Value of the temperature sensor]]></Comment>
+<Mnemonic>DID_$012E</Mnemonic>
+<Bits signed="1">
+<Scaled Unit="°C" Step=" 2" Offset="-50"/>
+</Bits>
+</Data>
+<Data Name="DeratingAssistanceLevel">
+<Comment><![CDATA[cf. Spec DiagOnCAN: Derating assistance level (0 to 100%)]]></Comment>
+<Mnemonic>DID_$0160</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CAN_SteeringWheelRotationSpeed">
+<Comment><![CDATA[cf. Spec DiagOnCAN: SteeringWheelRotationSpeed]]></Comment>
+<Mnemonic>DID_$0101</Mnemonic>
+<Bits count="16">
+<Scaled Unit="°/s" Step=" .1" Offset="-3276.7"/>
+</Bits>
+</Data>
+<Data Name="CAN_SteeringWheelAngle">
+<Comment><![CDATA[cf. Spec DiagOnCAN: SteeringWheelAngle]]></Comment>
+<Mnemonic>DID_$0104</Mnemonic>
+<Bits count="16">
+<Scaled Unit="°" Offset="-32767" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="BatteryCurrent">
+<Comment><![CDATA[cf. Spec DiagOnCAN: I Battery]]></Comment>
+<Mnemonic>DID_$0173</Mnemonic>
+<Bits>
+<Scaled Unit="A" Step=" .5"/>
+</Bits>
+</Data>
+<Data Name="AssistanceLevel">
+<Comment><![CDATA[cf. Spec DiagOnCAN: ASSISTANCE_LEVEL/Percentage of assistance avaliable]]></Comment>
+<Mnemonic>DID_$0115</Mnemonic>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="AssistTorqueDemand">
+<Comment><![CDATA[AssistanceTorque]]></Comment>
+<Mnemonic>DID_$011F</Mnemonic>
+<Bits count="16">
+<Scaled Offset="-200" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="BoostFunctionActivation">
+<Comment><![CDATA[cf. Spec DiagOnCAN: BOOST_function_activation]]></Comment>
+<Mnemonic>DID_$0171</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="BoostHighVoltage">
+<Mnemonic>DID_$0170</Mnemonic>
+<Bits count="3">
+<Scaled Unit="V" Offset=" 24" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="CAN_SteeringWheelAngle_Offset">
+<Comment><![CDATA[CAN SWA_Offset - CALCULATED_ANGLE_OFFSET_ST (1byte)]]></Comment>
+<Mnemonic>DID_$0103</Mnemonic>
+<Bits>
+<Scaled Unit="°" Offset="-127"/>
+</Bits>
+</Data>
+<Data Name="CPULoad">
+<Mnemonic>DID_$0169</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DistanceTotalizer">
+<Mnemonic>DID_$0192</Mnemonic>
+<Bits count="28">
+<Scaled Unit="km" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="DongleError">
+<Mnemonic>DID_$0166</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="1" Text="EEPROM error on Dongle_ID"/>
+<Item Value="2" Text="EEPROM error on DonglePairingCounter"/>
+<Item Value="0" Text="No error"/>
+<Item Value="3" Text="any other error"/></List>
+</Bits>
+</Data>
+<Data Name="DonglePairingCounter">
+<Mnemonic>DID_$0165</Mnemonic>
+<Bits count="2">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DongleState">
+<Mnemonic>DID_$0164</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="2" Text="operational blank"/>
+<Item Value="1" Text="operational learnt"/>
+<Item Value="3" Text="not operational"/></List>
+</Bits>
+</Data>
+<Data Name="EnhancedDiag_ParkAssist_All">
+<Comment><![CDATA[Last 10 activations + last 10 disactivations of HandFreeParking Mode (total 20 slots) + reason]]></Comment>
+<Mnemonic>DID_$01A0</Mnemonic>
+<Bytes count="203"/>
+</Data>
+<Data Name="EnhancedDiag_ParkAssist_LastReason">
+<Mnemonic>DID_$01A1</Mnemonic>
+<Bytes count="10"/>
+</Data>
+<Data Name="EPS_FactoryState">
+<Comment><![CDATA[EPS calibrated or not]]></Comment>
+<Mnemonic>DID_$01BE</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="EPS not calibrated"/>
+<Item Value="1" Text="reserved"/>
+<Item Value="2" Text="EPS calibrated"/>
+<Item Value="3" Text="invalid"/></List>
+</Bits>
+</Data>
+<Data Name="EPSRelativeSteeringWheelAngle">
+<Comment><![CDATA[EPSRelativeSteeringWheelAngle]]></Comment>
+<Mnemonic>DID_$0100</Mnemonic>
+<Bits count="16">
+<Scaled Unit="°/s" Offset="-3276.7"/>
+</Bits>
+</Data>
+<Data Name="EPSRelativeSteeringWheelVelocity">
+<Comment><![CDATA[EPSInternal_SteeringWheelVelocity]]></Comment>
+<Mnemonic>DID_$0185</Mnemonic>
+<Bits count="16">
+<Scaled Unit="°/s" Offset="-32767" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="ExternalAngleSensor">
+<Mnemonic>DID_$015A</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No External Angle Sensor (ABS vh)"/>
+<Item Value="1" Text="With External Angle Sensor (ESC vh)"/></List>
+</Bits>
+</Data>
+<Data Name="HFP_Activation">
+<Comment><![CDATA[Activation/Inhibition of ParkAssist function]]></Comment>
+<Mnemonic>DID_$0182</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Disabled (default)"/>
+<Item Value="1" Text="Activated"/></List>
+</Bits>
+</Data>
+<Data Name="IgnitionSwitchCounter">
+<Mnemonic>DID_$011E</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="InhibitionOfDevptFrame">
+<Mnemonic>DID_$015F</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="DevptFrame are inhibited (default)"/>
+<Item Value="1" Text="DevptFrame can be sent"/></List>
+</Bits>
+</Data>
+<Data Name="InputTorque">
+<Comment><![CDATA[InputTorque]]></Comment>
+<Mnemonic>DID_$0112</Mnemonic>
+<Bits count="16">
+<Scaled Unit="Nm" Step=" .1" Offset="-20"/>
+</Bits>
+</Data>
+<Data Name="SupplierInternalFaultCode_DTC">
+<Comment><![CDATA[cf. Spec DiagOnCAN: INTERNAL_FAULT_CODE/Supplier fault code for this DTC]]></Comment>
+<Mnemonic>DID_$0163</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="MeasuredMotorCurrent">
+<Mnemonic>DID_$012C</Mnemonic>
+<Bits>
+<Scaled Unit="A" Offset="-127"/>
+</Bits>
+</Data>
+<Data Name="MotorCurrentDemand">
+<Mnemonic>DID_$0113</Mnemonic>
+<Bits>
+<Scaled Unit="A" Offset="-127"/>
+</Bits>
+</Data>
+<Data Name="MultiDrive_Activation">
+<Comment><![CDATA[MultiDrive ON/OFF]]></Comment>
+<Mnemonic>DID_$017D</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="Unavailable (default)"/>
+<Item Value="1" Text="Disabled (ignore MultiDrive)"/>
+<Item Value="2" Text="Activated (consider Multidrive)"/>
+<Item Value="3" Text="Not used"/></List>
+</Bits>
+</Data>
+<Data Name="NotATrivialName">
+<Comment><![CDATA[EnableCCP]]></Comment>
+<Mnemonic>DID_$0179</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="CCP frames not activated"/>
+<Item Value="1" Text="CCP frames activated"/></List>
+</Bits>
+</Data>
+<Data Name="RackEndStop_Activation">
+<Comment><![CDATA[rack end stop on/off]]></Comment>
+<Mnemonic>DID_$012A</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Disabled (default)"/>
+<Item Value="1" Text="Activated"/></List>
+</Bits>
+</Data>
+<Data Name="RackEndStop_Running">
+<Comment><![CDATA[rack end stop function running]]></Comment>
+<Mnemonic>DID_$0151</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not running"/>
+<Item Value="1" Text="Running"/></List>
+</Bits>
+</Data>
+<Data Name="TuningNumberSelected">
+<Comment><![CDATA[cf. Spec DiagOnCAN: TUNING NUMBER SELECTED]]></Comment>
+<Mnemonic>DID_$0162</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="0_Normal (lot0)"/>
+<Item Value="1" Text="1_Default (slot1)"/>
+<Item Value="2" Text="2_MultiDriveCity (slot2)"/>
+<Item Value="3" Text="3_MultiDriveSport (slot3)"/></List>
+</Bits>
+</Data>
+<Data Name="TuningVersionNumber">
+<Comment><![CDATA[cf. Spec DiagOnCAN: TUNING VERSION NUMBER]]></Comment>
+<Mnemonic>DID_$F182</Mnemonic>
+<Bytes count="12"/>
+</Data>
+<Data Name="Dongle.Code">
+<Bytes count="2"/>
+</Data>
+<Data Name="VIN">
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="CRC">
+<Bytes count="2"/>
+</Data>
+<Data Name="Wheelspeed index map selector">
+<Mnemonic>DID_$0168</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="No map selected (default)"/>
+<Item Value="1" Text="Map 1 selected"/>
+<Item Value="2" Text="Map 2 selected"/>
+<Item Value="3" Text="Map 3 selected"/>
+<Item Value="4" Text="Map 4 selected"/>
+<Item Value="5" Text="Map 5 selected"/>
+<Item Value="6" Text="Map 6 selected"/>
+<Item Value="7" Text="Map 7 selected"/>
+<Item Value="8" Text="Map 8 selected"/>
+<Item Value="9" Text="Map 9 selected"/>
+<Item Value="10" Text="Map 10 selected"/>
+<Item Value="11" Text="Map 11 selected"/>
+<Item Value="12" Text="Map 12 selected"/>
+<Item Value="13" Text="Map 13 selected"/>
+<Item Value="14" Text="Map 14 selected"/>
+<Item Value="15" Text="Map 15 selected"/></List>
+</Bits>
+</Data>
+<Data Name="TraceabilityInformation">
+<Bytes count="20" ascii="1"/>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="DataRead.History.Ident.0">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>21F0</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>61F0</ReplyBytes>
+<DataItem Name="CalibrationNumber" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" FirstByte="9"/>
+<DataItem Name="EditionNumber" FirstByte="19"/>
+<DataItem Name="PartNumber.BasicPartList" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" FirstByte="25"/>
+<DataItem Name="PartNumber.LowerPart" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" FirstByte="26"/>
+<DataItem Name="SupplierNumber" FirstByte="9"/>
+</Received>
+</Request>
+<Request Name="DataRead.History.Reprog.0">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>21F1</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>61F1</ReplyBytes>
+<DataItem Name="ApprovalNumber.LowerPart" FirstByte="3"/>
+<DataItem Name="ProgrammingSiteReference" FirstByte="8"/>
+<DataItem Name="ProgrammingToolReference" FirstByte="13"/>
+<DataItem Name="NumberOfReprogrammings" FirstByte="18"/>
+<DataItem Name="DateOfReprogramming" FirstByte="19"/>
+<DataItem Name="SaveMarking" FirstByte="24"/>
+<DataItem Name="CrcOfLogSave" FirstByte="25"/>
+<DataItem Name="TimeOfReprogramming" FirstByte="22"/>
+</Received>
+</Request>
+<Request Name="DataRead.VehicleManufacturerKitAssemblyPartNumber">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22F18E</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F18E</ReplyBytes>
+<DataItem Name="VehicleManufacturerKitAssemblyPartNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VehiculeManufacturerSparPartNumber">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22F187</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F187</ReplyBytes>
+<DataItem Name="VehiculeManufacturerSparPartNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Identification.RenaultR2">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>6180</ReplyBytes>
+<DataItem Name="CalibrationNumber" Ref="1" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" Ref="1" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" Ref="1" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" Ref="1" FirstByte="9"/>
+<DataItem Name="EditionNumber" Ref="1" FirstByte="19"/>
+<DataItem Name="PartNumber.BasicPartList" Ref="1" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" Ref="1" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" Ref="1" FirstByte="25"/>
+<DataItem Name="PartNumber.LowerPart" Ref="1" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" Ref="1" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" Ref="1" FirstByte="26"/>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+<Sent>
+<SentBytes>3E01</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Programming">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1085</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5085</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.ExtendedDiagnostic">
+
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>10C0</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50C0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Default">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1081</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5081</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1003</SentBytes>
+<DataItem Name="SessionName" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5003</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ECUReset.SoftReset">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Sent>
+<SentBytes>1103</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5103</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ECUReset.KeyOffOnReset">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Sent>
+<SentBytes>1102</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5102</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ECUReset.hardReset">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Sent>
+<SentBytes>1101</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5101</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ClearDiagnosticInformation.All">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+<Sent>
+<SentBytes>14FFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>54</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SupplierInternalFaultStore">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220161</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62016100</ReplyBytes>
+<DataItem Name="SupplierInternalFaultStore.10.Hex" Ref="1" FirstByte="13"/>
+<DataItem Name="SupplierInternalFaultStore.09.Hex" Ref="1" FirstByte="12"/>
+<DataItem Name="SupplierInternalFaultStore.08.Hex" Ref="1" FirstByte="11"/>
+<DataItem Name="SupplierInternalFaultStore.07.Hex" Ref="1" FirstByte="10"/>
+<DataItem Name="SupplierInternalFaultStore.06.Hex" Ref="1" FirstByte="9"/>
+<DataItem Name="SupplierInternalFaultStore.05.Hex" Ref="1" FirstByte="8"/>
+<DataItem Name="SupplierInternalFaultStore.04.Hex" Ref="1" FirstByte="7"/>
+<DataItem Name="SupplierInternalFaultStore.03.Hex" Ref="1" FirstByte="6"/>
+<DataItem Name="SupplierInternalFaultStore.02.Hex" Ref="1" FirstByte="5"/>
+<DataItem Name="SupplierInternalFaultStore.01.Hex" Ref="1" FirstByte="4"/>
+<DataItem Name="SupplierInternalFaultStore.ALL.Hex" Ref="1" FirstByte="4"/>
+<DataItem Name="SupplierInternalFaultStore.01.List" Ref="1" FirstByte="4"/>
+<DataItem Name="SupplierInternalFaultStore.02.List" Ref="1" FirstByte="5"/>
+<DataItem Name="SupplierInternalFaultStore.03.List" Ref="1" FirstByte="6"/>
+<DataItem Name="SupplierInternalFaultStore.04.List" Ref="1" FirstByte="7"/>
+<DataItem Name="SupplierInternalFaultStore.05.List" Ref="1" FirstByte="8"/>
+<DataItem Name="SupplierInternalFaultStore.06.List" Ref="1" FirstByte="9"/>
+<DataItem Name="SupplierInternalFaultStore.07.List" Ref="1" FirstByte="10"/>
+<DataItem Name="SupplierInternalFaultStore.08.List" Ref="1" FirstByte="11"/>
+<DataItem Name="SupplierInternalFaultStore.09.List" Ref="1" FirstByte="12"/>
+<DataItem Name="SupplierInternalFaultStore.10.List" Ref="1" FirstByte="13"/>
+</Received>
+</Request>
+<Request Name="DataRead.VehicleSpeed">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220204</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>6202040000</ReplyBytes>
+<DataItem Name="VehicleSpeed" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.SystemMode">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220119</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011900</ReplyBytes>
+<DataItem Name="SystemMode" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.SWASensorInternalStatus">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220102</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62010200</ReplyBytes>
+<DataItem Name="SWASensorInternalStatus.ALL" Ref="1" FirstByte="4"/>
+<DataItem Name="SWASensorInternalStatus.CalibrationStatus" Ref="1" FirstByte="4" BitOffset="5"/>
+<DataItem Name="SWASensorInternalStatus.FailureStatus" Ref="1" FirstByte="4" BitOffset="6"/>
+<DataItem Name="SWASensorInternalStatus.InitializationStatus" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.SupplyVoltage">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22012F</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62012F0000</ReplyBytes>
+<DataItem Name="SupplyVoltage" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.MotorTemperature">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22012D</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62012D00</ReplyBytes>
+<DataItem Name="MotorTemperature" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.MinimumVoltagebySteer">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220172</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62017200</ReplyBytes>
+<DataItem Name="MinimumVoltagebySteer" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataRead.IgnitionStatus">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220131</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62013100</ReplyBytes>
+<DataItem Name="IgnitionStatus" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataRead.GADE">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220503</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62050300</ReplyBytes>
+<DataItem Name="GADE" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataRead.FilteredVehicleSpeed">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220116</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011600</ReplyBytes>
+<DataItem Name="FilteredVehicleSpeed" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.EPSWarning">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22011A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011A00</ReplyBytes>
+<DataItem Name="EPSWarning" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.EngineStatus">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220501</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62050100</ReplyBytes>
+<DataItem Name="EngineStatus" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataRead.ElectricalMotorSpeed">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22011D</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62011D0000</ReplyBytes>
+<DataItem Name="ElectricalMotorSpeed" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ECUTemperature">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22012E</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62012E00</ReplyBytes>
+<DataItem Name="ECUTemperature" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.DeratingAssistanceLevel">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220160</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62016000</ReplyBytes>
+<DataItem Name="DeratingAssistanceLevel" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CAN_SteeringWheelRotationSpeed">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220101</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>6201010000</ReplyBytes>
+<DataItem Name="CAN_SteeringWheelRotationSpeed" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CAN_SteeringWheelAngle">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220104</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>6201040000</ReplyBytes>
+<DataItem Name="CAN_SteeringWheelAngle" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.BatteryCurrent">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220173</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62017300</ReplyBytes>
+<DataItem Name="BatteryCurrent" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.AssistanceLevel">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220115</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011500</ReplyBytes>
+<DataItem Name="AssistanceLevel" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1902FF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+<DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTCSnapshotIdentification">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report snapshot identification]]></Comment>
+<Sent>
+<SentBytes>1903000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590300000001</ReplyBytes>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report number of DTC (ok)]]></Comment>
+<Sent>
+<SentBytes>1901FF</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>5901FF000000</ReplyBytes>
+<DataItem Name="DTCCount" FirstByte="5"/>
+<DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSnapshot">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1904000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590400000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSupportedDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report supported DTC]]></Comment>
+<Sent>
+<SentBytes>190A</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>590AFF00000000</ReplyBytes>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.AssistTorqueDemand">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22011F</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62011F</ReplyBytes>
+<DataItem Name="AssistTorqueDemand" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.BoostFunctionActivation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220171</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620171</ReplyBytes>
+<DataItem Name="BoostFunctionActivation" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.BoostFunctionActivation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E017100</SentBytes>
+<DataItem Name="BoostFunctionActivation" FirstByte="4" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0171</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.BoostHighVoltage">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220170</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620170</ReplyBytes>
+<DataItem Name="BoostHighVoltage" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.BoostHighVoltage">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E017000</SentBytes>
+<DataItem Name="BoostHighVoltage" FirstByte="4" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0170</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.CAN_SteeringWheelAngle_Offset">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220103</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620103</ReplyBytes>
+<DataItem Name="CAN_SteeringWheelAngle_Offset" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CPULoad">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read CPULoad]]></Comment>
+<Sent>
+<SentBytes>220169</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620169</ReplyBytes>
+<DataItem Name="CPULoad" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.DistanceTotalizer">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220192</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>620192</ReplyBytes>
+<DataItem Name="DistanceTotalizer" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.DongleError">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read DongleError]]></Comment>
+<Sent>
+<SentBytes>220166</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620166</ReplyBytes>
+<DataItem Name="DongleError" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataRead.DonglePairingCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read DonglePairingCounter]]></Comment>
+<Sent>
+<SentBytes>220165</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620165</ReplyBytes>
+<DataItem Name="DonglePairingCounter" Ref="1" FirstByte="4" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.DongleState">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read DongleState]]></Comment>
+<Sent>
+<SentBytes>220164</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620164</ReplyBytes>
+<DataItem Name="DongleState" Ref="1" FirstByte="4" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.EnhancedDiag_ParkAssist_All">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read EnhancedDiag_ParkAssist_1]]></Comment>
+<Sent>
+<SentBytes>2201A0</SentBytes>
+</Sent>
+<Received MinBytes="206">
+<ReplyBytes>6201A0</ReplyBytes>
+<DataItem Name="EnhancedDiag_ParkAssist_All" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.EnhancedDiag_ParkAssist_All">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E01A00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</SentBytes>
+<DataItem Name="EnhancedDiag_ParkAssist_All" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01A0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.EnhancedDiag_ParkAssist_LastReason">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2201A1</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>6201A1</ReplyBytes>
+<DataItem Name="EnhancedDiag_ParkAssist_LastReason" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.EPS_FactoryState">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2201BE</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201BE</ReplyBytes>
+<DataItem Name="EPS_FactoryState" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.EPS_FactoryState">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E01BE00</SentBytes>
+<DataItem Name="EPS_FactoryState" FirstByte="4" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E01BE</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.EPSRelativeSteeringWheelAngle">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220100</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620100</ReplyBytes>
+<DataItem Name="EPSRelativeSteeringWheelAngle" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.EPSRelativeSteeringWheelVelocity">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220185</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620185</ReplyBytes>
+<DataItem Name="EPSRelativeSteeringWheelVelocity" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ExternalAngleSensor">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DID 015A]]></Comment>
+<Sent>
+<SentBytes>22015A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62015A</ReplyBytes>
+<DataItem Name="ExternalAngleSensor" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.ExternalAngleSensor">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E015A00</SentBytes>
+<DataItem Name="ExternalAngleSensor" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E015A</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.HFP_Activation">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read HFP_Activation]]></Comment>
+<Sent>
+<SentBytes>220182</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620182</ReplyBytes>
+<DataItem Name="HFP_Activation" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.HFP_Activation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Write HFP_Activation]]></Comment>
+<Sent>
+<SentBytes>2E018200</SentBytes>
+<DataItem Name="HFP_Activation" FirstByte="4" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0182</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.IgnitionSwitchCounter">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22011E</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011E</ReplyBytes>
+<DataItem Name="IgnitionSwitchCounter" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.InhibitionOfDevptFrame">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22015F</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62015F</ReplyBytes>
+<DataItem Name="InhibitionOfDevptFrame" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.InhibitionOfDevptFrame">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E015F00</SentBytes>
+<DataItem Name="InhibitionOfDevptFrame" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E015F</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.InputTorque">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220112</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620112</ReplyBytes>
+<DataItem Name="InputTorque" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Internal Fault Code">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220163</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620163</ReplyBytes>
+<DataItem Name="SupplierInternalFaultCode_DTC" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.MeasuredMotorCurrent">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22012C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62012C</ReplyBytes>
+<DataItem Name="MeasuredMotorCurrent" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.MotorCurrentDemand">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220113</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620113</ReplyBytes>
+<DataItem Name="MotorCurrentDemand" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.MultiDrive_Activation">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read MultiDrive_Activation]]></Comment>
+<Sent>
+<SentBytes>22017D</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62017D</ReplyBytes>
+<DataItem Name="MultiDrive_Activation" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.MultiDrive_Activation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Write MultiDrive_Activation]]></Comment>
+<Sent>
+<SentBytes>2E017D00</SentBytes>
+<DataItem Name="MultiDrive_Activation" FirstByte="4" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E017D</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.NotATrivialName">
+
+<Sent>
+<SentBytes>220179</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620179</ReplyBytes>
+<DataItem Name="NotATrivialName" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.NotATrivialName">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2E017900</SentBytes>
+<DataItem Name="NotATrivialName" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0179</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.RackEndStop_Activation">
+
+<Comment><![CDATA[Read RackEndStop_Activation]]></Comment>
+<Sent>
+<SentBytes>22012A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62012A</ReplyBytes>
+<DataItem Name="RackEndStop_Activation" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.RackEndStop_Activation">
+
+<ManuelSend/>
+<Comment><![CDATA[Write RackEndStop_Activation]]></Comment>
+<Sent>
+<SentBytes>2E012A00</SentBytes>
+<DataItem Name="RackEndStop_Activation" FirstByte="4" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E012A</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.RackEndStop_Running">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read RackEndStop_Running]]></Comment>
+<Sent>
+<SentBytes>220151</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620151</ReplyBytes>
+<DataItem Name="RackEndStop_Running" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.TuningNumberSelected">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220162</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620162</ReplyBytes>
+<DataItem Name="TuningNumberSelected" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.TuningVersionNumber">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22F182</SentBytes>
+</Sent>
+<Received MinBytes="15">
+<ReplyBytes>62F182</ReplyBytes>
+<DataItem Name="TuningVersionNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.TuningVersionNumber">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2EF182000000000000000000000000</SentBytes>
+<DataItem Name="TuningVersionNumber" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6EF182</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>190600000080</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>59060000000080000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>1906000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>59060000000000000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="DataRead.Wheelspeed index map selector">
+
+<Comment><![CDATA[Read Wheelspeed index map selector]]></Comment>
+<Sent>
+<SentBytes>220168</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620168</ReplyBytes>
+<DataItem Name="Wheelspeed index map selector" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="SRBILD.DongleBlanking.Request">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3107010000</SentBytes>
+<DataItem Name="Dongle.Code" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7107</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.VIN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<ReplyBytes>6181</ReplyBytes>
+<DataItem Name="VIN" Ref="1" FirstByte="3"/>
+<DataItem Name="CRC" Ref="1" FirstByte="20"/>
+</Received>
+</Request>
+<Request Name="DataWrite.VIN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="VIN" FirstByte="3"/>
+<DataItem Name="CRC" FirstByte="20"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B81</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.TraceabilityInformation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>6184</ReplyBytes>
+<DataItem Name="TraceabilityInformation" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="EPS_TorqueSensor" DTC="22020" Type="2">
+
+<Test Type="150">
+</Test>
+</Device>
+<Device Name="EPS_MOTOR" DTC="22022" Type="2">
+
+<Test Type="150">
+</Test>
+</Device>
+<Device Name="CAN_ECM_EngineStatus" DTC="49408">
+
+<Test Type="135">
+</Test>
+</Device>
+<Device Name="CAN_ParkAssist" DTC="49731">
+
+<Test Type="134">
+</Test><Test Type="135">
+</Test>
+</Device>
+<Device Name="CAN_Bus" DTC="53248">
+
+<Test Type="136">
+</Test>
+</Device>
+<Device Name="CAN_WheelSpeed" DTC="53249">
+
+<Test Type="134">
+</Test><Test Type="135">
+</Test><Test Type="131">
+</Test><Test Type="130">
+</Test>
+</Device>
+<Device Name="CAN_BRAKE_VehicleSpeed" DTC="53760">
+
+<Test Type="134">
+</Test><Test Type="135">
+</Test><Test Type="130">
+</Test><Test Type="131">
+</Test>
+</Device>
+<Device Name="CAN_SteeringWheelSpeed" DTC="53803">
+
+<Test Type="134">
+</Test><Test Type="135">
+</Test><Test Type="130">
+</Test><Test Type="131">
+</Test>
+</Device>
+<Device Name="Battery" DTC="61443">
+
+<Test Type="22">
+</Test><Test Type="23">
+</Test><Test Type="19">
+</Test>
+</Device>
+<Device Name="EPS_Derating_ThermalProtection" DTC="22036" Type="2">
+
+<Test Type="75">
+</Test>
+</Device>
+<Device Name="EPS_ECU" DTC="22024" Type="2">
+
+<Test Type="68">
+</Test><Test Type="69">
+</Test><Test Type="70">
+</Test><Test Type="73">
+</Test><Test Type="85">
+</Test><Test Type="72">
+</Test><Test Type="67">
+</Test><Test Type="84">
+</Test><Test Type="150">
+</Test>
+</Device>
+<Device Name="CAN_SteeringWheelAngle" DTC="53804">
+
+<Test Type="134">
+</Test><Test Type="135">
+</Test><Test Type="130">
+</Test><Test Type="131">
+</Test>
+</Device>
+<Device Name="_EPS_SupplierIntenalFaultStore" Type="4">
+<DeviceData Name="SupplierInternalFaultStore.01.Hex" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.02.Hex" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.03.Hex" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.04.Hex" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.05.Hex" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.06.Hex" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.07.Hex" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.08.Hex" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.09.Hex" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.10.Hex" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.ALL.Hex" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.01.List" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.02.List" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.03.List" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.04.List" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.05.List" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.06.List" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.07.List" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.08.List" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.09.List" FailureFlag="0"/><DeviceData Name="SupplierInternalFaultStore.10.List" FailureFlag="0"/>
+
+</Device>
+<Device Name="_HEPS_InternalParameters" Type="4">
+<DeviceData Name="EngineStatus" FailureFlag="0"/><DeviceData Name="EPSWarning" FailureFlag="0"/><DeviceData Name="VehicleSpeed" FailureFlag="0"/><DeviceData Name="AssistanceLevel" FailureFlag="0"/><DeviceData Name="DeratingAssistanceLevel" FailureFlag="0"/><DeviceData Name="ECUTemperature" FailureFlag="0"/><DeviceData Name="IgnitionStatus" FailureFlag="0"/><DeviceData Name="FilteredVehicleSpeed" FailureFlag="0"/><DeviceData Name="SystemMode" FailureFlag="0"/><DeviceData Name="SupplyVoltage" FailureFlag="0"/><DeviceData Name="SWASensorInternalStatus.ALL" FailureFlag="0"/><DeviceData Name="SWASensorInternalStatus.CalibrationStatus" FailureFlag="0"/><DeviceData Name="SWASensorInternalStatus.FailureStatus" FailureFlag="0"/><DeviceData Name="SWASensorInternalStatus.InitializationStatus" FailureFlag="0"/><DeviceData Name="CAN_SteeringWheelAngle" FailureFlag="0"/><DeviceData Name="BatteryCurrent" FailureFlag="0"/><DeviceData Name="MinimumVoltagebySteer" FailureFlag="0"/><DeviceData Name="CAN_SteeringWheelRotationSpeed" FailureFlag="0"/><DeviceData Name="ElectricalMotorSpeed" FailureFlag="0"/><DeviceData Name="MotorTemperature" FailureFlag="0"/><DeviceData Name="GADE" FailureFlag="0"/>
+
+</Device>
+<Device Name="_EPS_Identification" Type="4">
+<DeviceData Name="VIN" FailureFlag="0"/><DeviceData Name="CRC" FailureFlag="0"/><DeviceData Name="PartNumber.LowerPart" FailureFlag="0"/>
+
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Diagnostic">
+
+<Screen Name="ALL IN ONE" Color="16777215" WindowState="0" Width="16140" Height="7380">
+
+<Label Text="=11" Color="16766894" Alignment="0">
+<Rectangle Left="11880" Top="2520" Height="300" Width="360"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$F18E :: AssyKit ref" Color="16766894" Alignment="0">
+<Rectangle Left="8880" Top="4320" Height="360" Width="2040"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$F187 :: RUC (= SW ref)" Color="16766894" Alignment="0">
+<Rectangle Left="8880" Top="4680" Height="360" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$F182" Color="16766894" Alignment="0">
+<Rectangle Left="8880" Top="2160" Height="360" Width="840"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Configuration HFP" Color="16763283" Alignment="2">
+<Rectangle Left="120" Top="4680" Height="1560" Width="8280"/>
+<Font Name="Arial Black" Size=" 14" Bold="1" Italic="0" Color="8404992"/></Label>
+<Label Text="Identification" Color="16763283" Alignment="2">
+<Rectangle Left="8520" Top="120" Height="5400" Width="3840"/>
+<Font Name="Arial Black" Size=" 14" Bold="1" Italic="0" Color="8404992"/></Label>
+<Label Text="$0204 VehicleSpeed (kph)" Color="16766894" Alignment="1">
+<Rectangle Left="240" Top="960" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Inputs" Color="16766894" Alignment="2">
+<Rectangle Left="240" Top="600" Height="1800" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$0116 FilteredVehicleSpeed (kph) " Color="16766894" Alignment="1">
+<Rectangle Left="240" Top="1320" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0131 IgnitionStatus" Color="16766894" Alignment="1">
+<Rectangle Left="240" Top="1680" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0501 EngineStatus" Color="16766894" Alignment="1">
+<Rectangle Left="240" Top="2040" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$012D Motor temperature (°C)" Color="16766894" Alignment="1">
+<Rectangle Left="240" Top="3240" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$012E ECU temperature (°C)" Color="16766894" Alignment="1">
+<Rectangle Left="240" Top="2880" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Internal" Color="16766894" Alignment="2">
+<Rectangle Left="3840" Top="600" Height="1800" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$0119 System Mode " Color="16766894" Alignment="1">
+<Rectangle Left="3840" Top="960" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0115 Assistance Level (%) " Color="16766894" Alignment="1">
+<Rectangle Left="3840" Top="1320" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Electrical" Color="16766894" Alignment="2">
+<Rectangle Left="240" Top="3720" Height="720" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Torque" Color="16766894" Alignment="2">
+<Rectangle Left="3840" Top="2520" Height="720" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Failure status" Color="16766894" Alignment="1">
+<Rectangle Left="12600" Top="1320" Height="300" Width="1920"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0112 Input torque (Nm) " Color="16766894" Alignment="1">
+<Rectangle Left="3840" Top="2880" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$011A EPS warning " Color="16766894" Alignment="1">
+<Rectangle Left="3840" Top="1680" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$012F Battery voltage (V)" Color="16766894" Alignment="1">
+<Rectangle Left="240" Top="4080" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Sensor initialized" Color="16766894" Alignment="1">
+<Rectangle Left="12600" Top="960" Height="300" Width="1920"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Sensor calibrated" Color="16766894" Alignment="1">
+<Rectangle Left="12600" Top="600" Height="300" Width="1920"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0101 CAN SWA velocity (deg/s)" Color="16766894" Alignment="0">
+<Rectangle Left="12600" Top="3240" Height="300" Width="3240"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Temperature &amp;&amp; Derating" Color="16766894" Alignment="2">
+<Rectangle Left="240" Top="2520" Height="1080" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$0100 SW angle (deg)" Color="16766894" Alignment="1">
+<Rectangle Left="3840" Top="3720" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0103 CAN SWA offset (deg)" Color="16766894" Alignment="0">
+<Rectangle Left="12600" Top="2520" Height="300" Width="3240"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0104 CAN SWA (deg)" Color="16766894" Alignment="0">
+<Rectangle Left="12600" Top="1800" Height="300" Width="3240"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0185 SW velocity (deg/s)" Color="16766894" Alignment="1">
+<Rectangle Left="3840" Top="4080" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Internal Angle Estimation" Color="16766894" Alignment="2">
+<Rectangle Left="3840" Top="3360" Height="1080" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$0169 Max CPU load (%)" Color="16766894" Alignment="1">
+<Rectangle Left="3840" Top="2040" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Measurements" Color="16763283" Alignment="2">
+<Rectangle Left="120" Top="120" Height="4440" Width="8280"/>
+<Font Name="Arial Black" Size=" 14" Bold="1" Italic="0" Color="8404992"/></Label>
+<Label Text=" " Color="16766894" Alignment="2">
+<Rectangle Left="8640" Top="600" Height="4800" Width="3630"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Configuration Misc" Color="16763283" Alignment="2">
+<Rectangle Left="8520" Top="5640" Height="1605" Width="7440"/>
+<Font Name="Arial Black" Size=" 14" Bold="1" Italic="0" Color="8404992"/></Label>
+<Label Text="Dongle" Color="16763283" Alignment="2">
+<Rectangle Left="12480" Top="3960" Height="1560" Width="3480"/>
+<Font Name="Arial Black" Size=" 14" Bold="1" Italic="0" Color="8404992"/></Label>
+<Label Text="Ext. Angle Sensor" Color="16763283" Alignment="2">
+<Rectangle Left="12480" Top="120" Height="3720" Width="3480"/>
+<Font Name="Arial Black" Size=" 14" Bold="1" Italic="0" Color="8404992"/></Label>
+<Label Text="Configuration MEX" Color="16763283" Alignment="2">
+<Rectangle Left="120" Top="6360" Height="885" Width="8280"/>
+<Font Name="Arial Black" Size=" 14" Bold="1" Italic="0" Color="8404992"/></Label>
+<Label Text="Ed.#" Color="16766894" Alignment="0">
+<Rectangle Left="11280" Top="1440" Height="240" Width="480"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+
+
+<Display Width="2565" Color="16766894" DataName="PartNumber.LowerPart" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="8760" Top="720" Height="300" Width="3480"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2565" Color="16766894" DataName="DiagnosticIdentificationCode" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="8760" Top="2520" Height="300" Width="3000"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2565" Color="16766894" DataName="SupplierNumber.ITG" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="8760" Top="2880" Height="300" Width="3480"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 231" Color="8454016"/><Threshold Value=" 232" Color="33023"/></Display>
+<Display Width="2565" Color="16766894" DataName="HardwareNumber.LowerPart" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="8760" Top="1080" Height="300" Width="3480"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1575" Color="16766894" DataName="SoftwareNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="8760" Top="1440" Height="300" Width="2400"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="EditionNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="11640" Top="1440" Height="300" Width="600"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2565" Color="16766894" DataName="CalibrationNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="8760" Top="1800" Height="300" Width="3480"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="PartNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="10320" Top="720" Height="300" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="33023"/><Threshold Value=" 2" Color="8454016"/><Threshold Value=" 3" Color="33023"/></Display>
+<Display Width="15" Color="16766894" DataName="HardwareNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="10320" Top="1080" Height="300" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="33023"/><Threshold Value=" 1" Color="8454016"/><Threshold Value=" 2" Color="33023"/></Display>
+<Display Width="2565" Color="16766894" DataName="ApprovalNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="8760" Top="3240" Height="300" Width="3480"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 1" Color="33023"/></Display>
+<Display Width="2565" Color="16766894" DataName="ManufacturerIdentificationCode" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="8760" Top="3600" Height="300" Width="3480"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="33023"/><Threshold Value=" 136" Color="8454016"/><Threshold Value=" 137" Color="33023"/></Display>
+<Display Width="15" Color="16766894" DataName="VehicleManufacturerKitAssemblyPartNumber" RequestName="DataRead.VehicleManufacturerKitAssemblyPartNumber">
+<Rectangle Left="10920" Top="4320" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="VehiculeManufacturerSparPartNumber" RequestName="DataRead.VehiculeManufacturerSparPartNumber">
+<Rectangle Left="10920" Top="4680" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="TuningVersionNumber" RequestName="DataRead.TuningVersionNumber">
+<Rectangle Left="9600" Top="2160" Height="300" Width="2640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="635" Color="16766894" DataName="VIN" RequestName="DataRead.VIN">
+<Rectangle Left="8760" Top="5040" Height="300" Width="3480"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4140" Color="16766894" DataName="HFP_Activation" RequestName="DataRead.HFP_Activation">
+<Rectangle Left="240" Top="5160" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="4227327"/><Threshold Value=" 1" Color="8454016"/></Display>
+<Display Width="4140" Color="16766894" DataName="BoostFunctionActivation" RequestName="DataRead.BoostFunctionActivation">
+<Rectangle Left="240" Top="5520" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="4227327"/><Threshold Value=" 1" Color="8454016"/></Display>
+<Display Width="4140" Color="16766894" DataName="BoostHighVoltage" RequestName="DataRead.BoostHighVoltage">
+<Rectangle Left="240" Top="5880" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3600" Color="16766894" DataName="RackEndStop_Activation" RequestName="DataRead.RackEndStop_Activation">
+<Rectangle Left="8640" Top="6120" Height="300" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="4227327"/><Threshold Value=" 1" Color="8454016"/></Display>
+<Display Width="4140" Color="16766894" DataName="MultiDrive_Activation" RequestName="DataRead.MultiDrive_Activation">
+<Rectangle Left="240" Top="6840" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="4227327"/><Threshold Value=" 2" Color="8454016"/><Threshold Value=" 3" Color="4227327"/><Threshold Value=" 1" Color="4227327"/></Display>
+<Display Width="3600" Color="16766894" DataName="ExternalAngleSensor" RequestName="DataRead.ExternalAngleSensor">
+<Rectangle Left="8640" Top="6480" Height="300" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="4227327"/><Threshold Value=" 1" Color="8454016"/></Display>
+<Display Width="3600" Color="16766894" DataName="EPS_FactoryState" RequestName="DataRead.EPS_FactoryState">
+<Rectangle Left="8640" Top="6840" Height="300" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="33023"/><Threshold Value=" 1" Color="0"/><Threshold Value=" 2" Color="8454016"/><Threshold Value=" 3" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="VehicleSpeed" RequestName="DataRead.VehicleSpeed">
+<Rectangle Left="2400" Top="960" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="FilteredVehicleSpeed" RequestName="DataRead.FilteredVehicleSpeed">
+<Rectangle Left="2400" Top="1320" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="IgnitionStatus" RequestName="DataRead.IgnitionStatus">
+<Rectangle Left="2400" Top="1680" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="EngineStatus" RequestName="DataRead.EngineStatus">
+<Rectangle Left="2400" Top="2040" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="ECUTemperature" RequestName="DataRead.ECUTemperature">
+<Rectangle Left="2400" Top="2880" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 90" Color="33023"/></Display>
+<Display Width="15" Color="16766894" DataName="MotorTemperature" RequestName="DataRead.MotorTemperature">
+<Rectangle Left="2400" Top="3240" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 150" Color="33023"/></Display>
+<Display Width="15" Color="16766894" DataName="CPULoad" RequestName="DataRead.CPULoad">
+<Rectangle Left="6000" Top="2040" Height="300" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="SystemMode" RequestName="DataRead.SystemMode">
+<Rectangle Left="6000" Top="960" Height="300" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="AssistanceLevel" RequestName="DataRead.AssistanceLevel">
+<Rectangle Left="6000" Top="1320" Height="300" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="16766894"/><Threshold Value=" 1" Color="33023"/><Threshold Value=" 100" Color="8454016"/></Display>
+<Display Width="15" Color="16766894" DataName="InputTorque" RequestName="DataRead.InputTorque">
+<Rectangle Left="6000" Top="2880" Height="300" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="SupplyVoltage" RequestName="DataRead.SupplyVoltage">
+<Rectangle Left="2400" Top="4080" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="33023"/><Threshold Value=" 11.5" Color="8454016"/><Threshold Value=" 14.8" Color="33023"/></Display>
+<Display Width="15" Color="16766894" DataName="EPSWarning" RequestName="DataRead.EPSWarning">
+<Rectangle Left="6000" Top="1680" Height="300" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 1" Color="33023"/></Display>
+<Display Width="15" Color="16766894" DataName="EPSRelativeSteeringWheelAngle" RequestName="DataRead.EPSRelativeSteeringWheelAngle">
+<Rectangle Left="6000" Top="3720" Height="300" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="CAN_SteeringWheelRotationSpeed" RequestName="DataRead.CAN_SteeringWheelRotationSpeed">
+<Rectangle Left="12600" Top="3480" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="SWASensorInternalStatus.CalibrationStatus" RequestName="DataRead.SWASensorInternalStatus">
+<Rectangle Left="14520" Top="600" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="33023"/><Threshold Value=" 1" Color="8454016"/></Display>
+<Display Width="15" Color="16766894" DataName="SWASensorInternalStatus.FailureStatus" RequestName="DataRead.SWASensorInternalStatus">
+<Rectangle Left="14520" Top="1320" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 1" Color="33023"/></Display>
+<Display Width="15" Color="16766894" DataName="SWASensorInternalStatus.InitializationStatus" RequestName="DataRead.SWASensorInternalStatus">
+<Rectangle Left="14520" Top="960" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="4227327"/><Threshold Value=" 1" Color="8454016"/></Display>
+<Display Width="15" Color="16766894" DataName="CAN_SteeringWheelAngle_Offset" RequestName="DataRead.CAN_SteeringWheelAngle_Offset">
+<Rectangle Left="12600" Top="2760" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="CAN_SteeringWheelAngle" RequestName="DataRead.CAN_SteeringWheelAngle">
+<Rectangle Left="12600" Top="2040" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="EPSRelativeSteeringWheelVelocity" RequestName="DataRead.EPSRelativeSteeringWheelVelocity">
+<Rectangle Left="6000" Top="4080" Height="300" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1260" Color="16766894" DataName="DongleError" RequestName="DataRead.DongleError">
+<Rectangle Left="12600" Top="4800" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 1" Color="33023"/></Display>
+<Display Width="2430" Color="16766894" DataName="DonglePairingCounter" RequestName="DataRead.DonglePairingCounter">
+<Rectangle Left="12600" Top="5160" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1265" Color="16766894" DataName="DongleState" RequestName="DataRead.DongleState">
+<Rectangle Left="12600" Top="4440" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="33023"/><Threshold Value=" 1" Color="8454016"/><Threshold Value=" 3" Color="33023"/></Display>
+<Display Width="1085" Color="16766894" DataName="TraceabilityInformation" RequestName="DataRead.TraceabilityInformation">
+<Rectangle Left="8760" Top="3960" Height="300" Width="3480"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="ClearDTC / Reset" Color="13619151" WindowState="0" Width="9660" Height="7260">
+
+<Label Text="Reset" Color="16763283" Alignment="2">
+<Rectangle Left="0" Top="3480" Height="3840" Width="9645"/>
+<Font Name="Arial Black" Size=" 18" Bold="1" Italic="0" Color="8404992"/></Label>
+<Label Text="ClearDTC" Color="16763283" Alignment="2">
+<Rectangle Left="0" Top="0" Height="3435" Width="9645"/>
+<Font Name="Arial Black" Size=" 18" Bold="1" Italic="0" Color="8404992"/></Label>
+<Label Text="Reset Conditions" Color="16766894" Alignment="0">
+<Rectangle Left="240" Top="5640" Height="1320" Width="9240"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Shall be &lt; 3kph" Color="16766894" Alignment="0">
+<Rectangle Left="6525" Top="6045" Height="240" Width="2880"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Shall be = PowerUpTests Wait for Assist" Color="16766894" Alignment="0">
+<Rectangle Left="6525" Top="6360" Height="600" Width="2880"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="ClearDTC">
+<Rectangle Left="240" Top="600" Height="1200" Width="9240"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0"/>
+<Message Text="To clear all failures"/>
+<Send Delay="0" RequestName="ClearDiagnosticInformation.All"/>
+</Button>
+<Button Text="Reset">
+<Rectangle Left="240" Top="4080" Height="1200" Width="9240"/>
+<Font Name="Arial" Size=" 12" Bold="0" Italic="0"/>
+<Message Text="To clear all failures"/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="500" RequestName="ECUReset.hardReset"/>
+</Button>
+
+<Display Width="2960" Color="16766894" DataName="FilteredVehicleSpeed" RequestName="DataRead.FilteredVehicleSpeed">
+<Rectangle Left="360" Top="6000" Height="300" Width="6120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 1" Color="8454016"/><Threshold Value=" 2" Color="8454016"/><Threshold Value=" 3" Color="33023"/></Display>
+<Display Width="2945" Color="16766894" DataName="SystemMode" RequestName="DataRead.SystemMode">
+<Rectangle Left="360" Top="6480" Height="300" Width="6120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 1" Color="33023"/><Threshold Value=" 2" Color="8454016"/><Threshold Value=" 3" Color="33023"/></Display>
+</Screen>
+<Screen Name="Identification" Color="13619151" WindowState="0" Width="9660" Height="7260">
+
+<Label Text="Identification" Color="16763283" Alignment="2">
+<Rectangle Left="0" Top="0" Height="7320" Width="9645"/>
+<Font Name="Arial Black" Size=" 18" Bold="1" Italic="0" Color="8404992"/></Label>
+<Label Text="$F187 :: RUC (= SW ref)" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="1560" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$F18E :: Assembly kit reference (= reference of entire column)" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="720" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$F182 :: Tuning version number" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="2400" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="VIN (write)" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="6000" Height="1080" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$01BE :: EPS factory state" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="3240" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="VIN (read)" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="4800" Height="1080" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Write VIN">
+<Rectangle Left="7680" Top="6360" Height="720" Width="1755"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="DataWrite.VIN"/>
+</Button>
+
+<Display Width="15" Color="16766894" DataName="TuningVersionNumber" RequestName="DataRead.TuningVersionNumber">
+<Rectangle Left="120" Top="2760" Height="300" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="VehiculeManufacturerSparPartNumber" RequestName="DataRead.VehiculeManufacturerSparPartNumber">
+<Rectangle Left="120" Top="1920" Height="300" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="VehicleManufacturerKitAssemblyPartNumber" RequestName="DataRead.VehicleManufacturerKitAssemblyPartNumber">
+<Rectangle Left="120" Top="1080" Height="300" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="EPS_FactoryState" RequestName="DataRead.EPS_FactoryState">
+<Rectangle Left="120" Top="3600" Height="300" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16766894" DataName="VIN" RequestName="DataRead.VIN">
+<Rectangle Left="120" Top="5160" Height="300" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16766894" DataName="CRC" RequestName="DataRead.VIN">
+<Rectangle Left="120" Top="5520" Height="300" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2000" Color="16766894" DataName="VIN" RequestName="DataWrite.VIN">
+<Rectangle Left="120" Top="6360" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="16766894" DataName="CRC" RequestName="DataWrite.VIN">
+<Rectangle Left="120" Top="6720" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Dongle" Color="13619151" WindowState="0" Width="9660" Height="7260">
+
+<Label Text="Dongle" Color="16763283" Alignment="2">
+<Rectangle Left="0" Top="0" Height="7320" Width="9645"/>
+<Font Name="Arial Black" Size=" 18" Bold="1" Italic="0" Color="8404992"/></Label>
+<Label Text="$0164 :: EPS dongle state" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="720" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$0165 :: Dongle pairing counter" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="1560" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$0166 :: Dongle error" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="2400" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Check the log after clicking the button to check everything went well (it should read $710702)" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="4200" Height="240" Width="9360"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Dongle Blanking">
+<Rectangle Left="6960" Top="3840" Height="300" Width="2580"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="SRBILD.DongleBlanking.Request"/><Send Delay="0" RequestName="StartDiagnosticSession.Default"/>
+</Button>
+
+<Display Width="15" Color="16766894" DataName="DongleState" RequestName="DataRead.DongleState">
+<Rectangle Left="120" Top="1080" Height="300" Width="9400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="DonglePairingCounter" RequestName="DataRead.DonglePairingCounter">
+<Rectangle Left="120" Top="1920" Height="300" Width="9400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="DongleError" RequestName="DataRead.DongleError">
+<Rectangle Left="120" Top="2760" Height="300" Width="9400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="5040" Color="16766894" DataName="Dongle.Code" RequestName="SRBILD.DongleBlanking.Request">
+<Rectangle Left="120" Top="3840" Height="300" Width="6720"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Input>
+</Screen>
+</Category><Category Name="Configuration">
+
+<Screen Name="Functions activation" Color="13619151" WindowState="0" Width="9660" Height="7260">
+
+<Label Text="Functions activation" Color="16763283" Alignment="2">
+<Rectangle Left="0" Top="0" Height="7320" Width="9645"/>
+<Font Name="Arial Black" Size=" 18" Bold="1" Italic="0" Color="8404992"/></Label>
+<Label Text="RealTime:" Color="16766894" Alignment="1">
+<Rectangle Left="1560" Top="2640" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$012A :: Rack-End Stop" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="3120" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$017D :: MultiDrive" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="3960" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$0170 :: Boost high voltage (HFP)" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="2280" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$0171 :: Boost function (HFP)" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="1440" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$015A :: External angle sensor (SWA estimation)" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="4800" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$0182 :: HFP" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="600" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Shall be &lt; 3kph" Color="16766894" Alignment="0">
+<Rectangle Left="6600" Top="6720" Height="240" Width="2880"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Acceptation conditions to switch functions" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="6360" Height="720" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$01BE :: EPS Factory State" Color="16766894" Alignment="0">
+<Rectangle Left="120" Top="5640" Height="360" Width="9360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Write this">
+<Rectangle Left="8520" Top="960" Height="300" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="DataWrite.HFP_Activation"/><Send Delay="500" RequestName="ECUReset.hardReset"/>
+</Button>
+<Button Text="Write this">
+<Rectangle Left="8520" Top="3480" Height="300" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="DataWrite.RackEndStop_Activation"/><Send Delay="500" RequestName="ECUReset.hardReset"/>
+</Button>
+<Button Text="Write this">
+<Rectangle Left="8520" Top="5160" Height="300" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="DataWrite.ExternalAngleSensor"/><Send Delay="500" RequestName="ECUReset.hardReset"/>
+</Button>
+<Button Text="Write this">
+<Rectangle Left="8520" Top="4320" Height="300" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="DataWrite.MultiDrive_Activation"/><Send Delay="500" RequestName="ECUReset.hardReset"/>
+</Button>
+<Button Text="Write this">
+<Rectangle Left="8520" Top="2640" Height="300" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="DataWrite.BoostHighVoltage"/><Send Delay="500" RequestName="ECUReset.hardReset"/>
+</Button>
+<Button Text="Write this">
+<Rectangle Left="8520" Top="1800" Height="300" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="DataWrite.BoostFunctionActivation"/><Send Delay="500" RequestName="ECUReset.hardReset"/>
+</Button>
+<Button Text="Write this">
+<Rectangle Left="8520" Top="6000" Height="300" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="DataWrite.EPS_FactoryState"/><Send Delay="500" RequestName="ECUReset.hardReset"/>
+</Button>
+
+<Display Width="15" Color="16766894" DataName="RackEndStop_Activation" RequestName="DataRead.RackEndStop_Activation">
+<Rectangle Left="120" Top="3480" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="4227327"/><Threshold Value=" 1" Color="8454016"/></Display>
+<Display Width="15" Color="16766894" DataName="ExternalAngleSensor" RequestName="DataRead.ExternalAngleSensor">
+<Rectangle Left="120" Top="5160" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="4227327"/><Threshold Value=" 1" Color="8454016"/></Display>
+<Display Width="15" Color="16766894" DataName="BoostHighVoltage" RequestName="DataRead.BoostHighVoltage">
+<Rectangle Left="120" Top="2640" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="BoostFunctionActivation" RequestName="DataRead.BoostFunctionActivation">
+<Rectangle Left="120" Top="1800" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="4227327"/><Threshold Value=" 1" Color="8454016"/></Display>
+<Display Width="15" Color="16766894" DataName="MultiDrive_Activation" RequestName="DataRead.MultiDrive_Activation">
+<Rectangle Left="120" Top="4320" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="4227327"/><Threshold Value=" 2" Color="8454016"/><Threshold Value=" 3" Color="4227327"/><Threshold Value=" 1" Color="4227327"/></Display>
+<Display Width="15" Color="16766894" DataName="HFP_Activation" RequestName="DataRead.HFP_Activation">
+<Rectangle Left="120" Top="960" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="4227327"/><Threshold Value=" 1" Color="8454016"/></Display>
+<Input Width="15" Color="16766894" DataName="RackEndStop_Activation" RequestName="DataWrite.RackEndStop_Activation">
+<Rectangle Left="4440" Top="3480" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="15" Color="16766894" DataName="ExternalAngleSensor" RequestName="DataWrite.ExternalAngleSensor">
+<Rectangle Left="4440" Top="5160" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="15" Color="16766894" DataName="BoostHighVoltage" RequestName="DataWrite.BoostHighVoltage">
+<Rectangle Left="4440" Top="2640" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="15" Color="16766894" DataName="BoostFunctionActivation" RequestName="DataWrite.BoostFunctionActivation">
+<Rectangle Left="4440" Top="1800" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="15" Color="16766894" DataName="MultiDrive_Activation" RequestName="DataWrite.MultiDrive_Activation">
+<Rectangle Left="4440" Top="4320" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="15" Color="16766894" DataName="HFP_Activation" RequestName="DataWrite.HFP_Activation">
+<Rectangle Left="4440" Top="960" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="15" Color="16766894" DataName="MinimumVoltagebySteer" RequestName="DataRead.MinimumVoltagebySteer">
+<Rectangle Left="2640" Top="2640" Height="300" Width="1480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2960" Color="16766894" DataName="FilteredVehicleSpeed" RequestName="DataRead.FilteredVehicleSpeed">
+<Rectangle Left="360" Top="6720" Height="300" Width="6120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 1" Color="8454016"/><Threshold Value=" 2" Color="8454016"/><Threshold Value=" 3" Color="33023"/></Display>
+<Display Width="15" Color="16766894" DataName="EPS_FactoryState" RequestName="DataRead.EPS_FactoryState">
+<Rectangle Left="120" Top="6000" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="33023"/><Threshold Value=" 1" Color="0"/><Threshold Value=" 2" Color="8454016"/><Threshold Value=" 3" Color="0"/></Display>
+<Input Width="15" Color="16766894" DataName="EPS_FactoryState" RequestName="DataWrite.EPS_FactoryState">
+<Rectangle Left="4440" Top="6000" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+</Category><Category Name="Measurement">
+
+<Screen Name="Measurement" Color="13619151" WindowState="0" Width="9660" Height="7260">
+
+<Label Text="$0204 VehicleSpeed (kph)" Color="16766894" Alignment="1">
+<Rectangle Left="120" Top="960" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Inputs" Color="16766894" Alignment="2">
+<Rectangle Left="120" Top="600" Height="1845" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$0116 FilteredVehicleSpeed (kph) " Color="16766894" Alignment="1">
+<Rectangle Left="120" Top="1320" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0131 IgnitionStatus" Color="16766894" Alignment="1">
+<Rectangle Left="120" Top="1680" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0501 EngineStatus" Color="16766894" Alignment="1">
+<Rectangle Left="120" Top="2040" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="CAN Steering Wheel Angle" Color="16766894" Alignment="2">
+<Rectangle Left="4920" Top="5640" Height="1485" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$012D Motor temperature (°C)" Color="16766894" Alignment="1">
+<Rectangle Left="120" Top="3240" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$012E ECU temperature (°C)" Color="16766894" Alignment="1">
+<Rectangle Left="120" Top="2880" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Internal" Color="16766894" Alignment="2">
+<Rectangle Left="4920" Top="600" Height="2205" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$0160 Derating Assistance Level (%)" Color="16766894" Alignment="1">
+<Rectangle Left="120" Top="3600" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0119 System Mode " Color="16766894" Alignment="1">
+<Rectangle Left="4920" Top="960" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0115 Assistance Level (%) " Color="16766894" Alignment="1">
+<Rectangle Left="4920" Top="1320" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Electrical" Color="16766894" Alignment="2">
+<Rectangle Left="120" Top="4440" Height="1125" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$011F Assist. torque demand (Nm) " Color="16766894" Alignment="1">
+<Rectangle Left="4920" Top="3600" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0151 RES currently active" Color="16766894" Alignment="1">
+<Rectangle Left="120" Top="3960" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Torque" Color="16766894" Alignment="2">
+<Rectangle Left="4920" Top="2880" Height="1125" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Failure status" Color="16766894" Alignment="1">
+<Rectangle Left="120" Top="6720" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0173 Battery current (A)" Color="16766894" Alignment="1">
+<Rectangle Left="120" Top="5160" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0112 Input torque (Nm) " Color="16766894" Alignment="1">
+<Rectangle Left="4920" Top="3240" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$011A EPS warning " Color="16766894" Alignment="1">
+<Rectangle Left="4920" Top="1680" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$012F Battery voltage (V)" Color="16766894" Alignment="1">
+<Rectangle Left="120" Top="4800" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$011D Motor speed (deg/s)" Color="16766894" Alignment="1">
+<Rectangle Left="4920" Top="5160" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Sensor initialized" Color="16766894" Alignment="1">
+<Rectangle Left="120" Top="6360" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Sensor calibrated" Color="16766894" Alignment="1">
+<Rectangle Left="120" Top="6000" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0101 CAN SWA velocity (deg/s)" Color="16766894" Alignment="1">
+<Rectangle Left="4920" Top="6720" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Temperature &amp;&amp; Derating" Color="16766894" Alignment="2">
+<Rectangle Left="120" Top="2520" Height="1845" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="External Angle Sensor Status $0102" Color="16766894" Alignment="2">
+<Rectangle Left="120" Top="5640" Height="1485" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$0100 SW angle (deg)" Color="16766894" Alignment="1">
+<Rectangle Left="4920" Top="4440" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0103 CAN SWA offset (deg)" Color="16766894" Alignment="1">
+<Rectangle Left="4920" Top="6360" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0104 CAN SWA (deg)" Color="16766894" Alignment="1">
+<Rectangle Left="4920" Top="6000" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="$0185 SW velocity (deg/s)" Color="16766894" Alignment="1">
+<Rectangle Left="4920" Top="4800" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Internal Angle Estimation" Color="16766894" Alignment="2">
+<Rectangle Left="4920" Top="4080" Height="1485" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="$0169 Max CPU load (%)" Color="16766894" Alignment="1">
+<Rectangle Left="4920" Top="2040" Height="300" Width="2160"/>
+<Font Name="Arial Narrow" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Measurement" Color="16763283" Alignment="2">
+<Rectangle Left="0" Top="0" Height="7320" Width="9645"/>
+<Font Name="Arial Black" Size=" 18" Bold="1" Italic="0" Color="8404992"/></Label>
+
+
+<Display Width="15" Color="16766894" DataName="VehicleSpeed" RequestName="DataRead.VehicleSpeed">
+<Rectangle Left="2280" Top="960" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="FilteredVehicleSpeed" RequestName="DataRead.FilteredVehicleSpeed">
+<Rectangle Left="2280" Top="1320" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="IgnitionStatus" RequestName="DataRead.IgnitionStatus">
+<Rectangle Left="2280" Top="1680" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="EngineStatus" RequestName="DataRead.EngineStatus">
+<Rectangle Left="2280" Top="2040" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="ECUTemperature" RequestName="DataRead.ECUTemperature">
+<Rectangle Left="2280" Top="2880" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="MotorTemperature" RequestName="DataRead.MotorTemperature">
+<Rectangle Left="2280" Top="3240" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="CPULoad" RequestName="DataRead.CPULoad">
+<Rectangle Left="7080" Top="2040" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="SystemMode" RequestName="DataRead.SystemMode">
+<Rectangle Left="7080" Top="960" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="AssistanceLevel" RequestName="DataRead.AssistanceLevel">
+<Rectangle Left="7080" Top="1320" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="InputTorque" RequestName="DataRead.InputTorque">
+<Rectangle Left="7080" Top="3240" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="AssistTorqueDemand" RequestName="DataRead.AssistTorqueDemand">
+<Rectangle Left="7080" Top="3600" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="SupplyVoltage" RequestName="DataRead.SupplyVoltage">
+<Rectangle Left="2280" Top="4800" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="BatteryCurrent" RequestName="DataRead.BatteryCurrent">
+<Rectangle Left="2280" Top="5160" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="DeratingAssistanceLevel" RequestName="DataRead.DeratingAssistanceLevel">
+<Rectangle Left="2280" Top="3600" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="RackEndStop_Running" RequestName="DataRead.RackEndStop_Running">
+<Rectangle Left="2280" Top="3960" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="EPSWarning" RequestName="DataRead.EPSWarning">
+<Rectangle Left="7080" Top="1680" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="EPSRelativeSteeringWheelAngle" RequestName="DataRead.EPSRelativeSteeringWheelAngle">
+<Rectangle Left="7080" Top="4440" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="CAN_SteeringWheelRotationSpeed" RequestName="DataRead.CAN_SteeringWheelRotationSpeed">
+<Rectangle Left="7080" Top="6720" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="SWASensorInternalStatus.CalibrationStatus" RequestName="DataRead.SWASensorInternalStatus">
+<Rectangle Left="2280" Top="6000" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="SWASensorInternalStatus.FailureStatus" RequestName="DataRead.SWASensorInternalStatus">
+<Rectangle Left="2280" Top="6720" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="SWASensorInternalStatus.InitializationStatus" RequestName="DataRead.SWASensorInternalStatus">
+<Rectangle Left="2280" Top="6360" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="CAN_SteeringWheelAngle_Offset" RequestName="DataRead.CAN_SteeringWheelAngle_Offset">
+<Rectangle Left="7080" Top="6360" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="CAN_SteeringWheelAngle" RequestName="DataRead.CAN_SteeringWheelAngle">
+<Rectangle Left="7080" Top="6000" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="ElectricalMotorSpeed" RequestName="DataRead.ElectricalMotorSpeed">
+<Rectangle Left="7080" Top="5160" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16766894" DataName="EPSRelativeSteeringWheelVelocity" RequestName="DataRead.EPSRelativeSteeringWheelVelocity">
+<Rectangle Left="7080" Top="4800" Height="300" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Measurement2" Color="16777215" WindowState="0" Width="9900" Height="7380">
+
+
+
+<Display Width="4920" Color="16777215" DataName="MotorCurrentDemand" RequestName="DataRead.MotorCurrentDemand">
+<Rectangle Left="0" Top="4800" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4920" Color="16777215" DataName="IgnitionSwitchCounter" RequestName="DataRead.IgnitionSwitchCounter">
+<Rectangle Left="0" Top="4440" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4920" Color="16777215" DataName="MeasuredMotorCurrent" RequestName="DataRead.MeasuredMotorCurrent">
+<Rectangle Left="0" Top="4080" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4920" Color="16777215" DataName="InhibitionOfDevptFrame" RequestName="DataRead.InhibitionOfDevptFrame">
+<Rectangle Left="0" Top="3720" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4920" Color="16777215" DataName="DistanceTotalizer" RequestName="DataRead.DistanceTotalizer">
+<Rectangle Left="0" Top="3360" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4920" Color="16777215" DataName="SupplierInternalFaultStore.ALL.Hex" RequestName="DataRead.SupplierInternalFaultStore">
+<Rectangle Left="0" Top="3000" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4920" Color="16777215" DataName="EnhancedDiag_ParkAssist_All" RequestName="DataRead.EnhancedDiag_ParkAssist_All">
+<Rectangle Left="0" Top="2640" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4920" Color="16777215" DataName="EnhancedDiag_ParkAssist_LastReason" RequestName="DataRead.EnhancedDiag_ParkAssist_LastReason">
+<Rectangle Left="0" Top="2280" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4920" Color="16777215" DataName="GADE" RequestName="DataRead.GADE">
+<Rectangle Left="0" Top="1920" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

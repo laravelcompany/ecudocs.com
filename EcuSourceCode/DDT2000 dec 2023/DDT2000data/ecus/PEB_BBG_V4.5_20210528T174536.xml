@@ -1,0 +1,2423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+  <Generator name="DDT2000 XML library" version="2.2.0.0" date="2021-05-28T15:21"/>
+  <ddt:Target Name="PEB_BBG_V4.5" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="xiep-eGT@dongfeng-renault.com.cn" href="PEB_BBG_V4.5_20210528T174536.xml" upload="5/28/2021" group="PEB"><Description><![CDATA[Used for PT-lot
+
+26/07/2015
+
+Based on specifications:
+--------------------------------------
+  36 - 00 - 011 - Unified Diagnostic Services (UDS) Implementation.
+  36 - 02 - 014 - Rules for the management of on-board reference numbers in UDS implementation.
+]]></Description>
+    <Projects xmlns=""><xBG/></Projects><Checks Version="V1.11" Date="20210528T174302">
+      <Ctrl Type="DDT2000" Warning="14" Error="0"/>
+      <Ctrl Type="CPDD" Warning="89" Error="0"/>
+      <Ctrl Type="DAIMLER-ODX" Warning="0" Error="2"/>
+      <Ctrl Type="ALLIANCE-ODX" Warning="8" Error="0"/>
+    </Checks>
+    
+    <Function Name="PEB" Address="104" LogicalAddress="0068"/>
+    <Language Name="English" Reference="1"/>
+    
+    <DateOfficialisation>25/02/2000</DateOfficialisation>
+    <Failures Name="DTC Failures" Id="3"/>
+    <PowerSupply>
+      <Ground/>
+      <Vbat/>
+      <AfterContact/>
+    </PowerSupply>
+    <CAN BaudRate="10400" Multipoint="1">
+      <SendId>
+        <CANId Value="1882"/>
+      </SendId>
+      <ReceiveId>
+        <CANId Value="1918"/>
+      </ReceiveId>
+    </CAN>
+    <AutoIdents>
+      <AutoIdent DiagVersion="5" Supplier="ShanghaiEDRIVE" Soft="INVSW450" Version="INVSW450.V001"/>
+      <AutoIdent DiagVersion="5" Supplier="ShanghaiEDRIVE" Soft="INVSW750" Version="INVSW750.V001"/>
+    </AutoIdents>
+    <Datas>
+      <Data Name="systemSupplierIdentifier">
+        <Comment><![CDATA[Name and address information of the supplier.]]></Comment>
+        <Mnemonic>DID_$F18A</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier name and address information.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="14" ascii="1"/>
+      </Data>
+      <Data Name="ECUSerialNumber">
+        <Comment><![CDATA[ECU Serial Number DataIdentifier]]></Comment>
+        <Mnemonic>DID_$F18C</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the ECU (server) serial number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific.</FONT></P>]]></Description>
+        <Bytes count="20" ascii="1"/>
+      </Data>
+      <Data Name="VIN">
+        <Comment><![CDATA[Vehicle Identification Number]]></Comment>
+        <Mnemonic>DID_$F190</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the VIN number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be specified by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>It shall not be erased when the ECU is reprogrammed.</FONT></P>]]></Description>
+        <Bytes count="17" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUHardwareNumber">
+        <Comment><![CDATA[Hardware Number]]></Comment>
+        <Mnemonic>DID_$F191</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used by reading services to reference the vehicle-manufacturer-specific ECU (server) hardware number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be serverspecific and defined by vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareNumber">
+        <Comment><![CDATA[Software Number (Supplier)]]></Comment>
+        <Mnemonic>DID_$F194</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="8" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareVersionNumber">
+        <Comment><![CDATA[Software Version (Supplier)]]></Comment>
+        <Mnemonic>DID_$F195</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software version number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="13" ascii="1"/>
+      </Data>
+      <Data Name="RoutineControlType">
+        <Comment><![CDATA[Routine control type - VALUES OTHER THAN 1, 2 & 3 ARE RESERVED AND SHOULD NOT BE USED.]]></Comment>
+        <Mnemonic>RCTP</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="StartRoutine"/>
+            <Item Value="2" Text="StopRoutine"/>
+            <Item Value="3" Text="RequestRoutineResults"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RoutineStatusRecord.RoutineInfo">
+        <Comment><![CDATA[Routine information]]></Comment>
+        <Mnemonic>RSR_RIF</Mnemonic>
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="RoutineEnded"/>
+            <Item Value="1" Text="RoutineAborted"/>
+            <Item Value="2" Text="RoutineActive"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RoutineIdentifierList">
+        <Comment><![CDATA[Routine identifier - This is an example. See documentation for more information.]]></Comment>
+        <Mnemonic>RIL</Mnemonic>
+        <Description><![CDATA[<FONT size=2>
+<P><FONT size=2><STRONG><U>Definition of RoutineControl</U></STRONG></FONT></P>
+<P><FONT size=2>Data: RoutineIdentifierList</FONT></P>
+<P><FONT size=2>&nbsp; Contains the list of all routine identifier that may be&nbsp;used with InputOutputControl service.<BR>&nbsp; <BR>&nbsp; Example:<BR>&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;0x4501 -&nbsp;ROUTINE_Temperature_Wave<BR></FONT></P>
+<P><FONT size=2>If some of these routine identifer have parameters, you should defined a data with the same name as the&nbsp;routine identifer followed by a dot and a text</FONT></P>
+<P><FONT size=2>&nbsp; Example:<BR>&nbsp; <BR>&nbsp; Data: ROUTINE_Temperature_Wave.Min<BR>&nbsp; Data: ROUTINE_Temperature_Wave.Max<BR>&nbsp; Data: ROUTINE_Temperature_Wave.Freq<BR></FONT><FONT size=2></P></FONT>
+<P><FONT size=2>Then, you should add theses data in the "Send tab" of the&nbsp;RoutineControl request, after the RoutineIdentifierList data.</FONT></P></FONT>]]></Description>
+        <Bits count="16">
+          <List>
+            <Item Value="17665" Text="ROUTINE_Temperature_Wave"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ElecMachineMaxMotorTorque">
+        <Comment><![CDATA[Maximal available calculated torque in motor mode]]></Comment>
+        <Mnemonic>DID_$3026</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled Unit="N·m"/>
+        </Bits>
+      </Data>
+      <Data Name="ElecMachineMaxGenTorque">
+        <Comment><![CDATA[Maximal available calculated torque in generator mode]]></Comment>
+        <Mnemonic>DID_$3027</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled Unit="N·m" Offset="-200"/>
+        </Bits>
+      </Data>
+      <Data Name="ElecMachineSpeed">
+        <Comment><![CDATA[Emotor Speed]]></Comment>
+        <Mnemonic>DID_$3028</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled Unit="rpm" Offset="-12000"/>
+        </Bits>
+      </Data>
+      <Data Name="Stator temperature">
+        <Comment><![CDATA[Real stator temperature in °C]]></Comment>
+        <Mnemonic>DID_$302C</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled Unit="°C" Offset="-50"/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailed">
+        <Mnemonic>TF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedThisMonitoringCycle">
+        <Mnemonic>TFTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.pendingDTC">
+        <Mnemonic>PDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedSinceLastClear">
+        <Mnemonic>TNCSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedSinceLastClear">
+        <Mnemonic>TFSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+        <Mnemonic>TNCTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.warningIndicatorRequested">
+        <Mnemonic>WIR</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatusAvailabilityMask">
+        <Mnemonic>DTCSAM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCMaskRecord">
+        <Mnemonic>DTCMREC_DTC</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="DTCFormatIdentifier">
+        <Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+        <Mnemonic>DTCFID</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="SAE_J2012-DA_DTC"/>
+            <Item Value="1" Text="ISO_14229-1_DTC"/>
+            <Item Value="2" Text="SAE_J1939-73_DTC"/>
+            <Item Value="3" Text="ISO_11992-4_DTC"/>
+            <Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFaultDetectionCounter">
+        <Comment><![CDATA[DTC fault detction counter]]></Comment>
+        <Mnemonic>DTCFDC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCExtendedData.Mileage">
+        <Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+        <Mnemonic>MILEAGE</Mnemonic>
+        <Bits count="32" signed="1">
+          <Scaled Unit="km"/>
+        </Bits>
+      </Data>
+      <Data Name="DTCExtendedDataRecordNumber">
+        <Mnemonic>DTCEDRN</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="128" Text="Mileage"/>
+            <Item Value="129" Text="AgingCounter"/>
+            <Item Value="130" Text="DTCOccurrenceCounter"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ElecMAchineWorkingMode">
+        <Comment><![CDATA[Mode of the power train (motor or generator)]]></Comment>
+        <Mnemonic>DID_$302F</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Motor Mode"/>
+            <Item Value="2" Text="Generator Mode"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ElecMachineDefault">
+        <Comment><![CDATA[Failure class of the power train  (A, B, C & D)]]></Comment>
+        <Mnemonic>DID_$3030</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="No Fault Type"/>
+            <Item Value="1" Text="Fault Type 1 INV Stopped C Class"/>
+            <Item Value="2" Text="Fault Type 2 INV Stopped D Class"/>
+            <Item Value="3" Text="Safety Reserved"/>
+            <Item Value="4" Text="Fault Type 3 Safety Barrier Lost"/>
+            <Item Value="5" Text="Fault Type 4 Alert Service"/>
+            <Item Value="6" Text="Fault Type 5 Charge Stop Alert"/>
+            <Item Value="7" Text="Reserved"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Rotor_PositionSensor Supply">
+        <Comment><![CDATA[Rotor PositionSensor Supply]]></Comment>
+        <Mnemonic>DID_$3034</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="°" DivideBy=" 182"/>
+        </Bits>
+      </Data>
+      <Data Name="BootVersion">
+        <Comment><![CDATA[BootVersion]]></Comment>
+        <Mnemonic>DID_$F180</Mnemonic>
+        <Bytes count="32" ascii="1"/>
+      </Data>
+      <Data Name="DTCExtendedData.DTCOccurrenceCounter">
+        <Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+        <Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Operational Reference">
+        <Comment><![CDATA[Renault Logisitic Data]]></Comment>
+        <Mnemonic>DID_$F012</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="ConfigurationDataReferenceAfterConfigurationProcess">
+        <Comment><![CDATA[ConfigurationDataReferenceAfterConfigurationProcess]]></Comment>
+        <Mnemonic>DID_$F1A2</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer order number for a kit (assembled parts bought as a whole for production e.g. cockpit), when the spare part number designates only the server (e.g. for aftersales).</FONT></P>
+<P><FONT size=2>The record data content and format shall be server specific and defined by the vehicle manufacturer.<BR></FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="Fingerprint">
+        <Comment><![CDATA[Fingerprint]]></Comment>
+        <Mnemonic>DID_$F010</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>The value is written by the ECU when executing the SendKey SecurityAccess service</FONT></P>
+<P><FONT size=2>The value can be read in boot loader mode.</FONT></P>]]></Description>
+        <Bytes count="16" ascii="1"/>
+      </Data>
+      <Data Name="IndexSrvData">
+        <Comment><![CDATA[IndexSrvData]]></Comment>
+        <Mnemonic>DID_$F011</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="CalibrationNumber">
+        <Comment><![CDATA[Calibration Number]]></Comment>
+        <Mnemonic>DID_$F182</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer specific ECU application data identification record.</FONT></P>
+<P><FONT size=2>The format of the application data identification structure shall be ECU specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10"/>
+      </Data>
+      <Data Name="DTCoccurrenceCounter">
+        <Comment><![CDATA[DTC occurrence Counter]]></Comment>
+        <Mnemonic>DID_$F0D1</Mnemonic>
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="SupplierFaultCode">
+        <Comment><![CDATA[Supplier Fault Code]]></Comment>
+        <Mnemonic>DID_$EF01</Mnemonic>
+        <Bytes count="10"/>
+      </Data>
+      <Data Name="Batt_voltage_mes">
+        <Comment><![CDATA[Battery voltage feed on KL30  measured by PEB]]></Comment>
+        <Mnemonic>DID_$300A</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="V" DivideBy=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="APCStatus">
+        <Comment><![CDATA[APC feedback status from EVC  (for diagnostic)]]></Comment>
+        <Mnemonic>DID_$300B</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="APC  OFF on CAN"/>
+            <Item Value="2" Text="APC  ON on CAN"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Volt_APCPEB_veh_status">
+        <Comment><![CDATA[APC wire  status  from USM to PEB]]></Comment>
+        <Mnemonic>DID_$300C</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="APC wire OFF"/>
+            <Item Value="2" Text="APC wire ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="OnboardPowerSupply">
+        <Comment><![CDATA[Internal supply]]></Comment>
+        <Mnemonic>DID_$300D</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="V" DivideBy=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="DC_high_voltage">
+        <Comment><![CDATA[Voltage value of the HV Network]]></Comment>
+        <Mnemonic>DID_$300E</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="V"/>
+        </Bits>
+      </Data>
+      <Data Name="InverterActivation">
+        <Comment><![CDATA[On/Off power train activation request from EVC]]></Comment>
+        <Mnemonic>DID_$301C</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Inverter Off"/>
+            <Item Value="2" Text="Inverter On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="PowerTrainCurrent">
+        <Comment><![CDATA[Combinated current value on the HV Network  of Inverter and Excitation]]></Comment>
+        <Mnemonic>DID_$301D</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="A" Offset="-5000" DivideBy=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="Current Ph U">
+        <Comment><![CDATA[HV side phase U current measure]]></Comment>
+        <Mnemonic>DID_$301E</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled Unit="A" Offset="-800"/>
+        </Bits>
+      </Data>
+      <Data Name="Current Ph V">
+        <Comment><![CDATA[HV side phase V current measure]]></Comment>
+        <Mnemonic>DID_$301F</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled Unit="A" Offset="-800"/>
+        </Bits>
+      </Data>
+      <Data Name="Current Ph W">
+        <Comment><![CDATA[HV side phase W current measure]]></Comment>
+        <Mnemonic>DID_$3021</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled Unit="A" Offset="-800"/>
+        </Bits>
+      </Data>
+      <Data Name="TorqueRequest">
+        <Comment><![CDATA[Torque demand for the power train from the EVC]]></Comment>
+        <Mnemonic>DID_$3024</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled Unit="N·m" Offset="-2000" DivideBy=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="PEBTorque">
+        <Comment><![CDATA[Calculated torque by PEB for EVC]]></Comment>
+        <Mnemonic>DID_$3025</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled Unit="N·m" Offset="-2000" DivideBy=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="InverterTempOrder">
+        <Comment><![CDATA[Real Inverter temperature in °C]]></Comment>
+        <Mnemonic>DID_$302B</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled Unit="°C" Offset="-50"/>
+        </Bits>
+      </Data>
+      <Data Name="B_PebDischarge_sch_req">
+        <Comment><![CDATA[Active discharge request  from EVC to PEB]]></Comment>
+        <Mnemonic>DID_$302D</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Discharge not requested"/>
+            <Item Value="2" Text="Discharge requested"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="PEBActiveDischarge">
+        <Comment><![CDATA[Effective active discharge feedback to EVC]]></Comment>
+        <Mnemonic>DID_$302E</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="active discharge not in process"/>
+            <Item Value="1" Text="active discharge in process"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VerlogStatus">
+        <Comment><![CDATA[status verlog from PEB to EVC (locked or not)]]></Comment>
+        <Mnemonic>DID_$3001</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Vehicle Unlocked"/>
+            <Item Value="2" Text="Vehicle Locked"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Interlock HV Battery">
+        <Comment><![CDATA[For Battery connnection]]></Comment>
+        <Mnemonic>DID_$3004</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Opened status"/>
+            <Item Value="2" Text="Closed status"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Interlock Cover">
+        <Comment><![CDATA[For Access cover connnection]]></Comment>
+        <Mnemonic>DID_$3042</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Opened status"/>
+            <Item Value="2" Text="Closed status"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VehicleManufacturerKitAssemblyPartNumber">
+        <Comment><![CDATA[Part number for PEB+EM(290108721R)]]></Comment>
+        <Mnemonic>DID_$F18E</Mnemonic>
+        <Bytes count="4"/>
+      </Data>
+      <Data Name="InverterTemp">
+        <Comment><![CDATA[Combination of inverter and Excitation temperatures, so in %]]></Comment>
+        <Mnemonic>DID_$3029</Mnemonic>
+        <Bits>
+          <Scaled Unit="%"/>
+        </Bits>
+      </Data>
+      <Data Name="ElecMachineTemp">
+        <Comment><![CDATA[Stator temperatures, so in %]]></Comment>
+        <Mnemonic>DID_$302A</Mnemonic>
+        <Bits>
+          <Scaled Unit="%"/>
+        </Bits>
+      </Data>
+      <Data Name="ReadDTCInformation.ReportDTC">
+        <Comment><![CDATA[ReadDTCInformation.ReportDTC]]></Comment>
+        <Mnemonic>ReportDTC</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ReadDTCInformation.ReportSnapshot">
+        <Comment><![CDATA[ReadDTCInformation.ReportSnapshot]]></Comment>
+        <Mnemonic>ReportSnapshot</Mnemonic>
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ReadDTCInformation.ReportExtendedData.AgingCounter">
+        <Comment><![CDATA[ReadDTCInformation.ReportExtendedData.AgingCounter]]></Comment>
+        <Mnemonic>AgingCounter</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DistanceTotalizer">
+        <Comment><![CDATA[DataRead.DistanceTotalizer]]></Comment>
+        <Mnemonic>DID_$3008</Mnemonic>
+        <Bits count="32" signed="1">
+          <Scaled Unit="km"/>
+        </Bits>
+      </Data>
+      <Data Name="InterlockBatt">
+        <Comment><![CDATA[Interlock plug service status, from LBC (condition for reprogramming)]]></Comment>
+        <Mnemonic>DID_$3007</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Opened status"/>
+            <Item Value="2" Text="Closed status"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Interlock OBC">
+        <Comment><![CDATA[For OBC connnection]]></Comment>
+        <Mnemonic>DID_$3006</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Opened status"/>
+            <Item Value="2" Text="Closed status"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="vehicleManufacturerSparePartNumber">
+        <Comment><![CDATA[vehicleManufacturerSparePartNumber (N)]]></Comment>
+        <Mnemonic>DID_$F187</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer specific ECU application data identification record.</FONT></P>
+<P><FONT size=2>The format of the application data identification structure shall be ECU specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerSparePartNumber_N">
+        <Comment><![CDATA[vehicleManufacturerSparePartNumber (R)]]></Comment>
+        <Mnemonic>DID_$F1A1</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the diagnostic version of the ECU.</FONT></P>
+<P><FONT size=2>It is defined by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>Refer to manufacture ECU designer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="Mileage of the occurrence counter">
+        <Comment><![CDATA[Mileage of the occurrence counter]]></Comment>
+        <Mnemonic>DID_$F0D0</Mnemonic>
+        <Bits count="24">
+          <Scaled Unit="km"/>
+        </Bits>
+      </Data>
+      <Data Name="Vehicle_Identification_Number">
+        <Comment><![CDATA[Vehicle_Identification_NumbeR]]></Comment>
+        <Mnemonic>DID_$2181</Mnemonic>
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceIdentifier">
+        <Bits count="16">
+          <List>
+            <Item Value="4102" Text="Interlock_4th_electrical_circuit"/>
+            <Item Value="4103" Text="Inverter HV DC link"/>
+            <Item Value="4116" Text="INV_phase_U_current_sensor"/>
+            <Item Value="4118" Text="INV_phase_W_current_sensor"/>
+            <Item Value="4122" Text="INV_EM_U_phase"/>
+            <Item Value="4123" Text="INV_EM_V_phase"/>
+            <Item Value="4124" Text="INV_EM_W_phase"/>
+            <Item Value="4126" Text="IGBT_Temp"/>
+            <Item Value="4132" Text="Ignition_on_by_wire"/>
+            <Item Value="4133" Text="EM_SIN_signal"/>
+            <Item Value="4134" Text="EM_COS_signal"/>
+            <Item Value="4135" Text="EM_SIN_COS_signals"/>
+            <Item Value="4139" Text="Interlock_3rd_electrical_circuit"/>
+            <Item Value="4140" Text="EM_Temperature"/>
+            <Item Value="4142" Text="Interlock_1st_electrical_circuit"/>
+            <Item Value="4143" Text="Interlock_2nd_electrical_circuit"/>
+            <Item Value="4153" Text="Inverter_Failure_Class_C"/>
+            <Item Value="4164" Text="Torque_request_deviation"/>
+            <Item Value="4165" Text="Incoherent_requests_from_EVC"/>
+            <Item Value="4166" Text="EM_positive_overspeed"/>
+            <Item Value="4167" Text="EM_negative_overspeed"/>
+            <Item Value="4178" Text="Inverter_Failure_Class_B_with_safety_alert"/>
+            <Item Value="4181" Text="Inverter_internal_hardware"/>
+            <Item Value="4182" Text="HV_battery_relay"/>
+            <Item Value="4194" Text="Inverter_DC_15v"/>
+            <Item Value="4195" Text="KL15_DC_12v"/>
+            <Item Value="4196" Text="Inverter_DC_5v"/>
+            <Item Value="4199" Text="Inverter_HV_voltage"/>
+            <Item Value="4210" Text="Phase_U_or_ V_overcurrent"/>
+            <Item Value="4211" Text="EM_stalling"/>
+            <Item Value="4212" Text="EM_over_speed_warning"/>
+            <Item Value="4216" Text="Phase_U_overcurrent"/>
+            <Item Value="4217" Text="Phase_V_overcurrent"/>
+            <Item Value="4224" Text="Phase_W_overcurrent"/>
+            <Item Value="53248" Text="Inverter_CAN_bus"/>
+            <Item Value="53249" Text="Communication_with_EVC_or_BMS"/>
+            <Item Value="53250" Text="Torque_request_from _EVC"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="diagnosticVersion">
+        <Comment><![CDATA[VDIAG]]></Comment>
+        <Mnemonic>DID_$F1A0</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) hardware number. </FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="DTCStatus.confirmedDTC">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Vbx_swlk_diag_avl">
+        <Comment><![CDATA[Data indicating that the Immobilizer diagnosis is available]]></Comment>
+        <Mnemonic>DID_$2070</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Immobilizer diagnosis is unavailable"/>
+            <Item Value="1" Text="Immobilizer diagnosis is available"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Vbx_swlk_diag_ccu">
+        <Comment><![CDATA[Data indicating that the Immobilizer forbids engine working due to no authorization from BCM]]></Comment>
+        <Mnemonic>DID_$2076</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="ECM is staying protected because of itself"/>
+            <Item Value="1" Text="ECM is staying protected because of BCM"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Vbx_swlk_diag_ecm">
+        <Comment><![CDATA[Data indicating that the Immobilizer forbids engine working due to the ECU]]></Comment>
+        <Mnemonic>DID_$2074</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Works normally"/>
+            <Item Value="1" Text="ECM is staying protected because of itself"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Vbx_swlk_diag_mux">
+        <Comment><![CDATA[Data indicating that the Immobilizer forbids engine working due to a CAN default with the BCM]]></Comment>
+        <Mnemonic>DID_$2077</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Works normally"/>
+            <Item Value="1" Text="ECM is staying protected because of CAN network"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Vbx_swlk_diag_tool">
+        <Comment><![CDATA[Data indicating that the Immobilizer forbids engine working due to BCM secure mode]]></Comment>
+        <Mnemonic>DID_$2075</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Works normally"/>
+            <Item Value="1" Text="ECM is staying protected because of a learning failure"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Vxx_swlk_diag_1">
+        <Comment><![CDATA[False authentications counter :Immobilizer diagnosis data used for validation]]></Comment>
+        <Mnemonic>DID_$2071</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="2" Text="Information indicating the RES exchange status"/>
+            <Item Value="4" Text="Information indicating that the ECM is in serial production"/>
+            <Item Value="8" Text="Information indicating a need of security tool"/>
+            <Item Value="16" Text="Information indicating the secret key memory area (lsb)"/>
+            <Item Value="32" Text="Information indicating the secret key memory area (msb)"/>
+            <Item Value="64" Text="Information indicating the protected state of the ECM"/>
+            <Item Value="128" Text="Information indicating if the secret key area is operational"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Vxx_swlk_diag_2">
+        <Comment><![CDATA[Immobiliser automaton phase :Immobilizer diagnosis data used for validation.]]></Comment>
+        <Mnemonic>DID_$2072</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="No false authentications counter"/>
+            <Item Value="1" Text="False authentications counter =1"/>
+            <Item Value="2" Text="False authentications counter =2"/>
+            <Item Value="3" Text="False authentications counter =3"/>
+            <Item Value="4" Text="False authentications counter =4"/>
+            <Item Value="5" Text="False authentications counter =5"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Vxx_swlk_diag_3">
+        <Comment><![CDATA[Immobilizer diagnosis data used for validation.]]></Comment>
+        <Mnemonic>DID_$2073</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Immobiliser automaton phase:Nsx_swlk_ini"/>
+            <Item Value="10" Text="Immobiliser automaton phase:Nsx_swlk_key_req"/>
+            <Item Value="20" Text="Nsx_swlk_id"/>
+            <Item Value="30" Text="Nsx_swlk_wait"/>
+            <Item Value="40" Text="Nsx_swlk_prot"/>
+            <Item Value="50" Text="Nsx_swlk_sf"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="vehicleManufacturerECUSoftwareNumber">
+        <Comment><![CDATA[ConfigurationFileReferenceLink-RUC]]></Comment>
+        <Mnemonic>DID_$F188</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="DTCRecord">
+        <Mnemonic>DTCRecord</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="StatusOfDTC">
+        <Mnemonic>DTCASR_SODTC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.Category">
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="General Failure Information"/>
+            <Item Value="1" Text="General Electrical Failures"/>
+            <Item Value="2" Text="General Signal Failures"/>
+            <Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="10" Text="General Electrical Failures - 2"/>
+            <Item Value="15" Text="Vehicle manufacturer / System supplier specific"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Device and failure type ODB codding"/>
+            <Item Value="1" Text="General Electrical Failure"/>
+            <Item Value="2" Text="General signal failure"/>
+            <Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="10" Text="General Electrical Failures - 2"/>
+            <Item Value="17" Text="circuit short to ground"/>
+            <Item Value="18" Text="circuit short to battery"/>
+            <Item Value="19" Text="circuit open"/>
+            <Item Value="20" Text="circuit short to ground or open"/>
+            <Item Value="21" Text="circuit short to battery or open"/>
+            <Item Value="22" Text="circuit voltage below threshold"/>
+            <Item Value="23" Text="circuit voltage above threshold"/>
+            <Item Value="24" Text="circuit current below threshold"/>
+            <Item Value="25" Text="circuit current above threshold"/>
+            <Item Value="26" Text="circuit resistance below threshold"/>
+            <Item Value="27" Text="circuit resistance above threshold"/>
+            <Item Value="28" Text="circuit voltage out of range"/>
+            <Item Value="29" Text="circuit current out of range"/>
+            <Item Value="30" Text="circuit resistance out of range"/>
+            <Item Value="31" Text="circuit intermittent"/>
+            <Item Value="33" Text="signal amplitude &lt; minimum"/>
+            <Item Value="34" Text="signal amplitude &gt; maximum"/>
+            <Item Value="35" Text="signal stuck low"/>
+            <Item Value="36" Text="signal stuck high"/>
+            <Item Value="37" Text="signal shape / waveform failure"/>
+            <Item Value="38" Text="signal rate of change below threshold"/>
+            <Item Value="39" Text="signal rate of change above threshold"/>
+            <Item Value="40" Text="signal bias level out of range / zero adj. failure"/>
+            <Item Value="41" Text="signal signal invalid"/>
+            <Item Value="42" Text="signal stuck in range"/>
+            <Item Value="43" Text="signal cross coupled"/>
+            <Item Value="47" Text="signal erratic"/>
+            <Item Value="49" Text="no signal"/>
+            <Item Value="50" Text="signal low time &lt; minimum"/>
+            <Item Value="51" Text="signal low time &gt; maximum"/>
+            <Item Value="52" Text="signal high time &lt; minimum"/>
+            <Item Value="53" Text="signal high time &gt; maximum"/>
+            <Item Value="54" Text="signal frequency too low"/>
+            <Item Value="55" Text="signal frequency too high"/>
+            <Item Value="56" Text="signal frequency incorrect"/>
+            <Item Value="57" Text="incorrect has too few pulses"/>
+            <Item Value="58" Text="incorrect has too many pulses"/>
+            <Item Value="65" Text="general checksum failure"/>
+            <Item Value="66" Text="general memory failure"/>
+            <Item Value="67" Text="special memory failure"/>
+            <Item Value="68" Text="data memory failure"/>
+            <Item Value="69" Text="program memory failure"/>
+            <Item Value="70" Text="calibration / parameter memory failure"/>
+            <Item Value="71" Text="watchdog / safety µC failure"/>
+            <Item Value="72" Text="supervision software failure"/>
+            <Item Value="73" Text="internal electronic failure"/>
+            <Item Value="74" Text="incorrect component installed"/>
+            <Item Value="75" Text="over temperature"/>
+            <Item Value="81" Text="not programmed"/>
+            <Item Value="82" Text="not activated"/>
+            <Item Value="83" Text="deactivated"/>
+            <Item Value="84" Text="missing calibration"/>
+            <Item Value="85" Text="not configured"/>
+            <Item Value="86" Text="invalid or incompatible configuration"/>
+            <Item Value="87" Text="invalid or incompatible software component"/>
+            <Item Value="97" Text="signal calculation failure"/>
+            <Item Value="98" Text="signal compare failure"/>
+            <Item Value="99" Text="circuit / component protection time-out"/>
+            <Item Value="100" Text="signal plausibility failure"/>
+            <Item Value="101" Text="signal has too few transitions / events"/>
+            <Item Value="102" Text="signal has too many transitions / events"/>
+            <Item Value="103" Text="signal incorrect after event"/>
+            <Item Value="104" Text="event information"/>
+            <Item Value="113" Text="actuator stuck"/>
+            <Item Value="114" Text="actuator stuck open"/>
+            <Item Value="115" Text="actuator stuck closed"/>
+            <Item Value="116" Text="actuator slipping"/>
+            <Item Value="117" Text="emergency position not reachable"/>
+            <Item Value="118" Text="wrong mounting position"/>
+            <Item Value="119" Text="commanded position not reachable"/>
+            <Item Value="120" Text="alignment or adjustment incorrect"/>
+            <Item Value="121" Text="mechanical linkage failure"/>
+            <Item Value="122" Text="fluid leak or seal failure"/>
+            <Item Value="123" Text="low fluid level"/>
+            <Item Value="124" Text="Slow Response"/>
+            <Item Value="125" Text="Actuator Stuck On"/>
+            <Item Value="127" Text="Actuator Stuck Off"/>
+            <Item Value="129" Text="invalid serial data received"/>
+            <Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+            <Item Value="131" Text="value of signal protection calculation incorrect"/>
+            <Item Value="132" Text="signal below allowable range"/>
+            <Item Value="133" Text="signal above allowable range"/>
+            <Item Value="134" Text="signal invalid"/>
+            <Item Value="135" Text="missing message"/>
+            <Item Value="136" Text="bus off"/>
+            <Item Value="143" Text="erratic"/>
+            <Item Value="145" Text="parametric"/>
+            <Item Value="146" Text="performance or incorrect operation"/>
+            <Item Value="147" Text="no operation"/>
+            <Item Value="148" Text="unexpected operation"/>
+            <Item Value="149" Text="incorrect assembly"/>
+            <Item Value="150" Text="component internal failure"/>
+            <Item Value="151" Text="Component or sys. operation obstructed or blocked"/>
+            <Item Value="152" Text="component or system over temperature"/>
+            <Item Value="153" Text="Exceeded Learning Limit"/>
+            <Item Value="154" Text="component or system operating conditions"/>
+            <Item Value="155" Text="High/Excessive Flow"/>
+            <Item Value="156" Text="Low/Insufficient Flow"/>
+            <Item Value="158" Text="Stuck On"/>
+            <Item Value="159" Text="Stuck Off"/>
+            <Item Value="161" Text="System Voltage"/>
+            <Item Value="162" Text="System Voltage Low"/>
+            <Item Value="163" Text="System Voltage High"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="NDTC">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="FirstDTC">
+        <Bits count="16">
+          <List>
+            <Item Value="4102" Text="Interlock_4th_electrical_circuit"/>
+            <Item Value="4103" Text="Inverter HV DC link"/>
+            <Item Value="4116" Text="INV_phase_U_current_sensor"/>
+            <Item Value="4118" Text="INV_phase_W_current_sensor"/>
+            <Item Value="4122" Text="INV_EM_U_phase"/>
+            <Item Value="4123" Text="INV_EM_V_phase"/>
+            <Item Value="4124" Text="INV_EM_W_phase"/>
+            <Item Value="4132" Text="Ignition_on_by_wire"/>
+            <Item Value="4126" Text="IGBT_Temp"/>
+            <Item Value="4134" Text="EM_COS_signal"/>
+            <Item Value="4135" Text="EM_SIN_COS_signals"/>
+            <Item Value="4139" Text="Interlock_3rd_electrical_circuit"/>
+            <Item Value="4140" Text="EM_Temperature"/>
+            <Item Value="4142" Text="Interlock_1st_electrical_circuit"/>
+            <Item Value="4143" Text="Interlock_2nd_electrical_circuit"/>
+            <Item Value="4153" Text="Inverter_Failure_Class_C"/>
+            <Item Value="4164" Text="Torque_request_deviation"/>
+            <Item Value="4133" Text="EM_SIN_signal"/>
+            <Item Value="4165" Text="Incoherent_requests_from_EVC"/>
+            <Item Value="4166" Text="EM_positive_overspeed"/>
+            <Item Value="4167" Text="EM_negative_overspeed"/>
+            <Item Value="4178" Text="Inverter_Failure_Class_B_with_safety_alert"/>
+            <Item Value="4182" Text="HV_battery_relay"/>
+            <Item Value="4181" Text="Inverter_internal_hardware"/>
+            <Item Value="4194" Text="Inverter_DC_15v"/>
+            <Item Value="4195" Text="KL15_DC_12v"/>
+            <Item Value="4196" Text="Inverter_DC_5v"/>
+            <Item Value="4199" Text="Inverter_HV_voltage"/>
+            <Item Value="4210" Text="Phase_U_or_ V_overcurrent"/>
+            <Item Value="4211" Text="EM_stalling"/>
+            <Item Value="4212" Text="EM_over_speed_warning"/>
+            <Item Value="4216" Text="Phase_U_overcurrent"/>
+            <Item Value="4217" Text="Phase_V_overcurrent"/>
+            <Item Value="4224" Text="Phase_W_overcurrent"/>
+            <Item Value="53249" Text="Communication_with_EVC"/>
+            <Item Value="53248" Text="Inverter_CAN_bus"/>
+            <Item Value="53250" Text="Torque_request_from _EVC"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Historical Failure">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Current Failure">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RFTYFYFTY">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Standard Fault">
+        <Bits count="5">
+          <List>
+            <Item Value="0" Text="No possible classification about the type of fault"/>
+            <Item Value="1" Text="Open circuit"/>
+            <Item Value="2" Text="Short circuit to ground"/>
+            <Item Value="3" Text="Short circuit at battery +"/>
+            <Item Value="4" Text="Parameter at min limit"/>
+            <Item Value="5" Text="Parameter at max limit"/>
+            <Item Value="6" Text="Incoherency, not plausible"/>
+            <Item Value="7" Text="No signal"/>
+            <Item Value="8" Text="Below min. threshold"/>
+            <Item Value="9" Text="Above max. threshold"/>
+            <Item Value="10" Text="Permanent Low Level"/>
+            <Item Value="11" Text="Permanent High Level"/>
+            <Item Value="12" Text="Lines short-circuited"/>
+            <Item Value="13" Text="Internal electronic anomaly"/>
+            <Item Value="14" Text="Network default"/>
+            <Item Value="15" Text="Remote diagnostic"/>
+            <Item Value="16" Text="Disturbed communication"/>
+            <Item Value="17" Text="Microcuts"/>
+            <Item Value="18" Text="Abnormal voltage"/>
+            <Item Value="19" Text="Value out of range"/>
+            <Item Value="20" Text="Open circuit or Short circuit to ground"/>
+            <Item Value="21" Text="Open circuit or Short circuit to battery"/>
+            <Item Value="22" Text="Initialization / configuration not valid"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Interlock PTC_AC">
+        <Comment><![CDATA[For PTC/AC connnection]]></Comment>
+        <Mnemonic>DID_$3041</Mnemonic>
+        <Bits signed="1">
+          <List>
+            <Item Value="1" Text="Opened status"/>
+            <Item Value="2" Text="Closed status"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Activate_verlog_or_Error angle_operation">
+        <Comment><![CDATA[1.Write 0x123456 to activate verlog 2.Write 0x000000 to enable learning 3.Write/read offset position]]></Comment>
+        <Mnemonic>DID_$3002</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="°" DivideBy=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceAndFailureTypeOBD">
+        <Bits count="16">
+          <List>
+            <Item Value="0" Text="Device and failure type ODB codding"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.ManufacturerOrSupplier">
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="Device and failure type ODB codding"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="MoreDTC">
+        <Bits signed="1">
+          <Scaled/>
+        </Bits>
+      </Data>
+    </Datas>
+    <Requests Endian="Big">
+      <Request Name="TesterPresent.WithResponse">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+        <Sent>
+          <SentBytes>3E00</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>7E</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.ExtendedDiagnostic">
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1003</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5003</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.Default">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1001</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5001</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.Programming">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1002</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5002</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierIdentifier">
+        <Comment><![CDATA[Read systemSupplierIdentifier]]></Comment>
+        <Sent>
+          <SentBytes>22F18A</SentBytes>
+        </Sent>
+        <Received MinBytes="17">
+          <ReplyBytes>62F18A</ReplyBytes>
+          <DataItem Name="systemSupplierIdentifier" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ECUSerialNumber">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Read ECUSerialNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F18C</SentBytes>
+        </Sent>
+        <Received MinBytes="23">
+          <ReplyBytes>62F18C</ReplyBytes>
+          <DataItem Name="ECUSerialNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VIN">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read VIN]]></Comment>
+        <Sent>
+          <SentBytes>22F190</SentBytes>
+        </Sent>
+        <Received MinBytes="20">
+          <ReplyBytes>62F190</ReplyBytes>
+          <DataItem Name="VIN" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUHardwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerECUHardwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F191</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F191</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUHardwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareNumber">
+        <Comment><![CDATA[Read systemSupplierECUSoftwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F194</SentBytes>
+        </Sent>
+        <Received MinBytes="11">
+          <ReplyBytes>62F194</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.VIN">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write VIN]]></Comment>
+        <Sent>
+          <SentBytes>2EF1900000000000000000000000000000000000</SentBytes>
+          <DataItem Name="VIN" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF190</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ClearDiagnosticInformation.All">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+        <Sent>
+          <SentBytes>14FFFFFF</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>54</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report number of DTC]]></Comment>
+        <Sent>
+          <SentBytes>1901FF</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>5901FF000000</ReplyBytes>
+          <DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTC">
+        <Comment><![CDATA[DDT2000 Failures page requests / DDT : Unusable for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1902FF</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>59020000000000</ReplyBytes>
+          <DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7" Endian="Little"/>
+          <DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6" Endian="Little"/>
+          <DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5" Endian="Little"/>
+          <DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3" Endian="Little"/>
+          <DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2" Endian="Little"/>
+          <DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1" Endian="Little"/>
+          <DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7" Endian="Little"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+          <DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+          <DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSnapshot">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+        <Sent>
+          <SentBytes>1904000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>590400000000</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6" Endian="Little"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Request for the import in the Clip]]></Comment>
+        <Sent>
+          <SentBytes>190600000080</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="11">
+          <ReplyBytes>5906000000008000000000</ReplyBytes>
+          <DataItem Name="DTCoccurrenceCounter" FirstByte="3"/>
+          <DataItem Name="DTCExtendedData.Mileage" FirstByte="8" Endian="Little"/>
+          <DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7" Endian="Little"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.AgingCounter">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Request for the import in the Clip]]></Comment>
+        <Sent>
+          <SentBytes>190600000081</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="8">
+          <ReplyBytes>5906000000008100</ReplyBytes>
+          <DataItem Name="DTCoccurrenceCounter" FirstByte="3"/>
+          <DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7" Endian="Little"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.DTCOccurrenceCounter">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Request for the import in the Clip]]></Comment>
+        <Sent>
+          <SentBytes>190600000082</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="8">
+          <ReplyBytes>5906000000008200</ReplyBytes>
+          <DataItem Name="DTCoccurrenceCounter" FirstByte="3"/>
+          <DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8" Endian="Little"/>
+          <DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7" Endian="Little"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData">
+        <Comment><![CDATA[DDT2000 Failures page requests : Unusable in the standard tools of DDT2000 nor for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1906000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="11">
+          <ReplyBytes>5906000000008000000000</ReplyBytes>
+          <DataItem Name="DTCoccurrenceCounter" FirstByte="3"/>
+          <DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8" Endian="Little"/>
+          <DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+          <DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7" Endian="Little"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSupportedDTC">
+        <Comment><![CDATA[Report supported DTC]]></Comment>
+        <Sent>
+          <SentBytes>190A</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>590AFF00000000</ReplyBytes>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="ReportDTCInformation.ReportDTCFaultDetectionCounter">
+        <Comment><![CDATA[Report DTC fault detection]]></Comment>
+        <Sent>
+          <SentBytes>1914</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>591400000000</ReplyBytes>
+          <DataItem Name="DTCFaultDetectionCounter" FirstByte="6" Endian="Little"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+        <Comment><![CDATA[Read systemSupplierECUVersionNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F195</SentBytes>
+        </Sent>
+        <Received MinBytes="16">
+          <ReplyBytes>62F195</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareVersionNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="ReportDTCInformation.ReportDTCFaultDetectionCounter_CPDD Import">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report DTC fault detection counter counter for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1914</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>591400000000</ReplyBytes>
+          <DataItem Name="DTCFaultDetectionCounter" FirstByte="6" Endian="Little"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSupportedDTC_CPDD Import">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report supported DTC for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>190A</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>590AFF00000000</ReplyBytes>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3" Endian="Little"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTC_CPDD Import">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT]]></Comment>
+        <Sent>
+          <SentBytes>1902FF</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>59020000000000</ReplyBytes>
+          <DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7" Endian="Little"/>
+          <DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6" Endian="Little"/>
+          <DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5" Endian="Little"/>
+          <DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3" Endian="Little"/>
+          <DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2" Endian="Little"/>
+          <DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1" Endian="Little"/>
+          <DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7" Endian="Little"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3" Endian="Little"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ElecMachineMaxMotorTorque">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223026</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623026</ReplyBytes>
+          <DataItem Name="ElecMachineMaxMotorTorque" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ElecMachineMaxGenTorque">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223027</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623027</ReplyBytes>
+          <DataItem Name="ElecMachineMaxGenTorque" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ElecMachineSpeed">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223028</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623028</ReplyBytes>
+          <DataItem Name="ElecMachineSpeed" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Stator temperature">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22302C</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62302C</ReplyBytes>
+          <DataItem Name="Stator temperature" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ElecMAchineWorkingMode">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22302F</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62302F</ReplyBytes>
+          <DataItem Name="ElecMAchineWorkingMode" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ElecMachineDefault">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223030</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>623030</ReplyBytes>
+          <DataItem Name="ElecMachineDefault" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Digest">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22FD00</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>62FD00</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.BootVersion">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>22F180</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62F180</ReplyBytes>
+          <DataItem Name="BootVersion" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Rotor_PositionSensor Supply">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223034</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623034</ReplyBytes>
+          <DataItem Name="Rotor_PositionSensor Supply" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Operational Reference">
+        <Sent>
+          <SentBytes>22F012</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F012</ReplyBytes>
+          <DataItem Name="Operational Reference" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="ECUReset_HardReset">
+        <ManuelSend/>
+        <DenyAccess>
+          <NoSDS/>
+          <Plant/>
+          <Supplier/>
+        </DenyAccess>
+        <Sent>
+          <SentBytes>1103</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5103</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Interlock Cover">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223042</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>623042</ReplyBytes>
+          <DataItem Name="Interlock Cover" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.PEBActiveDischarge">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22302E</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62302E</ReplyBytes>
+          <DataItem Name="PEBActiveDischarge" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.B_PebDischarge_sch_req">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22302D</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62302D</ReplyBytes>
+          <DataItem Name="B_PebDischarge_sch_req" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.InverterTempOrder">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22302B</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62302B</ReplyBytes>
+          <DataItem Name="InverterTempOrder" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ElecMachineTemp">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22302A</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62302A</ReplyBytes>
+          <DataItem Name="ElecMachineTemp" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.InverterTemp">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223029</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>623029</ReplyBytes>
+          <DataItem Name="InverterTemp" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.PEBTorque">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223025</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623025</ReplyBytes>
+          <DataItem Name="PEBTorque" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Current Ph W">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223021</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623021</ReplyBytes>
+          <DataItem Name="Current Ph W" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Current Ph V">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22301F</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62301F</ReplyBytes>
+          <DataItem Name="Current Ph V" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Current Ph U">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22301E</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62301E</ReplyBytes>
+          <DataItem Name="Current Ph U" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.PowerTrainCurrent">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22301D</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62301D</ReplyBytes>
+          <DataItem Name="PowerTrainCurrent" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.InverterActivation">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22301C</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62301C</ReplyBytes>
+          <DataItem Name="InverterActivation" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Volt_APCPEB_veh_status">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22300C</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62300C</ReplyBytes>
+          <DataItem Name="Volt_APCPEB_veh_status" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.APCStatus">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22300B</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62300B</ReplyBytes>
+          <DataItem Name="APCStatus" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Batt_voltage_mes">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22300A</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62300A</ReplyBytes>
+          <DataItem Name="Batt_voltage_mes" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DistanceTotalizer">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223008</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>623008</ReplyBytes>
+          <DataItem Name="DistanceTotalizer" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.InterlockBatt">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223007</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>623007</ReplyBytes>
+          <DataItem Name="InterlockBatt" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Interlock OBC">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223006</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>623006</ReplyBytes>
+          <DataItem Name="Interlock OBC" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VerlogStatus">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223001</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>623001</ReplyBytes>
+          <DataItem Name="VerlogStatus" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ConfigurationDataReferenceAfterConfigurationProcess">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Read vehicleManufacturerKitAssemblyPartNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F1A2</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F1A2</ReplyBytes>
+          <DataItem Name="ConfigurationDataReferenceAfterConfigurationProcess" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VehicleManufacturerKitAssemblyPartNumber">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F18E</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>62F18E</ReplyBytes>
+          <DataItem Name="VehicleManufacturerKitAssemblyPartNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.CalibrationNumber">
+        <Comment><![CDATA[Read applicationDataIdentification]]></Comment>
+        <Sent>
+          <SentBytes>22F182</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F182</ReplyBytes>
+          <DataItem Name="CalibrationNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Fingerprint">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Read programmingOperationFingerPrint]]></Comment>
+        <Sent>
+          <SentBytes>22F010</SentBytes>
+        </Sent>
+        <Received MinBytes="19">
+          <ReplyBytes>62F010</ReplyBytes>
+          <DataItem Name="Fingerprint" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Interlock HV Battery">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223004</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>623004</ReplyBytes>
+          <DataItem Name="Interlock HV Battery" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DC_high_voltage">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22300E</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62300E</ReplyBytes>
+          <DataItem Name="DC_high_voltage" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IndexSrvData">
+        <Comment><![CDATA[Read security access FingerPrint]]></Comment>
+        <Sent>
+          <SentBytes>22F011</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F011</ReplyBytes>
+          <DataItem Name="IndexSrvData" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.TorqueRequest">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223024</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623024</ReplyBytes>
+          <DataItem Name="TorqueRequest" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerSparePartNumber_N">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[DataRead.vehicleManufacturerSparePartNumber_N]]></Comment>
+        <Sent>
+          <SentBytes>22F1A1</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F1A1</ReplyBytes>
+          <DataItem Name="vehicleManufacturerSparePartNumber_N" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.OnboardPowerSupply">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22300D</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62300D</ReplyBytes>
+          <DataItem Name="OnboardPowerSupply" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Vehicle_Identification_Number">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>222181</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>622181</ReplyBytes>
+          <DataItem Name="Vehicle_Identification_Number" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Mileage of the occurrence counter">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F0D0</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>62F0D0</ReplyBytes>
+          <DataItem Name="Mileage of the occurrence counter" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.diagnosticVersion">
+        <Comment><![CDATA[Read.diagnosticVersion]]></Comment>
+        <Sent>
+          <SentBytes>22F1A0</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F1A0</ReplyBytes>
+          <DataItem Name="diagnosticVersion" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUSoftwareNumber">
+        <Comment><![CDATA[DataRead.vehicleManufacturerECUSoftwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F188</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F188</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerSparePartNumber">
+        <Comment><![CDATA[DataRead.vehicleManufacturerSparePartNumber_R]]></Comment>
+        <Sent>
+          <SentBytes>22F187</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F187</ReplyBytes>
+          <DataItem Name="vehicleManufacturerSparePartNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Interlock PTC_AC">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223041</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>623041</ReplyBytes>
+          <DataItem Name="Interlock PTC_AC" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Vbx_swlk_diag_avl">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>222070</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622070</ReplyBytes>
+          <DataItem Name="Vbx_swlk_diag_avl" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Vbx_swlk_diag_ccu">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>222076</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622076</ReplyBytes>
+          <DataItem Name="Vbx_swlk_diag_ccu" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Vbx_swlk_diag_ecm">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>222074</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622074</ReplyBytes>
+          <DataItem Name="Vbx_swlk_diag_ecm" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Vbx_swlk_diag_mux">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>222077</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622077</ReplyBytes>
+          <DataItem Name="Vbx_swlk_diag_mux" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Vbx_swlk_diag_tool">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>222075</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622075</ReplyBytes>
+          <DataItem Name="Vbx_swlk_diag_tool" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Vxx_swlk_diag_1">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>222071</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622071</ReplyBytes>
+          <DataItem Name="Vxx_swlk_diag_1" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Vxx_swlk_diag_2">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>222072</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622072</ReplyBytes>
+          <DataItem Name="Vxx_swlk_diag_2" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Vxx_swlk_diag_3">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>222073</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622073</ReplyBytes>
+          <DataItem Name="Vxx_swlk_diag_3" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Activate_verlog_or_Error angle_operation">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Activate_verlog_or_Error angle_operation]]></Comment>
+        <Sent>
+          <SentBytes>223002</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623002</ReplyBytes>
+          <DataItem Name="Activate_verlog_or_Error angle_operation" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Activate_verlog_or_Error angle_operation">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write Activate_verlog_or_Error angle_operation]]></Comment>
+        <Sent>
+          <SentBytes>2E30020000</SentBytes>
+          <DataItem Name="Activate_verlog_or_Error angle_operation" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E3002</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="Activate_PEB_Debug_CAN">
+        <ManuelSend/>
+        <Comment><![CDATA[Activate_PEB_Debug_CAN]]></Comment>
+        <Sent>
+          <SentBytes>280002</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>680000</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="Unactivate_PEB_Debug_CAN">
+        <ManuelSend/>
+        <Comment><![CDATA[Unactivate_PEB_Debug_CAN]]></Comment>
+        <Sent>
+          <SentBytes>280302</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>680300</ReplyBytes>
+        </Received>
+      </Request>
+    </Requests>
+    <Devices>
+      <Device Name="Interlock_4th_electrical_circuit" DTC="4102" FreezeFrame="DataRead.Current Ph U">
+        <Mnemonic>Interlock_4th_electrical_circuit</Mnemonic>
+        <Test Type="20" Severity="0">
+          <Description>Circuit Short to Ground or Open</Description>
+        </Test>
+      </Device>
+      <Device Name="IGBT_Temp" DTC="4126">
+        <Mnemonic>IGBT_Temp</Mnemonic>
+        <Test Type="150" Severity="0">
+        </Test>
+        <Test Type="75" Severity="0">
+        </Test>
+        <Test Type="152" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="INV_phase_U_current_sensor" DTC="4116">
+        <Mnemonic>INV_phase_U_current_sensor</Mnemonic>
+        <Test Type="150" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="INV_phase_W_current_sensor" DTC="4118">
+        <Mnemonic>INV_phase_W_current_sensor</Mnemonic>
+        <Test Type="150" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="INV_EM_U_phase" DTC="4122">
+        <Mnemonic>INV_EM_U_phase</Mnemonic>
+        <Test Type="25" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="INV_EM_V_phase" DTC="4123">
+        <Mnemonic>INV_EM_V_phase</Mnemonic>
+        <Test Type="25" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="INV_EM_W_phase" DTC="4124">
+        <Mnemonic>INV_EM_W_phase</Mnemonic>
+        <Test Type="25" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Ignition_on_by_wire" DTC="4132">
+        <Mnemonic>Ignition_on_by_wire</Mnemonic>
+        <Test Type="100" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="EM_SIN_signal" DTC="4133">
+        <Mnemonic>EM_SIN_signal</Mnemonic>
+        <Test Type="1" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="EM_COS_signal" DTC="4134">
+        <Mnemonic>EM_COS_signal</Mnemonic>
+        <Test Type="1" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="EM_SIN_COS_signals" DTC="4135">
+        <Mnemonic>EM_SIN_COS_signals</Mnemonic>
+        <Test Type="41" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="EM_Temperature" DTC="4140">
+        <Mnemonic>EM_Temperature</Mnemonic>
+        <Test Type="1" Severity="0">
+        </Test>
+        <Test Type="75" Severity="0">
+        </Test>
+        <Test Type="152" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Interlock_3rd_electrical_circuit" DTC="4139">
+        <Mnemonic>Interlock_3rd_electrical_circuit</Mnemonic>
+        <Test Type="20" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Interlock_1st_electrical_circuit" DTC="4142">
+        <Mnemonic> Interlock_1st_electrical_circuit</Mnemonic>
+        <Test Type="20" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Interlock_2nd_electrical_circuit" DTC="4143">
+        <Mnemonic>Interlock_2nd_electrical_circuit</Mnemonic>
+        <Test Type="20" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Inverter_Failure_Class_C" DTC="4153">
+        <Mnemonic>Inverter_Failure_Class_C</Mnemonic>
+        <Test Type="150" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Torque_request_deviation" DTC="4164">
+        <Mnemonic>Torque_request_deviation</Mnemonic>
+        <Test Type="104" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Inverter_CAN_bus" DTC="53248">
+        <Mnemonic>Inverter_CAN_bus</Mnemonic>
+        <Test Type="134" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Torque_request_from _EVC" DTC="53250">
+        <Mnemonic>Torque_request_from _EVC</Mnemonic>
+        <Test Type="97" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Incoherent_requests_from_EVC" DTC="4165">
+        <Mnemonic>Incoherent_requests_from_EVC</Mnemonic>
+        <Test Type="41" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="EM_positive_overspeed" DTC="4166">
+        <Mnemonic>EM_positive_overspeed</Mnemonic>
+        <Test Type="148" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="EM_negative_overspeed" DTC="4167">
+        <Mnemonic>EM_negative_overspeed</Mnemonic>
+        <Test Type="148" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Inverter_Failure_Class_B_with_safety_alert" DTC="4178">
+        <Mnemonic>Inverter_Failure_Class_B_with_safety_alert</Mnemonic>
+        <Test Type="71" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Inverter_internal_hardware" DTC="4181">
+        <Mnemonic>Inverter_internal_hardware</Mnemonic>
+        <Test Type="151" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="HV_battery_relay" DTC="4182">
+        <Mnemonic>HV_battery_relay</Mnemonic>
+        <Test Type="151" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Inverter_DC_15v" DTC="4194">
+        <Mnemonic>Inverter_DC_15v</Mnemonic>
+        <Test Type="23" Severity="0">
+        </Test>
+        <Test Type="22" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Inverter_DC_5v" DTC="4196">
+        <Mnemonic>Inverter_DC_5v</Mnemonic>
+        <Test Type="23" Severity="0">
+        </Test>
+        <Test Type="22" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Inverter_HV_voltage" DTC="4199">
+        <Mnemonic>Inverter_HV_voltage</Mnemonic>
+        <Test Type="23" Severity="0">
+        </Test>
+        <Test Type="22" Severity="0">
+        </Test>
+        <Test Type="163" Severity="0">
+        </Test>
+        <Test Type="162" Severity="0">
+        </Test>
+        <Test Type="161" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="EM_stalling" DTC="4211">
+        <Mnemonic>EM_stalling</Mnemonic>
+        <Test Type="113" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="EM_over_speed_warning" DTC="4212">
+        <Mnemonic>EM_over_speed_warning</Mnemonic>
+        <Test Type="148" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Phase_U_overcurrent" DTC="4216">
+        <Mnemonic>Phase_U_overcurrent</Mnemonic>
+        <Test Type="25" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Phase_W_overcurrent" DTC="4224">
+        <Mnemonic>Phase_W_overcurrent</Mnemonic>
+        <Test Type="25" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Phase_U_or_ V_overcurrent" DTC="4210">
+        <Mnemonic>Phase_U_or_ V_overcurrent</Mnemonic>
+        <Test Type="25" Severity="0">
+        </Test>
+        <Test Type="161">
+        </Test>
+      </Device>
+      <Device Name="Phase_V_overcurrent" DTC="4217">
+        <Mnemonic>Phase_V_overcurrent</Mnemonic>
+        <Test Type="25" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Inverter HV DC link" DTC="4103">
+        <Mnemonic>Inverter HV DC link</Mnemonic>
+        <Test Type="146" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="KL15_DC_12v" DTC="4195">
+        <Mnemonic>KL15_DC_12v</Mnemonic>
+        <Test Type="23" Severity="0">
+        </Test>
+        <Test Type="22" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Communication_with_EVC_or_BMS" DTC="53249">
+        <Mnemonic>Communication_with_EVC_or_BMS</Mnemonic>
+        <Test Type="135" Severity="0">
+        </Test>
+        <Test Type="134">
+        </Test>
+      </Device>
+    </Devices>
+    <ds:Categories xmlns="http://www-diag.renault.com/2002/screens">
+      <Category Name="Mesure*">
+        <Screen Name="Etat E-motor" Color="10461087" WindowState="0" Width="12060" Height="9060">
+          <Label Text="Couple / Vitesse Emotor" Color="16777088" Alignment="2">
+            <Rectangle Left="405" Top="2805" Height="300" Width="4260"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Etat Emotor" Color="16777088" Alignment="2">
+            <Rectangle Left="2790" Top="240" Height="300" Width="6480"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Temperature" Color="16777088" Alignment="2">
+            <Rectangle Left="8025" Top="3990" Height="300" Width="2400"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Tension alimentation (HV et LV)" Color="16777088" Alignment="2">
+            <Rectangle Left="360" Top="960" Height="300" Width="4335"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Data Vehicule" Color="16777088" Alignment="2">
+            <Rectangle Left="5235" Top="2895" Height="300" Width="4305"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Machine Etat Emotor" Color="16777088" Alignment="2">
+            <Rectangle Left="5100" Top="945" Height="300" Width="3270"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Etat HV batterie" Color="16777088" Alignment="2">
+            <Rectangle Left="8580" Top="945" Height="300" Width="3405"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Courant DC / AC phases" Color="16777088" Alignment="2">
+            <Rectangle Left="450" Top="5295" Height="300" Width="4050"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="3065" Color="16777215" DataName="Current Ph U" RequestName="DataRead.Current Ph U">
+            <Rectangle Left="360" Top="1320" Height="300" Width="4320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3155" Color="16777215" DataName="Interlock PTC_AC" RequestName="DataRead.Interlock PTC_AC">
+            <Rectangle Left="435" Top="3165" Height="300" Width="4245"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3170" Color="16777215" DataName="Interlock Cover" RequestName="DataRead.Interlock Cover">
+            <Rectangle Left="435" Top="3495" Height="300" Width="4230"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3185" Color="16777215" DataName="ElecMachineMaxMotorTorque" RequestName="DataRead.ElecMachineMaxMotorTorque">
+            <Rectangle Left="450" Top="3840" Height="300" Width="4215"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3200" Color="16777215" DataName="ElecMachineMaxGenTorque" RequestName="DataRead.ElecMachineMaxGenTorque">
+            <Rectangle Left="450" Top="4185" Height="300" Width="4230"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3200" Color="16777215" DataName="ElecMachineSpeed" RequestName="DataRead.ElecMachineSpeed">
+            <Rectangle Left="435" Top="4530" Height="300" Width="4200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3185" Color="16777215" DataName="InverterTempOrder" RequestName="DataRead.InverterTempOrder">
+            <Rectangle Left="7140" Top="4485" Height="300" Width="4555"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3200" Color="16777215" DataName="Stator temperature" RequestName="DataRead.Stator temperature">
+            <Rectangle Left="7185" Top="6255" Height="300" Width="4495"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3170" Color="16777215" DataName="VerlogStatus" RequestName="DataRead.VerlogStatus">
+            <Rectangle Left="7185" Top="5910" Height="300" Width="4495"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="ElecMachineDefault" RequestName="DataRead.ElecMachineDefault">
+            <Rectangle Left="5175" Top="2055" Height="300" Width="3210"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+            <Threshold Value=" 1" Color="255">
+              <Sound Name="0"/>
+            </Threshold>
+            <Threshold Value=" 2" Color="255">
+              <Sound Name="0"/>
+            </Threshold>
+            <Threshold Value=" 0" Color="65280">
+              <Sound Name="0"/>
+            </Threshold>
+            <Threshold Value=" 5" Color="33023">
+              <Sound Name="0"/>
+            </Threshold>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="InterlockBatt" RequestName="DataRead.InterlockBatt">
+            <Rectangle Left="5160" Top="1710" Height="300" Width="3240"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="1970" Color="16777215" DataName="VehicleManufacturerKitAssemblyPartNumber" RequestName="DataRead.VehicleManufacturerKitAssemblyPartNumber">
+            <Rectangle Left="5145" Top="1350" Height="300" Width="3255"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3065" Color="16777215" DataName="Current Ph U" RequestName="DataRead.Current Ph U">
+            <Rectangle Left="360" Top="1320" Height="300" Width="4320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3065" Color="16777215" DataName="TorqueRequest" RequestName="DataRead.TorqueRequest">
+            <Rectangle Left="360" Top="1680" Height="300" Width="4330"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3155" Color="16777215" DataName="B_PebDischarge_sch_req" RequestName="DataRead.B_PebDischarge_sch_req">
+            <Rectangle Left="7155" Top="4800" Height="300" Width="4540"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3170" Color="16777215" DataName="PEBActiveDischarge" RequestName="DataRead.PEBActiveDischarge">
+            <Rectangle Left="7155" Top="5115" Height="300" Width="4510"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3200" Color="16777215" DataName="InverterTemp" RequestName="DataRead.InverterTemp">
+            <Rectangle Left="7185" Top="6675" Height="300" Width="4510"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3215" Color="16777215" DataName="ElecMachineTemp" RequestName="DataRead.ElecMachineTemp">
+            <Rectangle Left="7185" Top="7035" Height="300" Width="4495"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="Interlock HV Battery" RequestName="DataRead.Interlock HV Battery">
+            <Rectangle Left="495" Top="6000" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="Interlock OBC" RequestName="DataRead.Interlock OBC">
+            <Rectangle Left="480" Top="6345" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="PEBTorque" RequestName="DataRead.PEBTorque">
+            <Rectangle Left="480" Top="6780" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3050" Color="16777215" DataName="Current Ph V" RequestName="DataRead.Current Ph V">
+            <Rectangle Left="360" Top="2025" Height="300" Width="4330"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3050" Color="16777215" DataName="Activate_verlog_or_Error angle_operation" RequestName="DataRead.Activate_verlog_or_Error angle_operation">
+            <Rectangle Left="375" Top="2355" Height="300" Width="4315"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Verlog" Color="16744576" WindowState="0" Width="11940" Height="9060">
+          <Label Text="STATUT VERLOG" Color="16777088" Alignment="2">
+            <Rectangle Left="2280" Top="240" Height="300" Width="6480"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="2000" Color="16777215" DataName="Vbx_swlk_diag_avl" RequestName="DataRead.Vbx_swlk_diag_avl">
+            <Rectangle Left="2040" Top="2040" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="Vbx_swlk_diag_ccu" RequestName="DataRead.Vbx_swlk_diag_ccu">
+            <Rectangle Left="2040" Top="2640" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="Vbx_swlk_diag_ecm" RequestName="DataRead.Vbx_swlk_diag_ecm">
+            <Rectangle Left="2040" Top="3240" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="Vbx_swlk_diag_mux" RequestName="DataRead.Vbx_swlk_diag_mux">
+            <Rectangle Left="2040" Top="3840" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="Vbx_swlk_diag_tool" RequestName="DataRead.Vbx_swlk_diag_tool">
+            <Rectangle Left="2040" Top="4440" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="Vxx_swlk_diag_1" RequestName="DataRead.Vxx_swlk_diag_1">
+            <Rectangle Left="2040" Top="5040" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="Vxx_swlk_diag_2" RequestName="DataRead.Vxx_swlk_diag_2">
+            <Rectangle Left="2040" Top="5640" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="Vxx_swlk_diag_3" RequestName="DataRead.Vxx_swlk_diag_3">
+            <Rectangle Left="2040" Top="6240" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="VerlogStatus" RequestName="DataRead.VerlogStatus">
+            <Rectangle Left="2040" Top="1440" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Ident" Color="12615680" WindowState="0" Width="11940" Height="8940">
+          <Label Text="IDENTIFICATION EMOTOR" Color="16777088" Alignment="2">
+            <Rectangle Left="2280" Top="240" Height="300" Width="6480"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="Lecture">
+            <Rectangle Left="2760" Top="720" Height="300" Width="5760"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="DataRead.Operational Reference"/>
+            <Send Delay="10" RequestName="DataRead.CalibrationNumber"/>
+            <Send Delay="10" RequestName="DataRead.vehicleManufacturerSparePartNumber"/>
+            <Send Delay="10" RequestName="DataRead.vehicleManufacturerECUSoftwareNumber"/>
+            <Send Delay="10" RequestName="DataRead.systemSupplierIdentifier"/>
+            <Send Delay="10" RequestName="DataRead.ECUSerialNumber"/>
+            <Send Delay="10" RequestName="DataRead.ConfigurationDataReferenceAfterConfigurationProcess"/>
+            <Send Delay="10" RequestName="DataRead.VIN"/>
+            <Send Delay="10" RequestName="DataRead.vehicleManufacturerECUHardwareNumber"/>
+            <Send Delay="10" RequestName="DataRead.systemSupplierECUSoftwareNumber"/>
+            <Send Delay="10" RequestName="DataRead.systemSupplierECUSoftwareVersionNumber"/>
+            <Send Delay="10" RequestName="DataRead.vehicleManufacturerSparePartNumber_N"/>
+            <Send Delay="10" RequestName="DataRead.ConfigurationDataReferenceAfterConfigurationProcess"/>
+            <Send Delay="10" RequestName="DataRead.BootVersion"/>
+            <Send Delay="10" RequestName="DataRead.Fingerprint"/>
+          </Button>
+          <Display Width="2825" Color="16777215" DataName="IndexSrvData" RequestName="DataRead.IndexSrvData">
+            <Rectangle Left="600" Top="1680" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2435" Color="16777215" DataName="Operational Reference" RequestName="DataRead.Operational Reference">
+            <Rectangle Left="600" Top="1200" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2840" Color="16777215" DataName="CalibrationNumber" RequestName="DataRead.CalibrationNumber">
+            <Rectangle Left="600" Top="2160" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3695" Color="16777215" DataName="vehicleManufacturerSparePartNumber" RequestName="DataRead.vehicleManufacturerSparePartNumber">
+            <Rectangle Left="600" Top="3120" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2900" Color="16777215" DataName="vehicleManufacturerECUSoftwareNumber" RequestName="DataRead.vehicleManufacturerECUSoftwareNumber">
+            <Rectangle Left="600" Top="3600" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2195" Color="16777215" DataName="systemSupplierIdentifier" RequestName="DataRead.systemSupplierIdentifier">
+            <Rectangle Left="600" Top="4080" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2210" Color="16777215" DataName="ECUSerialNumber" RequestName="DataRead.ECUSerialNumber">
+            <Rectangle Left="600" Top="4560" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3905" Color="16777215" DataName="ConfigurationDataReferenceAfterConfigurationProcess" RequestName="DataRead.ConfigurationDataReferenceAfterConfigurationProcess">
+            <Rectangle Left="600" Top="5040" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="VIN" RequestName="DataRead.VIN">
+            <Rectangle Left="600" Top="5520" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3935" Color="16777215" DataName="vehicleManufacturerECUHardwareNumber" RequestName="DataRead.vehicleManufacturerECUHardwareNumber">
+            <Rectangle Left="600" Top="6000" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3935" Color="16777215" DataName="systemSupplierECUSoftwareNumber" RequestName="DataRead.systemSupplierECUSoftwareNumber">
+            <Rectangle Left="600" Top="6480" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3950" Color="16777215" DataName="systemSupplierECUSoftwareVersionNumber" RequestName="DataRead.systemSupplierECUSoftwareVersionNumber">
+            <Rectangle Left="600" Top="6960" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3935" Color="16777215" DataName="vehicleManufacturerSparePartNumber" RequestName="DataRead.vehicleManufacturerSparePartNumber">
+            <Rectangle Left="600" Top="7440" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3935" Color="16777215" DataName="ConfigurationDataReferenceAfterConfigurationProcess" RequestName="DataRead.ConfigurationDataReferenceAfterConfigurationProcess">
+            <Rectangle Left="600" Top="7920" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="BootVersion" RequestName="DataRead.BootVersion">
+            <Rectangle Left="600" Top="8400" Height="300" Width="10800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Debug frame Activate" Color="12632256" WindowState="0" Width="12300" Height="9060">
+          <Button Text="Activate_PEB_Debug_Frame">
+            <Rectangle Left="1920" Top="2640" Height="900" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="50" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="50" RequestName="Activate_PEB_Debug_CAN"/>
+          </Button>
+          <Button Text="Deactivate_PEB_Debug_Frame">
+            <Rectangle Left="6000" Top="2640" Height="900" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="50" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="50" RequestName="Unactivate_PEB_Debug_CAN"/>
+          </Button>
+        </Screen>
+      </Category>
+    </ds:Categories>
+  </ddt:Target>
+</xml>

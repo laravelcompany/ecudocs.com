@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Version : 1.0  update by BLANDIN Jean-Claude (Renault/Nissan) --> 
+<!-- Version : 2.0  update by BLANDIN Jean-Claude (Renault/Nissan) Add LabelType 2, 4, 5, 6 for new labels type Script and Request --> 
+<!-- Version : 2.1  TEMPORARY update by Bosch to permit multiple data linls for Type 1 to allow data to be processed -->
+<!-- Version : 3.0  Modification by BLANDIN Jean-Claude (Renault/Nissan) Order of Label type --> 
+<!-- Version : 4.0  Modification by BLANDIN Jean-Claude (Renault/Nissan) Add in Category element attributes (Count, FirstByte, BitOffset, Template) --> 
+<!-- Version : 5.0  Modification by BLANDIN Jean-Claude (Renault/Nissan) Modification on <Request> label description -->
+<!-- Version : 5.1  Update by LUCY Guillaume (Renault/Nissan) Modification for Label type "Request : "DDTlink" changed in "DDTLink" --> 
+<!-- Version : 6.0  Modification by Blandin Jean-Claude (Renault/Nissan) Add new attribute OdxUnitRef in the Category element --> 
+<!-- Version : 7.0  Modification by Blandin Jean-Claude (Renault/Nissan) Add new new element for ADMIN-DATA VERSION informations --> 
+<!-- Version : 7.1  Modification by Blandin Jean-Claude (Renault/Nissan) Add new element STATE in ADMIN-DATA informations --> 
+<!--                Modification by Blandin Jean-Claude (Renault/Nissan) Add new element DCAL in Labels element --> 
+<!--                Add by Blandin Jean-Claude (Renault/Nissan) Add new element in REVISION element       --> 
+<!--                Modification by Blandin Jean-Claude (Renault/Nissan) Modification in the LabelType5 (Add RspLink element)       --> 
+<!-- Version : 7.2  Modification by Blandin Jean-Claude (Renault/Nissan) Add new attribute DefaultValue in DCAL element to specify the default value to put if this parameter was not read before  --> 
+<!--                Modification by Blandin Jean-Claude (Renault/Nissan) Add new attribute ForcedValue in DCAL element to specify the value to put systematically after flashing  --> 
+<!--                Modification by Blandin Jean-Claude (Renault/Nissan) Add new element DataSaving in Labels element --> 
+<!--                Modification by Blandin Jean-Claude (Renault/Nissan) Add new attribute Group in DataSaving element to organize by group of saving the liste of Labels  --> 
+<!--                Modification by Blandin Jean-Claude (Renault/Nissan) Add new attribute Mandatory in DataSaving element to force this saving systematically or not for all group (Value Mandatory or Optional)  --> 
+<!--                Test  --> 
+
+
+
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="LabelsFile">
+        <xs:complexType>
+            <xs:sequence>
+            	<xs:element name="ADMIN-DATA" minOccurs="1" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="LANGUAGE" minOccurs="1" maxOccurs="1"/>
+                            <xs:element name="DOC-REVISIONS" minOccurs="1" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="DOC-REVISION" minOccurs="1" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="REVISIONS-SFT" minOccurs="1" maxOccurs="1">
+														<xs:complexType>
+														   <xs:sequence>
+															  <xs:element name="REVISION-SFT" minOccurs="0" maxOccurs="unbounded"/>
+														   </xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="REVISION-LABEL" minOccurs="1" maxOccurs="1"/>
+													<xs:element name="REVISION-LABEL-CREATOR" minOccurs="1" maxOccurs="1"/>
+													<xs:element name="REVISION-LABEL-MERGER" minOccurs="1" maxOccurs="1"/>
+													<xs:element name="REVISION-MERGER-TOOL" minOccurs="1" maxOccurs="1"/>
+													<xs:element name="STATE" minOccurs="1" maxOccurs="1"/>
+													<xs:element name="DATE" minOccurs="1" maxOccurs="1"/>
+													<xs:element name="TOOL" minOccurs="1" maxOccurs="1"/>
+													<xs:element name="MERGER_TOOL" minOccurs="1" maxOccurs="1"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+            	</xs:element>
+                <xs:element name="Labels">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Readable" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Label" type="LabelType6" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Writable" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Label" type="LabelType1" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="IOControl" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Label" type="LabelType5" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="Text" type="xs:string"/>
+                                 </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Routine" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Label" type="LabelType5" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Scripts" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Label" type="LabelType4" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="Text" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Snapshot" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Label" type="LabelType1" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="Text" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Extended" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Label" type="LabelType1" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="Text" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Fault" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Label" type="LabelType3" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="Text" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Request" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Label" type="LabelType2" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="Text" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="DCAL" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Label" type="LabelType7" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="Text" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="DataSaving" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Label" type="LabelType8" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="Text" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+		<xs:attribute name="ecuID" type="xs:string" use="optional"/>
+		<xs:attribute name="familyName" type="xs:string" use="optional"/>
+		<xs:attribute name="protocolID" type="xs:string" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="RequirementType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Name" type="xs:string" use="optional"/>
+                <xs:attribute name="Constraints" type="xs:string" use="optional"/>
+                <xs:attribute name="Conformity" type="xs:string" use="optional"/>
+                <xs:attribute name="Comment" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="RequirementTypeDataSaving">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Name" type="xs:string" use="optional"/>
+                <xs:attribute name="Constraints" type="xs:string" use="optional"/>
+                <xs:attribute name="Conformity" type="xs:string" use="optional"/>
+                <xs:attribute name="Comment" type="xs:string" use="optional"/>
+                <xs:attribute name="Group" type="xs:string" use="optional"/>
+                <xs:attribute name="Mandatory" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="LabelType1">  <!-- For Label type "Writable, Extended, Snapshot" -->
+        <xs:sequence>
+            <xs:element name="Requirement" type="RequirementType"/>
+            <xs:element name="Variants" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+						<xs:element name="VariantLink" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="DataLink" minOccurs="1" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+												<xs:element name="Category" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="Line" minOccurs="0" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:attribute name="Value" type="xs:string" use="optional"/>
+																	<xs:attribute name="Text" type="xs:string" use="optional"/>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="Type" type="xs:string" use="optional"/>
+														<xs:attribute name="Signed" type="xs:string" use="optional"/>
+														<xs:attribute name="Unit" type="xs:string" use="optional"/>
+														<xs:attribute name="OdxUnitRef" type="xs:string" use="optional"/>
+														<xs:attribute name="Format" type="xs:string" use="optional"/>
+														<xs:attribute name="Count" type="xs:string" use="optional"/>
+														<xs:attribute name="FirstByte" type="xs:string" use="optional"/>
+														<xs:attribute name="BitOffset" type="xs:string" use="optional"/>
+														<xs:attribute name="Template" type="xs:string" use="optional"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="Subname" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTLink" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTRQLink" type="xs:string" use="optional"/>
+											<xs:attribute name="SN" type="xs:string" use="optional"/>
+											<xs:attribute name="DefaultValue" type="xs:string" use="optional"/>
+											<xs:attribute name="Operator" type="xs:string" use="optional"/>
+											<xs:attribute name="Constraints" type="xs:string" use="optional"/>
+											<xs:attribute name="Conformity" type="xs:string" use="optional"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="DDTVariant" type="xs:string" use="optional"/>
+                                <xs:attribute name="EVariantName" type="xs:string" use="optional"/>
+                                <xs:attribute name="Constraints" type="xs:string"/>
+                                <xs:attribute name="Conformity" type="xs:string"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+        <xs:attribute name="Description" type="xs:string" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="LabelType2">  <!-- For Label type "Request" -->
+        <xs:sequence>
+            <xs:element name="Variants" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+						<xs:element name="VariantLink" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="DataLink" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+												<xs:element name="Category" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="Line" minOccurs="0" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:attribute name="Value" type="xs:string" use="optional"/>
+																	<xs:attribute name="Text" type="xs:string" use="optional"/>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="Type" type="xs:string" use="optional"/>
+														<xs:attribute name="Signed" type="xs:string" use="optional"/>
+														<xs:attribute name="Unit" type="xs:string" use="optional"/>
+														<xs:attribute name="OdxUnitRef" type="xs:string" use="optional"/>
+														<xs:attribute name="Format" type="xs:string" use="optional"/>
+														<xs:attribute name="Count" type="xs:string" use="optional"/>
+														<xs:attribute name="FirstByte" type="xs:string" use="optional"/>
+														<xs:attribute name="BitOffset" type="xs:string" use="optional"/>
+														<xs:attribute name="Template" type="xs:string" use="optional"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="Subname" type="xs:string" use="optional"/>
+											<xs:attribute name="LabelLink" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTLink" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTRQLink" type="xs:string" use="optional"/>
+											<xs:attribute name="SN" type="xs:string" use="optional"/>
+											<xs:attribute name="DefaultValue" type="xs:string" use="optional"/>
+											<xs:attribute name="Constraints" type="xs:string" use="optional"/>
+											<xs:attribute name="Conformity" type="xs:string" use="optional"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="DDTVariant" type="xs:string" use="optional"/>
+                                <xs:attribute name="EVariantName" type="xs:string" use="optional"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+        <xs:attribute name="Description" type="xs:string" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="LabelType3">  <!-- For Label type "Fault" -->
+        <xs:sequence>
+            <xs:element name="Requirement" type="RequirementType"/>
+            <xs:element name="Variants" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+						<xs:element name="VariantLink" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="DataLink" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:simpleContent>
+                                                <xs:extension base="xs:string">
+													<xs:attribute name="Subname" type="xs:string" use="optional"/>
+                                                    <xs:attribute name="ID_DTC" type="xs:string" use="optional"/>
+                                                    <xs:attribute name="DTC_FT" type="xs:string" use="optional"/>
+                                                    <xs:attribute name="DDTLink" type="xs:string" use="optional"/>
+                                                    <xs:attribute name="SN" type="xs:string" use="optional"/>
+                                                    <xs:attribute name="Constraints" type="xs:string" use="optional"/>
+                                                    <xs:attribute name="Conformity" type="xs:string" use="optional"/>
+                                                </xs:extension>
+                                            </xs:simpleContent>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="DDTVariant" type="xs:string" use="optional"/>
+                                <xs:attribute name="EVariantName" type="xs:string" use="optional"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+        <xs:attribute name="Description" type="xs:string" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="LabelType4">  <!-- For Label type "Script" -->
+        <xs:sequence>
+            <xs:element name="Requirement" type="RequirementType"/>
+            <xs:element name="Variants" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+						<xs:element name="VariantLink" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="RQLink" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+											<xs:attribute name="Subname" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTLink" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTRQLink" type="xs:string" use="optional"/>
+											<xs:attribute name="SN" type="xs:string" use="optional"/>
+											<xs:attribute name="Time" type="xs:string" use="optional"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="DDTVariant" type="xs:string" use="optional"/>
+                                <xs:attribute name="EVariantName" type="xs:string" use="optional"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+        <xs:attribute name="Description" type="xs:string" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="LabelType5">  <!-- For Label type "Routine, IOControl " -->
+        <xs:sequence>
+            <xs:element name="Requirement" type="RequirementType"/>
+            <xs:element name="Variants" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+						<xs:element name="VariantLink" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+									<xs:choice>
+										<xs:element name="DataLink" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Category" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Line" minOccurs="0" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:attribute name="Value" type="xs:string" use="optional"/>
+																		<xs:attribute name="Text" type="xs:string" use="optional"/>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+															<xs:attribute name="Type" type="xs:string" use="optional"/>
+															<xs:attribute name="Signed" type="xs:string" use="optional"/>
+															<xs:attribute name="Unit" type="xs:string" use="optional"/>
+															<xs:attribute name="OdxUnitRef" type="xs:string" use="optional"/>
+															<xs:attribute name="Format" type="xs:string" use="optional"/>
+															<xs:attribute name="Count" type="xs:string" use="optional"/>
+															<xs:attribute name="FirstByte" type="xs:string" use="optional"/>
+															<xs:attribute name="BitOffset" type="xs:string" use="optional"/>
+															<xs:attribute name="Template" type="xs:string" use="optional"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="Subname" type="xs:string" use="optional"/>
+												<xs:attribute name="DDTLink" type="xs:string" use="optional"/>
+												<xs:attribute name="DDTRQLink" type="xs:string" use="optional"/>
+												<xs:attribute name="SN" type="xs:string" use="optional"/>
+												<xs:attribute name="DefaultValue" type="xs:string" use="optional"/>
+												<xs:attribute name="Operator" type="xs:string" use="optional"/>
+												<xs:attribute name="Constraints" type="xs:string" use="optional"/>
+												<xs:attribute name="Conformity" type="xs:string" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="RQLink" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:attribute name="Subname" type="xs:string" use="optional"/>
+												<xs:attribute name="DDTLink" type="xs:string" use="optional"/>
+												<xs:attribute name="DDTRQLink" type="xs:string" use="optional"/>
+												<xs:attribute name="SN" type="xs:string" use="optional"/>
+												<xs:attribute name="DefaultValue" type="xs:string" use="optional"/>
+												<xs:attribute name="Operator" type="xs:string" use="optional"/>
+												<xs:attribute name="Constraints" type="xs:string" use="optional"/>
+												<xs:attribute name="Conformity" type="xs:string" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:choice>
+									<xs:element name="RspLink" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Category" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="Line" minOccurs="0" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:attribute name="Value" type="xs:string" use="optional"/>
+																	<xs:attribute name="Text" type="xs:string" use="optional"/>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="Type" type="xs:string" use="optional"/>
+														<xs:attribute name="Signed" type="xs:string" use="optional"/>
+														<xs:attribute name="Unit" type="xs:string" use="optional"/>
+														<xs:attribute name="OdxUnitRef" type="xs:string" use="optional"/>
+														<xs:attribute name="Format" type="xs:string" use="optional"/>
+														<xs:attribute name="Count" type="xs:string" use="optional"/>
+														<xs:attribute name="FirstByte" type="xs:string" use="optional"/>
+														<xs:attribute name="BitOffset" type="xs:string" use="optional"/>
+														<xs:attribute name="Template" type="xs:string" use="optional"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="Subname" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTLink" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTRQLink" type="xs:string" use="optional"/>
+											<xs:attribute name="SN" type="xs:string" use="optional"/>
+											<xs:attribute name="DefaultValue" type="xs:string" use="optional"/>
+											<xs:attribute name="Operator" type="xs:string" use="optional"/>
+											<xs:attribute name="Constraints" type="xs:string" use="optional"/>
+											<xs:attribute name="Conformity" type="xs:string" use="optional"/>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+                                <xs:attribute name="DDTVariant" type="xs:string" use="optional"/>
+                                <xs:attribute name="EVariantName" type="xs:string" use="optional"/>
+                                <xs:attribute name="Constraints" type="xs:string"/>
+                                <xs:attribute name="Conformity" type="xs:string"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+        <xs:attribute name="Description" type="xs:string" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="LabelType6">  <!-- For Label type "Readable" -->
+        <xs:sequence>
+            <xs:element name="Requirement" type="RequirementType"/>
+            <xs:element name="Variants" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+						<xs:element name="VariantLink" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="DataLink" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+												<xs:element name="Category" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="Line" minOccurs="0" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:attribute name="Value" type="xs:string" use="optional"/>
+																	<xs:attribute name="Text" type="xs:string" use="optional"/>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="Type" type="xs:string" use="optional"/>
+														<xs:attribute name="Signed" type="xs:string" use="optional"/>
+														<xs:attribute name="Unit" type="xs:string" use="optional"/>
+														<xs:attribute name="OdxUnitRef" type="xs:string" use="optional"/>
+														<xs:attribute name="Format" type="xs:string" use="optional"/>
+														<xs:attribute name="Count" type="xs:string" use="optional"/>
+														<xs:attribute name="FirstByte" type="xs:string" use="optional"/>
+														<xs:attribute name="BitOffset" type="xs:string" use="optional"/>
+														<xs:attribute name="Template" type="xs:string" use="optional"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="Subname" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTLink" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTRQLink" type="xs:string" use="optional"/>
+											<xs:attribute name="SN" type="xs:string" use="optional"/>
+											<xs:attribute name="DefaultValue" type="xs:string" use="optional"/>
+											<xs:attribute name="Operator" type="xs:string" use="optional"/>
+											<xs:attribute name="Constraints" type="xs:string" use="optional"/>
+											<xs:attribute name="Conformity" type="xs:string" use="optional"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="DDTVariant" type="xs:string" use="optional"/>
+                                <xs:attribute name="EVariantName" type="xs:string" use="optional"/>
+                                <xs:attribute name="Constraints" type="xs:string"/>
+                                <xs:attribute name="Conformity" type="xs:string"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+        <xs:attribute name="Description" type="xs:string" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="LabelType7">  <!-- For Label type "DCAL" -->
+        <xs:sequence>
+            <xs:element name="Variants" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+			<xs:element name="VariantLink" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="DataLink" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+												<xs:element name="Category" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="Line" minOccurs="0" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:attribute name="Value" type="xs:string" use="optional"/>
+																	<xs:attribute name="Text" type="xs:string" use="optional"/>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="Type" type="xs:string" use="optional"/>
+														<xs:attribute name="Signed" type="xs:string" use="optional"/>
+														<xs:attribute name="Unit" type="xs:string" use="optional"/>
+														<xs:attribute name="OdxUnitRef" type="xs:string" use="optional"/>
+														<xs:attribute name="Format" type="xs:string" use="optional"/>
+														<xs:attribute name="Count" type="xs:string" use="optional"/>
+														<xs:attribute name="FirstByte" type="xs:string" use="optional"/>
+														<xs:attribute name="BitOffset" type="xs:string" use="optional"/>
+														<xs:attribute name="Template" type="xs:string" use="optional"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="Subname" type="xs:string" use="optional"/>
+											<xs:attribute name="LabelLink" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTLink" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTRQLink" type="xs:string" use="optional"/>
+											<xs:attribute name="SNRead" type="xs:string" use="optional"/>
+											<xs:attribute name="SNWrite" type="xs:string" use="optional"/>
+											<xs:attribute name="DefaultValue" type="xs:string" use="optional"/>
+											<xs:attribute name="ForcedValue" type="xs:string" use="optional"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="DDTVariant" type="xs:string" use="optional"/>
+                                <xs:attribute name="EVariantName" type="xs:string" use="optional"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+        <xs:attribute name="Description" type="xs:string" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="LabelType8">  <!-- For Label type "DataSaving" -->
+        <xs:sequence>
+            <xs:element name="Requirement" type="RequirementTypeDataSaving"/>
+            <xs:element name="Variants" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+			<xs:element name="VariantLink" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="DataLink" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+												<xs:element name="Category" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="Line" minOccurs="0" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:attribute name="Value" type="xs:string" use="optional"/>
+																	<xs:attribute name="Text" type="xs:string" use="optional"/>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="Type" type="xs:string" use="optional"/>
+														<xs:attribute name="Signed" type="xs:string" use="optional"/>
+														<xs:attribute name="Unit" type="xs:string" use="optional"/>
+														<xs:attribute name="OdxUnitRef" type="xs:string" use="optional"/>
+														<xs:attribute name="Format" type="xs:string" use="optional"/>
+														<xs:attribute name="Count" type="xs:string" use="optional"/>
+														<xs:attribute name="FirstByte" type="xs:string" use="optional"/>
+														<xs:attribute name="BitOffset" type="xs:string" use="optional"/>
+														<xs:attribute name="Template" type="xs:string" use="optional"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="Subname" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTLink" type="xs:string" use="optional"/>
+											<xs:attribute name="DDTRQLink" type="xs:string" use="optional"/>
+											<xs:attribute name="SN" type="xs:string" use="optional"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="DDTVariant" type="xs:string" use="optional"/>
+                                <xs:attribute name="EVariantName" type="xs:string" use="optional"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+        <xs:attribute name="Description" type="xs:string" use="optional"/>
+    </xs:complexType>
+</xs:schema>

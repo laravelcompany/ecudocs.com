@@ -1,0 +1,3498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+  <Generator name="DDT2000 XML library" version="2.3.0.0" date="2022-03-17T18:52"/>
+  <ddt:Target Name="4WD_C1Axx_SW1.5_V0" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="adelina.varzaru@renault.com" href="4WD_C1Axx_SW1.5_V1.0_20220323T155646.xml" upload="3/23/2022" group="ETC"><Description><![CDATA[4WD_C1A[x]_SW[y]_V[z]
+   x = Arhitecture, 
+          HSevo = SWEET400, 
+          HS = SWEET200, 
+          LS = SWEET100 & 100R
+   y = SW release version
+   z = Database revision
+---------------------------------------------------------------------------------------------------------------
+Supplier: GKN
+System: 4WD
+Projects: SWEET400 --> x1310
+               SWEET100 --> x1312, x1340
+---------------------------------------------------------------------------------------------------------------
+Author : VARZARU Adelina
+
+
+Version: v0,  11.03.2022  --> 4WD_C1Axx_SW1.5_V0
+========================================================
+ -- Database creation based on  REF17 V4.4 & Renault_AWD_V4.2.rtf]]></Description>
+    <Projects xmlns=""><x1310/><xJN/><xJP/></Projects><Checks Version="V1.11" Date="20220323T155609">
+      <Ctrl Type="DDT2000" Warning="7" Error="0"/>
+      <Ctrl Type="CPDD" Warning="63" Error="0"/>
+      <Ctrl Type="DAIMLER-ODX" Warning="0" Error="7"/>
+      <Ctrl Type="ALLIANCE-ODX" Warning="0" Error="0"/>
+    </Checks>
+    
+    <Function Name="4WD" Address="30" LogicalAddress="001E"/>
+    <Language Name="English" Reference="1"/>
+    
+    <DateOfficialisation/>
+    <Failures Name="DTC Failures" Id="3"/>
+    <PowerSupply>
+      <Ground/>
+      <Vbat/>
+      <AfterContact/>
+    </PowerSupply>
+    <CAN BaudRate="10400" Multipoint="1">
+      <SendId>
+        <CANId Value="1864"/>
+      </SendId>
+      <ReceiveId>
+        <CANId Value="1896"/>
+      </ReceiveId>
+    </CAN>
+    <AutoIdents>
+      <AutoIdent DiagVersion="255" Supplier="GKN Driveline International GmbH" Soft="SW1.0" Version="REL3.0.0"/>
+    </AutoIdents>
+    <Datas>
+      <Data Name="SessionName">
+        <Comment><![CDATA[Diagnostic session values. See documentation for more information.]]></Comment>
+        <Mnemonic>LEV_DS</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>[0x00] : ISO / SAE Reserved<BR>[0x01] : Default session<BR>[0x02] : Programming session<BR>[0x03] : Extended diagnostic session<BR>[0x04] : Safety system diagnostic session<BR>[0x05 - 0x3F] : ISO / SAE Reserved<BR>[0x40 - 0x5F] : Vehicle manufacturer specific<BR>[0x60 - 0x7E] : System supplier specific<BR>[0x7F] : ISO / SAE Reserved</FONT></P>]]></Description>
+        <Bits>
+          <List>
+            <Item Value="1" Text="DefaultSession"/>
+            <Item Value="2" Text="ProgrammingSession"/>
+            <Item Value="3" Text="ExtendedDiagnosticSession"/>
+            <Item Value="4" Text="SafetySystemDiagnosticSession"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VIN">
+        <Comment><![CDATA[Vehicle Identification Number]]></Comment>
+        <Mnemonic>DID_$F190</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the VIN number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be specified by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>It shall not be erased when the ECU is reprogrammed.</FONT></P>]]></Description>
+        <Bytes count="17" ascii="1"/>
+      </Data>
+      <Data Name="RoutineControlType">
+        <Comment><![CDATA[Routine control type - VALUES OTHER THAN 1, 2 & 3 ARE RESERVED AND SHOULD NOT BE USED.]]></Comment>
+        <Mnemonic>RCTP</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="StartRoutine"/>
+            <Item Value="2" Text="StopRoutine"/>
+            <Item Value="3" Text="RequestRoutineResults"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="MemoryAddress.16bits">
+        <Comment><![CDATA[For ReadMemoryByAddress with 16 bits memory address]]></Comment>
+        <Mnemonic>MEM_ADDR_16</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="MemoryAddress.24bits">
+        <Comment><![CDATA[For ReadMemoryByAddress with 24 bits memory address]]></Comment>
+        <Mnemonic>MEM_ADDR_24</Mnemonic>
+        <Bits count="24">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="MemoryAddress.32bits">
+        <Comment><![CDATA[For ReadMemoryByAddress with 32 bits memory address]]></Comment>
+        <Mnemonic>MEM_ADDR_32</Mnemonic>
+        <Bits count="32" signed="1">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="MemorySize.8bits">
+        <Comment><![CDATA[For ReadMemoryByAddress with 8 bits length for memory size]]></Comment>
+        <Mnemonic>MEM_SIZE_8</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="MemorySize.16bits">
+        <Comment><![CDATA[For ReadMemoryByAddress with 16 bits length for memory size]]></Comment>
+        <Mnemonic>MEM_SIZE_16</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="IOCTL.DataIdentifier">
+        <Comment><![CDATA[Data Identifier received in reply to InputOutputControl request]]></Comment>
+        <Mnemonic>IOI_READ</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="IOCTL.StatusRecord.Parameter">
+        <Comment><![CDATA[Input Output control status]]></Comment>
+        <Mnemonic>CSR_IOCP</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="returnControlToECU"/>
+            <Item Value="1" Text="resetToDefault"/>
+            <Item Value="2" Text="freezeCurrentState"/>
+            <Item Value="3" Text="shortTermAdjustment"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="OutputPermanentControlList">
+        <Comment><![CDATA[List of Data Identifiers for Input Output Control - The list defined here is AN EXAMPLE.]]></Comment>
+        <Mnemonic>IOI</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2><STRONG><U>Definition of IOControl</U></STRONG></FONT></P>
+<P><FONT size=2>Data: IOCTL.DataIdentifierList</FONT></P>
+<P><FONT size=2>&nbsp; Contains the list of all IO devices that may be<BR>&nbsp; controlled by InputOutputControl service.<BR>&nbsp; <BR>&nbsp; Example:<BR>&nbsp; <BR>&nbsp;&nbsp;&nbsp; 0 - DID_Pump<BR>&nbsp;&nbsp;&nbsp; 1 - DID_Wiper</FONT></P>
+<P><FONT size=2>If some of these IO devices have parameters, you should defined a data with the same name as the IO devices followed by a dot and a text</FONT></P>
+<P><FONT size=2>&nbsp; Example:<BR>&nbsp; <BR>&nbsp; Data: DID_Wiper.Mode<BR>&nbsp;&nbsp;&nbsp;&nbsp; Type: List<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 - Slow speed<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 - High speed</FONT></P>
+<P><FONT size=2>Then, you should add theses data in the "Send tab" of the&nbsp;InputOutpuControl request, after the IOCTL.OptionRecord.Parameter data.</FONT></P>]]></Description>
+        <Bits count="16">
+          <List>
+            <Item Value="23600" Text="EMCD_Control"/>
+            <Item Value="65034" Text="EOL_ReplyControl"/>
+            <Item Value="65035" Text="EOL_Request1"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="OutputControlCommand">
+        <Comment><![CDATA[Input Output control parameter list]]></Comment>
+        <Mnemonic>COR_IOCP</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Stop"/>
+            <Item Value="1" Text="resetToDefault"/>
+            <Item Value="2" Text="freezeCurrentState"/>
+            <Item Value="3" Text="Start Permanent"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="StatusOfDTC">
+        <Mnemonic>DTCASR_SODTC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailed">
+        <Mnemonic>TF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedThisMonitoringCycle">
+        <Mnemonic>TFTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.pendingDTC">
+        <Mnemonic>PDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.confirmedDTC">
+        <Mnemonic>CDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedSinceLastClear">
+        <Mnemonic>TNCSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedSinceLastClear">
+        <Mnemonic>TFSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+        <Mnemonic>TNCTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.warningIndicatorRequested">
+        <Mnemonic>WIR</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.Category">
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="General Failure Information"/>
+            <Item Value="1" Text="General Electrical Failures"/>
+            <Item Value="2" Text="General Signal Failures"/>
+            <Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="10" Text="General Electrical Failures - 2"/>
+            <Item Value="15" Text="Vehicle manufacturer / System supplier specific"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Device and failure type ODB codding"/>
+            <Item Value="1" Text="General Electrical Failure"/>
+            <Item Value="2" Text="General signal failure"/>
+            <Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="10" Text="General Electrical Failures - 2"/>
+            <Item Value="17" Text="circuit short to ground"/>
+            <Item Value="18" Text="circuit short to battery"/>
+            <Item Value="19" Text="circuit open"/>
+            <Item Value="20" Text="circuit short to ground or open"/>
+            <Item Value="21" Text="circuit short to battery or open"/>
+            <Item Value="22" Text="circuit voltage below threshold"/>
+            <Item Value="23" Text="circuit voltage above threshold"/>
+            <Item Value="24" Text="circuit current below threshold"/>
+            <Item Value="25" Text="circuit current above threshold"/>
+            <Item Value="26" Text="circuit resistance below threshold"/>
+            <Item Value="27" Text="circuit resistance above threshold"/>
+            <Item Value="28" Text="circuit voltage out of range"/>
+            <Item Value="29" Text="circuit current out of range"/>
+            <Item Value="30" Text="circuit resistance out of range"/>
+            <Item Value="31" Text="circuit intermittent"/>
+            <Item Value="33" Text="signal amplitude &lt; minimum"/>
+            <Item Value="34" Text="signal amplitude &gt; maximum"/>
+            <Item Value="35" Text="signal stuck low"/>
+            <Item Value="36" Text="signal stuck high"/>
+            <Item Value="37" Text="signal shape / waveform failure"/>
+            <Item Value="38" Text="signal rate of change below threshold"/>
+            <Item Value="39" Text="signal rate of change above threshold"/>
+            <Item Value="40" Text="signal bias level out of range / zero adj. failure"/>
+            <Item Value="41" Text="signal signal invalid"/>
+            <Item Value="42" Text="signal stuck in range"/>
+            <Item Value="43" Text="signal cross coupled"/>
+            <Item Value="47" Text="signal erratic"/>
+            <Item Value="49" Text="no signal"/>
+            <Item Value="50" Text="signal low time &lt; minimum"/>
+            <Item Value="51" Text="signal low time &gt; maximum"/>
+            <Item Value="52" Text="signal high time &lt; minimum"/>
+            <Item Value="53" Text="signal high time &gt; maximum"/>
+            <Item Value="54" Text="signal frequency too low"/>
+            <Item Value="55" Text="signal frequency too high"/>
+            <Item Value="56" Text="signal frequency incorrect"/>
+            <Item Value="57" Text="incorrect has too few pulses"/>
+            <Item Value="58" Text="incorrect has too many pulses"/>
+            <Item Value="65" Text="general checksum failure"/>
+            <Item Value="66" Text="general memory failure"/>
+            <Item Value="67" Text="special memory failure"/>
+            <Item Value="68" Text="data memory failure"/>
+            <Item Value="69" Text="program memory failure"/>
+            <Item Value="70" Text="calibration / parameter memory failure"/>
+            <Item Value="71" Text="watchdog / safety µC failure"/>
+            <Item Value="72" Text="supervision software failure"/>
+            <Item Value="73" Text="internal electronic failure"/>
+            <Item Value="74" Text="incorrect component installed"/>
+            <Item Value="75" Text="over temperature"/>
+            <Item Value="81" Text="not programmed"/>
+            <Item Value="82" Text="not activated"/>
+            <Item Value="83" Text="deactivated"/>
+            <Item Value="84" Text="missing calibration"/>
+            <Item Value="85" Text="not configured"/>
+            <Item Value="86" Text="invalid or incompatible configuration"/>
+            <Item Value="87" Text="invalid or incompatible software component"/>
+            <Item Value="97" Text="signal calculation failure"/>
+            <Item Value="98" Text="signal compare failure"/>
+            <Item Value="99" Text="circuit / component protection time-out"/>
+            <Item Value="100" Text="signal plausibility failure"/>
+            <Item Value="101" Text="signal has too few transitions / events"/>
+            <Item Value="102" Text="signal has too many transitions / events"/>
+            <Item Value="103" Text="signal incorrect after event"/>
+            <Item Value="104" Text="event information"/>
+            <Item Value="113" Text="actuator stuck"/>
+            <Item Value="114" Text="actuator stuck open"/>
+            <Item Value="115" Text="actuator stuck closed"/>
+            <Item Value="116" Text="actuator slipping"/>
+            <Item Value="117" Text="emergency position not reachable"/>
+            <Item Value="118" Text="wrong mounting position"/>
+            <Item Value="119" Text="commanded position not reachable"/>
+            <Item Value="120" Text="alignment or adjustment incorrect"/>
+            <Item Value="121" Text="mechanical linkage failure"/>
+            <Item Value="122" Text="fluid leak or seal failure"/>
+            <Item Value="123" Text="low fluid level"/>
+            <Item Value="124" Text="Slow Response"/>
+            <Item Value="125" Text="Actuator Stuck On"/>
+            <Item Value="127" Text="Actuator Stuck Off"/>
+            <Item Value="129" Text="invalid serial data received"/>
+            <Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+            <Item Value="131" Text="value of signal protection calculation incorrect"/>
+            <Item Value="132" Text="signal below allowable range"/>
+            <Item Value="133" Text="signal above allowable range"/>
+            <Item Value="134" Text="signal invalid"/>
+            <Item Value="135" Text="missing message"/>
+            <Item Value="136" Text="bus off"/>
+            <Item Value="143" Text="erratic"/>
+            <Item Value="145" Text="parametric"/>
+            <Item Value="146" Text="performance or incorrect operation"/>
+            <Item Value="147" Text="no operation"/>
+            <Item Value="148" Text="unexpected operation"/>
+            <Item Value="149" Text="incorrect assembly"/>
+            <Item Value="150" Text="component internal failure"/>
+            <Item Value="151" Text="Component or sys. operation obstructed or blocked"/>
+            <Item Value="152" Text="component or system over temperature"/>
+            <Item Value="153" Text="Exceeded Learning Limit"/>
+            <Item Value="154" Text="component or system operating conditions"/>
+            <Item Value="155" Text="High/Excessive Flow"/>
+            <Item Value="156" Text="Low/Insufficient Flow"/>
+            <Item Value="158" Text="Stuck On"/>
+            <Item Value="159" Text="Stuck Off"/>
+            <Item Value="161" Text="System Voltage"/>
+            <Item Value="162" Text="System Voltage Low"/>
+            <Item Value="163" Text="System Voltage High"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceIdentifier">
+        <Bits count="16">
+          <List>
+            <Item Value="23568" Text="EMCD_ActuatorFailure"/>
+            <Item Value="49409" Text="IS_AT"/>
+            <Item Value="49449" Text="IS_ABS-ESP"/>
+            <Item Value="49267" Text="IS_BUS_OFF"/>
+            <Item Value="49408" Text="IS_ECM"/>
+            <Item Value="23569" Text="System Voltage"/>
+            <Item Value="49472" Text="IS_BCM"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceAndFailureTypeOBD">
+        <Bits count="16">
+          <List/>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.ManufacturerOrSupplier">
+        <Bits count="4">
+          <List/>
+        </Bits>
+      </Data>
+      <Data Name="DTCSnapshotRecordNumber">
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="DTCStatusAvailabilityMask">
+        <Mnemonic>DTCSAM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCMaskRecord">
+        <Mnemonic>DTCMREC_DTC</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="DTCFormatIdentifier">
+        <Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+        <Mnemonic>DTCFID</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="SAE_J2012-DA_DTC"/>
+            <Item Value="1" Text="ISO_14229-1_DTC"/>
+            <Item Value="2" Text="SAE_J1939-73_DTC"/>
+            <Item Value="3" Text="ISO_11992-4_DTC"/>
+            <Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFaultDetectionCounter">
+        <Comment><![CDATA[DTC fault detction counter]]></Comment>
+        <Mnemonic>DTCFDC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCRecord">
+        <Mnemonic>DTCASR_DTC</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="DTCExtendedData.Mileage">
+        <Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+        <Mnemonic>MILEAGE</Mnemonic>
+        <Bits count="24">
+          <Scaled Unit="km"/>
+        </Bits>
+      </Data>
+      <Data Name="DTCExtendedDataRecordNumber">
+        <Mnemonic>DTCEDRN</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="128" Text="Mileage"/>
+            <Item Value="129" Text="AgingCounter"/>
+            <Item Value="130" Text="DTCOccurrenceCounter"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCExtendedData.AgingCounter">
+        <Comment><![CDATA[Description of the extendedData AgingCounter (use by Failure Page to decode data)]]></Comment>
+        <Mnemonic>AGINGCOUNTER</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCCount">
+        <Comment><![CDATA[DTC count]]></Comment>
+        <Mnemonic>DTCC</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ALFID.lengthOfMemoryAddress">
+        <Mnemonic>ALFID_LENGTH_MEM_ADDR</Mnemonic>
+        <Bits count="4">
+          <List>
+            <Item Value="1" Text="8 bits"/>
+            <Item Value="2" Text="16 bits"/>
+            <Item Value="3" Text="24 bits"/>
+            <Item Value="4" Text="32 bits"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ALFID.lengthOfMemorySize">
+        <Mnemonic>ALFID_LENGTH_MEM_SIZE</Mnemonic>
+        <Bits count="4">
+          <List>
+            <Item Value="1" Text="8 bits"/>
+            <Item Value="2" Text="16 bits"/>
+            <Item Value="3" Text="24 bits"/>
+            <Item Value="4" Text="32 bits"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCExtendedData.DTCOccurrenceCounter">
+        <Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+        <Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="HardwareSupplierIdentification">
+        <Comment><![CDATA[HardwareSupplierIdentification]]></Comment>
+        <Mnemonic>DID_$F192</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Not defined"/>
+            <Item Value="1" Text="Bauknecht"/>
+            <Item Value="2" Text="Miele"/>
+            <Item Value="3" Text="Alno"/>
+            <Item Value="4" Text="Seppelfricke"/>
+            <Item Value="5" Text="Liebherr"/>
+            <Item Value="6" Text="AEG"/>
+            <Item Value="7" Text="Siemens"/>
+            <Item Value="8" Text="Bosch"/>
+            <Item Value="9" Text="Küppersbusch"/>
+            <Item Value="10" Text="Whirlpool"/>
+            <Item Value="11" Text="Juno"/>
+            <Item Value="12" Text="Vector"/>
+            <Item Value="13" Text="Undefined 1"/>
+            <Item Value="14" Text="Undefined 2"/>
+            <Item Value="15" Text="Undefined 3"/>
+            <Item Value="16" Text="Undefined 4"/>
+            <Item Value="17" Text="Undefined 5"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="HardwareRevisionVersion">
+        <Comment><![CDATA[HardwareRevisionVersion]]></Comment>
+        <Mnemonic>DID_$F193</Mnemonic>
+        <Bits count="32" signed="1">
+          <List>
+            <Item Value="0" Text="HW_Sample B0"/>
+            <Item Value="1" Text="HW_Sample B1"/>
+            <Item Value="17" Text="HW_Sample C0"/>
+            <Item Value="255" Text="HW_Sample A"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="SoftwareRevisionNumber">
+        <Mnemonic>DID_$FD02</Mnemonic>
+        <Bytes count="3" ascii="1"/>
+      </Data>
+      <Data Name="DiagID">
+        <Mnemonic>DID_$3010</Mnemonic>
+        <Bytes count="4" ascii="1"/>
+      </Data>
+      <Data Name="IgnitionOnTime">
+        <Mnemonic>DID_$3012</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="s"/>
+        </Bits>
+      </Data>
+      <Data Name="EngineRunningTime">
+        <Mnemonic>DID_$3013</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="s"/>
+        </Bits>
+      </Data>
+      <Data Name="WheelSpeedRear_Left">
+        <Mnemonic>DID_$FD30</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="rpm" Step=" .0416667"/>
+        </Bits>
+      </Data>
+      <Data Name="WheelSpeedRear_Right">
+        <Mnemonic>DID_$FD31</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="rpm" Step=" .0416667"/>
+        </Bits>
+      </Data>
+      <Data Name="WheelSpeedFront_Left">
+        <Mnemonic>DID_$FD32</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="rpm" Step=" .0416667"/>
+        </Bits>
+      </Data>
+      <Data Name="WheelSpeedFront_Right">
+        <Mnemonic>DID_$FD33</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="rpm" Step=" .0416667"/>
+        </Bits>
+      </Data>
+      <Data Name="EEPROM_ErrorReadStatus">
+        <Comment><![CDATA[EEPROM Error Status, 0xFD66]]></Comment>
+        <Mnemonic>DID_$FD66</Mnemonic>
+        <Bytes count="4"/>
+      </Data>
+      <Data Name="EOL_ReplyControl">
+        <Mnemonic>DID_$FE0A</Mnemonic>
+        <Bytes count="8"/>
+      </Data>
+      <Data Name="EOL_Request1">
+        <Mnemonic>DID_$FE0B</Mnemonic>
+        <Bytes count="9"/>
+      </Data>
+      <Data Name="EraseStatus">
+        <Mnemonic>DID_$D003</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Succesful"/>
+            <Item Value="0" Text="Unknown"/>
+            <Item Value="2" Text="UN-Succesful"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="EOL_XCP_Control_Status">
+        <Mnemonic>DID_$DOO4</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Unknown"/>
+            <Item Value="1" Text="Succesful"/>
+            <Item Value="2" Text="UN-Succesful"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="EOL_XCP_Control_Result">
+        <Mnemonic>DID_$DOO4</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Succesful"/>
+            <Item Value="0" Text="Unknown"/>
+            <Item Value="2" Text="UN-Succesful"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="CPU_Load_Status">
+        <Mnemonic>DID_$DD07</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Successful"/>
+            <Item Value="0" Text="Unknown"/>
+            <Item Value="2" Text="Un-Successful"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="WheelSpeedCorrection.LambdaErrorTreshold">
+        <Comment><![CDATA[WheelSpeedCorrection]]></Comment>
+        <Mnemonic>DID_$1008_1</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="WheelSpeedCorrection.ErrorCounterTreshold">
+        <Comment><![CDATA[WheelSpeedCorrection]]></Comment>
+        <Mnemonic>DID_$1008_2</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="WheelSpeedCorrection.RoughRoadIncrementUP">
+        <Comment><![CDATA[WheelSpeedCorrection]]></Comment>
+        <Mnemonic>DID_$1008_3</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="WheelSpeedCorrection.RoughRoadDecrementDOWN">
+        <Comment><![CDATA[WheelSpeedCorrection]]></Comment>
+        <Mnemonic>DID_$1008_4</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="WheelSpeedCorrection.ConstAccUP">
+        <Comment><![CDATA[WheelSpeedCorrection]]></Comment>
+        <Mnemonic>DID_$1008_5</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="WheelSpeedCorrection.WhlAccRghRoad_Data">
+        <Comment><![CDATA[WheelSpeedCorrection]]></Comment>
+        <Mnemonic>DID_$1008_7</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="WheelSpeedCorrection.SettleTime">
+        <Comment><![CDATA[WheelSpeedCorrection]]></Comment>
+        <Mnemonic>DID_$1008_8</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="WheelSpeedCorrection.DebouceTime">
+        <Comment><![CDATA[WheelSpeedCorrection]]></Comment>
+        <Mnemonic>DID_$1008_9</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="WheelSpeedCorrection.NumMeanValue">
+        <Comment><![CDATA[WheelSpeedCorrection]]></Comment>
+        <Mnemonic>DID_$1008_10</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="WheelSpeedCorrection.TauWheelaccFlt">
+        <Comment><![CDATA[WheelSpeedCorrection]]></Comment>
+        <Mnemonic>DID_$1008_11</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="WheelSpeedCorrection.AWD_ControlMode">
+        <Comment><![CDATA[WheelSpeedCorrection]]></Comment>
+        <Mnemonic>DID_$1008_12</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="VechiclePowerMode.VechiclePowerMode">
+        <Comment><![CDATA[Power Mode Table]]></Comment>
+        <Mnemonic>DID_$3000_1</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="KeyOut"/>
+            <Item Value="2" Text="KeyRecentlyOut"/>
+            <Item Value="3" Text="KeyApproved"/>
+            <Item Value="4" Text="PostAccessory"/>
+            <Item Value="5" Text="Accessory"/>
+            <Item Value="6" Text="Post Ignition"/>
+            <Item Value="7" Text="IgnitionOn"/>
+            <Item Value="8" Text="Running"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VechiclePowerMode.VechiclePowerPack Status">
+        <Comment><![CDATA[Power Pack Status Table]]></Comment>
+        <Mnemonic>DID_$FD35_2</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Init"/>
+            <Item Value="2" Text="Awake"/>
+            <Item Value="3" Text="Ready"/>
+            <Item Value="4" Text="Pre-Starting"/>
+            <Item Value="5" Text="Start In Progress"/>
+            <Item Value="6" Text="Running Running"/>
+            <Item Value="7" Text="Running Standby"/>
+            <Item Value="8" Text="Running Start In Progress"/>
+            <Item Value="9" Text="Running Remote Started"/>
+            <Item Value="10" Text="After Run"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VehicleSpeed">
+        <Mnemonic>DID_$FD34</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="km/h" Step=" .01"/>
+        </Bits>
+      </Data>
+      <Data Name="WheelSpeedCorrection.WhlAccRghRoad_x">
+        <Comment><![CDATA[WheelSpeedCorrection]]></Comment>
+        <Mnemonic>DID_$1008_6</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="SoftwareComponentVersion">
+        <Comment><![CDATA[Software Component Version --> Component ID]]></Comment>
+        <Mnemonic>DID_$FEFF_1</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="SecondaryOperationnalRefference">
+        <Comment><![CDATA[Secondary Operational Reference]]></Comment>
+        <Mnemonic>DID_$O13</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="SoftwareBuildIdentificationNumber.Type Of Release">
+        <Mnemonic>DID_$FD03_1</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="SoftwareBuildIdentificationNumber.Revision Number">
+        <Mnemonic>DID_$FD03_2</Mnemonic>
+        <Bytes count="3" ascii="1"/>
+      </Data>
+      <Data Name="SoftwareBuildIdentificationNumber.Compile Date">
+        <Mnemonic>DID_$FD03_3</Mnemonic>
+        <Bytes count="9" ascii="1"/>
+      </Data>
+      <Data Name="SoftwareBuildIdentificationNumber.Compile Time">
+        <Mnemonic>DID_$FD03_4</Mnemonic>
+        <Bytes count="17" ascii="1"/>
+      </Data>
+      <Data Name="SoftwareBuildIdentificationNumber.Build ID">
+        <Mnemonic>DID_$FD03_6</Mnemonic>
+        <Bytes count="4"/>
+      </Data>
+      <Data Name="ODST_Status">
+        <Mnemonic>DID_$0202</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Succesful"/>
+            <Item Value="0" Text="Unknown"/>
+            <Item Value="2" Text="UN-Succesful"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ODST_TotalActiveDTC">
+        <Mnemonic>DID_0202</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="BateryVoltage">
+        <Mnemonic>DID_$3001</Mnemonic>
+        <Bits>
+          <Scaled Unit="V" Step=" .1"/>
+        </Bits>
+      </Data>
+      <Data Name="Ignition">
+        <Mnemonic>DID_$3002</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="AIgnition is OFF"/>
+            <Item Value="1" Text="AIgnition is ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="HousingTemperature">
+        <Mnemonic>DID_$3021</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="LogicalBlock1_SoftwareDigest">
+        <Mnemonic>DID_$FD00</Mnemonic>
+        <Bytes count="32"/>
+      </Data>
+      <Data Name="LogicalBlock1_CalibrationDigest">
+        <Mnemonic>DID_$FD01</Mnemonic>
+        <Bytes count="32"/>
+      </Data>
+      <Data Name="NetworkDisturbanceBitmask.Invalid">
+        <Mnemonic>DID_$3005_2</Mnemonic>
+        <Bytes count="4"/>
+      </Data>
+      <Data Name="NetworkDisturbanceBitmask.AliveCounter">
+        <Mnemonic>DID_$3005_4</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="NetworkDisturbanceBitmask.Checksum">
+        <Mnemonic>DID_$3005_3</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="AmbientTemperature">
+        <Comment><![CDATA[Ambient Temperature]]></Comment>
+        <Mnemonic>DID_$30A1</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled Unit="°C" Step=" .25"/>
+        </Bits>
+      </Data>
+      <Data Name="Erase_EEPROM_Block_ID">
+        <Mnemonic>DID_$D003</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="FASW_ERASE FASW EEPROM Block"/>
+            <Item Value="1" Text="GASW_ERASE GASW EEPROM Block"/>
+            <Item Value="2" Text="Shared_ERASE Shared EEPROM Block Between GASW and FASW"/>
+            <Item Value="3" Text="Logging_ERASE all debugging/logging date from EEPROM"/>
+            <Item Value="4" Text="OTP GKN EOL_Erase OTP Block Containing GKN Data"/>
+            <Item Value="5" Text="OTP Customer EOL_Erase OTP Block Containing Customer Data"/>
+            <Item Value="255" Text="Erase All Erase All include OTP and Cyclic Data from EEPROM except DEM"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="EOL_XCP_RequestedState">
+        <Mnemonic>DID_$D004</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Enable"/>
+            <Item Value="2" Text="Disable"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="BootVersion.NumberOfModule">
+        <Mnemonic>DID_$F180_1</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="CalibrationNumber.CalibrationNumber">
+        <Comment><![CDATA[Calibration Number]]></Comment>
+        <Mnemonic>DID_$F182</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer specific ECU application data identification record.</FONT></P>
+<P><FONT size=2>The format of the application data identification structure shall be ECU specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="CANdelaFileVersion">
+        <Comment><![CDATA[ODXFifeDataIdentifier]]></Comment>
+        <Mnemonic>DID_$F19E</Mnemonic>
+        <Bytes count="3" ascii="1"/>
+      </Data>
+      <Data Name="ConfigurationDataReferenceAfterConfigurationProcess">
+        <Mnemonic>DID_$F1A2</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="CalibrationRevisionNumber">
+        <Mnemonic>DID_$FD05</Mnemonic>
+        <Bytes count="3" ascii="1"/>
+      </Data>
+      <Data Name="ECU_OnTime">
+        <Mnemonic>DID_$3011</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="s"/>
+        </Bits>
+      </Data>
+      <Data Name="EOL_Response 1">
+        <Mnemonic>DID_$FE00</Mnemonic>
+        <Bytes count="8"/>
+      </Data>
+      <Data Name="EOL_Response 2">
+        <Mnemonic>DID_$FE01</Mnemonic>
+        <Bytes count="8"/>
+      </Data>
+      <Data Name="EOL_Response 3">
+        <Mnemonic>DID_$FE02</Mnemonic>
+        <Bytes count="8"/>
+      </Data>
+      <Data Name="EOL_Response 4">
+        <Mnemonic>DID_$FE03</Mnemonic>
+        <Bytes count="8"/>
+      </Data>
+      <Data Name="EOL_Response 5">
+        <Mnemonic>DID_$FE04</Mnemonic>
+        <Bytes count="8"/>
+      </Data>
+      <Data Name="EOL_Response 6">
+        <Mnemonic>DID_$FE05</Mnemonic>
+        <Bytes count="8"/>
+      </Data>
+      <Data Name="EOL_Response 7">
+        <Mnemonic>DID_$FE06</Mnemonic>
+        <Bytes count="8"/>
+      </Data>
+      <Data Name="EOL_Response 8">
+        <Mnemonic>DID_$FE07</Mnemonic>
+        <Bytes count="8"/>
+      </Data>
+      <Data Name="IndexSrvData">
+        <Mnemonic>DID_$F011</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="ActiveDiagnosticSession">
+        <Comment><![CDATA[ActiveDiagnosticSession]]></Comment>
+        <Mnemonic>DID_$F186</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Default Sesion"/>
+            <Item Value="2" Text="Programing Sesion"/>
+            <Item Value="3" Text="Extended Diagnostic Session"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="systemSupplierIdentifier">
+        <Comment><![CDATA[Name and address information of the supplier.]]></Comment>
+        <Mnemonic>DID_$F18A</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier name and address information.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="32" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUHardwareNumber">
+        <Comment><![CDATA[Hardware Reference]]></Comment>
+        <Mnemonic>DID_$F191</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used by reading services to reference the vehicle-manufacturer-specific ECU (server) hardware number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be serverspecific and defined by vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareNumber">
+        <Comment><![CDATA[Software Number (Supplier)]]></Comment>
+        <Mnemonic>DID_$F194</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="5" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareVersionNumber">
+        <Comment><![CDATA[Software Version (Supplier)]]></Comment>
+        <Mnemonic>DID_$F195</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software version number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="8" ascii="1"/>
+      </Data>
+      <Data Name="Fingerprint">
+        <Comment><![CDATA[Only for programmable ECU]]></Comment>
+        <Mnemonic>DID_$F010</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>The value is written by the ECU when executing the SendKey SecurityAccess service</FONT></P>
+<P><FONT size=2>The value can be read in boot loader mode.</FONT></P>]]></Description>
+        <Bytes count="16"/>
+      </Data>
+      <Data Name="vehicleManufacturerKitAssemblyPartNumber">
+        <Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM.]]></Comment>
+        <Mnemonic>DID_$F18E</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer order number for a kit (assembled parts bought as a whole for production e.g. cockpit), when the spare part number designates only the server (e.g. for aftersales).</FONT></P>
+<P><FONT size=2>The record data content and format shall be server specific and defined by the vehicle manufacturer.<BR></FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="ECU_Voltage.KL15_APC">
+        <Comment><![CDATA[+Vbatt]]></Comment>
+        <Mnemonic>DID_$3014_1</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="V" Step=" .00195313"/>
+        </Bits>
+      </Data>
+      <Data Name="SoftwareBuildIdentificationNumber.Build Job">
+        <Mnemonic>DID_$FD03_5</Mnemonic>
+        <Bytes count="17" ascii="1"/>
+      </Data>
+      <Data Name="SwitchPhisicalPosition">
+        <Mnemonic>DID_$3022</Mnemonic>
+        <Bits count="2">
+          <List>
+            <Item Value="0" Text="AUTO"/>
+            <Item Value="1" Text="4WD Lock"/>
+            <Item Value="2" Text="Invalid 1"/>
+            <Item Value="3" Text="Invalid 2"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IPM_FailureClass">
+        <Mnemonic>DID_$302B</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Normal Clutch control function"/>
+            <Item Value="1" Text="Degraded Clutch control or LIMP home function"/>
+            <Item Value="2" Text="Reduced slip speed or clutch torque"/>
+            <Item Value="3" Text="Open clutch slowly by time controlled ramping down of locking torque"/>
+            <Item Value="4" Text="Open clutch slowly by time controlled ramping down of PWM duty"/>
+            <Item Value="5" Text="Open clutch by pasive opening"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="vehicleManufacturerSparePartNumber">
+        <Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM]]></Comment>
+        <Mnemonic>DID_$F187</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer spare part number. </FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUSoftwareNumber">
+        <Comment><![CDATA[RUC Reference]]></Comment>
+        <Mnemonic>DID_$F188</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerSparePartNumber_N">
+        <Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM]]></Comment>
+        <Mnemonic>DID_$F1A1</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer spare part number. </FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="ClutchTemperature">
+        <Mnemonic>DID_$3020</Mnemonic>
+        <Bits signed="1">
+          <Scaled Unit="°C" Step=" 2"/>
+        </Bits>
+      </Data>
+      <Data Name="ActuatorFault">
+        <Mnemonic>DID_$3028</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="No actuator fault present"/>
+            <Item Value="1" Text="Actuator fault present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ECUSerialNumber">
+        <Comment><![CDATA[ECU serial number]]></Comment>
+        <Mnemonic>DID_$F18C</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the ECU (server) serial number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific.</FONT></P>]]></Description>
+        <Bytes count="20" ascii="1"/>
+      </Data>
+      <Data Name="OperationalReference">
+        <Comment><![CDATA[Operational Reference]]></Comment>
+        <Mnemonic>DID_$O12</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="BootVersion.SupplierCoding">
+        <Mnemonic>DID_$F180_2</Mnemonic>
+        <Bytes count="31" ascii="1"/>
+      </Data>
+      <Data Name="RoutineStatusRecord">
+        <Comment><![CDATA[RoutineType & Status]]></Comment>
+        <Mnemonic>RSR</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="48" Text="RoutineType 3 _ Status: Completed"/>
+            <Item Value="49" Text="RoutineType 3 _ Status: Aborted or disabled"/>
+            <Item Value="32" Text="RoutineType 2 _ Status: Completed"/>
+            <Item Value="33" Text="RoutineType 2 _ Status: Aborted or disabled"/>
+            <Item Value="34" Text="RoutineType 2 _ Status: Active"/>
+            <Item Value="50" Text="RoutineType 3 _ Status: Active"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="SW_SwitchState.AUTO_State">
+        <Comment><![CDATA[SW Switch state _ AUTO]]></Comment>
+        <Mnemonic>DID_$3003_1</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="AUTO switch is INACTIVE"/>
+            <Item Value="1" Text="AUTO switch is ACTIVE"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="SW_SwitchState.4WD_State">
+        <Comment><![CDATA[SW Switch state _ 4WD]]></Comment>
+        <Mnemonic>DID_$3003_2</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="4WD switch is INACTIVE"/>
+            <Item Value="1" Text="4WD switch is ACTIVE"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ETC_TorqueControl.TASC_Torque_Request">
+        <Mnemonic>DID_$3025_1</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="N·m"/>
+        </Bits>
+      </Data>
+      <Data Name="ETC_TorqueControl.Delta_N_Clutch">
+        <Mnemonic>DID_$3025_2</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="rpm" Step=" .5"/>
+        </Bits>
+      </Data>
+      <Data Name="ETC_TorqueControl.IPM_Current_Ref.">
+        <Mnemonic>DID_$3025_3</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled Unit="A" Step=" .001"/>
+        </Bits>
+      </Data>
+      <Data Name="NetworkDisturbanceBitmask.Checksum_ATCU_A108">
+        <Comment><![CDATA[NetworkDisturbance_Checksum_ATCU_A108]]></Comment>
+        <Mnemonic>DID_$3005_3_1</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="NA"/>
+            <Item Value="1" Text="CRC_ATCU_A108"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="NetworkDisturbanceBitmask.Alivecounter_ATCU_A108">
+        <Comment><![CDATA[NetworkDisturbance_Checksum_ATCU_A108]]></Comment>
+        <Mnemonic>DID_$3005_4_1</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="NA"/>
+            <Item Value="1" Text="Alive_ATCU_A108"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ECU_Voltage.KL30_Vbatt">
+        <Mnemonic>DID_$FD14_2</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="V" Step=" .00195313"/>
+        </Bits>
+      </Data>
+      <Data Name="Oil_Clutch_InitialTemperature.Lower estimation">
+        <Comment><![CDATA[Lower estimation]]></Comment>
+        <Mnemonic>DID_$3054_2</Mnemonic>
+        <Bits count="16" signed="1">
+          <Scaled Unit="°C"/>
+        </Bits>
+      </Data>
+      <Data Name="Oil_Clutch_InitialTemperature.Upper estimation">
+        <Comment><![CDATA[Upper estimation]]></Comment>
+        <Mnemonic>DID_$3054_1</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="°C"/>
+        </Bits>
+      </Data>
+      <Data Name="RoutineIdentifier">
+        <Comment><![CDATA[Routine identifier - This is an example. See documentation for more information.]]></Comment>
+        <Mnemonic>RIL</Mnemonic>
+        <Description><![CDATA[<FONT size=2>
+<P><FONT size=2><STRONG><U>Definition of RoutineControl</U></STRONG></FONT></P>
+<P><FONT size=2>Data: RoutineIdentifierList</FONT></P>
+<P><FONT size=2>&nbsp; Contains the list of all routine identifier that may be&nbsp;used with InputOutputControl service.<BR>&nbsp; <BR>&nbsp; Example:<BR>&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;0x4501 -&nbsp;ROUTINE_Temperature_Wave<BR></FONT></P>
+<P><FONT size=2>If some of these routine identifer have parameters, you should defined a data with the same name as the&nbsp;routine identifer followed by a dot and a text</FONT></P>
+<P><FONT size=2>&nbsp; Example:<BR>&nbsp; <BR>&nbsp; Data: ROUTINE_Temperature_Wave.Min<BR>&nbsp; Data: ROUTINE_Temperature_Wave.Max<BR>&nbsp; Data: ROUTINE_Temperature_Wave.Freq<BR></FONT><FONT size=2></P></FONT>
+<P><FONT size=2>Then, you should add theses data in the "Send tab" of the&nbsp;RoutineControl request, after the RoutineIdentifierList data.</FONT></P></FONT>]]></Description>
+        <Bits count="16">
+          <List>
+            <Item Value="514" Text="ODST [On Demand Self Test]"/>
+            <Item Value="53251" Text="EraseEEPROM"/>
+            <Item Value="53252" Text="EOL_XCP_Control"/>
+            <Item Value="56583" Text="CPU Load"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="CPU_Load_Value">
+        <Comment><![CDATA[CPU Load Core 0]]></Comment>
+        <Mnemonic>DID_$DD07</Mnemonic>
+        <Bits>
+          <Scaled Unit="%"/>
+        </Bits>
+      </Data>
+      <Data Name="ETC_TorqueControl.Actual.IPM_Torque.Actual">
+        <Mnemonic>DID_$302C_1</Mnemonic>
+        <Bits>
+          <Scaled Unit="N·m" Step=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="ETC_TorqueControl.Actual.IPM_Current.Actual">
+        <Mnemonic>DID_$302C_2</Mnemonic>
+        <Bits>
+          <Scaled Unit="A" Step=" .1"/>
+        </Bits>
+      </Data>
+      <Data Name="CalibrationBuildSignature.TypeOfRelease">
+        <Mnemonic>DID_$FD06_1</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="CalibrationBuildSignature.Build_ID">
+        <Mnemonic>DID_$FD06_6</Mnemonic>
+        <Bytes count="4"/>
+      </Data>
+      <Data Name="CalibrationBuildSignature.BuildJob">
+        <Mnemonic>DID_$FD06_5</Mnemonic>
+        <Bytes count="17" ascii="1"/>
+      </Data>
+      <Data Name="CalibrationBuildSignature.CompileDate">
+        <Mnemonic>DID_$FD06_3</Mnemonic>
+        <Bytes count="9" ascii="1"/>
+      </Data>
+      <Data Name="CalibrationBuildSignature.CompileTime">
+        <Mnemonic>DID_$FD06_4</Mnemonic>
+        <Bytes count="17" ascii="1"/>
+      </Data>
+      <Data Name="CalibrationBuildSignature.RevisionNumber">
+        <Mnemonic>DID_$FD06_2</Mnemonic>
+        <Bytes count="3" ascii="1"/>
+      </Data>
+      <Data Name="NetworkDisturbanceBitmask.TimeOut">
+        <Comment><![CDATA[NetworkDisturbance_TimeOut]]></Comment>
+        <Mnemonic>DID_$3005_1</Mnemonic>
+        <Bytes count="4"/>
+      </Data>
+      <Data Name="diagnosticVersion">
+        <Comment><![CDATA[VDIAG]]></Comment>
+        <Mnemonic>DID_$F1A0</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the diagnostic version of the ECU.</FONT></P>
+<P><FONT size=2>It is defined by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>Refer to manufacture ECU designer.</FONT></P>]]></Description>
+        <Bytes count="1"/>
+      </Data>
+    </Datas>
+    <Requests Endian="Big">
+      <Request Name="TesterPresent.WithResponse">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+        <Sent>
+          <SentBytes>3E00</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>7E</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1003</SentBytes>
+          <DataItem Name="SessionName" FirstByte="2"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5003</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.ExtendedDiagnostic">
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1003</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5003</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.Default">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1001</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5001</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.Programming">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1002</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5002</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VIN">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read VIN]]></Comment>
+        <Sent>
+          <SentBytes>22F190</SentBytes>
+        </Sent>
+        <Received MinBytes="20">
+          <ReplyBytes>62F190</ReplyBytes>
+          <DataItem Name="VIN" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="ClearDiagnosticInformation.All">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+        <Sent>
+          <SentBytes>14FFFFFF</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>54</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+        <ManuelSend/>
+        <Comment><![CDATA[Report number of DTC]]></Comment>
+        <Sent>
+          <SentBytes>1901FF</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>5901FF000000</ReplyBytes>
+          <DataItem Name="DTCCount" FirstByte="5"/>
+          <DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTC">
+        <ManuelSend/>
+        <Comment><![CDATA[DDT2000 Failures page requests / DDT : Unusable for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1902FF</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>59020000000000</ReplyBytes>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+          <DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+          <DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+          <DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+          <DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+          <DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+          <DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+          <DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+          <DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+          <DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSnapshot">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+        <Sent>
+          <SentBytes>1904000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>590400000000</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Request for the import in the Clip]]></Comment>
+        <Sent>
+          <SentBytes>190600000080</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="10">
+          <ReplyBytes>59060000000080000000</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+          <DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+          <DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.AgingCounter">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Request for the import in the Clip]]></Comment>
+        <Sent>
+          <SentBytes>190600000081</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="8">
+          <ReplyBytes>5906000000008100</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+          <DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+          <DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.DTCOccurrenceCounter">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Request for the import in the Clip]]></Comment>
+        <Sent>
+          <SentBytes>190600000082</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="8">
+          <ReplyBytes>5906000000008200</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+          <DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+          <DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[DDT2000 Failures page requests : Unusable in the standard tools of DDT2000 nor for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1906000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="10">
+          <ReplyBytes>590600000000</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+          <DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+          <DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+          <DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+          <DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSupportedDTC">
+        <ManuelSend/>
+        <Comment><![CDATA[Report supported DTC]]></Comment>
+        <Sent>
+          <SentBytes>190A</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>590AFF00000000</ReplyBytes>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="ReportDTCInformation.ReportDTCFaultDetectionCounter">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Report DTC fault detection]]></Comment>
+        <Sent>
+          <SentBytes>1914</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>591400000000</ReplyBytes>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="3"/>
+          <DataItem Name="DTCFailureType" FirstByte="5"/>
+          <DataItem Name="DTCFaultDetectionCounter" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>31010000</SentBytes>
+          <DataItem Name="RoutineIdentifier" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101000000</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Stop">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>31020000</SentBytes>
+          <DataItem Name="RoutineIdentifier" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7102000000</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.RequestRoutineResults">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>31030000</SentBytes>
+          <DataItem Name="RoutineIdentifier" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7103000000</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="ReadMemoryByAddress.32x8">
+        <ManuelSend/>
+        <Comment><![CDATA[Read Memory By Address with address coded on 32 bits and data length coded on 8 bits]]></Comment>
+        <Sent>
+          <SentBytes>23140000000000</SentBytes>
+          <DataItem Name="ALFID.lengthOfMemorySize" FirstByte="2"/>
+          <DataItem Name="ALFID.lengthOfMemoryAddress" FirstByte="2" BitOffset="4"/>
+          <DataItem Name="MemoryAddress.32bits" FirstByte="3"/>
+          <DataItem Name="MemorySize.8bits" FirstByte="7"/>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>63</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadMemoryByAddress.32x16">
+        <ManuelSend/>
+        <Comment><![CDATA[Read Memory By Address with address coded on 32 bits and data length coded on 16 bits]]></Comment>
+        <Sent>
+          <SentBytes>2324000000000000</SentBytes>
+          <DataItem Name="ALFID.lengthOfMemorySize" FirstByte="2"/>
+          <DataItem Name="ALFID.lengthOfMemoryAddress" FirstByte="2" BitOffset="4"/>
+          <DataItem Name="MemoryAddress.32bits" FirstByte="3"/>
+          <DataItem Name="MemorySize.16bits" FirstByte="7"/>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>63</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadMemoryByAddress.24x8">
+        <ManuelSend/>
+        <Comment><![CDATA[Read Memory By Address with address coded on 24 bits and data length coded on 8 bits]]></Comment>
+        <Sent>
+          <SentBytes>231300000000</SentBytes>
+          <DataItem Name="ALFID.lengthOfMemorySize" FirstByte="2"/>
+          <DataItem Name="ALFID.lengthOfMemoryAddress" FirstByte="2" BitOffset="4"/>
+          <DataItem Name="MemorySize.8bits" FirstByte="6"/>
+          <DataItem Name="MemoryAddress.24bits" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>63</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadMemoryByAddress.24x16">
+        <ManuelSend/>
+        <Comment><![CDATA[Read Memory By Address with address coded on 24 bits and data length coded on 16 bits]]></Comment>
+        <Sent>
+          <SentBytes>23230000000000</SentBytes>
+          <DataItem Name="ALFID.lengthOfMemorySize" FirstByte="2"/>
+          <DataItem Name="ALFID.lengthOfMemoryAddress" FirstByte="2" BitOffset="4"/>
+          <DataItem Name="MemoryAddress.24bits" FirstByte="3"/>
+          <DataItem Name="MemorySize.16bits" FirstByte="6"/>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>63</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadMemoryByAddress.16x8">
+        <ManuelSend/>
+        <Comment><![CDATA[Read Memory By Address with address coded on 16 bits and data length coded on 8 bits]]></Comment>
+        <Sent>
+          <SentBytes>2312000000</SentBytes>
+          <DataItem Name="ALFID.lengthOfMemorySize" FirstByte="2"/>
+          <DataItem Name="ALFID.lengthOfMemoryAddress" FirstByte="2" BitOffset="4"/>
+          <DataItem Name="MemorySize.8bits" FirstByte="5"/>
+          <DataItem Name="MemoryAddress.16bits" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>63</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadMemoryByAddress.16x16">
+        <ManuelSend/>
+        <Comment><![CDATA[Read Memory By Address with address coded on 16 bits and data length coded on 16 bits]]></Comment>
+        <Sent>
+          <SentBytes>232200000000</SentBytes>
+          <DataItem Name="ALFID.lengthOfMemorySize" FirstByte="2"/>
+          <DataItem Name="ALFID.lengthOfMemoryAddress" FirstByte="2" BitOffset="4"/>
+          <DataItem Name="MemorySize.16bits" FirstByte="5"/>
+          <DataItem Name="MemoryAddress.16bits" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>63</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadMemoryByAddress.Generic">
+        <ManuelSend/>
+        <Comment><![CDATA[Generic Read Memory By Address]]></Comment>
+        <Sent>
+          <SentBytes>2300</SentBytes>
+          <DataItem Name="ALFID.lengthOfMemorySize" FirstByte="2"/>
+          <DataItem Name="ALFID.lengthOfMemoryAddress" FirstByte="2" BitOffset="4"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>63</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTCSnapshotIdentification">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Report snapshot identification]]></Comment>
+        <Sent>
+          <SentBytes>1903000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>590300000001</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="DTCSnapshotRecordNumber" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="ReportDTCInformation.ReportDTCFaultDetectionCounter_CPDD Import">
+        <ManuelSend/>
+        <Comment><![CDATA[Report DTC fault detection counter counter for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1914</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>591400000000</ReplyBytes>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="3"/>
+          <DataItem Name="DTCFailureType" FirstByte="5"/>
+          <DataItem Name="DTCFaultDetectionCounter" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSupportedDTC_CPDD Import">
+        <ManuelSend/>
+        <Comment><![CDATA[Report supported DTC for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>190A</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>590AFF00000000</ReplyBytes>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTC_CPDD Import">
+        <ManuelSend/>
+        <Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT]]></Comment>
+        <Sent>
+          <SentBytes>1902FF</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>59020000000000</ReplyBytes>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+          <DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+          <DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+          <DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+          <DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+          <DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+          <DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+          <DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+          <DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+          <DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.CalibrationNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Calibration Number]]></Comment>
+        <Sent>
+          <SentBytes>22F182</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F182</ReplyBytes>
+          <DataItem Name="CalibrationNumber.CalibrationNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.SecondaryOperationnalRefference">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F013</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F013</ReplyBytes>
+          <DataItem Name="SecondaryOperationnalRefference" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.BootVersion">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F180</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62F180</ReplyBytes>
+          <DataItem Name="BootVersion.NumberOfModule" FirstByte="4"/>
+          <DataItem Name="BootVersion.SupplierCoding" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.LogicalBlock1_SoftwareDigest">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2EFD000000000000000000000000000000000000000000000000000000000000000000</SentBytes>
+          <DataItem Name="LogicalBlock1_SoftwareDigest" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EFD00</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LogicalBlock1_SoftwareDigest">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Software Revision Number 1]]></Comment>
+        <Sent>
+          <SentBytes>22FD00</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62FD00</ReplyBytes>
+          <DataItem Name="LogicalBlock1_SoftwareDigest" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.LogicalBlock1_CalibrationDigest">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2EFD010000000000000000000000000000000000000000000000000000000000000000</SentBytes>
+          <DataItem Name="LogicalBlock1_CalibrationDigest" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EFD01</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.LogicalBlock1_CalibrationDigest">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22FD01</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62FD01</ReplyBytes>
+          <DataItem Name="LogicalBlock1_CalibrationDigest" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.SoftwareRevisionNumber">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22FD02</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>62FD02</ReplyBytes>
+          <DataItem Name="SoftwareRevisionNumber" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.SoftwareBuildIdentificationNumber">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22FD03</SentBytes>
+        </Sent>
+        <Received MinBytes="54">
+          <ReplyBytes>62FD03</ReplyBytes>
+          <DataItem Name="SoftwareBuildIdentificationNumber.Type Of Release" Ref="1" FirstByte="4"/>
+          <DataItem Name="SoftwareBuildIdentificationNumber.Revision Number" Ref="1" FirstByte="5"/>
+          <DataItem Name="SoftwareBuildIdentificationNumber.Compile Date" Ref="1" FirstByte="8"/>
+          <DataItem Name="SoftwareBuildIdentificationNumber.Compile Time" Ref="1" FirstByte="17"/>
+          <DataItem Name="SoftwareBuildIdentificationNumber.Build Job" Ref="1" FirstByte="34"/>
+          <DataItem Name="SoftwareBuildIdentificationNumber.Build ID" Ref="1" FirstByte="51"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.CalibrationRevisionNumber">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22FD05</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>62FD05</ReplyBytes>
+          <DataItem Name="CalibrationRevisionNumber" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.CalibrationBuildSignature">
+        <Sent>
+          <SentBytes>22FD06</SentBytes>
+        </Sent>
+        <Received MinBytes="54">
+          <ReplyBytes>62FD06</ReplyBytes>
+          <DataItem Name="CalibrationBuildSignature.TypeOfRelease" FirstByte="4"/>
+          <DataItem Name="CalibrationBuildSignature.RevisionNumber" FirstByte="5"/>
+          <DataItem Name="CalibrationBuildSignature.CompileDate" FirstByte="8"/>
+          <DataItem Name="CalibrationBuildSignature.CompileTime" FirstByte="17"/>
+          <DataItem Name="CalibrationBuildSignature.BuildJob" FirstByte="34"/>
+          <DataItem Name="CalibrationBuildSignature.Build_ID" FirstByte="51"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DiagID">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DataRead.DiagID]]></Comment>
+        <Sent>
+          <SentBytes>223010</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>623010</ReplyBytes>
+          <DataItem Name="DiagID" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IgnitionOnTime">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223012</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623012</ReplyBytes>
+          <DataItem Name="IgnitionOnTime" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EngineRunningTime">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223013</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623013</ReplyBytes>
+          <DataItem Name="EngineRunningTime" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ECU_Voltage">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223014</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>623014</ReplyBytes>
+          <DataItem Name="ECU_Voltage.KL30_Vbatt" FirstByte="6"/>
+          <DataItem Name="ECU_Voltage.KL15_APC" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.WheelSpeedRear_Left">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22300D</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62300D</ReplyBytes>
+          <DataItem Name="WheelSpeedRear_Left" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.WheelSpeedRear_Right">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22300C</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62300C</ReplyBytes>
+          <DataItem Name="WheelSpeedRear_Right" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.WheelSpeedFront_Left">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22300B</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62300B</ReplyBytes>
+          <DataItem Name="WheelSpeedFront_Left" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.WheelSpeedFront_Right">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22300A</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62300A</ReplyBytes>
+          <DataItem Name="WheelSpeedFront_Right" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VehicleSpeed">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223006</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623006</ReplyBytes>
+          <DataItem Name="VehicleSpeed" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VechiclePowerMode">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223000</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623000</ReplyBytes>
+          <DataItem Name="VechiclePowerMode.VechiclePowerMode" Ref="1" FirstByte="4"/>
+          <DataItem Name="VechiclePowerMode.VechiclePowerPack Status" Ref="1" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.NetworkDisturbanceBitmask">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223005</SentBytes>
+        </Sent>
+        <Received MinBytes="15">
+          <ReplyBytes>623005</ReplyBytes>
+          <DataItem Name="NetworkDisturbanceBitmask.Invalid" Ref="1" FirstByte="8"/>
+          <DataItem Name="NetworkDisturbanceBitmask.Checksum" Ref="1" FirstByte="12"/>
+          <DataItem Name="NetworkDisturbanceBitmask.AliveCounter" Ref="1" FirstByte="14"/>
+          <DataItem Name="NetworkDisturbanceBitmask.TimeOut" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EEPROM_ErrorReadStatus">
+        <Sent>
+          <SentBytes>22FD66</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>62FD66</ReplyBytes>
+          <DataItem Name="EEPROM_ErrorReadStatus" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EOL_Response 1">
+        <Sent>
+          <SentBytes>22FE00</SentBytes>
+        </Sent>
+        <Received MinBytes="11">
+          <ReplyBytes>62FE00</ReplyBytes>
+          <DataItem Name="EOL_Response 1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EOL_Response 2">
+        <Sent>
+          <SentBytes>22FE01</SentBytes>
+        </Sent>
+        <Received MinBytes="11">
+          <ReplyBytes>62FE01</ReplyBytes>
+          <DataItem Name="EOL_Response 2" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EOL_Response 3">
+        <Sent>
+          <SentBytes>22FE02</SentBytes>
+        </Sent>
+        <Received MinBytes="11">
+          <ReplyBytes>62FE02</ReplyBytes>
+          <DataItem Name="EOL_Response 3" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EOL_Response 4">
+        <Sent>
+          <SentBytes>22FE03</SentBytes>
+        </Sent>
+        <Received MinBytes="11">
+          <ReplyBytes>62FE03</ReplyBytes>
+          <DataItem Name="EOL_Response 4" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EOL_Response 5">
+        <Sent>
+          <SentBytes>22FE04</SentBytes>
+        </Sent>
+        <Received MinBytes="11">
+          <ReplyBytes>62FE04</ReplyBytes>
+          <DataItem Name="EOL_Response 5" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EOL_Response 6">
+        <Sent>
+          <SentBytes>22FE05</SentBytes>
+        </Sent>
+        <Received MinBytes="11">
+          <ReplyBytes>62FE05</ReplyBytes>
+          <DataItem Name="EOL_Response 6" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EOL_Response 7">
+        <Sent>
+          <SentBytes>22FE06</SentBytes>
+        </Sent>
+        <Received MinBytes="11">
+          <ReplyBytes>62FE06</ReplyBytes>
+          <DataItem Name="EOL_Response 7" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EOL_Response 8">
+        <Sent>
+          <SentBytes>22FE07</SentBytes>
+        </Sent>
+        <Received MinBytes="11">
+          <ReplyBytes>62FE07</ReplyBytes>
+          <DataItem Name="EOL_Response 8" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EOL_ReplyControl">
+        <Sent>
+          <SentBytes>22FE0A</SentBytes>
+        </Sent>
+        <Received MinBytes="11">
+          <ReplyBytes>62FE0A</ReplyBytes>
+          <DataItem Name="EOL_ReplyControl" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EOL_Request1">
+        <Sent>
+          <SentBytes>22FE0B</SentBytes>
+        </Sent>
+        <Received MinBytes="12">
+          <ReplyBytes>62FE0B</ReplyBytes>
+          <DataItem Name="EOL_Request1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>31000000</SentBytes>
+          <DataItem Name="RoutineControlType" FirstByte="2"/>
+          <DataItem Name="RoutineIdentifier" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7100000000</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start_ODST">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3101020200</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101020200</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Stop_ODST">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3102020200</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7102020200</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start_EraseEEPROM_All">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[FF=Erase all]]></Comment>
+        <Sent>
+          <SentBytes>3101D003FF</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101D003FF</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.RequestResult_EraseEEPROM">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3103D003</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>7103D00300</ReplyBytes>
+          <DataItem Name="EraseStatus" FirstByte="6"/>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Stop_Read_CPU_Load">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3102DD0700</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7102DD0700</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start_Read_CPU_Load">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3101DD0700</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101DD07</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.RequestResult_Read_CPU_Load">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3103DD07</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>7103DD07</ReplyBytes>
+          <DataItem Name="CPU_Load_Status" FirstByte="6"/>
+          <DataItem Name="CPU_Load_Value" FirstByte="7"/>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="KeyOffOnReset">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>1102</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5102</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.WheelSpeedCorrection">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>221008</SentBytes>
+        </Sent>
+        <Received MinBytes="24">
+          <ReplyBytes>621008</ReplyBytes>
+          <DataItem Name="WheelSpeedCorrection.LambdaErrorTreshold" Ref="1" FirstByte="4"/>
+          <DataItem Name="WheelSpeedCorrection.ErrorCounterTreshold" Ref="1" FirstByte="6"/>
+          <DataItem Name="WheelSpeedCorrection.RoughRoadIncrementUP" Ref="1" FirstByte="7"/>
+          <DataItem Name="WheelSpeedCorrection.RoughRoadDecrementDOWN" Ref="1" FirstByte="9"/>
+          <DataItem Name="WheelSpeedCorrection.ConstAccUP" Ref="1" FirstByte="11"/>
+          <DataItem Name="WheelSpeedCorrection.WhlAccRghRoad_x" Ref="1" FirstByte="13"/>
+          <DataItem Name="WheelSpeedCorrection.WhlAccRghRoad_Data" Ref="1" FirstByte="15"/>
+          <DataItem Name="WheelSpeedCorrection.SettleTime" Ref="1" FirstByte="17"/>
+          <DataItem Name="WheelSpeedCorrection.DebouceTime" Ref="1" FirstByte="19"/>
+          <DataItem Name="WheelSpeedCorrection.NumMeanValue" Ref="1" FirstByte="21"/>
+          <DataItem Name="WheelSpeedCorrection.TauWheelaccFlt" Ref="1" FirstByte="22"/>
+          <DataItem Name="WheelSpeedCorrection.AWD_ControlMode" Ref="1" FirstByte="24"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.BateryVoltage">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223001</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>623001</ReplyBytes>
+          <DataItem Name="BateryVoltage" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Ignition">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223002</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>623002</ReplyBytes>
+          <DataItem Name="Ignition" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IndexSrvData">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read security access FingerPrint]]></Comment>
+        <Sent>
+          <SentBytes>22F011</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F011</ReplyBytes>
+          <DataItem Name="IndexSrvData" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ECU_OnTime">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DataRead.ECU_OnTime]]></Comment>
+        <Sent>
+          <SentBytes>223011</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623011</ReplyBytes>
+          <DataItem Name="ECU_OnTime" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.SoftwareComponentVersion">
+        <Comment><![CDATA[Software Component Version]]></Comment>
+        <Sent>
+          <SentBytes>22FEFF</SentBytes>
+        </Sent>
+        <Received MinBytes="143">
+          <ReplyBytes>62FEFF</ReplyBytes>
+          <DataItem Name="SoftwareComponentVersion" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.HousingTemperature">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223021</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623021</ReplyBytes>
+          <DataItem Name="HousingTemperature" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ActiveDiagnosticSession">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F186</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F186</ReplyBytes>
+          <DataItem Name="ActiveDiagnosticSession" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.VIN">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <DenyAccess>
+          <NoSDS/>
+        </DenyAccess>
+        <Comment><![CDATA[Write VIN]]></Comment>
+        <Sent>
+          <SentBytes>2EF1900000000000000000000000000000000000</SentBytes>
+          <DataItem Name="VIN" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF190</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.HardwareSupplierIdentification">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read HardwareSupplierIdentification]]></Comment>
+        <Sent>
+          <SentBytes>22F192</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F192</ReplyBytes>
+          <DataItem Name="HardwareSupplierIdentification" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.HardwareRevisionVersion">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DataRead.ECU_RevisionVersion]]></Comment>
+        <Sent>
+          <SentBytes>22F193</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>62F193</ReplyBytes>
+          <DataItem Name="HardwareRevisionVersion" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.CANdelaFileVersion">
+        <Sent>
+          <SentBytes>22F19E</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>62F19E</ReplyBytes>
+          <DataItem Name="CANdelaFileVersion" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ConfigurationDataReferenceAfterConfigurationProcess">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Configuration Data Reference After Configuration Process]]></Comment>
+        <Sent>
+          <SentBytes>22F1A2</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F1A2</ReplyBytes>
+          <DataItem Name="ConfigurationDataReferenceAfterConfigurationProcess" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.AmbientTemperature">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Ambient Temperature]]></Comment>
+        <Sent>
+          <SentBytes>2230A1</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6230A1</ReplyBytes>
+          <DataItem Name="AmbientTemperature" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start_EOL_XCP_ENABLE">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[01=enable]]></Comment>
+        <Sent>
+          <SentBytes>3101D00401</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>7101D00400</ReplyBytes>
+          <DataItem Name="EOL_XCP_Control_Status" FirstByte="6"/>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start_EOL_XCP_DISABLE">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[01=enable]]></Comment>
+        <Sent>
+          <SentBytes>3101D00402</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>7101D004</ReplyBytes>
+          <DataItem Name="EOL_XCP_Control_Status" FirstByte="6"/>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start_EraseEEPROM_OTP_GKN.Data">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3101D00304</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101D00304</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start_EraseEEPROM_Debugging_Logging">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3101D00303</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101D00303</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start_EraseEEPROM_GASW Block">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3101D00301</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101D00301</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start_EraseEEPROM_FASW Block">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3101D00300</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101D00300</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.RequestResults_EOL_XCP">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[01=enable]]></Comment>
+        <Sent>
+          <SentBytes>3103D004</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>7103D004</ReplyBytes>
+          <DataItem Name="EOL_XCP_Control_Result" FirstByte="6"/>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start_EraseEEPROM_OTP_Custormer.Data">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3101D00305</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101D00305</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start_EraseEEPROM">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3101D00300</SentBytes>
+          <DataItem Name="Erase_EEPROM_Block_ID" FirstByte="5"/>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101D00300</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start_EOL_XCP">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[01=enable]]></Comment>
+        <Sent>
+          <SentBytes>3101D00400</SentBytes>
+          <DataItem Name="EOL_XCP_RequestedState" FirstByte="5"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>7101D00400</ReplyBytes>
+          <DataItem Name="EOL_XCP_Control_Status" FirstByte="6"/>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierIdentifier">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierIdentifier]]></Comment>
+        <Sent>
+          <SentBytes>22F18A</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62F18A</ReplyBytes>
+          <DataItem Name="systemSupplierIdentifier" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUHardwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerECUHardwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F191</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F191</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUHardwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierECUSoftwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F194</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ShiftBytesCount>10</ShiftBytesCount>
+          <ReplyBytes>62F194</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierECUVersionNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F195</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62F195</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareVersionNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="ECUReset">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>1101</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5101</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Fingerprint">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read programmingOperationFingerPrint]]></Comment>
+        <Sent>
+          <SentBytes>22F010</SentBytes>
+        </Sent>
+        <Received MinBytes="19">
+          <ReplyBytes>62F010</ReplyBytes>
+          <DataItem Name="Fingerprint" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerKitAssemblyPartNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerKitAssemblyPartNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F18E</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F18E</ReplyBytes>
+          <DataItem Name="vehicleManufacturerKitAssemblyPartNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerSparePartNumber_N">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerSparePartNumber Nissan]]></Comment>
+        <Sent>
+          <SentBytes>22F1A1</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F1A1</ReplyBytes>
+          <DataItem Name="vehicleManufacturerSparePartNumber_N" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.systemSupplierECUSoftwareNumber">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2EF19400000000000000000000</SentBytes>
+          <DataItem Name="systemSupplierECUSoftwareNumber" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF194</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.systemSupplierECUSoftwareVersionNumber">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2EF1950000000000000000000000000000000000000000000000000000000000000000</SentBytes>
+          <DataItem Name="systemSupplierECUSoftwareVersionNumber" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF195</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.systemSupplierIdentifier">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2EF18A0000000000000000000000000000000000000000000000000000000000000000</SentBytes>
+          <DataItem Name="systemSupplierIdentifier" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF18A</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ECUSerialNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read ECUSerialNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F18C</SentBytes>
+        </Sent>
+        <Received MinBytes="23">
+          <ReplyBytes>62F18C</ReplyBytes>
+          <DataItem Name="ECUSerialNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ClutchTemperature">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223020</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>623020</ReplyBytes>
+          <DataItem Name="ClutchTemperature" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.SwitchPhisicalPosition">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223022</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>623022</ReplyBytes>
+          <DataItem Name="SwitchPhisicalPosition" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ETC_TorqueControl">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ETC Torque Control]]></Comment>
+        <Sent>
+          <SentBytes>223025</SentBytes>
+        </Sent>
+        <Received MinBytes="9">
+          <ReplyBytes>623025</ReplyBytes>
+          <DataItem Name="ETC_TorqueControl.TASC_Torque_Request" Ref="1" FirstByte="4"/>
+          <DataItem Name="ETC_TorqueControl.Delta_N_Clutch" Ref="1" FirstByte="6"/>
+          <DataItem Name="ETC_TorqueControl.IPM_Current_Ref." Ref="1" FirstByte="8"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ActuatorFault">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223028</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>623028</ReplyBytes>
+          <DataItem Name="ActuatorFault" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IPM_FailureClass">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22302B</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62302B</ReplyBytes>
+          <DataItem Name="IPM_FailureClass" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ETC_TorqueControl.Actual">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22302C</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62302C</ReplyBytes>
+          <DataItem Name="ETC_TorqueControl.Actual.IPM_Torque.Actual" FirstByte="4"/>
+          <DataItem Name="ETC_TorqueControl.Actual.IPM_Current.Actual" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.OperationalReference">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F012</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F012</ReplyBytes>
+          <DataItem Name="OperationalReference" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="OutputControl">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Input Output Control]]></Comment>
+        <Sent>
+          <SentBytes>2F000000</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F000000</ReplyBytes>
+          <DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="IOControl.EOL_ReplyControl.STOP">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2FFE0A00</SentBytes>
+        </Sent>
+        <Received MinBytes="12">
+          <ReplyBytes>6FFE0A00</ReplyBytes>
+          <DataItem Name="EOL_ReplyControl" FirstByte="5"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="IOtControl.EOL_ReplyControl.RESET">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2FFE0A01</SentBytes>
+        </Sent>
+        <Received MinBytes="12">
+          <ReplyBytes>6FFE0A01</ReplyBytes>
+          <DataItem Name="EOL_ReplyControl" FirstByte="5"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="IOControl.EOL_ReplyControl.START">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2FFE0A03</SentBytes>
+        </Sent>
+        <Received MinBytes="12">
+          <ReplyBytes>6FFE0A03</ReplyBytes>
+          <DataItem Name="EOL_ReplyControl" FirstByte="5"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="IOControl.EOL_Request1.STOP">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2FFE0B00</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>6FFE0B00</ReplyBytes>
+          <DataItem Name="EOL_Request1" FirstByte="5"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="IOControl.EOL_Request1.RESET">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2FFE0B01</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>6FFE0B01</ReplyBytes>
+          <DataItem Name="EOL_Request1" FirstByte="5"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="IOControll.EOL_Request1.START">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2FFE0B03</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>6FFE0B03</ReplyBytes>
+          <DataItem Name="EOL_Request1" FirstByte="5"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="IOControll.EMCD_Control.START">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F5C3003</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F5C3003</ReplyBytes>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="IOControll.EMCD_Control.STOP">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F5C3000</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F5C3000</ReplyBytes>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="IOControll.EMCD_Control.RESET">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2F5C3001</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F5C3001</ReplyBytes>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Result_ODST">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3103020200</SentBytes>
+        </Sent>
+        <Received MinBytes="8">
+          <ReplyBytes>7103020200000000</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+          <DataItem Name="ODST_Status" FirstByte="6"/>
+          <DataItem Name="ODST_TotalActiveDTC" FirstByte="7"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.SW_SwitchState">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[SW_SwitchState_Used for x1340]]></Comment>
+        <Sent>
+          <SentBytes>223003</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>623003</ReplyBytes>
+          <DataItem Name="SW_SwitchState.AUTO_State" Ref="1" FirstByte="4"/>
+          <DataItem Name="SW_SwitchState.4WD_State" Ref="1" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.diagnosticVersion">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read diagnosticVersion]]></Comment>
+        <Sent>
+          <SentBytes>22F1A0</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F1A0</ReplyBytes>
+          <DataItem Name="diagnosticVersion" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerSparePartNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerSparePartNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F187</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F187</ReplyBytes>
+          <DataItem Name="vehicleManufacturerSparePartNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUSoftwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[RUC_Read autoconfigurationFingerPrint]]></Comment>
+        <Sent>
+          <SentBytes>22F188</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F188</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl.Start_EraseEEPROM_Shared_GASW and FASW">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3101D00302</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7101D00302</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Oil_Clutch_InitialTemperature">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>223054</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>623054</ReplyBytes>
+          <DataItem Name="Oil_Clutch_InitialTemperature.Upper estimation" Ref="1" FirstByte="4"/>
+          <DataItem Name="Oil_Clutch_InitialTemperature.Lower estimation" Ref="1" FirstByte="6"/>
+        </Received>
+      </Request>
+    </Requests>
+    <Devices>
+      <Device Name="IS_AT" DTC="49409">
+        <Test Type="134" Severity="0">
+        </Test>
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="IS_BCM" DTC="49472">
+        <Test Type="134" Severity="0">
+        </Test>
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="IS_BUS_OFF" DTC="49267">
+        <Test Type="136" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="IS_ECM" DTC="49408">
+        <Test Type="135" Severity="0">
+        </Test>
+        <Test Type="134" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="EMCD_ActuatorFailure" DTC="23568">
+        <Test Type="19" Severity="0">
+          <Description>Open Circuit</Description>
+        </Test>
+        <Test Type="18" Severity="0">
+          <Description>SC To Battery</Description>
+        </Test>
+        <Test Type="17" Severity="0">
+          <Description>SC to Ground</Description>
+        </Test>
+        <Test Type="30" Severity="0">
+          <Description>EMCD resistance out of range</Description>
+        </Test>
+        <Test Type="41" Severity="0">
+          <Description>PWM Plausability</Description>
+        </Test>
+      </Device>
+      <Device Name="IS_ABS-ESP" DTC="49449">
+        <Test Type="135" Severity="0">
+        </Test>
+        <Test Type="134" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="System Voltage" DTC="23569" Type="3">
+        <Test Type="23" Severity="0">
+          <Description>System Voltage High</Description>
+        </Test>
+        <Test Type="22" Severity="0">
+          <Description>System Voltage Low</Description>
+        </Test>
+      </Device>
+    </Devices>
+    <ds:Categories xmlns="http://www-diag.renault.com/2002/screens">
+      <Category Name="Generic">
+        <Screen Name="Identification --&gt; References" Color="16768147" WindowState="0" Width="12060" Height="9180">
+          <Label Text="Identification --&gt; References" Color="65280" Alignment="2">
+            <Rectangle Left="360" Top="240" Height="480" Width="11880"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="::pic:misc\find1_128x128" Color="255" Alignment="0">
+            <Rectangle Left="10560" Top="240" Height="1320" Width="1320"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="5015" Color="16774365" DataName="vehicleManufacturerECUSoftwareNumber" RequestName="DataRead.vehicleManufacturerECUSoftwareNumber">
+            <Rectangle Left="1440" Top="2640" Height="300" Width="9120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5000" Color="16774365" DataName="vehicleManufacturerSparePartNumber" RequestName="DataRead.vehicleManufacturerSparePartNumber">
+            <Rectangle Left="1440" Top="3120" Height="300" Width="9120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4940" Color="16774365" DataName="OperationalReference" RequestName="DataRead.OperationalReference">
+            <Rectangle Left="1440" Top="5040" Height="300" Width="9120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4970" Color="16774365" DataName="SecondaryOperationnalRefference" RequestName="DataRead.SecondaryOperationnalRefference">
+            <Rectangle Left="1440" Top="4080" Height="300" Width="9120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4970" Color="16774365" DataName="CalibrationNumber.CalibrationNumber" RequestName="DataRead.CalibrationNumber">
+            <Rectangle Left="1440" Top="4560" Height="300" Width="9120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4985" Color="16774365" DataName="vehicleManufacturerKitAssemblyPartNumber" RequestName="DataRead.vehicleManufacturerKitAssemblyPartNumber">
+            <Rectangle Left="1440" Top="3600" Height="300" Width="9120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="1235" Color="16774365" DataName="VIN" RequestName="DataRead.VIN">
+            <Rectangle Left="3000" Top="1440" Height="480" Width="6120"/>
+            <Font Name="Arial Narrow" Size=" 14" Bold="1" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4955" Color="16774365" DataName="vehicleManufacturerSparePartNumber_N" RequestName="DataRead.vehicleManufacturerSparePartNumber_N">
+            <Rectangle Left="1440" Top="5520" Height="300" Width="9120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4940" Color="16774365" DataName="vehicleManufacturerECUHardwareNumber" RequestName="DataRead.vehicleManufacturerECUHardwareNumber">
+            <Rectangle Left="1440" Top="6000" Height="300" Width="9120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Identification --&gt; HW-SW" Color="16768147" WindowState="0" Width="12060" Height="9060">
+          <Label Text="Identification --&gt; HW-SW" Color="33023" Alignment="2">
+            <Rectangle Left="240" Top="360" Height="480" Width="11640"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="::pic:misc\chip1_48x48" Color="255" Alignment="0">
+            <Rectangle Left="10680" Top="360" Height="720" Width="1080"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="3905" Color="12582911" DataName="systemSupplierECUSoftwareNumber" RequestName="DataRead.systemSupplierECUSoftwareNumber">
+            <Rectangle Left="480" Top="4920" Height="300" Width="11160"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3950" Color="12582911" DataName="systemSupplierECUSoftwareVersionNumber" RequestName="DataRead.systemSupplierECUSoftwareVersionNumber">
+            <Rectangle Left="480" Top="6360" Height="300" Width="11160"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2390" Color="12582911" DataName="ECUSerialNumber" RequestName="DataRead.ECUSerialNumber">
+            <Rectangle Left="600" Top="2280" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3680" Color="12582911" DataName="HardwareSupplierIdentification" RequestName="DataRead.HardwareSupplierIdentification">
+            <Rectangle Left="600" Top="1680" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2405" Color="12582911" DataName="HardwareRevisionVersion" RequestName="DataRead.HardwareRevisionVersion">
+            <Rectangle Left="6840" Top="1680" Height="300" Width="4080"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3935" Color="12582911" DataName="systemSupplierECUSoftwareNumber" RequestName="DataRead.systemSupplierECUSoftwareNumber">
+            <Rectangle Left="480" Top="5880" Height="300" Width="11160"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2465" Color="12582911" DataName="diagnosticVersion" RequestName="DataRead.diagnosticVersion">
+            <Rectangle Left="600" Top="3600" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3920" Color="12582911" DataName="BootVersion.SupplierCoding" RequestName="DataRead.BootVersion">
+            <Rectangle Left="480" Top="5400" Height="300" Width="11160"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Identification --&gt; Dev. Tool" Color="16764262" WindowState="0" Width="12900" Height="9060">
+          <Label Text="Identification --&gt; Development Tool" Color="65535" Alignment="2">
+            <Rectangle Left="480" Top="480" Height="480" Width="12120"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="3395" Color="15724527" DataName="CANdelaFileVersion" RequestName="DataRead.CANdelaFileVersion">
+            <Rectangle Left="840" Top="1920" Height="300" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4820" Color="15724527" DataName="ConfigurationDataReferenceAfterConfigurationProcess" RequestName="DataRead.ConfigurationDataReferenceAfterConfigurationProcess">
+            <Rectangle Left="960" Top="5640" Height="300" Width="7440"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3410" Color="15724527" DataName="LogicalBlock1_SoftwareDigest" RequestName="DataRead.LogicalBlock1_SoftwareDigest">
+            <Rectangle Left="840" Top="3120" Height="300" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3380" Color="15724527" DataName="LogicalBlock1_CalibrationDigest" RequestName="DataRead.LogicalBlock1_CalibrationDigest">
+            <Rectangle Left="840" Top="3720" Height="300" Width="11520"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3395" Color="15724527" DataName="SoftwareRevisionNumber" RequestName="DataRead.SoftwareRevisionNumber">
+            <Rectangle Left="840" Top="2520" Height="300" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3035" Color="15724527" DataName="CalibrationRevisionNumber" RequestName="DataRead.CalibrationRevisionNumber">
+            <Rectangle Left="1200" Top="4200" Height="300" Width="5280"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="1610" Color="15724527" DataName="DiagID" RequestName="DataRead.DiagID">
+            <Rectangle Left="2640" Top="4680" Height="300" Width="3840"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Identification --&gt; Parameter Write" Color="16771306" WindowState="0" Width="12060" Height="9180">
+          <Label Text="Identification --&gt; Parameter Write" Color="16777215" Alignment="2">
+            <Rectangle Left="120" Top="240" Height="480" Width="11640"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Under Construction" Color="4277754" Alignment="2">
+            <Rectangle Left="4200" Top="1080" Height="570" Width="4005"/>
+            <Font Name="MS Sans Serif" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="::pic:misc\maintenance_128x128" Color="255" Alignment="0">
+            <Rectangle Left="5160" Top="1680" Height="1920" Width="1920"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="Write VIN">
+            <Rectangle Left="10080" Top="6360" Height="360" Width="1560"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="DataWrite.VIN"/>
+          </Button>
+          <Input Width="2120" Color="16777215" DataName="systemSupplierIdentifier" RequestName="DataWrite.systemSupplierIdentifier">
+            <Rectangle Left="600" Top="4080" Height="360" Width="11040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="3350" Color="16777215" DataName="systemSupplierECUSoftwareNumber" RequestName="DataWrite.systemSupplierECUSoftwareNumber">
+            <Rectangle Left="600" Top="4800" Height="300" Width="11040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2960" Color="16777215" DataName="LogicalBlock1_SoftwareDigest" RequestName="DataWrite.LogicalBlock1_SoftwareDigest">
+            <Rectangle Left="600" Top="5520" Height="300" Width="11040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="16777215" DataName="VIN" RequestName="DataWrite.VIN">
+            <Rectangle Left="600" Top="6480" Height="300" Width="9120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+        </Screen>
+        <Screen Name="Status --&gt; Dev. Parameters" Color="16767889" WindowState="0" Width="12060" Height="9060">
+          <Label Text="Development Parameters _ Status" Color="16711935" Alignment="2">
+            <Rectangle Left="240" Top="480" Height="480" Width="11160"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="3290" Color="15724527" DataName="EngineRunningTime" RequestName="DataRead.EngineRunningTime">
+            <Rectangle Left="2760" Top="3120" Height="300" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3320" Color="15724527" DataName="ECU_OnTime" RequestName="DataRead.ECU_OnTime">
+            <Rectangle Left="2760" Top="2640" Height="300" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3335" Color="15724527" DataName="IgnitionOnTime" RequestName="DataRead.IgnitionOnTime">
+            <Rectangle Left="2760" Top="2040" Height="300" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Status --&gt; HW Parameters" Color="16767889" WindowState="0" Width="12060" Height="9060">
+          <Label Text="HW Parameters" Color="65280" Alignment="2">
+            <Rectangle Left="600" Top="360" Height="480" Width="10920"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="3170" Color="15724527" DataName="ECU_Voltage.KL15_APC" RequestName="DataRead.ECU_Voltage">
+            <Rectangle Left="840" Top="1560" Height="300" Width="5520"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3200" Color="15724527" DataName="ECU_Voltage.KL30_Vbatt" RequestName="DataRead.ECU_Voltage">
+            <Rectangle Left="840" Top="2160" Height="300" Width="5520"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3185" Color="15724527" DataName="EEPROM_ErrorReadStatus" RequestName="DataRead.EEPROM_ErrorReadStatus">
+            <Rectangle Left="840" Top="3480" Height="300" Width="5520"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3170" Color="15724527" DataName="AmbientTemperature" RequestName="DataRead.AmbientTemperature">
+            <Rectangle Left="840" Top="2760" Height="300" Width="5560"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3170" Color="16777215" DataName="ClutchTemperature" RequestName="DataRead.ClutchTemperature">
+            <Rectangle Left="840" Top="4800" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2090" Color="16777215" DataName="HousingTemperature" RequestName="DataRead.HousingTemperature">
+            <Rectangle Left="1920" Top="4320" Height="300" Width="4320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3290" Color="15724527" DataName="EngineRunningTime" RequestName="DataRead.EngineRunningTime">
+            <Rectangle Left="600" Top="6360" Height="300" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3320" Color="15724527" DataName="ECU_OnTime" RequestName="DataRead.ECU_OnTime">
+            <Rectangle Left="600" Top="5880" Height="300" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3260" Color="15724527" DataName="IgnitionOnTime" RequestName="DataRead.IgnitionOnTime">
+            <Rectangle Left="600" Top="6840" Height="300" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Status --&gt; Function Mode &amp; Button" Color="16447424" WindowState="0" Width="12060" Height="9060">
+          <Label Text="Function Mode &amp; Button State HW &amp; SW" Color="12320767" Alignment="2">
+            <Rectangle Left="120" Top="360" Height="480" Width="10920"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="2960" Color="16447424" DataName="SW_SwitchState.AUTO_State" RequestName="DataRead.SW_SwitchState">
+            <Rectangle Left="2040" Top="2640" Height="300" Width="5760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2945" Color="16447424" DataName="SW_SwitchState.4WD_State" RequestName="DataRead.SW_SwitchState">
+            <Rectangle Left="2040" Top="3120" Height="300" Width="5760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2930" Color="16447424" DataName="SwitchPhisicalPosition" RequestName="DataRead.SwitchPhisicalPosition">
+            <Rectangle Left="2040" Top="1680" Height="300" Width="5760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Status --&gt; IPM - EMCD" Color="16575175" WindowState="0" Width="13020" Height="10140">
+          <Label Text="IPM and EMCD" Color="12320767" Alignment="2">
+            <Rectangle Left="480" Top="600" Height="480" Width="10920"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="5150" Color="15724527" DataName="ETC_TorqueControl.TASC_Torque_Request" RequestName="DataRead.ETC_TorqueControl">
+            <Rectangle Left="960" Top="3960" Height="300" Width="6960"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5150" Color="15724527" DataName="ETC_TorqueControl.Delta_N_Clutch" RequestName="DataRead.ETC_TorqueControl">
+            <Rectangle Left="960" Top="3480" Height="300" Width="6960"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3695" Color="15724527" DataName="ETC_TorqueControl.IPM_Current_Ref." RequestName="DataRead.ETC_TorqueControl">
+            <Rectangle Left="2400" Top="2280" Height="300" Width="5520"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2145" Color="15724527" DataName="ClutchTemperature" RequestName="DataRead.ClutchTemperature">
+            <Rectangle Left="3960" Top="2760" Height="300" Width="3960"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="1865" Color="15724527" DataName="ActuatorFault" RequestName="DataRead.ActuatorFault">
+            <Rectangle Left="3600" Top="4680" Height="300" Width="4320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="15724527" DataName="IPM_FailureClass" RequestName="DataRead.IPM_FailureClass">
+            <Rectangle Left="1080" Top="6600" Height="300" Width="8040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2885" Color="15724527" DataName="ETC_TorqueControl.Actual.IPM_Torque.Actual" RequestName="DataRead.ETC_TorqueControl.Actual">
+            <Rectangle Left="3240" Top="5400" Height="300" Width="4683"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2885" Color="15724527" DataName="ETC_TorqueControl.Actual.IPM_Current.Actual" RequestName="DataRead.ETC_TorqueControl.Actual">
+            <Rectangle Left="3240" Top="5880" Height="300" Width="4683"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Status --&gt; Vehicle Condition" Color="16767889" WindowState="0" Width="12060" Height="9060">
+          <Label Text="Vehicle Condition" Color="8585215" Alignment="2">
+            <Rectangle Left="240" Top="360" Height="480" Width="11760"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="::pic:misc\gears1_128x128" Color="16777215" Alignment="0">
+            <Rectangle Left="10560" Top="240" Height="1080" Width="1200"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="2885" Color="15724527" DataName="WheelSpeedRear_Left" RequestName="DataRead.WheelSpeedRear_Left">
+            <Rectangle Left="1200" Top="5880" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2855" Color="15724527" DataName="WheelSpeedFront_Left" RequestName="DataRead.WheelSpeedFront_Left">
+            <Rectangle Left="1200" Top="4320" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2855" Color="15724527" DataName="WheelSpeedRear_Right" RequestName="DataRead.WheelSpeedRear_Right">
+            <Rectangle Left="6600" Top="5880" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2870" Color="15724527" DataName="WheelSpeedFront_Right" RequestName="DataRead.WheelSpeedFront_Right">
+            <Rectangle Left="6720" Top="4320" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2225" Color="15724527" DataName="VehicleSpeed" RequestName="DataRead.VehicleSpeed">
+            <Rectangle Left="4680" Top="3000" Height="329" Width="4200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3665" Color="15724527" DataName="VechiclePowerMode.VechiclePowerMode" RequestName="DataRead.VechiclePowerMode">
+            <Rectangle Left="3240" Top="2069" Height="329" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4610" Color="15724527" DataName="VechiclePowerMode.VechiclePowerPack Status" RequestName="DataRead.VechiclePowerMode">
+            <Rectangle Left="2280" Top="2549" Height="314" Width="6600"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Status --&gt; CAN Communication" Color="16768147" WindowState="0" Width="12060" Height="9060">
+          <Label Text="CAN Communication Status" Color="14671839" Alignment="2">
+            <Rectangle Left="120" Top="360" Height="480" Width="11760"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="3830" Color="15724527" DataName="NetworkDisturbanceBitmask.Invalid" RequestName="DataRead.NetworkDisturbanceBitmask">
+            <Rectangle Left="2147" Top="1800" Height="300" Width="7573"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3815" Color="15724527" DataName="NetworkDisturbanceBitmask.Checksum" RequestName="DataRead.NetworkDisturbanceBitmask">
+            <Rectangle Left="2160" Top="2400" Height="300" Width="7573"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3800" Color="15724527" DataName="NetworkDisturbanceBitmask.AliveCounter" RequestName="DataRead.NetworkDisturbanceBitmask">
+            <Rectangle Left="2160" Top="3000" Height="300" Width="7573"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Status --&gt; EOL" Color="16768147" WindowState="0" Width="12060" Height="9060">
+          <Label Text="Status --&gt; EOL" Color="6064035" Alignment="2">
+            <Rectangle Left="240" Top="360" Height="480" Width="11400"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="2000" Color="15724527" DataName="EOL_Response 1" RequestName="DataRead.EOL_Response 1">
+            <Rectangle Left="1800" Top="2760" Height="300" Width="7560"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="15724527" DataName="EOL_Response 2" RequestName="DataRead.EOL_Response 2">
+            <Rectangle Left="1800" Top="3240" Height="300" Width="7560"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="15724527" DataName="EOL_Response 3" RequestName="DataRead.EOL_Response 3">
+            <Rectangle Left="1800" Top="3720" Height="300" Width="7560"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="15724527" DataName="EOL_Response 4" RequestName="DataRead.EOL_Response 4">
+            <Rectangle Left="1800" Top="4200" Height="300" Width="7560"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="15724527" DataName="EOL_Response 5" RequestName="DataRead.EOL_Response 5">
+            <Rectangle Left="1800" Top="4680" Height="300" Width="7560"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="15724527" DataName="EOL_Response 6" RequestName="DataRead.EOL_Response 6">
+            <Rectangle Left="1800" Top="5160" Height="300" Width="7560"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="15724527" DataName="EOL_Response 7" RequestName="DataRead.EOL_Response 7">
+            <Rectangle Left="1800" Top="5640" Height="300" Width="7560"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="15724527" DataName="EOL_Response 8" RequestName="DataRead.EOL_Response 8">
+            <Rectangle Left="1800" Top="6120" Height="300" Width="7560"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="15724527" DataName="EOL_ReplyControl" RequestName="DataRead.EOL_ReplyControl">
+            <Rectangle Left="1800" Top="1800" Height="300" Width="7560"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="15724527" DataName="EOL_Request1" RequestName="DataRead.EOL_Request1">
+            <Rectangle Left="1800" Top="1320" Height="300" Width="7560"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Status --&gt; Temperature's" Color="14999028" WindowState="0" Width="12060" Height="9060">
+          <Label Text="Status --&gt; TEMP." Color="6064035" Alignment="2">
+            <Rectangle Left="120" Top="360" Height="480" Width="11400"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Display Width="4955" Color="16777215" DataName="Oil_Clutch_InitialTemperature.Lower estimation" RequestName="DataRead.Oil_Clutch_InitialTemperature">
+            <Rectangle Left="1440" Top="3720" Height="300" Width="6840"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4940" Color="16777215" DataName="Oil_Clutch_InitialTemperature.Upper estimation" RequestName="DataRead.Oil_Clutch_InitialTemperature">
+            <Rectangle Left="1440" Top="4200" Height="300" Width="6840"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2420" Color="16777215" DataName="ClutchTemperature" RequestName="DataRead.ClutchTemperature">
+            <Rectangle Left="1680" Top="2760" Height="300" Width="3720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2150" Color="16777215" DataName="HousingTemperature" RequestName="DataRead.HousingTemperature">
+            <Rectangle Left="1920" Top="2160" Height="300" Width="3480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2615" Color="16777215" DataName="AmbientTemperature" RequestName="DataRead.AmbientTemperature">
+            <Rectangle Left="1440" Top="1680" Height="300" Width="3960"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Session Manager" Color="16764262" WindowState="0" Width="12060" Height="9060">
+          <Label Text="Session Manager" Color="16764262" Alignment="2">
+            <Rectangle Left="2520" Top="840" Height="600" Width="6120"/>
+            <Font Name="MS Sans Serif" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="START Default Session">
+            <Rectangle Left="2760" Top="3720" Height="870" Width="6240"/>
+            <Font Name="Arial" Size=" 14" Bold="1" Italic="0"/>
+            <Message Text="Default Session is Set"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.Default"/>
+          </Button>
+          <Button Text="START Programing Session">
+            <Rectangle Left="2760" Top="5040" Height="840" Width="6240"/>
+            <Font Name="Arial" Size=" 14" Bold="1" Italic="0"/>
+            <Message Text="Programming Session is Set"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.Programming"/>
+          </Button>
+          <Button Text="START Extended Session">
+            <Rectangle Left="2760" Top="6360" Height="840" Width="6240"/>
+            <Font Name="Arial" Size=" 14" Bold="1" Italic="0"/>
+            <Message Text="Extended Session is Set"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+          </Button>
+          <Display Width="3035" Color="8454143" DataName="ActiveDiagnosticSession" RequestName="DataRead.ActiveDiagnosticSession">
+            <Rectangle Left="2400" Top="2280" Height="360" Width="6720"/>
+            <Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="HW Reset" Color="16764262" WindowState="0" Width="12060" Height="9060">
+          <Label Text="HW Reset" Color="8421631" Alignment="2">
+            <Rectangle Left="600" Top="480" Height="480" Width="10800"/>
+            <Font Name="Arial Black" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="Hard Reset">
+            <Rectangle Left="2880" Top="2160" Height="960" Width="5760"/>
+            <Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0"/>
+            <Message Text="HW will reset in 100mS"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="ECUReset"/>
+          </Button>
+          <Button Text="Key OFF - ON Reset">
+            <Rectangle Left="2880" Top="4080" Height="960" Width="5760"/>
+            <Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0"/>
+            <Message Text="Key OFF - ON Reset activate"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="KeyOffOnReset"/>
+          </Button>
+        </Screen>
+      </Category>
+      <Category Name="Routine Control">
+        <Screen Name="ODST" Color="14145535" WindowState="0" Width="12060" Height="9060">
+          <Label Text="ODST" Color="16777139" Alignment="2">
+            <Rectangle Left="360" Top="480" Height="480" Width="11280"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="START">
+            <Rectangle Left="2160" Top="2520" Height="960" Width="2685"/>
+            <Font Name="MS Sans Serif" Size=" 15" Bold="1" Italic="0"/>
+            <Message Text="ODST Start"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="RoutineControl.Start_ODST"/>
+          </Button>
+          <Button Text="STOP">
+            <Rectangle Left="6840" Top="2520" Height="960" Width="2685"/>
+            <Font Name="MS Sans Serif" Size=" 15" Bold="1" Italic="0"/>
+            <Message Text="ODST Stop"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="RoutineControl.Stop_ODST"/>
+          </Button>
+          <Button Text="Read Status">
+            <Rectangle Left="2160" Top="4920" Height="960" Width="2685"/>
+            <Font Name="MS Sans Serif" Size=" 15" Bold="1" Italic="0"/>
+            <Message Text="ODST Status Request"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+          </Button>
+          <Display Width="2000" Color="16777215" DataName="ODST_Status" RequestName="RoutineControl.Result_ODST">
+            <Rectangle Left="6240" Top="5040" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="ODST_TotalActiveDTC" RequestName="RoutineControl.Result_ODST">
+            <Rectangle Left="6240" Top="5640" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Erase EEPROM" Color="14145535" WindowState="0" Width="12060" Height="9180">
+          <Label Text="Erase EEPROM Block's" Color="11796407" Alignment="2">
+            <Rectangle Left="360" Top="360" Height="480" Width="11280"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="FASW Block">
+            <Rectangle Left="2400" Top="1920" Height="480" Width="7200"/>
+            <Font Name="MS Sans Serif" Size=" 15" Bold="1" Italic="0"/>
+            <Message Text="Erase FASW Start"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="RoutineControl.Start_EraseEEPROM_FASW Block"/>
+          </Button>
+          <Button Text="Read Status">
+            <Rectangle Left="2040" Top="6720" Height="960" Width="2685"/>
+            <Font Name="MS Sans Serif" Size=" 15" Bold="1" Italic="0"/>
+            <Message Text="EEPROM Erase status read"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="RoutineControl.RequestResult_EraseEEPROM"/>
+          </Button>
+          <Button Text="GASW Block">
+            <Rectangle Left="2400" Top="2640" Height="480" Width="7200"/>
+            <Font Name="MS Sans Serif" Size=" 15" Bold="1" Italic="0"/>
+            <Message Text="Erase GASW Start"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="RoutineControl.Start_EraseEEPROM_GASW Block"/>
+          </Button>
+          <Button Text="Block Between GASW and FASW">
+            <Rectangle Left="2400" Top="3360" Height="480" Width="7200"/>
+            <Font Name="MS Sans Serif" Size=" 15" Bold="1" Italic="0"/>
+            <Message Text="ERASE Shared EEPROM Block Between GASW and FASW"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="RoutineControl.Start_EraseEEPROM_Shared_GASW and FASW"/>
+          </Button>
+          <Button Text="Debugging &amp; Logging Block">
+            <Rectangle Left="2400" Top="4080" Height="480" Width="7200"/>
+            <Font Name="MS Sans Serif" Size=" 15" Bold="1" Italic="0"/>
+            <Message Text="ERASE all debugging/logging date from EEPROM"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="RoutineControl.Start_EraseEEPROM_Debugging_Logging"/>
+          </Button>
+          <Button Text="OTP Block --&gt; GKN Data">
+            <Rectangle Left="2400" Top="4800" Height="480" Width="7200"/>
+            <Font Name="MS Sans Serif" Size=" 15" Bold="1" Italic="0"/>
+            <Message Text="Erase OTP Block Containing GKN Data"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="RoutineControl.Start_EraseEEPROM_OTP_GKN.Data"/>
+          </Button>
+          <Button Text="OTP Block --&gt; Renault Data">
+            <Rectangle Left="2400" Top="5520" Height="480" Width="7200"/>
+            <Font Name="MS Sans Serif" Size=" 15" Bold="1" Italic="0"/>
+            <Message Text="Erase OTP Block Containing Renault Data"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="RoutineControl.Start_EraseEEPROM_OTP_Custormer.Data"/>
+          </Button>
+          <Button Text="Erase ALL">
+            <Rectangle Left="2400" Top="1200" Height="480" Width="7200"/>
+            <Font Name="MS Sans Serif" Size=" 15" Bold="1" Italic="0"/>
+            <Message Text="Erase All include OTP and Cyclic Data from EEPROM except DEM"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="RoutineControl.Start_EraseEEPROM_All"/>
+          </Button>
+          <Display Width="1730" Color="15724527" DataName="EraseStatus" RequestName="RoutineControl.RequestResult_EraseEEPROM">
+            <Rectangle Left="6120" Top="6960" Height="360" Width="4680"/>
+            <Font Name="Arial" Size=" 14" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="CPU Load" Color="14145535" WindowState="0" Width="12060" Height="9060">
+          <Label Text="CPU Load" Color="11927035" Alignment="2">
+            <Rectangle Left="360" Top="480" Height="480" Width="11280"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="START">
+            <Rectangle Left="1680" Top="2400" Height="1200" Width="3120"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="RoutineControl.Start_Read_CPU_Load"/>
+          </Button>
+          <Button Text="STOP">
+            <Rectangle Left="6840" Top="2400" Height="1200" Width="3120"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="RoutineControl.RequestResult_Read_CPU_Load"/>
+          </Button>
+          <Button Text="READ">
+            <Rectangle Left="1680" Top="5520" Height="1200" Width="3120"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="100" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="RoutineControl.RequestResult_Read_CPU_Load"/>
+          </Button>
+          <Display Width="2450" Color="16777215" DataName="CPU_Load_Status" RequestName="RoutineControl.RequestResult_Read_CPU_Load">
+            <Rectangle Left="5160" Top="5640" Height="300" Width="5040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2465" Color="16777215" DataName="CPU_Load_Value" RequestName="RoutineControl.RequestResult_Read_CPU_Load">
+            <Rectangle Left="5160" Top="6240" Height="300" Width="5040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="EOL_XCP_Control" Color="14145535" WindowState="0" Width="12060" Height="9060">
+          <Label Text="EOL XCP Control" Color="16102909" Alignment="2">
+            <Rectangle Left="360" Top="480" Height="480" Width="11280"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Doesn't Work in v1" Color="6579444" Alignment="0">
+            <Rectangle Left="1200" Top="1560" Height="1800" Width="9960"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="Read State">
+            <Rectangle Left="1560" Top="1920" Height="987" Width="3255"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0"/>
+            <Message Text=""/>
+          </Button>
+          <Button Text="XCP Enable">
+            <Rectangle Left="1560" Top="5040" Height="987" Width="3255"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0"/>
+            <Message Text="XCP Enabled"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="RoutineControl.Start_EOL_XCP_ENABLE"/>
+          </Button>
+          <Button Text="XCP Disable">
+            <Rectangle Left="6960" Top="5040" Height="987" Width="3255"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0"/>
+            <Message Text="XCP Disabled"/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="100" RequestName="RoutineControl.Start_EOL_XCP_DISABLE"/>
+          </Button>
+          <Display Width="2525" Color="16777215" DataName="EOL_XCP_Control_Result" RequestName="RoutineControl.RequestResults_EOL_XCP">
+            <Rectangle Left="5760" Top="2280" Height="300" Width="5040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3335" Color="16777215" DataName="EOL_XCP_Control_Status" RequestName="RoutineControl.Start_EOL_XCP_ENABLE">
+            <Rectangle Left="2880" Top="6360" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+      </Category>
+      <Category Name="I/0 Control">
+        <Screen Name="EMCD Control" Color="16447424" WindowState="0" Width="12060" Height="9060">
+          <Label Text="EMCD IO Control" Color="4454662" Alignment="2">
+            <Rectangle Left="240" Top="0" Height="480" Width="11280"/>
+            <Font Name="Arial Black" Size=" 16" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="State:" Color="16447424" Alignment="1">
+            <Rectangle Left="6000" Top="1440" Height="300" Width="600"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="START">
+            <Rectangle Left="840" Top="1560" Height="600" Width="2880"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IOControll.EMCD_Control.START"/>
+          </Button>
+          <Button Text="STOP">
+            <Rectangle Left="840" Top="3000" Height="600" Width="2880"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="IOControll.EMCD_Control.STOP"/>
+          </Button>
+          <Display Width="2780" Color="16119285" DataName="ETC_TorqueControl.Actual.IPM_Current.Actual" RequestName="DataRead.ETC_TorqueControl.Actual">
+            <Rectangle Left="6720" Top="2400" Height="300" Width="3720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2750" Color="16119285" DataName="ETC_TorqueControl.Actual.IPM_Torque.Actual" RequestName="DataRead.ETC_TorqueControl.Actual">
+            <Rectangle Left="6720" Top="1920" Height="300" Width="3720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="15" Color="16119285" DataName="IOCTL.StatusRecord.Parameter" RequestName="IOControll.EMCD_Control.STOP">
+            <Rectangle Left="6720" Top="1440" Height="300" Width="3760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3230" Color="16119285" DataName="ClutchTemperature" RequestName="DataRead.ClutchTemperature">
+            <Rectangle Left="6120" Top="3360" Height="300" Width="4320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="1640" Color="16119285" DataName="IPM_FailureClass" RequestName="DataRead.IPM_FailureClass">
+            <Rectangle Left="6120" Top="2880" Height="300" Width="4320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+      </Category>
+    </ds:Categories>
+  </ddt:Target>
+</xml>

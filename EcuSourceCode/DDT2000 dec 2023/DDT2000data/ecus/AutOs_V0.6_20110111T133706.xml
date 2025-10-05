@@ -1,0 +1,2243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.0.0.1" date="2011-01-11T11:35"/>
+<ddt:Target Name="AutOs V0.6" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="bertrand.marie@renault.com" href="AutOs_V0.6_20110111T133706.xml" upload="1/11/2011" group="AutOs"><Description><![CDATA[********************          HISTORY      ********************
+
+v0.1 June 2009      :     Creation based on R2 08 V3.8 database (R. Rimlinger)
+
+v0.2 October 2009 :    Modification by AKKA with following sources document :
+                                    - AutOS Diagnosis Services Implémentation DDIV/DIESE/65607/2009/028
+                                    - AutOS Diagnosis Requirements DDIV/DIESE/65607/2009/027
+
+v0.3 October 2009 :    Modification by AKKA FCH :
+                                    - debug
+
+v0.4 October 2009 :     Modification by AKKA FCH :
+                                    - rectification Fonction "navigation" 58h
+
+
+v0.5 October 2009 :     Modification by AKKA FCH :
+                                    - debug
+                                    - rectification applicable vehicles project
+
+v0.6 January 2011 :     Modification by Altran - SOUQUET Samuel
+                                    - Add project name x38
+                                    - new screen and debug with the C1 release
+                                    - DTC Nav_info_line (Nav_speech_enable) updated
+]]></Description>
+<Projects xmlns=""><x38/></Projects>
+<Function Name="Navigation" Address="88"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>11/01/2011 19:37:40</DateOfficialisation>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="1863"/>
+</SendId><ReceiveId>
+<CANId Value="1895"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="40" Supplier="000" Soft="0000" Version="0000"/></AutoIdents>
+<Datas>
+
+<Data Name="DTCStatus.testFailed">
+<Mnemonic>TF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.confirmedDTC">
+<Comment><![CDATA[Confirmation of DTC]]></Comment>
+<Mnemonic>CDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedSinceLastClear">
+<Mnemonic>TNCSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedSinceLastClear">
+<Mnemonic>TFSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.Category">
+<Bits count="4">
+<List>
+<Item Value="0" Text="General Failure Information"/>
+<Item Value="1" Text="General Electrical Failures"/>
+<Item Value="2" Text="General Signal Failures"/>
+<Item Value="3" Text="FM / PWM Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="15" Text="Vehicle manufacturer / System supplier specific"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType">
+<Bits>
+<List>
+<Item Value="0" Text="Device and failure type ODB codding"/>
+<Item Value="1" Text="General Electrical Failure"/>
+<Item Value="2" Text="General signal failure"/>
+<Item Value="3" Text="FM / PWM Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="17" Text="circuit short to ground"/>
+<Item Value="18" Text="circuit short to battery"/>
+<Item Value="19" Text="circuit open"/>
+<Item Value="20" Text="circuit short to ground or open"/>
+<Item Value="21" Text="circuit short to battery or open"/>
+<Item Value="22" Text="circuit voltage below threshold"/>
+<Item Value="23" Text="circuit voltage above threshold"/>
+<Item Value="24" Text="circuit current below threshold"/>
+<Item Value="25" Text="circuit current above threshold"/>
+<Item Value="26" Text="circuit resistance below threshold"/>
+<Item Value="27" Text="circuit resistance above threshold"/>
+<Item Value="28" Text="circuit voltage out of range"/>
+<Item Value="29" Text="circuit current out of range"/>
+<Item Value="30" Text="circuit resistance out of range"/>
+<Item Value="31" Text="circuit intermittent"/>
+<Item Value="33" Text="signal amplitude &lt; minimum"/>
+<Item Value="34" Text="signal amplitude &gt; maximum"/>
+<Item Value="35" Text="signal stuck low"/>
+<Item Value="36" Text="signal stuck high"/>
+<Item Value="37" Text="signal shape / waveform failure"/>
+<Item Value="38" Text="signal rate of change below threshold"/>
+<Item Value="39" Text="signal rate of change above threshold"/>
+<Item Value="40" Text="signal level out of range/zero adjustment failure"/>
+<Item Value="41" Text="signal signal invalid"/>
+<Item Value="47" Text="signal erratic"/>
+<Item Value="49" Text="no signal"/>
+<Item Value="50" Text="signal low time &lt; minimum"/>
+<Item Value="51" Text="signal low time &gt; maximum"/>
+<Item Value="52" Text="signal high time &lt; minimum"/>
+<Item Value="53" Text="signal high time &gt; maximum"/>
+<Item Value="54" Text="signal frequency too low"/>
+<Item Value="55" Text="signal frequency too high"/>
+<Item Value="56" Text="signal frequency incorrect"/>
+<Item Value="57" Text="incorrect has too few pulses"/>
+<Item Value="58" Text="incorrect has too many pulses"/>
+<Item Value="65" Text="general checksum failure"/>
+<Item Value="66" Text="general memory failure"/>
+<Item Value="67" Text="special memory failure"/>
+<Item Value="68" Text="data memory failure"/>
+<Item Value="69" Text="program memory failure"/>
+<Item Value="70" Text="calibration / parameter memory failure"/>
+<Item Value="71" Text="watchdog / safety µC failure"/>
+<Item Value="72" Text="supervision software failure"/>
+<Item Value="73" Text="internal electronic failure"/>
+<Item Value="74" Text="incorrect component installed"/>
+<Item Value="75" Text="over temperature"/>
+<Item Value="81" Text="not programmed"/>
+<Item Value="82" Text="not activated"/>
+<Item Value="83" Text="deactivated"/>
+<Item Value="84" Text="missing calibration"/>
+<Item Value="85" Text="not configured"/>
+<Item Value="97" Text="signal calculation failure"/>
+<Item Value="98" Text="signal compare failure"/>
+<Item Value="99" Text="circuit / component protection time-out"/>
+<Item Value="100" Text="signal plausibility failure"/>
+<Item Value="101" Text="signal has too few transitions / events"/>
+<Item Value="102" Text="signal has too many transitions / events"/>
+<Item Value="103" Text="signal incorrect after event"/>
+<Item Value="104" Text="event information"/>
+<Item Value="113" Text="actuator stuck"/>
+<Item Value="114" Text="actuator stuck open"/>
+<Item Value="115" Text="actuator stuck closed"/>
+<Item Value="116" Text="actuator slipping"/>
+<Item Value="117" Text="emergency position not reachable"/>
+<Item Value="118" Text="wrong mounting position"/>
+<Item Value="119" Text="commanded position not reachable"/>
+<Item Value="120" Text="alignment or adjustment incorrect"/>
+<Item Value="121" Text="mechanical linkage failure"/>
+<Item Value="122" Text="fluid leak or seal failure"/>
+<Item Value="123" Text="low fluid level"/>
+<Item Value="129" Text="invalid serial data received"/>
+<Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+<Item Value="131" Text="value of signal protection calculation incorrect"/>
+<Item Value="132" Text="signal below allowable range"/>
+<Item Value="133" Text="signal above allowable range"/>
+<Item Value="134" Text="signal invalid"/>
+<Item Value="135" Text="missing message"/>
+<Item Value="136" Text="bus off"/>
+<Item Value="143" Text="erratic"/>
+<Item Value="145" Text="parametric"/>
+<Item Value="146" Text="performance or incorrect operation"/>
+<Item Value="147" Text="no operation"/>
+<Item Value="148" Text="unexpected operation"/>
+<Item Value="149" Text="incorrect assembly"/>
+<Item Value="150" Text="component internal failure"/>
+<Item Value="151" Text="Component or system obstructed or blocked"/>
+<Item Value="152" Text="component or system over temperature"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceIdentifier">
+<Bits count="16">
+<List>
+<Item Value="37668" Text="GPS antenna"/>
+<Item Value="37672" Text="Microphone power supply"/>
+<Item Value="37676" Text="Audio Out Left"/>
+<Item Value="37677" Text="Audio Out Right+"/>
+<Item Value="37691" Text="Nav_info_line (Nav_speech_enable)"/>
+<Item Value="37692" Text="Aux_IN Left+"/>
+<Item Value="37682" Text="Aux_IN-"/>
+<Item Value="37693" Text="Aux_IN Right+"/>
+<Item Value="37734" Text="Display temperature"/>
+<Item Value="37729" Text="Display backlight"/>
+<Item Value="37731" Text="Display E2PROM"/>
+<Item Value="37732" Text="Display TFT"/>
+<Item Value="37697" Text="AutOS"/>
+<Item Value="37701" Text="AutOS Gyro module"/>
+<Item Value="37702" Text="AutOS GPS module"/>
+<Item Value="37703" Text="AutOS Bluetooth module"/>
+<Item Value="37761" Text="AutOS GSM module"/>
+<Item Value="37838" Text="Central switch button"/>
+<Item Value="37698" Text="Locked ECU"/>
+<Item Value="37687" Text="DISPLAY System_ON_OUT"/>
+<Item Value="37840" Text="CSW MCAN communication"/>
+<Item Value="37760" Text="AutOS Wifi module"/>
+<Item Value="37843" Text="Display unit UART"/>
+<Item Value="37853" Text="GVIF video signal"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceAndFailureTypeOBD">
+<Bits count="16">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.ManufacturerOrSupplier">
+<Bits count="4">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCStatusAvailabilityMask">
+<Mnemonic>DTCSAM</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCMaskRecord">
+<Mnemonic>DTCMREC_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCRecord">
+<Mnemonic>DTCASR_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCExtendedData.Mileage">
+<Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>MILEAGE</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedDataRecordNumber">
+<Mnemonic>DTCEDRN</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Mileage"/>
+<Item Value="129" Text="AgingCounter"/>
+<Item Value="130" Text="DTCOccurrenceCounter"/></List>
+</Bits>
+</Data>
+<Data Name="CalibrationNumber">
+<Comment><![CDATA[Numero de calibration en Hexa]]></Comment>
+<Mnemonic>NCAL</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="DiagnosticIdentificationCode">
+<Comment><![CDATA[Diag evolution number]]></Comment>
+<Mnemonic>VDIAG</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="SoftwareNumber">
+<Comment><![CDATA[Software identification number]]></Comment>
+<Mnemonic>NPGRGM</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="SupplierNumber.ITG">
+<Comment><![CDATA[Supplier ITG code]]></Comment>
+<Mnemonic>IDENT-3</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="EditionNumber">
+<Comment><![CDATA[Software version(edition) number]]></Comment>
+<Mnemonic>NVERS</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="ManufacturerIdentificationCode">
+<Bytes count="1"/>
+</Data>
+<Data Name="ProgrammingSiteReference">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="ProgrammingToolReference">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="NumberOfReprogrammings">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DateOfReprogramming">
+<Comment><![CDATA[date of the reprogramming yy.mm.dd]]></Comment>
+<Bytes count="3"/>
+</Data>
+<Data Name="CrcOfLogSave">
+<Bytes count="2"/>
+</Data>
+<Data Name="TimeOfReprogramming">
+<Comment><![CDATA[Hour, Minute of the reprogramming]]></Comment>
+<Bytes count="2"/>
+</Data>
+<Data Name="ApprovalNumber.BasicPartList">
+<Bytes count="1"/>
+</Data>
+<Data Name="HardwareNumber.BasicPartList">
+<Bytes count="1"/>
+</Data>
+<Data Name="HardwareNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="PartNumber.BasicPartList">
+<Bytes count="1"/>
+</Data>
+<Data Name="PartNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="Reset Type">
+<Comment><![CDATA[Reset type]]></Comment>
+<Mnemonic>RT_</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Hard Reset"/>
+<Item Value="64" Text="Configuration Reset"/></List>
+</Bits>
+</Data>
+<Data Name="Alarm_code">
+<Comment><![CDATA[code to be stored in world wide Renault database]]></Comment>
+<Mnemonic>PRE_CODE</Mnemonic>
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="Traceability year of production">
+<Comment><![CDATA[Year of production]]></Comment>
+<Mnemonic>TRAYP</Mnemonic>
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="Traceability week">
+<Comment><![CDATA[week number in the year]]></Comment>
+<Mnemonic>TRAWP</Mnemonic>
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="Traceability serial number">
+<Comment><![CDATA[production umber in the week]]></Comment>
+<Mnemonic>TRASN</Mnemonic>
+<Bytes count="11" ascii="1"/>
+</Data>
+<Data Name="Traceability supplier number">
+<Mnemonic>TRAITG</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Ctrl.temporary test">
+<Comment><![CDATA[test control temporary]]></Comment>
+<Mnemonic>TSTCTRL1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Start temporary test"/>
+<Item Value="1" Text="Status request"/>
+<Item Value="17" Text="Stop test"/></List>
+</Bits>
+</Data>
+<Data Name="OutputControlStatusMic">
+<Comment><![CDATA[Testing output : Status]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="No test in progress"/>
+<Item Value="1" Text="tone test in progress"/>
+<Item Value="2" Text="test OK"/>
+<Item Value="4" Text="test NOK"/>
+<Item Value="255" Text="problem in the test"/></List>
+</Bits>
+</Data>
+<Data Name="SessionName">
+<Bits>
+<List>
+<Item Value="129" Text="DefaultSession"/>
+<Item Value="133" Text="ProgrammingSession"/>
+<Item Value="192" Text="ExtendedDiagnosticSession"/>
+<Item Value="250" Text="SVLoggedTraceSession"/>
+<Item Value="251" Text="SVStreamingTraceSession"/>
+<Item Value="254" Text="SVDiagnosisSession"/></List>
+</Bits>
+</Data>
+<Data Name="Ctrl.permanent test">
+<Comment><![CDATA[test control]]></Comment>
+<Mnemonic>TSTCTRL</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Status request"/>
+<Item Value="17" Text="Stop test"/>
+<Item Value="32" Text="Start permanent test"/></List>
+</Bits>
+</Data>
+<Data Name="VAL_BAT">
+<Mnemonic>VAL_BAT</Mnemonic>
+<Bits>
+<Scaled Unit="V" Step=" .2"/>
+</Bits>
+</Data>
+<Data Name="VAL_SPD">
+<Mnemonic>VAL_SPD</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km/h" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="ApprovalNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="RecordMarking">
+<Bytes count="1"/>
+</Data>
+<Data Name="VMSKitAssemblyReference">
+<Comment><![CDATA[Written by Manufacturer at factory]]></Comment>
+<Mnemonic>CNF_REF</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="VMSPartReference">
+<Comment><![CDATA[Written by Manufacturer at factory]]></Comment>
+<Mnemonic>CNF_REF</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="StatusOfDTC">
+<Mnemonic>DTCASR_SODTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.AgingCounter">
+<Comment><![CDATA[Description of the extendedData AgingCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>AGINGCOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.DTCOccurrenceCounter">
+<Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>DTCOCCURENCECOU</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCStatus.warningIndicatorRequested">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCStatus.pendingDTC">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Ctrl.Status">
+<Mnemonic>CTRLSTAT1</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Test in progress"/>
+<Item Value="2" Text="Test completed and OK"/>
+<Item Value="18" Text="Problem in the test"/></List>
+</Bits>
+</Data>
+<Data Name="Ctrl.DisplayTest">
+<Mnemonic>CTRLOPT2</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Color bar using GVIF line"/>
+<Item Value="3" Text="White using GVIF line"/>
+<Item Value="4" Text="Black using GVIF line"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedThisMonitoringCycle">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID01">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID02">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID03">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID04">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID05">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID06">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID07">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID08">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID09">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID0A">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID0B">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID0C">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID0D">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID0E">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID0F">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID10">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID11">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID12">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID13">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID14">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID15">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID16">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID17">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID18">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID19">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID1A">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID1B">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID1C">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID1D">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID1E">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID1F">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID21">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID22">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID23">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID24">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID25">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID26">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID27">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID28">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID29">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID2A">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID2B">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID2C">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID2D">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID2E">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID2F">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID30">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID31">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID32">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID33">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID34">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID35">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID36">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID37">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID38">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID39">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID3A">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID3B">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID3C">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID3D">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID3E">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LID3F">
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Status mask">
+<Comment><![CDATA[Mask of DTC status to reply with 1 byte]]></Comment>
+<Mnemonic>DTCSM</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Test Failed"/>
+<Item Value="3" Text="Confirmed DTC"/>
+<Item Value="4" Text="Test Not Complete Since Last Clear"/>
+<Item Value="5" Text="Test Failed Since Last Clear"/></List>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="ClearDiagnosticInformation.All">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+<Sent>
+<SentBytes>14FFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>54</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ECUReset.hard">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[Reset HARD of ECU]]></Comment>
+<Sent>
+<SentBytes>1101</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5101</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ECUReset.config">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[Reset HARD of ECU]]></Comment>
+<Sent>
+<SentBytes>1140</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5140</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ECUReset">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[Reset of ECU]]></Comment>
+<Sent>
+<VariableLength/>
+<SentBytes>1100</SentBytes>
+<DataItem Name="Reset Type" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5100</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000080</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>59060000000080000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[TesterPresent]]></Comment>
+<Sent>
+<SentBytes>3E01</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.History.Ident.N">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>21FE</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>61FE</ReplyBytes>
+<DataItem Name="CalibrationNumber" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" FirstByte="9"/>
+<DataItem Name="EditionNumber" FirstByte="19"/>
+<DataItem Name="ManufacturerIdentificationCode" FirstByte="26"/>
+<DataItem Name="PartNumber.LowerPart" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" FirstByte="12"/>
+<DataItem Name="PartNumber.BasicPartList" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" FirstByte="25"/>
+</Received>
+</Request>
+<Request Name="DataRead.History.Ident.0">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>21F0</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>61F0</ReplyBytes>
+<DataItem Name="CalibrationNumber" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" FirstByte="9"/>
+<DataItem Name="EditionNumber" FirstByte="19"/>
+<DataItem Name="ManufacturerIdentificationCode" FirstByte="26"/>
+<DataItem Name="PartNumber.BasicPartList" FirstByte="23"/>
+<DataItem Name="PartNumber.LowerPart" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" FirstByte="12"/>
+<DataItem Name="HardwareNumber.BasicPartList" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" FirstByte="25"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1906000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590600000000</ReplyBytes>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="DataRead.Identification.RenaultR2">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>6180</ReplyBytes>
+<DataItem Name="CalibrationNumber" Ref="1" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" Ref="1" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" Ref="1" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" Ref="1" FirstByte="9"/>
+<DataItem Name="EditionNumber" Ref="1" FirstByte="19"/>
+<DataItem Name="PartNumber.BasicPartList" Ref="1" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" Ref="1" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" Ref="1" FirstByte="25"/>
+<DataItem Name="PartNumber.LowerPart" Ref="1" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" Ref="1" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" Ref="1" FirstByte="26"/>
+</Received>
+</Request>
+<Request Name="DataRead.Alarm_code">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[PRE_CODE]]></Comment>
+<Sent>
+<SentBytes>226801</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>626801</ReplyBytes>
+<DataItem Name="Alarm_code" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Traceability">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>6184</ReplyBytes>
+<DataItem Name="Traceability supplier number" Ref="1" FirstByte="3"/>
+<DataItem Name="Traceability year of production" Ref="1" FirstByte="6"/>
+<DataItem Name="Traceability week" Ref="1" FirstByte="10"/>
+<DataItem Name="Traceability serial number" Ref="1" FirstByte="12"/>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1081</SentBytes>
+<DataItem Name="SessionName" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50C0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="OutputControl.Microphone">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3025FF</SentBytes>
+<DataItem Name="Ctrl.temporary test" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>702500</ReplyBytes>
+<DataItem Name="OutputControlStatusMic" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="StartC0">
+
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>10C0</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50C0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.VAL_BAT">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[VAL_BAT]]></Comment>
+<Sent>
+<SentBytes>226501</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>626501</ReplyBytes>
+<DataItem Name="VAL_BAT" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VAL_SPD">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[VAL_SPD]]></Comment>
+<Sent>
+<SentBytes>226502</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>626502</ReplyBytes>
+<DataItem Name="VAL_SPD" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Dataread.History.Log.0">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Sent>
+<SentBytes>21F1</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>61F1</ReplyBytes>
+<DataItem Name="DateOfReprogramming" FirstByte="19"/>
+<DataItem Name="NumberOfReprogrammings" FirstByte="18"/>
+<DataItem Name="ProgrammingSiteReference" FirstByte="8"/>
+<DataItem Name="ProgrammingToolReference" FirstByte="13"/>
+<DataItem Name="TimeOfReprogramming" FirstByte="22"/>
+<DataItem Name="ApprovalNumber.LowerPart" FirstByte="3"/>
+<DataItem Name="RecordMarking" FirstByte="24"/>
+<DataItem Name="CrcOfLogSave" FirstByte="25"/>
+</Received>
+</Request>
+<Request Name="Dataread.History.Log.N">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Sent>
+<SentBytes>21FF</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="ApprovalNumber.LowerPart" FirstByte="3"/>
+<DataItem Name="ProgrammingSiteReference" FirstByte="8"/>
+<DataItem Name="ProgrammingToolReference" FirstByte="13"/>
+<DataItem Name="NumberOfReprogrammings" FirstByte="18"/>
+<DataItem Name="DateOfReprogramming" FirstByte="19"/>
+<DataItem Name="TimeOfReprogramming" FirstByte="22"/>
+<DataItem Name="RecordMarking" FirstByte="24"/>
+<DataItem Name="CrcOfLogSave" FirstByte="25"/>
+</Received>
+</Request>
+<Request Name="DataRead.VMSPartReference">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[CNF_REF]]></Comment>
+<Sent>
+<SentBytes>22F187</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F187</ReplyBytes>
+<DataItem Name="VMSPartReference" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VMSKitAssemblyReference">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[CNF_REF]]></Comment>
+<Sent>
+<SentBytes>22F18E</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F18E</ReplyBytes>
+<DataItem Name="VMSKitAssemblyReference" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Dataread.History.Ident.M">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Sent>
+<SentBytes>21FC</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>61FC</ReplyBytes>
+<DataItem Name="PartNumber.LowerPart" FirstByte="3"/>
+<DataItem Name="DiagnosticIdentificationCode" FirstByte="8"/>
+<DataItem Name="SupplierNumber.ITG" FirstByte="9"/>
+<DataItem Name="HardwareNumber.LowerPart" FirstByte="12"/>
+<DataItem Name="SoftwareNumber" FirstByte="17"/>
+<DataItem Name="EditionNumber" FirstByte="19"/>
+<DataItem Name="CalibrationNumber" FirstByte="21"/>
+<DataItem Name="PartNumber.BasicPartList" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" FirstByte="25"/>
+<DataItem Name="ManufacturerIdentificationCode" FirstByte="26"/>
+</Received>
+</Request>
+<Request Name="Dataread.History.Log.M">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Sent>
+<SentBytes>21FD</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="ApprovalNumber.LowerPart" FirstByte="3"/>
+<DataItem Name="ProgrammingSiteReference" FirstByte="8"/>
+<DataItem Name="ProgrammingToolReference" FirstByte="13"/>
+<DataItem Name="NumberOfReprogrammings" FirstByte="18"/>
+<DataItem Name="DateOfReprogramming" FirstByte="19"/>
+<DataItem Name="TimeOfReprogramming" FirstByte="22"/>
+<DataItem Name="RecordMarking" FirstByte="24"/>
+<DataItem Name="CrcOfLogSave" FirstByte="25"/>
+</Received>
+</Request>
+<Request Name="OutputControl.GraphicDisplayTest">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>30210000</SentBytes>
+<DataItem Name="Ctrl.permanent test" FirstByte="3"/>
+<DataItem Name="Ctrl.DisplayTest" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7021</ReplyBytes>
+<DataItem Name="Ctrl.Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="OutputControl.GPSscreenDisplayTest">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>303500</SentBytes>
+<DataItem Name="Ctrl.permanent test" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7035</ReplyBytes>
+<DataItem Name="Ctrl.Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Microphone.Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>302500</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>702500</ReplyBytes>
+<DataItem Name="OutputControlStatusMic" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="OutputControl.Microphone.Status">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>302501</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>702500</ReplyBytes>
+<DataItem Name="OutputControlStatusMic" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="OutputControl.GPSscreenDisplayTest.Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>303520</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7035</ReplyBytes>
+<DataItem Name="Ctrl.Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="OutputControl.GPSscreenDisplayTest.Status">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>303501</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7035</ReplyBytes>
+<DataItem Name="Ctrl.Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="OutputControl.GPSscreenDisplayTest.Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>303511</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7035</ReplyBytes>
+<DataItem Name="Ctrl.Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1902FF</SentBytes>
+<DataItem Name="Status mask" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>590239</ReplyBytes>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSnapshot">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>1904000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>5904</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="IOControl.Availibility1">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic testing screen]]></Comment>
+<Sent>
+<SentBytes>3000</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>7000</ReplyBytes>
+<DataItem Name="LID01" FirstByte="3"/>
+<DataItem Name="LID02" FirstByte="3" BitOffset="1"/>
+<DataItem Name="LID03" FirstByte="3" BitOffset="2"/>
+<DataItem Name="LID04" FirstByte="3" BitOffset="3"/>
+<DataItem Name="LID05" FirstByte="3" BitOffset="4"/>
+<DataItem Name="LID06" FirstByte="3" BitOffset="5"/>
+<DataItem Name="LID07" FirstByte="3" BitOffset="6"/>
+<DataItem Name="LID08" FirstByte="3" BitOffset="7"/>
+<DataItem Name="LID09" FirstByte="4"/>
+<DataItem Name="LID0A" FirstByte="4" BitOffset="1"/>
+<DataItem Name="LID0B" FirstByte="4" BitOffset="2"/>
+<DataItem Name="LID0C" FirstByte="4" BitOffset="3"/>
+<DataItem Name="LID0D" FirstByte="4" BitOffset="4"/>
+<DataItem Name="LID0E" FirstByte="4" BitOffset="5"/>
+<DataItem Name="LID0F" FirstByte="4" BitOffset="6"/>
+<DataItem Name="LID10" FirstByte="4" BitOffset="7"/>
+<DataItem Name="LID11" FirstByte="5"/>
+<DataItem Name="LID12" FirstByte="5" BitOffset="1"/>
+<DataItem Name="LID13" FirstByte="5" BitOffset="2"/>
+<DataItem Name="LID14" FirstByte="5" BitOffset="3"/>
+<DataItem Name="LID15" FirstByte="5" BitOffset="4"/>
+<DataItem Name="LID16" FirstByte="5" BitOffset="5"/>
+<DataItem Name="LID17" FirstByte="5" BitOffset="6"/>
+<DataItem Name="LID18" FirstByte="5" BitOffset="7"/>
+<DataItem Name="LID19" FirstByte="6"/>
+<DataItem Name="LID1A" FirstByte="6" BitOffset="1"/>
+<DataItem Name="LID1B" FirstByte="6" BitOffset="2"/>
+<DataItem Name="LID1C" FirstByte="6" BitOffset="3"/>
+<DataItem Name="LID1D" FirstByte="6" BitOffset="4"/>
+<DataItem Name="LID1E" FirstByte="6" BitOffset="5"/>
+<DataItem Name="LID1F" FirstByte="6" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="IOControl.Availibility2">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic testing screen]]></Comment>
+<Sent>
+<SentBytes>3020</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>7000</ReplyBytes>
+<DataItem Name="LID21" FirstByte="3"/>
+<DataItem Name="LID22" FirstByte="3" BitOffset="1"/>
+<DataItem Name="LID23" FirstByte="3" BitOffset="2"/>
+<DataItem Name="LID24" FirstByte="3" BitOffset="3"/>
+<DataItem Name="LID25" FirstByte="3" BitOffset="4"/>
+<DataItem Name="LID26" FirstByte="3" BitOffset="5"/>
+<DataItem Name="LID27" FirstByte="3" BitOffset="6"/>
+<DataItem Name="LID28" FirstByte="3" BitOffset="7"/>
+<DataItem Name="LID29" FirstByte="4"/>
+<DataItem Name="LID2A" FirstByte="4" BitOffset="1"/>
+<DataItem Name="LID2B" FirstByte="4" BitOffset="2"/>
+<DataItem Name="LID2C" FirstByte="4" BitOffset="3"/>
+<DataItem Name="LID2D" FirstByte="4" BitOffset="4"/>
+<DataItem Name="LID2E" FirstByte="4" BitOffset="5"/>
+<DataItem Name="LID2F" FirstByte="4" BitOffset="6"/>
+<DataItem Name="LID30" FirstByte="4" BitOffset="7"/>
+<DataItem Name="LID31" FirstByte="5"/>
+<DataItem Name="LID32" FirstByte="5" BitOffset="1"/>
+<DataItem Name="LID33" FirstByte="5" BitOffset="2"/>
+<DataItem Name="LID34" FirstByte="5" BitOffset="3"/>
+<DataItem Name="LID35" FirstByte="5" BitOffset="4"/>
+<DataItem Name="LID36" FirstByte="5" BitOffset="5"/>
+<DataItem Name="LID37" FirstByte="5" BitOffset="6"/>
+<DataItem Name="LID38" FirstByte="5" BitOffset="7"/>
+<DataItem Name="LID39" FirstByte="6"/>
+<DataItem Name="LID3A" FirstByte="6" BitOffset="1"/>
+<DataItem Name="LID3B" FirstByte="6" BitOffset="2"/>
+<DataItem Name="LID3C" FirstByte="6" BitOffset="3"/>
+<DataItem Name="LID3D" FirstByte="6" BitOffset="4"/>
+<DataItem Name="LID3E" FirstByte="6" BitOffset="5"/>
+<DataItem Name="LID3F" FirstByte="6" BitOffset="6"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="GPS antenna" DTC="37668">
+
+<Test Type="17" OBD="3" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="Audio Out Left" DTC="37676" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test>
+</Device>
+<Device Name="Audio Out Right+" DTC="37677" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="Microphone power supply" DTC="37672">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="Display temperature" DTC="37734" Type="2">
+
+<Test Type="75" Severity="0">
+</Test>
+</Device>
+<Device Name="Nav_info_line (Nav_speech_enable)" DTC="37691">
+
+<Test Type="18" Severity="0">
+</Test><Test Type="20" Severity="0">
+</Test>
+</Device>
+<Device Name="Aux_IN Left+" DTC="37692">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test>
+</Device>
+<Device Name="Aux_IN Right+" DTC="37693">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test>
+</Device>
+<Device Name="Aux_IN-" DTC="37682">
+
+<Test Type="28" Severity="0">
+</Test>
+</Device>
+<Device Name="Central switch button" DTC="37838">
+
+<Test Type="115" Severity="0">
+</Test>
+</Device>
+<Device Name="Display unit UART" DTC="37843" Type="2">
+
+<Test Type="143" Severity="0">
+</Test>
+</Device>
+<Device Name="Display backlight" DTC="37729" Type="2">
+
+<Test Type="73" Severity="0">
+</Test>
+</Device>
+<Device Name="Display E2PROM" DTC="37731" Type="2">
+
+<Test Type="73" Severity="0">
+</Test>
+</Device>
+<Device Name="Display TFT" DTC="37732" Type="2">
+
+<Test Type="73" Severity="0">
+</Test>
+</Device>
+<Device Name="AutOS" DTC="37697" Type="2">
+
+<Test Type="73" Severity="0">
+</Test>
+</Device>
+<Device Name="AutOS Gyro module" DTC="37701" Type="2">
+
+<Test Type="73" Severity="0">
+</Test>
+</Device>
+<Device Name="AutOS GPS module" DTC="37702" Type="2">
+
+<Test Type="73" Severity="0">
+</Test>
+</Device>
+<Device Name="AutOS Bluetooth module" DTC="37703" Type="2">
+
+<Test Type="73" Severity="0">
+</Test>
+</Device>
+<Device Name="AutOS GSM module" DTC="37761" Type="2">
+
+<Test Type="73" Severity="0">
+</Test>
+</Device>
+<Device Name="CSW MCAN communication" DTC="37840">
+
+<Test Type="143" Severity="0">
+</Test>
+</Device>
+<Device Name="Locked ECU" DTC="37698" Type="2">
+
+<Test Type="98" Severity="0">
+</Test>
+</Device>
+<Device Name="DISPLAY System_ON_OUT" DTC="37687" Type="2">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="GVIF video signal" DTC="37853">
+
+<Test Type="143" Severity="0">
+</Test>
+</Device>
+<Device Name="AutOS Wifi module" DTC="37760" Type="2">
+
+<Test Type="73" Severity="0">
+</Test>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="RDBLID">
+
+<Screen Name="Traceability" Color="16777215" WindowState="0" Width="9540" Height="6900">
+
+
+<Button Text="Read Traceability">
+<Rectangle Left="3630" Top="240" Height="480" Width="2280"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="100" RequestName="DataRead.Traceability"/>
+</Button>
+
+<Display Width="3875" Color="65408" DataName="Traceability supplier number" RequestName="DataRead.Traceability">
+<Rectangle Left="1050" Top="960" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3875" Color="65408" DataName="Traceability year of production" RequestName="DataRead.Traceability">
+<Rectangle Left="1050" Top="1260" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3875" Color="65408" DataName="Traceability week" RequestName="DataRead.Traceability">
+<Rectangle Left="1050" Top="1560" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3875" Color="65408" DataName="Traceability serial number" RequestName="DataRead.Traceability">
+<Rectangle Left="1050" Top="1860" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read Identification" Color="16777215" WindowState="0" Width="9420" Height="6900">
+
+<Label Text="Boot version in Reprog Sesssion /" Color="65408" Alignment="0">
+<Rectangle Left="465" Top="3225" Height="300" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Read Identification">
+<Rectangle Left="3630" Top="165" Height="480" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="RDBLID Identification ( 2180 )"/>
+<Send Delay="100" RequestName="DataRead.Identification.RenaultR2"/>
+</Button>
+
+<Display Width="2855" Color="65408" DataName="PartNumber.LowerPart" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="480" Top="1080" Height="395" Width="8365"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="65408" DataName="DiagnosticIdentificationCode" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="480" Top="1475" Height="395" Width="8365"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="65408" DataName="SupplierNumber.ITG" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="480" Top="1860" Height="395" Width="8365"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="65408" DataName="HardwareNumber.LowerPart" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="480" Top="2249" Height="395" Width="8365"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="65408" DataName="SoftwareNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="480" Top="2635" Height="395" Width="8365"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="65408" DataName="EditionNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="480" Top="3705" Height="400" Width="8365"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="65408" DataName="CalibrationNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="480" Top="4105" Height="400" Width="8365"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="65408" DataName="PartNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="480" Top="4505" Height="400" Width="8365"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="65408" DataName="HardwareNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="480" Top="4905" Height="400" Width="8365"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="65408" DataName="ApprovalNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="480" Top="5305" Height="400" Width="8365"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="65408" DataName="ManufacturerIdentificationCode" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="480" Top="5705" Height="400" Width="8365"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read Log Zone" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+
+<Button Text="Read Log Zone 0">
+<Rectangle Left="2520" Top="720" Height="360" Width="2040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Dataread.History.Log.0"/>
+</Button>
+<Button Text="Read Log Zone N">
+<Rectangle Left="8880" Top="720" Height="360" Width="2040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Dataread.History.Log.N"/>
+</Button>
+<Button Text="Read Log Zone N-1">
+<Rectangle Left="5640" Top="720" Height="360" Width="2040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Dataread.History.Log.M"/>
+</Button>
+
+<Display Width="2525" Color="65408" DataName="ApprovalNumber.LowerPart" RequestName="Dataread.History.Log.0">
+<Rectangle Left="0" Top="1320" Height="495" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2525" Color="65408" DataName="ProgrammingSiteReference" RequestName="Dataread.History.Log.0">
+<Rectangle Left="0" Top="1815" Height="495" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2525" Color="65408" DataName="ProgrammingToolReference" RequestName="Dataread.History.Log.0">
+<Rectangle Left="0" Top="2310" Height="495" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2525" Color="65408" DataName="NumberOfReprogrammings" RequestName="Dataread.History.Log.0">
+<Rectangle Left="0" Top="2805" Height="495" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2525" Color="65408" DataName="DateOfReprogramming" RequestName="Dataread.History.Log.0">
+<Rectangle Left="0" Top="3301" Height="495" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2525" Color="65408" DataName="TimeOfReprogramming" RequestName="Dataread.History.Log.0">
+<Rectangle Left="0" Top="3795" Height="495" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2525" Color="65408" DataName="RecordMarking" RequestName="Dataread.History.Log.0">
+<Rectangle Left="0" Top="4290" Height="495" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2525" Color="65408" DataName="CrcOfLogSave" RequestName="Dataread.History.Log.0">
+<Rectangle Left="0" Top="4785" Height="495" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14656189" DataName="ApprovalNumber.LowerPart" RequestName="Dataread.History.Log.M">
+<Rectangle Left="5400" Top="1320" Height="495" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14656189" DataName="ProgrammingSiteReference" RequestName="Dataread.History.Log.M">
+<Rectangle Left="5400" Top="1815" Height="495" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14656189" DataName="ProgrammingToolReference" RequestName="Dataread.History.Log.M">
+<Rectangle Left="5400" Top="2310" Height="495" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14656189" DataName="NumberOfReprogrammings" RequestName="Dataread.History.Log.M">
+<Rectangle Left="5400" Top="2805" Height="495" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14656189" DataName="DateOfReprogramming" RequestName="Dataread.History.Log.M">
+<Rectangle Left="5400" Top="3300" Height="495" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14656189" DataName="TimeOfReprogramming" RequestName="Dataread.History.Log.M">
+<Rectangle Left="5400" Top="3795" Height="495" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14656189" DataName="RecordMarking" RequestName="Dataread.History.Log.M">
+<Rectangle Left="5400" Top="4290" Height="495" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14656189" DataName="CrcOfLogSave" RequestName="Dataread.History.Log.M">
+<Rectangle Left="5400" Top="4785" Height="495" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="20" Color="13097099" DataName="ApprovalNumber.LowerPart" RequestName="Dataread.History.Log.N">
+<Rectangle Left="8520" Top="1320" Height="495" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="20" Color="13097099" DataName="ProgrammingSiteReference" RequestName="Dataread.History.Log.N">
+<Rectangle Left="8520" Top="1815" Height="495" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="20" Color="13097099" DataName="ProgrammingToolReference" RequestName="Dataread.History.Log.N">
+<Rectangle Left="8520" Top="2310" Height="495" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="20" Color="13097099" DataName="NumberOfReprogrammings" RequestName="Dataread.History.Log.N">
+<Rectangle Left="8520" Top="2805" Height="495" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="20" Color="13097099" DataName="DateOfReprogramming" RequestName="Dataread.History.Log.N">
+<Rectangle Left="8520" Top="3300" Height="495" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="20" Color="13097099" DataName="TimeOfReprogramming" RequestName="Dataread.History.Log.N">
+<Rectangle Left="8520" Top="3795" Height="495" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="20" Color="13097099" DataName="RecordMarking" RequestName="Dataread.History.Log.N">
+<Rectangle Left="8520" Top="4290" Height="495" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="20" Color="13097099" DataName="CrcOfLogSave" RequestName="Dataread.History.Log.N">
+<Rectangle Left="8520" Top="4785" Height="495" Width="2520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read Identification Zone" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+<Label Text="Boot version in Reprog Sesssion /" Color="65408" Alignment="0">
+<Rectangle Left="465" Top="3225" Height="300" Width="3120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Read Ident Zone 0">
+<Rectangle Left="1200" Top="600" Height="360" Width="2040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="100" RequestName="DataRead.History.Ident.0"/>
+</Button>
+<Button Text="Read Ident Zone N">
+<Rectangle Left="8760" Top="600" Height="360" Width="2040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="100" RequestName="DataRead.History.Ident.N"/>
+</Button>
+<Button Text="Read Ident Zone N-1">
+<Rectangle Left="5325" Top="615" Height="360" Width="2040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Dataread.History.Ident.M"/>
+</Button>
+
+<Display Width="2840" Color="5368101" DataName="PartNumber.LowerPart" RequestName="DataRead.History.Ident.0">
+<Rectangle Left="0" Top="1200" Height="384" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="5368101" DataName="DiagnosticIdentificationCode" RequestName="DataRead.History.Ident.0">
+<Rectangle Left="0" Top="1584" Height="384" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="5368101" DataName="SupplierNumber.ITG" RequestName="DataRead.History.Ident.0">
+<Rectangle Left="0" Top="1968" Height="384" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="5368101" DataName="HardwareNumber.LowerPart" RequestName="DataRead.History.Ident.0">
+<Rectangle Left="0" Top="2352" Height="384" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="5368101" DataName="SoftwareNumber" RequestName="DataRead.History.Ident.0">
+<Rectangle Left="0" Top="2736" Height="384" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="5368101" DataName="EditionNumber" RequestName="DataRead.History.Ident.0">
+<Rectangle Left="0" Top="3720" Height="400" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="5368101" DataName="CalibrationNumber" RequestName="DataRead.History.Ident.0">
+<Rectangle Left="0" Top="4120" Height="400" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="5368101" DataName="PartNumber.BasicPartList" RequestName="DataRead.History.Ident.0">
+<Rectangle Left="0" Top="4520" Height="400" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="5368101" DataName="HardwareNumber.BasicPartList" RequestName="DataRead.History.Ident.0">
+<Rectangle Left="0" Top="4920" Height="400" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="5368101" DataName="ApprovalNumber.BasicPartList" RequestName="DataRead.History.Ident.0">
+<Rectangle Left="0" Top="5320" Height="400" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="5368101" DataName="ManufacturerIdentificationCode" RequestName="DataRead.History.Ident.0">
+<Rectangle Left="0" Top="5720" Height="400" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="14911663" DataName="PartNumber.LowerPart" RequestName="Dataread.History.Ident.M">
+<Rectangle Left="5400" Top="1200" Height="372" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="14911663" DataName="DiagnosticIdentificationCode" RequestName="Dataread.History.Ident.M">
+<Rectangle Left="5400" Top="1572" Height="372" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="14911663" DataName="SupplierNumber.ITG" RequestName="Dataread.History.Ident.M">
+<Rectangle Left="5400" Top="1944" Height="372" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="14911663" DataName="HardwareNumber.LowerPart" RequestName="Dataread.History.Ident.M">
+<Rectangle Left="5400" Top="2316" Height="372" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="14911663" DataName="SoftwareNumber" RequestName="Dataread.History.Ident.M">
+<Rectangle Left="5400" Top="2688" Height="372" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="14911663" DataName="EditionNumber" RequestName="Dataread.History.Ident.M">
+<Rectangle Left="5400" Top="3720" Height="400" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="14911663" DataName="CalibrationNumber" RequestName="Dataread.History.Ident.M">
+<Rectangle Left="5400" Top="4120" Height="400" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="14911663" DataName="PartNumber.BasicPartList" RequestName="Dataread.History.Ident.M">
+<Rectangle Left="5400" Top="4520" Height="400" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="14911663" DataName="HardwareNumber.BasicPartList" RequestName="Dataread.History.Ident.M">
+<Rectangle Left="5400" Top="4920" Height="400" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="14911663" DataName="ApprovalNumber.BasicPartList" RequestName="Dataread.History.Ident.M">
+<Rectangle Left="5400" Top="5320" Height="400" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="14911663" DataName="ManufacturerIdentificationCode" RequestName="Dataread.History.Ident.M">
+<Rectangle Left="5400" Top="5720" Height="400" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="15701231" DataName="PartNumber.LowerPart" RequestName="DataRead.History.Ident.N">
+<Rectangle Left="8760" Top="1200" Height="372" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="15701231" DataName="DiagnosticIdentificationCode" RequestName="DataRead.History.Ident.N">
+<Rectangle Left="8760" Top="1572" Height="372" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="15701231" DataName="SupplierNumber.ITG" RequestName="DataRead.History.Ident.N">
+<Rectangle Left="8760" Top="1944" Height="372" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="15701231" DataName="HardwareNumber.LowerPart" RequestName="DataRead.History.Ident.N">
+<Rectangle Left="8760" Top="2316" Height="372" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="15701231" DataName="SoftwareNumber" RequestName="DataRead.History.Ident.N">
+<Rectangle Left="8760" Top="2688" Height="372" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="15701231" DataName="EditionNumber" RequestName="DataRead.History.Ident.N">
+<Rectangle Left="8760" Top="3720" Height="390" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="15701231" DataName="CalibrationNumber" RequestName="DataRead.History.Ident.N">
+<Rectangle Left="8760" Top="4110" Height="390" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="15701231" DataName="PartNumber.BasicPartList" RequestName="DataRead.History.Ident.N">
+<Rectangle Left="8760" Top="4500" Height="390" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="15701231" DataName="HardwareNumber.BasicPartList" RequestName="DataRead.History.Ident.N">
+<Rectangle Left="8760" Top="4890" Height="390" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="15701231" DataName="ApprovalNumber.BasicPartList" RequestName="DataRead.History.Ident.N">
+<Rectangle Left="8760" Top="5280" Height="390" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="15701231" DataName="ManufacturerIdentificationCode" RequestName="DataRead.History.Ident.N">
+<Rectangle Left="8760" Top="5670" Height="390" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="SESSION MANAGEMENT">
+
+<Screen Name="Session Management" Color="16777215" WindowState="0" Width="9540" Height="6900">
+
+<Label Text="Session Management" Color="16711680" Alignment="2">
+<Rectangle Left="2670" Top="240" Height="480" Width="4200"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Start">
+<Rectangle Left="720" Top="2280" Height="480" Width="1800"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="10" RequestName="StartDiagnosticSession"/>
+</Button>
+
+<Input Width="2000" Color="255" DataName="SessionName" RequestName="StartDiagnosticSession">
+<Rectangle Left="2760" Top="2400" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+</Category><Category Name="RESET">
+
+<Screen Name="All reset" Color="16777215" WindowState="0" Width="9540" Height="6900">
+
+<Label Text="RESET" Color="16711680" Alignment="2">
+<Rectangle Left="3127" Top="225" Height="450" Width="3285"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Reset HARD">
+<Rectangle Left="1440" Top="1560" Height="600" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="40" RequestName="StartC0"/><Send Delay="40" RequestName="ECUReset.hard"/>
+</Button>
+<Button Text="Reset Configuration">
+<Rectangle Left="4920" Top="1560" Height="600" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="100" RequestName="StartC0"/><Send Delay="100" RequestName="ECUReset.config"/>
+</Button>
+<Button Text="Reset DTC">
+<Rectangle Left="1440" Top="2520" Height="600" Width="6600"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="100" RequestName="StartC0"/><Send Delay="100" RequestName="ClearDiagnosticInformation.All"/>
+</Button>
+
+</Screen>
+</Category><Category Name="RDBI / WDBI">
+
+<Screen Name="Vehicle Spare part number" Color="16777215" WindowState="0" Width="9540" Height="6900">
+
+<Label Text="Spare Part Number" Color="16711680" Alignment="2">
+<Rectangle Left="3007" Top="240" Height="600" Width="3525"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Read VMS Part Number">
+<Rectangle Left="3630" Top="1320" Height="450" Width="2280"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="40" RequestName="DataRead.VMSPartReference"/>
+</Button>
+<Button Text="Read  VMKA part number">
+<Rectangle Left="3630" Top="2880" Height="465" Width="2280"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="DataRead.VMSKitAssemblyReference"/>
+</Button>
+
+<Display Width="2795" Color="65408" DataName="VMSPartReference" RequestName="DataRead.VMSPartReference">
+<Rectangle Left="415" Top="2145" Height="375" Width="8710"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="65408" DataName="VMSKitAssemblyReference" RequestName="DataRead.VMSKitAssemblyReference">
+<Rectangle Left="415" Top="3675" Height="375" Width="8710"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Analog Lines" Color="16777215" WindowState="0" Width="9540" Height="6900">
+
+<Label Text="Analog lines" Color="16711680" Alignment="2">
+<Rectangle Left="3007" Top="120" Height="600" Width="3525"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Read battery value">
+<Rectangle Left="3480" Top="1560" Height="360" Width="2550"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="DataRead.VAL_BAT"/>
+</Button>
+<Button Text="Read speed value">
+<Rectangle Left="3480" Top="3000" Height="360" Width="2550"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="DataRead.VAL_SPD"/>
+</Button>
+
+<Display Width="2015" Color="65408" DataName="VAL_SPD" RequestName="DataRead.VAL_SPD">
+<Rectangle Left="2160" Top="3720" Height="360" Width="5160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="65408" DataName="VAL_BAT" RequestName="DataRead.VAL_BAT">
+<Rectangle Left="2160" Top="2280" Height="360" Width="5160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Stored values" Color="16777215" WindowState="0" Width="9420" Height="6900">
+
+<Label Text="Stored values" Color="16711680" Alignment="2">
+<Rectangle Left="2947" Top="120" Height="600" Width="3525"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Read Precode">
+<Rectangle Left="3810" Top="1155" Height="360" Width="1800"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="DataRead.Alarm_code"/>
+</Button>
+
+<Display Width="2990" Color="65408" DataName="Alarm_code" RequestName="DataRead.Alarm_code">
+<Rectangle Left="1575" Top="1680" Height="285" Width="6270"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="IOCBLID">
+
+<Screen Name="Microphone (Tests)" Color="16777215" WindowState="0" Width="9420" Height="6900">
+
+<Label Text="Test Status : " Color="16777215" Alignment="0">
+<Rectangle Left="210" Top="4267" Height="300" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Microphone lines" Color="16711680" Alignment="2">
+<Rectangle Left="3007" Top="435" Height="600" Width="3525"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Temporary test conditions (manual) :" Color="16777215" Alignment="0">
+<Rectangle Left="210" Top="2913" Height="570" Width="2685"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="LID $25" Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="0" Height="480" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Send automatic test">
+<Rectangle Left="5145" Top="1530" Height="645" Width="1995"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="1000" RequestName="StartC0"/><Send Delay="1000" RequestName="OutputControl.Microphone.Start"/><Send Delay="1000" RequestName="OutputControl.Microphone.Status"/><Send Delay="1000" RequestName="OutputControl.Microphone.Status"/><Send Delay="1000" RequestName="OutputControl.Microphone.Status"/>
+</Button>
+<Button Text="manual test">
+<Rectangle Left="2235" Top="1530" Height="645" Width="2055"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="1000" RequestName="StartC0"/><Send Delay="1000" RequestName="OutputControl.Microphone"/>
+</Button>
+
+<Input Width="0" Color="16777215" DataName="Ctrl.temporary test" RequestName="OutputControl.Microphone">
+<Rectangle Left="2975" Top="3018" Height="360" Width="5770"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="0" Color="16777215" DataName="OutputControlStatusMic" RequestName="OutputControl.Microphone">
+<Rectangle Left="2975" Top="4117" Height="360" Width="5770"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Graphic Display (Tests)" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Test to perform :" Color="16777215" Alignment="0">
+<Rectangle Left="375" Top="2325" Height="465" Width="2175"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Graphic Display" Color="16711680" Alignment="2">
+<Rectangle Left="2827" Top="240" Height="600" Width="3525"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Permanent test conditions :" Color="16777215" Alignment="0">
+<Rectangle Left="375" Top="3153" Height="570" Width="2685"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Test Status : " Color="16777215" Alignment="0">
+<Rectangle Left="375" Top="4226" Height="300" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="LID $21" Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="0" Height="480" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="send request">
+<Rectangle Left="3360" Top="1245" Height="645" Width="2415"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="1000" RequestName="StartC0"/><Send Delay="1000" RequestName="OutputControl.GraphicDisplayTest"/>
+</Button>
+
+<Input Width="0" Color="16777215" DataName="Ctrl.permanent test" RequestName="OutputControl.GraphicDisplayTest">
+<Rectangle Left="3105" Top="3235" Height="375" Width="4720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Ctrl.DisplayTest" RequestName="OutputControl.GraphicDisplayTest">
+<Rectangle Left="3105" Top="2340" Height="390" Width="4720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="0" Color="16777215" DataName="Ctrl.Status" RequestName="OutputControl.GraphicDisplayTest">
+<Rectangle Left="3105" Top="4106" Height="390" Width="4720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="GPS screen Display (Tests)" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="GPS Screen Display" Color="16711680" Alignment="2">
+<Rectangle Left="3007" Top="435" Height="600" Width="3525"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Permanent test conditions (manual) :" Color="16777215" Alignment="0">
+<Rectangle Left="210" Top="2913" Height="570" Width="2685"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Test Status : " Color="16777215" Alignment="0">
+<Rectangle Left="210" Top="4203" Height="300" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="LID $35" Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="0" Height="480" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="manual test">
+<Rectangle Left="2235" Top="1530" Height="645" Width="2055"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="1000" RequestName="StartC0"/><Send Delay="1000" RequestName="OutputControl.GPSscreenDisplayTest"/>
+</Button>
+<Button Text="Send automatic test">
+<Rectangle Left="5145" Top="1530" Height="645" Width="1995"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="1000" RequestName="StartC0"/><Send Delay="1000" RequestName="OutputControl.GPSscreenDisplayTest.Start"/><Send Delay="1000" RequestName="OutputControl.GPSscreenDisplayTest.Status"/><Send Delay="1000" RequestName="OutputControl.GPSscreenDisplayTest.Status"/><Send Delay="1000" RequestName="OutputControl.GPSscreenDisplayTest.Status"/><Send Delay="1000" RequestName="OutputControl.GPSscreenDisplayTest.Stop"/>
+</Button>
+
+<Input Width="0" Color="16777215" DataName="Ctrl.permanent test" RequestName="OutputControl.GPSscreenDisplayTest">
+<Rectangle Left="2835" Top="3003" Height="390" Width="5575"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="0" Color="16777215" DataName="Ctrl.Status" RequestName="OutputControl.GPSscreenDisplayTest">
+<Rectangle Left="2835" Top="4158" Height="390" Width="5575"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Available LID" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+
+<Button Text="Check availability 1">
+<Rectangle Left="1440" Top="480" Height="480" Width="1800"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="IOControl.Availibility1"/>
+</Button>
+<Button Text="Check availability 2">
+<Rectangle Left="7440" Top="600" Height="480" Width="1800"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="IOControl.Availibility2"/>
+</Button>
+
+<Display Width="620" Color="15947468" DataName="LID01" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="1320" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID02" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="1620" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID03" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="1920" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID04" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="2220" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID05" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="2520" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID06" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="2820" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID07" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="3120" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID08" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="3420" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID09" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="3720" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID0A" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="4020" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID0B" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="4320" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID0C" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="4620" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID0D" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="4920" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID0E" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="5220" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID0F" RequestName="IOControl.Availibility1">
+<Rectangle Left="720" Top="5520" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID10" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="1200" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID11" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="1500" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID12" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="1800" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID13" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="2100" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID14" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="2400" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID15" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="2700" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID16" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="3000" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID17" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="3300" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID18" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="3600" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID19" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="3900" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID1A" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="4200" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID1B" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="4500" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID1C" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="4800" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID1D" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="5100" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID1E" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="5400" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="620" Color="15947468" DataName="LID1F" RequestName="IOControl.Availibility1">
+<Rectangle Left="2640" Top="5700" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID21" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="1320" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID22" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="1620" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID23" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="1920" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID24" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="2220" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID25" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="2520" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID26" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="2820" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID27" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="3120" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID28" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="3420" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID29" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="3720" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID2A" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="4020" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID2B" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="4320" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID2C" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="4620" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID2D" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="4920" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID2E" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="5220" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID2F" RequestName="IOControl.Availibility2">
+<Rectangle Left="6360" Top="5520" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID30" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="1200" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID31" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="1500" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID32" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="1800" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID33" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="2100" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID34" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="2400" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID35" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="2700" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID36" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="3000" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID37" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="3300" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID38" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="3600" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID39" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="3900" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID3A" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="4200" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID3B" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="4500" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID3C" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="4800" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID3D" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="5100" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID3E" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="5400" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="770" Color="15520345" DataName="LID3F" RequestName="IOControl.Availibility2">
+<Rectangle Left="8640" Top="5700" Height="300" Width="1440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

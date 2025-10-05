@@ -1,0 +1,1154 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Excitation des valves SSPP X91</title>
+<style type="text/css">
+body, table, tr, th, td {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.title {
+  color:white;
+  background-color:black;
+  font-size:120%;
+  font-weight:bold;
+  vertical-align:middle;
+  height:64px;
+}
+
+.wheelTitle {
+  background-color:black;
+  color:white;
+  width:150px;
+  height:32px;
+  border:1px solid #808080;
+}
+
+.wheelCode {
+  background-color:#FFCD66;
+  color:black;
+  width:150px;
+  height:32px;
+  border:2px outset white;
+}
+
+.emptyCell {
+  background-color:black;
+}
+</style>
+<script src="../../../scriptsLibrary/ScriptFunctions.inc" language="vbscript">
+</script>
+
+<script language="vbscript">
+option explicit
+
+Dim ringSound
+ringSound = "../../../scriptsLibrary/sounds/ringin.wav"
+
+'=================================================== declaration des calculateurs
+Dim pUCH
+
+'===================================================
+'					DIAG SPECIFIC declarations
+'===================================================
+
+Dim DataListSSPP
+Dim DataListCheck
+
+Dim CodeAVDete, CodeAVGete, CodeARDete, CodeARGete
+Dim CodeAVDhiver, CodeAVGhiver, CodeARDhiver, CodeARGhiver
+Dim CodeAVDRecu, CodeAVGRecu, CodeARDRecu, CodeARGRecu
+Dim JeuRouesCourant
+
+
+Dim RequeteEcritureJeuRoue
+Dim SelectionJeuRoue
+
+Dim RequeteInitapprentissage
+
+Dim CodeLu
+Dim StatusLu
+Dim RequeteEcriture1Roue
+
+Dim RequeteEcriture4Roue,ParamCodeAVG,ParamCodeAVD,ParamCodeARD,ParamCodeARG
+Dim RequeteOutputControl,ParamOutputTemporaryControlList,ParamOutputControlCommand,ParamActivationTime,OutputControlStatus
+
+' requete pour le maintient de communication
+Dim RequeteTesterPresent
+
+'===================================================
+'					DIAG SPECIFIC functions
+'===================================================
+
+sub ActiverJEU0
+	SelectionJeuRoue.Value = 0
+	RequeteEcritureJeuRoue.Send
+	StepLecture
+end sub
+
+sub ActiverJEU1
+	SelectionJeuRoue.Value = 1
+	RequeteEcritureJeuRoue.Send
+	StepLecture
+end sub
+
+sub BuildDataSSPP
+
+	'	recherche du bon nom pour chaque donnee a lire dans une fonction
+
+	set JeuRouesCourant = getData(pUCH, "JeuRouesCourant")
+
+	set CodeAVDete = getData(pUCH, "CodeAVDete")
+	set CodeAVGete = getData(pUCH, "CodeAVGete")
+	set CodeARDete = getData(pUCH, "CodeARDete")
+	set CodeARGete = getData(pUCH, "CodeARGete")
+
+	set CodeAVDhiver = getData(pUCH, "CodeAVDhiver")
+	set CodeAVGhiver = getData(pUCH, "CodeAVGhiver")
+	set CodeARDhiver = getData(pUCH, "CodeARDhiver")
+	set CodeARGhiver = getData(pUCH, "CodeARGhiver")
+
+	set StatusLu = getData(pUCH, "StatusLu")
+	set CodeLu = getData(pUCH, "CodeLu")
+
+	'	construction des regroupement de donnees a lire en meme temps ou a verifier
+
+	DataListSSPP = array(JeuRouesCourant,CodeAVDete,CodeAVGete,CodeARDete,CodeARGete,CodeAVDhiver,CodeAVGhiver,CodeARDhiver,CodeARGhiver)
+	DataListCheck = array(StatusLu,CodeLu,JeuRouesCourant,CodeAVDete,CodeAVGete,CodeARDete,CodeARGete,CodeAVDhiver,CodeAVGhiver,CodeARDhiver,CodeARGhiver)
+
+	' --- requete pour le maintient de communication
+	set RequeteTesterPresent = getRequest(pUCH, "TesterPresent")
+
+	'	recherche des requetes necessaires pour ecriture ou commandes
+
+	set RequeteEcritureJeuRoue = getRequest(pUCH, "EcritureJeuRoue")
+	set RequeteInitapprentissage = getRequest(pUCH, "Initapprentissage")
+	set RequeteEcriture4Roue = getRequest(pUCH, "Ecriture4Roue")
+	set ParamCodeAVG = getRequestData(RequeteEcriture4Roue,"Ecriture4Roue","CodeRoueAVG")
+	set ParamCodeAVD = getRequestData(RequeteEcriture4Roue,"Ecriture4Roue","CodeRoueAVD")
+	set ParamCodeARD = getRequestData(RequeteEcriture4Roue,"Ecriture4Roue","CodeRoueARD")
+	set ParamCodeARG = getRequestData(RequeteEcriture4Roue,"Ecriture4Roue","CodeRoueARG")
+
+	set RequeteOutputControl = getRequest(pUCH, "OutputControl")
+	set ParamOutputControlCommand = getRequestData(RequeteOutputControl,"OutputControl","OutputControlCommand")
+	set ParamOutputTemporaryControlList = getRequestData(RequeteOutputControl,"OutputControl","OutputTemporaryControlList")
+'	set ParamActivationTime = getRequestData(RequeteOutputControl,"OutputControl","ActivationTime")
+'	set OutputControlStatus = getRequestData(RequeteOutputControl,"OutputControl","OutputControlStatus")
+
+
+	'MsgBox TypeName(RequeteEcritureJeuRoue )
+
+	set SelectionJeuRoue = getRequestData(RequeteEcritureJeuRoue,"EcritureJeuRoue","SelectionJeu")
+	'MsgBox TypeName(SelectionJeuRoue )
+
+end sub
+
+Sub PilotageClignotant(Cote)
+	exit sub
+	If Cote="gauche" Then
+		ParamOutputTemporaryControlList.value = 14
+	Else
+		ParamOutputTemporaryControlList.value = 15
+	End If
+	ParamOutputControlCommand.value = 0 ' temporaire
+	'ParamActivationTime.Value = 5
+	RequeteOutputControl.Send
+	'If OutputControlStatus.Value <> 1 Then Err.raise 9000,,"Pilotage non démarré"
+End Sub
+
+'------------------------- Maintien de com -------------------------
+Sub TesterPresent
+	If not RequeteTesterPresent is nothing Then
+		RequeteTesterPresent.Send
+	End If
+End Sub
+'------------------------- Maintien de com -------------------------
+
+'===================================================
+'					SCRIPT SPECIFIC STEPS functions
+'===================================================
+
+'--------------------------------------------------- preparation
+sub StepPreparation
+
+
+	AutoMode=False
+
+	'	preparation diag et init communication avec UCEs
+
+	set pUCH = GetProtocol("UCH")
+
+	'	affichage bouton EXIT et prepa label bouton restart pour la suite
+
+	Display ExitButton
+	'Display AutoButton
+	SetLabel StartButton, "RESTART"
+
+	'	controle Data
+
+	CheckDataDisplay.style.backgroundcolor=ScriptYellow
+	CheckDataDisplay.innertext="Vérification données en cours..."
+
+	BuildDataSSPP
+
+	if CheckDataList(DataListCheck) then
+		CheckDataDisplay.style.backgroundcolor="mediumseagreen"
+		CheckDataDisplay.style.color="white"
+		CheckDataDisplay.innertext="Informations Diagnostic OK"
+		Display StepButton
+	else
+		CheckDataDisplay.style.backgroundcolor="red"
+		CheckDataDisplay.style.color="white"
+		CheckDataDisplay.innertext="Informations Diagnostic NON OK"
+		Display TicketButton
+	end if
+	pUCH.Init
+end sub
+
+'--------------------------------------------------- lecture SSPP
+sub StepLecture
+
+	DisplayMessage  "EN COURS", "black", ScriptYellow
+
+	hide Fleche0
+	hide Fleche1
+
+	RefreshDataList(DataListSSPP)
+
+	WriteTicket "<BR>" , "black", "white"
+	WriteTicket "<BR>" & "JEU DE ROUES COURANT = " & JeuRouesCourant.text , "black", "gainsboro"
+	WriteTicket "<BR><BR>" & "CODES JEU ETE &nbsp;&nbsp;(Jeu 0) - " , "black", "white"
+	WriteTicket "&nbsp;&nbsp;" & "Code AVG = " & CodeAVGete.text , "black", "white"
+	WriteTicket "&nbsp;&nbsp;" & "Code AVD = " & CodeAVDete.text , "black", "white"
+	WriteTicket "&nbsp;&nbsp;" & "Code ARD = " & CodeARDete.text , "black", "white"
+	WriteTicket "&nbsp;&nbsp;" & "Code ARG = " & CodeARGete.text , "black", "white"
+	WriteTicket "<BR>" & "CODES JEU HIVER (Jeu 1) - " , "black", "white"
+	WriteTicket "&nbsp;&nbsp;" & "Code AVG = " & CodeAVGhiver.text , "black", "white"
+	WriteTicket "&nbsp;&nbsp;" & "Code AVD = " & CodeAVDhiver.text , "black", "white"
+	WriteTicket "&nbsp;&nbsp;" & "Code ARD = " & CodeARDhiver.text , "black", "white"
+	WriteTicket "&nbsp;&nbsp;" & "Code ARG = " & CodeARGhiver.text , "black", "white"
+
+
+	' DisplayMessage "TERMINE", "white", "mediumseagreen"
+	Hide StepMessage
+
+	JeuCourant.innertext = JeuRouesCourant.text
+	if JeuRouesCourant.Value = 0 Then
+		Display Fleche0
+	else
+		Display Fleche1
+	end if
+
+	AVGete.innertext = CodeAVGete.text
+	AVDete.innertext = CodeAVDete.text
+	ARDete.innertext = CodeARDete.text
+	ARGete.innertext = CodeARGete.text
+	AVGhiver.innertext = CodeAVGhiver.text
+	AVDhiver.innertext = CodeAVDhiver.text
+	ARDhiver.innertext = CodeARDhiver.text
+	ARGhiver.innertext = CodeARGhiver.text
+
+	Display StartButton
+	Display ExitButton
+	Display StepButton
+	Display AutoButton
+
+end sub
+
+'--------------------------------------------------- Apprentissage AVG
+sub StepApprentissageAVG
+	Display StartButton
+	Display StepButton
+	Display CancelButton
+	Display ExitButton
+
+	' RAZ des valeurs apprises jeu courant
+	if JeuRouesCourant.Value = 0 Then
+		CodeAVGRecu = CodeAVGete.text
+		CodeAVDRecu = CodeAVDete.text
+		CodeARDRecu = CodeARDete.text
+		CodeARGRecu = CodeARGete.text
+	else
+		CodeAVGRecu = CodeAVGhiver.text
+		CodeAVDRecu = CodeAVDhiver.text
+		CodeARDRecu = CodeARDhiver.text
+		CodeARGRecu = CodeARGhiver.text
+	end if
+
+	ParamCodeAVG.text = CodeAVGRecu
+	ParamCodeAVD.text = CodeAVDRecu
+	ParamCodeARD.text = CodeARDRecu
+	ParamCodeARG.text = CodeARGRecu
+
+	pUCH.init
+
+	'RequeteEcriture4Roue.send
+
+	RequeteInitapprentissage.send
+	WriteStepStatus "not OK" , "white", "red"
+
+	RefreshData(StatusLu)
+	StartLoop "RefreshApprentissageAVG", 10
+end sub
+
+Sub RefreshApprentissageAVG
+	RefreshData(StatusLu)
+	if StatusLu.value = 0  then
+		DisplayMessage  "Exciter valve roue AVG", "black", ScriptYellow
+	else
+		StopLoop
+		RefreshData(CodeLu)
+		CodeAVGRecu = CodeLu.text
+		DisplayMessage  "Code reçu<br><br>" & StatusLu.text, "white", "mediumseagreen"
+		WriteStepStatus "OK" , "white", "mediumseagreen"
+		son.src = ringSound
+		PilotageClignotant "gauche"
+	end if
+end sub
+
+
+
+'--------------------------------------------------- Apprentissage AVD
+sub StepApprentissageAVD
+	Display StartButton
+	Display StepButton
+	Display CancelButton
+	Display ExitButton
+
+	pUCH.init
+
+	RequeteInitapprentissage.send
+	WriteStepStatus "not OK" , "white", "red"
+
+	RefreshData(StatusLu)
+	StartLoop "RefreshApprentissageAVD", 10
+end sub
+
+Sub RefreshApprentissageAVD
+	RefreshData(StatusLu)
+	if StatusLu.value = 0 then
+		DisplayMessage  "Exciter valve roue AVD", "black", ScriptYellow
+	else
+		RefreshData(CodeLu)
+		if CodeLu.text = CodeAVGRecu Then
+			RequeteInitapprentissage.send
+			DisplayMessage  "Exciter valve roue AVD", "black", ScriptYellow
+		Else
+			CodeAVDRecu = CodeLu.text
+			StopLoop
+			DisplayMessage  "Code reçu <br><br>Attente l'extinction du témoin " & StatusLu.text, "white", "mediumseagreen"
+			WriteStepStatus "OK" , "white", "mediumseagreen"
+			son.src = ringSound
+			PilotageClignotant "droite"
+		End If
+
+	end if
+end sub
+
+'--------------------------------------------------- Apprentissage ARD
+sub StepApprentissageARD
+	Display StartButton
+	Display StepButton
+	Display CancelButton
+	Display ExitButton
+
+	pUCH.init
+
+	RequeteInitapprentissage.send
+	WriteStepStatus "not OK" , "white", "red"
+
+	RefreshData(StatusLu)
+	StartLoop "RefreshApprentissageARD", 10
+end sub
+
+Sub RefreshApprentissageARD
+	RefreshData(StatusLu)
+	if StatusLu.value = 0  then
+		DisplayMessage  "Exciter valve roue ARD", "black", ScriptYellow
+	else
+		RefreshData(CodeLu)
+		if CodeLu.text = CodeAVDRecu Then
+			RequeteInitapprentissage.send
+			DisplayMessage  "Exciter valve roue ARD", "black", ScriptYellow
+		Else
+			CodeARDRecu = CodeLu.text
+			StopLoop
+			DisplayMessage  "Code reçu <br><br>" & StatusLu.text, "white", "mediumseagreen"
+			WriteStepStatus "OK" , "white", "mediumseagreen"
+			son.src = ringSound
+			PilotageClignotant "droite"
+		End if
+	end if
+end sub
+
+'--------------------------------------------------- Apprentissage ARG
+sub StepApprentissageARG
+	Display StartButton
+	Display CancelButton
+	Display StepButton
+	Display ExitButton
+
+	pUCH.init
+
+	RequeteInitapprentissage.send
+	WriteStepStatus "not OK" , "white", "red"
+
+	RefreshData(StatusLu)
+	StartLoop "RefreshApprentissageARG", 10
+end sub
+
+Sub RefreshApprentissageARG
+	RefreshData(StatusLu)
+	if StatusLu.value = 0  then
+		DisplayMessage  "Exciter valve roue ARG", "black", ScriptYellow
+	Else
+		RefreshData(CodeLu)
+		if CodeLu.text = CodeARDRecu Then
+			RequeteInitapprentissage.send
+			DisplayMessage  "Exciter valve roue ARG", "black", ScriptYellow
+
+		else
+
+			CodeARGRecu = CodeLu.text
+			StopLoop
+			DisplayMessage  "Code reçu <br><br>" & StatusLu.text, "white", "mediumseagreen"
+			WriteStepStatus "OK" , "white", "mediumseagreen"
+			son.src = ringSound
+			PilotageClignotant "gauche"
+		End if
+	end if
+end sub
+
+'--------------------------------------------------- Ecriture roues
+sub StepEcriture
+
+	AVGpresent.innerText = Right("000000" & Hex(CodeAVGRecu), 6)
+	AVDpresent.innerText = Right("000000" & Hex(CodeAVDRecu), 6)
+	ARDpresent.innerText = Right("000000" & Hex(CodeARDRecu), 6)
+	ARGpresent.innerText = Right("000000" & Hex(CodeARGRecu), 6)
+
+	Display StartButton
+	Display ExitButton
+	Display TicketButton
+
+End sub
+
+'=================================================== Page Starter
+Sub Window_OnLoad()
+	'--------------------------------------------------- declaration de la liste des etapes a saisir ici
+	Steps=array(Intro,Preparation,Lecture,ApprentissageAVG,ApprentissageAVD,ApprentissageARD,ApprentissageARG,Ecriture)
+
+	'--------------------------------------------------- configuration mode debug pour tests
+	DebugMode=false
+	'=================================================== ne pas toucher la suite
+	GetSession
+	SetLabel StartButton, "START"
+	InitScript
+end sub
+'===================================================
+
+</script>
+<bgsound id="son">
+</head>
+
+<body topmargin="30" leftmargin="10" scroll="no" bgcolor="#0080C0">
+<table border="0" width="100%" height="100%" cellspacing="0" cellpadding="0">
+  <tr id="Title" height="32" style="cursor:hand" onclick="ChangeMargins">
+    <td valign="middle" width="23">
+      <img border="0" src="../../../scriptsLibrary/medias/skins/default/WFTopLeft.jpg" width="23" height="32"></td>
+    <td bgcolor="#FFFFFF" background="../../../scriptsLibrary/medias/skins/default/WFTopCenter.jpg" colspan="7" valign="middle">
+      <p align="center"><font face="Verdana" size="4">X91</font>&nbsp; -&nbsp; <font face="Verdana" size="4" color="#000000">Excitation
+      des valves SSPP</font></td>
+    <td bgcolor="#FFFFFF" valign="middle" width="23">
+      <img border="0" src="../../../scriptsLibrary/medias/skins/default/WFTopRight.jpg" width="23" height="32"></td>
+  </tr>
+  <tr id="Intro">
+    <td width="23" bgcolor="#DFDCD7" valign="top" background="../../../scriptsLibrary/medias/skins/default/WFMiddleLeft.jpg">&nbsp;</td>
+    <td bgcolor="#DFDCD7" valign="top" colspan="7">
+      <p>&nbsp;<br>&nbsp;<br>&nbsp;
+      <div align="center">
+        <center>
+        <table border="1" width="70%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="50%" bgcolor="#FFFFFF" valign="middle" align="center"><img border="0" src="images/Vehicle.jpg" width="184" height="128"></td>
+            <td bgcolor="#000000" valign="middle" align="center"><img border="0" src="images/Roue.jpg" width="145" height="128"></td>
+          </tr>
+        </table>
+        </center>
+      </div>
+      <div align="center">
+        <center>
+        <table border="1" width="70%" cellspacing="0">
+          <tr>
+            <td bgcolor="#FFFFFF" align="center" height="16" colspan="2"><font face="Verdana" size="2"><b>ETAPES</b></font></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FFCD66" align="center" height="16"><font face="Verdana" size="2"><b>1</b></font></td>
+            <td style="color: #FFFFFF" bgcolor="#000000" height="16"><font face="Verdana" size="2"><b>Préparation</b></font></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FFCD66" align="center" height="16"><font face="Verdana" size="2"><b>2</b></font></td>
+            <td style="color: #FFFFFF" bgcolor="#000000" height="16"><font face="Verdana" size="2"><b>Lecture
+              des codes SSPP et sélection du jeu ETE/HIVER</b></font></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FFCD66" align="center" height="16"><font face="Verdana" size="2"><b>3</b></font></td>
+            <td style="color: #FFFFFF" bgcolor="#000000" height="16"><font face="Verdana" size="2"><b>Sélection
+              roue</b></font></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FFCD66" align="center" height="16"><font face="Verdana" size="2"><b>4</b></font></td>
+            <td style="color: #FFFFFF" bgcolor="#000000" height="16"><font face="Verdana" size="2"><b>Lancement
+              mode Apprentissage Exitation Ecriture roue</b></font></td>
+          </tr>
+          <tr>
+            <td bgcolor="#FFCD66" align="center" height="16"><font face="Verdana" size="2"><b>5</b></font></td>
+            <td style="color: #FFFFFF" bgcolor="#000000" height="16"><font face="Verdana" size="2"><b>Contrôle
+              résultat</b></font></td>
+          </tr>
+        </table>
+        </center>
+      </div>
+      <p align="center"><font face="Verdana" size="4">Lorsque vous êtes prêt, cliquez
+      sur <b>START</b>&nbsp;</font></p>
+      <p align="center"><font face="Verdana" size="4">Pour quitter maintenant, cliquez
+      sur <b>EXIT</b></font>
+      <p align="right"><font face="Verdana" size="1">Version - 13 Mars 2007 - ©RENAULT&nbsp;&nbsp;</font>
+    </td>
+    <td width="23" bgcolor="#DFDCD7" valign="top" background="../../../scriptsLibrary/medias/skins/default/WFMiddleRight.jpg">&nbsp;</td>
+  </tr>
+  <tr id="Preparation" style="display:none">
+    <td width="23" bgcolor="#DFDCD7" valign="top" style="font-family: Verdana; font-size: 10pt; font-weight: bold" align="center" background="../../../scriptsLibrary/medias/skins/default/WFMiddleLeft.jpg">&nbsp;</td>
+    <td bgcolor="#DFDCD7" valign="top" style="font-family: Verdana; font-size: 10pt; font-weight: bold" align="center" colspan="7">
+      <p align="center">&nbsp;<br>
+      <b><font face="Verdana" size="5">PRÉPARATION<br></font><font face="Verdana" size="1">&nbsp;</font></b>
+      <div align="center">
+        <center>
+      <table border="0" width="90%" style="font-family: Verdana; font-size: 14pt" cellspacing="0" cellpadding="0">
+        <tr>
+          <td valign="top" bgcolor="#FFCD66" style="border-style: ridge; border-width: 2px" align="center">
+            <p align="center">1</td>
+          <td align="left" valign="top" style="border-style: ridge; border-width: 2px"><font face="Verdana">Insérer le badge dans
+          le lecteur du véhicule&nbsp;</font>
+            <p><font face="Verdana">Mettre le + APC</font></p>
+            <p><font face="Verdana">&nbsp;</font></p>
+          </td>
+          <td align="center"><img border="0" src="images/InsertBadge.jpg" align="left" width="198" height="128"><img border="0" src="images/Badge.jpg" align="left" width="130" height="128"></td>
+        </tr>
+        <tr>
+          <td valign="top" bgcolor="#FFCD66" style="border-style: ridge; border-width: 2px" align="center">2</td>
+          <td align="left" valign="top" style="border-style: ridge; border-width: 2px"><font face="Verdana">Vérifier
+            que dans votre config. SCAN il y a au moins &nbsp;<br>
+            - CAN 500 ou une messagerie<br>
+            - 1 UCH<br>
+            <b><font color="#FF0000">ATTENTION</font></b> Gonfler les roues à 3.5 b</font>
+          </td>
+          <td align="center"><img border="0" src="images/Valve.jpg" align="left" width="145" height="128"></td>
+        </tr>
+        <tr>
+          <td valign="top" bgcolor="#FFCD66" style="border-style: ridge; border-width: 2px" align="center">
+            <p align="center">3</td>
+          <td align="left" valign="top" style="border-style: ridge; border-width: 2px"><font face="Verdana">Connecter l'outil de
+      diagnostic au véhicule<br>
+            Prendre le boîtier excitateur de valve&nbsp;</font>
+            <p>&nbsp;</p>
+          </td>
+          <td align="center"><img border="0" src="images/PriseDiag.jpg" align="left" width="199" height="117"></td>
+        </tr>
+        <tr>
+          <td valign="top" style="border-style: ridge; border-width: 2px" align="center" colspan="2" id="CheckDataDisplay"><p align="center"></td>
+          <td align="center"></td>
+        </tr>
+      </table>
+        </center>
+      </div>
+    </td>
+    <td width="23" bgcolor="#DFDCD7" valign="top" style="font-family: Verdana; font-size: 10pt; font-weight: bold;" align="center" background="../../../scriptsLibrary/medias/skins/default/WFMiddleRight.jpg">&nbsp;</td>
+  </tr>
+  <tr id="Lecture" style="display:none">
+    <td bgcolor="#000000" valign="middle" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleLeft.jpg">&nbsp;</td>
+	<td bgcolor="#000000" colspan="7">
+      <div align="center">
+        <center>
+      <table border="0" cellspacing="0" cellpadding="0" style="font-family: Verdana; font-size: 14pt; color: #FFFFFF" height="90%">
+        <tr>
+          <td width="17%" height="26"></td>
+          <td width="17%" height="26"></td>
+          <td width="33%" colspan="3" height="26" align="center"><font color="#FFFFFF">Jeu de roues actuel</font></td>
+          <td width="17%" height="26"></td>
+          <td width="16%" height="26"></td>
+        </tr>
+        <tr>
+          <td width="17%" height="25"></td>
+          <td width="17%" height="25"></td>
+          <td id="JeuCourant" width="33%" colspan="3" bgcolor="#BCB6AA" style="font-family: Verdana; font-size: 14pt; color: #000000; border-style: inset; border-width: 1px" align="center" height="25">&nbsp;</td>
+          <td width="17%" height="25"></td>
+          <td width="16%" height="25"></td>
+        </tr>
+        <tr>
+          <td width="17%" height="25"></td>
+          <td width="17%" height="25" align="center"><img border="0" src="images/Fleche.jpg" width="34" height="25" id="Fleche0" style="display:none"></td>
+          <td width="16%" height="25">&nbsp;</td>
+          <td width="20"  height="25">&nbsp;</td>
+          <td width="17%" height="25">&nbsp;</td>
+          <td width="17%" height="25" align="center"><img border="0" src="images/Fleche.jpg" width="34" height="25" id="Fleche1" style="display:none"></td>
+          <td width="16%" height="25"></td>
+        </tr>
+        <tr>
+          <td width="17%" height="27"></td>
+          <td onclick="ActiverJEU0" title="cliquer ici pour activer le jeu 0" style="cursor: hand; border-style: outset; border-width: 2px" align="center" bgcolor="#FFCD66" width="17%" height="27">
+            <p><font color="#000000">JEU 0 (été)</font></td>
+          <td width="16%" height="27"></td>
+          <td width="20"  height="27"></td>
+          <td width="17%" height="27"></td>
+          <td onclick="ActiverJEU1" title="cliquer ici pour activer le jeu 1" style="cursor: hand; border-style: outset; border-width: 2px" align="center" bgcolor="#FFFFFF" width="17%" height="27">
+            <p><font color="#000000">JEU 1 (hiver)</font></td>
+          <td width="16%" height="27"></td>
+        </tr>
+        <tr>
+          <td width="17%" height="25" align="center"></td>
+          <td width="17%" height="25" align="center"></td>
+          <td width="16%" height="25" align="center">&nbsp;</td>
+          <td width="20"  height="25" align="center"></td>
+          <td width="17%" height="25" align="center">&nbsp;</td>
+          <td width="17%" height="25" align="center"></td>
+          <td width="16%" height="25" align="center"></td>
+        </tr>
+        <tr>
+          <td width="17%" height="38" align="center">AVG</td>
+          <td width="17%" rowspan="8" height="297" align="center"><img border="0" src="images/VueDessusNoir.jpg" width="190" height="295" onclick="ActiverJEU0" title="cliquer ici pour activer le jeu 0" style="cursor:hand"></td>
+          <td width="16%" height="38" align="center">AVD</td>
+          <td width="20"  height="38"></td>
+          <td width="17%" height="38" align="center">AVG</td>
+          <td width="17%" rowspan="8" height="297" align="center"><img border="0" src="images/VueDessusNoir.jpg" width="190" height="295" onclick="ActiverJEU1" title="cliquer ici pour activer le jeu 1" style="cursor:hand"></td>
+          <td width="16%" height="38" align="center">AVD</td>
+        </tr>
+        <tr>
+          <td id="AVGete" width="17%" bgcolor="#FFCD66" style="color: #000000" align="center" height="37">&nbsp;</td>
+          <td id="AVDete" width="16%" bgcolor="#FFCD66" style="color: #000000" align="center" height="37">&nbsp;</td>
+          <td width="20"  height="37"></td>
+          <td id="AVGhiver" width="17%" bgcolor="#FFFFFF" style="color: #000000" align="center" height="37">&nbsp;</td>
+          <td id="AVDhiver" width="16%" bgcolor="#FFFFFF" style="color: #000000" align="center" height="37">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="17%" align="center" height="37"></td>
+          <td width="16%" height="37" align="center"></td>
+          <td width="20"  height="37" align="center"></td>
+          <td width="17%" height="37" align="center"></td>
+          <td width="16%" height="37" align="center"></td>
+        </tr>
+        <tr>
+          <td width="17%" height="37" align="center"></td>
+          <td width="16%" height="37" align="center"></td>
+          <td width="20"  height="37" align="center"></td>
+          <td width="17%" height="37" align="center"></td>
+          <td width="16%" height="37" align="center"></td>
+        </tr>
+        <tr>
+          <td width="17%" height="37" align="center"></td>
+          <td width="16%" height="37" align="center"></td>
+          <td width="20"  height="37" align="center"></td>
+          <td width="17%" height="37" align="center"></td>
+          <td width="16%" height="37" align="center"></td>
+        </tr>
+        <tr>
+          <td width="17%" height="37" align="center"></td>
+          <td width="16%" height="37" align="center"></td>
+          <td width="20"  height="37" align="center"></td>
+          <td width="17%" height="37" align="center"></td>
+          <td width="16%" height="37" align="center"></td>
+        </tr>
+        <tr>
+          <td id="ARGete" width="17%" bgcolor="#FFCD66" style="color: #000000" align="center" height="37">&nbsp;</td>
+          <td id="ARDete" width="16%" bgcolor="#FFCD66" style="color: #000000" align="center" height="37">&nbsp;</td>
+          <td width="20"  height="37"></td>
+          <td id="ARGhiver" width="17%" bgcolor="#FFFFFF" style="color: #000000" align="center" height="37">&nbsp;</td>
+          <td id="ARDhiver" width="16%" bgcolor="#FFFFFF" style="color: #000000" align="center" height="37">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="17%" height="37" align="center">ARG</td>
+          <td width="16%" height="37" align="center">ARD</td>
+          <td width="20"  height="37" align="center"></td>
+          <td width="17%" height="37" align="center">ARG</td>
+          <td width="16%" height="37" align="center">ARD</td>
+        </tr>
+      </table>
+        </center>
+      </div>
+      <p align="center">&nbsp;
+    </td>
+
+    <td bgcolor="#000000" valign="middle" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleRight.jpg">
+      &nbsp;
+    </td>
+  </tr>
+    <tr id="ApprentissageAVG" style="display:none">
+    <td bgcolor="#000000" valign="middle" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleLeft.jpg">
+      &nbsp;
+    </td>
+	<td bgcolor="#000000" colspan="7" valign="middle">
+      <p align="center"><b><font color="#FFFFFF" face="Verdana" size="1">&nbsp;
+      </font></b>
+      <div align="center">
+        <center>
+      <table border="0" cellspacing="0" cellpadding="0" style="font-family: Verdana; font-size: 14pt; color: #FFFFFF" width="50%">
+        <tr>
+          <td width="9%"  height="26" align="center">&nbsp;</td>
+          <td width="8%"  height="26" align="center">&nbsp;</td>
+          <td width="17%" height="26" align="center"><font color="#FFFFFF">Apprentissage</font></td>
+          <td width="6%"  height="26" align="center">&nbsp;</td>
+          <td width="5%"  height="26" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="9%"  height="25" align="center">&nbsp;</td>
+          <td width="8%"  height="25" align="center">&nbsp;</td>
+          <td width="17%" height="25" align="center">&nbsp;</td>
+          <td width="8%"  height="25" align="center">&nbsp;</td>
+          <td width="8%"  height="25" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="9%"  height="38"  align="center"></td>
+          <td width="8%"  height="38"  align="center"></td>
+          <td width="17%" height="223" align="center" rowspan="6"><img border="0" src="images/VueDessusNoir.jpg" width="190" height="295"></td>
+          <td width="8%"  height="38"  align="center"></td>
+          <td width="8%"  height="38"  align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%" height="38" bgcolor="#FFCD66" align="center"><font color="#000000">AVG</font></td>
+          <td width="8%" height="38" align="center"><img border="0" src="images/FlecheDroite.jpg" id="FlecheAVG" width="40" height="25"></td>
+          <td width="8%" height="37" align="center" style="color: #000000"></td>
+          <td width="8%" height="37" align="center" style="color: #000000"><font color="#FFFFFF">AVD</font></td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center">ARG</td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center">ARD</td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+        </tr>
+      </table>
+        </center>
+      </div>
+      <p align="center">&nbsp;
+    </td>
+
+    <td bgcolor="#000000" valign="middle" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleRight.jpg">&nbsp;</td>
+  </tr>
+  	 <tr id="ApprentissageAVD" style="display:none">
+    <td bgcolor="#000000" valign="middle" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleLeft.jpg">&nbsp;</td>
+	<td bgcolor="#000000" colspan="7" valign="middle">
+      <p align="center"><b><font color="#FFFFFF" face="Verdana" size="1">&nbsp;
+      </font></b>
+      <div align="center">
+        <center>
+      <table border="0" cellspacing="0" cellpadding="0" style="font-family: Verdana; font-size: 14pt; color: #FFFFFF" width="50%">
+        <tr>
+          <td width="9%"  height="26" align="center">&nbsp;</td>
+          <td width="8%"  height="26" align="center">&nbsp;</td>
+          <td width="17%" height="26" align="center"><font color="#FFFFFF">Apprentissage</font></td>
+          <td width="6%"  height="26" align="center">&nbsp;</td>
+          <td width="5%"  height="26" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="9%"  height="25" align="center">&nbsp;</td>
+          <td width="8%"  height="25" align="center">&nbsp;</td>
+          <td width="17%" height="25" align="center">&nbsp;</td>
+          <td width="8%"  height="25" align="center">&nbsp;</td>
+          <td width="8%"  height="25" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="9%"  height="38"  align="center"></td>
+          <td width="8%"  height="38"  align="center"></td>
+          <td width="17%" height="223" align="center" rowspan="6"><img border="0" src="images/VueDessusNoir.jpg" width="190" height="295"></td>
+          <td width="8%"  height="38"  align="center"></td>
+          <td width="8%"  height="38"  align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%" height="38" align="center">AVG</td>
+          <td width="8%" height="38" align="center"></td>
+          <td width="8%" style="color: #000000" align="center" height="37"><img border="0" src="images/FlecheGauche.jpg" width="40" height="25"></td>
+          <td width="8%" style="color: #000000" align="center" height="37" bgcolor="#FFCD66"><font color="#000000">AVD</font></td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center">ARG</td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center">ARD</td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+        </tr>
+      </table>
+        </center>
+      </div>
+      <p align="center">&nbsp;
+    </td>
+
+    <td bgcolor="#000000" valign="middle" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleRight.jpg">&nbsp;</td>
+  </tr>
+  	 <tr id="ApprentissageARD" style="display:none">
+    <td bgcolor="#000000" valign="middle" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleLeft.jpg">&nbsp;</td>
+	<td bgcolor="#000000" colspan="7" valign="middle">
+      <p align="center"><b><font color="#FFFFFF" face="Verdana" size="1">&nbsp;</font></b>
+      <div align="center">
+        <center>
+      <table border="0" cellspacing="0" cellpadding="0" style="font-family: Verdana; font-size: 14pt; color: #FFFFFF" width="50%">
+        <tr>
+          <td width="9%"  height="26" align="center"></td>
+          <td width="8%"  height="26" align="center"></td>
+          <td width="17%" height="26" align="center"><font color="#FFFFFF">Apprentissage</font></td>
+          <td width="6%"  height="26" align="center"></td>
+          <td width="5%"  height="26" align="center">
+          </td>
+        </tr>
+        <tr>
+          <td width="9%"  height="25" align="center"></td>
+          <td width="8%"  height="25" align="center"></td>
+          <td width="17%" height="25" align="center">&nbsp;</td>
+          <td width="8%"  height="25" align="center">&nbsp;</td>
+          <td width="8%"  height="25" align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%"  height="38"  align="center"></td>
+          <td width="8%"  height="38"  align="center"></td>
+          <td width="17%" height="223" align="center" rowspan="6"><img border="0" src="images/VueDessusNoir.jpg" width="190" height="295"></td>
+          <td width="8%"  height="38"  align="center"></td>
+          <td width="8%"  height="38"  align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%" height="38" align="center">AVG</td>
+          <td width="8%" height="38" align="center"></td>
+          <td width="8%" height="37" align="center" style="color: #000000"></td>
+          <td width="8%" height="37" align="center" style="color: #000000"><font color="#FFFFFF">AVD</font></td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center">ARG</td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"><img border="0" src="images/FlecheGauche.jpg" width="40" height="25"></td>
+          <td width="8%" height="37" align="center" bgcolor="#FFCD66"><font color="#000000">ARD</font></td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+        </tr>
+      </table>
+        </center>
+      </div>
+      <p align="center">&nbsp;
+    </td>
+
+    <td bgcolor="#000000" valign="middle" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleRight.jpg">&nbsp;</td>
+  </tr>
+  <tr id="ApprentissageARG" style="display:none">
+    <td bgcolor="#000000" valign="middle" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleLeft.jpg">&nbsp;</td>
+	<td bgcolor="#000000" colspan="7" valign="middle">
+      <p align="center"><b><font color="#FFFFFF" face="Verdana" size="1">&nbsp;</font><font face="Verdana" size="1">&nbsp;</font></b>
+      <div align="center">
+        <center>
+      <table border="0" cellspacing="0" cellpadding="0" style="font-family: Verdana; font-size: 14pt; color: #FFFFFF" width="50%">
+        <tr>
+          <td width="9%"  height="26" align="center"></td>
+          <td width="8%"  height="26" align="center"></td>
+          <td width="17%" height="26" align="center"><font color="#FFFFFF">Apprentissage</font></td>
+          <td width="6%"  height="26" align="center"></td>
+          <td width="5%"  height="26" align="center">
+          </td>
+        </tr>
+        <tr>
+          <td width="9%"  height="25" align="center"></td>
+          <td width="8%"  height="25" align="center"></td>
+          <td width="17%" height="25" align="center">&nbsp;</td>
+          <td width="8%"  height="25" align="center">&nbsp;</td>
+          <td width="8%"  height="25" align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%"  height="38"  align="center"></td>
+          <td width="8%"  height="38"  align="center"></td>
+          <td width="17%" height="223" align="center" rowspan="6"><img border="0" src="images/VueDessusNoir.jpg" width="190" height="295"></td>
+          <td width="8%"  height="38"  align="center"></td>
+          <td width="8%"  height="38"  align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%" height="38" align="center">AVG</td>
+          <td width="8%" height="38" align="center"></td>
+          <td width="8%" height="37" align="center" style="color: #000000"></td>
+          <td width="8%" height="37" align="center" style="color: #000000"><font color="#FFFFFF">AVD</font></td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center" bgcolor="#FFCD66"><font color="#000000">ARG</font></td>
+          <td width="8%" height="37" align="center"><img border="0" src="images/FlecheDroite.jpg" id="FlecheAVG0" width="40" height="25"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center">ARD</td>
+        </tr>
+        <tr>
+          <td width="9%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+          <td width="8%" height="37" align="center"></td>
+        </tr>
+      </table>
+        </center>
+      </div>
+      <p align="center">&nbsp;
+    </td>
+
+    <td bgcolor="#000000" valign="middle" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleRight.jpg">&nbsp;</td>
+  </tr>
+  <tr id="Ecriture" style="display:none">
+    <td bgcolor="#000000" valign="middle" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleLeft.jpg">&nbsp;</td>
+	<td bgcolor="#000000" colspan="7">
+<center>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr>
+  <th colspan="3" class="title">Codes SSPP des valves montées sur ce véhicule</th>
+ </tr>
+ <tr>
+  <th class="wheelTitle">AVG</th><td rowspan="5" style="height:295px;"><img src="images/VueDessusNoir.jpg" alt="" width="190" height="295"></td><th class="wheelTitle">AVD</th>
+ </tr>
+ <tr>
+  <th id="AVGpresent" class="wheelCode">------</th><th id="AVDpresent" class="wheelCode">------</th>
+ </tr>
+ <tr>
+  <td style="height:150px;" class="emptyCell">&nbsp;</td><td class="emptyCell">&nbsp;</td>
+ </tr>
+ <tr>
+  <th class="wheelTitle">ARG</th><th class="wheelTitle">ARD</th>
+ </tr>
+ <tr>
+  <th id="ARGpresent" class="wheelCode">------</th><th id="ARDpresent" class="wheelCode">------</th>
+ </tr>
+ <tr>
+  <th colspan="3" class="title">Script terminé</th>
+ </tr>
+</table>
+</center>
+<p>&nbsp;</p>
+    </td>
+
+    <td bgcolor="#000000" valign="middle" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleRight.jpg">&nbsp;</td>
+  </tr>
+
+   <tr id="StepMessage" style="display:none" height="30%">
+    <td style="font-size: 8pt" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleLeft.jpg">&nbsp;</td>
+    <td style="font-size: 8pt" colspan="7" valign="middle">
+      <div align="center">
+        <center>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0" height="100%">
+          <tr>
+            <td id="StepMessageContent" style="font-family: Verdana; font-size: 18pt; font-weight: bold" align="center" valign="middle">
+              <p align="center"></td>
+          </tr>
+        </table>
+        </center>
+      </div>
+    </td>
+    <td style="font-size: 8pt" width="23" background="../../../scriptsLibrary/medias/skins/default/WFMiddleRight.jpg">
+      &nbsp;
+    </td>
+  </tr>
+  <tr id="Ticket" style="display:none">
+    <td width="23" bgcolor="#FFFFFF" valign="top" background="../../../scriptsLibrary/medias/skins/default/WFMiddleLeft.jpg">
+      &nbsp;
+    </td>
+    <td bgcolor="#FFFFFF" valign="top" colspan="7">
+      <table border="0" width="100%" cellspacing="0" cellpadding="0" style="font-family: Verdana; font-size: 10pt" bgcolor="#666666">
+        <tr>
+          <td width="33%" align="center" style="font-family: Verdana; font-size: 10pt" valign="top"><b><font color="#FFFFFF">DDT2000
+            Script</font></b></td>
+          <td width="33%" align="center"><b><font color="#FFFFFF">TICKET</font></b></td>
+          <td align="center"><b><font color="#FFFFFF">X91 - CODE SSPP</font></b>
+          </td>
+        </tr>
+      </table>
+      <p id="TicketContent" style="font-family: Courier; font-size: 8pt"></p>
+    </td>
+    <td width="23" bgcolor="#FFFFFF" valign="top" background="../../../scriptsLibrary/medias/skins/default/WFMiddleRight.jpg">
+      &nbsp;
+    </td>
+  </tr>
+  <tr height="53">
+    <td width="23" bgcolor="#555555" valign="bottom" background="../../../scriptsLibrary/medias/skins/default/WFMiddleLeft2.jpg">
+      <img border="0" src="../../../scriptsLibrary/medias/skins/default/WFBUttonLeft.jpg" align="absbottom" width="23" height="53">
+    </td>
+    <td bgcolor="#555555" valign="bottom" colspan="7">
+      <table border="0" width="100%" bgcolor="#555555" cellspacing="0" cellpadding="0">
+        <tr>
+        	<td>
+            <table border="0" width="100%" height="100%" cellspacing="0" cellpadding="0">
+              <tr>
+          			<td background="../../../scriptsLibrary/medias/skins/default/BFCenter.jpg">
+                        <p align="center"><font color="#FFFFFF"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BFCenter.jpg" width="16" height="53"></font></p>
+          			</td>
+              </tr>
+            </table>
+        	</td>
+          <td>
+            <table id="StartButton" border="0" width="100%" height="100%" cellspacing="0" cellpadding="0" style="cursor:hand; font-family: Verdana; font-size: 14pt; color: #FFFFFF">
+              <tr>
+          			<td width="26"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BBlackLeft.jpg" width="26" height="53"></td>
+          			<td background="../../../scriptsLibrary/medias/skins/default/BBlackCenter.jpg">
+            			<p id="StartButtonLabel" align="center"><font color="#FFFFFF">START</font></p>
+          			</td>
+          			<td width="26"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BBlackRight.jpg" width="26" height="53"></td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table id="StepButton" border="0" width="100%" cellspacing="0" cellpadding="0" style="display:none; cursor:hand; font-family: Verdana; font-size: 14pt; color: #000000">
+              <tr>
+              	<td width="26"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BYellowLeft.jpg" width="26" height="53"></td>
+          			<td background="../../../scriptsLibrary/medias/skins/default/BYellowCenter.jpg">
+            			<p id="StepButtonLabel" align="center">NEXT</p>
+            		</td>
+          			<td width="26"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BYellowRight.jpg" width="26" height="53"></td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table id="CancelButton" border="0" width="100%" cellspacing="0" cellpadding="0" style="display:none; cursor:hand; font-family: Verdana; font-size: 14pt; color: #000000">
+              <tr>
+          			<td width="26" height="53"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BYellowLeft.jpg" width="26" height="53"></td>
+          			<td background="../../../scriptsLibrary/medias/skins/default/BYellowCenter.jpg">
+            			<p id="CancelButtonLabel" align="center">CANCEL</p>
+            		</td>
+          			<td width="26"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BYellowRight.jpg" width="26" height="53"></td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table id="AutoButton" border="0" width="100%" cellspacing="0" cellpadding="0" style="display:none; cursor:hand; font-family: Verdana; font-size: 14pt; color: #000000">
+              <tr>
+          			<td width="26"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BWhiteLeft.jpg" width="26" height="53"></td>
+          			<td background="../../../scriptsLibrary/medias/skins/default/BWhiteCenter.jpg">
+            			<p id="AutoButtonLabel" align="center">AUTO</p>
+          			</td>
+          			<td width="26"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BWhiteRight.jpg" width="26" height="53"></td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table id="TicketButton" border="0" width="100%" cellspacing="0" cellpadding="0" style="display:none; cursor:hand; font-family: Verdana; font-size: 14pt; color: #000000">
+              <tr>
+              	<td width="26"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BYellowLeft.jpg" width="26" height="53"></td>
+          			<td background="../../../scriptsLibrary/medias/skins/default/BYellowCenter.jpg">
+            			<p id="TicketButtonLabel" align="center">SHOW TICKET</p>
+            		</td>
+          			<td width="26"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BYellowRight.jpg" width="26" height="53"></td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table id="ExitButton" border="0" width="100%" cellspacing="0" cellpadding="0" style="cursor:hand; font-family: Verdana; font-size: 14pt; color: #FFFFFF">
+              <tr>
+          			<td width="26"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BBlackLeft.jpg" width="26" height="53"></td>
+          			<td background="../../../scriptsLibrary/medias/skins/default/BBlackCenter.jpg">
+            			<p id="ExitButtonLabel" align="center"><font color="#FFFFFF">EXIT</font></p>
+          			</td>
+          			<td width="26"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BBlackRight.jpg" width="26" height="53"></td>
+              </tr>
+            </table>
+          </td>
+        	<td>
+            <table border="0" width="100%" height="100%" cellspacing="0" cellpadding="0">
+              <tr>
+          			<td background="../../../scriptsLibrary/medias/skins/default/BFCenter.jpg">
+                        <p align="center"><font color="#FFFFFF"><img border="0" src="../../../scriptsLibrary/medias/skins/default/BFCenter.jpg" width="16" height="53"></font></p>
+          			</td>
+              </tr>
+            </table>
+        	</td>
+        </tr>
+      </table>
+    </td>
+    <td width="23" bgcolor="#555555" valign="bottom" background="../../../scriptsLibrary/medias/skins/default/WFMiddleRight2.jpg">
+      <img border="0" src="../../../scriptsLibrary/medias/skins/default/WFButtonRight.jpg" width="23" height="53" align="absbottom">
+    </td>
+  </tr>
+   <tr height="30">
+    <td width="23" background="../../../scriptsLibrary/medias/skins/default/WFBottomLeft.jpg"><img border="0" src="../../../scriptsLibrary/medias/skins/default/WFBottomLeft.jpg" width="23" height="30"></td>
+    <td background="../../../scriptsLibrary/medias/skins/default/WFBottomCenter.jpg"><img border="0" src="../../../scriptsLibrary/medias/skins/default/DDTSticker.jpg" width="98" height="30"></td>
+    <td background="../../../scriptsLibrary/medias/skins/default/WFBottomCenter.jpg"></td>
+    <td background="../../../scriptsLibrary/medias/skins/default/WFBottomCenter.jpg"></td>
+    <td background="../../../scriptsLibrary/medias/skins/default/WFBottomCenter.jpg">&nbsp;</td>
+    <td background="../../../scriptsLibrary/medias/skins/default/WFBottomCenter.jpg"></td>
+    <td background="../../../scriptsLibrary/medias/skins/default/WFBottomCenter.jpg">&nbsp;</td>
+    <td background="../../../scriptsLibrary/medias/skins/default/WFBottomCenter.jpg" width="15%">
+      <table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="100%"></td>
+        </tr>
+        <tr>
+          <td width="100%" style="font-family: Verdana; font-size: 8pt; border-style: inset; border-width: 1px" id="CurrentMode" bgcolor="#C0C0C0" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="100%"></td>
+        </tr>
+      </table>
+    </td>
+    <td width="23" background="../../../scriptsLibrary/medias/skins/default/WFBottomRight.jpg"><img border="0" src="../../../scriptsLibrary/medias/skins/default/WFBottomRight.jpg" width="23" height="30"></td>
+  </tr>
+</table>
+</body>
+</html>

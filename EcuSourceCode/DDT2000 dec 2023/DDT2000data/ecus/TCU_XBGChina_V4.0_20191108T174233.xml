@@ -1,0 +1,1871 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.2.0.0" date="2019-10-23T17:22"/>
+<ddt:Target Name="TCU_XBGChina_V4.0" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="vignesh.kannan@rntbci.com; NAGARAJAN Vijayakumar &lt;vijayakumar.nagarajan@rntbci.com&gt;" href="TCU_XBGChina_V4.0_20191108T174233.xml" upload="11/8/2019" group="TCU"><Description><![CDATA[V1.0 -> Creation of TCU Builder for BBG China
+Date: 26th December 2018
+Author: Vignesh K K
+-------------------------------------------------------------------------------------------------------------------------]]></Description>
+<Projects xmlns=""><xBG/></Projects>
+<Function Name="DCM Renault" Address="119" Type=""/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>22-01-2019 19:02:24</DateOfficialisation>
+<Failures Name="No failures" Id="0"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="1994"/>
+</SendId><ReceiveId>
+<CANId Value="2010"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="21" Supplier="LANYOU" Soft="0001" Version="0000"/></AutoIdents>
+<Datas>
+
+<Data Name="DTCCount">
+<Comment><![CDATA[DTC count]]></Comment>
+<Mnemonic>DTCC</Mnemonic>
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCFormatIdentifier">
+<Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+<Mnemonic>DTCFID</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="SAE_J2012-DA_DTC"/>
+<Item Value="1" Text="ISO_14229-1_DTC"/>
+<Item Value="2" Text="SAE_J1939-73_DTC"/>
+<Item Value="3" Text="ISO_11992-4_DTC"/>
+<Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatusAvailabilityMask">
+<Comment><![CDATA[DTCSAM]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailed">
+<Comment><![CDATA[TF]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedThisMonitoringCycle">
+<Comment><![CDATA[TFTMC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.pendingDTC">
+<Comment><![CDATA[PDTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.confirmedDTC">
+<Comment><![CDATA[CDTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedSinceLastClear">
+<Comment><![CDATA[TNCSLC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedSinceLastClear">
+<Comment><![CDATA[TFSLC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+<Comment><![CDATA[TNCTMC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCRecord">
+<Comment><![CDATA[DTCASR_DTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="StatusOfDTC">
+<Comment><![CDATA[DTCASR_SODTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.AgingCounter">
+<Comment><![CDATA[Description of the extendedData AgingCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>AGINGCOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.DTCOccurrenceCounter">
+<Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedDataRecordNumber">
+<Mnemonic>DF</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Mileage"/>
+<Item Value="129" Text="AgingCounter"/>
+<Item Value="130" Text="DTCOccurrenceCounter"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceIdentifier">
+<Mnemonic>DF</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="55808" Text="ACC signal did not ON in case of IGN_ON"/>
+<Item Value="55815" Text="Antenna short circuit"/>
+<Item Value="53248" Text="CAN communication error"/>
+<Item Value="54049" Text="DID is not configured"/>
+<Item Value="55816" Text="Antenna open circuit"/>
+<Item Value="55840" Text="DTC_DCM_FLASH_ERROR"/>
+<Item Value="55817" Text="GPS antenna is not connected"/>
+<Item Value="44784" Text="Internal battery temperature is too high"/>
+<Item Value="55810" Text="MCU and 4G module communication error"/>
+<Item Value="53264" Text="MCU CAN control register read and write failed"/>
+<Item Value="55842" Text="No SIM card detected"/>
+<Item Value="55843" Text="Failed to read SIM card"/>
+<Item Value="55846" Text="Power supply voltage is too low"/>
+<Item Value="55847" Text="Power supply voltage is too high"/>
+<Item Value="55848" Text="RTM temperature is too high"/>
+<Item Value="55844" Text="SIM card status is Locked"/>
+<Item Value="55812" Text="VIN code is not configured"/>
+<Item Value="55849" Text="RTC module Error"/></List>
+</Bits>
+</Data>
+<Data Name="Gear-box TYPE">
+<Comment><![CDATA[Gear-box TYPE]]></Comment>
+<Mnemonic>Gear-box TYPE</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="MT"/>
+<Item Value="1" Text="CVT"/></List>
+</Bits>
+</Data>
+<Data Name="TPMS">
+<Comment><![CDATA[TPMS]]></Comment>
+<Mnemonic>TPMS</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="Turbo">
+<Comment><![CDATA[Turbo]]></Comment>
+<Mnemonic>Turbo</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="VDC">
+<Comment><![CDATA[VDC]]></Comment>
+<Mnemonic>VDC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="P+B23:I24rogramming operation fingerprint">
+<Comment><![CDATA[P+B23:I24rogramming operation fingerprint]]></Comment>
+<Mnemonic>P+B23:I24rogramming operation fingerprint</Mnemonic>
+<Bytes count="16"/>
+</Data>
+<Data Name="IndexSrvData">
+<Comment><![CDATA[IndexSrvData]]></Comment>
+<Mnemonic>IndexSrvData</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="Operationnal reference">
+<Comment><![CDATA[Operationnal reference]]></Comment>
+<Mnemonic>Operationnal reference</Mnemonic>
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="Boot Version">
+<Comment><![CDATA[Boot Version]]></Comment>
+<Mnemonic>Boot Version </Mnemonic>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="CalibrationNumber">
+<Comment><![CDATA[CalibrationNumber]]></Comment>
+<Mnemonic>CalibrationNumber</Mnemonic>
+<Bytes count="10"/>
+</Data>
+<Data Name="vehicleManufacturerSparePartNumber(Renault)">
+<Comment><![CDATA[vehicleManufacturerSparePartNumber(Renault)]]></Comment>
+<Mnemonic>vehicleManufacturerSparePartNumber(Renault)</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="systemSupplierIdentifier">
+<Comment><![CDATA[systemSupplierIdentifier]]></Comment>
+<Mnemonic>systemSupplierIdentifier</Mnemonic>
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="ECUSerialNumber">
+<Comment><![CDATA[ECUSerialNumber]]></Comment>
+<Mnemonic>ECUSerialNumber</Mnemonic>
+<Bytes count="20" ascii="1"/>
+</Data>
+<Data Name="VIN">
+<Comment><![CDATA[VIN]]></Comment>
+<Mnemonic>VIN</Mnemonic>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="vehicleManufacurerECUHardwareNumber">
+<Comment><![CDATA[vehicleManufacurerECUHardwareNumber]]></Comment>
+<Mnemonic>vehicleManufacurerECUHardwareNumber</Mnemonic>
+<Bytes count="10"/>
+</Data>
+<Data Name="systemSupplierECUSoftwareVersionNumber">
+<Comment><![CDATA[systemSupplierECUSoftwareVersionNumber]]></Comment>
+<Mnemonic>systemSupplierECUSoftwareVersionNumber</Mnemonic>
+<Bytes count="29" ascii="1"/>
+</Data>
+<Data Name="VDIAG">
+<Comment><![CDATA[VDIAG]]></Comment>
+<Mnemonic>VDIAG</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="vehicleManufactureECUSoftwareNumber.ConfigurationFileReferenceLink-RUC">
+<Comment><![CDATA[vehicleManufactureECUSoftwareNumber]]></Comment>
+<Mnemonic>vehicleManufactureECUSoftwareNumber</Mnemonic>
+<Bytes count="29" ascii="1"/>
+</Data>
+<Data Name="vehicleManufacturerSparePartNumber_N">
+<Comment><![CDATA[vehicleManufacturerSparePartNumber_N]]></Comment>
+<Mnemonic>vehicleManufacturerSparePartNumber_N</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="ConfigurationDataReferenceAfterConfigurationProcess">
+<Comment><![CDATA[ConfigurationDataReferenceAfterConfigurationProcess]]></Comment>
+<Mnemonic>ConfigurationDataReferenceAfterConfigurationProces</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="Digest (HASH)">
+<Comment><![CDATA[Digest (HASH)]]></Comment>
+<Mnemonic>Digest (HASH)</Mnemonic>
+<Bytes count="32"/>
+</Data>
+<Data Name="ECU_setting.AUDIO_TYPE">
+<Comment><![CDATA[AUDIO_TYPE]]></Comment>
+<Mnemonic>AUDIO_TYPE</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="No applied"/>
+<Item Value="1" Text="Audio"/>
+<Item Value="2" Text="NAVI"/>
+<Item Value="3" Text="NON NAVI"/>
+<Item Value="4" Text="AVN"/>
+<Item Value="5" Text="Android DA"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.ZONE">
+<Comment><![CDATA[ZONE]]></Comment>
+<Mnemonic>ZONE</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="US"/>
+<Item Value="1" Text="CAN"/>
+<Item Value="2" Text="MEX"/>
+<Item Value="3" Text="BRA"/>
+<Item Value="4" Text="JPN"/>
+<Item Value="5" Text="PRC"/>
+<Item Value="6" Text="ASR"/>
+<Item Value="7" Text="EUR"/>
+<Item Value="8" Text="RUS"/>
+<Item Value="9" Text="Reserved"/>
+<Item Value="16" Text="Reserved1"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.Division">
+<Comment><![CDATA[Division]]></Comment>
+<Mnemonic>Division</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="infiniti"/>
+<Item Value="1" Text="Nissan"/>
+<Item Value="2" Text="Venucia"/>
+<Item Value="3" Text="Renault"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.V_CAN_GEN">
+<Comment><![CDATA[V-CAN GEN]]></Comment>
+<Mnemonic>V-CAN GEN</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="Gen.3"/>
+<Item Value="1" Text="Gen.5"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.M_CAN">
+<Comment><![CDATA[M-CAN]]></Comment>
+<Mnemonic>M-CAN</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable (mute by hard wire)"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.K_LineI_F">
+<Comment><![CDATA[K-Line I/F]]></Comment>
+<Mnemonic> K-Line I/F</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.Vehicle_TYPE">
+<Comment><![CDATA[Vehicle_TYPE]]></Comment>
+<Mnemonic>Vehicle_TYPE</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="Conventional (ICE)"/>
+<Item Value="1" Text="EV"/>
+<Item Value="2" Text="EV+ICE"/>
+<Item Value="3" Text="HEV"/>
+<Item Value="4" Text="P-HEV"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.Meter">
+<Comment><![CDATA[Meter]]></Comment>
+<Mnemonic>Meter</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.Airbag">
+<Comment><![CDATA[Airbag]]></Comment>
+<Mnemonic>Airbag</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.I_KEY">
+<Comment><![CDATA[I-KEY]]></Comment>
+<Mnemonic>I-KEY</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.WIFI">
+<Comment><![CDATA[WIFI]]></Comment>
+<Mnemonic>WIFI</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.ANT_TYPE">
+<Comment><![CDATA[ANT TYPE]]></Comment>
+<Mnemonic>ANT TYPE</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="No applied"/>
+<Item Value="1" Text="GPS only"/>
+<Item Value="2" Text="4G only"/>
+<Item Value="3" Text="4G&amp;GPS"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.Gateway">
+<Comment><![CDATA[Gateway]]></Comment>
+<Mnemonic>Gateway</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.PhoneAPP">
+<Comment><![CDATA[Phone APP]]></Comment>
+<Mnemonic>Phone APP</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.Battery">
+<Comment><![CDATA[Battery]]></Comment>
+<Mnemonic>Battery</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.BCM">
+<Comment><![CDATA[BCM]]></Comment>
+<Mnemonic>BCM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.EPS">
+<Comment><![CDATA[EPS]]></Comment>
+<Mnemonic>EPS</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.EVC">
+<Comment><![CDATA[EVC]]></Comment>
+<Mnemonic>EVC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_setting.ABS">
+<Comment><![CDATA[ABS]]></Comment>
+<Mnemonic>ABS</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="enable"/>
+<Item Value="1" Text="disable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_Configuration.POWER_MODE">
+<Comment><![CDATA[POWER MODE]]></Comment>
+<Mnemonic>POWER MODE</Mnemonic>
+<Bits count="4">
+<List>
+<Item Value="0" Text="Type 1"/>
+<Item Value="1" Text="Type 2"/>
+<Item Value="2" Text="Type 3"/>
+<Item Value="4" Text="Type 4"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_Configuration.Remote_Door_Lock_Unlock">
+<Comment><![CDATA[Remote_Door_Lock/Unlock]]></Comment>
+<Mnemonic>Remote_Door_Lock/Unlock</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Disable"/>
+<Item Value="1" Text="Enable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_Configuration.Remote_Horn">
+<Comment><![CDATA[Remote_Horn]]></Comment>
+<Mnemonic>Remote_Horn </Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Disable"/>
+<Item Value="1" Text="enable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_Configuration.Remote_Engine_Start">
+<Comment><![CDATA[Remote_Engine Start]]></Comment>
+<Mnemonic>Remote_Engine Start</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Disable"/>
+<Item Value="1" Text="enable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_Configuration.Remote_Vehicle_tracking">
+<Comment><![CDATA[Remote_Vehicle tracking]]></Comment>
+<Mnemonic>Remote_Vehicle tracking</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Disable"/>
+<Item Value="1" Text="Enable"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_Configuration.Vehicle_Brand">
+<Comment><![CDATA[Vehicle_Brand]]></Comment>
+<Mnemonic>Vehicle_Brand</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="Default"/>
+<Item Value="1" Text="DRAC"/>
+<Item Value="2" Text="DFLZ"/>
+<Item Value="3" Text="DFPV"/>
+<Item Value="4" Text="DFV"/>
+<Item Value="5" Text="DFSK"/></List>
+</Bits>
+</Data>
+<Data Name="ECU_Configuration.Vehicle_Variants">
+<Comment><![CDATA[Vehicle_Variants]]></Comment>
+<Mnemonic>Vehicle_Variants</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="E0"/>
+<Item Value="1" Text="E0 Option"/>
+<Item Value="2" Text="E2"/>
+<Item Value="3" Text="E2 Option"/></List>
+</Bits>
+</Data>
+<Data Name="OperationalReference.Operational_Reference">
+<Comment><![CDATA[Operational Reference]]></Comment>
+<Mnemonic>Operational Reference</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="Server_configuration.LocalStorageCycle">
+<Comment><![CDATA[Local Storage Cycle]]></Comment>
+<Mnemonic>Local Storage Cycle</Mnemonic>
+<Bits>
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="Server_configuration.VehicleDataCycle">
+<Comment><![CDATA[Upload Vehicle Data Cycle(Normal)]]></Comment>
+<Mnemonic>Upload Vehicle Data Cycle(Normal)</Mnemonic>
+<Bits>
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="Server_configuration.Upload_Vehicle_Data_Cycle">
+<Comment><![CDATA[Upload Vehicle Data Cycle(Alarm)]]></Comment>
+<Mnemonic>Upload Vehicle Data Cycle(Alarm)</Mnemonic>
+<Bits>
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="Server_configuration.Upload_GPS_Data_Cycle">
+<Comment><![CDATA[Upload GPS Data Cycle(Normal)]]></Comment>
+<Mnemonic>Upload GPS Data Cycle(Normal)</Mnemonic>
+<Bits>
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="Server_configuration.ServerIP">
+<Comment><![CDATA[Server IP]]></Comment>
+<Mnemonic>Server IP</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="Server_configuration.ServerPort">
+<Comment><![CDATA[Server Port]]></Comment>
+<Mnemonic>Server Port</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Server_configuration.HeartbeatCycle">
+<Comment><![CDATA[Heartbeat Cycle]]></Comment>
+<Mnemonic>Heartbeat Cycle</Mnemonic>
+<Bits>
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="Server_configuration.BOXResponseTimeout">
+<Comment><![CDATA[BOX Response Timeout]]></Comment>
+<Mnemonic>BOX Response Timeout</Mnemonic>
+<Bits>
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="Server_configuration.ServerResponseTimeout">
+<Comment><![CDATA[Server Response Timeout]]></Comment>
+<Mnemonic>Server Response Timeout</Mnemonic>
+<Bits>
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="Server_configuration.UploadGPSDataCycle">
+<Comment><![CDATA[Upload GPS Data Cycle(Alarm)]]></Comment>
+<Mnemonic>Upload GPS Data Cycle(Alarm)</Mnemonic>
+<Bits>
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="TEL_ANT_Level.TELANTLEVEL">
+<Comment><![CDATA[TEL ANT LEVEL]]></Comment>
+<Mnemonic>TEL ANT LEVEL</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="No signal strength"/>
+<Item Value="1" Text="Very weak signal strength"/>
+<Item Value="2" Text="Weak signal strength"/>
+<Item Value="3" Text="Good signal strength"/>
+<Item Value="4" Text="Strong signal strength"/>
+<Item Value="5" Text="Very strong signal strength"/></List>
+</Bits>
+</Data>
+<Data Name="TEL_ANT_Level.RECEPTIONPOWER">
+<Comment><![CDATA[RECEPTION POWER]]></Comment>
+<Mnemonic>RECEPTION POWER</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="-113 dBm"/>
+<Item Value="1" Text="-111 dBm"/>
+<Item Value="2" Text="-109 dBm"/>
+<Item Value="31" Text="-109 dBm to 51 dBm"/>
+<Item Value="99" Text="not known or not detectable"/></List>
+</Bits>
+</Data>
+<Data Name="TEL_ANT_Level.ERRORRATE">
+<Comment><![CDATA[ERROR RATE]]></Comment>
+<Mnemonic>ERROR RATE</Mnemonic>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="User_Collation.NAVI_ID">
+<Comment><![CDATA[NAVI ID]]></Comment>
+<Mnemonic>NAVI ID </Mnemonic>
+<Bytes count="20" ascii="1"/>
+</Data>
+<Data Name="User_Collation.DCM_ID">
+<Comment><![CDATA[DCM_ID]]></Comment>
+<Mnemonic>DCM_ID</Mnemonic>
+<Bytes count="20" ascii="1"/>
+</Data>
+<Data Name="User_Collation.SIM_ID">
+<Comment><![CDATA[SIM_ID]]></Comment>
+<Mnemonic>SIM_ID</Mnemonic>
+<Bytes count="20" ascii="1"/>
+</Data>
+<Data Name="User_Collation.MSN_ID">
+<Comment><![CDATA[MSN_ID]]></Comment>
+<Mnemonic>MSN_ID</Mnemonic>
+<Bytes count="20" ascii="1"/>
+</Data>
+<Data Name="RoutineControlType">
+<Comment><![CDATA[Boot Version]]></Comment>
+<Mnemonic>Boot Version </Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Start"/>
+<Item Value="2" Text="Stop"/>
+<Item Value="3" Text="requestResult"/></List>
+</Bits>
+</Data>
+<Data Name="RoutineControlResult">
+<Comment><![CDATA[Boot Version]]></Comment>
+<Mnemonic>Boot Version </Mnemonic>
+<Bits>
+<List>
+<Item Value="32" Text="RoutineOK"/>
+<Item Value="33" Text="RoutineNG"/>
+<Item Value="34" Text="RoutineInProgress"/></List>
+</Bits>
+</Data>
+<Data Name="FFD_F0D0_Mileage">
+<Comment><![CDATA[Boot Version]]></Comment>
+<Mnemonic>Boot Version </Mnemonic>
+<Bits count="24">
+<Scaled Unit="Km"/>
+</Bits>
+</Data>
+<Data Name="FFD_F0D1_BattVoltage">
+<Comment><![CDATA[Boot Version]]></Comment>
+<Mnemonic>Boot Version </Mnemonic>
+<Bits>
+<Scaled Unit="V" Step=" 2" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="FFD_F0D2_VehicleSpeed">
+<Comment><![CDATA[Boot Version]]></Comment>
+<Mnemonic>Boot Version </Mnemonic>
+<Bits count="16">
+<Scaled Unit="Km/h" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="FFD_F0D3_TCU_Temperature">
+<Comment><![CDATA[Boot Version]]></Comment>
+<Mnemonic>Boot Version </Mnemonic>
+<Bits>
+<Scaled Unit="°C" Offset="-40"/>
+</Bits>
+</Data>
+<Data Name="NetworkRegistrationstatus.NetworkRegistrationStatus">
+<Comment><![CDATA[NetworkRegistrationStatus]]></Comment>
+<Mnemonic>NetworkRegistrationStatus</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="nonregister"/>
+<Item Value="1" Text="register"/></List>
+</Bits>
+</Data>
+<Data Name="bootSoftwareIdentification">
+<Bytes count="32"/>
+</Data>
+<Data Name="DTCFailureType.Category">
+<Mnemonic>DF</Mnemonic>
+<Bits count="4">
+<List>
+<Item Value="0" Text="General Failure Information"/>
+<Item Value="1" Text="General Electrical Failures"/>
+<Item Value="2" Text="General Signal Failures"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="15" Text="Vehicle manufacturer / System supplier specific"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.ManufacturerOrSupplier">
+<Mnemonic>DF</Mnemonic>
+<Bits count="4">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCDeviceAndFailureTypeOBD">
+<Mnemonic>DF</Mnemonic>
+<Bits count="16">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCFailureType">
+<Bits>
+<List>
+<Item Value="0" Text="Device and failure type ODB codding"/>
+<Item Value="1" Text="General Electrical Failure"/>
+<Item Value="2" Text="General signal failure"/>
+<Item Value="3" Text="FM  / PWM Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="17" Text="circuit short to ground"/>
+<Item Value="18" Text="circuit short to battery"/>
+<Item Value="19" Text="circuit open"/>
+<Item Value="20" Text="circuit short to ground or open"/>
+<Item Value="21" Text="circuit short to battery or open"/>
+<Item Value="22" Text="circuit voltage below threshold"/>
+<Item Value="23" Text="circuit voltage above threshold"/>
+<Item Value="24" Text="circuit current below threshold"/>
+<Item Value="25" Text="circuit current above threshold"/>
+<Item Value="26" Text="circuit resistance below threshold"/>
+<Item Value="27" Text="circuit resistance above threshold"/>
+<Item Value="28" Text="circuit voltage out of range"/>
+<Item Value="29" Text="circuit current out of range"/>
+<Item Value="30" Text="circuit resistance out of range"/>
+<Item Value="31" Text="circuit intermittent"/>
+<Item Value="33" Text="signal amplitude &lt; minimum"/>
+<Item Value="34" Text="signal amplitude &gt; maximum"/>
+<Item Value="35" Text="signal stuck low"/>
+<Item Value="36" Text="signal stuck high"/>
+<Item Value="37" Text="signal shape / waveform failure"/>
+<Item Value="38" Text="signal rate of change below threshold"/>
+<Item Value="39" Text="signal rate of change above threshold"/>
+<Item Value="40" Text="signal bias level out of range / zero adjt failure"/>
+<Item Value="41" Text="signal signal invalid"/>
+<Item Value="47" Text="signal erratic"/>
+<Item Value="49" Text="no signal"/>
+<Item Value="50" Text="signal low time &lt; minimum"/>
+<Item Value="51" Text="signal low time &gt; maximum"/>
+<Item Value="52" Text="signal high time &lt; minimum"/>
+<Item Value="53" Text="signal high time &gt; maximum"/>
+<Item Value="54" Text="signal frequency too low"/>
+<Item Value="55" Text="signal frequency too high"/>
+<Item Value="56" Text="signal frequency incorrect"/>
+<Item Value="57" Text="incorrect has too few pulses"/>
+<Item Value="58" Text="incorrect has too many pulses"/>
+<Item Value="65" Text="general checksum failure"/>
+<Item Value="66" Text="general memory failure"/>
+<Item Value="67" Text="special memory failure"/>
+<Item Value="68" Text="data memory failure"/>
+<Item Value="69" Text="program memory failure"/>
+<Item Value="70" Text="calibration / parameter memory failure"/>
+<Item Value="71" Text="watchdog / safety µC failure"/>
+<Item Value="72" Text="supervision software failure"/>
+<Item Value="73" Text="internal electronic failure"/>
+<Item Value="74" Text="incorrect component installed"/>
+<Item Value="75" Text="over temperature"/>
+<Item Value="81" Text="not programmed"/>
+<Item Value="82" Text="not activated"/>
+<Item Value="83" Text="deactivated"/>
+<Item Value="84" Text="missing calibration"/>
+<Item Value="85" Text="not configured"/>
+<Item Value="97" Text="signal calculation failure"/>
+<Item Value="98" Text="signal compare failure"/>
+<Item Value="99" Text="circuit / component protection time-out"/>
+<Item Value="100" Text="signal plausibility failure"/>
+<Item Value="101" Text="signal has too few transitions / events"/>
+<Item Value="102" Text="signal has too many transitions / events"/>
+<Item Value="103" Text="signal incorrect after event"/>
+<Item Value="104" Text="event information"/>
+<Item Value="113" Text="actuator stuck"/>
+<Item Value="114" Text="actuator stuck open"/>
+<Item Value="115" Text="actuator stuck closed"/>
+<Item Value="116" Text="actuator slipping"/>
+<Item Value="117" Text="emergency position not reachable"/>
+<Item Value="118" Text="wrong mounting position"/>
+<Item Value="119" Text="commanded position not reachable"/>
+<Item Value="120" Text="alignment or adjustment incorrect"/>
+<Item Value="121" Text="mechanical linkage failure"/>
+<Item Value="122" Text="fluid leak or seal failure"/>
+<Item Value="123" Text="low fluid level"/>
+<Item Value="129" Text="invalid serial data received"/>
+<Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+<Item Value="131" Text="value of signal protection calculation incorrect"/>
+<Item Value="132" Text="signal below allowable range"/>
+<Item Value="133" Text="signal above allowable range"/>
+<Item Value="134" Text="signal invalid"/>
+<Item Value="135" Text="missing message"/>
+<Item Value="136" Text="bus off"/>
+<Item Value="143" Text="erratic"/>
+<Item Value="145" Text="parametric"/>
+<Item Value="146" Text="performance or incorrect operation"/>
+<Item Value="147" Text="no operation"/>
+<Item Value="148" Text="unexpected operation"/>
+<Item Value="149" Text="incorrect assembly"/>
+<Item Value="150" Text="component internal failure"/>
+<Item Value="151" Text="Component/system operation obstructed or blocked"/>
+<Item Value="152" Text="component or system over temperature"/></List>
+</Bits>
+</Data>
+<Data Name="DTCMaskRecord">
+<Comment><![CDATA[DTCMREC_DTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="Activation.4G MODULE STATUS">
+<Comment><![CDATA[4G Module Status]]></Comment>
+<Mnemonic>4G Module Status</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="off"/>
+<Item Value="1" Text="on"/></List>
+</Bits>
+</Data>
+<Data Name="Battery.BBG Battery voltage">
+<Comment><![CDATA[Back light is not working for ECO mode switch when position lamp is turned ON ( 12 V is read at Pin]]></Comment>
+<Mnemonic>Back light is not working for ECO mode switch when</Mnemonic>
+<Bits count="16">
+<Scaled Unit="mV"/>
+</Bits>
+</Data>
+<Data Name="Battery.BBG BatterySOC">
+<Comment><![CDATA[RTMBatterySOC]]></Comment>
+<Mnemonic>RTMBatterySOC</Mnemonic>
+<Bits count="7">
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="Battery.BBG BatteryStatus">
+<Comment><![CDATA[RTMBatteryStatus]]></Comment>
+<Mnemonic>RTMBatteryStatus</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="constant current charge"/>
+<Item Value="1" Text="trickle charge"/>
+<Item Value="2" Text="steady"/>
+<Item Value="3" Text="discharge"/></List>
+</Bits>
+</Data>
+<Data Name="Battery.BBG Battery temperature">
+<Comment><![CDATA[RTM Battery temperature]]></Comment>
+<Mnemonic>RTM Battery temperature</Mnemonic>
+<Bits count="11">
+<Scaled Unit="°C"/>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.MUX Reference#1">
+<Comment><![CDATA[MUX Reference#1]]></Comment>
+<Mnemonic>MUX Reference#1</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="CANDiagMuxFrame.MUX Reference#2">
+<Comment><![CDATA[MUX Reference#2]]></Comment>
+<Mnemonic>MUX Reference#2</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="CANDiagMuxFrame.BUS OFF">
+<Comment><![CDATA[BUS OFF]]></Comment>
+<Mnemonic>BUS OFF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="BUS ON"/>
+<Item Value="1" Text="BUS OFF"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.C_BUS OFF">
+<Comment><![CDATA[C_BUS OFF]]></Comment>
+<Mnemonic>C_BUS OFF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not Confirmed"/>
+<Item Value="1" Text="Confirmed BusOff"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.M_BUS OFF">
+<Comment><![CDATA[M_BUS OFF]]></Comment>
+<Mnemonic>M_BUS OFF</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.Mute Module">
+<Comment><![CDATA[Mute Module]]></Comment>
+<Mnemonic>Mute Module</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="No acknowledge"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.C_Mute">
+<Comment><![CDATA[C_Mute]]></Comment>
+<Mnemonic>C_Mute</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="Confirmed Mute"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.M_Mute">
+<Comment><![CDATA[M_Mute]]></Comment>
+<Mnemonic>M_Mute</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.Procedure EVC Absent">
+<Comment><![CDATA[Procedure EVC Absent]]></Comment>
+<Mnemonic>Procedure EVC Absent</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="No signal"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.C_Absent EVC">
+<Comment><![CDATA[C_Absent EVC]]></Comment>
+<Mnemonic>C_Absent EVC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="No signal"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.M_Absent EVC">
+<Comment><![CDATA[M_Absent EVC]]></Comment>
+<Mnemonic>M_Absent EVC</Mnemonic>
+<Bits count="6">
+<Scaled Offset=" 40"/>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.Procedure ABS_VDC Absent">
+<Comment><![CDATA[Procedure ABS_VDC Absent]]></Comment>
+<Mnemonic>Procedure ABS_VDC Absent</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="NO Signal"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.C_Absent ABS_VDC">
+<Comment><![CDATA[C_Absent  ABS_VDC]]></Comment>
+<Mnemonic>C_Absent  ABS_VDC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="Confermed Absent"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.M_Absent EPS">
+<Comment><![CDATA[M_Absent EPS]]></Comment>
+<Mnemonic>M_Absent EPS</Mnemonic>
+<Bits count="6">
+<Scaled Offset=" 40"/>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.M_Absent BCM">
+<Comment><![CDATA[M_Absent BCM]]></Comment>
+<Mnemonic>M_Absent BCM</Mnemonic>
+<Bits count="6">
+<Scaled Offset=" 40"/>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.C_Absent BCM">
+<Comment><![CDATA[C_Absent BCM]]></Comment>
+<Mnemonic>C_Absent BCM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="No signal"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.Procedure AIRBAG Absent">
+<Comment><![CDATA[Procedure AIRBAG Absent]]></Comment>
+<Mnemonic>Procedure AIRBAG Absent</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="No signal"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.C_Absent EPS">
+<Comment><![CDATA[C_Absent EPS]]></Comment>
+<Mnemonic>C_Absent EPS</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="No signal"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.Procedure EPS Absent">
+<Comment><![CDATA[Procedure EPS Absent]]></Comment>
+<Mnemonic>Procedure EPS Absent</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="No signal"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.M_Absent AIRBAG">
+<Comment><![CDATA[M_Absent AIRBAG]]></Comment>
+<Mnemonic>M_Absent AIRBAG</Mnemonic>
+<Bits count="6">
+<Scaled Offset=" 40"/>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.C_Absent AIRBAG">
+<Comment><![CDATA[C_Absent AIRBAG]]></Comment>
+<Mnemonic>C_Absent AIRBAG</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="Confermed absent"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.Procedure BCM Absent">
+<Comment><![CDATA[Procedure BCM Absent]]></Comment>
+<Mnemonic>Procedure BCM Absent</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="No signal"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.M_Absent ABS_VDC">
+<Comment><![CDATA[M_Absent  ABS_VDC]]></Comment>
+<Mnemonic>M_Absent  ABS_VDC</Mnemonic>
+<Bits count="6">
+<Scaled Offset=" 40"/>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.Procedure METER Absent">
+<Comment><![CDATA[Procedure METER Absent]]></Comment>
+<Mnemonic>Procedure METER Absent</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="No signal"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.C_Absent METER">
+<Comment><![CDATA[C_Absent METER]]></Comment>
+<Mnemonic>C_Absent METER</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="OK"/>
+<Item Value="1" Text="Confermed Absent"/></List>
+</Bits>
+</Data>
+<Data Name="CANDiagMuxFrame.M_Absent METER">
+<Comment><![CDATA[M_Absent METER]]></Comment>
+<Mnemonic>M_Absent METER</Mnemonic>
+<Bits count="6">
+<Scaled Offset=" 40"/>
+</Bits>
+</Data>
+<Data Name="Battery_code.BATTERY_CODE">
+<Comment><![CDATA[BATTERY CODE]]></Comment>
+<Mnemonic>BATTERY CODE</Mnemonic>
+<Bytes count="100" ascii="1"/>
+</Data>
+<Data Name="4G_Module_Information.MANUFACTURE_IDENTIFICATION">
+<Comment><![CDATA[MANUFACTURE IDENTIFICATION]]></Comment>
+<Mnemonic>MANUFACTURE IDENTIFICATION</Mnemonic>
+<Bytes count="40" ascii="1"/>
+</Data>
+<Data Name="4G_Module_Information.Model_Identification">
+<Comment><![CDATA[Model Identification]]></Comment>
+<Mnemonic>Model Identification</Mnemonic>
+<Bytes count="20" ascii="1"/>
+</Data>
+<Data Name="4G_Module_Information.Revision_Identification">
+<Comment><![CDATA[Revision Identification]]></Comment>
+<Mnemonic>Revision Identification</Mnemonic>
+<Bytes count="40" ascii="1"/>
+</Data>
+<Data Name="4G_Module_Information.IMEI">
+<Comment><![CDATA[IMEI]]></Comment>
+<Mnemonic>IMEI</Mnemonic>
+<Bytes count="20" ascii="1"/>
+</Data>
+<Data Name="DTCExtendedData.Mileage">
+<Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>MILEAGE</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="DataRead.Activation">
+
+<Sent>
+<SentBytes>220104</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620104</ReplyBytes>
+<DataItem Name="Activation.4G MODULE STATUS" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.Battery">
+
+<Sent>
+<SentBytes>220105</SentBytes>
+</Sent>
+<Received MinBytes="9">
+<ReplyBytes>620105</ReplyBytes>
+<DataItem Name="Battery.BBG Battery voltage" FirstByte="4"/>
+<DataItem Name="Battery.BBG BatterySOC" FirstByte="6" BitOffset="1"/>
+<DataItem Name="Battery.BBG BatteryStatus" FirstByte="7" BitOffset="6"/>
+<DataItem Name="Battery.BBG Battery temperature" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="DataRead.CANDiagMuxFrame">
+
+<Sent>
+<SentBytes>22EF82</SentBytes>
+</Sent>
+<Received MinBytes="90">
+<ReplyBytes>62EF82</ReplyBytes>
+<DataItem Name="CANDiagMuxFrame.MUX Reference#1" Ref="1" FirstByte="4"/>
+<DataItem Name="CANDiagMuxFrame.MUX Reference#2" Ref="1" FirstByte="5"/>
+<DataItem Name="CANDiagMuxFrame.BUS OFF" Ref="1" FirstByte="6"/>
+<DataItem Name="CANDiagMuxFrame.C_BUS OFF" Ref="1" FirstByte="6" BitOffset="1"/>
+<DataItem Name="CANDiagMuxFrame.M_BUS OFF" Ref="1" FirstByte="6" BitOffset="2"/>
+<DataItem Name="CANDiagMuxFrame.Mute Module" Ref="1" FirstByte="7"/>
+<DataItem Name="CANDiagMuxFrame.C_Mute" Ref="1" FirstByte="7" BitOffset="1"/>
+<DataItem Name="CANDiagMuxFrame.M_Mute" Ref="1" FirstByte="7" BitOffset="2"/>
+<DataItem Name="CANDiagMuxFrame.Procedure ABS_VDC Absent" Ref="1" FirstByte="9"/>
+<DataItem Name="CANDiagMuxFrame.C_Absent ABS_VDC" Ref="1" FirstByte="9" BitOffset="1"/>
+<DataItem Name="CANDiagMuxFrame.M_Absent ABS_VDC" Ref="1" FirstByte="9" BitOffset="2"/>
+<DataItem Name="CANDiagMuxFrame.Procedure METER Absent" Ref="1" FirstByte="10"/>
+<DataItem Name="CANDiagMuxFrame.C_Absent METER" Ref="1" FirstByte="10" BitOffset="1"/>
+<DataItem Name="CANDiagMuxFrame.M_Absent METER" Ref="1" FirstByte="10" BitOffset="2"/>
+<DataItem Name="CANDiagMuxFrame.Procedure BCM Absent" Ref="1" FirstByte="11"/>
+<DataItem Name="CANDiagMuxFrame.C_Absent BCM" Ref="1" FirstByte="11" BitOffset="1"/>
+<DataItem Name="CANDiagMuxFrame.M_Absent BCM" Ref="1" FirstByte="11" BitOffset="2"/>
+<DataItem Name="CANDiagMuxFrame.Procedure AIRBAG Absent" Ref="1" FirstByte="12"/>
+<DataItem Name="CANDiagMuxFrame.C_Absent AIRBAG" Ref="1" FirstByte="12" BitOffset="1"/>
+<DataItem Name="CANDiagMuxFrame.M_Absent AIRBAG" Ref="1" FirstByte="12" BitOffset="2"/>
+<DataItem Name="CANDiagMuxFrame.Procedure EPS Absent" Ref="1" FirstByte="25"/>
+<DataItem Name="CANDiagMuxFrame.C_Absent EPS" Ref="1" FirstByte="25" BitOffset="1"/>
+<DataItem Name="CANDiagMuxFrame.M_Absent EPS" Ref="1" FirstByte="25" BitOffset="2"/>
+<DataItem Name="CANDiagMuxFrame.Procedure EVC Absent" Ref="1" FirstByte="8"/>
+<DataItem Name="CANDiagMuxFrame.M_Absent EVC" Ref="1" FirstByte="8" BitOffset="2"/>
+<DataItem Name="CANDiagMuxFrame.C_Absent EVC" Ref="1" FirstByte="8" BitOffset="1"/>
+</Received>
+</Request>
+<Request Name="DataRead.P+B23:I24rogramming operation fingerprint">
+
+<Sent>
+<SentBytes>22F010</SentBytes>
+</Sent>
+<Received MinBytes="19">
+<ReplyBytes>62F010</ReplyBytes>
+<DataItem Name="P+B23:I24rogramming operation fingerprint" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.IndexSrvData">
+
+<Sent>
+<SentBytes>22F011</SentBytes>
+</Sent>
+<Received MinBytes="80">
+<ReplyBytes>62F011</ReplyBytes>
+<DataItem Name="IndexSrvData" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerSparePartNumber(Renault)">
+
+<Sent>
+<SentBytes>22F187</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F187</ReplyBytes>
+<DataItem Name="vehicleManufacturerSparePartNumber(Renault)" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufactureECUSoftwareNumber">
+
+<Sent>
+<SentBytes>22F188</SentBytes>
+</Sent>
+<Received MinBytes="32">
+<ReplyBytes>62F188</ReplyBytes>
+<DataItem Name="vehicleManufactureECUSoftwareNumber.ConfigurationFileReferenceLink-RUC" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierIdentifier">
+
+<Sent>
+<SentBytes>22F18A</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>62F18A</ReplyBytes>
+<DataItem Name="systemSupplierIdentifier" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ECUSerialNumber">
+
+<Sent>
+<SentBytes>22F18C</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<ReplyBytes>62F18C</ReplyBytes>
+<DataItem Name="ECUSerialNumber" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VIN">
+
+<Sent>
+<SentBytes>22F190</SentBytes>
+</Sent>
+<Received MinBytes="20">
+<ReplyBytes>62F190</ReplyBytes>
+<DataItem Name="VIN" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacurerECUHardwareNumber">
+
+<Sent>
+<SentBytes>22F191</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F191</ReplyBytes>
+<DataItem Name="vehicleManufacurerECUHardwareNumber" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+
+<Sent>
+<SentBytes>22F195</SentBytes>
+</Sent>
+<Received MinBytes="32">
+<ReplyBytes>62F195</ReplyBytes>
+<DataItem Name="systemSupplierECUSoftwareVersionNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VDIAG">
+
+<Sent>
+<SentBytes>22F1A0</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62F1A000</ReplyBytes>
+<DataItem Name="VDIAG" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerSparePartNumber_N">
+
+<Sent>
+<SentBytes>22F1A1</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F1A1</ReplyBytes>
+<DataItem Name="vehicleManufacturerSparePartNumber_N" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ConfigurationDataReferenceAfterConfigurationProcess">
+
+<Sent>
+<SentBytes>22F1A2</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F1A200000000000000000000</ReplyBytes>
+<DataItem Name="ConfigurationDataReferenceAfterConfigurationProcess" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Activation">
+
+<Sent>
+<SentBytes>2E010400</SentBytes>
+<DataItem Name="Activation.4G MODULE STATUS" FirstByte="4" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0104</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.VIN">
+
+<Sent>
+<SentBytes>2EF1900000000000000000000000000000000000</SentBytes>
+<DataItem Name="VIN" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6EF190</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.ConfigurationDataReferenceAfterConfigurationProcess">
+
+<Sent>
+<SentBytes>2EF1A200000000000000000000</SentBytes>
+<DataItem Name="ConfigurationDataReferenceAfterConfigurationProcess" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6EF1A2</ReplyBytes>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+<Sent>
+<SentBytes>3E00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.DefaultSession">
+
+<ManuelSend/>
+<Comment><![CDATA[SDS]]></Comment>
+<Sent>
+<SentBytes>1001</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>500100000000</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.ExtendedDiagSession">
+
+<ManuelSend/>
+<Comment><![CDATA[SDS]]></Comment>
+<Sent>
+<SentBytes>1003</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>5003000000000000</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ClearDiagnosticInformation.All">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[ClearDiagnosticInformation]]></Comment>
+<Sent>
+<SentBytes>14FFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>54</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.bootSoftwareIdentification">
+
+<Comment><![CDATA[Service 22 request begin by DataRead.]]></Comment>
+<Sent>
+<SentBytes>22F180</SentBytes>
+</Sent>
+<Received MinBytes="35">
+<ReplyBytes>62F1800000000000</ReplyBytes>
+<DataItem Name="bootSoftwareIdentification" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report number of DTC]]></Comment>
+<Sent>
+<SentBytes>1901FF</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>5901FF000000</ReplyBytes>
+<DataItem Name="DTCCount" FirstByte="5"/>
+<DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDTCInformation]]></Comment>
+<Sent>
+<SentBytes>19020F</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+<DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.AgingCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDTCInformation]]></Comment>
+<Sent>
+<SentBytes>190600000081</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>59060000000080000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.DTCOccurrenceCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDTCInformation]]></Comment>
+<Sent>
+<SentBytes>190600000082</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5906</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDTCInformation]]></Comment>
+<Sent>
+<SentBytes>1906000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>59060000000000000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSupportedDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report supported DTC]]></Comment>
+<Sent>
+<SentBytes>190A</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>590AFF00000000</ReplyBytes>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.User_Collation">
+
+<Sent>
+<SentBytes>220101</SentBytes>
+</Sent>
+<Received MinBytes="103">
+<ReplyBytes>620101</ReplyBytes>
+<DataItem Name="User_Collation.DCM_ID" Ref="1" FirstByte="44"/>
+<DataItem Name="User_Collation.SIM_ID" Ref="1" FirstByte="64"/>
+<DataItem Name="User_Collation.MSN_ID" Ref="1" FirstByte="84"/>
+<DataItem Name="User_Collation.NAVI_ID" Ref="1" FirstByte="24"/>
+</Received>
+</Request>
+<Request Name="DataRead.ECU_setting">
+
+<Sent>
+<SentBytes>220102</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<ReplyBytes>620102</ReplyBytes>
+<DataItem Name="ECU_setting.AUDIO_TYPE" FirstByte="5"/>
+<DataItem Name="ECU_setting.ZONE" FirstByte="6" BitOffset="4"/>
+<DataItem Name="ECU_setting.Division" FirstByte="7" BitOffset="6"/>
+<DataItem Name="ECU_setting.V_CAN_GEN" FirstByte="8" BitOffset="4"/>
+<DataItem Name="ECU_setting.M_CAN" FirstByte="8" BitOffset="6"/>
+<DataItem Name="ECU_setting.K_LineI_F" FirstByte="8" BitOffset="7"/>
+<DataItem Name="ECU_setting.Vehicle_TYPE" FirstByte="9" BitOffset="5"/>
+<DataItem Name="ECU_setting.I_KEY" FirstByte="10" BitOffset="2"/>
+<DataItem Name="ECU_setting.WIFI" FirstByte="10" BitOffset="3"/>
+<DataItem Name="ECU_setting.ANT_TYPE" FirstByte="10" BitOffset="4"/>
+<DataItem Name="ECU_setting.Gateway" FirstByte="10" BitOffset="6"/>
+<DataItem Name="ECU_setting.PhoneAPP" FirstByte="10" BitOffset="7"/>
+<DataItem Name="ECU_setting.Battery" FirstByte="11" BitOffset="3"/>
+<DataItem Name="ECU_setting.Airbag" FirstByte="10" BitOffset="1"/>
+<DataItem Name="ECU_setting.Meter" FirstByte="10"/>
+<DataItem Name="ECU_setting.BCM" FirstByte="11" BitOffset="4"/>
+<DataItem Name="ECU_setting.EPS" FirstByte="11" BitOffset="5"/>
+<DataItem Name="ECU_setting.EVC" FirstByte="11" BitOffset="6"/>
+<DataItem Name="ECU_setting.ABS" FirstByte="11" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.ECU_Configuration">
+
+<Sent>
+<SentBytes>220103</SentBytes>
+</Sent>
+<Received MinBytes="20">
+<ReplyBytes>620103</ReplyBytes>
+<DataItem Name="ECU_Configuration.POWER_MODE" FirstByte="5" BitOffset="6"/>
+<DataItem Name="ECU_Configuration.Remote_Door_Lock_Unlock" FirstByte="13" BitOffset="7"/>
+<DataItem Name="ECU_Configuration.Remote_Horn" FirstByte="14" BitOffset="7"/>
+<DataItem Name="ECU_Configuration.Remote_Engine_Start" FirstByte="15" BitOffset="7"/>
+<DataItem Name="ECU_Configuration.Remote_Vehicle_tracking" FirstByte="18" BitOffset="7"/>
+<DataItem Name="ECU_Configuration.Vehicle_Brand" FirstByte="19" BitOffset="5"/>
+<DataItem Name="ECU_Configuration.Vehicle_Variants" FirstByte="20" BitOffset="2"/>
+</Received>
+</Request>
+<Request Name="DataRead.TEL_ANT_Level">
+
+<Sent>
+<SentBytes>220109</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>620109</ReplyBytes>
+<DataItem Name="TEL_ANT_Level.TELANTLEVEL" FirstByte="4"/>
+<DataItem Name="TEL_ANT_Level.RECEPTIONPOWER" FirstByte="5"/>
+<DataItem Name="TEL_ANT_Level.ERRORRATE" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.Battery_code">
+
+<Sent>
+<SentBytes>220111</SentBytes>
+</Sent>
+<Received MinBytes="103">
+<ReplyBytes>620111</ReplyBytes>
+<DataItem Name="Battery_code.BATTERY_CODE" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.4G_Module_Information">
+
+<Sent>
+<SentBytes>220210</SentBytes>
+</Sent>
+<Received MinBytes="123">
+<ReplyBytes>620210</ReplyBytes>
+<DataItem Name="4G_Module_Information.MANUFACTURE_IDENTIFICATION" Ref="1" FirstByte="4"/>
+<DataItem Name="4G_Module_Information.Model_Identification" Ref="1" FirstByte="44"/>
+<DataItem Name="4G_Module_Information.Revision_Identification" Ref="1" FirstByte="64"/>
+<DataItem Name="4G_Module_Information.IMEI" Ref="1" FirstByte="104"/>
+</Received>
+</Request>
+<Request Name="DataRead.Server_configuration">
+
+<Sent>
+<SentBytes>220211</SentBytes>
+</Sent>
+<Received MinBytes="17">
+<ReplyBytes>620211</ReplyBytes>
+<DataItem Name="Server_configuration.LocalStorageCycle" FirstByte="4"/>
+<DataItem Name="Server_configuration.VehicleDataCycle" FirstByte="5"/>
+<DataItem Name="Server_configuration.Upload_Vehicle_Data_Cycle" FirstByte="6"/>
+<DataItem Name="Server_configuration.Upload_GPS_Data_Cycle" FirstByte="7"/>
+<DataItem Name="Server_configuration.UploadGPSDataCycle" FirstByte="8"/>
+<DataItem Name="Server_configuration.ServerIP" FirstByte="9"/>
+<DataItem Name="Server_configuration.ServerPort" FirstByte="13"/>
+<DataItem Name="Server_configuration.HeartbeatCycle" FirstByte="15"/>
+<DataItem Name="Server_configuration.BOXResponseTimeout" FirstByte="16"/>
+<DataItem Name="Server_configuration.ServerResponseTimeout" FirstByte="17"/>
+</Received>
+</Request>
+<Request Name="DataRead.OperationalReference">
+
+<Sent>
+<SentBytes>22F012</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F012</ReplyBytes>
+<DataItem Name="OperationalReference.Operational_Reference" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Battery_code">
+
+<Sent>
+<SentBytes>2E011100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</SentBytes>
+<DataItem Name="Battery_code.BATTERY_CODE" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0111</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.ECU_setting">
+
+<Sent>
+<SentBytes>2E01020000000000000000</SentBytes>
+<DataItem Name="ECU_setting.AUDIO_TYPE" FirstByte="5"/>
+<DataItem Name="ECU_setting.ZONE" FirstByte="6" BitOffset="4"/>
+<DataItem Name="ECU_setting.Division" FirstByte="7" BitOffset="6"/>
+<DataItem Name="ECU_setting.V_CAN_GEN" FirstByte="8" BitOffset="4"/>
+<DataItem Name="ECU_setting.M_CAN" FirstByte="8" BitOffset="6"/>
+<DataItem Name="ECU_setting.K_LineI_F" FirstByte="8" BitOffset="7"/>
+<DataItem Name="ECU_setting.Vehicle_TYPE" FirstByte="9" BitOffset="5"/>
+<DataItem Name="ECU_setting.Meter" FirstByte="10"/>
+<DataItem Name="ECU_setting.Airbag" FirstByte="10" BitOffset="1"/>
+<DataItem Name="ECU_setting.I_KEY" FirstByte="10" BitOffset="2"/>
+<DataItem Name="ECU_setting.WIFI" FirstByte="10" BitOffset="3"/>
+<DataItem Name="ECU_setting.ANT_TYPE" FirstByte="10" BitOffset="4"/>
+<DataItem Name="ECU_setting.Gateway" FirstByte="10" BitOffset="6"/>
+<DataItem Name="ECU_setting.PhoneAPP" FirstByte="10" BitOffset="7"/>
+<DataItem Name="ECU_setting.Battery" FirstByte="11" BitOffset="3"/>
+<DataItem Name="ECU_setting.BCM" FirstByte="11" BitOffset="4"/>
+<DataItem Name="ECU_setting.EPS" FirstByte="11" BitOffset="5"/>
+<DataItem Name="ECU_setting.EVC" FirstByte="11" BitOffset="6"/>
+<DataItem Name="ECU_setting.ABS" FirstByte="11" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0102</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.ECU_Configuration">
+
+<Sent>
+<SentBytes>2E01030000000000000000000000000000000000</SentBytes>
+<DataItem Name="ECU_Configuration.POWER_MODE" FirstByte="5" BitOffset="6"/>
+<DataItem Name="ECU_Configuration.Remote_Door_Lock_Unlock" FirstByte="13" BitOffset="7"/>
+<DataItem Name="ECU_Configuration.Remote_Horn" FirstByte="14" BitOffset="7"/>
+<DataItem Name="ECU_Configuration.Remote_Engine_Start" FirstByte="15" BitOffset="7"/>
+<DataItem Name="ECU_Configuration.Remote_Vehicle_tracking" FirstByte="18" BitOffset="7"/>
+<DataItem Name="ECU_Configuration.Vehicle_Brand" FirstByte="19" BitOffset="5"/>
+<DataItem Name="ECU_Configuration.Vehicle_Variants" FirstByte="20" BitOffset="2"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0103</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.NetworkRegistrationstatus">
+
+<Sent>
+<SentBytes>220212</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620212</ReplyBytes>
+<DataItem Name="NetworkRegistrationstatus.NetworkRegistrationStatus" Ref="1" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000080</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>59060000000080000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="Routine,ResetToDefault">
+
+<Sent>
+<SentBytes>31000110</SentBytes>
+<DataItem Name="RoutineControlType" FirstByte="2"/>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7100011000</ReplyBytes>
+<DataItem Name="RoutineControlResult" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC_FFDData">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDTCInformation]]></Comment>
+<Sent>
+<SentBytes>1904000000FF</SentBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="23">
+<ReplyBytes>5904000000000104F0D0000000F0D100F0D20000F0D300</ReplyBytes>
+<DataItem Name="FFD_F0D0_Mileage" FirstByte="11"/>
+<DataItem Name="FFD_F0D1_BattVoltage" FirstByte="16"/>
+<DataItem Name="FFD_F0D2_VehicleSpeed" FirstByte="19"/>
+<DataItem Name="FFD_F0D3_TCU_Temperature" FirstByte="23"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufactureECUSoftwareNumber.ConfigurationFileReferenceLink-RUC">
+
+<Sent>
+<SentBytes>22F194</SentBytes>
+</Sent>
+<Received MinBytes="32">
+<ReplyBytes>62F194</ReplyBytes>
+<DataItem Name="vehicleManufactureECUSoftwareNumber.ConfigurationFileReferenceLink-RUC" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="ACC signal did not ON in case of IGN_ON" DTC="55808" OBD="55808" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="Antenna open circuit" DTC="55816" OBD="55816" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="Antenna short circuit" DTC="55815" OBD="55815" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="CAN communication error" DTC="53248" OBD="53248" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="DID is not configured" DTC="54049" OBD="54049" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="85">
+</Test>
+</Device>
+<Device Name="DTC_DCM_FLASH_ERROR" DTC="55840" OBD="55840" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="Failed to read SIM card" DTC="55843" OBD="55843" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="GPS antenna is not connected" DTC="55817" OBD="55817" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="0">
+</Test>
+</Device>
+<Device Name="Internal battery temperature is too high" DTC="44784" OBD="44784" Type="4">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="22">
+</Test><Test Type="73">
+</Test><Test Type="74">
+</Test><Test Type="75">
+</Test>
+</Device>
+<Device Name="MCU and 4G module communication error" DTC="55810" OBD="55810" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="MCU CAN control register read and write failed" DTC="53264" OBD="53264" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="No SIM card detected" DTC="55842" OBD="55842" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="Power supply voltage is too high" DTC="55847" OBD="55847" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="Power supply voltage is too low" DTC="55846" OBD="55846" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="RTC module Error" DTC="55849" OBD="55849" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="RTM temperature is too high" DTC="55848" OBD="55848" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="SIM card status is Locked" DTC="55844" OBD="55844" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="VIN code is not configured" DTC="55812" OBD="55812" Type="2">
+<Mnemonic>DTC</Mnemonic>
+
+<Test Type="1">
+</Test>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"/></ddt:Target></xml>

@@ -1,0 +1,4660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.0.0.0" date="2009-04-10T11:20"/>
+<ddt:Target Name="USM Temic JR95-J96-L38-L43 SW0907" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="valerie.russo@renault.com" href="USM_Temic_JR95_J96_L38_L43_SW0907SV400_20090513T084454.xml" upload="5/13/2009" group="UPC"><Description><![CDATA[USM Temic
+
+Continental TEMIC:
+M. Solf
+tél.: +33 6 14 42 15 87
+michael.solf@contiautomotive.com
+
+Th. Kammerl
+tél : +49 841 881 2812
+thomas.kammerl@contiautomotive.com
+
+RENAULT:
+
+V. RUSSO
+tél : 01 76 85 73 58
+valerie.russo@renault.com
+
+A. GONCALVES 
+tél : 01 76 85 78 61
+anabela.goncalves@renault.com
+]]></Description>
+<Projects xmlns=""><x38/><x43/><x47/><x95/><x96/></Projects>
+<Function Name="UPC" Address="39"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>10/04/2009 13:40:36</DateOfficialisation>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="500000" Multipoint="1">
+<SendId>
+<CANId Value="1869"/>
+</SendId><ReceiveId>
+<CANId Value="1901"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="5" Supplier="AMR" Soft="0907" Version="0100"/><AutoIdent DiagVersion="5" Supplier="AMR" Soft="0907" Version="0200"/><AutoIdent DiagVersion="9" Supplier="AMR" Soft="0907" Version="0300"/><AutoIdent DiagVersion="9" Supplier="AMR" Soft="0907" Version="0400"/></AutoIdents>
+<Datas>
+
+<Data Name="Session Name">
+<Mnemonic>SDS</Mnemonic>
+<Bits>
+<List>
+<Item Value="129" Text="Default Session"/>
+<Item Value="133" Text="Programming Session for reprogrammable ECU"/>
+<Item Value="134" Text="Engineering Session"/>
+<Item Value="192" Text="After Sales Manufacture Session"/>
+<Item Value="240" Text="Supplier Session"/></List>
+</Bits>
+</Data>
+<Data Name="Output Control Command">
+<Bits>
+<List>
+<Item Value="0" Text="Start Temporary"/>
+<Item Value="32" Text="Start Permanent"/>
+<Item Value="1" Text="Status"/>
+<Item Value="17" Text="Stop"/>
+<Item Value="250" Text="Reset timer $80"/>
+<Item Value="251" Text="Simulated switched closed"/>
+<Item Value="252" Text="Simulated switched opened"/></List>
+</Bits>
+</Data>
+<Data Name="Output Control Status">
+<Comment><![CDATA[IO status]]></Comment>
+<Bits>
+<List>
+<Item Value="1" Text="Running"/>
+<Item Value="2" Text="Stopped"/>
+<Item Value="17" Text="Manually Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Output Control.tempON">
+<Comment><![CDATA[TempOn: Activation time (resolution:640 ms)]]></Comment>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Output Temporary Control List">
+<Description><![CDATA[<P><STRONG>Temporary activation</STRONG></P>
+<P><STRONG>Time base 1 seconds</STRONG></P>
+<UL>
+<LI>Fan Unit, Wiper is activated using transition though Low Speed for High speed request 
+<LI>The wiper stops in Stop Position 
+<LI>Wiper protection is availabled during activation using diagnosis</LI></UL>
+<P>&nbsp;</P>
+<P>&nbsp;</P>]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="CONTACTOR_GND_SET"/>
+<Item Value="2" Text="CLOSE_CONTACTOR"/>
+<Item Value="3" Text="OPEN_CONTACTOR"/>
+<Item Value="4" Text="DO_O_FR_WIPER_HI"/>
+<Item Value="5" Text="DO_O_FR_WIPER"/>
+<Item Value="6" Text="DO_O_STARTER"/>
+<Item Value="7" Text="DO_LIGHT_HBEAM_LAMPS"/>
+<Item Value="8" Text="DO_O_AC_CLUTCH"/>
+<Item Value="9" Text="V_B_MotorFanHigh_relay_req"/>
+<Item Value="10" Text="V_B_MotorFanExternal2_relay_req"/>
+<Item Value="11" Text="V_B_MotorFanExternal1_relay_req"/>
+<Item Value="12" Text="DO_O_MOTOR_FAN_HI"/>
+<Item Value="13" Text="DO_O_MOTOR_FAN_LO"/>
+<Item Value="14" Text="DO_LIGHT_POSITION_ON"/>
+<Item Value="15" Text="DO_IGN_RELAY"/>
+<Item Value="16" Text="DO_IGN_OFF"/>
+<Item Value="17" Text="CONTACTOR_OL_DIAG_SET"/>
+<Item Value="18" Text="DO_LIGHT_FR_FOG_LAMPS"/>
+<Item Value="19" Text="DO_BATT_VOLTAGE_ON"/>
+<Item Value="20" Text="DO_OL_DET"/>
+<Item Value="21" Text="DO_L_WASHER"/>
+<Item Value="22" Text="DO_H_WASHER"/>
+<Item Value="23" Text="AC_Valve_PWM"/>
+<Item Value="24" Text="V_PWM_LowBeam_LH_cmd"/>
+<Item Value="25" Text="V_PWM_LowBeam_RH_cmd"/>
+<Item Value="26" Text="V_PWM_Dtrl_cmd"/>
+<Item Value="27" Text="V_B_LBEAM_LH_ControlDiag"/>
+<Item Value="28" Text="V_B_LBEAM_RH_ControlDiag"/>
+<Item Value="29" Text="V_B_DTRL_ControlDiag"/>
+<Item Value="30" Text="V_U_batt_req"/>
+<Item Value="31" Text="V_U_alt_req"/>
+<Item Value="33" Text="DO_REL_O_FR_WIPER_RELAY"/>
+<Item Value="34" Text="DO_SPARE_RELAY"/>
+<Item Value="35" Text="DO_WIPER_DEICER_RELAY"/></List>
+</Bits>
+</Data>
+<Data Name="VIN">
+<Comment><![CDATA[Default value: $FF]]></Comment>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="VIN CRC">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="E_B_GearBoxType">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Manual Gearbox"/>
+<Item Value="1" Text="Automatic Gearbox"/></List>
+</Bits>
+</Data>
+<Data Name="E_B_ECMReset">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Without condition on &quot;ECM reset&quot;"/>
+<Item Value="1" Text="With condition on &quot;ECM reset&quot;"/></List>
+</Bits>
+</Data>
+<Data Name="E_B_LCS">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Without LCS"/>
+<Item Value="1" Text="With  LCS"/></List>
+</Bits>
+</Data>
+<Data Name="E_K_CompType">
+<Bytes count="1"/>
+</Data>
+<Data Name="StarterStatus">
+<Bits count="2">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="Short relaxation"/>
+<Item Value="2" Text="Long relaxation"/>
+<Item Value="3" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="FrontWiperStatus">
+<Bits count="2">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="LS"/>
+<Item Value="2" Text="HS"/>
+<Item Value="3" Text="Unavailable"/></List>
+</Bits>
+</Data>
+<Data Name="FrontWiperStopPosition">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not Reached"/>
+<Item Value="1" Text="Reached"/></List>
+</Bits>
+</Data>
+<Data Name="FrontWiperProtection">
+<Bits count="2">
+<List>
+<Item Value="0" Text="No protection"/>
+<Item Value="1" Text="LS protection"/>
+<Item Value="2" Text="HS protection"/>
+<Item Value="3" Text="Blocked protection"/></List>
+</Bits>
+</Data>
+<Data Name="IgnitionSupplyConfirmation">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No primary ignition supply"/>
+<Item Value="1" Text="Primary ignition supply"/></List>
+</Bits>
+</Data>
+<Data Name="NeutralContact">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Reserved"/>
+<Item Value="1" Text="Not reached"/>
+<Item Value="2" Text="Reached"/>
+<Item Value="3" Text="Unavailable"/></List>
+</Bits>
+</Data>
+<Data Name="InstantMechanicalPowerByAlt">
+<Bits>
+<Scaled Unit="Watts" Step=" 40"/>
+</Bits>
+</Data>
+<Data Name="FrontWipingRequest">
+<Bits count="3">
+<List>
+<Item Value="0" Text="In Stop Position"/>
+<Item Value="1" Text="Forced to Stop"/>
+<Item Value="2" Text="One time low speed requested"/>
+<Item Value="3" Text="One time high speed requested"/>
+<Item Value="4" Text="Unavailable"/>
+<Item Value="5" Text="Reserved"/>
+<Item Value="6" Text="Low Speed requested"/>
+<Item Value="7" Text="High Speed requested"/></List>
+</Bits>
+</Data>
+<Data Name="HeadLampsWasherRequest">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Headlamps washer not requested"/>
+<Item Value="1" Text="headlamps washer requested"/></List>
+</Bits>
+</Data>
+<Data Name="ClutchSwitchMaximumTravel">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Not used"/>
+<Item Value="1" Text="Maximum clutch travel switch not active"/>
+<Item Value="2" Text="Maximum clutch travel switch active"/>
+<Item Value="3" Text="Unavailable"/></List>
+</Bits>
+</Data>
+<Data Name="DistanceTotalizer">
+<Bits count="28">
+<Scaled Unit="km" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="WakeUpType">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Customer wake up"/>
+<Item Value="1" Text="Technical wake up"/></List>
+</Bits>
+</Data>
+<Data Name="PositionLightsRequest">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Position Lights not requested"/>
+<Item Value="1" Text="Position Lights requested"/></List>
+</Bits>
+</Data>
+<Data Name="LowBeamRequest">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Low beam not requested"/>
+<Item Value="1" Text="Low Beam requested"/></List>
+</Bits>
+</Data>
+<Data Name="HighBeamRequest">
+<Bits count="1">
+<List>
+<Item Value="0" Text="High Beam not requested"/>
+<Item Value="1" Text="High Beam requested"/></List>
+</Bits>
+</Data>
+<Data Name="FrontFogLightsRequest">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Front Fog not requested"/>
+<Item Value="1" Text="Front fog requested"/></List>
+</Bits>
+</Data>
+<Data Name="EngineCoolantTemp">
+<Comment><![CDATA[$FF: invalid]]></Comment>
+<Bits>
+<Scaled Unit="°C" Offset="-40"/>
+</Bits>
+</Data>
+<Data Name="VehicleSpeed">
+<Bits count="16">
+<Scaled Unit="km/h" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="EngineFanSpeedRequest">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Not requested"/>
+<Item Value="1" Text="Low Speed requested"/>
+<Item Value="2" Text="Middle Speed requested [Nissan]"/>
+<Item Value="3" Text="High Speed requested"/></List>
+</Bits>
+</Data>
+<Data Name="ExternalTemp">
+<Bits>
+<Scaled Unit="°C" Offset="-40"/>
+</Bits>
+</Data>
+<Data Name="LowBatteryVoltageDisplay">
+<Bits count="2">
+<List>
+<Item Value="0" Text="No display request"/>
+<Item Value="1" Text="Battery weak"/>
+<Item Value="2" Text="Battery weak : start engine"/>
+<Item Value="3" Text="Battery in charge"/></List>
+</Bits>
+</Data>
+<Data Name="RearGearEngaged">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Not used"/>
+<Item Value="1" Text="Not engaged"/>
+<Item Value="2" Text="Engaged"/>
+<Item Value="3" Text="Unavailable"/></List>
+</Bits>
+</Data>
+<Data Name="WeakOilPressureWarning">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No Weak Oil Pressure Warning"/>
+<Item Value="1" Text="Weak Oil Pressure Warning"/></List>
+</Bits>
+</Data>
+<Data Name="C_B_StarterProtection">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No activation of starter protection"/>
+<Item Value="1" Text="Activation of starter protection"/></List>
+</Bits>
+</Data>
+<Data Name="routineEntryOption">
+<Mnemonic>RENTOPT1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Perform routine requested"/>
+<Item Value="1" Text="Status request"/></List>
+</Bits>
+</Data>
+<Data Name="routineEntryStatus">
+<Mnemonic>RENTSTAT1</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Routine in progress"/>
+<Item Value="2" Text="Routine completed and OK"/>
+<Item Value="3" Text="Routine completed and not OK"/></List>
+</Bits>
+</Data>
+<Data Name="controlType">
+<Mnemonic>CTRLTP</Mnemonic>
+<Bits>
+<List/>
+</Bits>
+</Data>
+<Data Name="communicationType">
+<Comment><![CDATA[$01]]></Comment>
+<Bits>
+<List/>
+</Bits>
+</Data>
+<Data Name="datarecord">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="V_TM_TimeAtOpening_mem">
+<Comment><![CDATA[Variable which contains the time of the last opening of the BDU during parking time (bad SOC)]]></Comment>
+<Bits count="24">
+<Scaled Unit="min"/>
+</Bits>
+</Data>
+<Data Name="traceability_ManufactureDate">
+<Bytes count="6" ascii="1"/>
+</Data>
+<Data Name="TestResult">
+<Bits>
+<List>
+<Item Value="1" Text="Test Ok (Difference between actual and calculated value of BATT_Voltage_Sense is not more than 0.3)"/>
+<Item Value="2" Text="Test NOK(Difference between actual and calculated value of BATT_Voltage_Sense is more than 0.3)"/></List>
+</Bits>
+</Data>
+<Data Name="Traceability_padding">
+<Comment><![CDATA[Traceability_padding= $20 $20 $20 $20]]></Comment>
+<Bytes count="4"/>
+</Data>
+<Data Name="V_U_alt_req_">
+<Bits count="6">
+<Scaled Step=" .1" Offset=" 10.6"/>
+</Bits>
+</Data>
+<Data Name="V_U_batt_req">
+<Bits count="6">
+<Scaled Step=" .1" Offset=" 10.6"/>
+</Bits>
+</Data>
+<Data Name="V_U_batt_USM_flt">
+<Comment><![CDATA[filtered "I_ENERGY_BATTERY_VOLTAGE"]]></Comment>
+<Bits count="10">
+<Scaled Unit="V" DivideBy=" 64"/>
+</Bits>
+</Data>
+<Data Name="V_B_DTRL_ControlDiag">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="V_B_MotorFanExternal1_relay_req">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="V_B_MotorFanExternal2_relay_req">
+<Comment><![CDATA[Duty Cycle is either 0% or 100%]]></Comment>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="V_B_MotorFanHigh_relay_req">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="V_B_Ignition_relay_cmd">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="V_B_LBEAM_LH_ControlDiag">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="V_B_LBEAM_RH_ControlDiag">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="V_B_LampWasherLeft_relay_req">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="V_PWM_LowBeam_LH_cmd">
+<Comment><![CDATA[Value range is zero to 100.]]></Comment>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="V_PWM_LowBeam_RH_cmd">
+<Comment><![CDATA[Value range is zero to 100.]]></Comment>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="V_B_AlertBDU">
+<Comment><![CDATA[Related to the model variable "V_B_AlerteBDU", which should become named "V_B_AlertBDU", too!]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="no alert"/>
+<Item Value="1" Text="alert"/></List>
+</Bits>
+</Data>
+<Data Name="V_PWM_DTRL_cmd">
+<Comment><![CDATA[Value range is zero to 100.]]></Comment>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="traceability_SerialNumber">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="CAN_BCM_missing">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CAN_Bus_OFF_parameter">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CAN_ECM_missing">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CAN_MessageSet_Ref">
+<Comment><![CDATA[Value: $95 $02]]></Comment>
+<Bytes count="2"/>
+</Data>
+<Data Name="BCM_WakeUpSleepCommand">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Go to sleep"/>
+<Item Value="1" Text="reserved"/>
+<Item Value="2" Text="reserved2"/>
+<Item Value="3" Text="Wake Up"/></List>
+</Bits>
+</Data>
+<Data Name="AbsoluteTimeSince1rstIgnition">
+<Bits count="24">
+<Scaled Unit="mn"/>
+</Bits>
+</Data>
+<Data Name="AllowedPowerGradient">
+<Bits>
+<Scaled Unit="W/s" Step=" 40"/>
+</Bits>
+</Data>
+<Data Name="AlternatorMaximumPower">
+<Bits>
+<Scaled Unit="watts" Step=" 40"/>
+</Bits>
+</Data>
+<Data Name="ACCompAuthorized">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Ac compressor not authorized"/>
+<Item Value="1" Text="Ac compressor authorized"/></List>
+</Bits>
+</Data>
+<Data Name="ACCompClutchRequest">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Ac compressor not requested"/>
+<Item Value="1" Text="Ac compressor requested"/></List>
+</Bits>
+</Data>
+<Data Name="ACCompValveRequest">
+<Bits count="7">
+<Scaled Unit="A" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="ACCompWorkingMode">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Running in idle mode or stopped"/>
+<Item Value="1" Text="Running not in idle mode"/></List>
+</Bits>
+</Data>
+<Data Name="ACCompClutchDefault">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No AC Compressor clutch default"/>
+<Item Value="1" Text="AC Compressor clutch default"/></List>
+</Bits>
+</Data>
+<Data Name="ACCompClutchStatus">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Compressor clutch off"/>
+<Item Value="1" Text="Compressor clutch on"/></List>
+</Bits>
+</Data>
+<Data Name="ACCompValveCurrent">
+<Bits count="7">
+<Scaled Unit="A" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="ACCompValveDefault">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No AC Compressor valve default"/>
+<Item Value="1" Text="AC Compressor valve default"/></List>
+</Bits>
+</Data>
+<Data Name="AlternatorLoad">
+<Comment><![CDATA[$FF: invalid]]></Comment>
+<Bits>
+<Scaled Unit="%" Step=" .390625"/>
+</Bits>
+</Data>
+<Data Name="BatteryWarning">
+<Comment><![CDATA[Content may be received from the model variable "SUSMAppl305_Relational_Operator".]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No Battery Warning requested"/>
+<Item Value="1" Text="Battery Warning requested"/></List>
+</Bits>
+</Data>
+<Data Name="CAN_Mute_parameter">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="RoutineExitStatus">
+<Mnemonic>REXITSTAT1</Mnemonic>
+<Bits>
+<List>
+<Item Value="2" Text="Routine completed and OK"/>
+<Item Value="3" Text="Routine completed and not OK"/></List>
+</Bits>
+</Data>
+<Data Name="MemorySize">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="MemoryAdress">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="E_B_OilPressureFailureInhibition">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Oil Pressure Failure is not inhibited"/>
+<Item Value="1" Text="Oil Pressure Failure is inhibited"/></List>
+</Bits>
+</Data>
+<Data Name="Output Digital Control List">
+<Comment><![CDATA[All digital outputs of the ECU]]></Comment>
+<Bits>
+<List>
+<Item Value="1" Text="CONTACTOR_GND_SET"/>
+<Item Value="2" Text="CLOSE_CONTACTOR"/>
+<Item Value="3" Text="OPEN_CONTACTOR"/>
+<Item Value="4" Text="DO_O_FR_WIPER_HI"/>
+<Item Value="5" Text="DO_O_FR_WIPER"/>
+<Item Value="6" Text="DO_O_STARTER"/>
+<Item Value="7" Text="DO_LIGHT_HBEAM_LAMPS"/>
+<Item Value="8" Text="DO_O_AC_CLUTCH"/>
+<Item Value="10" Text="EXTERNAL_FAN_RELAY_3"/>
+<Item Value="12" Text="DO_MOTOR_FAN_RELAY"/>
+<Item Value="13" Text="DO_O_MOTOR_FAN_HIGH"/>
+<Item Value="14" Text="DO_MOTOR_FAN_LO"/>
+<Item Value="15" Text="DO_LIGHT_POSITION_ON"/>
+<Item Value="16" Text="DO_IGN_RELAY"/>
+<Item Value="17" Text="DO_IGN_OFF"/>
+<Item Value="19" Text="CONTACTOR_OL_DIAG_SET"/>
+<Item Value="20" Text="DO_LIGHT_FR_FOG_LAMPS"/>
+<Item Value="22" Text="DO_REL_O_FR_WIPER_RELAY"/>
+<Item Value="23" Text="DO_OL_DET"/>
+<Item Value="24" Text="OFFSET_ON_SET"/>
+<Item Value="26" Text="DO_L_WASHER"/>
+<Item Value="27" Text="DO_H_WASHER"/>
+<Item Value="30" Text="INRUSH_SENSE_1_SET"/>
+<Item Value="31" Text="INRUSH_SENSE_2_SET"/>
+<Item Value="35" Text="DO_WIPER_DEICER_RELAY"/></List>
+</Bits>
+</Data>
+<Data Name="Output Voltage Control List">
+<Bits>
+<List/>
+</Bits>
+</Data>
+<Data Name="StartingMode_BCM_R">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Engine stopped request"/>
+<Item Value="1" Text="No request"/>
+<Item Value="2" Text="Ignition request"/>
+<Item Value="3" Text="Starting request"/></List>
+</Bits>
+</Data>
+<Data Name="DayRunningLightRequest">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No DRL requested"/>
+<Item Value="1" Text="DRL  requested"/></List>
+</Bits>
+</Data>
+<Data Name="DiagMuxOn_BCM">
+<Bits count="1">
+<List>
+<Item Value="0" Text="counting and storage of CAN mute/absent failures  masked"/>
+<Item Value="1" Text="counting and storage of CAN mute/absent failures not masked"/></List>
+</Bits>
+</Data>
+<Data Name="E_B_EnableDebugFrames">
+<Bits count="1">
+<List>
+<Item Value="0" Text="no emission/debug frames disabled"/>
+<Item Value="1" Text="emission/debug frames enabled"/></List>
+</Bits>
+</Data>
+<Data Name="OilPressureSwitchFaultDisplay">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No oil pressure switch fault warning requested"/>
+<Item Value="1" Text="Oil pressure switch fault warning requested"/></List>
+</Bits>
+</Data>
+<Data Name="E_B_EEM_FailureInhibition">
+<Comment><![CDATA[Bits are not yet defined at models! EEPROM space has been already occupied.]]></Comment>
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCStatusMask">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="MiniConsumptionRequest">
+<Bits count="2">
+<List>
+<Item Value="0" Text="reserved"/>
+<Item Value="1" Text="No minimum consumption requested"/>
+<Item Value="2" Text="Minimum consumption requested"/>
+<Item Value="3" Text="reserved_"/></List>
+</Bits>
+</Data>
+<Data Name="IgnitionControlState">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Primary ign supply relay ctrl OFF"/>
+<Item Value="1" Text="Primary ign supply relay ctrl ON"/></List>
+</Bits>
+</Data>
+<Data Name="E_B_NeutralNeverReachedInhibition">
+<Bits count="1">
+<List>
+<Item Value="0" Text="no inhibition of neutral contact never reached diagnosis"/>
+<Item Value="1" Text="inhibition of neutral contact never reached diagnosis"/></List>
+</Bits>
+</Data>
+<Data Name="I_ENERGY_BATTERY_VOLTAGE">
+<Comment><![CDATA[Value range is 0 to 16V. Corresponds to C5 RSA batt_voltage_sense]]></Comment>
+<Bits count="11">
+<Scaled Unit="V"/>
+</Bits>
+</Data>
+<Data Name="I_BATT1_VOLTAGE_POS_BDU">
+<Comment><![CDATA[filtered "AI_BATT1" Corresponds to batt1_voltage_sense in RSA C6 xml file]]></Comment>
+<Bits count="10">
+<Scaled Unit="V"/>
+</Bits>
+</Data>
+<Data Name="DeliveryModeInformation">
+<Bits count="1">
+<List>
+<Item Value="0" Text="customer mode"/>
+<Item Value="1" Text="delivery mode"/></List>
+</Bits>
+</Data>
+<Data Name="EngineRPM_CAN">
+<Bits count="16">
+<Scaled Unit="tr/min" DivideBy=" 8"/>
+</Bits>
+</Data>
+<Data Name="EngineStatus_CAN">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Stopped"/>
+<Item Value="1" Text="Reserved"/>
+<Item Value="2" Text="Running"/>
+<Item Value="3" Text="Cranking"/></List>
+</Bits>
+</Data>
+<Data Name="E_B_FailureInhibition[00..07]">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="E_B_FailureInhibition[08..15]">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="E_B_FailureInhibition[16..23]">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="E_B_FailureInhibition[24..31]">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="E_B_FailureInhibition[32..39]">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="E_B_FailureInhibition[40..47]">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="E_B_FailureInhibition[48..55]">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="E_B_FailureInhibition[56..63]">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="E_B_FailureInhibition[64..71]">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="E_B_FailureInhibition[72..75]">
+<Bits count="4">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="OPEN_CONTACTOR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailed">
+<Comment><![CDATA[Applicable]]></Comment>
+<Mnemonic>TF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedThisMonitoringCycle">
+<Comment><![CDATA[Not applicable]]></Comment>
+<Mnemonic>TFTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.pendingDTC">
+<Comment><![CDATA[Not applicable]]></Comment>
+<Mnemonic>PDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.confirmedDTC">
+<Comment><![CDATA[Applicable]]></Comment>
+<Mnemonic>CDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedSinceLastClear">
+<Comment><![CDATA[Applicable]]></Comment>
+<Mnemonic>TNCSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedSinceLastClear">
+<Comment><![CDATA[Applicable]]></Comment>
+<Mnemonic>TFSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+<Comment><![CDATA[Not applicable]]></Comment>
+<Mnemonic>TNCTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.warningIndicatorRequested">
+<Comment><![CDATA[Applicable]]></Comment>
+<Mnemonic>WIR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.Category">
+<Bits count="4">
+<List>
+<Item Value="0" Text="General Failure Information"/>
+<Item Value="1" Text="General Electrical Failures"/>
+<Item Value="2" Text="General Signal Failures"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="15" Text="Vehicle manufacturer / System supplier specific"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType">
+<Bits>
+<List>
+<Item Value="0" Text="Device and failure type ODB codding"/>
+<Item Value="1" Text="General Electrical Failure"/>
+<Item Value="2" Text="General signal failure"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="17" Text="circuit short to ground"/>
+<Item Value="18" Text="circuit short to battery"/>
+<Item Value="19" Text="circuit open"/>
+<Item Value="20" Text="circuit short to ground or open"/>
+<Item Value="21" Text="circuit short to battery or open"/>
+<Item Value="22" Text="circuit voltage below threshold"/>
+<Item Value="23" Text="circuit voltage above threshold"/>
+<Item Value="24" Text="circuit current below threshold"/>
+<Item Value="25" Text="circuit current above threshold"/>
+<Item Value="26" Text="circuit resistance below threshold"/>
+<Item Value="27" Text="circuit resistance above threshold"/>
+<Item Value="28" Text="circuit voltage out of range"/>
+<Item Value="29" Text="circuit current out of range"/>
+<Item Value="30" Text="circuit resistance out of range"/>
+<Item Value="31" Text="circuit intermittent"/>
+<Item Value="33" Text="signal amplitude &lt; minimum"/>
+<Item Value="34" Text="signal amplitude &gt; maximum"/>
+<Item Value="35" Text="signal stuck low"/>
+<Item Value="36" Text="signal stuck high"/>
+<Item Value="37" Text="signal shape / waveform failure"/>
+<Item Value="38" Text="signal rate of change below threshold"/>
+<Item Value="39" Text="signal rate of change above threshold"/>
+<Item Value="40" Text="signal bias level out of range / zero adjustment failure"/>
+<Item Value="41" Text="signal signal invalid"/>
+<Item Value="47" Text="signal erratic"/>
+<Item Value="49" Text="no signal"/>
+<Item Value="50" Text="signal low time &lt; minimum"/>
+<Item Value="51" Text="signal low time &gt; maximum"/>
+<Item Value="52" Text="signal high time &lt; minimum"/>
+<Item Value="53" Text="signal high time &gt; maximum"/>
+<Item Value="54" Text="signal frequency too low"/>
+<Item Value="55" Text="signal frequency too high"/>
+<Item Value="56" Text="signal frequency incorrect"/>
+<Item Value="57" Text="incorrect has too few pulses"/>
+<Item Value="58" Text="incorrect has too many pulses"/>
+<Item Value="65" Text="general checksum failure"/>
+<Item Value="66" Text="general memory failure"/>
+<Item Value="67" Text="special memory failure"/>
+<Item Value="68" Text="data memory failure"/>
+<Item Value="69" Text="program memory failure"/>
+<Item Value="70" Text="calibration / parameter memory failure"/>
+<Item Value="71" Text="watchdog / safety µC failure"/>
+<Item Value="72" Text="supervision software failure"/>
+<Item Value="73" Text="internal electronic failure"/>
+<Item Value="74" Text="incorrect component installed"/>
+<Item Value="75" Text="over temperature"/>
+<Item Value="81" Text="not programmed"/>
+<Item Value="82" Text="not activated"/>
+<Item Value="83" Text="deactivated"/>
+<Item Value="84" Text="missing calibration"/>
+<Item Value="85" Text="not configured"/>
+<Item Value="97" Text="signal calculation failure"/>
+<Item Value="98" Text="signal compare failure"/>
+<Item Value="99" Text="circuit / component protection time-out"/>
+<Item Value="100" Text="signal plausibility failure"/>
+<Item Value="101" Text="signal has too few transitions / events"/>
+<Item Value="102" Text="signal has too many transitions / events"/>
+<Item Value="103" Text="signal incorrect after event"/>
+<Item Value="104" Text="event information"/>
+<Item Value="113" Text="actuator stuck"/>
+<Item Value="114" Text="actuator stuck open"/>
+<Item Value="115" Text="actuator stuck closed"/>
+<Item Value="116" Text="actuator slipping"/>
+<Item Value="117" Text="emergency position not reachable"/>
+<Item Value="118" Text="wrong mounting position"/>
+<Item Value="119" Text="commanded position not reachable"/>
+<Item Value="120" Text="alignment or adjustment incorrect"/>
+<Item Value="121" Text="mechanical linkage failure"/>
+<Item Value="122" Text="fluid leak or seal failure"/>
+<Item Value="123" Text="low fluid level"/>
+<Item Value="129" Text="invalid serial data received"/>
+<Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+<Item Value="131" Text="value of signal protection calculation incorrect"/>
+<Item Value="132" Text="signal below allowable range"/>
+<Item Value="133" Text="signal above allowable range"/>
+<Item Value="134" Text="signal invalid"/>
+<Item Value="135" Text="missing message"/>
+<Item Value="136" Text="bus off"/>
+<Item Value="143" Text="erratic"/>
+<Item Value="145" Text="parametric"/>
+<Item Value="146" Text="performance or incorrect operation"/>
+<Item Value="147" Text="no operation"/>
+<Item Value="148" Text="unexpected operation"/>
+<Item Value="149" Text="incorrect assembly"/>
+<Item Value="150" Text="component internal failure"/>
+<Item Value="151" Text="Component or system operation obstructed or blocked"/>
+<Item Value="152" Text="component or system over temperature"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceAndFailureTypeOBD">
+<Comment><![CDATA[Not applicable]]></Comment>
+<Bits count="16">
+<List>
+<Item Value="1" Text="Fuel Volume Regulator Control Circuit/Open"/>
+<Item Value="2" Text="Fuel Volume Regulator Control Circuit Range/Performance"/>
+<Item Value="3" Text="Fuel Volume Regulator Control Circuit Low"/>
+<Item Value="4" Text="Fuel Volume Regulator Control Circuit High"/>
+<Item Value="5" Text="Fuel Shutoff Valve &quot;A&quot; Control Circuit/Open"/>
+<Item Value="6" Text="Fuel Shutoff Valve &quot;A&quot; Control Circuit Low"/>
+<Item Value="7" Text="Fuel Shutoff Valve &quot;A&quot; Control Circuit High"/>
+<Item Value="8" Text="Engine Position System Performance Bank 1"/>
+<Item Value="9" Text="Engine Position System Performance Bank 2"/>
+<Item Value="10" Text="&quot;A&quot; Camshaft Position Slow Response Bank 1"/>
+<Item Value="11" Text="&quot;B&quot; Camshaft Position Slow Response Bank 1"/>
+<Item Value="12" Text="&quot;A&quot; Camshaft Position Slow Response Bank 2"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.ManufacturerOrSupplier">
+<Comment><![CDATA[Not applicable]]></Comment>
+<Bits count="4">
+<List>
+<Item Value="0" Text="Specific Default 0"/>
+<Item Value="1" Text="Specific Default 1"/>
+<Item Value="2" Text="Specific Default 2"/>
+<Item Value="3" Text="Specific Default 3"/>
+<Item Value="8" Text="Mon defaut à moi"/>
+<Item Value="15" Text="Il fait pas beau"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus">
+<Mnemonic>DTCASR_SODTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCStatusAvailabilityMask">
+<Comment><![CDATA[B9]]></Comment>
+<Mnemonic>DTCSAM</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCMaskRecord">
+<Mnemonic>DTCMREC_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCRecord">
+<Mnemonic>DTCASR_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCExtendedData.AgingCounter">
+<Comment><![CDATA[Description of the extendedData AgingCounter (use by Failure Page to decode data) Not applicable]]></Comment>
+<Mnemonic>AGINGCOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.DTCOccurrenceCounter">
+<Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data) Not applica]]></Comment>
+<Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.Mileage">
+<Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data) Applicable]]></Comment>
+<Mnemonic>MILEAGE</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="C_B_StressProtectionEnable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Without Wiper protection"/>
+<Item Value="1" Text="With Wiper protection"/></List>
+</Bits>
+</Data>
+<Data Name="CAN_BRAKE_missing">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CAN_CLIM_missing">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CAN_TORQUE_AT_missing">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCDeviceIdentifier">
+<Comment><![CDATA[Name of DTC]]></Comment>
+<Bits count="16">
+<List>
+<Item Value="37393" Text="BATT_PREBDU"/>
+<Item Value="37433" Text="BDU"/>
+<Item Value="37391" Text="BSS"/>
+<Item Value="37390" Text="ECU_FAILURE"/>
+<Item Value="37429" Text="FL_BATT_1"/>
+<Item Value="37430" Text="FL_BATT_2"/>
+<Item Value="37423" Text="I_LIGHT_REVERSE_SW"/>
+<Item Value="37421" Text="LI_AUTOSTOP_WIPER"/>
+<Item Value="37407" Text="LI_IGN_RR"/>
+<Item Value="37422" Text="LI_NEUTRAL_SW"/>
+<Item Value="37420" Text="LI_OIL_PRESSURE_SW"/>
+<Item Value="37427" Text="LO_EX_FAN_RELAY_3"/>
+<Item Value="37434" Text="BATTERY_WEAROUT"/>
+<Item Value="37432" Text="LO_MOTOR_FAN_RELAY"/>
+<Item Value="37398" Text="O_AC_CLUTCH"/>
+<Item Value="37431" Text="O_AC_VALVE"/>
+<Item Value="37414" Text="O_BAT_ABS_VALVES"/>
+<Item Value="37415" Text="O_BAT_AT_GEAR/LPGR"/>
+<Item Value="37413" Text="O_BAT_ECM_ACT"/>
+<Item Value="37440" Text="LO_MOTOR_FAN_HI_RELAY"/>
+<Item Value="37399" Text="O_FR_WIPER_LO"/>
+<Item Value="37404" Text="O_HP/LP_WASHER/ILLUMINATION"/>
+<Item Value="37408" Text="O_IGN_AIRBAG"/>
+<Item Value="37409" Text="O_IGN_AT/LPG"/>
+<Item Value="37406" Text="O_IGN_ECM"/>
+<Item Value="37412" Text="O_IGN_EPS/RWS"/>
+<Item Value="37410" Text="O_IGN_LCS_CABIN/ABS"/>
+<Item Value="37405" Text="O_IGN_NOT_COLUMN_LOCK"/>
+<Item Value="37411" Text="O_IGN_REVERSE_SW/AC_VALVE"/>
+<Item Value="37441" Text="O_LIGHT_DTRL_LH"/>
+<Item Value="37425" Text="O_LIGHT_DTRL_RH"/>
+<Item Value="37402" Text="O_LIGHT_FR_FOG_LAMPS"/>
+<Item Value="37400" Text="O_LIGHT_HBEAM_LH"/>
+<Item Value="37401" Text="O_LIGHT_HBEAM_RH"/>
+<Item Value="37394" Text="O_LIGHT_LBEAM_LH"/>
+<Item Value="37395" Text="O_LIGHT_LBEAM_RH"/>
+<Item Value="37396" Text="O_LIGHT_POSITION_LH"/>
+<Item Value="37397" Text="O_LIGHT_POSITION_RH"/>
+<Item Value="37426" Text="O_MOTOR_FAN_HI"/>
+<Item Value="37417" Text="O_MOTOR_FAN_LO"/>
+<Item Value="37424" Text="O_STARTER"/>
+<Item Value="37418" Text="PCS_BDU"/>
+<Item Value="37443" Text="O_FR_WIPER_HI"/>
+<Item Value="37458" Text="SIGNAL_GND"/>
+<Item Value="37461" Text="SEC_SIGNAL_GND"/></List>
+</Bits>
+</Data>
+<Data Name="Communication_Request">
+<Bits>
+<List>
+<Item Value="0" Text="enableRxAndTx"/>
+<Item Value="1" Text="enableRxAndDisableTx"/>
+<Item Value="2" Text="disableRxAndEnableTx"/>
+<Item Value="3" Text="disableRxAndTx"/></List>
+</Bits>
+</Data>
+<Data Name="CoolingFanSpeedStatus">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Stopped"/>
+<Item Value="1" Text="Low Speed"/>
+<Item Value="2" Text="Middle Speed (not used in Renault)"/>
+<Item Value="3" Text="High Speed"/></List>
+</Bits>
+</Data>
+<Data Name="DO_O_AC_CLUTCH">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DI_BATT_ABS_VALVES_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_BATT_GEAR_LPG_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_BATT_ECM_ACT_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="CrankingAuthorization_AT">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Cranking not allowed"/>
+<Item Value="1" Text="Cranking allowed"/>
+<Item Value="2" Text="Reserved"/>
+<Item Value="3" Text="No request"/></List>
+</Bits>
+</Data>
+<Data Name="CrankingAuthorization_ECM">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Cranking not allowed"/>
+<Item Value="1" Text="Cranking allowed"/>
+<Item Value="2" Text="Cranking stopped required"/>
+<Item Value="3" Text="No request"/></List>
+</Bits>
+</Data>
+<Data Name="DO_LIGHT_FR_FOG_LAMPS">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DO_O_FR_WIPER_HI">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DO_O_FR_WIPER">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DI_HEATER">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Heater OFF"/>
+<Item Value="1" Text="Heater ON"/></List>
+</Bits>
+</Data>
+<Data Name="DO_LIGHT_HBEAM_LAMPS">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DO_O_MOTOR_FAN_HI">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DO_O_MOTOR_FAN_LO">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DI_NEUTRAL_SW">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not reached"/>
+<Item Value="1" Text="Reached"/></List>
+</Bits>
+</Data>
+<Data Name="DI_IGN_AIRBAG_SAFETY_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_IGN_NOT_COLUMN_LOCK_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_OIL_PRESSURE_SW">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Pressure switch open"/>
+<Item Value="1" Text="Pressure switch close"/></List>
+</Bits>
+</Data>
+<Data Name="DO_LIGHT_POSITION_ON">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DI_LIGHT_REVERSE_LAMP">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Reverse gear not reached"/>
+<Item Value="1" Text="Reverse gear reached"/></List>
+</Bits>
+</Data>
+<Data Name="DO_H_WASHER">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DI_IGN_ECM_SAFETYLINE_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DO_O_STARTER">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DI_H_L_WASHER_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DO_BATT_VOLTAGE_ON">
+<Bits count="1">
+<List>
+<Item Value="0" Text="ON"/>
+<Item Value="1" Text="On"/></List>
+</Bits>
+</Data>
+<Data Name="DO_L_WASHER">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DO_IGN_OFF">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DO_IGN_RELAY">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DO_OL_DET">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="DI_SAFETY_BDU_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="safetyline BDU OFF"/>
+<Item Value="1" Text="safetyline BDU ON"/></List>
+</Bits>
+</Data>
+<Data Name="DTCExtendedDataRecordNumber">
+<Mnemonic>DTCEDRN</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Mileage"/>
+<Item Value="129" Text="AgingCounter"/>
+<Item Value="130" Text="DTCOccurrenceCounter"/></List>
+</Bits>
+</Data>
+<Data Name="C_B_VRLA_Batt">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Leaded Classical Battery"/>
+<Item Value="1" Text="VRLA"/></List>
+</Bits>
+</Data>
+<Data Name="C_K_Alt15_DATA2">
+<Comment><![CDATA[DATA2 for alternator MELCO 8GM142 210 A]]></Comment>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="C_K_BatteryType">
+<Bits count="3">
+<List>
+<Item Value="0" Text="reserved"/>
+<Item Value="1" Text="reserved1"/>
+<Item Value="2" Text="L2"/>
+<Item Value="3" Text="L3"/>
+<Item Value="4" Text="L4"/>
+<Item Value="5" Text="L5"/>
+<Item Value="6" Text="L6"/>
+<Item Value="7" Text="reserved2"/></List>
+</Bits>
+</Data>
+<Data Name="C_K_FrontBattery_type">
+<Bits count="1">
+<List>
+<Item Value="0" Text="rear"/>
+<Item Value="1" Text="front"/></List>
+</Bits>
+</Data>
+<Data Name="C_K_MechanicalRatio">
+<Bits>
+<Scaled Step=" .01" Offset=" 1.5"/>
+</Bits>
+</Data>
+<Data Name="C_B_IHMLowBatteryActiv">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No activation of IHM Low battery voltage"/>
+<Item Value="1" Text="Activation of IHM Low battery voltage"/></List>
+</Bits>
+</Data>
+<Data Name="C_TM_LowSpeedWipingProtection">
+<Comment><![CDATA[timeout of low speed wiping protection]]></Comment>
+<Bits count="6">
+<Scaled Unit="ms" Step=" 1000"/>
+</Bits>
+</Data>
+<Data Name="C_TM_HighSpeedWipingProtection">
+<Comment><![CDATA[timeout of high speed wiping protection]]></Comment>
+<Bits count="6">
+<Scaled Unit="ms" Step=" 1000"/>
+</Bits>
+</Data>
+<Data Name="C_TM_HighSpeedPeriod_limit_max">
+<Comment><![CDATA[detection wiping period of stress high speed]]></Comment>
+<Bits count="6">
+<Scaled Unit="ms" Step=" 100"/>
+</Bits>
+</Data>
+<Data Name="C_TM_LowSpeedPeriod_limit_max">
+<Comment><![CDATA[detection wiping period of stress low speed (blocking)]]></Comment>
+<Bits count="6">
+<Scaled Unit="ms" Step=" 100"/>
+</Bits>
+</Data>
+<Data Name="C_K_Low_limit_min">
+<Bits count="7">
+<Scaled Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="C_K_Low_limit_max">
+<Bits count="7">
+<Scaled Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="C_K_High_limit_min">
+<Bits count="7">
+<Scaled Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="C_K_High_limit_max">
+<Bits count="7">
+<Scaled Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="C_Tau_Engine">
+<Bits>
+<Scaled Unit="min" Step=" 5"/>
+</Bits>
+</Data>
+<Data Name="C_B_UsingDirectActivation">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No direct compressor activation from ECM is used"/>
+<Item Value="1" Text="Direct compressor activation from ECM is used"/></List>
+</Bits>
+</Data>
+<Data Name="C_K_Mission">
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="C_TM_HeadLampStopped">
+<Bits count="4">
+<Scaled Unit="s" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="C_TM_HeadLampFirstWash">
+<Bits count="6">
+<Scaled Unit="s" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="C_TM_HeadLampSecondWash">
+<Bits count="9">
+<Scaled Unit="s" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="C_B_NeutralContact_Diag">
+<Bits count="1">
+<List>
+<Item Value="0" Text="neutral contact diagnosis (algo plausibility) is inhibited"/>
+<Item Value="1" Text="neutral contact diagnosis (algo plausibility) is not inhibited"/></List>
+</Bits>
+</Data>
+<Data Name="AlternatorUnknown">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Alternator known"/>
+<Item Value="1" Text="Alternator unknown"/></List>
+</Bits>
+</Data>
+<Data Name="C_B_AutoStopProtection">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No auto stop blocked reached protection"/>
+<Item Value="1" Text="Auto stop blocked reached protection"/></List>
+</Bits>
+</Data>
+<Data Name="AI_AC_VALVE">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AI_AUTO_STOP_WIPER">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AI_BATT_VOLTAGE">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CLOSE_CONTACTOR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="CONTACTOR_GND_SET">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="CONTACTOR_OL_DIAG_SET">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="AI_LIGHT_DTRL_RH_RR">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AI_LIGHT_DTRL_LH_RR">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AI_LIGHT_LBEAM_LH">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AI_LIGHT_LBEAM_RH">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AI_BROKEN_GND">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AI_BATT1">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AI_VDDG">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AD_DTRL_L_RET">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AD_MOTOR_FAN_HI_RELAY_PWM_RET">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AD_DTRL_R_RET">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AD_LBEAM_L_RET">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AD_LBEAM_R_RET">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AI_OL_CONTACTOR">
+<Bits count="10">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AC_VALVE_PWM">
+<Comment><![CDATA[Value range is zero to 100.]]></Comment>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="CAS_InitStructure">
+<Bytes count="8" ascii="1"/>
+</Data>
+<Data Name="C_B_BDUActivation">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No activation of BDU Module"/>
+<Item Value="1" Text="Activation of BDU Module"/></List>
+</Bits>
+</Data>
+<Data Name="E_B_FrontDefroster">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Without FrontDefroster"/>
+<Item Value="1" Text="With FrontDefroster"/></List>
+</Bits>
+</Data>
+<Data Name="DI_AC_CLUTCH_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_AC_VALVE_PWM_RET_ON">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_AC_VALVE_PWM_RET_OFF">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_FR_WIPER_HI_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_FR_WIPER_LO_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_IGN_AT_LPG_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_IGN_EPS_RWS_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_IGN_LCS_CABIN_ABS_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_IGN_REVERSE_SW_AC_VALVE_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_IGN_RR">
+<Comment><![CDATA[Corresponds to Ignition_Ddiag in RSA C6 xml file]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_LIGHT_FR_FOG_LAMPS_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_LIGHT_HBEAM_LH_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_LIGHT_HBEAM_RH_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_LIGHT_POSITION_LH_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_LIGHT_POSITION_RH_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_LOG_MOTOR_FAN_HI_RELAY_PWM">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_LOG_MOTOR_FAN_RELAY">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_LOG_REL_O_FR_WIPER_RELAY">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_LOG_SPARE_RELAY">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_LOG_WIPER_DEICER_RELAY">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_MOTOR_FAN_HI_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_MOTOR_FAN_LO_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_SAFETY_BDU_REREAD">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_SPARE_HS">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_SPARE_LS">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="DI_STARTER_RR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="E_B_FailureInhibition">
+<Bytes count="10"/>
+</Data>
+<Data Name="C_B_FloatingInhibit">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No inhibition of floating mode"/>
+<Item Value="1" Text="Inhibition of floating mode"/></List>
+</Bits>
+</Data>
+<Data Name="E_B_AlertBDUDirect">
+<Bits count="1">
+<List>
+<Item Value="0" Text="The BDU alert can only be erased by diag tool"/>
+<Item Value="1" Text="The BDU alert disappears once the failure had"/></List>
+</Bits>
+</Data>
+<Data Name="C_B_VehiculeRunning">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Allows to switch OFF Ignition when VehicleSpeed is &gt;0"/>
+<Item Value="1" Text="Inhibits from switching OFF Ignition when VehicleSpeed is &gt;0"/></List>
+</Bits>
+</Data>
+<Data Name="C_RPM_EngineThreshold">
+<Bits count="4">
+<Scaled Step=" 100" Offset=" 500"/>
+</Bits>
+</Data>
+<Data Name="C_TM_LBEAM_SCG_Fail_max">
+<Comment><![CDATA[Timout for Low Beam failure detection to decide that the SCG failure is present]]></Comment>
+<Mnemonic>Timout for Low Beam failure detection</Mnemonic>
+<Bits>
+<Scaled Unit="s" Step=" .005"/>
+</Bits>
+</Data>
+<Data Name="C_TM_DTRL_SCG_Fail_max">
+<Comment><![CDATA[Timout for DTRL failure detection to decide that the SCG failure is present]]></Comment>
+<Mnemonic>Timout for DTRL failure detection to decide that t</Mnemonic>
+<Bits>
+<Scaled Unit="s" Step=" .005"/>
+</Bits>
+</Data>
+<Data Name="C_I_LBEAM_HAL_min">
+<Comment><![CDATA[minimum current for LOW BEAM for Halogen lamps  [0;0.1;5]  LSB: 0.1 OFF:  0 MIN/MAX:  0 .. 5 */;]]></Comment>
+<Mnemonic>minimum current for LOW BEAM for Halogen lamps</Mnemonic>
+<Bits>
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="C_I_LBEAM_HID_min">
+<Comment><![CDATA[minimum current for HID lamps [0;0.1;5] LSB: 0.1 OFF:  0 MIN/MAX:  0 .. 5 */;]]></Comment>
+<Mnemonic>minimum current for HID lamps</Mnemonic>
+<Bits>
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="C_I_DTRL_min">
+<Comment><![CDATA[minimum current for DTRL  LSB: 0.1 OFF:  0 MIN/MAX:  0 .. 5 */;]]></Comment>
+<Mnemonic>minimum current for DTRL</Mnemonic>
+<Bits>
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="V_U_alt">
+<Bits count="6">
+<Scaled Unit="V" Step=" .1" Offset=" 10.6"/>
+</Bits>
+</Data>
+<Data Name="V_U_batt">
+<Bits count="6">
+<Scaled Unit="V" Step=" .1" Offset=" 10.6"/>
+</Bits>
+</Data>
+<Data Name="V_B_FloatingActive_status">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No floating mode"/>
+<Item Value="1" Text="Floating mode"/></List>
+</Bits>
+</Data>
+<Data Name="V_K_alt_RampTMChoice">
+<Bits count="2">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="V_K_JaugeVT_mem">
+<Bits count="7">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="V_B_alt_Fault">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No alternator default"/>
+<Item Value="1" Text="Alternator default"/></List>
+</Bits>
+</Data>
+<Data Name="V_K_BatteryWearCounter_mem">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="V_Pct_DF_bss_read">
+<Bits count="5">
+<Scaled Step=" 3.2"/>
+</Bits>
+</Data>
+<Data Name="V_K_DefaultNumber">
+<Bits count="3">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="V_I_alt_Rotor_read">
+<Bits count="5">
+<Scaled Step=" .25"/>
+</Bits>
+</Data>
+<Data Name="V_K_Default_status">
+<Bits count="2">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AlternatorNumber">
+<Bits count="4">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Default_Counter">
+<Bits count="9">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="V_K_ComBssNOk_status">
+<Bits count="2">
+<List/>
+</Bits>
+</Data>
+<Data Name="E_K_ACValveCompensation">
+<Comment><![CDATA[Read/Write AC compensation parameters]]></Comment>
+<Mnemonic>Read/Write AC compensation parameters</Mnemonic>
+<Bits>
+<Scaled Step=" .001" Offset=" .4"/>
+</Bits>
+</Data>
+<Data Name="E_U_VoltageCoefficient_A">
+<Comment><![CDATA[Write Parabolic Coefficients]]></Comment>
+<Mnemonic>E_U_VoltageCoefficient_A</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="E_U_VoltageCoefficient_B">
+<Comment><![CDATA[Write Parabolic Coefficients]]></Comment>
+<Mnemonic>E_U_VoltageCoefficient_A</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="E_U_VoltageCoefficient_C">
+<Comment><![CDATA[Write Parabolic Coefficients]]></Comment>
+<Mnemonic>E_U_VoltageCoefficient_A</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="NvramStructure_ID">
+<Mnemonic>NvramStructure_ID</Mnemonic>
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="NvramROM_ID">
+<Mnemonic>NvramROM_ID</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="NvramCurrentContent_ID">
+<Mnemonic>NvramCurrentContent_ID</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="C_I_LBEAM_HAL_max_A">
+<Comment><![CDATA[25 A default Max current for Low Beam Halogen A]]></Comment>
+<Bits>
+<Scaled Unit="A"/>
+</Bits>
+</Data>
+<Data Name="C_I_LBEAM_HAL_max_B">
+<Comment><![CDATA[8 A default Max current for Low Beam Halogen B]]></Comment>
+<Bits>
+<Scaled Unit="A"/>
+</Bits>
+</Data>
+<Data Name="C_I_LBEAM_HID_max_A">
+<Comment><![CDATA[25 A default Max current for Low Beam HID A]]></Comment>
+<Bits>
+<Scaled Unit="A"/>
+</Bits>
+</Data>
+<Data Name="C_I_LBEAM_HID_max_B">
+<Comment><![CDATA[12 A default Max current for Low Beam HID B]]></Comment>
+<Bits>
+<Scaled Unit="A"/>
+</Bits>
+</Data>
+<Data Name="C_I_LBEAM_HID_max_C">
+<Comment><![CDATA[5 A default Max current for Low Beam HID C]]></Comment>
+<Bits>
+<Scaled Unit="A"/>
+</Bits>
+</Data>
+<Data Name="C_I_DTRL_max_A">
+<Bits>
+<Scaled Unit="A"/>
+</Bits>
+</Data>
+<Data Name="C_I_DTRL_max_B">
+<Bits>
+<Scaled Unit="A"/>
+</Bits>
+</Data>
+<Data Name="C_TM_LBEAMCURR_HAL_A">
+<Bits>
+<Scaled Unit="s" Step=" .005"/>
+</Bits>
+</Data>
+<Data Name="C_TM_LBEAMCURR_HID_A">
+<Bits count="16">
+<Scaled Unit="s" Step=" .005"/>
+</Bits>
+</Data>
+<Data Name="C_TM_DTRLCURR_A">
+<Bits>
+<Scaled Unit="s" Step=" .005"/>
+</Bits>
+</Data>
+<Data Name="C_TM_LBEAMCURR_HID_AB">
+<Bits count="16">
+<Scaled Unit="s" Step=" .005"/>
+</Bits>
+</Data>
+<Data Name="DI_BATT2">
+<Bits count="1">
+<List>
+<Item Value="0" Text="&lt; = 3.5 V"/>
+<Item Value="1" Text="&gt; 3.5 V"/></List>
+</Bits>
+</Data>
+<Data Name="V_B_IgnitionReset">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="V_B_IgnitionSet">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="USM_RefuseToSleep">
+<Bits count="2">
+<List>
+<Item Value="0" Text="reserved"/>
+<Item Value="1" Text="Refuse_to_sleep"/>
+<Item Value="2" Text="Ready_to_sleep"/>
+<Item Value="3" Text="reserved2"/></List>
+</Bits>
+</Data>
+<Data Name="V_K_alt_FaultType">
+<Bits count="3">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="C_U_2RelaysON_1RelayOFF">
+<Bits count="9">
+<Scaled Unit="V" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="C_TM_FUSES_DIAG">
+<Bits count="7">
+<Scaled Unit="s" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="C_TM_STARTER_DISCONNECTION">
+<Bits count="3">
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="C_TM_FAN_UNIT_DISCONNECTION">
+<Bits count="5">
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="CalibrationNumber">
+<Comment><![CDATA[Numero de calibration en Hexa]]></Comment>
+<Mnemonic>NCAL</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="DiagnosticIdentificationCode">
+<Comment><![CDATA[Diag evolution number]]></Comment>
+<Mnemonic>VDIAG</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="SoftwareNumber">
+<Comment><![CDATA[Software identification number]]></Comment>
+<Mnemonic>NPGRGM</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="SupplierNumber.ITG">
+<Comment><![CDATA[Supplier ITG code]]></Comment>
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="EditionNumber">
+<Comment><![CDATA[Software version(edition) number]]></Comment>
+<Mnemonic>NVERS</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="PartNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="1" Text="284B6"/>
+<Item Value="2" Text="284A9"/></List>
+</Bits>
+</Data>
+<Data Name="HardwareNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="1" Text="284B6"/></List>
+</Bits>
+</Data>
+<Data Name="ApprovalNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/></List>
+</Bits>
+</Data>
+<Data Name="PartNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="HardwareNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="ManufacturerIdentificationCode">
+<Bits>
+<List>
+<Item Value="0" Text="Renault R1"/>
+<Item Value="128" Text="Nissan N1"/>
+<Item Value="129" Text="Nissan N2"/>
+<Item Value="130" Text="Nissan N3"/>
+<Item Value="136" Text="5DIGITS"/>
+<Item Value="255" Text="Renault R3"/></List>
+</Bits>
+</Data>
+<Data Name="NDTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Bits count="16">
+<List/>
+</Bits>
+</Data>
+<Data Name="Historical Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Current Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Standard Fault">
+<Bits count="5">
+<List/>
+</Bits>
+</Data>
+<Data Name="CAS_EepromBlockNumber">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CAS_EepromOffsetintoBlock">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CAS_EepromDataLength">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CAS_Eepromdata">
+<Bytes count="32"/>
+</Data>
+<Data Name="Seed_HB">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Seed_LB">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="NeutralSwitchFaultDisplay">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No neutral switch failure display"/>
+<Item Value="1" Text="Neutral switch failure display"/></List>
+</Bits>
+</Data>
+<Data Name="Output PWM Voltage Control List">
+<Bits>
+<List>
+<Item Value="33" Text="AC_VALVE_PWM_1"/>
+<Item Value="36" Text="DO_LIGHT_LBEAM_LH_PWM"/>
+<Item Value="37" Text="DO_LIGHT_LBEAM_RH_PWM"/>
+<Item Value="38" Text="DO_LIGHT_DTRL_PWM"/>
+<Item Value="39" Text="DO_MOTOR_FAN_HI_RELAY_PWM"/>
+<Item Value="43" Text="V_U_batt_req"/>
+<Item Value="44" Text="V_U_alt_req"/></List>
+</Bits>
+</Data>
+<Data Name="StatusOfDTC">
+<Mnemonic>DTCASR_SODTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="ClutchSwitchMinimumTravel">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Not used"/>
+<Item Value="1" Text="Minimum clutch travel switch not active"/>
+<Item Value="2" Text="Minimum clutch travel switch active"/>
+<Item Value="3" Text="Unavailable"/></List>
+</Bits>
+</Data>
+<Data Name="FrontDefrostEngaged">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Front Defrost not engaged"/>
+<Item Value="1" Text="Front Defrost engaged"/></List>
+</Bits>
+</Data>
+<Data Name="FrontDefrostRequest">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Front defrost not requested"/>
+<Item Value="1" Text="Front defrost requested"/></List>
+</Bits>
+</Data>
+<Data Name="BDUCommandLineFailure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No BDU command line failure - in"/>
+<Item Value="1" Text="BDU command line failure"/></List>
+</Bits>
+</Data>
+<Data Name="EM Alternator Cartography">
+<Comment><![CDATA[short integer]]></Comment>
+<Bytes count="32"/>
+</Data>
+<Data Name="EM Alternator Cartography Choice">
+<Comment><![CDATA[Choice of 5 different available Alternator Cartographies]]></Comment>
+<Mnemonic>Cartographies</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="C1d_K_Alt15_A00"/>
+<Item Value="2" Text="C1d_K_Alt15_A01"/>
+<Item Value="3" Text="C1d_K_Alt15_A10"/>
+<Item Value="4" Text="C1d_K_Alt15_A11"/>
+<Item Value="5" Text="C1d_K_Alt15_Loss"/></List>
+</Bits>
+</Data>
+<Data Name="EM Chosen Alternator Cartography Table">
+<Bits>
+<List>
+<Item Value="1" Text="C1d_K_Alt15_A00"/>
+<Item Value="2" Text="C1d_K_Alt15_A01"/>
+<Item Value="3" Text="C1d_K_Alt15_A10"/>
+<Item Value="4" Text="C1d_K_Alt15_A11"/>
+<Item Value="5" Text="C1d_K_Alt15_Loss"/></List>
+</Bits>
+</Data>
+<Data Name="BDUOpeningAnticipation">
+<Bits count="1">
+<List>
+<Item Value="0" Text="BDU not about to open"/>
+<Item Value="1" Text="BDU is about to open"/></List>
+</Bits>
+</Data>
+<Data Name="BatteryVoltage_USM">
+<Bits>
+<Scaled Unit="V" DivideBy=" 16"/>
+</Bits>
+</Data>
+<Data Name="FloatingInhibition">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Unavailable"/>
+<Item Value="1" Text="Floating forbidden"/>
+<Item Value="2" Text="Floating not forbidden"/>
+<Item Value="3" Text="Not used"/></List>
+</Bits>
+</Data>
+<Data Name="ACCompClutchActivation">
+<Bits count="1">
+<List>
+<Item Value="0" Text="no compressor activation req"/>
+<Item Value="1" Text="compressor activation req"/></List>
+</Bits>
+</Data>
+<Data Name="E_B_DRLWithoutPWM">
+<Bits count="1">
+<List>
+<Item Value="0" Text="DRL with PWM"/>
+<Item Value="1" Text="DRL without PWM"/></List>
+</Bits>
+</Data>
+<Data Name="E_B_ThreeSpeeds">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Without 3 Speeds Fan"/>
+<Item Value="1" Text="With 3 Speeds fan"/></List>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="Start Diagnostic Session">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Start diagnostic session]]></Comment>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="Session Name" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50C0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Read Digital Inputs">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Read digital inputs Saved in RAM]]></Comment>
+<Sent>
+<SentBytes>2101</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6101</ReplyBytes>
+<DataItem Name="DI_NEUTRAL_SW" FirstByte="3"/>
+<DataItem Name="DI_LIGHT_REVERSE_LAMP" FirstByte="3" BitOffset="1"/>
+<DataItem Name="DI_HEATER" FirstByte="3" BitOffset="2"/>
+<DataItem Name="DI_OIL_PRESSURE_SW" FirstByte="3" BitOffset="3"/>
+<DataItem Name="DI_SAFETY_BDU_RR" FirstByte="3" BitOffset="4"/>
+</Received>
+</Request>
+<Request Name="Read Analog Inputs">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Read analog inputs Saved in RAM]]></Comment>
+<Sent>
+<SentBytes>2102</SentBytes>
+</Sent>
+<Received MinBytes="32">
+<ReplyBytes>6102</ReplyBytes>
+<DataItem Name="AI_AC_VALVE" FirstByte="20"/>
+<DataItem Name="AI_LIGHT_LBEAM_LH" FirstByte="6" BitOffset="6"/>
+<DataItem Name="AI_LIGHT_LBEAM_RH" FirstByte="8"/>
+<DataItem Name="AI_LIGHT_DTRL_RH_RR" FirstByte="10" BitOffset="4"/>
+<DataItem Name="AI_LIGHT_DTRL_LH_RR" FirstByte="9" BitOffset="2"/>
+<DataItem Name="AI_AUTO_STOP_WIPER" FirstByte="5" BitOffset="4"/>
+<DataItem Name="AD_DTRL_L_RET" Ref="1" FirstByte="11" BitOffset="6"/>
+<DataItem Name="AD_MOTOR_FAN_HI_RELAY_PWM_RET" Ref="1" FirstByte="16" BitOffset="6"/>
+<DataItem Name="AD_DTRL_R_RET" Ref="1" FirstByte="13"/>
+<DataItem Name="AD_LBEAM_L_RET" Ref="1" FirstByte="14" BitOffset="2"/>
+<DataItem Name="AD_LBEAM_R_RET" Ref="1" FirstByte="15" BitOffset="4"/>
+<DataItem Name="AI_OL_CONTACTOR" Ref="1" FirstByte="18"/>
+<DataItem Name="I_ENERGY_BATTERY_VOLTAGE" Ref="1" FirstByte="3" BitOffset="5"/>
+<DataItem Name="I_BATT1_VOLTAGE_POS_BDU" FirstByte="23" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="Read Digital Outputs">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Read digital outputs Saved in RAM]]></Comment>
+<Sent>
+<SentBytes>2104</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6104</ReplyBytes>
+<DataItem Name="DO_H_WASHER" FirstByte="3" BitOffset="5"/>
+<DataItem Name="DO_LIGHT_POSITION_ON" FirstByte="3" BitOffset="2"/>
+<DataItem Name="DO_LIGHT_HBEAM_LAMPS" Ref="1" FirstByte="5" BitOffset="3"/>
+<DataItem Name="DO_O_STARTER" FirstByte="5" BitOffset="5"/>
+<DataItem Name="DO_O_MOTOR_FAN_HI" FirstByte="5" BitOffset="6"/>
+<DataItem Name="DO_O_MOTOR_FAN_LO" FirstByte="5" BitOffset="7"/>
+<DataItem Name="V_B_Ignition_relay_cmd" FirstByte="3" BitOffset="7"/>
+<DataItem Name="CLOSE_CONTACTOR" FirstByte="3" BitOffset="1"/>
+<DataItem Name="DO_O_AC_CLUTCH" FirstByte="6" BitOffset="1"/>
+<DataItem Name="V_B_MotorFanExternal1_relay_req" FirstByte="4" BitOffset="1"/>
+<DataItem Name="DO_O_FR_WIPER_HI" FirstByte="4" BitOffset="3"/>
+<DataItem Name="CONTACTOR_GND_SET" FirstByte="6" BitOffset="2"/>
+<DataItem Name="CONTACTOR_OL_DIAG_SET" FirstByte="3" BitOffset="3"/>
+<DataItem Name="DO_O_FR_WIPER" FirstByte="4" BitOffset="4"/>
+<DataItem Name="DO_LIGHT_FR_FOG_LAMPS" FirstByte="5" BitOffset="1"/>
+<DataItem Name="OPEN_CONTACTOR" FirstByte="6"/>
+<DataItem Name="V_B_DTRL_ControlDiag" FirstByte="4" BitOffset="7"/>
+<DataItem Name="V_B_LBEAM_LH_ControlDiag" FirstByte="4" BitOffset="5"/>
+<DataItem Name="V_B_LBEAM_RH_ControlDiag" FirstByte="4" BitOffset="6"/>
+<DataItem Name="DO_BATT_VOLTAGE_ON" FirstByte="3" BitOffset="4"/>
+<DataItem Name="DO_L_WASHER" FirstByte="3" BitOffset="6"/>
+<DataItem Name="V_B_IgnitionReset" Ref="1" FirstByte="3"/>
+<DataItem Name="V_B_IgnitionSet" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Read Diagnostic Inputs">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Read diagnostic inputs Saved in RAM]]></Comment>
+<Sent>
+<SentBytes>2103</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>6103</ReplyBytes>
+<DataItem Name="DI_BATT_ECM_ACT_RR" Ref="1" FirstByte="3"/>
+<DataItem Name="DI_BATT_ABS_VALVES_RR" Ref="1" FirstByte="3" BitOffset="1"/>
+<DataItem Name="DI_BATT_GEAR_LPG_RR" Ref="1" FirstByte="3" BitOffset="2"/>
+<DataItem Name="DI_H_L_WASHER_RR" Ref="1" FirstByte="3" BitOffset="3"/>
+<DataItem Name="DI_IGN_AIRBAG_SAFETY_RR" Ref="1" FirstByte="3" BitOffset="4"/>
+<DataItem Name="DI_IGN_NOT_COLUMN_LOCK_RR" Ref="1" FirstByte="3" BitOffset="5"/>
+<DataItem Name="DI_IGN_RR" FirstByte="3" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="Read PWM Outputs">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Read PWM outputs Saved in RAM]]></Comment>
+<Sent>
+<SentBytes>2105</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>6105</ReplyBytes>
+<DataItem Name="AC_VALVE_PWM" FirstByte="3"/>
+<DataItem Name="V_PWM_DTRL_cmd" FirstByte="4"/>
+<DataItem Name="V_PWM_LowBeam_LH_cmd" FirstByte="5"/>
+<DataItem Name="V_PWM_LowBeam_RH_cmd" FirstByte="6"/>
+<DataItem Name="V_B_MotorFanExternal2_relay_req" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="Digital Outputs Control">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Supplier/></DenyAccess>
+<Comment><![CDATA[Control output. Temporary IO control Saved in RAM]]></Comment>
+<Sent>
+<SentBytes>30000000</SentBytes>
+<DataItem Name="Output Control Command" FirstByte="3"/>
+<DataItem Name="Output Control.tempON" FirstByte="4"/>
+<DataItem Name="Output Digital Control List" FirstByte="2"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700100</ReplyBytes>
+<DataItem Name="Output Control Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadMemoryByAdress">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Comment><![CDATA[Saved in EEPROM (calibrations data)]]></Comment>
+<Sent>
+<SentBytes>23000000000000</SentBytes>
+<DataItem Name="MemorySize" FirstByte="6"/>
+<DataItem Name="MemoryAdress" FirstByte="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>6300</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Read sent CAN data">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[USM_91_V7.dbc Saved in RAM]]></Comment>
+<Sent>
+<SentBytes>2122</SentBytes>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>6122</ReplyBytes>
+<DataItem Name="StarterStatus" Ref="1" FirstByte="3"/>
+<DataItem Name="FrontWiperStatus" Ref="1" FirstByte="3" BitOffset="2"/>
+<DataItem Name="FrontWiperStopPosition" FirstByte="3" BitOffset="4"/>
+<DataItem Name="BatteryVoltage_USM" Ref="1" FirstByte="4" BitOffset="2"/>
+<DataItem Name="WeakOilPressureWarning" FirstByte="4" BitOffset="1"/>
+<DataItem Name="IgnitionSupplyConfirmation" FirstByte="3" BitOffset="6"/>
+<DataItem Name="USM_RefuseToSleep" Ref="1" FirstByte="5" BitOffset="2"/>
+<DataItem Name="AlternatorLoad" Ref="1" FirstByte="5" BitOffset="4"/>
+<DataItem Name="RearGearEngaged" FirstByte="6" BitOffset="4"/>
+<DataItem Name="NeutralContact" FirstByte="6" BitOffset="6"/>
+<DataItem Name="CoolingFanSpeedStatus" Ref="1" FirstByte="7"/>
+<DataItem Name="InstantMechanicalPowerByAlt" Ref="1" FirstByte="7" BitOffset="2"/>
+<DataItem Name="ACCompClutchStatus" FirstByte="3" BitOffset="5"/>
+<DataItem Name="ACCompClutchDefault" FirstByte="8" BitOffset="2"/>
+<DataItem Name="ACCompValveCurrent" FirstByte="8" BitOffset="3"/>
+<DataItem Name="ACCompValveDefault" FirstByte="9" BitOffset="2"/>
+<DataItem Name="BatteryWarning" FirstByte="9" BitOffset="3"/>
+<DataItem Name="LowBatteryVoltageDisplay" FirstByte="9" BitOffset="4"/>
+<DataItem Name="BDUOpeningAnticipation" FirstByte="9" BitOffset="6"/>
+<DataItem Name="NeutralSwitchFaultDisplay" FirstByte="10" BitOffset="4"/>
+<DataItem Name="OilPressureSwitchFaultDisplay" FirstByte="9" BitOffset="7"/>
+<DataItem Name="MiniConsumptionRequest" FirstByte="10"/>
+<DataItem Name="IgnitionControlState" FirstByte="10" BitOffset="2"/>
+<DataItem Name="BDUCommandLineFailure" FirstByte="10" BitOffset="5"/>
+<DataItem Name="FrontDefrostEngaged" FirstByte="10" BitOffset="3"/>
+</Received>
+</Request>
+<Request Name="Read received CAN data">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[USM_91_V7.dbc Saved in RAM]]></Comment>
+<Sent>
+<SentBytes>2121</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>6121</ReplyBytes>
+<DataItem Name="StartingMode_BCM_R" Ref="1" FirstByte="3"/>
+<DataItem Name="BCM_WakeUpSleepCommand" Ref="1" FirstByte="3" BitOffset="2"/>
+<DataItem Name="FrontWipingRequest" Ref="1" FirstByte="3" BitOffset="4"/>
+<DataItem Name="HeadLampsWasherRequest" Ref="1" FirstByte="3" BitOffset="7"/>
+<DataItem Name="ClutchSwitchMaximumTravel" Ref="1" FirstByte="4"/>
+<DataItem Name="DistanceTotalizer" Ref="1" FirstByte="4" BitOffset="2"/>
+<DataItem Name="AbsoluteTimeSince1rstIgnition" Ref="1" FirstByte="7" BitOffset="6"/>
+<DataItem Name="WakeUpType" Ref="1" FirstByte="10" BitOffset="6"/>
+<DataItem Name="PositionLightsRequest" Ref="1" FirstByte="10" BitOffset="7"/>
+<DataItem Name="LowBeamRequest" Ref="1" FirstByte="11"/>
+<DataItem Name="HighBeamRequest" Ref="1" FirstByte="11" BitOffset="1"/>
+<DataItem Name="FrontFogLightsRequest" Ref="1" FirstByte="11" BitOffset="2"/>
+<DataItem Name="EngineCoolantTemp" Ref="1" FirstByte="11" BitOffset="3"/>
+<DataItem Name="VehicleSpeed" Ref="1" FirstByte="12" BitOffset="3"/>
+<DataItem Name="EngineFanSpeedRequest" Ref="1" FirstByte="14" BitOffset="3"/>
+<DataItem Name="EngineStatus_CAN" Ref="1" FirstByte="15" BitOffset="7"/>
+<DataItem Name="EngineRPM_CAN" Ref="1" FirstByte="18" BitOffset="5"/>
+<DataItem Name="AllowedPowerGradient" Ref="1" FirstByte="16" BitOffset="1"/>
+<DataItem Name="CrankingAuthorization_AT" Ref="1" FirstByte="17" BitOffset="3"/>
+<DataItem Name="CrankingAuthorization_ECM" Ref="1" FirstByte="17" BitOffset="1"/>
+<DataItem Name="AlternatorMaximumPower" Ref="1" FirstByte="17" BitOffset="5"/>
+<DataItem Name="ACCompAuthorized" FirstByte="14" BitOffset="5"/>
+<DataItem Name="ACCompValveRequest" FirstByte="14" BitOffset="7"/>
+<DataItem Name="ACCompWorkingMode" FirstByte="15" BitOffset="6"/>
+<DataItem Name="ACCompClutchRequest" FirstByte="14" BitOffset="6"/>
+<DataItem Name="ExternalTemp" FirstByte="20" BitOffset="5"/>
+<DataItem Name="DeliveryModeInformation" FirstByte="21" BitOffset="5"/>
+<DataItem Name="DayRunningLightRequest" FirstByte="21" BitOffset="6"/>
+<DataItem Name="DiagMuxOn_BCM" FirstByte="21" BitOffset="7"/>
+<DataItem Name="ClutchSwitchMinimumTravel" Ref="1" FirstByte="22"/>
+<DataItem Name="FrontDefrostRequest" Ref="1" FirstByte="22" BitOffset="2"/>
+<DataItem Name="FloatingInhibition" Ref="1" FirstByte="22" BitOffset="3"/>
+<DataItem Name="ACCompClutchActivation" Ref="1" FirstByte="22" BitOffset="5"/>
+</Received>
+</Request>
+<Request Name="ECUReset">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Supplier/></DenyAccess>
+<Sent>
+<SentBytes>1101</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5101</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Read config">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Saved in EEPROM]]></Comment>
+<Sent>
+<SentBytes>2106</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<ReplyBytes>6106</ReplyBytes>
+<DataItem Name="E_B_OilPressureFailureInhibition" Ref="1" FirstByte="3"/>
+<DataItem Name="E_B_FrontDefroster" Ref="1" FirstByte="3" BitOffset="2"/>
+<DataItem Name="E_B_GearBoxType" Ref="1" FirstByte="3" BitOffset="3"/>
+<DataItem Name="E_B_LCS" Ref="1" FirstByte="3" BitOffset="4"/>
+<DataItem Name="C_B_VRLA_Batt" Ref="1" FirstByte="3" BitOffset="6"/>
+<DataItem Name="E_K_CompType" Ref="1" FirstByte="4"/>
+<DataItem Name="C_K_Alt15_DATA2" Ref="1" FirstByte="6"/>
+<DataItem Name="C_K_BatteryType" Ref="1" FirstByte="5" BitOffset="2"/>
+<DataItem Name="C_K_FrontBattery_type" Ref="1" FirstByte="5" BitOffset="5"/>
+<DataItem Name="C_K_MechanicalRatio" Ref="1" FirstByte="7"/>
+<DataItem Name="E_B_FailureInhibition" Ref="1" FirstByte="8"/>
+<DataItem Name="C_K_Low_limit_min" Ref="1" FirstByte="18" BitOffset="1"/>
+<DataItem Name="C_K_Low_limit_max" Ref="1" FirstByte="19" BitOffset="1"/>
+<DataItem Name="C_K_High_limit_min" Ref="1" FirstByte="20" BitOffset="1"/>
+<DataItem Name="C_K_High_limit_max" Ref="1" FirstByte="21" BitOffset="1"/>
+<DataItem Name="E_B_EEM_FailureInhibition" Ref="1" FirstByte="22"/>
+<DataItem Name="C_B_UsingDirectActivation" Ref="1" FirstByte="5" BitOffset="6"/>
+<DataItem Name="C_B_NeutralContact_Diag" Ref="1" FirstByte="5" BitOffset="7"/>
+<DataItem Name="E_B_NeutralNeverReachedInhibition" Ref="1" FirstByte="18"/>
+<DataItem Name="C_B_StressProtectionEnable" Ref="1" FirstByte="3" BitOffset="1"/>
+<DataItem Name="C_B_StarterProtection" Ref="1" FirstByte="3" BitOffset="5"/>
+<DataItem Name="C_B_IHMLowBatteryActiv" Ref="1" FirstByte="3" BitOffset="7"/>
+<DataItem Name="C_B_BDUActivation" Ref="1" FirstByte="5"/>
+<DataItem Name="C_B_AutoStopProtection" Ref="1" FirstByte="5" BitOffset="1"/>
+<DataItem Name="C_B_FloatingInhibit" Ref="1" FirstByte="21"/>
+<DataItem Name="E_B_AlertBDUDirect" Ref="1" FirstByte="23" BitOffset="2"/>
+<DataItem Name="C_B_VehiculeRunning" Ref="1" FirstByte="23" BitOffset="3"/>
+<DataItem Name="C_RPM_EngineThreshold" Ref="1" FirstByte="23" BitOffset="4"/>
+<DataItem Name="E_B_DRLWithoutPWM" Ref="1" FirstByte="19"/>
+<DataItem Name="E_B_ThreeSpeeds" FirstByte="20"/>
+</Received>
+</Request>
+<Request Name="Read VIN">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Read vehicle number identification Saved in EEPROM]]></Comment>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<ReplyBytes>6181</ReplyBytes>
+<DataItem Name="VIN" Ref="1" FirstByte="3"/>
+<DataItem Name="VIN CRC" Ref="1" FirstByte="20"/>
+</Received>
+</Request>
+<Request Name="Traceability">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Managed by supplier, must be clarify by supplier Saved if possible in ROM otherwise in EEPROM]]></Comment>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>6184</ReplyBytes>
+<DataItem Name="traceability_ManufactureDate" Ref="1" FirstByte="13"/>
+<DataItem Name="traceability_SerialNumber" Ref="1" FirstByte="3"/>
+<DataItem Name="Traceability_padding" Ref="1" FirstByte="19"/>
+</Received>
+</Request>
+<Request Name="Read CAN status">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Read CAN Status Saved following CRS document (EEPROM and RAM)/ see "CRS v2.0" document for  Communication Protocol and 36-02-027 --a document for Can Sleep Specification]]></Comment>
+<Sent>
+<SentBytes>2182</SentBytes>
+</Sent>
+<Received MinBytes="62">
+<ReplyBytes>6182FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</ReplyBytes>
+<DataItem Name="CAN_BCM_missing" Ref="1" FirstByte="10"/>
+<DataItem Name="CAN_Bus_OFF_parameter" Ref="1" FirstByte="5"/>
+<DataItem Name="CAN_ECM_missing" Ref="1" FirstByte="7"/>
+<DataItem Name="CAN_MessageSet_Ref" Ref="1" FirstByte="3"/>
+<DataItem Name="CAN_Mute_parameter" Ref="1" FirstByte="6"/>
+<DataItem Name="CAN_CLIM_missing" Ref="1" FirstByte="14"/>
+<DataItem Name="CAN_BRAKE_missing" Ref="1" FirstByte="8"/>
+<DataItem Name="CAN_TORQUE_AT_missing" Ref="1" FirstByte="15"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Application DTC in EEPROM and Routine DTC in RAM]]></Comment>
+<Sent>
+<SentBytes>1902FF</SentBytes>
+<DataItem Name="DTCStatusMask" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>5902B900000000</ReplyBytes>
+<DataItem Name="DTCStatus" FirstByte="7"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+<DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Requete non utilisable dans les outils standard de DDT2000 / Application DTC in EEPROM]]></Comment>
+<Sent>
+<SentBytes>1906000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>59060000000000000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="DTCStatus" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ClearDiagnosticInformation.All">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory.]]></Comment>
+<Sent>
+<SentBytes>14FFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>54</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Read calibrations">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Saved in EEPROM]]></Comment>
+<Sent>
+<SentBytes>2107</SentBytes>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>6107</ReplyBytes>
+<DataItem Name="C_TM_LowSpeedWipingProtection" Ref="1" FirstByte="3" BitOffset="7"/>
+<DataItem Name="C_TM_HighSpeedWipingProtection" Ref="1" FirstByte="4" BitOffset="5"/>
+<DataItem Name="C_TM_HighSpeedPeriod_limit_max" Ref="1" FirstByte="5" BitOffset="3"/>
+<DataItem Name="C_TM_LowSpeedPeriod_limit_max" Ref="1" FirstByte="6" BitOffset="1"/>
+<DataItem Name="C_K_Mission" Ref="1" FirstByte="6" BitOffset="7"/>
+<DataItem Name="C_Tau_Engine" Ref="1" FirstByte="7" BitOffset="5"/>
+<DataItem Name="E_B_ECMReset" Ref="1" FirstByte="3"/>
+<DataItem Name="C_TM_HeadLampFirstWash" Ref="1" FirstByte="8" BitOffset="5"/>
+<DataItem Name="C_TM_HeadLampSecondWash" Ref="1" FirstByte="9" BitOffset="3"/>
+<DataItem Name="C_TM_HeadLampStopped" Ref="1" FirstByte="10" BitOffset="4"/>
+</Received>
+</Request>
+<Request Name="StopRoutineByLocalIdentifier">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><Supplier/></DenyAccess>
+<Sent>
+<SentBytes>320100</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>720100</ReplyBytes>
+<DataItem Name="RoutineExitStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="StartRoutineByLocalIdentifier">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Sent>
+<SentBytes>310100</SentBytes>
+<DataItem Name="routineEntryOption" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710100</ReplyBytes>
+<DataItem Name="routineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="CommunicationControl">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>280001</SentBytes>
+<DataItem Name="communicationType" FirstByte="3"/>
+<DataItem Name="Communication_Request" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>6800</ReplyBytes>
+<DataItem Name="controlType" FirstByte="2"/>
+</Received>
+</Request>
+<Request Name="WriteMemoryByAdress">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Comment><![CDATA[Saved in EEPROM (calibrations data)]]></Comment>
+<Sent>
+<SentBytes>3D0000000000</SentBytes>
+<DataItem Name="MemoryAdress" FirstByte="4"/>
+<DataItem Name="datarecord" FirstByte="6"/>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>7D00000000</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Write calibrations">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Sent>
+<SentBytes>3B0794F3C9B39132E825</SentBytes>
+<DataItem Name="C_TM_LowSpeedWipingProtection" FirstByte="3" BitOffset="7"/>
+<DataItem Name="C_TM_HighSpeedWipingProtection" FirstByte="4" BitOffset="5"/>
+<DataItem Name="C_TM_HighSpeedPeriod_limit_max" FirstByte="5" BitOffset="3"/>
+<DataItem Name="C_TM_LowSpeedPeriod_limit_max" FirstByte="6" BitOffset="1"/>
+<DataItem Name="C_K_Mission" FirstByte="6" BitOffset="7"/>
+<DataItem Name="C_Tau_Engine" FirstByte="7" BitOffset="5"/>
+<DataItem Name="E_B_ECMReset" FirstByte="3"/>
+<DataItem Name="C_TM_HeadLampFirstWash" FirstByte="8" BitOffset="5"/>
+<DataItem Name="C_TM_HeadLampSecondWash" FirstByte="9" BitOffset="3"/>
+<DataItem Name="C_TM_HeadLampStopped" FirstByte="10" BitOffset="4"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B07</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Write config">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Sent>
+<SentBytes>3B064DC0E5FF960120060004000001870025323E48803B</SentBytes>
+<DataItem Name="E_B_OilPressureFailureInhibition" FirstByte="3"/>
+<DataItem Name="E_B_FrontDefroster" FirstByte="3" BitOffset="2"/>
+<DataItem Name="E_B_GearBoxType" FirstByte="3" BitOffset="3"/>
+<DataItem Name="E_B_LCS" FirstByte="3" BitOffset="4"/>
+<DataItem Name="C_B_VRLA_Batt" FirstByte="3" BitOffset="6"/>
+<DataItem Name="E_K_CompType" FirstByte="4"/>
+<DataItem Name="C_K_Alt15_DATA2" FirstByte="6"/>
+<DataItem Name="C_K_BatteryType" FirstByte="5" BitOffset="2"/>
+<DataItem Name="C_K_FrontBattery_type" FirstByte="5" BitOffset="5"/>
+<DataItem Name="C_K_MechanicalRatio" FirstByte="7"/>
+<DataItem Name="E_B_FailureInhibition" FirstByte="8"/>
+<DataItem Name="C_K_Low_limit_min" FirstByte="18" BitOffset="1"/>
+<DataItem Name="C_K_Low_limit_max" FirstByte="19" BitOffset="1"/>
+<DataItem Name="C_K_High_limit_min" FirstByte="20" BitOffset="1"/>
+<DataItem Name="C_K_High_limit_max" FirstByte="21" BitOffset="1"/>
+<DataItem Name="E_B_EEM_FailureInhibition" FirstByte="22"/>
+<DataItem Name="C_B_UsingDirectActivation" FirstByte="5" BitOffset="6"/>
+<DataItem Name="C_B_NeutralContact_Diag" FirstByte="5" BitOffset="7"/>
+<DataItem Name="E_B_NeutralNeverReachedInhibition" FirstByte="18"/>
+<DataItem Name="C_B_StressProtectionEnable" FirstByte="3" BitOffset="1"/>
+<DataItem Name="C_B_StarterProtection" FirstByte="3" BitOffset="5"/>
+<DataItem Name="C_B_IHMLowBatteryActiv" FirstByte="3" BitOffset="7"/>
+<DataItem Name="C_B_BDUActivation" FirstByte="5"/>
+<DataItem Name="C_B_AutoStopProtection" FirstByte="5" BitOffset="1"/>
+<DataItem Name="C_B_FloatingInhibit" FirstByte="21"/>
+<DataItem Name="E_B_AlertBDUDirect" FirstByte="23" BitOffset="2"/>
+<DataItem Name="C_B_VehiculeRunning" FirstByte="23" BitOffset="3"/>
+<DataItem Name="C_RPM_EngineThreshold" FirstByte="23" BitOffset="4"/>
+<DataItem Name="E_B_DRLWithoutPWM" FirstByte="19"/>
+<DataItem Name="E_B_ThreeSpeeds" FirstByte="20"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B06</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Write VIN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Supplier/></DenyAccess>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="VIN" FirstByte="3"/>
+<DataItem Name="VIN CRC" FirstByte="20"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B81</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Read Debug Frames Enable">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>2109</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6109</ReplyBytes>
+<DataItem Name="E_B_EnableDebugFrames" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Write Debug Frames Enable">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>3B0900</SentBytes>
+<DataItem Name="E_B_EnableDebugFrames" FirstByte="3" BitOffset="7"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B09</ReplyBytes>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+<Sent>
+<SentBytes>3E01</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Write Activation LowBeam DTRL">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Sent>
+<SentBytes>3B10</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B10</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Write Alert BDU">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Supplier/></DenyAccess>
+<Sent>
+<SentBytes>3B11</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B11</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Read Battery voltage data">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>2192</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>61920000000000000000000000</ReplyBytes>
+<DataItem Name="TestResult" FirstByte="3"/>
+<DataItem Name="AI_BATT_VOLTAGE" FirstByte="5"/>
+<DataItem Name="I_ENERGY_BATTERY_VOLTAGE" FirstByte="6" BitOffset="2"/>
+<DataItem Name="V_U_batt_USM_flt" FirstByte="7" BitOffset="5"/>
+<DataItem Name="I_BATT1_VOLTAGE_POS_BDU" FirstByte="8" BitOffset="7"/>
+<DataItem Name="BatteryVoltage_USM" FirstByte="4"/>
+<DataItem Name="AI_BATT1" Ref="1" FirstByte="10" BitOffset="1"/>
+<DataItem Name="AI_VDDG" Ref="1" FirstByte="11" BitOffset="3"/>
+<DataItem Name="AI_BROKEN_GND" FirstByte="12" BitOffset="5"/>
+</Received>
+</Request>
+<Request Name="Write New Battery Plugged">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Supplier/></DenyAccess>
+<Sent>
+<SentBytes>3B16</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B16</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Read EEM variables">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Read digital outputs Saved in RAM]]></Comment>
+<Sent>
+<SentBytes>2110</SentBytes>
+</Sent>
+<Received MinBytes="15">
+<ReplyBytes>6110</ReplyBytes>
+<DataItem Name="V_U_alt" FirstByte="3" BitOffset="2"/>
+<DataItem Name="V_U_batt" FirstByte="4" BitOffset="2"/>
+<DataItem Name="V_TM_TimeAtOpening_mem" FirstByte="5"/>
+<DataItem Name="AlternatorUnknown" FirstByte="3"/>
+<DataItem Name="V_B_FloatingActive_status" FirstByte="3" BitOffset="1"/>
+<DataItem Name="V_K_alt_RampTMChoice" FirstByte="4"/>
+<DataItem Name="V_K_JaugeVT_mem" FirstByte="8" BitOffset="1"/>
+<DataItem Name="V_B_alt_Fault" FirstByte="8"/>
+<DataItem Name="V_K_BatteryWearCounter_mem" FirstByte="9"/>
+<DataItem Name="V_Pct_DF_bss_read" FirstByte="11"/>
+<DataItem Name="V_K_DefaultNumber" FirstByte="11" BitOffset="5"/>
+<DataItem Name="V_I_alt_Rotor_read" FirstByte="12" BitOffset="3"/>
+<DataItem Name="V_K_Default_status" FirstByte="13" BitOffset="1"/>
+<DataItem Name="AlternatorNumber" FirstByte="13" BitOffset="3"/>
+<DataItem Name="Default_Counter" FirstByte="13" BitOffset="7"/>
+<DataItem Name="V_K_ComBssNOk_status" FirstByte="15"/>
+<DataItem Name="V_K_alt_FaultType" FirstByte="12"/>
+</Received>
+</Request>
+<Request Name="Read Diagnosis calibrations">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Comment><![CDATA[Saved in EEPROM]]></Comment>
+<Sent>
+<SentBytes>2114</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6114</ReplyBytes>
+<DataItem Name="C_U_2RelaysON_1RelayOFF" Ref="1" FirstByte="4" BitOffset="7"/>
+<DataItem Name="C_TM_FUSES_DIAG" Ref="1" FirstByte="3" BitOffset="1"/>
+<DataItem Name="C_TM_STARTER_DISCONNECTION" Ref="1" FirstByte="6"/>
+<DataItem Name="C_TM_FAN_UNIT_DISCONNECTION" Ref="1" FirstByte="6" BitOffset="3"/>
+</Received>
+</Request>
+<Request Name="DataRead.Identification.RenaultR2">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="CalibrationNumber" Ref="1" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" Ref="1" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" Ref="1" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" Ref="1" FirstByte="9"/>
+<DataItem Name="EditionNumber" Ref="1" FirstByte="19"/>
+<DataItem Name="PartNumber.BasicPartList" Ref="1" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" Ref="1" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" Ref="1" FirstByte="25"/>
+<DataItem Name="PartNumber.LowerPart" Ref="1" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" Ref="1" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" Ref="1" FirstByte="26"/>
+</Received>
+</Request>
+<Request Name="Write Diagnosis calibrations">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Plant/><AfterSales/></DenyAccess>
+<Sent>
+<SentBytes>3B141E0000B4</SentBytes>
+<DataItem Name="C_TM_FUSES_DIAG" FirstByte="3" BitOffset="1"/>
+<DataItem Name="C_U_2RelaysON_1RelayOFF" FirstByte="4" BitOffset="7"/>
+<DataItem Name="C_TM_FAN_UNIT_DISCONNECTION" FirstByte="6" BitOffset="3"/>
+<DataItem Name="C_TM_STARTER_DISCONNECTION" FirstByte="6"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B14</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000080</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>59060000000080000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="Read Alternator Tables">
+
+<DossierMaintenabilite/>
+<DenyAccess><Supplier/></DenyAccess>
+<Sent>
+<SentBytes>210801</SentBytes>
+<DataItem Name="EM Alternator Cartography Choice" FirstByte="3"/>
+</Sent>
+<Received MinBytes="35">
+<ReplyBytes>610800</ReplyBytes>
+<DataItem Name="EM Alternator Cartography" FirstByte="4"/>
+<DataItem Name="EM Chosen Alternator Cartography Table" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Write Alternator Tables">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B08010000000000000000000000000000000000000000000000000000000000000000</SentBytes>
+<DataItem Name="EM Alternator Cartography Choice" FirstByte="3"/>
+<DataItem Name="EM Alternator Cartography" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7B0800</ReplyBytes>
+<DataItem Name="EM Chosen Alternator Cartography Table" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="PWM Voltage Outputs Control">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Supplier/></DenyAccess>
+<Comment><![CDATA[Control output. Temporary IO control Saved in RAM]]></Comment>
+<Sent>
+<SentBytes>3000000000</SentBytes>
+<DataItem Name="Output Control Command" FirstByte="3"/>
+<DataItem Name="Output Control.tempON" FirstByte="4"/>
+<DataItem Name="Output PWM Voltage Control List" FirstByte="2"/>
+<DataItem Name="AC_VALVE_PWM" FirstByte="5"/>
+<DataItem Name="V_PWM_LowBeam_LH_cmd" FirstByte="5"/>
+<DataItem Name="V_PWM_LowBeam_RH_cmd" FirstByte="5"/>
+<DataItem Name="V_PWM_DTRL_cmd" FirstByte="5"/>
+<DataItem Name="V_B_MotorFanExternal2_relay_req" FirstByte="5"/>
+<DataItem Name="V_U_alt_req_" FirstByte="5"/>
+<DataItem Name="V_U_batt_req" FirstByte="5"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>702100</ReplyBytes>
+<DataItem Name="Output Control Status" FirstByte="3"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="BSS" DTC="37391" Type="4">
+
+<Test Type="150">
+</Test><Test Type="22">
+</Test><Test Type="23">
+</Test><Test Type="129">
+</Test>
+</Device>
+<Device Name="O_ACTUATOR1" Type="3">
+
+
+</Device>
+<Device Name="O_ACTUATOR2" Type="3">
+
+
+</Device>
+<Device Name="O_FUEL_PUMP" Type="3">
+
+
+</Device>
+<Device Name="O_LIGHT_REVERSE_LAMP" Type="3">
+
+
+</Device>
+<Device Name="CABIN_MOTOR_1" Type="4">
+
+
+</Device>
+<Device Name="CABIN_MOTOR_2" Type="4">
+
+
+</Device>
+<Device Name="CABIN_MOTOR_3" Type="4">
+
+
+</Device>
+<Device Name="CABIN_MOTOR_6" Type="4">
+
+
+</Device>
+<Device Name="CABIN_MOTOR_8" Type="4">
+
+
+</Device>
+<Device Name="MOTOR_CABIN_1" Type="4">
+
+
+</Device>
+<Device Name="MOTOR_CABIN_2" Type="4">
+
+
+</Device>
+<Device Name="MOTOR_CABIN_3" Type="4">
+
+
+</Device>
+<Device Name="MOTOR_CABIN_8" Type="4">
+
+
+</Device>
+<Device Name="MOTOR_CABIN_6" Type="4">
+
+
+</Device>
+<Device Name="BDU" DTC="37433" Type="3">
+
+<Test Type="151">
+</Test>
+</Device>
+<Device Name="O_AC_CLUTCH" DTC="37398" Type="3">
+
+<Test Type="17">
+</Test><Test Type="18">
+</Test><Test Type="19">
+</Test>
+</Device>
+<Device Name="O_AC_VALVE" DTC="37431" Type="3">
+
+<Test Type="18">
+</Test><Test Type="20">
+</Test>
+</Device>
+<Device Name="LI_AUTOSTOP_WIPER" DTC="37421">
+
+<Test Type="21" Autocheck="0">
+</Test>
+</Device>
+<Device Name="FL_BATT_1" DTC="37429">
+
+<Test Type="20">
+</Test>
+</Device>
+<Device Name="FL_BATT_2" DTC="37430">
+
+<Test Type="20">
+</Test>
+</Device>
+<Device Name="O_BAT_ABS_VALVES" DTC="37414" Type="3">
+
+<Test Type="17">
+</Test>
+</Device>
+<Device Name="O_BAT_ECM_ACT" DTC="37413" Type="3">
+
+<Test Type="17">
+</Test>
+</Device>
+<Device Name="O_LIGHT_DTRL_LH" DTC="37441" Type="3">
+
+<Test Type="17">
+</Test><Test Type="21">
+</Test>
+</Device>
+<Device Name="O_LIGHT_DTRL_RH" DTC="37425" Type="3">
+
+<Test Type="17">
+</Test><Test Type="21">
+</Test>
+</Device>
+<Device Name="ENERGY_BSS" Type="4">
+
+
+</Device>
+<Device Name="F/L_ECM_USM_SUPPLY" Type="4">
+
+
+</Device>
+<Device Name="O_FR_WIPER_HI" DTC="37443" Type="3">
+
+<Test Type="17" Autocheck="0">
+</Test><Test Type="18" Autocheck="0">
+</Test><Test Type="19" Autocheck="0">
+</Test>
+</Device>
+<Device Name="O_FR_WIPER_LO" DTC="37399" Type="3">
+
+<Test Type="17" Autocheck="0">
+</Test><Test Type="18" Autocheck="0">
+</Test><Test Type="19" Autocheck="0">
+</Test>
+</Device>
+<Device Name="O_LIGHT_HBEAM_LH" DTC="37400" Type="3">
+
+<Test Type="17" Autocheck="0">
+</Test><Test Type="18" Autocheck="0">
+</Test>
+</Device>
+<Device Name="O_LIGHT_HBEAM_RH" DTC="37401" Type="3">
+<DeviceData Name="DO_LIGHT_HBEAM_LAMPS" FailureFlag="0"/>
+<Test Type="17" Autocheck="0">
+</Test><Test Type="18" Autocheck="0">
+</Test>
+</Device>
+<Device Name="LI_IGN_RR" DTC="37407">
+
+<Test Type="18">
+</Test>
+</Device>
+<Device Name="O_IGN_AIRBAG" DTC="37408" Type="3">
+
+<Test Type="17">
+</Test>
+</Device>
+<Device Name="O_IGN_AT/LPG" DTC="37409" Type="3">
+
+<Test Type="17" Autocheck="0">
+</Test><Test Type="18" Autocheck="0">
+</Test>
+</Device>
+<Device Name="O_IGN_ECM" DTC="37406" Type="3">
+
+<Test Type="17" Autocheck="0">
+</Test><Test Type="18" Autocheck="0">
+</Test>
+</Device>
+<Device Name="O_IGN_EPS/RWS" DTC="37412" Type="3">
+
+<Test Type="17" Autocheck="0">
+</Test><Test Type="18" Autocheck="0">
+</Test>
+</Device>
+<Device Name="O_IGN_LCS_CABIN/ABS" DTC="37410" Type="3">
+
+<Test Type="17" Autocheck="0">
+</Test><Test Type="18" Autocheck="0">
+</Test>
+</Device>
+<Device Name="O_IGN_NOT_COLUMN_LOCK" DTC="37405" Type="3">
+
+<Test Type="17">
+</Test><Test Type="18">
+</Test>
+</Device>
+<Device Name="O_IGN_REVERSE_SW/AC_VALVE" DTC="37411" Type="3">
+
+<Test Type="17" Autocheck="0">
+</Test><Test Type="18" Autocheck="0">
+</Test>
+</Device>
+<Device Name="LI_ECM_DRIVER">
+
+
+</Device>
+<Device Name="LI_FUEL_PUMP_DRIVER">
+
+
+</Device>
+<Device Name="O_LIGHT_LBEAM_LH" DTC="37394" Type="3">
+
+<Test Type="17">
+</Test><Test Type="21">
+</Test>
+</Device>
+<Device Name="O_LIGHT_LBEAM_RH" DTC="37395" Type="3">
+
+<Test Type="17">
+</Test><Test Type="21">
+</Test>
+</Device>
+<Device Name="LI_NEUTRAL_SW" DTC="37422">
+
+<Test Type="18">
+</Test><Test Type="100">
+</Test><Test Type="98">
+</Test>
+</Device>
+<Device Name="O_ACTUATOR4_CABIN" Type="3">
+
+
+</Device>
+<Device Name="O_BATT_ECM" Type="3">
+
+
+</Device>
+<Device Name="O_IGN_COIL" Type="3">
+
+
+</Device>
+<Device Name="LI_OIL_PRESSURE_SW" DTC="37420">
+
+<Test Type="18">
+</Test><Test Type="100">
+</Test>
+</Device>
+<Device Name="I_LIGHT_REVERSE_SW" DTC="37423">
+
+<Test Type="18">
+</Test>
+</Device>
+<Device Name="I_SAVETYLINE_BDU">
+
+
+</Device>
+<Device Name="O_STARTER" DTC="37424" Type="3">
+
+<Test Type="17" Autocheck="0">
+</Test><Test Type="18" Autocheck="0">
+</Test><Test Type="19" Autocheck="0">
+</Test>
+</Device>
+<Device Name="POWER_GND" Type="4">
+
+
+</Device>
+<Device Name="SIGNAL_GND" DTC="37458" Type="4">
+
+<Test Type="19">
+</Test>
+</Device>
+<Device Name="BATT_PREBDU" DTC="37393" Type="4">
+
+<Test Type="20">
+</Test>
+</Device>
+<Device Name="ECU_FAILURE" DTC="37390" Type="4">
+
+<Test Type="4">
+</Test>
+</Device>
+<Device Name="O_BAT_AT_GEAR/LPGR" DTC="37415" Type="3">
+
+<Test Type="17">
+</Test>
+</Device>
+<Device Name="O_LIGHT_FR_FOG_LAMPS" DTC="37402" Type="3">
+
+<Test Type="17" Autocheck="0">
+</Test><Test Type="18" Autocheck="0">
+</Test>
+</Device>
+<Device Name="SEC_SIGNAL_GND" DTC="37461" Type="4">
+
+<Test Type="19">
+</Test>
+</Device>
+<Device Name="O_MOTOR_FAN_HI" DTC="37426" Type="3">
+
+<Test Type="18">
+</Test><Test Type="17">
+</Test><Test Type="19">
+</Test>
+</Device>
+<Device Name="O_MOTOR_FAN_LO" DTC="37417" Type="3">
+
+<Test Type="18">
+</Test><Test Type="17">
+</Test><Test Type="19">
+</Test>
+</Device>
+<Device Name="BATTERY_WEAROUT" DTC="37434" Type="4">
+
+<Test Type="146">
+</Test>
+</Device>
+<Device Name="O_LIGHT_POSITION_LH" DTC="37396" Type="3">
+
+<Test Type="17" Autocheck="0">
+</Test><Test Type="18" Autocheck="0">
+</Test>
+</Device>
+<Device Name="O_LIGHT_POSITION_RH" DTC="37397" Type="3">
+
+<Test Type="17" Autocheck="0">
+</Test><Test Type="18" Autocheck="0">
+</Test>
+</Device>
+<Device Name="O_HP/LP_WASHER/ILLUMINATION" DTC="37404" Type="3">
+
+<Test Type="17">
+</Test>
+</Device>
+<Device Name="PCS_BDU" DTC="37418" Type="3">
+
+<Test Type="17">
+</Test><Test Type="18">
+</Test><Test Type="19">
+</Test>
+</Device>
+<Device Name="LO_MOTOR_FAN_RELAY" DTC="37432" Type="3">
+
+<Test Type="18">
+</Test>
+</Device>
+<Device Name="LO_MOTOR_FAN_HI_RELAY" DTC="37440" Type="3">
+
+<Test Type="18" Autocheck="0">
+</Test>
+</Device>
+<Device Name="LO_EX_FAN_RELAY_3" DTC="37427" Type="3">
+
+<Test Type="18">
+</Test>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Read &amp; Write">
+
+<Screen Name="Calibration" Color="16711680" WindowState="0" Width="11220" Height="6180">
+
+<Label Text="Write Calibration Parameters" Color="8421631" Alignment="2">
+<Rectangle Left="6720" Top="720" Height="360" Width="3960"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Read Calibration Parameters" Color="8421631" Alignment="2">
+<Rectangle Left="480" Top="720" Height="360" Width="6120"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Send Frame">
+<Rectangle Left="360" Top="5160" Height="600" Width="10320"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write calibrations"/>
+</Button>
+<Button Text="Change Session">
+<Rectangle Left="9240" Top="240" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Change Diag Session"/>
+<Send Delay="0" RequestName="Start Diagnostic Session"/>
+</Button>
+
+<Display Width="3545" Color="16777215" DataName="E_B_ECMReset" RequestName="Read calibrations">
+<Rectangle Left="480" Top="4200" Height="300" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3545" Color="16777215" DataName="C_TM_LowSpeedWipingProtection" RequestName="Read calibrations">
+<Rectangle Left="480" Top="1320" Height="300" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3545" Color="16777215" DataName="C_TM_HighSpeedWipingProtection" RequestName="Read calibrations">
+<Rectangle Left="480" Top="1680" Height="300" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3545" Color="16777215" DataName="C_TM_HighSpeedPeriod_limit_max" RequestName="Read calibrations">
+<Rectangle Left="480" Top="2040" Height="300" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3545" Color="16777215" DataName="C_TM_LowSpeedPeriod_limit_max" RequestName="Read calibrations">
+<Rectangle Left="480" Top="2400" Height="300" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3545" Color="16777215" DataName="C_K_Mission" RequestName="Read calibrations">
+<Rectangle Left="480" Top="3480" Height="300" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3545" Color="16777215" DataName="C_Tau_Engine" RequestName="Read calibrations">
+<Rectangle Left="480" Top="3840" Height="300" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3545" Color="16777215" DataName="C_TM_HeadLampFirstWash" RequestName="Read calibrations">
+<Rectangle Left="480" Top="2760" Height="300" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3545" Color="16777215" DataName="C_TM_HeadLampSecondWash" RequestName="Read calibrations">
+<Rectangle Left="480" Top="3120" Height="300" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3545" Color="16777215" DataName="C_TM_HeadLampStopped" RequestName="Read calibrations">
+<Rectangle Left="480" Top="3480" Height="300" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="0" Color="16777215" DataName="E_B_ECMReset" RequestName="Write calibrations">
+<Rectangle Left="6720" Top="4200" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_TM_LowSpeedWipingProtection" RequestName="Write calibrations">
+<Rectangle Left="6720" Top="1320" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_TM_HighSpeedWipingProtection" RequestName="Write calibrations">
+<Rectangle Left="6720" Top="1680" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_TM_HighSpeedPeriod_limit_max" RequestName="Write calibrations">
+<Rectangle Left="6720" Top="2040" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_TM_LowSpeedPeriod_limit_max" RequestName="Write calibrations">
+<Rectangle Left="6720" Top="2400" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_K_Mission" RequestName="Write calibrations">
+<Rectangle Left="6720" Top="4560" Height="300" Width="3960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_Tau_Engine" RequestName="Write calibrations">
+<Rectangle Left="6720" Top="3840" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_TM_HeadLampFirstWash" RequestName="Write calibrations">
+<Rectangle Left="6720" Top="2760" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_TM_HeadLampSecondWash" RequestName="Write calibrations">
+<Rectangle Left="6720" Top="3120" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_TM_HeadLampStopped" RequestName="Write calibrations">
+<Rectangle Left="6720" Top="3480" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3545" Color="16777215" DataName="C_K_Mission" RequestName="Read calibrations">
+<Rectangle Left="480" Top="4560" Height="300" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2825" Color="8454143" DataName="Session Name" RequestName="Start Diagnostic Session">
+<Rectangle Left="480" Top="240" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Configuration" Color="16711680" WindowState="0" Width="15540" Height="11580">
+
+<Label Text="Write Configuration Parameters" Color="8421631" Alignment="2">
+<Rectangle Left="8880" Top="480" Height="360" Width="4080"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Read Configuration Parameters" Color="8421631" Alignment="2">
+<Rectangle Left="120" Top="480" Height="360" Width="5760"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="EEM Inhibition values" Color="16711935" Alignment="2">
+<Rectangle Left="9360" Top="10560" Height="360" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="BDU0              519" Color="65280" Alignment="0">
+<Rectangle Left="9360" Top="10920" Height="240" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="BDU1              512" Color="65280" Alignment="0">
+<Rectangle Left="9360" Top="11160" Height="240" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Send">
+<Rectangle Left="14535" Top="945" Height="9015" Width="720"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Start Diagnostic Session"/><Send Delay="0" RequestName="Write config"/>
+</Button>
+
+<Input Width="0" Color="16777215" DataName="E_B_OilPressureFailureInhibition" RequestName="Write config">
+<Rectangle Left="8880" Top="3000" Height="312" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_B_StressProtectionEnable" RequestName="Write config">
+<Rectangle Left="8880" Top="6517" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="E_B_FrontDefroster" RequestName="Write config">
+<Rectangle Left="8880" Top="3297" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="E_B_GearBoxType" RequestName="Write config">
+<Rectangle Left="8880" Top="2070" Height="326" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="E_B_LCS" RequestName="Write config">
+<Rectangle Left="8880" Top="2392" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_B_StarterProtection" RequestName="Write config">
+<Rectangle Left="8880" Top="6814" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_B_VRLA_Batt" RequestName="Write config">
+<Rectangle Left="8880" Top="1220" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_B_IHMLowBatteryActiv" RequestName="Write config">
+<Rectangle Left="8880" Top="7096" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="E_K_CompType" RequestName="Write config">
+<Rectangle Left="8880" Top="3594" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_B_BDUActivation" RequestName="Write config">
+<Rectangle Left="8880" Top="7392" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_B_AutoStopProtection" RequestName="Write config">
+<Rectangle Left="8880" Top="7680" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_K_BatteryType" RequestName="Write config">
+<Rectangle Left="8880" Top="1517" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_K_FrontBattery_type" RequestName="Write config">
+<Rectangle Left="8880" Top="1799" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_B_UsingDirectActivation" RequestName="Write config">
+<Rectangle Left="8880" Top="5642" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_B_NeutralContact_Diag" RequestName="Write config">
+<Rectangle Left="8880" Top="5938" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_K_Alt15_DATA2" RequestName="Write config">
+<Rectangle Left="8880" Top="3891" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_K_MechanicalRatio" RequestName="Write config">
+<Rectangle Left="8880" Top="938" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="E_B_FailureInhibition" RequestName="Write config">
+<Rectangle Left="8880" Top="2689" Height="312" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="E_B_NeutralNeverReachedInhibition" RequestName="Write config">
+<Rectangle Left="8880" Top="6235" Height="282" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_K_Low_limit_min" RequestName="Write config">
+<Rectangle Left="8880" Top="4170" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_K_Low_limit_max" RequestName="Write config">
+<Rectangle Left="8880" Top="4469" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_K_High_limit_min" RequestName="Write config">
+<Rectangle Left="8880" Top="4766" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_B_FloatingInhibit" RequestName="Write config">
+<Rectangle Left="8880" Top="8565" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_K_High_limit_max" RequestName="Write config">
+<Rectangle Left="8880" Top="5063" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="E_B_EEM_FailureInhibition" RequestName="Write config">
+<Rectangle Left="8880" Top="5355" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="E_B_AlertBDUDirect" RequestName="Write config">
+<Rectangle Left="8880" Top="7986" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_B_VehiculeRunning" RequestName="Write config">
+<Rectangle Left="8880" Top="8280" Height="297" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="C_RPM_EngineThreshold" RequestName="Write config">
+<Rectangle Left="8865" Top="8865" Height="297" Width="5655"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3140" Color="16777215" DataName="E_B_OilPressureFailureInhibition" RequestName="Read config">
+<Rectangle Left="120" Top="2977" Height="297" Width="8620"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_B_StressProtectionEnable" RequestName="Read config">
+<Rectangle Left="135" Top="6540" Height="321" Width="8620"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="E_B_FrontDefroster" RequestName="Read config">
+<Rectangle Left="120" Top="3274" Height="297" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="E_B_GearBoxType" RequestName="Read config">
+<Rectangle Left="120" Top="2087" Height="297" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="E_B_LCS" RequestName="Read config">
+<Rectangle Left="120" Top="2384" Height="297" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_B_StarterProtection" RequestName="Read config">
+<Rectangle Left="135" Top="6845" Height="321" Width="8620"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_B_VRLA_Batt" RequestName="Read config">
+<Rectangle Left="120" Top="1212" Height="297" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_B_IHMLowBatteryActiv" RequestName="Read config">
+<Rectangle Left="135" Top="7151" Height="321" Width="8620"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="E_K_CompType" RequestName="Read config">
+<Rectangle Left="117" Top="3556" Height="297" Width="8620"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_B_BDUActivation" RequestName="Read config">
+<Rectangle Left="135" Top="7472" Height="321" Width="8620"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_B_AutoStopProtection" RequestName="Read config">
+<Rectangle Left="135" Top="7777" Height="321" Width="8620"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_K_BatteryType" RequestName="Read config">
+<Rectangle Left="120" Top="1508" Height="297" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_K_FrontBattery_type" RequestName="Read config">
+<Rectangle Left="120" Top="1790" Height="297" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_B_UsingDirectActivation" RequestName="Read config">
+<Rectangle Left="135" Top="5649" Height="297" Width="8620"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_B_NeutralContact_Diag" RequestName="Read config">
+<Rectangle Left="135" Top="5945" Height="297" Width="8620"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_K_Alt15_DATA2" RequestName="Read config">
+<Rectangle Left="117" Top="3853" Height="297" Width="8620"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_K_MechanicalRatio" RequestName="Read config">
+<Rectangle Left="120" Top="915" Height="297" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="E_B_FailureInhibition" RequestName="Read config">
+<Rectangle Left="120" Top="2681" Height="297" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="E_B_NeutralNeverReachedInhibition" RequestName="Read config">
+<Rectangle Left="137" Top="6242" Height="297" Width="8614"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_K_Low_limit_min" RequestName="Read config">
+<Rectangle Left="115" Top="4140" Height="311" Width="8618"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_K_Low_limit_max" RequestName="Read config">
+<Rectangle Left="115" Top="4450" Height="311" Width="8618"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_K_High_limit_min" RequestName="Read config">
+<Rectangle Left="137" Top="4762" Height="311" Width="8618"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_B_FloatingInhibit" RequestName="Read config">
+<Rectangle Left="132" Top="8685" Height="300" Width="8623"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_K_High_limit_max" RequestName="Read config">
+<Rectangle Left="137" Top="5057" Height="311" Width="8618"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="E_B_EEM_FailureInhibition" RequestName="Read config">
+<Rectangle Left="137" Top="5353" Height="311" Width="8618"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="E_B_AlertBDUDirect" RequestName="Read config">
+<Rectangle Left="132" Top="8084" Height="300" Width="8623"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_B_VehiculeRunning" RequestName="Read config">
+<Rectangle Left="132" Top="8384" Height="300" Width="8623"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="16777215" DataName="C_RPM_EngineThreshold" RequestName="Read config">
+<Rectangle Left="132" Top="8984" Height="300" Width="8623"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2825" Color="8454143" DataName="Session Name" RequestName="Start Diagnostic Session">
+<Rectangle Left="120" Top="120" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="E_B_DRLWithoutPWM" RequestName="Write config">
+<Rectangle Left="8880" Top="9360" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="E_B_ThreeSpeeds" RequestName="Write config">
+<Rectangle Left="8880" Top="9600" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3140" Color="16777215" DataName="E_B_DRLWithoutPWM" RequestName="Read config">
+<Rectangle Left="120" Top="9360" Height="300" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3155" Color="16777215" DataName="E_B_ThreeSpeeds" RequestName="Read config">
+<Rectangle Left="120" Top="9600" Height="300" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="VIN" Color="16711680" WindowState="0" Width="9660" Height="3060">
+
+<Label Text="Read VIN" Color="8421631" Alignment="2">
+<Rectangle Left="240" Top="840" Height="360" Width="4440"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Write VIN" Color="8421631" Alignment="2">
+<Rectangle Left="4800" Top="840" Height="360" Width="4560"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Send">
+<Rectangle Left="4800" Top="2280" Height="450" Width="4440"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write VIN"/>
+</Button>
+<Button Text="Change Session">
+<Rectangle Left="8040" Top="240" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Change Diag Session"/>
+<Send Delay="0" RequestName="Start Diagnostic Session"/>
+</Button>
+
+<Display Width="890" Color="16777215" DataName="VIN" RequestName="Read VIN">
+<Rectangle Left="360" Top="1440" Height="300" Width="4320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="875" Color="16777215" DataName="VIN CRC" RequestName="Read VIN">
+<Rectangle Left="360" Top="1920" Height="300" Width="4320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="0" Color="16777215" DataName="VIN" RequestName="Write VIN">
+<Rectangle Left="4800" Top="1440" Height="300" Width="4480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="VIN CRC" RequestName="Write VIN">
+<Rectangle Left="4800" Top="1920" Height="300" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2825" Color="8454143" DataName="Session Name" RequestName="Start Diagnostic Session">
+<Rectangle Left="120" Top="240" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="I/O-Control" Color="16711680" WindowState="0" Width="11940" Height="8820">
+
+<Label Text="Received" Color="8454143" Alignment="2">
+<Rectangle Left="120" Top="6480" Height="360" Width="11640"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="PWM/Voltage Outputs" Color="8454016" Alignment="2">
+<Rectangle Left="8520" Top="7680" Height="360" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Digital Outputs" Color="8454016" Alignment="2">
+<Rectangle Left="8520" Top="7200" Height="360" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="I/O control" Color="8421631" Alignment="2">
+<Rectangle Left="2640" Top="120" Height="360" Width="5760"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Sent" Color="8454143" Alignment="2">
+<Rectangle Left="120" Top="1080" Height="360" Width="11640"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Digital Outputs" Color="8454016" Alignment="2">
+<Rectangle Left="120" Top="1560" Height="360" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="PWM/Voltage Outputs" Color="8454016" Alignment="2">
+<Rectangle Left="120" Top="3600" Height="360" Width="3120"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Change Session">
+<Rectangle Left="10080" Top="600" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Change Diag Session"/>
+<Send Delay="0" RequestName="Start Diagnostic Session"/>
+</Button>
+<Button Text="Send PWM Voltage Output">
+<Rectangle Left="120" Top="5760" Height="300" Width="5760"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Change Diag Session"/>
+<Send Delay="0" RequestName="PWM Voltage Outputs Control"/>
+</Button>
+<Button Text="Send Digital Output">
+<Rectangle Left="120" Top="2880" Height="300" Width="6240"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Change Diag Session"/>
+<Send Delay="0" RequestName="Digital Outputs Control"/>
+</Button>
+
+<Input Width="2825" Color="16777215" DataName="Session Name" RequestName="Start Diagnostic Session">
+<Rectangle Left="120" Top="600" Height="300" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3125" Color="16777215" DataName="Output PWM Voltage Control List" RequestName="PWM Voltage Outputs Control">
+<Rectangle Left="120" Top="3960" Height="300" Width="5790"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3125" Color="16777215" DataName="Output Control Command" RequestName="PWM Voltage Outputs Control">
+<Rectangle Left="120" Top="4260" Height="300" Width="5790"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3125" Color="16777215" DataName="Output Control.tempON" RequestName="PWM Voltage Outputs Control">
+<Rectangle Left="120" Top="4560" Height="300" Width="5790"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3560" Color="16777215" DataName="AC_VALVE_PWM" RequestName="PWM Voltage Outputs Control">
+<Rectangle Left="6000" Top="3960" Height="300" Width="5790"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3560" Color="16777215" DataName="V_PWM_LowBeam_LH_cmd" RequestName="PWM Voltage Outputs Control">
+<Rectangle Left="6000" Top="4260" Height="300" Width="5790"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3560" Color="16777215" DataName="V_PWM_LowBeam_RH_cmd" RequestName="PWM Voltage Outputs Control">
+<Rectangle Left="6000" Top="4560" Height="300" Width="5790"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3560" Color="16777215" DataName="V_PWM_DTRL_cmd" RequestName="PWM Voltage Outputs Control">
+<Rectangle Left="6000" Top="4860" Height="300" Width="5790"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3560" Color="16777215" DataName="V_B_MotorFanExternal2_relay_req" RequestName="PWM Voltage Outputs Control">
+<Rectangle Left="6000" Top="5160" Height="300" Width="5790"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3560" Color="16777215" DataName="V_U_alt_req_" RequestName="PWM Voltage Outputs Control">
+<Rectangle Left="6000" Top="5460" Height="300" Width="5790"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3560" Color="16777215" DataName="V_U_batt_req" RequestName="PWM Voltage Outputs Control">
+<Rectangle Left="6000" Top="5760" Height="300" Width="5790"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2405" Color="16777215" DataName="Output Digital Control List" RequestName="Digital Outputs Control">
+<Rectangle Left="120" Top="1920" Height="280" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2405" Color="16777215" DataName="Output Control Command" RequestName="Digital Outputs Control">
+<Rectangle Left="120" Top="2200" Height="280" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2405" Color="16777215" DataName="Output Control.tempON" RequestName="Digital Outputs Control">
+<Rectangle Left="120" Top="2480" Height="280" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2000" Color="8454143" DataName="Output Control Status" RequestName="Digital Outputs Control">
+<Rectangle Left="2400" Top="7200" Height="300" Width="6120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="8454143" DataName="Output Control Status" RequestName="PWM Voltage Outputs Control">
+<Rectangle Left="2400" Top="7680" Height="300" Width="6120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Energy Management">
+
+<Screen Name="Read EEM Variables" Color="16711680" WindowState="0" Width="9000" Height="6300">
+
+<Label Text="Read EEM Variables" Color="8421631" Alignment="2">
+<Rectangle Left="600" Top="240" Height="360" Width="7680"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+
+<Display Width="3095" Color="8454143" DataName="AlternatorUnknown" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="750" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_B_FloatingActive_status" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="1050" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_U_alt" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="1350" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_K_alt_RampTMChoice" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="1650" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_U_batt" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="1950" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_TM_TimeAtOpening_mem" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="2250" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_B_alt_Fault" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="2550" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_K_JaugeVT_mem" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="2850" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_K_BatteryWearCounter_mem" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="3150" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_Pct_DF_bss_read" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="3450" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_K_DefaultNumber" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="3750" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_K_alt_FaultType" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="4050" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_I_alt_Rotor_read" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="4350" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_K_Default_status" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="4650" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="AlternatorNumber" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="4950" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="Default_Counter" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="5250" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="V_K_ComBssNOk_status" RequestName="Read EEM variables">
+<Rectangle Left="1140" Top="5550" Height="300" Width="6700"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read Write Alternator Tables" Color="16711680" WindowState="0" Width="10740" Height="6900">
+
+<Label Text="Write Alternator Table" Color="8421631" Alignment="2">
+<Rectangle Left="120" Top="3720" Height="360" Width="2880"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Read Write Alternator Cartography Tables" Color="8421631" Alignment="2">
+<Rectangle Left="840" Top="120" Height="360" Width="7680"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Read Alternator Table" Color="8421631" Alignment="2">
+<Rectangle Left="120" Top="1680" Height="360" Width="2880"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Note: You have to choose between the five given alternator cartographies before you can either read or write them. Selection Boxes are marked in yellow." Color="8454016" Alignment="0">
+<Rectangle Left="120" Top="960" Height="600" Width="9120"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Read Chosen Alternator Cartography Table">
+<Rectangle Left="120" Top="2400" Height="360" Width="4800"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Read Alternator Tables"/>
+</Button>
+<Button Text="Write Chosen Alternator Cartography Table">
+<Rectangle Left="105" Top="4920" Height="360" Width="4920"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write Alternator Tables"/>
+</Button>
+<Button Text="Change Session">
+<Rectangle Left="8280" Top="600" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Change Diag Session"/>
+<Send Delay="0" RequestName="Start Diagnostic Session"/>
+</Button>
+
+<Display Width="2390" Color="16777215" DataName="EM Alternator Cartography" RequestName="Read Alternator Tables">
+<Rectangle Left="105" Top="3240" Height="300" Width="10440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="4895" Color="8454143" DataName="EM Alternator Cartography Choice" RequestName="Write Alternator Tables">
+<Rectangle Left="120" Top="4080" Height="300" Width="8520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2375" Color="16777215" DataName="EM Alternator Cartography" RequestName="Write Alternator Tables">
+<Rectangle Left="105" Top="4440" Height="300" Width="10440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="4910" Color="16777215" DataName="EM Chosen Alternator Cartography Table" RequestName="Write Alternator Tables">
+<Rectangle Left="105" Top="5400" Height="300" Width="8520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2825" Color="8454143" DataName="Session Name" RequestName="Start Diagnostic Session">
+<Rectangle Left="120" Top="600" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+</Category><Category Name="Read USM Status">
+
+<Screen Name="Read Analog Inputs" Color="16711680" WindowState="0" Width="8820" Height="5580">
+
+<Label Text="Read Analog Inputs" Color="8421631" Alignment="2">
+<Rectangle Left="600" Top="480" Height="360" Width="7560"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+
+<Display Width="3830" Color="8454143" DataName="I_ENERGY_BATTERY_VOLTAGE" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="945" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3830" Color="8454143" DataName="AI_AUTO_STOP_WIPER" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="1245" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3830" Color="8454143" DataName="AI_LIGHT_LBEAM_LH" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="1545" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3830" Color="8454143" DataName="AI_LIGHT_LBEAM_RH" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="1845" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3830" Color="8454143" DataName="AI_LIGHT_DTRL_LH_RR" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="2145" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3830" Color="8454143" DataName="AI_LIGHT_DTRL_RH_RR" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="2445" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3830" Color="8454143" DataName="AD_DTRL_L_RET" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="2745" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3830" Color="8454143" DataName="AD_DTRL_R_RET" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="3045" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3830" Color="8454143" DataName="AD_LBEAM_L_RET" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="3345" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3830" Color="8454143" DataName="AD_LBEAM_R_RET" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="3645" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3830" Color="8454143" DataName="AD_MOTOR_FAN_HI_RELAY_PWM_RET" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="3945" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3830" Color="8454143" DataName="AI_OL_CONTACTOR" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="4245" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3830" Color="8454143" DataName="AI_AC_VALVE" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="4545" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3830" Color="8454143" DataName="I_BATT1_VOLTAGE_POS_BDU" RequestName="Read Analog Inputs">
+<Rectangle Left="660" Top="4845" Height="300" Width="7525"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read Digital Inputs" Color="16711680" WindowState="0" Width="9540" Height="2940">
+
+<Label Text="Read Digital Inputs" Color="8421631" Alignment="2">
+<Rectangle Left="480" Top="480" Height="360" Width="7560"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+
+<Display Width="2645" Color="8454143" DataName="DI_NEUTRAL_SW" RequestName="Read Digital Inputs">
+<Rectangle Left="570" Top="960" Height="300" Width="7510"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2645" Color="8454143" DataName="DI_LIGHT_REVERSE_LAMP" RequestName="Read Digital Inputs">
+<Rectangle Left="570" Top="1260" Height="300" Width="7510"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2645" Color="8454143" DataName="DI_HEATER" RequestName="Read Digital Inputs">
+<Rectangle Left="570" Top="1560" Height="300" Width="7510"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2645" Color="8454143" DataName="DI_OIL_PRESSURE_SW" RequestName="Read Digital Inputs">
+<Rectangle Left="570" Top="1860" Height="300" Width="7510"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2645" Color="8454143" DataName="DI_SAFETY_BDU_RR" RequestName="Read Digital Inputs">
+<Rectangle Left="570" Top="2160" Height="300" Width="7510"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read Digital Outputs" Color="16711680" WindowState="0" Width="8700" Height="7860">
+
+<Label Text="Read Digital Outputs" Color="8421631" Alignment="2">
+<Rectangle Left="600" Top="120" Height="360" Width="7560"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+
+<Display Width="3200" Color="8454143" DataName="V_B_IgnitionReset" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="555" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="CLOSE_CONTACTOR" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="855" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DO_LIGHT_POSITION_ON" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="1155" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="CONTACTOR_OL_DIAG_SET" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="1455" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DO_BATT_VOLTAGE_ON" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="1755" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DO_H_WASHER" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="2055" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DO_L_WASHER" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="2355" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="V_B_Ignition_relay_cmd" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="2655" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="V_B_IgnitionSet" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="2955" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="V_B_MotorFanExternal1_relay_req" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="3255" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DO_O_FR_WIPER_HI" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="3555" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DO_O_FR_WIPER" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="3855" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="V_B_LBEAM_LH_ControlDiag" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="4155" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="V_B_LBEAM_RH_ControlDiag" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="4455" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="V_B_DTRL_ControlDiag" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="4755" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DO_LIGHT_FR_FOG_LAMPS" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="5055" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DO_LIGHT_HBEAM_LAMPS" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="5355" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DO_O_STARTER" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="5655" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DO_O_MOTOR_FAN_HI" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="5955" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DO_O_MOTOR_FAN_LO" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="6255" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="OPEN_CONTACTOR" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="6555" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DO_O_AC_CLUTCH" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="6855" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="CONTACTOR_GND_SET" RequestName="Read Digital Outputs">
+<Rectangle Left="705" Top="7155" Height="300" Width="7450"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read CAN Status" Color="16711680" WindowState="0" Width="8460" Height="4140">
+
+<Label Text="Read CAN Status" Color="8421631" Alignment="2">
+<Rectangle Left="435" Top="510" Height="360" Width="7560"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+
+<Display Width="3020" Color="8454143" DataName="CAN_MessageSet_Ref" RequestName="Read CAN status">
+<Rectangle Left="495" Top="1110" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3020" Color="8454143" DataName="CAN_Bus_OFF_parameter" RequestName="Read CAN status">
+<Rectangle Left="495" Top="1410" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3020" Color="8454143" DataName="CAN_Mute_parameter" RequestName="Read CAN status">
+<Rectangle Left="495" Top="1710" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3020" Color="8454143" DataName="CAN_ECM_missing" RequestName="Read CAN status">
+<Rectangle Left="495" Top="2010" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3020" Color="8454143" DataName="CAN_BRAKE_missing" RequestName="Read CAN status">
+<Rectangle Left="495" Top="2310" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3020" Color="8454143" DataName="CAN_BCM_missing" RequestName="Read CAN status">
+<Rectangle Left="495" Top="2610" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3020" Color="8454143" DataName="CAN_CLIM_missing" RequestName="Read CAN status">
+<Rectangle Left="495" Top="2910" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3020" Color="8454143" DataName="CAN_TORQUE_AT_missing" RequestName="Read CAN status">
+<Rectangle Left="495" Top="3210" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read Sent CAN Data" Color="16711680" WindowState="0" Width="12660" Height="11220">
+
+<Label Text="USM_CANHS_RNr_02 Frame" Color="8454016" Alignment="2">
+<Rectangle Left="1080" Top="8040" Height="360" Width="6840"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="SENT CAN DATA" Color="8421631" Alignment="2">
+<Rectangle Left="360" Top="120" Height="360" Width="7920"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="MMI_USM_CANHS_R_01 Frame" Color="8454016" Alignment="2">
+<Rectangle Left="1080" Top="5400" Height="360" Width="6840"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="USM_CANHS_RNr_01 Frame" Color="8454016" Alignment="2">
+<Rectangle Left="1080" Top="600" Height="360" Width="6840"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+
+<Display Width="4310" Color="8454143" DataName="StarterStatus" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="3840" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="FrontWiperStatus" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="10575" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="FrontWiperStopPosition" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="10215" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="ACCompClutchStatus" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="3480" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="IgnitionSupplyConfirmation" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="9855" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="WeakOilPressureWarning" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="6120" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="BatteryVoltage_USM" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="8400" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="USM_RefuseToSleep" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="9495" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="AlternatorLoad" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="4920" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="RearGearEngaged" RequestName="Read sent CAN data">
+<Rectangle Left="1065" Top="4185" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="NeutralContact" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="4560" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="CoolingFanSpeedStatus" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="2040" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="InstantMechanicalPowerByAlt" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="1320" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="ACCompClutchDefault" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="2400" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="ACCompValveCurrent" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="1680" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="ACCompValveDefault" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="2760" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="BatteryWarning" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="6480" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="LowBatteryVoltageDisplay" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="7560" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="BDUOpeningAnticipation" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="8775" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="OilPressureSwitchFaultDisplay" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="5760" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="MiniConsumptionRequest" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="960" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="IgnitionControlState" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="9135" Height="295" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="NeutralSwitchFaultDisplay" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="7200" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="BDUCommandLineFailure" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="6840" Height="295" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4310" Color="8454143" DataName="FrontDefrostEngaged" RequestName="Read sent CAN data">
+<Rectangle Left="1080" Top="3120" Height="300" Width="6840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read Received CAN Data" Color="16711680" WindowState="0" Width="9540" Height="11340">
+
+<Label Text="DDM_CANLSFT_R_01" Color="8454016" Alignment="2">
+<Rectangle Left="720" Top="590" Height="240" Width="3480"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="BRAKE_CANHS_R_01" Color="8454016" Alignment="2">
+<Rectangle Left="720" Top="10440" Height="235" Width="3480"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="BCM_CANHS_RNr_01/02" Color="8454016" Alignment="2">
+<Rectangle Left="720" Top="1200" Height="240" Width="3480"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="TORQUE_ECM/AT_CANHS_RNr01/02" Color="8454016" Alignment="2">
+<Rectangle Left="720" Top="5280" Height="240" Width="4695"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="ECM_CANHS_RNr01/02" Color="8454143" Alignment="2">
+<Rectangle Left="720" Top="6240" Height="240" Width="3480"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="CLIM_CANHS_R_01" Color="8454016" Alignment="2">
+<Rectangle Left="705" Top="9050" Height="235" Width="3480"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="RECEIVED CAN DATA" Color="8421631" Alignment="2">
+<Rectangle Left="360" Top="120" Height="360" Width="8880"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+
+<Display Width="3470" Color="8454143" DataName="StartingMode_BCM_R" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="4155" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="BCM_WakeUpSleepCommand" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="4635" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="FrontWipingRequest" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="1710" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="HeadLampsWasherRequest" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="2910" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="ClutchSwitchMaximumTravel" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="3435" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="DistanceTotalizer" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="10680" Height="278" Width="8145"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="AbsoluteTimeSince1rstIgnition" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="3675" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="WakeUpType" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="4875" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="PositionLightsRequest" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="1950" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="LowBeamRequest" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="2190" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="HighBeamRequest" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="2430" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="FrontFogLightsRequest" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="2670" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="EngineCoolantTemp" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="8640" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="VehicleSpeed" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="10915" Height="278" Width="8145"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="EngineFanSpeedRequest" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="7680" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="ACCompAuthorized" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="7200" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="ACCompClutchRequest" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="9560" Height="278" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="ACCompValveRequest" RequestName="Read received CAN data">
+<Rectangle Left="705" Top="10120" Height="278" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="ACCompWorkingMode" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="9288" Height="278" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="EngineStatus_CAN" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="7440" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="AllowedPowerGradient" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="6720" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="CrankingAuthorization_ECM" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="6960" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="CrankingAuthorization_AT" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="5880" Height="300" Width="8130"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="AlternatorMaximumPower" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="6480" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="EngineRPM_CAN" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="5520" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="ExternalTemp" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="830" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="DeliveryModeInformation" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="4395" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="DayRunningLightRequest" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="1440" Height="300" Width="8145"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="DiagMuxOn_BCM" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="3915" Height="284" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="ClutchSwitchMinimumTravel" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="3165" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="FrontDefrostRequest" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="9825" Height="300" Width="8140"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="FloatingInhibition" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="7920" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3470" Color="8454143" DataName="ACCompClutchActivation" RequestName="Read received CAN data">
+<Rectangle Left="720" Top="8205" Height="300" Width="8155"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read Battery Voltage" Color="16711680" WindowState="0" Width="8220" Height="4020">
+
+<Label Text="Read Battery Voltage Data" Color="8421631" Alignment="2">
+<Rectangle Left="240" Top="120" Height="360" Width="7560"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Change Session">
+<Rectangle Left="6480" Top="600" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Change Diag Session"/>
+<Send Delay="0" RequestName="Start Diagnostic Session"/>
+</Button>
+
+<Display Width="3590" Color="8454143" DataName="V_U_batt_USM_flt" RequestName="Read Battery voltage data">
+<Rectangle Left="412" Top="1350" Height="300" Width="7455"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3590" Color="8454143" DataName="I_ENERGY_BATTERY_VOLTAGE" RequestName="Read Battery voltage data">
+<Rectangle Left="412" Top="1635" Height="300" Width="7455"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3590" Color="8454143" DataName="I_BATT1_VOLTAGE_POS_BDU" RequestName="Read Battery voltage data">
+<Rectangle Left="412" Top="1920" Height="300" Width="7455"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3590" Color="8454143" DataName="BatteryVoltage_USM" RequestName="Read Battery voltage data">
+<Rectangle Left="412" Top="2160" Height="300" Width="7455"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3590" Color="8454143" DataName="AI_VDDG" RequestName="Read Battery voltage data">
+<Rectangle Left="405" Top="2445" Height="300" Width="7455"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3590" Color="8454143" DataName="AI_BROKEN_GND" RequestName="Read Battery voltage data">
+<Rectangle Left="405" Top="2730" Height="300" Width="7455"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3590" Color="8454143" DataName="AI_BATT1" RequestName="Read Battery voltage data">
+<Rectangle Left="405" Top="3015" Height="300" Width="7455"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3590" Color="8454143" DataName="AI_BATT_VOLTAGE" RequestName="Read Battery voltage data">
+<Rectangle Left="405" Top="3300" Height="300" Width="7455"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="1355" Color="16777215" DataName="Session Name" RequestName="Start Diagnostic Session">
+<Rectangle Left="240" Top="600" Height="300" Width="6120"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Read PWM Outputs" Color="16711680" WindowState="0" Width="7620" Height="2820">
+
+<Label Text="Read PWM Outputs" Color="8421631" Alignment="2">
+<Rectangle Left="360" Top="240" Height="360" Width="6600"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+
+<Display Width="3425" Color="8454143" DataName="AC_VALVE_PWM" RequestName="Read PWM Outputs">
+<Rectangle Left="1080" Top="840" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="8454143" DataName="V_PWM_DTRL_cmd" RequestName="Read PWM Outputs">
+<Rectangle Left="1080" Top="1140" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="8454143" DataName="V_PWM_LowBeam_LH_cmd" RequestName="Read PWM Outputs">
+<Rectangle Left="1080" Top="1440" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="8454143" DataName="V_PWM_LowBeam_RH_cmd" RequestName="Read PWM Outputs">
+<Rectangle Left="1080" Top="1740" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="8454143" DataName="V_B_MotorFanExternal2_relay_req" RequestName="Read PWM Outputs">
+<Rectangle Left="1080" Top="2040" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read Diagnostic Inputs" Color="16711680" WindowState="0" Width="9000" Height="3180">
+
+<Label Text="Read Diagnostic Inputs" Color="8421631" Alignment="2">
+<Rectangle Left="1080" Top="120" Height="360" Width="6600"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+
+<Display Width="3125" Color="8454143" DataName="DI_BATT_ECM_ACT_RR" RequestName="Read Diagnostic Inputs">
+<Rectangle Left="1170" Top="630" Height="300" Width="6520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3125" Color="8454143" DataName="DI_BATT_ABS_VALVES_RR" RequestName="Read Diagnostic Inputs">
+<Rectangle Left="1170" Top="930" Height="300" Width="6520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3125" Color="8454143" DataName="DI_BATT_GEAR_LPG_RR" RequestName="Read Diagnostic Inputs">
+<Rectangle Left="1170" Top="1230" Height="300" Width="6520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3125" Color="8454143" DataName="DI_H_L_WASHER_RR" RequestName="Read Diagnostic Inputs">
+<Rectangle Left="1170" Top="1530" Height="300" Width="6520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3125" Color="8454143" DataName="DI_IGN_AIRBAG_SAFETY_RR" RequestName="Read Diagnostic Inputs">
+<Rectangle Left="1170" Top="1830" Height="300" Width="6520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3125" Color="8454143" DataName="DI_IGN_NOT_COLUMN_LOCK_RR" RequestName="Read Diagnostic Inputs">
+<Rectangle Left="1170" Top="2130" Height="300" Width="6520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3125" Color="8454143" DataName="DI_IGN_RR" RequestName="Read Diagnostic Inputs">
+<Rectangle Left="1170" Top="2430" Height="300" Width="6520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Read Traceability" Color="16711680" WindowState="0" Width="9000" Height="1980">
+
+<Label Text="Read Traceability" Color="8421631" Alignment="2">
+<Rectangle Left="1080" Top="120" Height="360" Width="6600"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+
+<Display Width="2585" Color="8454143" DataName="traceability_SerialNumber" RequestName="Traceability">
+<Rectangle Left="120" Top="720" Height="300" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2585" Color="8454143" DataName="traceability_ManufactureDate" RequestName="Traceability">
+<Rectangle Left="120" Top="1020" Height="300" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2585" Color="8454143" DataName="Traceability_padding" RequestName="Traceability">
+<Rectangle Left="120" Top="1320" Height="300" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Engineering">
+
+<Screen Name="ECU Reset" Color="16711680" WindowState="0" Width="7140" Height="2220">
+
+<Label Text="ECU Reset" Color="8421631" Alignment="2">
+<Rectangle Left="120" Top="0" Height="360" Width="6720"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Make ECU Reset">
+<Rectangle Left="1320" Top="1320" Height="450" Width="4440"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="ECUReset"/>
+</Button>
+<Button Text="Change Session">
+<Rectangle Left="5520" Top="600" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Change Diag Session"/>
+<Send Delay="0" RequestName="Start Diagnostic Session"/>
+</Button>
+
+<Input Width="1355" Color="8454143" DataName="Session Name" RequestName="Start Diagnostic Session">
+<Rectangle Left="0" Top="600" Height="300" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Debug Frames" Color="16711680" WindowState="0" Width="9420" Height="2220">
+
+<Label Text="Read" Color="8421631" Alignment="2">
+<Rectangle Left="5280" Top="1080" Height="360" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Enable/Disable Debug Frames" Color="8421631" Alignment="2">
+<Rectangle Left="600" Top="120" Height="360" Width="8400"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Write" Color="8421631" Alignment="2">
+<Rectangle Left="600" Top="1080" Height="360" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 13" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Change Session">
+<Rectangle Left="7200" Top="600" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Change Diag Session"/>
+<Send Delay="0" RequestName="Start Diagnostic Session"/>
+</Button>
+<Button Text="Send">
+<Rectangle Left="4200" Top="1560" Height="330" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write Debug Frames Enable"/>
+</Button>
+
+<Input Width="1355" Color="8454143" DataName="Session Name" RequestName="Start Diagnostic Session">
+<Rectangle Left="600" Top="600" Height="300" Width="6480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="E_B_EnableDebugFrames" RequestName="Write Debug Frames Enable">
+<Rectangle Left="600" Top="1560" Height="300" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="0" Color="16777215" DataName="E_B_EnableDebugFrames" RequestName="Read Debug Frames Enable">
+<Rectangle Left="5280" Top="1560" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

@@ -1,0 +1,3031 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.0.0.1" date="2009-07-22T11:31"/>
+<ddt:Target Name="ITM P2 V4.1" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="cleber-daniel.jacintho@renault.com" href="ITM_P2_V4.1_20090722T151201.xml" upload="7/22/2009" group="ITM"><Description><![CDATA[IT master ECU navigation
+
+X91, X95, L43
+
+20 11 06, V2.5, Vehicle type list update, VDiag 04
+08 02 07, V3.0 CBox, premium amplifier, TFT, rear cam configuration addition, VDiag 05
+22 10 07, V3.1 rear cam configuration update, corrections
+17 01 08, V3.2 microphone test screen addition, ident auto PSP2 D91
+22 09 08, V4.0 rear camera picture configuration addition, VDiag 06
+24 06 09, V4.1 L43 addition
+
+Lionel Pelletier untill V4.0           
+Cleber Jacintho from V4.1]]></Description>
+<Projects xmlns=""><x43/><x91/><x95/></Projects>
+<Function Name="Navigation" Address="88"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>23/07/2009 15:53:39</DateOfficialisation>
+<Failures Name="DTC Failures" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="1863"/>
+</SendId><ReceiveId>
+<CANId Value="1895"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="5" Supplier="AVH" Soft="0000" Version="0000"/><AutoIdent DiagVersion="5" Supplier="AVH" Soft="0704" Version="0007"/><AutoIdent DiagVersion="5" Supplier="AVH" Soft="0705" Version="0003"/><AutoIdent DiagVersion="5" Supplier="AVH" Soft="1101" Version="0201"/><AutoIdent DiagVersion="5" Supplier="AVH" Soft="0605" Version="0003"/><AutoIdent DiagVersion="6" Supplier="AVH" Soft="1101" Version="0306"/><AutoIdent DiagVersion="5" Supplier="AVH" Soft="1101" Version="0206"/><AutoIdent DiagVersion="5" Supplier="AVH" Soft="0706" Version="0201"/></AutoIdents>
+<Datas>
+
+<Data Name="CRC">
+<Mnemonic>CRC</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="V.I.N">
+<Comment><![CDATA[Vehicle identification number]]></Comment>
+<Mnemonic>V.I.N</Mnemonic>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="config PRECODE">
+<Comment><![CDATA[antitheft pre-code]]></Comment>
+<Mnemonic>CNFPRECODE</Mnemonic>
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="TEST tel type">
+<Comment><![CDATA[phone test type]]></Comment>
+<Mnemonic>TSTTELTYP</Mnemonic>
+<Bits>
+<List>
+<Item Value="43" Text="audio link test"/>
+<Item Value="42" Text="data serial link test"/>
+<Item Value="44" Text="current cunsumption test"/></List>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Bits count="16">
+<List>
+<Item Value="39424" Text="GPS antenna open circuit"/>
+<Item Value="39425" Text="GPS disturbed communication"/>
+<Item Value="39426" Text="GPS ROM internal electronic abnormality"/>
+<Item Value="39427" Text="GPS RAM internal electronic abnormality"/>
+<Item Value="39428" Text="GPS RTC internal electronic abnormality"/>
+<Item Value="39430" Text="Front display error"/>
+<Item Value="39431" Text="Flash ROM error of control unit"/>
+<Item Value="39432" Text="Gyro open circuit"/>
+<Item Value="39436" Text="DVD-ROM disc error"/>
+<Item Value="39437" Text="DVD-ROM drive error"/>
+<Item Value="39439" Text="HFCK connection problem"/>
+<Item Value="49507" Text="Main keyboard connection problem"/>
+<Item Value="49542" Text="Audio unit connection problem"/>
+<Item Value="49545" Text="CD changer connection problem"/>
+<Item Value="49920" Text="Incorrect settings"/>
+<Item Value="39440" Text="Bluetooth error"/>
+<Item Value="39441" Text="CSW button error"/>
+<Item Value="39442" Text="Antitheft lock"/>
+<Item Value="49492" Text="Gateway connection problem"/>
+<Item Value="39443" Text="Rear camera connection problem"/>
+<Item Value="39444" Text="Rear camera controller connection problem"/>
+<Item Value="53265" Text="MM CAN controller problem"/></List>
+</Bits>
+</Data>
+<Data Name="Output Control Command">
+<Comment><![CDATA[Testing output : Command enumeration]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="Start Temporary"/>
+<Item Value="1" Text="Status"/>
+<Item Value="17" Text="Stop"/>
+<Item Value="32" Text="Start Permanent"/></List>
+</Bits>
+</Data>
+<Data Name="Output Control Parameters">
+<Comment><![CDATA[Testing output : Number of cycle]]></Comment>
+<Bits>
+<List/>
+</Bits>
+</Data>
+<Data Name="Output Permanent Control List">
+<Comment><![CDATA[Testing output : List of all output with permanent test]]></Comment>
+<Bits>
+<List>
+<Item Value="33" Text="Loud speaker"/></List>
+</Bits>
+</Data>
+<Data Name="Output Temporary Control List">
+<Comment><![CDATA[Testing output : List of all output with temporary test]]></Comment>
+<Bits>
+<List/>
+</Bits>
+</Data>
+<Data Name="Output Control Status">
+<Comment><![CDATA[Testing output : Status]]></Comment>
+<Bits>
+<List>
+<Item Value="1" Text="Running"/>
+<Item Value="2" Text="Stopped"/>
+<Item Value="17" Text="Manually Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="DTC status">
+<Comment><![CDATA[device]]></Comment>
+<Mnemonic>DTCDEV</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="reserved"/>
+<Item Value="1" Text="open circuit"/>
+<Item Value="2" Text="short circuit to ground"/>
+<Item Value="3" Text="short circuit to battery"/>
+<Item Value="4" Text="parameter at minimum value"/>
+<Item Value="5" Text="parameter at maximum value"/>
+<Item Value="6" Text="unconsistency"/>
+<Item Value="7" Text="no signal"/>
+<Item Value="8" Text="under minimum thereshold level"/>
+<Item Value="9" Text="above maximum thereshold level"/>
+<Item Value="10" Text="permanent low level"/>
+<Item Value="11" Text="permanent high level"/>
+<Item Value="12" Text="short circuited lines"/>
+<Item Value="13" Text="internal electronic problem"/>
+<Item Value="14" Text="network preoblem"/>
+<Item Value="15" Text="remote diagnosis"/>
+<Item Value="16" Text="perturbated communication"/>
+<Item Value="17" Text="micro-cuts"/>
+<Item Value="18" Text="abnormal voltage"/>
+<Item Value="19" Text="out of range value"/>
+<Item Value="20" Text="open circuit or short circuit to ground"/>
+<Item Value="21" Text="open circuit or short circuit to battery"/>
+<Item Value="22" Text="invalid settings or initialisation"/></List>
+</Bits>
+</Data>
+<Data Name="NDTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="MMux Ref Messagerie">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Response tester">
+<Comment><![CDATA[tester present response query]]></Comment>
+<Mnemonic>RSPREQ</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="reponse waited"/>
+<Item Value="2" Text="No response waited"/></List>
+</Bits>
+</Data>
+<Data Name="TEST microphone status">
+<Comment><![CDATA[microphone test status]]></Comment>
+<Mnemonic>TSTMICSTS</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="no test in progress"/>
+<Item Value="1" Text="tone test in progress"/>
+<Item Value="2" Text="test OK"/>
+<Item Value="4" Text="test NOK"/>
+<Item Value="255" Text="problem during test"/></List>
+</Bits>
+</Data>
+<Data Name="TEST display test card">
+<Comment><![CDATA[test card to be displayed]]></Comment>
+<Mnemonic>TSTAFFM</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="test card number 1 color bars"/>
+<Item Value="2" Text="test card number 2 grey scales"/>
+<Item Value="3" Text="test card number 3 white screen"/></List>
+</Bits>
+</Data>
+<Data Name="TEST display status">
+<Comment><![CDATA[display test status]]></Comment>
+<Mnemonic>TSTAFFSTS</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="no test on progress"/>
+<Item Value="1" Text="test card 1 color bars on progress"/>
+<Item Value="2" Text="test card 2 grey scales on progress"/>
+<Item Value="3" Text="test card 3 white screen on progress"/>
+<Item Value="255" Text="problem during test"/></List>
+</Bits>
+</Data>
+<Data Name="MMux Produce Bus Mute">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Present"/>
+<Item Value="2" Text="Missing"/>
+<Item Value="3" Text="Missing Confirmed"/></List>
+</Bits>
+</Data>
+<Data Name="MMux Produce Bus Mute Counter">
+<Bits count="6">
+<List>
+<Item Value="0" Text="0"/>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/>
+<Item Value="32" Text="32"/>
+<Item Value="33" Text="33"/>
+<Item Value="34" Text="34"/>
+<Item Value="35" Text="35"/>
+<Item Value="36" Text="36"/>
+<Item Value="37" Text="37"/>
+<Item Value="38" Text="38"/>
+<Item Value="39" Text="39"/>
+<Item Value="40" Text="40"/>
+<Item Value="63" Text="No Checked"/></List>
+</Bits>
+</Data>
+<Data Name="MMux Produce Bus Off">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Present"/>
+<Item Value="2" Text="Missing"/>
+<Item Value="3" Text="Missing Confirmed"/></List>
+</Bits>
+</Data>
+<Data Name="MMUX keyboard counter">
+<Bits count="6">
+<List>
+<Item Value="0" Text="0"/>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/>
+<Item Value="32" Text="32"/>
+<Item Value="33" Text="33"/>
+<Item Value="34" Text="34"/>
+<Item Value="35" Text="35"/>
+<Item Value="36" Text="36"/>
+<Item Value="37" Text="37"/>
+<Item Value="38" Text="38"/>
+<Item Value="39" Text="39"/>
+<Item Value="40" Text="40"/>
+<Item Value="63" Text="No Checked"/></List>
+</Bits>
+</Data>
+<Data Name="MMux Produce Bus Off Counter">
+<Bits count="6">
+<List>
+<Item Value="0" Text="0"/>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/>
+<Item Value="32" Text="32"/>
+<Item Value="33" Text="33"/>
+<Item Value="34" Text="34"/>
+<Item Value="35" Text="35"/>
+<Item Value="36" Text="36"/>
+<Item Value="37" Text="37"/>
+<Item Value="38" Text="38"/>
+<Item Value="39" Text="39"/>
+<Item Value="40" Text="40"/>
+<Item Value="63" Text="No Checked"/></List>
+</Bits>
+</Data>
+<Data Name="MMUX ITM">
+<Comment><![CDATA[CAN-M management ECU IT master]]></Comment>
+<Mnemonic>CANMM7</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="IT master present"/></List>
+</Bits>
+</Data>
+<Data Name="MMUX ITM counter">
+<Bits count="6">
+<List>
+<Item Value="0" Text="0"/>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/>
+<Item Value="32" Text="32"/>
+<Item Value="33" Text="33"/>
+<Item Value="34" Text="34"/>
+<Item Value="35" Text="35"/>
+<Item Value="36" Text="36"/>
+<Item Value="37" Text="37"/>
+<Item Value="38" Text="38"/>
+<Item Value="39" Text="39"/>
+<Item Value="40" Text="40"/>
+<Item Value="63" Text="No Checked"/></List>
+</Bits>
+</Data>
+<Data Name="MMUX keyboard">
+<Comment><![CDATA[CAN-M management ECU keyboard]]></Comment>
+<Mnemonic>CANMM7</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="present"/>
+<Item Value="2" Text="missing"/>
+<Item Value="3" Text="missing confirmed"/></List>
+</Bits>
+</Data>
+<Data Name="traceability ITG">
+<Comment><![CDATA[serial numbers]]></Comment>
+<Mnemonic>TRACA</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="traceability month">
+<Comment><![CDATA[serial numbers]]></Comment>
+<Mnemonic>TRACA</Mnemonic>
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="traceability manufacturing code">
+<Comment><![CDATA[serial numbers]]></Comment>
+<Mnemonic>TRACA</Mnemonic>
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="TEST tel status">
+<Comment><![CDATA[phone test status]]></Comment>
+<Mnemonic>TSTTELSTS</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="routine not activated"/>
+<Item Value="1" Text="routine in progress"/>
+<Item Value="2" Text="routine completed and OK"/>
+<Item Value="4" Text="routine completed and NOK"/>
+<Item Value="255" Text="problem in the test"/></List>
+</Bits>
+</Data>
+<Data Name="TEST tel type status">
+<Comment><![CDATA[phone test type]]></Comment>
+<Mnemonic>TSTTELTYP</Mnemonic>
+<Bits>
+<List>
+<Item Value="42" Text="data serial link test"/>
+<Item Value="43" Text="audio link test"/>
+<Item Value="44" Text="current cunsumption test"/></List>
+</Bits>
+</Data>
+<Data Name="traceability blank 2">
+<Comment><![CDATA[blanking spaces]]></Comment>
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="traceability blank">
+<Comment><![CDATA[blanking spaces]]></Comment>
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="Session Name">
+<Comment><![CDATA[Mode d'ouverture de la section diag]]></Comment>
+<Mnemonic>DiagnosticMode</Mnemonic>
+<Bits>
+<List>
+<Item Value="129" Text="Session par défaut (1081)"/>
+<Item Value="134" Text="Etudes"/>
+<Item Value="192" Text="Usines et APV"/>
+<Item Value="196" Text="Fonction climatisation"/>
+<Item Value="200" Text="Fonction VSC accès-démarrage"/>
+<Item Value="250" Text="Fournisseur"/></List>
+</Bits>
+</Data>
+<Data Name="Current Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="config reset">
+<Comment><![CDATA[reset type]]></Comment>
+<Mnemonic>CNFRST</Mnemonic>
+<Bits>
+<List>
+<Item Value="254" Text="data memory zone"/>
+<Item Value="255" Text="system parameters"/></List>
+</Bits>
+</Data>
+<Data Name="config display view">
+<Comment><![CDATA[display orientation configuration]]></Comment>
+<Mnemonic>DISPCNF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="12 o'clock"/>
+<Item Value="128" Text="6 o'clock"/>
+<Item Value="255" Text="no change"/></List>
+</Bits>
+</Data>
+<Data Name="config display contrast">
+<Comment><![CDATA[display contrast table configuration]]></Comment>
+<Mnemonic>CNTCNF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="table number 1"/>
+<Item Value="1" Text="table number 2"/>
+<Item Value="255" Text="no change"/></List>
+</Bits>
+</Data>
+<Data Name="config legal">
+<Comment><![CDATA[legal mode configuration]]></Comment>
+<Mnemonic>CNFLEG</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="un-restricted use"/>
+<Item Value="128" Text="restricted use"/>
+<Item Value="255" Text="no change"/></List>
+</Bits>
+</Data>
+<Data Name="config CSW soft">
+<Comment><![CDATA[central switch software version]]></Comment>
+<Mnemonic>CSWIDT</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="config CSW hard">
+<Comment><![CDATA[central switch hardware version]]></Comment>
+<Mnemonic>CSWIDT</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="TEST Bluetooth status">
+<Comment><![CDATA[Bluetooth test status]]></Comment>
+<Mnemonic>TSTBTSTS</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="no Bluetooth update in progress"/>
+<Item Value="1" Text="Bluetooth update in progress"/>
+<Item Value="2" Text="Bluetooth update OK"/>
+<Item Value="255" Text="problem in the test"/></List>
+</Bits>
+</Data>
+<Data Name="config VEHICLE">
+<Comment><![CDATA[vehicle type configuration number]]></Comment>
+<Mnemonic>CNFVEH</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="0" Text="défault value"/>
+<Item Value="8" Text="X73 phase 2"/>
+<Item Value="9" Text="X74 phase 2"/>
+<Item Value="21" Text="J84 phase 2"/>
+<Item Value="22" Text="X91"/>
+<Item Value="25" Text="J81 phase 2"/>
+<Item Value="28" Text="BK95"/>
+<Item Value="29" Text="JR95"/>
+<Item Value="30" Text="D95"/>
+<Item Value="31" Text="L43"/>
+<Item Value="65535" Text="no change"/></List>
+</Bits>
+</Data>
+<Data Name="configOptionsTFT">
+<Comment><![CDATA[optional equipment presence configuration]]></Comment>
+<Mnemonic>CNFOPTTFT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="TFT not fitted"/>
+<Item Value="1" Text="TFT fitted"/></List>
+</Bits>
+</Data>
+<Data Name="configOptionsCam">
+<Comment><![CDATA[optional equipment presence configuration]]></Comment>
+<Mnemonic>CNFOPTCAM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="rear camera not fitted"/>
+<Item Value="1" Text="rear camera fitted"/></List>
+</Bits>
+</Data>
+<Data Name="configOptionsCbox">
+<Comment><![CDATA[optional equipment presence configuration]]></Comment>
+<Mnemonic>CNFOPTCBOX</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="CBox not fitted"/>
+<Item Value="1" Text="CBox fitted"/></List>
+</Bits>
+</Data>
+<Data Name="configOptionsAmp">
+<Comment><![CDATA[optional equipment presence configuration]]></Comment>
+<Mnemonic>CNFOPTAMP</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="premium amplifier not fitted"/>
+<Item Value="1" Text="premium amplifier fitted"/></List>
+</Bits>
+</Data>
+<Data Name="TEST control perm">
+<Comment><![CDATA[test control]]></Comment>
+<Mnemonic>TSTCTRLPRM</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Status request"/>
+<Item Value="17" Text="test stop"/>
+<Item Value="32" Text="test start query"/></List>
+</Bits>
+</Data>
+<Data Name="TEST control temp">
+<Comment><![CDATA[test control]]></Comment>
+<Mnemonic>TSTCTRLTMP</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="temporary test start query"/>
+<Item Value="1" Text="Status request"/>
+<Item Value="17" Text="test stop"/></List>
+</Bits>
+</Data>
+<Data Name="TEST Camera configuration">
+<Comment><![CDATA[test camera configuration]]></Comment>
+<Mnemonic>TSTCAMCNF</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Rotation to the left"/>
+<Item Value="2" Text="Rotation to the right"/>
+<Item Value="4" Text="Upward direction increment"/>
+<Item Value="8" Text="Down ward direction increment"/>
+<Item Value="12" Text="Left direction increment"/>
+<Item Value="16" Text="Right direction increment"/>
+<Item Value="32" Text="Validate modifications"/>
+<Item Value="64" Text="cancel modifications"/></List>
+</Bits>
+</Data>
+<Data Name="TEST status">
+<Comment><![CDATA[tel_voice and guide_voic test status]]></Comment>
+<Mnemonic>CTRLSTAT</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="no test in progress"/>
+<Item Value="1" Text="tone test in progress"/>
+<Item Value="255" Text="problem during test"/></List>
+</Bits>
+</Data>
+<Data Name="TEST Camera activation">
+<Comment><![CDATA[test camera activation]]></Comment>
+<Mnemonic>TSTCAMACT</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="rear camera disable"/>
+<Item Value="16" Text="rear camera enable"/></List>
+</Bits>
+</Data>
+<Data Name="configOptionsCamPred">
+<Comment><![CDATA[rear camera predicted course lines]]></Comment>
+<Mnemonic>CNFOPTCAP</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non indication"/>
+<Item Value="1" Text="indication"/></List>
+</Bits>
+</Data>
+<Data Name="configOptionsCamDist">
+<Comment><![CDATA[rear camera distance lines]]></Comment>
+<Mnemonic>CNFOPTCAD</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non indication"/>
+<Item Value="1" Text="indication"/></List>
+</Bits>
+</Data>
+<Data Name="configCameraPictureColorDay">
+<Comment><![CDATA[rear camera picture color day configuration]]></Comment>
+<Mnemonic>CNFRCCRD</Mnemonic>
+<Bits>
+<Scaled Unit="0 to 32"/>
+</Bits>
+</Data>
+<Data Name="configCameraPictureBrightnessDay">
+<Comment><![CDATA[rear camera picture brightness day configuration]]></Comment>
+<Mnemonic>CNFRCBRD</Mnemonic>
+<Bits>
+<Scaled Unit="0 to 32"/>
+</Bits>
+</Data>
+<Data Name="configCameraPictureTintDay">
+<Comment><![CDATA[rear camera picture tint day configuration]]></Comment>
+<Mnemonic>CNFRCTID</Mnemonic>
+<Bits>
+<Scaled Unit="0 to 32"/>
+</Bits>
+</Data>
+<Data Name="configCameraPictureContrastDay">
+<Comment><![CDATA[rear camera picture contrast day configuration]]></Comment>
+<Mnemonic>CNFRCCTD</Mnemonic>
+<Bits>
+<Scaled Unit="0 to 32"/>
+</Bits>
+</Data>
+<Data Name="configCameraPictureTintNight">
+<Comment><![CDATA[rear camera picture tint night configuration]]></Comment>
+<Mnemonic>CNFRCTIN</Mnemonic>
+<Bits>
+<Scaled Unit="0 to 32"/>
+</Bits>
+</Data>
+<Data Name="configCameraPictureContrastNight">
+<Comment><![CDATA[rear camera picture contrast night configuration]]></Comment>
+<Mnemonic>CNFRCCTN</Mnemonic>
+<Bits>
+<Scaled Unit="0 to 32"/>
+</Bits>
+</Data>
+<Data Name="configCameraPictureColorNight">
+<Comment><![CDATA[rear camera picture color night configuration]]></Comment>
+<Mnemonic>CNFRCCRN</Mnemonic>
+<Bits>
+<Scaled Unit="0 to 32"/>
+</Bits>
+</Data>
+<Data Name="configCameraPictureBrightnessNight">
+<Comment><![CDATA[rear camera picture brightness night configuration]]></Comment>
+<Mnemonic>CNFRCBRN</Mnemonic>
+<Bits>
+<Scaled Unit="0 to 32"/>
+</Bits>
+</Data>
+<Data Name="configVehicleIdentifierLastValue">
+<Comment><![CDATA[last 7th digit of VIN]]></Comment>
+<Mnemonic>INT_ACODE1</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="configVehicleIdentifierLastBut2Value">
+<Comment><![CDATA[last 7th digit of VIN]]></Comment>
+<Mnemonic>INT_ACODE3</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="configVehicleIdentifierLastBut1Value">
+<Comment><![CDATA[last 7th digit of VIN]]></Comment>
+<Mnemonic>INT_ACODE2</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="configVehicleIdentifierFirstValue">
+<Comment><![CDATA[last 7th digit of VIN]]></Comment>
+<Mnemonic>INT_ACODE0</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="parameterBluetooth device 01 address">
+<Comment><![CDATA[adresse Bluetooth de l'équipement le plus faible]]></Comment>
+<Mnemonic>BTADR5</Mnemonic>
+<Bytes count="7"/>
+</Data>
+<Data Name="parameterBluetooth device 01 level">
+<Comment><![CDATA[niveau de réception Bluetooth de l'équipement le plus faible]]></Comment>
+<Mnemonic>BTRSSI5</Mnemonic>
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="parameterBluetooth device 01 name">
+<Comment><![CDATA[nom Bluetooth de l'équipement le plus faible]]></Comment>
+<Mnemonic>BTNAME5</Mnemonic>
+<Bytes count="48" ascii="1"/>
+</Data>
+<Data Name="parameterBluetooth device 02 address">
+<Comment><![CDATA[adresse Bluetooth de l'équipement 4]]></Comment>
+<Mnemonic>BTADR4</Mnemonic>
+<Bytes count="7"/>
+</Data>
+<Data Name="parameterBluetooth device 02 level">
+<Comment><![CDATA[niveau de réception Bluetooth]]></Comment>
+<Mnemonic>BTRSSI4</Mnemonic>
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="parameterBluetooth device 02 name">
+<Comment><![CDATA[nom Bluetooth de l'équipement 4]]></Comment>
+<Mnemonic>BTNAME4</Mnemonic>
+<Bytes count="48" ascii="1"/>
+</Data>
+<Data Name="parameterBluetooth device 03 address">
+<Comment><![CDATA[adresse Bluetooth de l'équipement]]></Comment>
+<Mnemonic>BTADR3</Mnemonic>
+<Bytes count="7"/>
+</Data>
+<Data Name="parameterBluetooth device 03 level">
+<Comment><![CDATA[niveau de réception Bluetooth]]></Comment>
+<Mnemonic>BTRSSI3</Mnemonic>
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="parameterBluetooth device 03 name">
+<Comment><![CDATA[nom Bluetooth de l'équipement]]></Comment>
+<Mnemonic>BTNAME3</Mnemonic>
+<Bytes count="48" ascii="1"/>
+</Data>
+<Data Name="parameterBluetooth device 04 address">
+<Comment><![CDATA[adresse Bluetooth de l'équipement]]></Comment>
+<Mnemonic>BTADR2</Mnemonic>
+<Bytes count="7"/>
+</Data>
+<Data Name="parameterBluetooth device 04 level">
+<Comment><![CDATA[niveau de réception Bluetooth]]></Comment>
+<Mnemonic>BTRSSI2</Mnemonic>
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="parameterBluetooth device 04 name">
+<Comment><![CDATA[nom Bluetooth de l'équipement]]></Comment>
+<Mnemonic>BTNAME2</Mnemonic>
+<Bytes count="48" ascii="1"/>
+</Data>
+<Data Name="parameterBluetooth device 05 address">
+<Comment><![CDATA[adresse Bluetooth de l'équipement le plus fort]]></Comment>
+<Mnemonic>BTADR1</Mnemonic>
+<Bytes count="7"/>
+</Data>
+<Data Name="parameterBluetooth device 05 level">
+<Comment><![CDATA[niveau de réception Bluetooth de l'équipement le plus fort]]></Comment>
+<Mnemonic>BTRSSI1</Mnemonic>
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="parameterBluetooth device 05 name">
+<Comment><![CDATA[nom Bluetooth de l'équipement le plus fort]]></Comment>
+<Mnemonic>BTNAME1</Mnemonic>
+<Bytes count="48" ascii="1"/>
+</Data>
+<Data Name="parameterGPSSTATpositionning">
+<Comment><![CDATA[niveau de réception GPS: positionning status]]></Comment>
+<Mnemonic>GPSSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="---"/>
+<Item Value="1" Text="positionning in progress"/></List>
+</Bits>
+</Data>
+<Data Name="parameterGPSSTATnumber">
+<Comment><![CDATA[niveau de réception GPS: number of satellites]]></Comment>
+<Mnemonic>GPSSTAT</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="parameterGPSSTAT3D positionning">
+<Comment><![CDATA[niveau de réception GPS: 3D positionning status]]></Comment>
+<Mnemonic>GPSSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="---"/>
+<Item Value="1" Text="positionned 3D"/></List>
+</Bits>
+</Data>
+<Data Name="parameterGPSSTAT2D positionning">
+<Comment><![CDATA[niveau de réception GPS: 2D positionning status]]></Comment>
+<Mnemonic>GPSSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="---"/>
+<Item Value="1" Text="positionned 2D"/></List>
+</Bits>
+</Data>
+<Data Name="parameterSPEED">
+<Comment><![CDATA[speed value from speed line]]></Comment>
+<Mnemonic>PARSPEED</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km/h" Format="#000"/>
+</Bits>
+</Data>
+<Data Name="traceability year">
+<Comment><![CDATA[serial numbers]]></Comment>
+<Mnemonic>TRACA</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Historical Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="MMUX audio">
+<Comment><![CDATA[CAN-M management ECU audio]]></Comment>
+<Mnemonic>CANMAUD</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="present"/>
+<Item Value="2" Text="missing"/>
+<Item Value="3" Text="missing confirmed"/></List>
+</Bits>
+</Data>
+<Data Name="MMUX audio counter">
+<Bits count="6">
+<List>
+<Item Value="0" Text="0"/>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/>
+<Item Value="32" Text="32"/>
+<Item Value="33" Text="33"/>
+<Item Value="34" Text="34"/>
+<Item Value="35" Text="35"/>
+<Item Value="36" Text="36"/>
+<Item Value="37" Text="37"/>
+<Item Value="38" Text="38"/>
+<Item Value="39" Text="39"/>
+<Item Value="40" Text="40"/>
+<Item Value="63" Text="No Checked"/></List>
+</Bits>
+</Data>
+<Data Name="MMUX gateway">
+<Comment><![CDATA[CAN-M management ECU gateway]]></Comment>
+<Mnemonic>CANMGW</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="present"/>
+<Item Value="2" Text="missing"/>
+<Item Value="3" Text="missing confirmed"/></List>
+</Bits>
+</Data>
+<Data Name="MMUX gateway counter">
+<Bits count="6">
+<List>
+<Item Value="0" Text="0"/>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/>
+<Item Value="32" Text="32"/>
+<Item Value="33" Text="33"/>
+<Item Value="34" Text="34"/>
+<Item Value="35" Text="35"/>
+<Item Value="36" Text="36"/>
+<Item Value="37" Text="37"/>
+<Item Value="38" Text="38"/>
+<Item Value="39" Text="39"/>
+<Item Value="40" Text="40"/>
+<Item Value="63" Text="No Checked"/></List>
+</Bits>
+</Data>
+<Data Name="Standard Fault">
+<Bits count="5">
+<List>
+<Item Value="0" Text="No possible classification about the type of fault"/>
+<Item Value="1" Text="Open circuit"/>
+<Item Value="2" Text="Short circuit to ground"/>
+<Item Value="3" Text="Short circuit at battery +"/>
+<Item Value="4" Text="Parameter at min limit"/>
+<Item Value="5" Text="Parameter at max limit"/>
+<Item Value="6" Text="Incoherency, not plausible"/>
+<Item Value="7" Text="No signal"/>
+<Item Value="8" Text="Below min. threshold"/>
+<Item Value="9" Text="Above max. threshold"/>
+<Item Value="10" Text="Permanent Low Level"/>
+<Item Value="11" Text="Permanent High Level"/>
+<Item Value="12" Text="Lines short-circuited"/>
+<Item Value="13" Text="Internal electronic anomaly"/>
+<Item Value="14" Text="Network default"/>
+<Item Value="15" Text="Remote diagnostic"/>
+<Item Value="16" Text="Disturbed communication"/>
+<Item Value="17" Text="Microcuts"/>
+<Item Value="18" Text="Abnormal voltage"/>
+<Item Value="19" Text="Value out of range"/>
+<Item Value="20" Text="Open circuit or Short circuit to ground"/>
+<Item Value="21" Text="Open circuit or Short circuit to battery"/>
+<Item Value="22" Text="Initialization / configuration not valid"/></List>
+</Bits>
+</Data>
+<Data Name="CalibrationNumber">
+<Comment><![CDATA[Numero de DVD de Navigation en Hexa]]></Comment>
+<Mnemonic>NCAL</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="DiagnosticIdentificationCode">
+<Comment><![CDATA[Diag evolution number]]></Comment>
+<Mnemonic>VDIAG</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="SoftwareNumber">
+<Comment><![CDATA[Software identification number]]></Comment>
+<Mnemonic>NPGRGM</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="StatusCSWlight">
+<Comment><![CDATA[light button]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWleft">
+<Comment><![CDATA[rotary left]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not shifted"/>
+<Item Value="1" Text="shifted"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWinfo">
+<Comment><![CDATA[info button]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWdown">
+<Comment><![CDATA[rotary down]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not shifted"/>
+<Item Value="1" Text="shifted"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWdest">
+<Comment><![CDATA[dest button]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWback">
+<Comment><![CDATA[back button]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWmap">
+<Comment><![CDATA[map button]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWpush">
+<Comment><![CDATA[rotary push]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not pushed"/>
+<Item Value="1" Text="pushed"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWright">
+<Comment><![CDATA[rotary right]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not shifted"/>
+<Item Value="1" Text="shifted"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWroute">
+<Comment><![CDATA[route button]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWset">
+<Comment><![CDATA[set button]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWtel">
+<Comment><![CDATA[tel button]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWturn left">
+<Comment><![CDATA[rotary turn left]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not turned"/>
+<Item Value="1" Text="turned"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWturn right">
+<Comment><![CDATA[rotary turn right]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not turned"/>
+<Item Value="1" Text="turned"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWup">
+<Comment><![CDATA[rotary up]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not shifted"/>
+<Item Value="1" Text="shifted"/></List>
+</Bits>
+</Data>
+<Data Name="StatusCSWzoom">
+<Comment><![CDATA[zoom button]]></Comment>
+<Mnemonic>CSWSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not pressed"/>
+<Item Value="1" Text="pressed"/></List>
+</Bits>
+</Data>
+<Data Name="Statusfascia close">
+<Comment><![CDATA[open / close button for map DVD]]></Comment>
+<Mnemonic>OCSSTAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="open"/>
+<Item Value="1" Text="closed"/></List>
+</Bits>
+</Data>
+<Data Name="StatusPhone ONOFF">
+<Comment><![CDATA[phone set working status]]></Comment>
+<Mnemonic>TELSIM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="phone set off"/>
+<Item Value="1" Text="phone set on"/></List>
+</Bits>
+</Data>
+<Data Name="StatusPhone NETWORK">
+<Comment><![CDATA[phone set network connection status]]></Comment>
+<Mnemonic>TELRES</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not connected"/>
+<Item Value="1" Text="connected"/></List>
+</Bits>
+</Data>
+<Data Name="StatusPhone PIN">
+<Comment><![CDATA[phone set PIN code status]]></Comment>
+<Mnemonic>TELPIN</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="PIN code not entered"/>
+<Item Value="1" Text="PIN code entered"/></List>
+</Bits>
+</Data>
+<Data Name="StatusPhone PRESENT">
+<Comment><![CDATA[phone set presence status]]></Comment>
+<Mnemonic>TELPRES</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="absent"/>
+<Item Value="1" Text="téléphone présent"/></List>
+</Bits>
+</Data>
+<Data Name="StatusPhone SIM">
+<Comment><![CDATA[SIM card status]]></Comment>
+<Mnemonic>TELSIM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not valid"/>
+<Item Value="1" Text="valid"/></List>
+</Bits>
+</Data>
+<Data Name="SupplierNumber.ITG">
+<Comment><![CDATA[Supplier ITG code]]></Comment>
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="EditionNumber">
+<Comment><![CDATA[Software version(edition) number]]></Comment>
+<Mnemonic>NVERS</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="PartNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="1" Text="25915"/></List>
+</Bits>
+</Data>
+<Data Name="HardwareNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="HARDW"/></List>
+</Bits>
+</Data>
+<Data Name="ApprovalNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/></List>
+</Bits>
+</Data>
+<Data Name="PartNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="HardwareNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="MMUX ampli counter">
+<Bits count="6">
+<List>
+<Item Value="0" Text="0"/>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/>
+<Item Value="32" Text="32"/>
+<Item Value="33" Text="33"/>
+<Item Value="34" Text="34"/>
+<Item Value="35" Text="35"/>
+<Item Value="36" Text="36"/>
+<Item Value="37" Text="37"/>
+<Item Value="38" Text="38"/>
+<Item Value="39" Text="39"/>
+<Item Value="40" Text="40"/>
+<Item Value="63" Text="No Checked"/></List>
+</Bits>
+</Data>
+<Data Name="MMUX ampli">
+<Comment><![CDATA[CAN-M management ECU premium amplifier]]></Comment>
+<Mnemonic>CANMAMP</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="present"/>
+<Item Value="2" Text="missing"/>
+<Item Value="3" Text="missing confirmed"/></List>
+</Bits>
+</Data>
+<Data Name="MMUX CBox">
+<Comment><![CDATA[CAN-M management ECU CBox]]></Comment>
+<Mnemonic>CANMCBOX</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="present"/>
+<Item Value="2" Text="missing"/>
+<Item Value="3" Text="missing confirmed"/></List>
+</Bits>
+</Data>
+<Data Name="MMUX CBox counter">
+<Bits count="6">
+<List>
+<Item Value="0" Text="0"/>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/>
+<Item Value="32" Text="32"/>
+<Item Value="33" Text="33"/>
+<Item Value="34" Text="34"/>
+<Item Value="35" Text="35"/>
+<Item Value="36" Text="36"/>
+<Item Value="37" Text="37"/>
+<Item Value="38" Text="38"/>
+<Item Value="39" Text="39"/>
+<Item Value="40" Text="40"/>
+<Item Value="63" Text="No Checked"/></List>
+</Bits>
+</Data>
+<Data Name="ManufacturerIdentificationCode">
+<Bits>
+<List>
+<Item Value="0" Text="Renault R1"/>
+<Item Value="128" Text="Nissan N1"/>
+<Item Value="129" Text="Nissan N2"/>
+<Item Value="130" Text="Nissan N3"/>
+<Item Value="136" Text="5DIGITS"/>
+<Item Value="255" Text="Renault R3"/></List>
+</Bits>
+</Data>
+<Data Name="MMUX rear camera">
+<Comment><![CDATA[CAN-M management ECU rear camera]]></Comment>
+<Mnemonic>CANMCAM</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="present"/>
+<Item Value="2" Text="missing"/>
+<Item Value="3" Text="missing confirmed"/></List>
+</Bits>
+</Data>
+<Data Name="MMUX rear camera counter">
+<Bits count="6">
+<List>
+<Item Value="0" Text="0"/>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/>
+<Item Value="32" Text="32"/>
+<Item Value="33" Text="33"/>
+<Item Value="34" Text="34"/>
+<Item Value="35" Text="35"/>
+<Item Value="36" Text="36"/>
+<Item Value="37" Text="37"/>
+<Item Value="38" Text="38"/>
+<Item Value="39" Text="39"/>
+<Item Value="40" Text="40"/>
+<Item Value="63" Text="No Checked"/></List>
+</Bits>
+</Data>
+<Data Name="MoreDTC">
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="Ecr System configuration">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[WriteDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3B6129FFFFFFFF</SentBytes>
+<DataItem Name="config display view" FirstByte="5"/>
+<DataItem Name="config legal" FirstByte="7"/>
+<DataItem Name="config display contrast" FirstByte="6"/>
+<DataItem Name="config VEHICLE" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B61</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecr VIN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[WriteDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="V.I.N" FirstByte="3"/>
+<DataItem Name="CRC" FirstByte="20"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B81</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Lect System configuration">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2161</SentBytes>
+</Sent>
+<Received MinBytes="33">
+<ReplyBytes>6161</ReplyBytes>
+<DataItem Name="config display view" Ref="1" FirstByte="5"/>
+<DataItem Name="config legal" Ref="1" FirstByte="7"/>
+<DataItem Name="config PRECODE" Ref="1" FirstByte="8"/>
+<DataItem Name="config CSW hard" Ref="1" FirstByte="12"/>
+<DataItem Name="config CSW soft" Ref="1" FirstByte="15"/>
+<DataItem Name="configVehicleIdentifierFirstValue" Ref="1" FirstByte="18"/>
+<DataItem Name="configVehicleIdentifierLastBut2Value" Ref="1" FirstByte="22"/>
+<DataItem Name="configVehicleIdentifierLastBut1Value" Ref="1" FirstByte="26"/>
+<DataItem Name="configVehicleIdentifierLastValue" Ref="1" FirstByte="30"/>
+<DataItem Name="config display contrast" Ref="1" FirstByte="6"/>
+<DataItem Name="config VEHICLE" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lect VIN">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="CRC" Ref="1" FirstByte="20"/>
+<DataItem Name="V.I.N" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RAZ DTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ClearDiagnosticInformation]]></Comment>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>54FF00</ReplyBytes>
+</Received>
+</Request>
+<Request Name="System parameter">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2142</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>6142</ReplyBytes>
+<DataItem Name="parameterSPEED" Ref="1" FirstByte="3"/>
+<DataItem Name="parameterGPSSTAT3D positionning" Ref="1" FirstByte="5" BitOffset="5"/>
+<DataItem Name="parameterGPSSTAT2D positionning" Ref="1" FirstByte="5" BitOffset="6"/>
+<DataItem Name="parameterGPSSTATpositionning" Ref="1" FirstByte="5" BitOffset="7"/>
+<DataItem Name="parameterGPSSTATnumber" Ref="1" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="System status">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2141</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>6141</ReplyBytes>
+<DataItem Name="StatusPhone NETWORK" Ref="1" FirstByte="3" BitOffset="3" Endian="Little"/>
+<DataItem Name="StatusPhone PIN" Ref="1" FirstByte="3" BitOffset="4" Endian="Little"/>
+<DataItem Name="StatusPhone SIM" Ref="1" FirstByte="3" BitOffset="5" Endian="Little"/>
+<DataItem Name="StatusPhone ONOFF" Ref="1" FirstByte="3" BitOffset="6" Endian="Little"/>
+<DataItem Name="StatusPhone PRESENT" Ref="1" FirstByte="3" BitOffset="7" Endian="Little"/>
+<DataItem Name="StatusCSWturn left" Ref="1" FirstByte="4" BitOffset="6" Endian="Little"/>
+<DataItem Name="StatusCSWturn right" Ref="1" FirstByte="4" BitOffset="7" Endian="Little"/>
+<DataItem Name="StatusCSWright" Ref="1" FirstByte="4" BitOffset="5" Endian="Little"/>
+<DataItem Name="StatusCSWleft" Ref="1" FirstByte="4" BitOffset="4" Endian="Little"/>
+<DataItem Name="StatusCSWdown" Ref="1" FirstByte="4" BitOffset="3" Endian="Little"/>
+<DataItem Name="StatusCSWup" Ref="1" FirstByte="4" BitOffset="2" Endian="Little"/>
+<DataItem Name="StatusCSWpush" Ref="1" FirstByte="4" BitOffset="1" Endian="Little"/>
+<DataItem Name="StatusCSWmap" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="StatusCSWroute" Ref="1" FirstByte="5" BitOffset="7" Endian="Little"/>
+<DataItem Name="StatusCSWzoom" Ref="1" FirstByte="5" BitOffset="6" Endian="Little"/>
+<DataItem Name="StatusCSWlight" Ref="1" FirstByte="5" BitOffset="5" Endian="Little"/>
+<DataItem Name="StatusCSWset" Ref="1" FirstByte="5" BitOffset="4" Endian="Little"/>
+<DataItem Name="StatusCSWinfo" Ref="1" FirstByte="5" BitOffset="3" Endian="Little"/>
+<DataItem Name="StatusCSWtel" Ref="1" FirstByte="5" BitOffset="2" Endian="Little"/>
+<DataItem Name="StatusCSWback" Ref="1" FirstByte="5" BitOffset="1" Endian="Little"/>
+<DataItem Name="StatusCSWdest" Ref="1" FirstByte="5" Endian="Little"/>
+<DataItem Name="Statusfascia close" Ref="1" FirstByte="6" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="System traceability">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>6184</ReplyBytes>
+<DataItem Name="traceability blank 2" Ref="1" FirstByte="14"/>
+<DataItem Name="traceability ITG" Ref="1" FirstByte="3"/>
+<DataItem Name="traceability year" Ref="1" FirstByte="6"/>
+<DataItem Name="traceability month" Ref="1" FirstByte="7"/>
+<DataItem Name="traceability manufacturing code" Ref="1" FirstByte="9"/>
+<DataItem Name="traceability blank" Ref="1" FirstByte="19"/>
+</Received>
+</Request>
+<Request Name="TesterPresent">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[TesterPresent]]></Comment>
+<Sent>
+<SentBytes>3E01</SentBytes>
+<DataItem Name="Response tester" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Test microphone">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>306100</SentBytes>
+<DataItem Name="TEST control perm" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7061</ReplyBytes>
+<DataItem Name="TEST microphone status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Output Control">
+
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic testing screen]]></Comment>
+<Sent>
+<SentBytes>30000000</SentBytes>
+<DataItem Name="Output Control Command" FirstByte="3"/>
+<DataItem Name="Output Control Parameters" FirstByte="4"/>
+<DataItem Name="Output Permanent Control List" FirstByte="2"/>
+<DataItem Name="Output Temporary Control List" FirstByte="2"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700000</ReplyBytes>
+<DataItem Name="Output Control Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadStatusOfDiagnosticTroubleCode]]></Comment>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+<DataItem Name="MoreDTC" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<DataItem Name="FirstDTC" FirstByte="3"/>
+<DataItem Name="NDTC" FirstByte="2"/>
+<DataItem Name="Historical Failure" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Current Failure" FirstByte="5" BitOffset="2"/>
+<DataItem Name="Standard Fault" FirstByte="5" BitOffset="3"/>
+</Received>
+</Request>
+<Request Name="Frame diag multimedia mux">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2185</SentBytes>
+</Sent>
+<Received MinBytes="62">
+<ReplyBytes>6185</ReplyBytes>
+<DataItem Name="MMUX ITM" Ref="1" FirstByte="7"/>
+<DataItem Name="MMUX keyboard" Ref="1" FirstByte="8"/>
+<DataItem Name="MMUX audio" Ref="1" FirstByte="12"/>
+<DataItem Name="MMux Ref Messagerie" Ref="1" FirstByte="3"/>
+<DataItem Name="MMux Produce Bus Mute" Ref="1" FirstByte="6"/>
+<DataItem Name="MMux Produce Bus Off Counter" Ref="1" FirstByte="5" BitOffset="2"/>
+<DataItem Name="MMux Produce Bus Off" Ref="1" FirstByte="5"/>
+<DataItem Name="MMux Produce Bus Mute Counter" Ref="1" FirstByte="6" BitOffset="2"/>
+<DataItem Name="MMUX ITM counter" Ref="1" FirstByte="7" BitOffset="2"/>
+<DataItem Name="MMUX keyboard counter" Ref="1" FirstByte="8" BitOffset="2"/>
+<DataItem Name="MMUX audio counter" Ref="1" FirstByte="12" BitOffset="2"/>
+<DataItem Name="MMUX gateway" Ref="1" FirstByte="20"/>
+<DataItem Name="MMUX gateway counter" Ref="1" FirstByte="20" BitOffset="2"/>
+<DataItem Name="MMUX ampli" Ref="1" FirstByte="13"/>
+<DataItem Name="MMUX ampli counter" Ref="1" FirstByte="13" BitOffset="2"/>
+<DataItem Name="MMUX CBox" Ref="1" FirstByte="35"/>
+<DataItem Name="MMUX CBox counter" Ref="1" FirstByte="35" BitOffset="2"/>
+<DataItem Name="MMUX rear camera" FirstByte="15"/>
+<DataItem Name="MMUX rear camera counter" FirstByte="15" BitOffset="2"/>
+</Received>
+</Request>
+<Request Name="Test display">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30410000</SentBytes>
+<DataItem Name="TEST control perm" FirstByte="3"/>
+<DataItem Name="TEST display test card" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7041</ReplyBytes>
+<DataItem Name="TEST display status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test phone">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>31220000</SentBytes>
+<DataItem Name="TEST control perm" FirstByte="3"/>
+<DataItem Name="TEST tel type" FirstByte="4"/>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>7122</ReplyBytes>
+<DataItem Name="TEST tel status" FirstByte="3"/>
+<DataItem Name="TEST tel type status" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Test display color test card">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30412001</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7041</ReplyBytes>
+<DataItem Name="TEST display status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test display grey scale test card">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30412002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7041</ReplyBytes>
+<DataItem Name="TEST display status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test display white test card">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30412003</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7041</ReplyBytes>
+<DataItem Name="TEST display status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Start Diagnostic Session">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[StartDiagnosticSession]]></Comment>
+<Sent>
+<SentBytes>1081</SentBytes>
+<DataItem Name="Session Name" FirstByte="2" Endian="Little"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50C0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Test display stop color">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30411101</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7041</ReplyBytes>
+<DataItem Name="TEST display status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test display stop grey scale">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30411102</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7041</ReplyBytes>
+<DataItem Name="TEST display status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test display stop white">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30411103</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7041</ReplyBytes>
+<DataItem Name="TEST display status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ECUreset conf">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[ECUResetService]]></Comment>
+<Sent>
+<SentBytes>11FF</SentBytes>
+<DataItem Name="config reset" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5100</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ECUreset mem">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[ECUResetService]]></Comment>
+<Sent>
+<SentBytes>11FE</SentBytes>
+<DataItem Name="config reset" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5100</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Test guide_voice">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>306300</SentBytes>
+<DataItem Name="TEST control perm" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>706201</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Bluetooth level">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2143</SentBytes>
+</Sent>
+<Received MinBytes="282">
+<ReplyBytes>6143</ReplyBytes>
+<DataItem Name="parameterBluetooth device 05 level" Ref="1" FirstByte="282"/>
+<DataItem Name="parameterBluetooth device 05 address" Ref="1" FirstByte="275"/>
+<DataItem Name="parameterBluetooth device 05 name" Ref="1" FirstByte="227"/>
+<DataItem Name="parameterBluetooth device 04 level" Ref="1" FirstByte="226"/>
+<DataItem Name="parameterBluetooth device 04 address" Ref="1" FirstByte="219"/>
+<DataItem Name="parameterBluetooth device 04 name" Ref="1" FirstByte="171"/>
+<DataItem Name="parameterBluetooth device 03 level" Ref="1" FirstByte="170"/>
+<DataItem Name="parameterBluetooth device 03 address" Ref="1" FirstByte="163"/>
+<DataItem Name="parameterBluetooth device 03 name" Ref="1" FirstByte="115"/>
+<DataItem Name="parameterBluetooth device 02 level" Ref="1" FirstByte="114"/>
+<DataItem Name="parameterBluetooth device 02 address" Ref="1" FirstByte="107"/>
+<DataItem Name="parameterBluetooth device 02 name" Ref="1" FirstByte="59"/>
+<DataItem Name="parameterBluetooth device 01 level" Ref="1" FirstByte="58"/>
+<DataItem Name="parameterBluetooth device 01 address" Ref="1" FirstByte="51"/>
+<DataItem Name="parameterBluetooth device 01 name" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test update Bluetooth">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3072FF</SentBytes>
+<DataItem Name="TEST control temp" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7072</ReplyBytes>
+<DataItem Name="TEST Bluetooth status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test update Bluetooth Start">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>307200</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7072</ReplyBytes>
+<DataItem Name="TEST Bluetooth status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="DataRead.Identification.RenaultR2">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="CalibrationNumber" Ref="1" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" Ref="1" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" Ref="1" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" Ref="1" FirstByte="9"/>
+<DataItem Name="EditionNumber" Ref="1" FirstByte="19"/>
+<DataItem Name="PartNumber.BasicPartList" Ref="1" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" Ref="1" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" Ref="1" FirstByte="25"/>
+<DataItem Name="PartNumber.LowerPart" Ref="1" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" Ref="1" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" Ref="1" FirstByte="26"/>
+</Received>
+</Request>
+<Request Name="Ecr Options configuration">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[WriteDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3B6200</SentBytes>
+<DataItem Name="configOptionsCam" FirstByte="3" BitOffset="5"/>
+<DataItem Name="configOptionsCbox" FirstByte="3" BitOffset="6"/>
+<DataItem Name="configOptionsAmp" FirstByte="3" BitOffset="7"/>
+<DataItem Name="configOptionsTFT" FirstByte="3" BitOffset="4"/>
+<DataItem Name="configOptionsCamDist" FirstByte="3" BitOffset="3"/>
+<DataItem Name="configOptionsCamPred" FirstByte="3" BitOffset="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B62</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Lect Options configuration">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2162</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6162</ReplyBytes>
+<DataItem Name="configOptionsTFT" Ref="1" FirstByte="3" BitOffset="4"/>
+<DataItem Name="configOptionsCam" Ref="1" FirstByte="3" BitOffset="5"/>
+<DataItem Name="configOptionsCbox" Ref="1" FirstByte="3" BitOffset="6"/>
+<DataItem Name="configOptionsAmp" Ref="1" FirstByte="3" BitOffset="7"/>
+<DataItem Name="configOptionsCamDist" Ref="1" FirstByte="3" BitOffset="3"/>
+<DataItem Name="configOptionsCamPred" Ref="1" FirstByte="3" BitOffset="2"/>
+</Received>
+</Request>
+<Request Name="Test camera configuration">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30070000</SentBytes>
+<DataItem Name="TEST control temp" FirstByte="3"/>
+<DataItem Name="TEST Camera configuration" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700700</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test camera configuration rot left">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30070001</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700700</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test camera configuration rot right">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30070002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700700</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test camera configuration UP">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30070004</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700700</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test camera configuration DOWN">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30070008</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700700</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test camera configuration LEFT">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3007000C</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700700</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test camera configuration RIGHT">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30070010</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700700</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test camera configuration VAL">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30070020</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700700</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test camera configuration CAN">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30070040</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700700</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test camera activation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3008FF00</SentBytes>
+<DataItem Name="TEST control temp" FirstByte="3"/>
+<DataItem Name="TEST Camera activation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700800</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test camera activation DIS">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30080000</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700800</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test camera activation ENA">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>30080010</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700800</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test microphone start">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>306120</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7061</ReplyBytes>
+<DataItem Name="TEST microphone status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test microphone status">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>306101</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>7061</ReplyBytes>
+<DataItem Name="TEST microphone status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Ecr Camera Picture configuration">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[WriteDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3B631010101010101010</SentBytes>
+<DataItem Name="configCameraPictureColorDay" FirstByte="3"/>
+<DataItem Name="configCameraPictureTintDay" FirstByte="5"/>
+<DataItem Name="configCameraPictureContrastDay" FirstByte="6"/>
+<DataItem Name="configCameraPictureColorNight" FirstByte="7"/>
+<DataItem Name="configCameraPictureBrightnessDay" FirstByte="4"/>
+<DataItem Name="configCameraPictureBrightnessNight" FirstByte="8"/>
+<DataItem Name="configCameraPictureTintNight" FirstByte="9"/>
+<DataItem Name="configCameraPictureContrastNight" FirstByte="10"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B63</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Lect Camera Picture configuration">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2163</SentBytes>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>61630000000000000000</ReplyBytes>
+<DataItem Name="configCameraPictureColorDay" FirstByte="3"/>
+<DataItem Name="configCameraPictureBrightnessDay" FirstByte="4"/>
+<DataItem Name="configCameraPictureTintDay" FirstByte="5"/>
+<DataItem Name="configCameraPictureContrastDay" FirstByte="6"/>
+<DataItem Name="configCameraPictureColorNight" FirstByte="7"/>
+<DataItem Name="configCameraPictureBrightnessNight" FirstByte="8"/>
+<DataItem Name="configCameraPictureTintNight" FirstByte="9"/>
+<DataItem Name="configCameraPictureContrastNight" FirstByte="10"/>
+</Received>
+</Request>
+<Request Name="Start extended Session">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[StartDiagnosticSession]]></Comment>
+<Sent>
+<SentBytes>10C0</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50C0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Ecr System short configuration">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[WriteDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3B61FFFFFFFFFF</SentBytes>
+<DataItem Name="config display view" FirstByte="5"/>
+<DataItem Name="config display contrast" FirstByte="6"/>
+<DataItem Name="config VEHICLE" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B61</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Test phoneStop data">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3122112A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>7122</ReplyBytes>
+<DataItem Name="TEST tel status" FirstByte="3"/>
+<DataItem Name="TEST tel type status" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Test phoneStop audio">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3122112B</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>7122</ReplyBytes>
+<DataItem Name="TEST tel status" FirstByte="3"/>
+<DataItem Name="TEST tel type status" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Test phoneStop presence">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3122112C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>7122</ReplyBytes>
+<DataItem Name="TEST tel status" FirstByte="3"/>
+<DataItem Name="TEST tel type status" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Test phoneStart data">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3122202A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>7122</ReplyBytes>
+<DataItem Name="TEST tel status" FirstByte="3"/>
+<DataItem Name="TEST tel type status" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Test phoneStart audio">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3122202B</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>7122</ReplyBytes>
+<DataItem Name="TEST tel status" FirstByte="3"/>
+<DataItem Name="TEST tel type status" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Test phoneStart presence">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>3122202C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>7122</ReplyBytes>
+<DataItem Name="TEST tel status" FirstByte="3"/>
+<DataItem Name="TEST tel type status" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Test guide_voiceStop">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>306311</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>706201</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Test guide_voiceStart">
+
+<ManuelSend/>
+<DenyAccess><NoSDS/><Engineering/><Supplier/></DenyAccess>
+<Comment><![CDATA[InputOutputControlByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>306320</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>706201</ReplyBytes>
+<DataItem Name="TEST status" FirstByte="3"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="GPS antenna open circuit" DTC="39424">
+
+
+</Device>
+<Device Name="GPS disturbed communication" DTC="39425" Type="2">
+
+
+</Device>
+<Device Name="Front display error" DTC="39430">
+<DeviceData Name="config display view" FailureFlag="0"/>
+
+</Device>
+<Device Name="Flash ROM error of control unit" DTC="39431" Type="2">
+
+
+</Device>
+<Device Name="Gyro open circuit" DTC="39432" Type="2">
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="Audio unit connection problem" DTC="49542">
+<DeviceData Name="MMUX audio" FailureFlag="0"/><DeviceData Name="MMUX audio counter" FailureFlag="0"/>
+
+</Device>
+<Device Name="CD changer connection problem" DTC="49545">
+
+
+</Device>
+<Device Name="Incorrect settings" DTC="49920" Type="4">
+
+<Test Type="22">
+<Description>setting value missing</Description>
+</Test>
+</Device>
+<Device Name="MM CAN controller problem" DTC="53265">
+<DeviceData Name="MMux Produce Bus Mute" FailureFlag="0"/><DeviceData Name="MMux Produce Bus Mute Counter" FailureFlag="0"/><DeviceData Name="MMux Produce Bus Off" FailureFlag="0"/><DeviceData Name="MMux Produce Bus Off Counter" FailureFlag="0"/>
+
+</Device>
+<Device Name="DVD-ROM disc error" DTC="39436" Type="4">
+
+
+</Device>
+<Device Name="DVD-ROM drive error" DTC="39437" Type="2">
+
+
+</Device>
+<Device Name="Main keyboard connection problem" DTC="49507">
+<DeviceData Name="MMUX keyboard" FailureFlag="0"/><DeviceData Name="MMUX keyboard counter" FailureFlag="0"/>
+
+</Device>
+<Device Name="GPS RTC internal electronic abnormality" DTC="39428" Type="2">
+
+
+</Device>
+<Device Name="GPS RAM internal electronic abnormality" DTC="39427" Type="2">
+
+
+</Device>
+<Device Name="GPS ROM internal electronic abnormality" DTC="39426" Type="2">
+
+
+</Device>
+<Device Name="Gateway connection problem" DTC="49492">
+
+
+</Device>
+<Device Name="HFCK connection problem" DTC="39439">
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="Bluetooth error" DTC="39440">
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="CSW button error" DTC="39441">
+
+<Test Type="6">
+</Test>
+</Device>
+<Device Name="Antitheft lock" DTC="39442">
+
+<Test Type="6">
+</Test>
+</Device>
+<Device Name="Rear camera controller connection problem" DTC="39444">
+
+<Test Type="1">
+</Test>
+</Device>
+<Device Name="Rear camera connection problem" DTC="39443">
+
+<Test Type="1">
+</Test>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="I/O controls">
+
+<Screen Name="display" Color="16777215" WindowState="0" Width="9660" Height="6420">
+
+<Label Text="display test" Color="16777215" Alignment="0">
+<Rectangle Left="1080" Top="480" Height="300" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Display: test cards cyclic test">
+<Rectangle Left="3240" Top="360" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color, grey, white"/>
+<Send Delay="5000" RequestName="Test display color test card"/><Send Delay="100" RequestName="Test display stop color"/><Send Delay="5000" RequestName="Test display grey scale test card"/><Send Delay="100" RequestName="Test display stop grey scale"/><Send Delay="5000" RequestName="Test display white test card"/><Send Delay="1000" RequestName="Test display stop white"/>
+</Button>
+<Button Text="Display: color bars test cards">
+<Rectangle Left="3240" Top="1200" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color during one second"/>
+<Send Delay="1000" RequestName="Test display color test card"/><Send Delay="10" RequestName="Test display stop color"/>
+</Button>
+<Button Text="Display: grey scales test cards">
+<Rectangle Left="3240" Top="2040" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="grey during one second"/>
+<Send Delay="1000" RequestName="Test display grey scale test card"/><Send Delay="10" RequestName="Test display stop grey scale"/>
+</Button>
+<Button Text="Display: white test cards">
+<Rectangle Left="3240" Top="2880" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="white during one second"/>
+<Send Delay="1000" RequestName="Test display white test card"/><Send Delay="1000" RequestName="Test display stop white"/>
+</Button>
+
+</Screen>
+<Screen Name="HFCK" Color="16777215" WindowState="0" Width="9660" Height="6420">
+
+<Label Text="Hand free car kit test" Color="16777215" Alignment="0">
+<Rectangle Left="1080" Top="720" Height="300" Width="1575"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="HFCK: audio lines test (need test stub)">
+<Rectangle Left="6240" Top="360" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="tone during one second"/>
+<Send Delay="1000" RequestName="Test phoneStart audio"/><Send Delay="10" RequestName="Test phoneStop audio"/>
+</Button>
+<Button Text="HFCK: serial lines test (need test stub)">
+<Rectangle Left="6240" Top="1320" Height="600" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="5000" RequestName="Test phoneStart data"/><Send Delay="5000" RequestName="Test phoneStop data"/>
+</Button>
+
+</Screen>
+<Screen Name="Lines test" Color="16777215" WindowState="0" Width="9660" Height="6420">
+
+<Label Text="Guide lines are OK if sound can be heard" Color="4227200" Alignment="2">
+<Rectangle Left="1080" Top="360" Height="300" Width="6240"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Microphone is OK if Status is OK (wait 6 seconds)" Color="4227200" Alignment="2">
+<Rectangle Left="1080" Top="1680" Height="300" Width="6240"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Guide_voice test">
+<Rectangle Left="2880" Top="840" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color during one second"/>
+<Send Delay="300" RequestName="Start extended Session"/><Send Delay="3000" RequestName="Test guide_voiceStart"/><Send Delay="100" RequestName="Test guide_voiceStop"/>
+</Button>
+<Button Text="Start microphone test">
+<Rectangle Left="2880" Top="2280" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color during one second"/>
+<Send Delay="300" RequestName="Start extended Session"/><Send Delay="5000" RequestName="Test microphone start"/><Send Delay="300" RequestName="Test microphone status"/>
+</Button>
+
+<Display Width="2000" Color="16777215" DataName="TEST microphone status" RequestName="Test microphone status">
+<Rectangle Left="1080" Top="3000" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Rear Camera" Color="16777215" WindowState="0" Width="9660" Height="6420">
+
+<Label Text="Rear camera control" Color="4227200" Alignment="2">
+<Rectangle Left="1080" Top="480" Height="300" Width="6240"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Rotation LEFT">
+<Rectangle Left="1080" Top="2640" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color during one second"/>
+<Send Delay="50" RequestName="Test camera configuration rot left"/>
+</Button>
+<Button Text="Rotation RIGHT">
+<Rectangle Left="4920" Top="2640" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color during one second"/>
+<Send Delay="50" RequestName="Test camera configuration rot right"/>
+</Button>
+<Button Text="LEFT">
+<Rectangle Left="1080" Top="2160" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color during one second"/>
+<Send Delay="50" RequestName="Test camera configuration LEFT"/>
+</Button>
+<Button Text="RIGHT">
+<Rectangle Left="4920" Top="2160" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color during one second"/>
+<Send Delay="50" RequestName="Test camera configuration RIGHT"/>
+</Button>
+<Button Text="UP">
+<Rectangle Left="3000" Top="1560" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color during one second"/>
+<Send Delay="50" RequestName="Test camera configuration UP"/>
+</Button>
+<Button Text="DOWN">
+<Rectangle Left="3000" Top="3240" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color during one second"/>
+<Send Delay="50" RequestName="Test camera configuration DOWN"/>
+</Button>
+<Button Text="rear view enable">
+<Rectangle Left="1080" Top="960" Height="540" Width="6240"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color during one second"/>
+<Send Delay="50" RequestName="Test camera activation ENA"/>
+</Button>
+<Button Text="rear view disable">
+<Rectangle Left="1200" Top="3840" Height="540" Width="6240"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color during one second"/>
+<Send Delay="50" RequestName="Test camera activation DIS"/>
+</Button>
+<Button Text="Validate modifications">
+<Rectangle Left="1200" Top="4800" Height="540" Width="2280"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color during one second"/>
+<Send Delay="50" RequestName="Test camera configuration VAL"/>
+</Button>
+<Button Text="Cancel modifications">
+<Rectangle Left="5040" Top="4800" Height="540" Width="2400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="color during one second"/>
+<Send Delay="50" RequestName="Test camera configuration CAN"/>
+</Button>
+
+</Screen>
+</Category><Category Name="configuration">
+
+<Screen Name="lecture" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Lecture config  ITM  " Color="16744576" Alignment="2">
+<Rectangle Left="240" Top="120" Height="300" Width="8640"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+
+<Display Width="2090" Color="16777215" DataName="config VEHICLE" RequestName="Lect System configuration">
+<Rectangle Left="480" Top="840" Height="329" Width="3600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2090" Color="16777215" DataName="config display view" RequestName="Lect System configuration">
+<Rectangle Left="480" Top="1163" Height="329" Width="3600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2090" Color="16777215" DataName="config display contrast" RequestName="Lect System configuration">
+<Rectangle Left="480" Top="1487" Height="329" Width="3600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2090" Color="16777215" DataName="config legal" RequestName="Lect System configuration">
+<Rectangle Left="480" Top="1810" Height="329" Width="3600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2165" Color="16777215" DataName="configOptionsCamPred" RequestName="Lect Options configuration">
+<Rectangle Left="4320" Top="2280" Height="329" Width="4320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2165" Color="16777215" DataName="configOptionsCamDist" RequestName="Lect Options configuration">
+<Rectangle Left="4320" Top="1957" Height="329" Width="4320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2165" Color="16777215" DataName="configOptionsTFT" RequestName="Lect Options configuration">
+<Rectangle Left="4320" Top="1310" Height="329" Width="4320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2165" Color="16777215" DataName="configOptionsCam" RequestName="Lect Options configuration">
+<Rectangle Left="4320" Top="1633" Height="329" Width="4320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2165" Color="16777215" DataName="configOptionsCbox" RequestName="Lect Options configuration">
+<Rectangle Left="4320" Top="986" Height="329" Width="4320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2165" Color="16777215" DataName="configOptionsAmp" RequestName="Lect Options configuration">
+<Rectangle Left="4320" Top="663" Height="329" Width="4320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4460" Color="16777215" DataName="configCameraPictureColorDay" RequestName="Lect Camera Picture configuration">
+<Rectangle Left="840" Top="2880" Height="300" Width="6480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4460" Color="16777215" DataName="configCameraPictureBrightnessDay" RequestName="Lect Camera Picture configuration">
+<Rectangle Left="840" Top="3180" Height="300" Width="6480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4460" Color="16777215" DataName="configCameraPictureTintDay" RequestName="Lect Camera Picture configuration">
+<Rectangle Left="840" Top="3480" Height="300" Width="6480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4460" Color="16777215" DataName="configCameraPictureContrastDay" RequestName="Lect Camera Picture configuration">
+<Rectangle Left="840" Top="3780" Height="300" Width="6480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4460" Color="16777215" DataName="configCameraPictureColorNight" RequestName="Lect Camera Picture configuration">
+<Rectangle Left="840" Top="4080" Height="300" Width="6480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4460" Color="16777215" DataName="configCameraPictureBrightnessNight" RequestName="Lect Camera Picture configuration">
+<Rectangle Left="840" Top="4380" Height="300" Width="6480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4460" Color="16777215" DataName="configCameraPictureTintNight" RequestName="Lect Camera Picture configuration">
+<Rectangle Left="840" Top="4680" Height="300" Width="6480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4460" Color="16777215" DataName="configCameraPictureContrastNight" RequestName="Lect Camera Picture configuration">
+<Rectangle Left="840" Top="4980" Height="300" Width="6480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="écriture" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Ecriture config  ITM  " Color="16744576" Alignment="2">
+<Rectangle Left="240" Top="120" Height="300" Width="8640"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Ecrire tout">
+<Rectangle Left="6840" Top="3000" Height="2325" Width="1560"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Start extended Session"/><Send Delay="0" RequestName="Ecr System short configuration"/><Send Delay="0" RequestName="Ecr Options configuration"/><Send Delay="0" RequestName="Ecr Camera Picture configuration"/>
+</Button>
+<Button Text="Ecrire options">
+<Rectangle Left="4080" Top="2280" Height="405" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Start extended Session"/><Send Delay="0" RequestName="Ecr Options configuration"/>
+</Button>
+<Button Text="Ecrire principal">
+<Rectangle Left="360" Top="1680" Height="405" Width="3480"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Start extended Session"/><Send Delay="0" RequestName="Ecr System short configuration"/>
+</Button>
+<Button Text="Ecrire camera">
+<Rectangle Left="840" Top="5160" Height="405" Width="5280"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Start extended Session"/><Send Delay="0" RequestName="Ecr Camera Picture configuration"/>
+</Button>
+
+<Input Width="2150" Color="16777215" DataName="configOptionsCamPred" RequestName="Ecr Options configuration">
+<Rectangle Left="4080" Top="2040" Height="261" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2150" Color="16777215" DataName="configOptionsCamDist" RequestName="Ecr Options configuration">
+<Rectangle Left="4080" Top="1727" Height="261" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2150" Color="16777215" DataName="configOptionsTFT" RequestName="Ecr Options configuration">
+<Rectangle Left="4080" Top="1101" Height="261" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2150" Color="16777215" DataName="configOptionsCam" RequestName="Ecr Options configuration">
+<Rectangle Left="4080" Top="1415" Height="261" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2150" Color="16777215" DataName="configOptionsCbox" RequestName="Ecr Options configuration">
+<Rectangle Left="4080" Top="788" Height="261" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2150" Color="16777215" DataName="configOptionsAmp" RequestName="Ecr Options configuration">
+<Rectangle Left="4080" Top="475" Height="261" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2120" Color="16777215" DataName="config VEHICLE" RequestName="Ecr System short configuration">
+<Rectangle Left="360" Top="600" Height="300" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2120" Color="16777215" DataName="config display view" RequestName="Ecr System short configuration">
+<Rectangle Left="360" Top="960" Height="300" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2120" Color="16777215" DataName="config display contrast" RequestName="Ecr System short configuration">
+<Rectangle Left="360" Top="1320" Height="300" Width="3480"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="4235" Color="16777215" DataName="configCameraPictureColorDay" RequestName="Ecr Camera Picture configuration">
+<Rectangle Left="840" Top="2760" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="4235" Color="16777215" DataName="configCameraPictureBrightnessDay" RequestName="Ecr Camera Picture configuration">
+<Rectangle Left="840" Top="3060" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="4235" Color="16777215" DataName="configCameraPictureTintDay" RequestName="Ecr Camera Picture configuration">
+<Rectangle Left="840" Top="3360" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="4235" Color="16777215" DataName="configCameraPictureContrastDay" RequestName="Ecr Camera Picture configuration">
+<Rectangle Left="840" Top="3660" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="4235" Color="16777215" DataName="configCameraPictureColorNight" RequestName="Ecr Camera Picture configuration">
+<Rectangle Left="840" Top="3960" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="4235" Color="16777215" DataName="configCameraPictureBrightnessNight" RequestName="Ecr Camera Picture configuration">
+<Rectangle Left="840" Top="4260" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="4235" Color="16777215" DataName="configCameraPictureTintNight" RequestName="Ecr Camera Picture configuration">
+<Rectangle Left="840" Top="4560" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="4235" Color="16777215" DataName="configCameraPictureContrastNight" RequestName="Ecr Camera Picture configuration">
+<Rectangle Left="840" Top="4860" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+</Category><Category Name="Lectures">
+
+<Screen Name="Lecture E/S" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="lecture des signaux électriques" Color="16744576" Alignment="2">
+<Rectangle Left="720" Top="600" Height="300" Width="7440"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+
+<Display Width="3740" Color="16777215" DataName="parameterSPEED" RequestName="System parameter">
+<Rectangle Left="840" Top="1560" Height="300" Width="7320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3740" Color="16777215" DataName="parameterGPSSTAT3D positionning" RequestName="System parameter">
+<Rectangle Left="840" Top="1920" Height="300" Width="7320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3740" Color="16777215" DataName="parameterGPSSTAT2D positionning" RequestName="System parameter">
+<Rectangle Left="840" Top="2280" Height="300" Width="7320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3740" Color="16777215" DataName="parameterGPSSTATpositionning" RequestName="System parameter">
+<Rectangle Left="840" Top="2640" Height="300" Width="7320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3740" Color="16777215" DataName="parameterGPSSTATnumber" RequestName="System parameter">
+<Rectangle Left="840" Top="3000" Height="300" Width="7320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Boutons" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Boutons de la façade" Color="16744576" Alignment="2">
+<Rectangle Left="360" Top="120" Height="300" Width="8040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+
+<Display Width="2975" Color="16777215" DataName="StatusCSWmap" RequestName="System status">
+<Rectangle Left="480" Top="600" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWpush" RequestName="System status">
+<Rectangle Left="480" Top="900" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWup" RequestName="System status">
+<Rectangle Left="480" Top="1200" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWdown" RequestName="System status">
+<Rectangle Left="480" Top="1500" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWleft" RequestName="System status">
+<Rectangle Left="480" Top="1800" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWright" RequestName="System status">
+<Rectangle Left="480" Top="2100" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWturn left" RequestName="System status">
+<Rectangle Left="480" Top="2400" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWturn right" RequestName="System status">
+<Rectangle Left="480" Top="2700" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWdest" RequestName="System status">
+<Rectangle Left="480" Top="3000" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWback" RequestName="System status">
+<Rectangle Left="480" Top="3300" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWtel" RequestName="System status">
+<Rectangle Left="480" Top="3600" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWinfo" RequestName="System status">
+<Rectangle Left="480" Top="3900" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWset" RequestName="System status">
+<Rectangle Left="480" Top="4200" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWlight" RequestName="System status">
+<Rectangle Left="480" Top="4500" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWzoom" RequestName="System status">
+<Rectangle Left="480" Top="4800" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="StatusCSWroute" RequestName="System status">
+<Rectangle Left="480" Top="5100" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="16777215" DataName="Statusfascia close" RequestName="System status">
+<Rectangle Left="480" Top="5400" Height="300" Width="5520"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Valeurs mémorisées" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Valeurs mémorisées" Color="16744576" Alignment="2">
+<Rectangle Left="480" Top="360" Height="300" Width="8040"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+
+<Display Width="2840" Color="16777215" DataName="traceability ITG" RequestName="System traceability">
+<Rectangle Left="480" Top="1680" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="16777215" DataName="traceability year" RequestName="System traceability">
+<Rectangle Left="480" Top="1980" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2840" Color="16777215" DataName="traceability month" RequestName="System traceability">
+<Rectangle Left="480" Top="2280" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2855" Color="16777215" DataName="traceability manufacturing code" RequestName="System traceability">
+<Rectangle Left="480" Top="2640" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="16777215" DataName="config PRECODE" RequestName="Lect System configuration">
+<Rectangle Left="480" Top="3120" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="16777215" DataName="config CSW hard" RequestName="Lect System configuration">
+<Rectangle Left="480" Top="960" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="16777215" DataName="config CSW soft" RequestName="Lect System configuration">
+<Rectangle Left="480" Top="1260" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="16777215" DataName="configVehicleIdentifierFirstValue" RequestName="Lect System configuration">
+<Rectangle Left="480" Top="3420" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="16777215" DataName="configVehicleIdentifierLastBut2Value" RequestName="Lect System configuration">
+<Rectangle Left="480" Top="3720" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="16777215" DataName="configVehicleIdentifierLastBut1Value" RequestName="Lect System configuration">
+<Rectangle Left="480" Top="4020" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="16777215" DataName="configVehicleIdentifierLastValue" RequestName="Lect System configuration">
+<Rectangle Left="480" Top="4320" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Téléphone BlueTooth" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Niveau Bluetooth RSSI (ITS phase 2, ITD3)" Color="16744576" Alignment="2">
+<Rectangle Left="240" Top="120" Height="300" Width="8400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="1) lancez la scrutation" Color="16744576" Alignment="2">
+<Rectangle Left="240" Top="480" Height="600" Width="2880"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="2) attendre 15 secondes pour la mise à jour" Color="16744576" Alignment="2">
+<Rectangle Left="240" Top="1200" Height="277" Width="8400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Scrutation">
+<Rectangle Left="3120" Top="480" Height="600" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="300" RequestName="Start extended Session"/><Send Delay="15000" RequestName="Test update Bluetooth Start"/><Send Delay="100" RequestName="Bluetooth level"/>
+</Button>
+
+<Display Width="1490" Color="16777215" DataName="TEST Bluetooth status" RequestName="Test update Bluetooth Start">
+<Rectangle Left="4800" Top="480" Height="600" Width="3840"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 01 name" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="1560" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 01 address" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="1836" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 01 level" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="2113" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 02 name" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="2390" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 02 address" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="2666" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 02 level" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="2943" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 03 name" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="3219" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 03 address" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="3496" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 03 level" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="3773" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 04 name" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="4049" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 04 address" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="4326" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 04 level" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="4603" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 05 name" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="4879" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 05 address" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="5156" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3680" Color="16777215" DataName="parameterBluetooth device 05 level" RequestName="Bluetooth level">
+<Rectangle Left="360" Top="5432" Height="277" Width="8280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Téléphone berceau" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Etat du téléphone du berceau (ITS phase 1, X73, X74, J84)" Color="16744576" Alignment="2">
+<Rectangle Left="120" Top="480" Height="300" Width="8400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+
+<Display Width="2525" Color="16777215" DataName="StatusPhone NETWORK" RequestName="System status">
+<Rectangle Left="240" Top="960" Height="372" Width="7920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2525" Color="16777215" DataName="StatusPhone PIN" RequestName="System status">
+<Rectangle Left="240" Top="1332" Height="372" Width="7920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2525" Color="16777215" DataName="StatusPhone SIM" RequestName="System status">
+<Rectangle Left="240" Top="1704" Height="372" Width="7920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2525" Color="16777215" DataName="StatusPhone ONOFF" RequestName="System status">
+<Rectangle Left="240" Top="2076" Height="372" Width="7920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2525" Color="16777215" DataName="StatusPhone PRESENT" RequestName="System status">
+<Rectangle Left="240" Top="2448" Height="372" Width="7920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Diag Mux CanM" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+<Label Text="Surveillance réseau CAN-M" Color="16744576" Alignment="2">
+<Rectangle Left="240" Top="360" Height="300" Width="8400"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+
+<Display Width="3065" Color="16777215" DataName="MMUX keyboard" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="2280" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMUX keyboard counter" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="2580" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMUX audio" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="2880" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMUX audio counter" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="3180" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMUX ampli" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="3480" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMUX ampli counter" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="3780" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMUX rear camera" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="4080" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMUX rear camera counter" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="4380" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMUX gateway" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="4680" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMUX gateway counter" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="4980" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMUX CBox" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="5280" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMUX CBox counter" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="5580" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMux Produce Bus Off" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="960" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMux Produce Bus Off Counter" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="1260" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMux Produce Bus Mute" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="1560" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="16777215" DataName="MMux Produce Bus Mute Counter" RequestName="Frame diag multimedia mux">
+<Rectangle Left="360" Top="1860" Height="300" Width="5640"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

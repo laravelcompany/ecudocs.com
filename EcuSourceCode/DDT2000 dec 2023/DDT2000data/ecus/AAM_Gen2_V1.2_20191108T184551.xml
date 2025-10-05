@@ -1,0 +1,4088 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.2.0.0" date="2019-10-31T16:02"/>
+<ddt:Target Name="AAM_Gen2_V1.2" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="RANGHIUC Georgiana (renexter) &lt;georgiana.ranghiuc-extern@renault.com&gt;" href="AAM_Gen2_V1.2_20191108T184551.xml" upload="11/8/2019" group="AAM"><Description><![CDATA[09/10/2019
+
+Author: Georgiana RANGHIUC
+ 
+Creation of the first version of Database for AAM Gen2 ECU - Applicable for X82Ph2 project.
+Database name: AAM_Gen2_V1.0.xml
+
+=========================================================================]]></Description>
+<Projects xmlns=""><x82Ph2/><xFK/></Projects>
+<Function Name="AAM" Address="58" Type=""/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation/>
+<Failures Name="DTC Failures" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="2006"/>
+</SendId><ReceiveId>
+<CANId Value="2002"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="4" Supplier="CO" Soft="SW" Version="01"/></AutoIdents>
+<Datas>
+
+<Data Name="diagnosticVersion">
+<Comment><![CDATA[VDIAG]]></Comment>
+<Mnemonic>DID_$F1A0</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the diagnostic version of the ECU.</FONT></P>
+<P><FONT size=2>It is defined by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>Refer to manufacture ECU designer.</FONT></P>]]></Description>
+<Bytes count="1"/>
+</Data>
+<Data Name="SessionName">
+<Comment><![CDATA[Diagnostic session values. See documentation for more information.]]></Comment>
+<Mnemonic>LEV_DS</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>[0x00] : ISO / SAE Reserved<BR>[0x01] : Default session<BR>[0x02] : Programming session<BR>[0x03] : Extended diagnostic session<BR>[0x04] : Safety system diagnostic session<BR>[0x05 - 0x3F] : ISO / SAE Reserved<BR>[0x40 - 0x5F] : Vehicle manufacturer specific<BR>[0x60 - 0x7E] : System supplier specific<BR>[0x7F] : ISO / SAE Reserved</FONT></P>]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="DefaultSession"/>
+<Item Value="2" Text="ProgrammingSession"/>
+<Item Value="3" Text="ExtendedDiagnosticSession"/>
+<Item Value="4" Text="SafetySystemDiagnosticSession"/></List>
+</Bits>
+</Data>
+<Data Name="DTCCount">
+<Comment><![CDATA[DTC count]]></Comment>
+<Mnemonic>DTCC</Mnemonic>
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCFormatIdentifier">
+<Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+<Mnemonic>DTCFID</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="SAE_J2012-DA_DTC"/>
+<Item Value="1" Text="ISO_14229-1_DTC"/>
+<Item Value="2" Text="SAE_J1939-73_DTC"/>
+<Item Value="3" Text="ISO_11992-4_DTC"/>
+<Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatusAvailabilityMask">
+<Mnemonic>DTCSAM</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="StatusOfDTC">
+<Mnemonic>DTCASR_SODTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailed">
+<Mnemonic>TF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedThisMonitoringCycle">
+<Mnemonic>TFTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.pendingDTC">
+<Mnemonic>PDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.confirmedDTC">
+<Mnemonic>CDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedSinceLastClear">
+<Mnemonic>TNCSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedSinceLastClear">
+<Mnemonic>TFSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+<Mnemonic>TNCTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.warningIndicatorRequested">
+<Mnemonic>WIR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.Category">
+<Bits count="4">
+<List>
+<Item Value="0" Text="General Failure Information"/>
+<Item Value="1" Text="General Electrical Failures"/>
+<Item Value="2" Text="General Signal Failures"/>
+<Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="10" Text="General Electrical Failures - 2"/>
+<Item Value="15" Text="Vehicle manufacturer / System supplier specific"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType">
+<Bits>
+<List>
+<Item Value="0" Text="Device and failure type ODB codding"/>
+<Item Value="1" Text="General Electrical Failure"/>
+<Item Value="2" Text="General signal failure"/>
+<Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="10" Text="General Electrical Failures - 2"/>
+<Item Value="17" Text="circuit short to ground"/>
+<Item Value="18" Text="circuit short to battery"/>
+<Item Value="19" Text="circuit open"/>
+<Item Value="20" Text="circuit short to ground or open"/>
+<Item Value="21" Text="circuit short to battery or open"/>
+<Item Value="22" Text="circuit voltage below threshold"/>
+<Item Value="23" Text="circuit voltage above threshold"/>
+<Item Value="24" Text="circuit current below threshold"/>
+<Item Value="25" Text="circuit current above threshold"/>
+<Item Value="26" Text="circuit resistance below threshold"/>
+<Item Value="27" Text="circuit resistance above threshold"/>
+<Item Value="28" Text="circuit voltage out of range"/>
+<Item Value="29" Text="circuit current out of range"/>
+<Item Value="30" Text="circuit resistance out of range"/>
+<Item Value="31" Text="circuit intermittent"/>
+<Item Value="33" Text="signal amplitude &lt; minimum"/>
+<Item Value="34" Text="signal amplitude &gt; maximum"/>
+<Item Value="35" Text="signal stuck low"/>
+<Item Value="36" Text="signal stuck high"/>
+<Item Value="37" Text="signal shape / waveform failure"/>
+<Item Value="38" Text="signal rate of change below threshold"/>
+<Item Value="39" Text="signal rate of change above threshold"/>
+<Item Value="40" Text="signal bias level out of range / zero adj. failure"/>
+<Item Value="41" Text="signal signal invalid"/>
+<Item Value="42" Text="signal stuck in range"/>
+<Item Value="43" Text="signal cross coupled"/>
+<Item Value="47" Text="signal erratic"/>
+<Item Value="49" Text="no signal"/>
+<Item Value="50" Text="signal low time &lt; minimum"/>
+<Item Value="51" Text="signal low time &gt; maximum"/>
+<Item Value="52" Text="signal high time &lt; minimum"/>
+<Item Value="53" Text="signal high time &gt; maximum"/>
+<Item Value="54" Text="signal frequency too low"/>
+<Item Value="55" Text="signal frequency too high"/>
+<Item Value="56" Text="signal frequency incorrect"/>
+<Item Value="57" Text="incorrect has too few pulses"/>
+<Item Value="58" Text="incorrect has too many pulses"/>
+<Item Value="65" Text="general checksum failure"/>
+<Item Value="66" Text="general memory failure"/>
+<Item Value="67" Text="special memory failure"/>
+<Item Value="68" Text="data memory failure"/>
+<Item Value="69" Text="program memory failure"/>
+<Item Value="70" Text="calibration / parameter memory failure"/>
+<Item Value="71" Text="watchdog / safety µC failure"/>
+<Item Value="72" Text="supervision software failure"/>
+<Item Value="73" Text="internal electronic failure"/>
+<Item Value="74" Text="incorrect component installed"/>
+<Item Value="75" Text="over temperature"/>
+<Item Value="81" Text="not programmed"/>
+<Item Value="82" Text="not activated"/>
+<Item Value="83" Text="deactivated"/>
+<Item Value="84" Text="missing calibration"/>
+<Item Value="85" Text="not configured"/>
+<Item Value="86" Text="invalid or incompatible configuration"/>
+<Item Value="87" Text="invalid or incompatible software component"/>
+<Item Value="97" Text="signal calculation failure"/>
+<Item Value="98" Text="signal compare failure"/>
+<Item Value="99" Text="circuit / component protection time-out"/>
+<Item Value="100" Text="signal plausibility failure"/>
+<Item Value="101" Text="signal has too few transitions / events"/>
+<Item Value="102" Text="signal has too many transitions / events"/>
+<Item Value="103" Text="signal incorrect after event"/>
+<Item Value="104" Text="event information"/>
+<Item Value="113" Text="actuator stuck"/>
+<Item Value="114" Text="actuator stuck open"/>
+<Item Value="115" Text="actuator stuck closed"/>
+<Item Value="116" Text="actuator slipping"/>
+<Item Value="117" Text="emergency position not reachable"/>
+<Item Value="118" Text="wrong mounting position"/>
+<Item Value="119" Text="commanded position not reachable"/>
+<Item Value="120" Text="alignment or adjustment incorrect"/>
+<Item Value="121" Text="mechanical linkage failure"/>
+<Item Value="122" Text="fluid leak or seal failure"/>
+<Item Value="123" Text="low fluid level"/>
+<Item Value="124" Text="Slow Response"/>
+<Item Value="125" Text="Actuator Stuck On"/>
+<Item Value="127" Text="Actuator Stuck Off"/>
+<Item Value="129" Text="invalid serial data received"/>
+<Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+<Item Value="131" Text="value of signal protection calculation incorrect"/>
+<Item Value="132" Text="signal below allowable range"/>
+<Item Value="133" Text="signal above allowable range"/>
+<Item Value="134" Text="signal invalid"/>
+<Item Value="135" Text="missing message"/>
+<Item Value="136" Text="bus off"/>
+<Item Value="143" Text="erratic"/>
+<Item Value="145" Text="parametric"/>
+<Item Value="146" Text="performance or incorrect operation"/>
+<Item Value="147" Text="no operation"/>
+<Item Value="148" Text="unexpected operation"/>
+<Item Value="149" Text="incorrect assembly"/>
+<Item Value="150" Text="component internal failure"/>
+<Item Value="151" Text="Component or sys. operation obstructed or blocked"/>
+<Item Value="152" Text="component or system over temperature"/>
+<Item Value="153" Text="Exceeded Learning Limit"/>
+<Item Value="154" Text="component or system operating conditions"/>
+<Item Value="155" Text="High/Excessive Flow"/>
+<Item Value="156" Text="Low/Insufficient Flow"/>
+<Item Value="158" Text="Stuck On"/>
+<Item Value="159" Text="Stuck Off"/>
+<Item Value="161" Text="System Voltage"/>
+<Item Value="162" Text="System Voltage Low"/>
+<Item Value="163" Text="System Voltage High"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceIdentifier">
+<Bits count="16">
+<List>
+<Item Value="40800" Text="I_LOG_1"/>
+<Item Value="40801" Text="I_LOG2"/>
+<Item Value="40802" Text="I_LOG3"/>
+<Item Value="40803" Text="I_LOG4"/>
+<Item Value="40804" Text="I_LOG5"/>
+<Item Value="40805" Text="I_LOG6"/>
+<Item Value="40806" Text="I_LOG7"/>
+<Item Value="40807" Text="O_LOG_1"/>
+<Item Value="40808" Text="O_LOG_2"/>
+<Item Value="40809" Text="O_LOG_3"/>
+<Item Value="40810" Text="O_LOG_4"/>
+<Item Value="40811" Text="O_LOG_5"/>
+<Item Value="40812" Text="O_LOG_6"/>
+<Item Value="40813" Text="O_LOG_7"/>
+<Item Value="40814" Text="O_LOG_8"/>
+<Item Value="40815" Text="O_LOG_9"/>
+<Item Value="40816" Text="O_LOG_10"/>
+<Item Value="40817" Text="O_PWM_1"/>
+<Item Value="40818" Text="O_PWM_2"/>
+<Item Value="40819" Text="O_PWM_3"/>
+<Item Value="40820" Text="O_PWM_4"/>
+<Item Value="40821" Text="O_PWM_5"/>
+<Item Value="40822" Text="O_PWM_6"/>
+<Item Value="40823" Text="O_PWM_7"/>
+<Item Value="40824" Text="I_PWR_ECU"/>
+<Item Value="40825" Text="I_GND"/>
+<Item Value="40826" Text="O_GND"/>
+<Item Value="40827" Text="I_GND_LOGIC"/>
+<Item Value="40828" Text="I_GND_ANALOG"/>
+<Item Value="40829" Text="I_ANALOG_1"/>
+<Item Value="40830" Text="I_ANALOG_2"/>
+<Item Value="40831" Text="I_ANALOG_3"/>
+<Item Value="40833" Text="O_PWR"/>
+<Item Value="40834" Text="O_POWER_CUTOFF"/>
+<Item Value="40835" Text="INP_WAFE_WEAR_IND"/>
+<Item Value="40836" Text="OUTP_WAFE_WEAR_IND"/>
+<Item Value="40837" Text="I_STARTER"/>
+<Item Value="40838" Text="AAM_INTERNAL_FAILURE"/>
+<Item Value="40839" Text="AAM_CONFIGURATION_FAILURE"/>
+<Item Value="49273" Text="CAN_EXT_BUS_OFF"/>
+<Item Value="57664" Text="LOST_COMMUNICATION_WITH_ECM"/>
+<Item Value="57672" Text="LOST_COMMUNICATION_WITH_VDC"/>
+<Item Value="57678" Text="LOST_COMMUNICATION_WITH_CLUSTER"/>
+<Item Value="57679" Text="LOST_COMMUNICATION_WITH_BCM"/>
+<Item Value="57685" Text="LOST_COMMUNICATION_WITH_APB"/>
+<Item Value="57691" Text="LOST_COMMUNICATION_WITH_USM"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceAndFailureTypeOBD">
+<Bits count="16">
+<List>
+<Item Value="0" Text="NA"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.ManufacturerOrSupplier">
+<Bits count="4">
+<List>
+<Item Value="0" Text="NA"/></List>
+</Bits>
+</Data>
+<Data Name="DTCMaskRecord">
+<Mnemonic>DTCMREC_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCRecord">
+<Mnemonic>DTCASR_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCSnapshotRecordNumber">
+<Bytes count="1"/>
+</Data>
+<Data Name="DTCExtendedData.Mileage">
+<Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>MILEAGE</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedDataRecordNumber">
+<Mnemonic>DTCEDRN</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Mileage"/>
+<Item Value="129" Text="AgingCounter"/>
+<Item Value="130" Text="DTCOccurrenceCounter"/></List>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.AgingCounter">
+<Comment><![CDATA[Description of the extendedData AgingCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>AGINGCOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.DTCOccurrenceCounter">
+<Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="systemSupplierECUSoftwareVersionNumber">
+<Comment><![CDATA[Software Version (Supplier)]]></Comment>
+<Mnemonic>DID_$F195</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software version number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="systemSupplierECUSoftwareNumber">
+<Comment><![CDATA[Software Number (Supplier)]]></Comment>
+<Mnemonic>DID_$F194</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="vehicleManufacturerECUHardwareNumber">
+<Comment><![CDATA[Hardware Number]]></Comment>
+<Mnemonic>DID_$F191</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used by reading services to reference the vehicle-manufacturer-specific ECU (server) hardware number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be serverspecific and defined by vehicle manufacturer.</FONT></P>]]></Description>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="VIN">
+<Comment><![CDATA[Vehicle Identification Number]]></Comment>
+<Mnemonic>DID_$F190</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the VIN number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be specified by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>It shall not be erased when the ECU is reprogrammed.</FONT></P>]]></Description>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="ECUSerialNumber">
+<Comment><![CDATA[ECU serial number]]></Comment>
+<Mnemonic>DID_$F18C</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the ECU (server) serial number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific.</FONT></P>]]></Description>
+<Bytes count="20" ascii="1"/>
+</Data>
+<Data Name="systemSupplierIdentifier">
+<Comment><![CDATA[Name and address information of the supplier.]]></Comment>
+<Mnemonic>DID_$F18A</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier name and address information.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="vehicleManufacturerECUSoftwareNumber">
+<Mnemonic>DID_$F188</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="vehicleManufacturerSparePartNumber">
+<Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM]]></Comment>
+<Mnemonic>DID_$F187</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer spare part number. </FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="applicationDataIdentification">
+<Comment><![CDATA[Calibration Number]]></Comment>
+<Mnemonic>DID_$F182</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer specific ECU application data identification record.</FONT></P>
+<P><FONT size=2>The format of the application data identification structure shall be ECU specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="secutity accessFingerPrint">
+<Mnemonic>DID_$F011</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="programmingOperationFingerPrint">
+<Comment><![CDATA[Only for programmable ECU]]></Comment>
+<Mnemonic>DID_$F010</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>The value is written by the ECU when executing the SendKey SecurityAccess service</FONT></P>
+<P><FONT size=2>The value can be read in boot loader mode.</FONT></P>]]></Description>
+<Bytes count="16"/>
+</Data>
+<Data Name="ConfigDataReferenceAfterConfigProcess">
+<Mnemonic>CONFIG_DATA_REFERENCE_AFTER_CONFIG_PROCESS</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="RALAC_CF">
+<Mnemonic>RALAC_CF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="RALAC feature not activated"/>
+<Item Value="1" Text="RALAC feature activated"/></List>
+</Bits>
+</Data>
+<Data Name="TUP_CF">
+<Mnemonic>TUP_CF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="TUP feature not activated"/>
+<Item Value="1" Text="TUP feature activated"/></List>
+</Bits>
+</Data>
+<Data Name="SEL_PWR_LIM_CUT_OFF">
+<Mnemonic>SEL_PWR_LIM_CUT_OFF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="SEL_PWR_LIM_CUT_OFF not activated"/>
+<Item Value="1" Text="SEL_PWR_LIM_CUT_OFF activated"/></List>
+</Bits>
+</Data>
+<Data Name="RALAC_SW_TYPE_CF">
+<Mnemonic>RALAC_SW_TYPE_CF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="bistable switch(default)"/>
+<Item Value="1" Text="monostable switch"/></List>
+</Bits>
+</Data>
+<Data Name="bootSoftwareIdentification">
+<Mnemonic>BOOT_SOFTWARE_IDENTIFICATION</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="ENG_RESTART_CF">
+<Mnemonic>ENG_RESTART_CF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Engine restart feature not activated"/>
+<Item Value="1" Text="Engine restart feature activated"/></List>
+</Bits>
+</Data>
+<Data Name="ADD_TORQUE_CF">
+<Bits>
+<List>
+<Item Value="0" Text="Additional torque request not activated"/>
+<Item Value="1" Text="Additional torque request activated"/></List>
+</Bits>
+</Data>
+<Data Name="BAT_STABILIZED_CF">
+<Mnemonic>BAT_STABILIZED_CF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Batt stabilized request not activated"/>
+<Item Value="1" Text="Batt stabilized request activated"/></List>
+</Bits>
+</Data>
+<Data Name="MUTE_CF">
+<Mnemonic>MUTE_CF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="MUTE not activated"/>
+<Item Value="1" Text="MUTE activated"/></List>
+</Bits>
+</Data>
+<Data Name="BATT_COUPLING_CF">
+<Mnemonic>BATT_COUPLING_CF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Battery coupling feature not activated"/>
+<Item Value="1" Text="Battery coupling feature activated"/></List>
+</Bits>
+</Data>
+<Data Name="ADD_NETWORK_CF">
+<Mnemonic>ADD_NETWORK_CF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="FMS"/>
+<Item Value="1" Text="CAN_ADAP3"/></List>
+</Bits>
+</Data>
+<Data Name="MUTE_SW_TYPE_CF">
+<Mnemonic>MUTE_SW_TYPE_CF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="bistable switch(default)"/>
+<Item Value="1" Text="monostable switch"/></List>
+</Bits>
+</Data>
+<Data Name="BAT_STABILIZED_CF_1">
+<Mnemonic>BAT_STABILIZED_CF_1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="bistable switch(default)"/>
+<Item Value="1" Text="monostable switch"/></List>
+</Bits>
+</Data>
+<Data Name="I_ANALOG_1">
+<Mnemonic>I_ANALOG_1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="FMS"/>
+<Item Value="1" Text="CAN_ADAP3"/></List>
+</Bits>
+</Data>
+<Data Name="I_ANALOG_2">
+<Mnemonic>I_ANALOG_1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="FMS"/>
+<Item Value="1" Text="CAN_ADAP3"/></List>
+</Bits>
+</Data>
+<Data Name="I_ANALOG_3">
+<Mnemonic>I_ANALOG_1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="FMS"/>
+<Item Value="1" Text="CAN_ADAP3"/></List>
+</Bits>
+</Data>
+<Data Name="I_LOG_1">
+<Mnemonic>I_LOG_1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="RALAC request"/>
+<Item Value="2" Text="Engine Restart request"/>
+<Item Value="3" Text="Stabilized battery voltage request"/>
+<Item Value="4" Text="Addional load torque request"/>
+<Item Value="7" Text="Radio Mute request"/>
+<Item Value="11" Text="Generic purpose input 1"/>
+<Item Value="12" Text="Generic purpose input 2"/>
+<Item Value="13" Text="Generic purpose input 3"/>
+<Item Value="14" Text="Generic purpose input 4"/>
+<Item Value="15" Text="Generic purpose input 5"/>
+<Item Value="16" Text="Generic purpose input 6"/>
+<Item Value="17" Text="Generic purpose input 7"/>
+<Item Value="255" Text="INVALID"/></List>
+</Bits>
+</Data>
+<Data Name="I_LOG_2">
+<Mnemonic>I_LOG_2</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="RALAC request"/>
+<Item Value="2" Text="Engine Restart request"/>
+<Item Value="3" Text="Stabilized battery voltage request"/>
+<Item Value="4" Text="Addional load torque request"/>
+<Item Value="7" Text="Radio Mute request"/>
+<Item Value="11" Text="Generic purpose input 1"/>
+<Item Value="12" Text="Generic purpose input 2"/>
+<Item Value="13" Text="Generic purpose input 3"/>
+<Item Value="14" Text="Generic purpose input 4"/>
+<Item Value="15" Text="Generic purpose input 5"/>
+<Item Value="16" Text="Generic purpose input 6"/>
+<Item Value="17" Text="Generic purpose input 7"/>
+<Item Value="255" Text="INVALID"/></List>
+</Bits>
+</Data>
+<Data Name="I_LOG_3">
+<Mnemonic>I_LOG_3</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="RALAC request"/>
+<Item Value="2" Text="Engine Restart request"/>
+<Item Value="3" Text="Stabilized battery voltage request"/>
+<Item Value="4" Text="Addional load torque request"/>
+<Item Value="7" Text="Radio Mute request"/>
+<Item Value="11" Text="Generic purpose input 1"/>
+<Item Value="12" Text="Generic purpose input 2"/>
+<Item Value="13" Text="Generic purpose input 3"/>
+<Item Value="14" Text="Generic purpose input 4"/>
+<Item Value="15" Text="Generic purpose input 5"/>
+<Item Value="16" Text="Generic purpose input 6"/>
+<Item Value="17" Text="Generic purpose input 7"/>
+<Item Value="255" Text="INVALID"/></List>
+</Bits>
+</Data>
+<Data Name="I_LOG_4">
+<Mnemonic>I_LOG_4</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="RALAC request"/>
+<Item Value="2" Text="Engine Restart request"/>
+<Item Value="3" Text="Stabilized battery voltage request"/>
+<Item Value="4" Text="Addional load torque request"/>
+<Item Value="7" Text="Radio Mute request"/>
+<Item Value="11" Text="Generic purpose input 1"/>
+<Item Value="12" Text="Generic purpose input 2"/>
+<Item Value="13" Text="Generic purpose input 3"/>
+<Item Value="14" Text="Generic purpose input 4"/>
+<Item Value="15" Text="Generic purpose input 5"/>
+<Item Value="16" Text="Generic purpose input 6"/>
+<Item Value="17" Text="Generic purpose input 7"/>
+<Item Value="255" Text="INVALID"/></List>
+</Bits>
+</Data>
+<Data Name="I_LOG_5">
+<Mnemonic>I_LOG_5</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="RALAC request"/>
+<Item Value="2" Text="Engine Restart request"/>
+<Item Value="3" Text="Stabilized battery voltage request"/>
+<Item Value="4" Text="Addional load torque request"/>
+<Item Value="7" Text="Radio Mute request"/>
+<Item Value="11" Text="Generic purpose input 1"/>
+<Item Value="12" Text="Generic purpose input 2"/>
+<Item Value="13" Text="Generic purpose input 3"/>
+<Item Value="14" Text="Generic purpose input 4"/>
+<Item Value="15" Text="Generic purpose input 5"/>
+<Item Value="16" Text="Generic purpose input 6"/>
+<Item Value="17" Text="Generic purpose input 7"/>
+<Item Value="255" Text="INVALID"/></List>
+</Bits>
+</Data>
+<Data Name="I_LOG_6">
+<Mnemonic>I_LOG_6</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="RALAC request"/>
+<Item Value="2" Text="Engine Restart request"/>
+<Item Value="3" Text="Stabilized battery voltage request"/>
+<Item Value="4" Text="Addional load torque request"/>
+<Item Value="7" Text="Radio Mute request"/>
+<Item Value="11" Text="Generic purpose input 1"/>
+<Item Value="12" Text="Generic purpose input 2"/>
+<Item Value="13" Text="Generic purpose input 3"/>
+<Item Value="14" Text="Generic purpose input 4"/>
+<Item Value="15" Text="Generic purpose input 5"/>
+<Item Value="16" Text="Generic purpose input 6"/>
+<Item Value="17" Text="Generic purpose input 7"/>
+<Item Value="255" Text="INVALID"/></List>
+</Bits>
+</Data>
+<Data Name="I_LOG_7">
+<Mnemonic>I_LOG_7</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="RALAC request"/>
+<Item Value="2" Text="Engine Restart request"/>
+<Item Value="3" Text="Stabilized battery voltage request"/>
+<Item Value="4" Text="Addional load torque request"/>
+<Item Value="7" Text="Radio Mute request"/>
+<Item Value="11" Text="Generic purpose input 1"/>
+<Item Value="12" Text="Generic purpose input 2"/>
+<Item Value="13" Text="Generic purpose input 3"/>
+<Item Value="14" Text="Generic purpose input 4"/>
+<Item Value="15" Text="Generic purpose input 5"/>
+<Item Value="16" Text="Generic purpose input 6"/>
+<Item Value="17" Text="Generic purpose input 7"/>
+<Item Value="255" Text="INVALID"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_1">
+<Mnemonic>O_LOG_1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="EngineRPM"/>
+<Item Value="2" Text="RawSensor"/>
+<Item Value="3" Text="EngineCoolantTemp"/>
+<Item Value="4" Text="FuelConsumption"/>
+<Item Value="5" Text="VehicleSpeed"/>
+<Item Value="6" Text="EngineStatus"/>
+<Item Value="7" Text="BrakeInfoStatus"/>
+<Item Value="8" Text="IgnitionSupplyConfirmation"/>
+<Item Value="9" Text="ACCompClutchStatus"/>
+<Item Value="10" Text="ClutchSwitch"/>
+<Item Value="11" Text="DoorSwitches"/>
+<Item Value="12" Text="StartingInProgress"/>
+<Item Value="13" Text="IgnitionLevel"/>
+<Item Value="14" Text="AutoACC"/>
+<Item Value="15" Text="VehicleOutsideLockedState"/>
+<Item Value="16" Text="FlashingIndicatorsL"/>
+<Item Value="17" Text="FlashingIndicatorsR"/>
+<Item Value="18" Text="HazardLight"/>
+<Item Value="19" Text="AutoStart"/>
+<Item Value="20" Text="FrontWiperStatus"/>
+<Item Value="21" Text="RearWiperStatus"/>
+<Item Value="22" Text="AIRBAGMalfunction"/>
+<Item Value="23" Text="DriverSafetyBeltReminder"/>
+<Item Value="24" Text="RearGearEngaged"/>
+<Item Value="25" Text="NeutralContact"/>
+<Item Value="26" Text="Level2FailureDisplayRequest"/>
+<Item Value="27" Text="KeyVehicle"/>
+<Item Value="28" Text="PositionLightsDisplay"/>
+<Item Value="29" Text="HighBeamDisplay"/>
+<Item Value="30" Text="LowBeamDisplay"/>
+<Item Value="31" Text="FrontFogLightsDisplay"/>
+<Item Value="32" Text="ESPActivationStateForDisplay"/>
+<Item Value="33" Text="FreeShift"/>
+<Item Value="34" Text="CruiseControlStatus"/>
+<Item Value="35" Text="DieselFilterWaterDetection"/>
+<Item Value="36" Text="EngineControlFailureLevel1"/>
+<Item Value="37" Text="EngineControlFailureLevel2"/>
+<Item Value="38" Text="WarningWaterTemp"/>
+<Item Value="39" Text="MILLamp"/>
+<Item Value="40" Text="ParkingBrakeStatus"/>
+<Item Value="41" Text="TripAverageConsumption"/>
+<Item Value="42" Text="TripDistance"/>
+<Item Value="43" Text="FixedMaintenanceRange"/>
+<Item Value="44" Text="GearLeverPosition_v2"/>
+<Item Value="45" Text="LongitudeSeconde"/>
+<Item Value="46" Text="ParkingBrakeBindingStatus"/>
+<Item Value="47" Text="GearboxOilTemperature"/>
+<Item Value="48" Text="EngineOilTempDisplay"/>
+<Item Value="49" Text="OilPressureWarning"/>
+<Item Value="50" Text="MilageMinBeforeOverhaul"/>
+<Item Value="51" Text="ABSinRegulation"/>
+<Item Value="52" Text="ABSMalfunction"/>
+<Item Value="53" Text="MeanEffectiveTorque"/>
+<Item Value="54" Text="ABS_WarningRequest"/>
+<Item Value="55" Text="ASRinRegulation"/>
+<Item Value="56" Text="AYCinRegulation"/>
+<Item Value="57" Text="MSRinRegulation"/>
+<Item Value="58" Text="AYCMalfunction"/>
+<Item Value="59" Text="TransmRangeEngaged_Current"/>
+<Item Value="60" Text="DistanceTotalizer"/>
+<Item Value="61" Text="DisplayedOilLevel"/>
+<Item Value="62" Text="VehicleSpeedSign"/>
+<Item Value="63" Text="PassengerPresenceState"/>
+<Item Value="64" Text="LowBrakeFluidLevelStatus"/>
+<Item Value="65" Text="FuelLevelDisplayed"/>
+<Item Value="66" Text="SteeringWheelAngleRaw"/>
+<Item Value="67" Text="HeadLampsWasherRequest"/>
+<Item Value="68" Text="TimeHour"/>
+<Item Value="69" Text="NightRheostatedLightMaxPercent"/>
+<Item Value="70" Text="ExternalTemperature"/>
+<Item Value="71" Text="FrontLeftWheelPressure_V2"/>
+<Item Value="72" Text="FrontRightWheelPressure_V2"/>
+<Item Value="73" Text="RearLeftWheelPressure_V2"/>
+<Item Value="74" Text="RearRightWheelPressure_V2"/>
+<Item Value="75" Text="WheelSpeedFR"/>
+<Item Value="76" Text="WheelSpeedFL"/>
+<Item Value="77" Text="WheelSpeedRL"/>
+<Item Value="78" Text="WheelSpeedRR"/>
+<Item Value="79" Text="WheelTopFL"/>
+<Item Value="80" Text="WheelTopFR"/>
+<Item Value="81" Text="WheelTopRL"/>
+<Item Value="82" Text="WheelTopRR"/>
+<Item Value="83" Text="SecondRowRightPresenceState"/>
+<Item Value="84" Text="SecondRowCenterPresenceState"/>
+<Item Value="85" Text="SecondRowLeftPresenceState"/>
+<Item Value="86" Text="ChildLockStateDisplay"/>
+<Item Value="87" Text="HornRequest"/>
+<Item Value="88" Text="LightSensorStatus"/>
+<Item Value="89" Text="BrakeLampStatus"/>
+<Item Value="90" Text="FrontFogLightsRequest"/>
+<Item Value="91" Text="RearFogLightStateDisplay"/>
+<Item Value="92" Text="DayNightSynthesis"/>
+<Item Value="93" Text="VehicleID"/>
+<Item Value="255" Text="INVALID VALUE"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_1_power_limitation">
+<Mnemonic>O_LOG_1_power_limitation</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Output switch off following vehicule power limitation request"/>
+<Item Value="1" Text="No output switch off"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_1_switch_off_condition">
+<Mnemonic>O_LOG_1_switch_off_condition</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="No switch off"/>
+<Item Value="1" Text="Output sitched off while engine stopped"/>
+<Item Value="2" Text="Output sitched off while engine starting"/>
+<Item Value="3" Text="Output sitched off while engine stopped &amp; starting"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_2">
+<Mnemonic>O_LOG_2</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="EngineRPM"/>
+<Item Value="2" Text="RawSensor"/>
+<Item Value="3" Text="EngineCoolantTemp"/>
+<Item Value="4" Text="FuelConsumption"/>
+<Item Value="5" Text="VehicleSpeed"/>
+<Item Value="6" Text="EngineStatus"/>
+<Item Value="7" Text="BrakeInfoStatus"/>
+<Item Value="8" Text="IgnitionSupplyConfirmation"/>
+<Item Value="9" Text="ACCompClutchStatus"/>
+<Item Value="10" Text="ClutchSwitch"/>
+<Item Value="11" Text="DoorSwitches"/>
+<Item Value="12" Text="StartingInProgress"/>
+<Item Value="13" Text="IgnitionLevel"/>
+<Item Value="14" Text="AutoACC"/>
+<Item Value="15" Text="VehicleOutsideLockedState"/>
+<Item Value="16" Text="FlashingIndicatorsL"/>
+<Item Value="17" Text="FlashingIndicatorsR"/>
+<Item Value="18" Text="HazardLight"/>
+<Item Value="19" Text="AutoStart"/>
+<Item Value="20" Text="FrontWiperStatus"/>
+<Item Value="21" Text="RearWiperStatus"/>
+<Item Value="22" Text="AIRBAGMalfunction"/>
+<Item Value="23" Text="DriverSafetyBeltReminder"/>
+<Item Value="24" Text="RearGearEngaged"/>
+<Item Value="25" Text="NeutralContact"/>
+<Item Value="26" Text="Level2FailureDisplayRequest"/>
+<Item Value="27" Text="KeyVehicle"/>
+<Item Value="28" Text="PositionLightsDisplay"/>
+<Item Value="29" Text="HighBeamDisplay"/>
+<Item Value="30" Text="LowBeamDisplay"/>
+<Item Value="31" Text="FrontFogLightsDisplay"/>
+<Item Value="32" Text="ESPActivationStateForDisplay"/>
+<Item Value="33" Text="FreeShift"/>
+<Item Value="34" Text="CruiseControlStatus"/>
+<Item Value="35" Text="DieselFilterWaterDetection"/>
+<Item Value="36" Text="EngineControlFailureLevel1"/>
+<Item Value="37" Text="EngineControlFailureLevel2"/>
+<Item Value="38" Text="WarningWaterTemp"/>
+<Item Value="39" Text="MILLamp"/>
+<Item Value="40" Text="ParkingBrakeStatus"/>
+<Item Value="41" Text="TripAverageConsumption"/>
+<Item Value="42" Text="TripDistance"/>
+<Item Value="43" Text="FixedMaintenanceRange"/>
+<Item Value="44" Text="GearLeverPosition_v2"/>
+<Item Value="45" Text="LongitudeSeconde"/>
+<Item Value="46" Text="ParkingBrakeBindingStatus"/>
+<Item Value="47" Text="GearboxOilTemperature"/>
+<Item Value="48" Text="EngineOilTempDisplay"/>
+<Item Value="49" Text="OilPressureWarning"/>
+<Item Value="50" Text="MilageMinBeforeOverhaul"/>
+<Item Value="51" Text="ABSinRegulation"/>
+<Item Value="52" Text="ABSMalfunction"/>
+<Item Value="53" Text="MeanEffectiveTorque"/>
+<Item Value="54" Text="ABS_WarningRequest"/>
+<Item Value="55" Text="ASRinRegulation"/>
+<Item Value="56" Text="AYCinRegulation"/>
+<Item Value="57" Text="MSRinRegulation"/>
+<Item Value="58" Text="AYCMalfunction"/>
+<Item Value="59" Text="TransmRangeEngaged_Current"/>
+<Item Value="60" Text="DistanceTotalizer"/>
+<Item Value="61" Text="DisplayedOilLevel"/>
+<Item Value="62" Text="VehicleSpeedSign"/>
+<Item Value="63" Text="PassengerPresenceState"/>
+<Item Value="64" Text="LowBrakeFluidLevelStatus"/>
+<Item Value="65" Text="FuelLevelDisplayed"/>
+<Item Value="66" Text="SteeringWheelAngleRaw"/>
+<Item Value="67" Text="HeadLampsWasherRequest"/>
+<Item Value="68" Text="TimeHour"/>
+<Item Value="69" Text="NightRheostatedLightMaxPercent"/>
+<Item Value="70" Text="ExternalTemperature"/>
+<Item Value="71" Text="FrontLeftWheelPressure_V2"/>
+<Item Value="72" Text="FrontRightWheelPressure_V2"/>
+<Item Value="73" Text="RearLeftWheelPressure_V2"/>
+<Item Value="74" Text="RearRightWheelPressure_V2"/>
+<Item Value="75" Text="WheelSpeedFR"/>
+<Item Value="76" Text="WheelSpeedFL"/>
+<Item Value="77" Text="WheelSpeedRL"/>
+<Item Value="78" Text="WheelSpeedRR"/>
+<Item Value="79" Text="WheelTopFL"/>
+<Item Value="80" Text="WheelTopFR"/>
+<Item Value="81" Text="WheelTopRL"/>
+<Item Value="82" Text="WheelTopRR"/>
+<Item Value="83" Text="SecondRowRightPresenceState"/>
+<Item Value="84" Text="SecondRowCenterPresenceState"/>
+<Item Value="85" Text="SecondRowLeftPresenceState"/>
+<Item Value="86" Text="ChildLockStateDisplay"/>
+<Item Value="87" Text="HornRequest"/>
+<Item Value="88" Text="LightSensorStatus"/>
+<Item Value="89" Text="BrakeLampStatus"/>
+<Item Value="90" Text="FrontFogLightsRequest"/>
+<Item Value="91" Text="RearFogLightStateDisplay"/>
+<Item Value="92" Text="DayNightSynthesis"/>
+<Item Value="93" Text="VehicleID"/>
+<Item Value="255" Text="INVALID VALUE"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_3">
+<Mnemonic>O_LOG_3</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="EngineRPM"/>
+<Item Value="2" Text="RawSensor"/>
+<Item Value="3" Text="EngineCoolantTemp"/>
+<Item Value="4" Text="FuelConsumption"/>
+<Item Value="5" Text="VehicleSpeed"/>
+<Item Value="6" Text="EngineStatus"/>
+<Item Value="7" Text="BrakeInfoStatus"/>
+<Item Value="8" Text="IgnitionSupplyConfirmation"/>
+<Item Value="9" Text="ACCompClutchStatus"/>
+<Item Value="10" Text="ClutchSwitch"/>
+<Item Value="11" Text="DoorSwitches"/>
+<Item Value="12" Text="StartingInProgress"/>
+<Item Value="13" Text="IgnitionLevel"/>
+<Item Value="14" Text="AutoACC"/>
+<Item Value="15" Text="VehicleOutsideLockedState"/>
+<Item Value="16" Text="FlashingIndicatorsL"/>
+<Item Value="17" Text="FlashingIndicatorsR"/>
+<Item Value="18" Text="HazardLight"/>
+<Item Value="19" Text="AutoStart"/>
+<Item Value="20" Text="FrontWiperStatus"/>
+<Item Value="21" Text="RearWiperStatus"/>
+<Item Value="22" Text="AIRBAGMalfunction"/>
+<Item Value="23" Text="DriverSafetyBeltReminder"/>
+<Item Value="24" Text="RearGearEngaged"/>
+<Item Value="25" Text="NeutralContact"/>
+<Item Value="26" Text="Level2FailureDisplayRequest"/>
+<Item Value="27" Text="KeyVehicle"/>
+<Item Value="28" Text="PositionLightsDisplay"/>
+<Item Value="29" Text="HighBeamDisplay"/>
+<Item Value="30" Text="LowBeamDisplay"/>
+<Item Value="31" Text="FrontFogLightsDisplay"/>
+<Item Value="32" Text="ESPActivationStateForDisplay"/>
+<Item Value="33" Text="FreeShift"/>
+<Item Value="34" Text="CruiseControlStatus"/>
+<Item Value="35" Text="DieselFilterWaterDetection"/>
+<Item Value="36" Text="EngineControlFailureLevel1"/>
+<Item Value="37" Text="EngineControlFailureLevel2"/>
+<Item Value="38" Text="WarningWaterTemp"/>
+<Item Value="39" Text="MILLamp"/>
+<Item Value="40" Text="ParkingBrakeStatus"/>
+<Item Value="41" Text="TripAverageConsumption"/>
+<Item Value="42" Text="TripDistance"/>
+<Item Value="43" Text="FixedMaintenanceRange"/>
+<Item Value="44" Text="GearLeverPosition_v2"/>
+<Item Value="45" Text="LongitudeSeconde"/>
+<Item Value="46" Text="ParkingBrakeBindingStatus"/>
+<Item Value="47" Text="GearboxOilTemperature"/>
+<Item Value="48" Text="EngineOilTempDisplay"/>
+<Item Value="49" Text="OilPressureWarning"/>
+<Item Value="50" Text="MilageMinBeforeOverhaul"/>
+<Item Value="51" Text="ABSinRegulation"/>
+<Item Value="52" Text="ABSMalfunction"/>
+<Item Value="53" Text="MeanEffectiveTorque"/>
+<Item Value="54" Text="ABS_WarningRequest"/>
+<Item Value="55" Text="ASRinRegulation"/>
+<Item Value="56" Text="AYCinRegulation"/>
+<Item Value="57" Text="MSRinRegulation"/>
+<Item Value="58" Text="AYCMalfunction"/>
+<Item Value="59" Text="TransmRangeEngaged_Current"/>
+<Item Value="60" Text="DistanceTotalizer"/>
+<Item Value="61" Text="DisplayedOilLevel"/>
+<Item Value="62" Text="VehicleSpeedSign"/>
+<Item Value="63" Text="PassengerPresenceState"/>
+<Item Value="64" Text="LowBrakeFluidLevelStatus"/>
+<Item Value="65" Text="FuelLevelDisplayed"/>
+<Item Value="66" Text="SteeringWheelAngleRaw"/>
+<Item Value="67" Text="HeadLampsWasherRequest"/>
+<Item Value="68" Text="TimeHour"/>
+<Item Value="69" Text="NightRheostatedLightMaxPercent"/>
+<Item Value="70" Text="ExternalTemperature"/>
+<Item Value="71" Text="FrontLeftWheelPressure_V2"/>
+<Item Value="72" Text="FrontRightWheelPressure_V2"/>
+<Item Value="73" Text="RearLeftWheelPressure_V2"/>
+<Item Value="74" Text="RearRightWheelPressure_V2"/>
+<Item Value="75" Text="WheelSpeedFR"/>
+<Item Value="76" Text="WheelSpeedFL"/>
+<Item Value="77" Text="WheelSpeedRL"/>
+<Item Value="78" Text="WheelSpeedRR"/>
+<Item Value="79" Text="WheelTopFL"/>
+<Item Value="80" Text="WheelTopFR"/>
+<Item Value="81" Text="WheelTopRL"/>
+<Item Value="82" Text="WheelTopRR"/>
+<Item Value="83" Text="SecondRowRightPresenceState"/>
+<Item Value="84" Text="SecondRowCenterPresenceState"/>
+<Item Value="85" Text="SecondRowLeftPresenceState"/>
+<Item Value="86" Text="ChildLockStateDisplay"/>
+<Item Value="87" Text="HornRequest"/>
+<Item Value="88" Text="LightSensorStatus"/>
+<Item Value="89" Text="BrakeLampStatus"/>
+<Item Value="90" Text="FrontFogLightsRequest"/>
+<Item Value="91" Text="RearFogLightStateDisplay"/>
+<Item Value="92" Text="DayNightSynthesis"/>
+<Item Value="93" Text="VehicleID"/>
+<Item Value="255" Text="INVALID VALUE"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_4">
+<Mnemonic>O_LOG_4</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="EngineRPM"/>
+<Item Value="2" Text="RawSensor"/>
+<Item Value="3" Text="EngineCoolantTemp"/>
+<Item Value="4" Text="FuelConsumption"/>
+<Item Value="5" Text="VehicleSpeed"/>
+<Item Value="6" Text="EngineStatus"/>
+<Item Value="7" Text="BrakeInfoStatus"/>
+<Item Value="8" Text="IgnitionSupplyConfirmation"/>
+<Item Value="9" Text="ACCompClutchStatus"/>
+<Item Value="10" Text="ClutchSwitch"/>
+<Item Value="11" Text="DoorSwitches"/>
+<Item Value="12" Text="StartingInProgress"/>
+<Item Value="13" Text="IgnitionLevel"/>
+<Item Value="14" Text="AutoACC"/>
+<Item Value="15" Text="VehicleOutsideLockedState"/>
+<Item Value="16" Text="FlashingIndicatorsL"/>
+<Item Value="17" Text="FlashingIndicatorsR"/>
+<Item Value="18" Text="HazardLight"/>
+<Item Value="19" Text="AutoStart"/>
+<Item Value="20" Text="FrontWiperStatus"/>
+<Item Value="21" Text="RearWiperStatus"/>
+<Item Value="22" Text="AIRBAGMalfunction"/>
+<Item Value="23" Text="DriverSafetyBeltReminder"/>
+<Item Value="24" Text="RearGearEngaged"/>
+<Item Value="25" Text="NeutralContact"/>
+<Item Value="26" Text="Level2FailureDisplayRequest"/>
+<Item Value="27" Text="KeyVehicle"/>
+<Item Value="28" Text="PositionLightsDisplay"/>
+<Item Value="29" Text="HighBeamDisplay"/>
+<Item Value="30" Text="LowBeamDisplay"/>
+<Item Value="31" Text="FrontFogLightsDisplay"/>
+<Item Value="32" Text="ESPActivationStateForDisplay"/>
+<Item Value="33" Text="FreeShift"/>
+<Item Value="34" Text="CruiseControlStatus"/>
+<Item Value="35" Text="DieselFilterWaterDetection"/>
+<Item Value="36" Text="EngineControlFailureLevel1"/>
+<Item Value="37" Text="EngineControlFailureLevel2"/>
+<Item Value="38" Text="WarningWaterTemp"/>
+<Item Value="39" Text="MILLamp"/>
+<Item Value="40" Text="ParkingBrakeStatus"/>
+<Item Value="41" Text="TripAverageConsumption"/>
+<Item Value="42" Text="TripDistance"/>
+<Item Value="43" Text="FixedMaintenanceRange"/>
+<Item Value="44" Text="GearLeverPosition_v2"/>
+<Item Value="45" Text="LongitudeSeconde"/>
+<Item Value="46" Text="ParkingBrakeBindingStatus"/>
+<Item Value="47" Text="GearboxOilTemperature"/>
+<Item Value="48" Text="EngineOilTempDisplay"/>
+<Item Value="49" Text="OilPressureWarning"/>
+<Item Value="50" Text="MilageMinBeforeOverhaul"/>
+<Item Value="51" Text="ABSinRegulation"/>
+<Item Value="52" Text="ABSMalfunction"/>
+<Item Value="53" Text="MeanEffectiveTorque"/>
+<Item Value="54" Text="ABS_WarningRequest"/>
+<Item Value="55" Text="ASRinRegulation"/>
+<Item Value="56" Text="AYCinRegulation"/>
+<Item Value="57" Text="MSRinRegulation"/>
+<Item Value="58" Text="AYCMalfunction"/>
+<Item Value="59" Text="TransmRangeEngaged_Current"/>
+<Item Value="60" Text="DistanceTotalizer"/>
+<Item Value="61" Text="DisplayedOilLevel"/>
+<Item Value="62" Text="VehicleSpeedSign"/>
+<Item Value="63" Text="PassengerPresenceState"/>
+<Item Value="64" Text="LowBrakeFluidLevelStatus"/>
+<Item Value="65" Text="FuelLevelDisplayed"/>
+<Item Value="66" Text="SteeringWheelAngleRaw"/>
+<Item Value="67" Text="HeadLampsWasherRequest"/>
+<Item Value="68" Text="TimeHour"/>
+<Item Value="69" Text="NightRheostatedLightMaxPercent"/>
+<Item Value="70" Text="ExternalTemperature"/>
+<Item Value="71" Text="FrontLeftWheelPressure_V2"/>
+<Item Value="72" Text="FrontRightWheelPressure_V2"/>
+<Item Value="73" Text="RearLeftWheelPressure_V2"/>
+<Item Value="74" Text="RearRightWheelPressure_V2"/>
+<Item Value="75" Text="WheelSpeedFR"/>
+<Item Value="76" Text="WheelSpeedFL"/>
+<Item Value="77" Text="WheelSpeedRL"/>
+<Item Value="78" Text="WheelSpeedRR"/>
+<Item Value="79" Text="WheelTopFL"/>
+<Item Value="80" Text="WheelTopFR"/>
+<Item Value="81" Text="WheelTopRL"/>
+<Item Value="82" Text="WheelTopRR"/>
+<Item Value="83" Text="SecondRowRightPresenceState"/>
+<Item Value="84" Text="SecondRowCenterPresenceState"/>
+<Item Value="85" Text="SecondRowLeftPresenceState"/>
+<Item Value="86" Text="ChildLockStateDisplay"/>
+<Item Value="87" Text="HornRequest"/>
+<Item Value="88" Text="LightSensorStatus"/>
+<Item Value="89" Text="BrakeLampStatus"/>
+<Item Value="90" Text="FrontFogLightsRequest"/>
+<Item Value="91" Text="RearFogLightStateDisplay"/>
+<Item Value="92" Text="DayNightSynthesis"/>
+<Item Value="93" Text="VehicleID"/>
+<Item Value="255" Text="INVALID VALUE"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_5">
+<Mnemonic>O_LOG_5</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="EngineRPM"/>
+<Item Value="2" Text="RawSensor"/>
+<Item Value="3" Text="EngineCoolantTemp"/>
+<Item Value="4" Text="FuelConsumption"/>
+<Item Value="5" Text="VehicleSpeed"/>
+<Item Value="6" Text="EngineStatus"/>
+<Item Value="7" Text="BrakeInfoStatus"/>
+<Item Value="8" Text="IgnitionSupplyConfirmation"/>
+<Item Value="9" Text="ACCompClutchStatus"/>
+<Item Value="10" Text="ClutchSwitch"/>
+<Item Value="11" Text="DoorSwitches"/>
+<Item Value="12" Text="StartingInProgress"/>
+<Item Value="13" Text="IgnitionLevel"/>
+<Item Value="14" Text="AutoACC"/>
+<Item Value="15" Text="VehicleOutsideLockedState"/>
+<Item Value="16" Text="FlashingIndicatorsL"/>
+<Item Value="17" Text="FlashingIndicatorsR"/>
+<Item Value="18" Text="HazardLight"/>
+<Item Value="19" Text="AutoStart"/>
+<Item Value="20" Text="FrontWiperStatus"/>
+<Item Value="21" Text="RearWiperStatus"/>
+<Item Value="22" Text="AIRBAGMalfunction"/>
+<Item Value="23" Text="DriverSafetyBeltReminder"/>
+<Item Value="24" Text="RearGearEngaged"/>
+<Item Value="25" Text="NeutralContact"/>
+<Item Value="26" Text="Level2FailureDisplayRequest"/>
+<Item Value="27" Text="KeyVehicle"/>
+<Item Value="28" Text="PositionLightsDisplay"/>
+<Item Value="29" Text="HighBeamDisplay"/>
+<Item Value="30" Text="LowBeamDisplay"/>
+<Item Value="31" Text="FrontFogLightsDisplay"/>
+<Item Value="32" Text="ESPActivationStateForDisplay"/>
+<Item Value="33" Text="FreeShift"/>
+<Item Value="34" Text="CruiseControlStatus"/>
+<Item Value="35" Text="DieselFilterWaterDetection"/>
+<Item Value="36" Text="EngineControlFailureLevel1"/>
+<Item Value="37" Text="EngineControlFailureLevel2"/>
+<Item Value="38" Text="WarningWaterTemp"/>
+<Item Value="39" Text="MILLamp"/>
+<Item Value="40" Text="ParkingBrakeStatus"/>
+<Item Value="41" Text="TripAverageConsumption"/>
+<Item Value="42" Text="TripDistance"/>
+<Item Value="43" Text="FixedMaintenanceRange"/>
+<Item Value="44" Text="GearLeverPosition_v2"/>
+<Item Value="45" Text="LongitudeSeconde"/>
+<Item Value="46" Text="ParkingBrakeBindingStatus"/>
+<Item Value="47" Text="GearboxOilTemperature"/>
+<Item Value="48" Text="EngineOilTempDisplay"/>
+<Item Value="49" Text="OilPressureWarning"/>
+<Item Value="50" Text="MilageMinBeforeOverhaul"/>
+<Item Value="51" Text="ABSinRegulation"/>
+<Item Value="52" Text="ABSMalfunction"/>
+<Item Value="53" Text="MeanEffectiveTorque"/>
+<Item Value="54" Text="ABS_WarningRequest"/>
+<Item Value="55" Text="ASRinRegulation"/>
+<Item Value="56" Text="AYCinRegulation"/>
+<Item Value="57" Text="MSRinRegulation"/>
+<Item Value="58" Text="AYCMalfunction"/>
+<Item Value="59" Text="TransmRangeEngaged_Current"/>
+<Item Value="60" Text="DistanceTotalizer"/>
+<Item Value="61" Text="DisplayedOilLevel"/>
+<Item Value="62" Text="VehicleSpeedSign"/>
+<Item Value="63" Text="PassengerPresenceState"/>
+<Item Value="64" Text="LowBrakeFluidLevelStatus"/>
+<Item Value="65" Text="FuelLevelDisplayed"/>
+<Item Value="66" Text="SteeringWheelAngleRaw"/>
+<Item Value="67" Text="HeadLampsWasherRequest"/>
+<Item Value="68" Text="TimeHour"/>
+<Item Value="69" Text="NightRheostatedLightMaxPercent"/>
+<Item Value="70" Text="ExternalTemperature"/>
+<Item Value="71" Text="FrontLeftWheelPressure_V2"/>
+<Item Value="72" Text="FrontRightWheelPressure_V2"/>
+<Item Value="73" Text="RearLeftWheelPressure_V2"/>
+<Item Value="74" Text="RearRightWheelPressure_V2"/>
+<Item Value="75" Text="WheelSpeedFR"/>
+<Item Value="76" Text="WheelSpeedFL"/>
+<Item Value="77" Text="WheelSpeedRL"/>
+<Item Value="78" Text="WheelSpeedRR"/>
+<Item Value="79" Text="WheelTopFL"/>
+<Item Value="80" Text="WheelTopFR"/>
+<Item Value="81" Text="WheelTopRL"/>
+<Item Value="82" Text="WheelTopRR"/>
+<Item Value="83" Text="SecondRowRightPresenceState"/>
+<Item Value="84" Text="SecondRowCenterPresenceState"/>
+<Item Value="85" Text="SecondRowLeftPresenceState"/>
+<Item Value="86" Text="ChildLockStateDisplay"/>
+<Item Value="87" Text="HornRequest"/>
+<Item Value="88" Text="LightSensorStatus"/>
+<Item Value="89" Text="BrakeLampStatus"/>
+<Item Value="90" Text="FrontFogLightsRequest"/>
+<Item Value="91" Text="RearFogLightStateDisplay"/>
+<Item Value="92" Text="DayNightSynthesis"/>
+<Item Value="93" Text="VehicleID"/>
+<Item Value="255" Text="INVALID VALUE"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_6">
+<Mnemonic>O_LOG_6</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="EngineRPM"/>
+<Item Value="2" Text="RawSensor"/>
+<Item Value="3" Text="EngineCoolantTemp"/>
+<Item Value="4" Text="FuelConsumption"/>
+<Item Value="5" Text="VehicleSpeed"/>
+<Item Value="6" Text="EngineStatus"/>
+<Item Value="7" Text="BrakeInfoStatus"/>
+<Item Value="8" Text="IgnitionSupplyConfirmation"/>
+<Item Value="9" Text="ACCompClutchStatus"/>
+<Item Value="10" Text="ClutchSwitch"/>
+<Item Value="11" Text="DoorSwitches"/>
+<Item Value="12" Text="StartingInProgress"/>
+<Item Value="13" Text="IgnitionLevel"/>
+<Item Value="14" Text="AutoACC"/>
+<Item Value="15" Text="VehicleOutsideLockedState"/>
+<Item Value="16" Text="FlashingIndicatorsL"/>
+<Item Value="17" Text="FlashingIndicatorsR"/>
+<Item Value="18" Text="HazardLight"/>
+<Item Value="19" Text="AutoStart"/>
+<Item Value="20" Text="FrontWiperStatus"/>
+<Item Value="21" Text="RearWiperStatus"/>
+<Item Value="22" Text="AIRBAGMalfunction"/>
+<Item Value="23" Text="DriverSafetyBeltReminder"/>
+<Item Value="24" Text="RearGearEngaged"/>
+<Item Value="25" Text="NeutralContact"/>
+<Item Value="26" Text="Level2FailureDisplayRequest"/>
+<Item Value="27" Text="KeyVehicle"/>
+<Item Value="28" Text="PositionLightsDisplay"/>
+<Item Value="29" Text="HighBeamDisplay"/>
+<Item Value="30" Text="LowBeamDisplay"/>
+<Item Value="31" Text="FrontFogLightsDisplay"/>
+<Item Value="32" Text="ESPActivationStateForDisplay"/>
+<Item Value="33" Text="FreeShift"/>
+<Item Value="34" Text="CruiseControlStatus"/>
+<Item Value="35" Text="DieselFilterWaterDetection"/>
+<Item Value="36" Text="EngineControlFailureLevel1"/>
+<Item Value="37" Text="EngineControlFailureLevel2"/>
+<Item Value="38" Text="WarningWaterTemp"/>
+<Item Value="39" Text="MILLamp"/>
+<Item Value="40" Text="ParkingBrakeStatus"/>
+<Item Value="41" Text="TripAverageConsumption"/>
+<Item Value="42" Text="TripDistance"/>
+<Item Value="43" Text="FixedMaintenanceRange"/>
+<Item Value="44" Text="GearLeverPosition_v2"/>
+<Item Value="45" Text="LongitudeSeconde"/>
+<Item Value="46" Text="ParkingBrakeBindingStatus"/>
+<Item Value="47" Text="GearboxOilTemperature"/>
+<Item Value="48" Text="EngineOilTempDisplay"/>
+<Item Value="49" Text="OilPressureWarning"/>
+<Item Value="50" Text="MilageMinBeforeOverhaul"/>
+<Item Value="51" Text="ABSinRegulation"/>
+<Item Value="52" Text="ABSMalfunction"/>
+<Item Value="53" Text="MeanEffectiveTorque"/>
+<Item Value="54" Text="ABS_WarningRequest"/>
+<Item Value="55" Text="ASRinRegulation"/>
+<Item Value="56" Text="AYCinRegulation"/>
+<Item Value="57" Text="MSRinRegulation"/>
+<Item Value="58" Text="AYCMalfunction"/>
+<Item Value="59" Text="TransmRangeEngaged_Current"/>
+<Item Value="60" Text="DistanceTotalizer"/>
+<Item Value="61" Text="DisplayedOilLevel"/>
+<Item Value="62" Text="VehicleSpeedSign"/>
+<Item Value="63" Text="PassengerPresenceState"/>
+<Item Value="64" Text="LowBrakeFluidLevelStatus"/>
+<Item Value="65" Text="FuelLevelDisplayed"/>
+<Item Value="66" Text="SteeringWheelAngleRaw"/>
+<Item Value="67" Text="HeadLampsWasherRequest"/>
+<Item Value="68" Text="TimeHour"/>
+<Item Value="69" Text="NightRheostatedLightMaxPercent"/>
+<Item Value="70" Text="ExternalTemperature"/>
+<Item Value="71" Text="FrontLeftWheelPressure_V2"/>
+<Item Value="72" Text="FrontRightWheelPressure_V2"/>
+<Item Value="73" Text="RearLeftWheelPressure_V2"/>
+<Item Value="74" Text="RearRightWheelPressure_V2"/>
+<Item Value="75" Text="WheelSpeedFR"/>
+<Item Value="76" Text="WheelSpeedFL"/>
+<Item Value="77" Text="WheelSpeedRL"/>
+<Item Value="78" Text="WheelSpeedRR"/>
+<Item Value="79" Text="WheelTopFL"/>
+<Item Value="80" Text="WheelTopFR"/>
+<Item Value="81" Text="WheelTopRL"/>
+<Item Value="82" Text="WheelTopRR"/>
+<Item Value="83" Text="SecondRowRightPresenceState"/>
+<Item Value="84" Text="SecondRowCenterPresenceState"/>
+<Item Value="85" Text="SecondRowLeftPresenceState"/>
+<Item Value="86" Text="ChildLockStateDisplay"/>
+<Item Value="87" Text="HornRequest"/>
+<Item Value="88" Text="LightSensorStatus"/>
+<Item Value="89" Text="BrakeLampStatus"/>
+<Item Value="90" Text="FrontFogLightsRequest"/>
+<Item Value="91" Text="RearFogLightStateDisplay"/>
+<Item Value="92" Text="DayNightSynthesis"/>
+<Item Value="93" Text="VehicleID"/>
+<Item Value="255" Text="INVALID VALUE"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_7">
+<Mnemonic>O_LOG_7</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="EngineRPM"/>
+<Item Value="2" Text="RawSensor"/>
+<Item Value="3" Text="EngineCoolantTemp"/>
+<Item Value="4" Text="FuelConsumption"/>
+<Item Value="5" Text="VehicleSpeed"/>
+<Item Value="6" Text="EngineStatus"/>
+<Item Value="7" Text="BrakeInfoStatus"/>
+<Item Value="8" Text="IgnitionSupplyConfirmation"/>
+<Item Value="9" Text="ACCompClutchStatus"/>
+<Item Value="10" Text="ClutchSwitch"/>
+<Item Value="11" Text="DoorSwitches"/>
+<Item Value="12" Text="StartingInProgress"/>
+<Item Value="13" Text="IgnitionLevel"/>
+<Item Value="14" Text="AutoACC"/>
+<Item Value="15" Text="VehicleOutsideLockedState"/>
+<Item Value="16" Text="FlashingIndicatorsL"/>
+<Item Value="17" Text="FlashingIndicatorsR"/>
+<Item Value="18" Text="HazardLight"/>
+<Item Value="19" Text="AutoStart"/>
+<Item Value="20" Text="FrontWiperStatus"/>
+<Item Value="21" Text="RearWiperStatus"/>
+<Item Value="22" Text="AIRBAGMalfunction"/>
+<Item Value="23" Text="DriverSafetyBeltReminder"/>
+<Item Value="24" Text="RearGearEngaged"/>
+<Item Value="25" Text="NeutralContact"/>
+<Item Value="26" Text="Level2FailureDisplayRequest"/>
+<Item Value="27" Text="KeyVehicle"/>
+<Item Value="28" Text="PositionLightsDisplay"/>
+<Item Value="29" Text="HighBeamDisplay"/>
+<Item Value="30" Text="LowBeamDisplay"/>
+<Item Value="31" Text="FrontFogLightsDisplay"/>
+<Item Value="32" Text="ESPActivationStateForDisplay"/>
+<Item Value="33" Text="FreeShift"/>
+<Item Value="34" Text="CruiseControlStatus"/>
+<Item Value="35" Text="DieselFilterWaterDetection"/>
+<Item Value="36" Text="EngineControlFailureLevel1"/>
+<Item Value="37" Text="EngineControlFailureLevel2"/>
+<Item Value="38" Text="WarningWaterTemp"/>
+<Item Value="39" Text="MILLamp"/>
+<Item Value="40" Text="ParkingBrakeStatus"/>
+<Item Value="41" Text="TripAverageConsumption"/>
+<Item Value="42" Text="TripDistance"/>
+<Item Value="43" Text="FixedMaintenanceRange"/>
+<Item Value="44" Text="GearLeverPosition_v2"/>
+<Item Value="45" Text="LongitudeSeconde"/>
+<Item Value="46" Text="ParkingBrakeBindingStatus"/>
+<Item Value="47" Text="GearboxOilTemperature"/>
+<Item Value="48" Text="EngineOilTempDisplay"/>
+<Item Value="49" Text="OilPressureWarning"/>
+<Item Value="50" Text="MilageMinBeforeOverhaul"/>
+<Item Value="51" Text="ABSinRegulation"/>
+<Item Value="52" Text="ABSMalfunction"/>
+<Item Value="53" Text="MeanEffectiveTorque"/>
+<Item Value="54" Text="ABS_WarningRequest"/>
+<Item Value="55" Text="ASRinRegulation"/>
+<Item Value="56" Text="AYCinRegulation"/>
+<Item Value="57" Text="MSRinRegulation"/>
+<Item Value="58" Text="AYCMalfunction"/>
+<Item Value="59" Text="TransmRangeEngaged_Current"/>
+<Item Value="60" Text="DistanceTotalizer"/>
+<Item Value="61" Text="DisplayedOilLevel"/>
+<Item Value="62" Text="VehicleSpeedSign"/>
+<Item Value="63" Text="PassengerPresenceState"/>
+<Item Value="64" Text="LowBrakeFluidLevelStatus"/>
+<Item Value="65" Text="FuelLevelDisplayed"/>
+<Item Value="66" Text="SteeringWheelAngleRaw"/>
+<Item Value="67" Text="HeadLampsWasherRequest"/>
+<Item Value="68" Text="TimeHour"/>
+<Item Value="69" Text="NightRheostatedLightMaxPercent"/>
+<Item Value="70" Text="ExternalTemperature"/>
+<Item Value="71" Text="FrontLeftWheelPressure_V2"/>
+<Item Value="72" Text="FrontRightWheelPressure_V2"/>
+<Item Value="73" Text="RearLeftWheelPressure_V2"/>
+<Item Value="74" Text="RearRightWheelPressure_V2"/>
+<Item Value="75" Text="WheelSpeedFR"/>
+<Item Value="76" Text="WheelSpeedFL"/>
+<Item Value="77" Text="WheelSpeedRL"/>
+<Item Value="78" Text="WheelSpeedRR"/>
+<Item Value="79" Text="WheelTopFL"/>
+<Item Value="80" Text="WheelTopFR"/>
+<Item Value="81" Text="WheelTopRL"/>
+<Item Value="82" Text="WheelTopRR"/>
+<Item Value="83" Text="SecondRowRightPresenceState"/>
+<Item Value="84" Text="SecondRowCenterPresenceState"/>
+<Item Value="85" Text="SecondRowLeftPresenceState"/>
+<Item Value="86" Text="ChildLockStateDisplay"/>
+<Item Value="87" Text="HornRequest"/>
+<Item Value="88" Text="LightSensorStatus"/>
+<Item Value="89" Text="BrakeLampStatus"/>
+<Item Value="90" Text="FrontFogLightsRequest"/>
+<Item Value="91" Text="RearFogLightStateDisplay"/>
+<Item Value="92" Text="DayNightSynthesis"/>
+<Item Value="93" Text="VehicleID"/>
+<Item Value="255" Text="INVALID VALUE"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_8">
+<Mnemonic>O_LOG_8</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="EngineRPM"/>
+<Item Value="2" Text="RawSensor"/>
+<Item Value="3" Text="EngineCoolantTemp"/>
+<Item Value="4" Text="FuelConsumption"/>
+<Item Value="5" Text="VehicleSpeed"/>
+<Item Value="6" Text="EngineStatus"/>
+<Item Value="7" Text="BrakeInfoStatus"/>
+<Item Value="8" Text="IgnitionSupplyConfirmation"/>
+<Item Value="9" Text="ACCompClutchStatus"/>
+<Item Value="10" Text="ClutchSwitch"/>
+<Item Value="11" Text="DoorSwitches"/>
+<Item Value="12" Text="StartingInProgress"/>
+<Item Value="13" Text="IgnitionLevel"/>
+<Item Value="14" Text="AutoACC"/>
+<Item Value="15" Text="VehicleOutsideLockedState"/>
+<Item Value="16" Text="FlashingIndicatorsL"/>
+<Item Value="17" Text="FlashingIndicatorsR"/>
+<Item Value="18" Text="HazardLight"/>
+<Item Value="19" Text="AutoStart"/>
+<Item Value="20" Text="FrontWiperStatus"/>
+<Item Value="21" Text="RearWiperStatus"/>
+<Item Value="22" Text="AIRBAGMalfunction"/>
+<Item Value="23" Text="DriverSafetyBeltReminder"/>
+<Item Value="24" Text="RearGearEngaged"/>
+<Item Value="25" Text="NeutralContact"/>
+<Item Value="26" Text="Level2FailureDisplayRequest"/>
+<Item Value="27" Text="KeyVehicle"/>
+<Item Value="28" Text="PositionLightsDisplay"/>
+<Item Value="29" Text="HighBeamDisplay"/>
+<Item Value="30" Text="LowBeamDisplay"/>
+<Item Value="31" Text="FrontFogLightsDisplay"/>
+<Item Value="32" Text="ESPActivationStateForDisplay"/>
+<Item Value="33" Text="FreeShift"/>
+<Item Value="34" Text="CruiseControlStatus"/>
+<Item Value="35" Text="DieselFilterWaterDetection"/>
+<Item Value="36" Text="EngineControlFailureLevel1"/>
+<Item Value="37" Text="EngineControlFailureLevel2"/>
+<Item Value="38" Text="WarningWaterTemp"/>
+<Item Value="39" Text="MILLamp"/>
+<Item Value="40" Text="ParkingBrakeStatus"/>
+<Item Value="41" Text="TripAverageConsumption"/>
+<Item Value="42" Text="TripDistance"/>
+<Item Value="43" Text="FixedMaintenanceRange"/>
+<Item Value="44" Text="GearLeverPosition_v2"/>
+<Item Value="45" Text="LongitudeSeconde"/>
+<Item Value="46" Text="ParkingBrakeBindingStatus"/>
+<Item Value="47" Text="GearboxOilTemperature"/>
+<Item Value="48" Text="EngineOilTempDisplay"/>
+<Item Value="49" Text="OilPressureWarning"/>
+<Item Value="50" Text="MilageMinBeforeOverhaul"/>
+<Item Value="51" Text="ABSinRegulation"/>
+<Item Value="52" Text="ABSMalfunction"/>
+<Item Value="53" Text="MeanEffectiveTorque"/>
+<Item Value="54" Text="ABS_WarningRequest"/>
+<Item Value="55" Text="ASRinRegulation"/>
+<Item Value="56" Text="AYCinRegulation"/>
+<Item Value="57" Text="MSRinRegulation"/>
+<Item Value="58" Text="AYCMalfunction"/>
+<Item Value="59" Text="TransmRangeEngaged_Current"/>
+<Item Value="60" Text="DistanceTotalizer"/>
+<Item Value="61" Text="DisplayedOilLevel"/>
+<Item Value="62" Text="VehicleSpeedSign"/>
+<Item Value="63" Text="PassengerPresenceState"/>
+<Item Value="64" Text="LowBrakeFluidLevelStatus"/>
+<Item Value="65" Text="FuelLevelDisplayed"/>
+<Item Value="66" Text="SteeringWheelAngleRaw"/>
+<Item Value="67" Text="HeadLampsWasherRequest"/>
+<Item Value="68" Text="TimeHour"/>
+<Item Value="69" Text="NightRheostatedLightMaxPercent"/>
+<Item Value="70" Text="ExternalTemperature"/>
+<Item Value="71" Text="FrontLeftWheelPressure_V2"/>
+<Item Value="72" Text="FrontRightWheelPressure_V2"/>
+<Item Value="73" Text="RearLeftWheelPressure_V2"/>
+<Item Value="74" Text="RearRightWheelPressure_V2"/>
+<Item Value="75" Text="WheelSpeedFR"/>
+<Item Value="76" Text="WheelSpeedFL"/>
+<Item Value="77" Text="WheelSpeedRL"/>
+<Item Value="78" Text="WheelSpeedRR"/>
+<Item Value="79" Text="WheelTopFL"/>
+<Item Value="80" Text="WheelTopFR"/>
+<Item Value="81" Text="WheelTopRL"/>
+<Item Value="82" Text="WheelTopRR"/>
+<Item Value="83" Text="SecondRowRightPresenceState"/>
+<Item Value="84" Text="SecondRowCenterPresenceState"/>
+<Item Value="85" Text="SecondRowLeftPresenceState"/>
+<Item Value="86" Text="ChildLockStateDisplay"/>
+<Item Value="87" Text="HornRequest"/>
+<Item Value="88" Text="LightSensorStatus"/>
+<Item Value="89" Text="BrakeLampStatus"/>
+<Item Value="90" Text="FrontFogLightsRequest"/>
+<Item Value="91" Text="RearFogLightStateDisplay"/>
+<Item Value="92" Text="DayNightSynthesis"/>
+<Item Value="93" Text="VehicleID"/>
+<Item Value="255" Text="INVALID VALUE"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_9">
+<Mnemonic>O_LOG_9</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="EngineRPM"/>
+<Item Value="2" Text="RawSensor"/>
+<Item Value="3" Text="EngineCoolantTemp"/>
+<Item Value="4" Text="FuelConsumption"/>
+<Item Value="5" Text="VehicleSpeed"/>
+<Item Value="6" Text="EngineStatus"/>
+<Item Value="7" Text="BrakeInfoStatus"/>
+<Item Value="8" Text="IgnitionSupplyConfirmation"/>
+<Item Value="9" Text="ACCompClutchStatus"/>
+<Item Value="10" Text="ClutchSwitch"/>
+<Item Value="11" Text="DoorSwitches"/>
+<Item Value="12" Text="StartingInProgress"/>
+<Item Value="13" Text="IgnitionLevel"/>
+<Item Value="14" Text="AutoACC"/>
+<Item Value="15" Text="VehicleOutsideLockedState"/>
+<Item Value="16" Text="FlashingIndicatorsL"/>
+<Item Value="17" Text="FlashingIndicatorsR"/>
+<Item Value="18" Text="HazardLight"/>
+<Item Value="19" Text="AutoStart"/>
+<Item Value="20" Text="FrontWiperStatus"/>
+<Item Value="21" Text="RearWiperStatus"/>
+<Item Value="22" Text="AIRBAGMalfunction"/>
+<Item Value="23" Text="DriverSafetyBeltReminder"/>
+<Item Value="24" Text="RearGearEngaged"/>
+<Item Value="25" Text="NeutralContact"/>
+<Item Value="26" Text="Level2FailureDisplayRequest"/>
+<Item Value="27" Text="KeyVehicle"/>
+<Item Value="28" Text="PositionLightsDisplay"/>
+<Item Value="29" Text="HighBeamDisplay"/>
+<Item Value="30" Text="LowBeamDisplay"/>
+<Item Value="31" Text="FrontFogLightsDisplay"/>
+<Item Value="32" Text="ESPActivationStateForDisplay"/>
+<Item Value="33" Text="FreeShift"/>
+<Item Value="34" Text="CruiseControlStatus"/>
+<Item Value="35" Text="DieselFilterWaterDetection"/>
+<Item Value="36" Text="EngineControlFailureLevel1"/>
+<Item Value="37" Text="EngineControlFailureLevel2"/>
+<Item Value="38" Text="WarningWaterTemp"/>
+<Item Value="39" Text="MILLamp"/>
+<Item Value="40" Text="ParkingBrakeStatus"/>
+<Item Value="41" Text="TripAverageConsumption"/>
+<Item Value="42" Text="TripDistance"/>
+<Item Value="43" Text="FixedMaintenanceRange"/>
+<Item Value="44" Text="GearLeverPosition_v2"/>
+<Item Value="45" Text="LongitudeSeconde"/>
+<Item Value="46" Text="ParkingBrakeBindingStatus"/>
+<Item Value="47" Text="GearboxOilTemperature"/>
+<Item Value="48" Text="EngineOilTempDisplay"/>
+<Item Value="49" Text="OilPressureWarning"/>
+<Item Value="50" Text="MilageMinBeforeOverhaul"/>
+<Item Value="51" Text="ABSinRegulation"/>
+<Item Value="52" Text="ABSMalfunction"/>
+<Item Value="53" Text="MeanEffectiveTorque"/>
+<Item Value="54" Text="ABS_WarningRequest"/>
+<Item Value="55" Text="ASRinRegulation"/>
+<Item Value="56" Text="AYCinRegulation"/>
+<Item Value="57" Text="MSRinRegulation"/>
+<Item Value="58" Text="AYCMalfunction"/>
+<Item Value="59" Text="TransmRangeEngaged_Current"/>
+<Item Value="60" Text="DistanceTotalizer"/>
+<Item Value="61" Text="DisplayedOilLevel"/>
+<Item Value="62" Text="VehicleSpeedSign"/>
+<Item Value="63" Text="PassengerPresenceState"/>
+<Item Value="64" Text="LowBrakeFluidLevelStatus"/>
+<Item Value="65" Text="FuelLevelDisplayed"/>
+<Item Value="66" Text="SteeringWheelAngleRaw"/>
+<Item Value="67" Text="HeadLampsWasherRequest"/>
+<Item Value="68" Text="TimeHour"/>
+<Item Value="69" Text="NightRheostatedLightMaxPercent"/>
+<Item Value="70" Text="ExternalTemperature"/>
+<Item Value="71" Text="FrontLeftWheelPressure_V2"/>
+<Item Value="72" Text="FrontRightWheelPressure_V2"/>
+<Item Value="73" Text="RearLeftWheelPressure_V2"/>
+<Item Value="74" Text="RearRightWheelPressure_V2"/>
+<Item Value="75" Text="WheelSpeedFR"/>
+<Item Value="76" Text="WheelSpeedFL"/>
+<Item Value="77" Text="WheelSpeedRL"/>
+<Item Value="78" Text="WheelSpeedRR"/>
+<Item Value="79" Text="WheelTopFL"/>
+<Item Value="80" Text="WheelTopFR"/>
+<Item Value="81" Text="WheelTopRL"/>
+<Item Value="82" Text="WheelTopRR"/>
+<Item Value="83" Text="SecondRowRightPresenceState"/>
+<Item Value="84" Text="SecondRowCenterPresenceState"/>
+<Item Value="85" Text="SecondRowLeftPresenceState"/>
+<Item Value="86" Text="ChildLockStateDisplay"/>
+<Item Value="87" Text="HornRequest"/>
+<Item Value="88" Text="LightSensorStatus"/>
+<Item Value="89" Text="BrakeLampStatus"/>
+<Item Value="90" Text="FrontFogLightsRequest"/>
+<Item Value="91" Text="RearFogLightStateDisplay"/>
+<Item Value="92" Text="DayNightSynthesis"/>
+<Item Value="93" Text="VehicleID"/>
+<Item Value="255" Text="INVALID VALUE"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_10">
+<Mnemonic>O_LOG_10</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="EngineRPM"/>
+<Item Value="2" Text="RawSensor"/>
+<Item Value="3" Text="EngineCoolantTemp"/>
+<Item Value="4" Text="FuelConsumption"/>
+<Item Value="5" Text="VehicleSpeed"/>
+<Item Value="6" Text="EngineStatus"/>
+<Item Value="7" Text="BrakeInfoStatus"/>
+<Item Value="8" Text="IgnitionSupplyConfirmation"/>
+<Item Value="9" Text="ACCompClutchStatus"/>
+<Item Value="10" Text="ClutchSwitch"/>
+<Item Value="11" Text="DoorSwitches"/>
+<Item Value="12" Text="StartingInProgress"/>
+<Item Value="13" Text="IgnitionLevel"/>
+<Item Value="14" Text="AutoACC"/>
+<Item Value="15" Text="VehicleOutsideLockedState"/>
+<Item Value="16" Text="FlashingIndicatorsL"/>
+<Item Value="17" Text="FlashingIndicatorsR"/>
+<Item Value="18" Text="HazardLight"/>
+<Item Value="19" Text="AutoStart"/>
+<Item Value="20" Text="FrontWiperStatus"/>
+<Item Value="21" Text="RearWiperStatus"/>
+<Item Value="22" Text="AIRBAGMalfunction"/>
+<Item Value="23" Text="DriverSafetyBeltReminder"/>
+<Item Value="24" Text="RearGearEngaged"/>
+<Item Value="25" Text="NeutralContact"/>
+<Item Value="26" Text="Level2FailureDisplayRequest"/>
+<Item Value="27" Text="KeyVehicle"/>
+<Item Value="28" Text="PositionLightsDisplay"/>
+<Item Value="29" Text="HighBeamDisplay"/>
+<Item Value="30" Text="LowBeamDisplay"/>
+<Item Value="31" Text="FrontFogLightsDisplay"/>
+<Item Value="32" Text="ESPActivationStateForDisplay"/>
+<Item Value="33" Text="FreeShift"/>
+<Item Value="34" Text="CruiseControlStatus"/>
+<Item Value="35" Text="DieselFilterWaterDetection"/>
+<Item Value="36" Text="EngineControlFailureLevel1"/>
+<Item Value="37" Text="EngineControlFailureLevel2"/>
+<Item Value="38" Text="WarningWaterTemp"/>
+<Item Value="39" Text="MILLamp"/>
+<Item Value="40" Text="ParkingBrakeStatus"/>
+<Item Value="41" Text="TripAverageConsumption"/>
+<Item Value="42" Text="TripDistance"/>
+<Item Value="43" Text="FixedMaintenanceRange"/>
+<Item Value="44" Text="GearLeverPosition_v2"/>
+<Item Value="45" Text="LongitudeSeconde"/>
+<Item Value="46" Text="ParkingBrakeBindingStatus"/>
+<Item Value="47" Text="GearboxOilTemperature"/>
+<Item Value="48" Text="EngineOilTempDisplay"/>
+<Item Value="49" Text="OilPressureWarning"/>
+<Item Value="50" Text="MilageMinBeforeOverhaul"/>
+<Item Value="51" Text="ABSinRegulation"/>
+<Item Value="52" Text="ABSMalfunction"/>
+<Item Value="53" Text="MeanEffectiveTorque"/>
+<Item Value="54" Text="ABS_WarningRequest"/>
+<Item Value="55" Text="ASRinRegulation"/>
+<Item Value="56" Text="AYCinRegulation"/>
+<Item Value="57" Text="MSRinRegulation"/>
+<Item Value="58" Text="AYCMalfunction"/>
+<Item Value="59" Text="TransmRangeEngaged_Current"/>
+<Item Value="60" Text="DistanceTotalizer"/>
+<Item Value="61" Text="DisplayedOilLevel"/>
+<Item Value="62" Text="VehicleSpeedSign"/>
+<Item Value="63" Text="PassengerPresenceState"/>
+<Item Value="64" Text="LowBrakeFluidLevelStatus"/>
+<Item Value="65" Text="FuelLevelDisplayed"/>
+<Item Value="66" Text="SteeringWheelAngleRaw"/>
+<Item Value="67" Text="HeadLampsWasherRequest"/>
+<Item Value="68" Text="TimeHour"/>
+<Item Value="69" Text="NightRheostatedLightMaxPercent"/>
+<Item Value="70" Text="ExternalTemperature"/>
+<Item Value="71" Text="FrontLeftWheelPressure_V2"/>
+<Item Value="72" Text="FrontRightWheelPressure_V2"/>
+<Item Value="73" Text="RearLeftWheelPressure_V2"/>
+<Item Value="74" Text="RearRightWheelPressure_V2"/>
+<Item Value="75" Text="WheelSpeedFR"/>
+<Item Value="76" Text="WheelSpeedFL"/>
+<Item Value="77" Text="WheelSpeedRL"/>
+<Item Value="78" Text="WheelSpeedRR"/>
+<Item Value="79" Text="WheelTopFL"/>
+<Item Value="80" Text="WheelTopFR"/>
+<Item Value="81" Text="WheelTopRL"/>
+<Item Value="82" Text="WheelTopRR"/>
+<Item Value="83" Text="SecondRowRightPresenceState"/>
+<Item Value="84" Text="SecondRowCenterPresenceState"/>
+<Item Value="85" Text="SecondRowLeftPresenceState"/>
+<Item Value="86" Text="ChildLockStateDisplay"/>
+<Item Value="87" Text="HornRequest"/>
+<Item Value="88" Text="LightSensorStatus"/>
+<Item Value="89" Text="BrakeLampStatus"/>
+<Item Value="90" Text="FrontFogLightsRequest"/>
+<Item Value="91" Text="RearFogLightStateDisplay"/>
+<Item Value="92" Text="DayNightSynthesis"/>
+<Item Value="93" Text="VehicleID"/>
+<Item Value="255" Text="INVALID VALUE"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_2_power_limitation">
+<Mnemonic>O_LOG_2_power_limitation</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Output switch off following vehicule power limitation request"/>
+<Item Value="1" Text="No output switch off"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_3_power_limitation">
+<Mnemonic>O_LOG_3_power_limitation</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Output switch off following vehicule power limitation request"/>
+<Item Value="1" Text="No output switch off"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_4_power_limitation">
+<Mnemonic>O_LOG_4_power_limitation</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Output switch off following vehicule power limitation request"/>
+<Item Value="1" Text="No output switch off"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_5_power_limitation">
+<Mnemonic>O_LOG_5_power_limitation</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Output switch off following vehicule power limitation request"/>
+<Item Value="1" Text="No output switch off"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_6_power_limitation">
+<Mnemonic>O_LOG_6_power_limitation</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Output switch off following vehicule power limitation request"/>
+<Item Value="1" Text="No output switch off"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_7_power_limitation">
+<Mnemonic>O_LOG_7_power_limitation</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Output switch off following vehicule power limitation request"/>
+<Item Value="1" Text="No output switch off"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_8_power_limitation">
+<Mnemonic>O_LOG_8_power_limitation</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Output switch off following vehicule power limitation request"/>
+<Item Value="1" Text="No output switch off"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_9_power_limitation">
+<Mnemonic>O_LOG_9_power_limitation</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Output switch off following vehicule power limitation request"/>
+<Item Value="1" Text="No output switch off"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_10_power_limitation">
+<Mnemonic>O_LOG_10_power_limitation</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Output switch off following vehicule power limitation request"/>
+<Item Value="1" Text="No output switch off"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_2_switch_off_condition">
+<Mnemonic>O_LOG_2_switch_off_condition</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="No switch off"/>
+<Item Value="1" Text="Output sitched off while engine stopped"/>
+<Item Value="2" Text="Output sitched off while engine starting"/>
+<Item Value="3" Text="Output sitched off while engine stopped &amp; starting"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_3_switch_off_condition">
+<Mnemonic>O_LOG_3_switch_off_condition</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="No switch off"/>
+<Item Value="1" Text="Output sitched off while engine stopped"/>
+<Item Value="2" Text="Output sitched off while engine starting"/>
+<Item Value="3" Text="Output sitched off while engine stopped &amp; starting"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_4_switch_off_condition">
+<Mnemonic>O_LOG_4_switch_off_condition</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="No switch off"/>
+<Item Value="1" Text="Output sitched off while engine stopped"/>
+<Item Value="2" Text="Output sitched off while engine starting"/>
+<Item Value="3" Text="Output sitched off while engine stopped &amp; starting"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_5_switch_off_condition">
+<Mnemonic>O_LOG_5_switch_off_condition</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="No switch off"/>
+<Item Value="1" Text="Output sitched off while engine stopped"/>
+<Item Value="2" Text="Output sitched off while engine starting"/>
+<Item Value="3" Text="Output sitched off while engine stopped &amp; starting"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_6_switch_off_condition">
+<Mnemonic>O_LOG_6_switch_off_condition</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="No switch off"/>
+<Item Value="1" Text="Output sitched off while engine stopped"/>
+<Item Value="2" Text="Output sitched off while engine starting"/>
+<Item Value="3" Text="Output sitched off while engine stopped &amp; starting"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_7_switch_off_condition">
+<Mnemonic>O_LOG_7_switch_off_condition</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="No switch off"/>
+<Item Value="1" Text="Output sitched off while engine stopped"/>
+<Item Value="2" Text="Output sitched off while engine starting"/>
+<Item Value="3" Text="Output sitched off while engine stopped &amp; starting"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_8_switch_off_condition">
+<Mnemonic>O_LOG_8_switch_off_condition</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="No switch off"/>
+<Item Value="1" Text="Output sitched off while engine stopped"/>
+<Item Value="2" Text="Output sitched off while engine starting"/>
+<Item Value="3" Text="Output sitched off while engine stopped &amp; starting"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_9_switch_off_condition">
+<Mnemonic>O_LOG_9_switch_off_condition</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="No switch off"/>
+<Item Value="1" Text="Output sitched off while engine stopped"/>
+<Item Value="2" Text="Output sitched off while engine starting"/>
+<Item Value="3" Text="Output sitched off while engine stopped &amp; starting"/></List>
+</Bits>
+</Data>
+<Data Name="O_LOG_10_switch_off_condition">
+<Mnemonic>O_LOG_10_switch_off_condition</Mnemonic>
+<Bits count="3">
+<List>
+<Item Value="0" Text="No switch off"/>
+<Item Value="1" Text="Output sitched off while engine stopped"/>
+<Item Value="2" Text="Output sitched off while engine starting"/>
+<Item Value="3" Text="Output sitched off while engine stopped &amp; starting"/></List>
+</Bits>
+</Data>
+<Data Name="O_PWM_1">
+<Mnemonic>O_PWM_1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="VehicleSpeed"/>
+<Item Value="2" Text="EngineRPM"/>
+<Item Value="3" Text="ExternalTemperature"/>
+<Item Value="4" Text="EngineCoolantTemp"/>
+<Item Value="5" Text="FuelLevelDisplayed"/>
+<Item Value="7" Text="OTA_PWM_output_1"/>
+<Item Value="8" Text="OTA_PWM_output_2"/></List>
+</Bits>
+</Data>
+<Data Name="O_PWM_2">
+<Mnemonic>O_PWM_2</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="VehicleSpeed"/>
+<Item Value="2" Text="EngineRPM"/>
+<Item Value="3" Text="ExternalTemperature"/>
+<Item Value="4" Text="EngineCoolantTemp"/>
+<Item Value="5" Text="FuelLevelDisplayed"/>
+<Item Value="7" Text="OTA_PWM_output_1"/>
+<Item Value="8" Text="OTA_PWM_output_2"/></List>
+</Bits>
+</Data>
+<Data Name="O_PWM_3">
+<Mnemonic>O_PWM_3</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="VehicleSpeed"/>
+<Item Value="2" Text="EngineRPM"/>
+<Item Value="3" Text="ExternalTemperature"/>
+<Item Value="4" Text="EngineCoolantTemp"/>
+<Item Value="5" Text="FuelLevelDisplayed"/>
+<Item Value="7" Text="OTA_PWM_output_1"/>
+<Item Value="8" Text="OTA_PWM_output_2"/></List>
+</Bits>
+</Data>
+<Data Name="O_PWM_4">
+<Mnemonic>O_PWM_4</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="VehicleSpeed"/>
+<Item Value="2" Text="EngineRPM"/>
+<Item Value="3" Text="ExternalTemperature"/>
+<Item Value="4" Text="EngineCoolantTemp"/>
+<Item Value="5" Text="FuelLevelDisplayed"/>
+<Item Value="7" Text="OTA_PWM_output_1"/>
+<Item Value="8" Text="OTA_PWM_output_2"/></List>
+</Bits>
+</Data>
+<Data Name="O_PWM_5">
+<Mnemonic>O_PWM_5</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="VehicleSpeed"/>
+<Item Value="2" Text="EngineRPM"/>
+<Item Value="3" Text="ExternalTemperature"/>
+<Item Value="4" Text="EngineCoolantTemp"/>
+<Item Value="5" Text="FuelLevelDisplayed"/>
+<Item Value="7" Text="OTA_PWM_output_1"/>
+<Item Value="8" Text="OTA_PWM_output_2"/></List>
+</Bits>
+</Data>
+<Data Name="O_PWM_6">
+<Mnemonic>O_PWM_6</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="VehicleSpeed"/>
+<Item Value="2" Text="EngineRPM"/>
+<Item Value="3" Text="ExternalTemperature"/>
+<Item Value="4" Text="EngineCoolantTemp"/>
+<Item Value="5" Text="FuelLevelDisplayed"/>
+<Item Value="7" Text="OTA_PWM_output_1"/>
+<Item Value="8" Text="OTA_PWM_output_2"/></List>
+</Bits>
+</Data>
+<Data Name="O_PWM_7">
+<Mnemonic>O_PWM_7</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not affected"/>
+<Item Value="1" Text="VehicleSpeed"/>
+<Item Value="2" Text="EngineRPM"/>
+<Item Value="3" Text="ExternalTemperature"/>
+<Item Value="4" Text="EngineCoolantTemp"/>
+<Item Value="5" Text="FuelLevelDisplayed"/>
+<Item Value="7" Text="OTA_PWM_output_1"/>
+<Item Value="8" Text="OTA_PWM_output_2"/></List>
+</Bits>
+</Data>
+<Data Name="OperationnalReference">
+<Mnemonic>OPERATIONNAL_REFERENCE</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="StartDiagnosticSession.Default">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1001</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5001</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.diagnosticVersion">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read diagnosticVersion]]></Comment>
+<Sent>
+<SentBytes>22F1A0</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62F1A0</ReplyBytes>
+<DataItem Name="diagnosticVersion" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Programming">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1002</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5002</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1003</SentBytes>
+<DataItem Name="SessionName" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5003</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ClearDiagnosticInformation.All">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+<Sent>
+<SentBytes>14FFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>54</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report number of DTC]]></Comment>
+<Sent>
+<SentBytes>1901FF</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>5901FF000000</ReplyBytes>
+<DataItem Name="DTCCount" FirstByte="5"/>
+<DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC">
+
+<Comment><![CDATA[DDT2000 Failures page requests / DDT : Unusable for Clip import]]></Comment>
+<Sent>
+<SentBytes>1902FF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+<DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTCSnapshotIdentification">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report snapshot identification]]></Comment>
+<Sent>
+<SentBytes>1903000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>590300000001</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="DTCSnapshotRecordNumber" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSnapshot">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1904000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590400000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000080</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>59060000000080000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.AgingCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000081</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="8">
+<ReplyBytes>5906000000008100</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.DTCOccurrenceCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000082</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="8">
+<ReplyBytes>5906000000008200</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData">
+
+<Comment><![CDATA[DDT2000 Failures page requests : Unusable in the standard tools of DDT2000 nor for Clip import]]></Comment>
+<Sent>
+<SentBytes>1906000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>590600000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSupportedDTC">
+
+<Comment><![CDATA[Report supported DTC]]></Comment>
+<Sent>
+<SentBytes>190A</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>590AFF00000000</ReplyBytes>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSupportedDTC_CPDD Import">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report supported DTC for Clip import]]></Comment>
+<Sent>
+<SentBytes>190A</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>590AFF00000000</ReplyBytes>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+<Sent>
+<SentBytes>3E00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read systemSupplierECUVersionNumber]]></Comment>
+<Sent>
+<SentBytes>22F195</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62F195</ReplyBytes>
+<DataItem Name="systemSupplierECUSoftwareVersionNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierECUSoftwareNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read systemSupplierECUSoftwareNumber]]></Comment>
+<Sent>
+<SentBytes>22F194</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62F194</ReplyBytes>
+<DataItem Name="systemSupplierECUSoftwareNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerECUHardwareNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read vehicleManufacturerECUHardwareNumber]]></Comment>
+<Sent>
+<SentBytes>22F191</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F191</ReplyBytes>
+<DataItem Name="vehicleManufacturerECUHardwareNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VIN">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VIN]]></Comment>
+<Sent>
+<SentBytes>22F190</SentBytes>
+</Sent>
+<Received MinBytes="20">
+<ReplyBytes>62F190</ReplyBytes>
+<DataItem Name="VIN" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.VIN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Write VIN]]></Comment>
+<Sent>
+<SentBytes>2EF1900000000000000000000000000000000000</SentBytes>
+<DataItem Name="VIN" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6EF190</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.ECUSerialNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read ECUSerialNumber]]></Comment>
+<Sent>
+<SentBytes>22F18C</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<ReplyBytes>62F18C</ReplyBytes>
+<DataItem Name="ECUSerialNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierIdentifier">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read systemSupplierIdentifier]]></Comment>
+<Sent>
+<SentBytes>22F18A</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62F18A</ReplyBytes>
+<DataItem Name="systemSupplierIdentifier" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerECUSoftwareNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read autoconfigurationFingerPrint]]></Comment>
+<Sent>
+<SentBytes>22F188</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F188</ReplyBytes>
+<DataItem Name="vehicleManufacturerECUSoftwareNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerSparePartNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read vehicleManufacturerSparePartNumber]]></Comment>
+<Sent>
+<SentBytes>22F187</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F187</ReplyBytes>
+<DataItem Name="vehicleManufacturerSparePartNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.applicationDataIdentification">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read applicationDataIdentification]]></Comment>
+<Sent>
+<SentBytes>22F182</SentBytes>
+</Sent>
+<Received MinBytes="14">
+<ReplyBytes>62F182</ReplyBytes>
+<DataItem Name="applicationDataIdentification" Ref="1" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="DataRead.secutity accessFingerPrint">
+
+<Comment><![CDATA[Read security access FingerPrint]]></Comment>
+<Sent>
+<SentBytes>22F011</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F011</ReplyBytes>
+<DataItem Name="secutity accessFingerPrint" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.programmingOperationFingerPrint">
+
+<Comment><![CDATA[Read programmingOperationFingerPrint]]></Comment>
+<Sent>
+<SentBytes>22F010</SentBytes>
+</Sent>
+<Received MinBytes="19">
+<ReplyBytes>62F010</ReplyBytes>
+<DataItem Name="programmingOperationFingerPrint" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ConfigDataReferenceAfterConfigProcess">
+
+<Sent>
+<SentBytes>22F1A2</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F1A2</ReplyBytes>
+<DataItem Name="ConfigDataReferenceAfterConfigProcess" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.ConfigDataReferenceAfterConfigProcess">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>2EF1A200000000000000000000</SentBytes>
+<DataItem Name="ConfigDataReferenceAfterConfigProcess" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6EF1A2</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.bootSoftwareIdentification">
+
+<Sent>
+<SentBytes>22F180</SentBytes>
+</Sent>
+<Received MinBytes="8">
+<ReplyBytes>62F180</ReplyBytes>
+<DataItem Name="bootSoftwareIdentification" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.OperationnalReference">
+
+<Sent>
+<SentBytes>22F012</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F012</ReplyBytes>
+<DataItem Name="OperationnalReference" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.RALAC_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220300</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620300</ReplyBytes>
+<DataItem Name="RALAC_CF" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.RALAC_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030000</SentBytes>
+<DataItem Name="RALAC_CF" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0300</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.ENG_RESTART_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220301</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620301</ReplyBytes>
+<DataItem Name="ENG_RESTART_CF" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.ENG_RESTART_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030100</SentBytes>
+<DataItem Name="ENG_RESTART_CF" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0301</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.ADD_TORQUE_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220302</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620302</ReplyBytes>
+<DataItem Name="ADD_TORQUE_CF" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.ADD_TORQUE_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030200</SentBytes>
+<DataItem Name="ADD_TORQUE_CF" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0302</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.BAT_STABILIZED_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220303</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620303</ReplyBytes>
+<DataItem Name="BAT_STABILIZED_CF" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.BAT_STABILIZED_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030300</SentBytes>
+<DataItem Name="BAT_STABILIZED_CF" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0303</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.MUTE_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220304</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620304</ReplyBytes>
+<DataItem Name="MUTE_CF" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.MUTE_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030400</SentBytes>
+<DataItem Name="MUTE_CF" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0304</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.TUP_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220305</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620305</ReplyBytes>
+<DataItem Name="TUP_CF" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.TUP_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030500</SentBytes>
+<DataItem Name="TUP_CF" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0305</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.BATT_COUPLING_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220306</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620306</ReplyBytes>
+<DataItem Name="BATT_COUPLING_CF" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.BATT_COUPLING_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030600</SentBytes>
+<DataItem Name="BATT_COUPLING_CF" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0306</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.ADD_NETWORK_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220321</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620321</ReplyBytes>
+<DataItem Name="ADD_NETWORK_CF" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.ADD_NETWORK_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E032100</SentBytes>
+<DataItem Name="ADD_NETWORK_CF" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0321</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SEL_PWR_LIM_CUT_OFF">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[SEL_PWR_LIM_CUT_OFF]]></Comment>
+<Sent>
+<SentBytes>220322</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620322</ReplyBytes>
+<DataItem Name="SEL_PWR_LIM_CUT_OFF" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SEL_PWR_LIM_CUT_OFF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E032200</SentBytes>
+<DataItem Name="SEL_PWR_LIM_CUT_OFF" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0322</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.RALAC_SW_TYPE_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220323</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620323</ReplyBytes>
+<DataItem Name="RALAC_SW_TYPE_CF" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.RALAC_SW_TYPE_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E032300</SentBytes>
+<DataItem Name="RALAC_SW_TYPE_CF" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0323</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.MUTE_SW_TYPE_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220324</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620324</ReplyBytes>
+<DataItem Name="MUTE_SW_TYPE_CF" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.MUTE_SW_TYPE_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E032400</SentBytes>
+<DataItem Name="MUTE_SW_TYPE_CF" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0324</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.BAT_STABILIZED_CF_1">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220325</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620325</ReplyBytes>
+<DataItem Name="BAT_STABILIZED_CF_1" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.BAT_STABILIZED_CF_1">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E032500</SentBytes>
+<DataItem Name="BAT_STABILIZED_CF_1" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0325</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.I_ANALOG_1">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22030E</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62030E</ReplyBytes>
+<DataItem Name="I_ANALOG_1" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.I_ANALOG_1">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030E00</SentBytes>
+<DataItem Name="I_ANALOG_1" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E030E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.I_ANALOG_2">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22030F</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62030F</ReplyBytes>
+<DataItem Name="I_ANALOG_2" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.I_ANALOG_2">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030F00</SentBytes>
+<DataItem Name="I_ANALOG_2" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E030F</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.I_ANALOG_3">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220320</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620320</ReplyBytes>
+<DataItem Name="I_ANALOG_3" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.I_ANALOG_3">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E032000</SentBytes>
+<DataItem Name="I_ANALOG_3" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0320</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.I_LOG_1">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220307</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620307</ReplyBytes>
+<DataItem Name="I_LOG_1" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.I_LOG_1">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030700</SentBytes>
+<DataItem Name="I_LOG_1" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0307</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.I_LOG_2">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220308</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620308</ReplyBytes>
+<DataItem Name="I_LOG_2" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.I_LOG_2">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030800</SentBytes>
+<DataItem Name="I_LOG_2" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0308</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.I_LOG_3">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220309</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620309</ReplyBytes>
+<DataItem Name="I_LOG_3" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.I_LOG_3">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030900</SentBytes>
+<DataItem Name="I_LOG_3" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0309</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.I_LOG_4">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22030A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62030A</ReplyBytes>
+<DataItem Name="I_LOG_4" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.I_LOG_4">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030A00</SentBytes>
+<DataItem Name="I_LOG_4" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E030A</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.I_LOG_5">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22030B</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62030B</ReplyBytes>
+<DataItem Name="I_LOG_5" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.I_LOG_5">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030B00</SentBytes>
+<DataItem Name="I_LOG_5" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E030B</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.I_LOG_6">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22030C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62030C</ReplyBytes>
+<DataItem Name="I_LOG_6" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.I_LOG_6">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030C00</SentBytes>
+<DataItem Name="I_LOG_6" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E030C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.I_LOG_7">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22030D</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62030D</ReplyBytes>
+<DataItem Name="I_LOG_7" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.I_LOG_7">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E030D00</SentBytes>
+<DataItem Name="I_LOG_7" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E030D</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_1">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22032D</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62032D</ReplyBytes>
+<DataItem Name="O_LOG_1" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_1">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E032D00</SentBytes>
+<DataItem Name="O_LOG_1" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E032D</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_2">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220330</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620330</ReplyBytes>
+<DataItem Name="O_LOG_2" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_2">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033000</SentBytes>
+<DataItem Name="O_LOG_2" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0330</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_3">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220333</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620333</ReplyBytes>
+<DataItem Name="O_LOG_3" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_4">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220336</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620336</ReplyBytes>
+<DataItem Name="O_LOG_4" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_4">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033600</SentBytes>
+<DataItem Name="O_LOG_4" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0336</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_5">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220339</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620339</ReplyBytes>
+<DataItem Name="O_LOG_5" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_5">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033900</SentBytes>
+<DataItem Name="O_LOG_5" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0339</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_6">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22033C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62033C</ReplyBytes>
+<DataItem Name="O_LOG_6" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_6">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033C00</SentBytes>
+<DataItem Name="O_LOG_6" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E033C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_7">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22033F</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62033F</ReplyBytes>
+<DataItem Name="O_LOG_7" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_7">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033F00</SentBytes>
+<DataItem Name="O_LOG_7" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E033F</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_8">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220342</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620342</ReplyBytes>
+<DataItem Name="O_LOG_8" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_8">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034200</SentBytes>
+<DataItem Name="O_LOG_8" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0342</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_9">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220345</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620345</ReplyBytes>
+<DataItem Name="O_LOG_9" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_9">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034500</SentBytes>
+<DataItem Name="O_LOG_9" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0345</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_10">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220348</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620348</ReplyBytes>
+<DataItem Name="O_LOG_10" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_10">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034800</SentBytes>
+<DataItem Name="O_LOG_10" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0348</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_1_power_limitation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22032E</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62032E</ReplyBytes>
+<DataItem Name="O_LOG_1_power_limitation" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_1_power_limitation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E032E00</SentBytes>
+<DataItem Name="O_LOG_1_power_limitation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E032E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_2_power_limitation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220331</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620331</ReplyBytes>
+<DataItem Name="O_LOG_2_power_limitation" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_2_power_limitation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033100</SentBytes>
+<DataItem Name="O_LOG_2_power_limitation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0331</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_3_power_limitation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220334</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620334</ReplyBytes>
+<DataItem Name="O_LOG_3_power_limitation" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_4_power_limitation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220337</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620337</ReplyBytes>
+<DataItem Name="O_LOG_4_power_limitation" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_4_power_limitation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033700</SentBytes>
+<DataItem Name="O_LOG_4_power_limitation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0337</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_5_power_limitation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22033A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62033A</ReplyBytes>
+<DataItem Name="O_LOG_5_power_limitation" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_5_power_limitation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033A00</SentBytes>
+<DataItem Name="O_LOG_5_power_limitation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E033A</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_6_power_limitation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22033D</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62033D</ReplyBytes>
+<DataItem Name="O_LOG_6_power_limitation" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_6_power_limitation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033D00</SentBytes>
+<DataItem Name="O_LOG_6_power_limitation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E033D</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_7_power_limitation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220340</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620340</ReplyBytes>
+<DataItem Name="O_LOG_7_power_limitation" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_7_power_limitation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034000</SentBytes>
+<DataItem Name="O_LOG_7_power_limitation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0340</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_8_power_limitation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220343</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620343</ReplyBytes>
+<DataItem Name="O_LOG_8_power_limitation" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_8_power_limitation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034300</SentBytes>
+<DataItem Name="O_LOG_8_power_limitation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0343</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_9_power_limitation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220346</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620346</ReplyBytes>
+<DataItem Name="O_LOG_9_power_limitation" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_9_power_limitation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034600</SentBytes>
+<DataItem Name="O_LOG_9_power_limitation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0346</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_10_power_limitation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220349</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620349</ReplyBytes>
+<DataItem Name="O_LOG_10_power_limitation" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_10_power_limitation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034900</SentBytes>
+<DataItem Name="O_LOG_10_power_limitation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0349</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_10_switch_off_condition">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22034A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62034A</ReplyBytes>
+<DataItem Name="O_LOG_10_switch_off_condition" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_10_switch_off_condition">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034A00</SentBytes>
+<DataItem Name="O_LOG_10_switch_off_condition" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E034A</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_1_switch_off_condition">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22032F</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62032F</ReplyBytes>
+<DataItem Name="O_LOG_1_switch_off_condition" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_1_switch_off_condition">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E032F00</SentBytes>
+<DataItem Name="O_LOG_1_switch_off_condition" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E032F</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_2_switch_off_condition">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220332</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620332</ReplyBytes>
+<DataItem Name="O_LOG_2_switch_off_condition" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_2_switch_off_condition">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033200</SentBytes>
+<DataItem Name="O_LOG_2_switch_off_condition" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0332</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_3_switch_off_condition">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220335</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620335</ReplyBytes>
+<DataItem Name="O_LOG_3_switch_off_condition" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_3_switch_off_condition">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033500</SentBytes>
+<DataItem Name="O_LOG_3_switch_off_condition" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0335</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_4_switch_off_condition">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220338</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620338</ReplyBytes>
+<DataItem Name="O_LOG_4_switch_off_condition" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_4_switch_off_condition">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033800</SentBytes>
+<DataItem Name="O_LOG_4_switch_off_condition" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0338</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_5_switch_off_condition">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22033B</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62033B</ReplyBytes>
+<DataItem Name="O_LOG_5_switch_off_condition" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_5_switch_off_condition">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033B00</SentBytes>
+<DataItem Name="O_LOG_5_switch_off_condition" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E033B</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_6_switch_off_condition">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22033E</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62033E</ReplyBytes>
+<DataItem Name="O_LOG_6_switch_off_condition" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_6_switch_off_condition">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E033E00</SentBytes>
+<DataItem Name="O_LOG_6_switch_off_condition" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E033E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_7_switch_off_condition">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220341</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620341</ReplyBytes>
+<DataItem Name="O_LOG_7_switch_off_condition" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_7_switch_off_condition">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034100</SentBytes>
+<DataItem Name="O_LOG_7_switch_off_condition" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0341</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_8_switch_off_condition">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220344</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620344</ReplyBytes>
+<DataItem Name="O_LOG_8_switch_off_condition" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_8_switch_off_condition">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034400</SentBytes>
+<DataItem Name="O_LOG_8_switch_off_condition" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0344</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_LOG_9_switch_off_condition">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220347</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620347</ReplyBytes>
+<DataItem Name="O_LOG_9_switch_off_condition" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_LOG_9_switch_off_condition">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034700</SentBytes>
+<DataItem Name="O_LOG_9_switch_off_condition" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0347</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_PWM_1">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22034B</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62034B</ReplyBytes>
+<DataItem Name="O_PWM_1" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_PWM_1">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034B00</SentBytes>
+<DataItem Name="O_PWM_1" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E034B</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_PWM_2">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22034C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62034C</ReplyBytes>
+<DataItem Name="O_PWM_2" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_PWM_2">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034C00</SentBytes>
+<DataItem Name="O_PWM_2" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E034C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_PWM_3">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22034D</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62034D</ReplyBytes>
+<DataItem Name="O_PWM_3" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_PWM_3">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034D00</SentBytes>
+<DataItem Name="O_PWM_3" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E034D</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_PWM_4">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22034E</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62034E</ReplyBytes>
+<DataItem Name="O_PWM_4" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_PWM_4">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034E00</SentBytes>
+<DataItem Name="O_PWM_4" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E034E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_PWM_5">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22034F</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62034F</ReplyBytes>
+<DataItem Name="O_PWM_5" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.O_PWM_6">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220350</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620350</ReplyBytes>
+<DataItem Name="O_PWM_6" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_PWM_6">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E035000</SentBytes>
+<DataItem Name="O_PWM_6" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0350</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.O_PWM_7">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220351</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620351</ReplyBytes>
+<DataItem Name="O_PWM_7" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.O_PWM_7">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E035100</SentBytes>
+<DataItem Name="O_PWM_7" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0351</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.O_PWM_5">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E034F00</SentBytes>
+<DataItem Name="O_PWM_5" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E034F</ReplyBytes>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="I_LOG_1" DTC="40800">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="I_LOG2" DTC="40801">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="I_LOG3" DTC="40802">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="I_LOG4" DTC="40803">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="I_LOG5" DTC="40804">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="I_LOG6" DTC="40805">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="I_LOG7" DTC="40806">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_LOG_1" DTC="40807" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_LOG_2" DTC="40808" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_LOG_3" DTC="40809" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_LOG_4" DTC="40810" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_LOG_5" DTC="40811" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_LOG_6" DTC="40812" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_LOG_7" DTC="40813" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_LOG_8" DTC="40814" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_LOG_9" DTC="40815" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_LOG_10" DTC="40816" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_PWM_1" DTC="40817" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_PWM_2" DTC="40818" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_PWM_3" DTC="40819" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_PWM_4" DTC="40820" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_PWM_5" DTC="40821" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_PWM_6" DTC="40822" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="O_PWM_7" DTC="40823" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="I_PWR_ECU" DTC="40824">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test><Test Type="41" Severity="0">
+</Test>
+</Device>
+<Device Name="I_GND" DTC="40825">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test><Test Type="41" Severity="0">
+</Test>
+</Device>
+<Device Name="O_GND" DTC="40826" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test><Test Type="41" Severity="0">
+</Test>
+</Device>
+<Device Name="I_GND_LOGIC" DTC="40827">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test><Test Type="41" Severity="0">
+</Test>
+</Device>
+<Device Name="I_GND_ANALOG" DTC="40828">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test><Test Type="41" Severity="0">
+</Test>
+</Device>
+<Device Name="I_ANALOG_1" DTC="40829">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test><Test Type="41" Severity="0">
+</Test>
+</Device>
+<Device Name="I_ANALOG_2" DTC="40830">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test><Test Type="41" Severity="0">
+</Test>
+</Device>
+<Device Name="I_ANALOG_3" DTC="40831">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test><Test Type="41" Severity="0">
+</Test>
+</Device>
+<Device Name="O_PWR" DTC="40833" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test><Test Type="41" Severity="0">
+</Test>
+</Device>
+<Device Name="O_POWER_CUTOFF" DTC="40834" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test><Test Type="41" Severity="0">
+</Test>
+</Device>
+<Device Name="INP_WAFE_WEAR_IND" DTC="40835">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="OUTP_WAFE_WEAR_IND" DTC="40836" Type="3">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test>
+</Device>
+<Device Name="I_STARTER" DTC="40837">
+
+<Test Type="17" Severity="0">
+</Test><Test Type="18" Severity="0">
+</Test><Test Type="19" Severity="0">
+</Test><Test Type="41" Severity="0">
+</Test>
+</Device>
+<Device Name="AAM_INTERNAL_FAILURE" DTC="40838" Type="2">
+
+<Test Type="146" Severity="0">
+</Test><Test Type="150" Severity="0">
+</Test>
+</Device>
+<Device Name="AAM_CONFIGURATION_FAILURE" DTC="40839" Type="2">
+
+<Test Type="84" Severity="0">
+</Test><Test Type="85" Severity="0">
+</Test>
+</Device>
+<Device Name="CAN_EXT_BUS_OFF" DTC="49273" Type="3">
+
+<Test Type="0" Severity="0">
+</Test>
+</Device>
+<Device Name="LOST_COMMUNICATION_WITH_ECM" DTC="57664">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="LOST_COMMUNICATION_WITH_VDC" DTC="57672">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="LOST_COMMUNICATION_WITH_CLUSTER" DTC="57678">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="LOST_COMMUNICATION_WITH_BCM" DTC="57679">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="LOST_COMMUNICATION_WITH_USM" DTC="57691">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+<Device Name="LOST_COMMUNICATION_WITH_APB" DTC="57685">
+
+<Test Type="135" Severity="0">
+</Test>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"/></ddt:Target></xml>

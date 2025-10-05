@@ -1,0 +1,2418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.2.0.0" date="2017-09-22T13:57"/>
+<ddt:Target Name="ADB-LCU" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="christophe.maaded@renault.com" group="LCU" upload="9/25/2017" href="ADB_LCU_20170830_20170925T114942.xml"><Description><![CDATA[]]></Description>
+<Projects xmlns=""><xFBPh2/><xFCPh2/><xFDPh2/></Projects>
+<Function Name="ADB-LCU" Address="22"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation/>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="416969202" Extended="1"/>
+</SendId><ReceiveId>
+<CANId Value="417002097" Extended="1"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="64" Supplier="VALEO" Soft="V00.00" Version="1000"/></AutoIdents>
+<Datas>
+
+<Data Name="SessionName">
+<Comment><![CDATA[Diagnostic session values. See documentation for more information.]]></Comment>
+<Mnemonic>LEV_DS</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>[0x00] : ISO / SAE Reserved<BR>[0x01] : Default session<BR>[0x02] : Programming session<BR>[0x03] : Extended diagnostic session<BR>[0x04] : Safety system diagnostic session<BR>[0x05 - 0x3F] : ISO / SAE Reserved<BR>[0x40 - 0x5F] : Vehicle manufacturer specific<BR>[0x60 - 0x7E] : System supplier specific<BR>[0x7F] : ISO / SAE Reserved</FONT></P>]]></Description>
+<Bits>
+<List>
+<Item Value="1" Text="DefaultSession"/>
+<Item Value="2" Text="ProgrammingSession"/>
+<Item Value="3" Text="ExtendedDiagnosticSession"/>
+<Item Value="4" Text="SafetySystemDiagnosticSession"/></List>
+</Bits>
+</Data>
+<Data Name="applicationDataIdentification">
+<Comment><![CDATA[Calibration Number]]></Comment>
+<Mnemonic>DID_$F182</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer specific ECU application data identification record.</FONT></P>
+<P><FONT size=2>The format of the application data identification structure shall be ECU specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="systemSupplierIdentifier">
+<Comment><![CDATA[Name and address information of the supplier.]]></Comment>
+<Mnemonic>DID_$F18A</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier name and address information.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="VIN">
+<Comment><![CDATA[Vehicle Identification Number]]></Comment>
+<Mnemonic>DID_$F190</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the VIN number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be specified by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>It shall not be erased when the ECU is reprogrammed.</FONT></P>]]></Description>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="systemSupplierECUSoftwareNumber">
+<Comment><![CDATA[Software Number (Supplier)]]></Comment>
+<Mnemonic>DID_$F194</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+<Bytes count="6" ascii="1"/>
+</Data>
+<Data Name="diagnosticVersion">
+<Comment><![CDATA[VDIAG]]></Comment>
+<Mnemonic>DID_$F1A0</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the diagnostic version of the ECU.</FONT></P>
+<P><FONT size=2>It is defined by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>Refer to manufacture ECU designer.</FONT></P>]]></Description>
+<Bytes count="1"/>
+</Data>
+<Data Name="StatusOfDTC">
+<Mnemonic>DTCASR_SODTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailed">
+<Mnemonic>TF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedThisMonitoringCycle">
+<Mnemonic>TFTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.pendingDTC">
+<Mnemonic>PDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.confirmedDTC">
+<Mnemonic>CDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedSinceLastClear">
+<Mnemonic>TNCSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedSinceLastClear">
+<Mnemonic>TFSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+<Mnemonic>TNCTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.warningIndicatorRequested">
+<Mnemonic>WIR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.Category">
+<Bits count="4">
+<List>
+<Item Value="0" Text="General Failure Information"/>
+<Item Value="1" Text="General Electrical Failures"/>
+<Item Value="2" Text="General Signal Failures"/>
+<Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="10" Text="General Electrical Failures - 2"/>
+<Item Value="15" Text="Vehicle manufacturer / System supplier specific"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType">
+<Bits>
+<List>
+<Item Value="0" Text="Device and failure type ODB codding"/>
+<Item Value="1" Text="General Electrical Failure"/>
+<Item Value="2" Text="General signal failure"/>
+<Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="10" Text="General Electrical Failures - 2"/>
+<Item Value="17" Text="circuit short to ground"/>
+<Item Value="18" Text="circuit short to battery"/>
+<Item Value="19" Text="circuit open"/>
+<Item Value="20" Text="circuit short to ground or open"/>
+<Item Value="21" Text="circuit short to battery or open"/>
+<Item Value="22" Text="circuit voltage below threshold"/>
+<Item Value="23" Text="circuit voltage above threshold"/>
+<Item Value="24" Text="circuit current below threshold"/>
+<Item Value="25" Text="circuit current above threshold"/>
+<Item Value="26" Text="circuit resistance below threshold"/>
+<Item Value="27" Text="circuit resistance above threshold"/>
+<Item Value="28" Text="circuit voltage out of range"/>
+<Item Value="29" Text="circuit current out of range"/>
+<Item Value="30" Text="circuit resistance out of range"/>
+<Item Value="31" Text="circuit intermittent"/>
+<Item Value="33" Text="signal amplitude &lt; minimum"/>
+<Item Value="34" Text="signal amplitude &gt; maximum"/>
+<Item Value="35" Text="signal stuck low"/>
+<Item Value="36" Text="signal stuck high"/>
+<Item Value="37" Text="signal shape / waveform failure"/>
+<Item Value="38" Text="signal rate of change below threshold"/>
+<Item Value="39" Text="signal rate of change above threshold"/>
+<Item Value="40" Text="signal bias level out of range / zero adj. failure"/>
+<Item Value="41" Text="signal signal invalid"/>
+<Item Value="42" Text="signal stuck in range"/>
+<Item Value="43" Text="signal cross coupled"/>
+<Item Value="47" Text="signal erratic"/>
+<Item Value="49" Text="no signal"/>
+<Item Value="50" Text="signal low time &lt; minimum"/>
+<Item Value="51" Text="signal low time &gt; maximum"/>
+<Item Value="52" Text="signal high time &lt; minimum"/>
+<Item Value="53" Text="signal high time &gt; maximum"/>
+<Item Value="54" Text="signal frequency too low"/>
+<Item Value="55" Text="signal frequency too high"/>
+<Item Value="56" Text="signal frequency incorrect"/>
+<Item Value="57" Text="incorrect has too few pulses"/>
+<Item Value="58" Text="incorrect has too many pulses"/>
+<Item Value="65" Text="general checksum failure"/>
+<Item Value="66" Text="general memory failure"/>
+<Item Value="67" Text="special memory failure"/>
+<Item Value="68" Text="data memory failure"/>
+<Item Value="69" Text="program memory failure"/>
+<Item Value="70" Text="calibration / parameter memory failure"/>
+<Item Value="71" Text="watchdog / safety µC failure"/>
+<Item Value="72" Text="supervision software failure"/>
+<Item Value="73" Text="internal electronic failure"/>
+<Item Value="74" Text="incorrect component installed"/>
+<Item Value="75" Text="over temperature"/>
+<Item Value="81" Text="not programmed"/>
+<Item Value="82" Text="not activated"/>
+<Item Value="83" Text="deactivated"/>
+<Item Value="84" Text="missing calibration"/>
+<Item Value="85" Text="not configured"/>
+<Item Value="86" Text="invalid or incompatible configuration"/>
+<Item Value="87" Text="invalid or incompatible software component"/>
+<Item Value="97" Text="signal calculation failure"/>
+<Item Value="98" Text="signal compare failure"/>
+<Item Value="99" Text="circuit / component protection time-out"/>
+<Item Value="100" Text="signal plausibility failure"/>
+<Item Value="101" Text="signal has too few transitions / events"/>
+<Item Value="102" Text="signal has too many transitions / events"/>
+<Item Value="103" Text="signal incorrect after event"/>
+<Item Value="104" Text="event information"/>
+<Item Value="113" Text="actuator stuck"/>
+<Item Value="114" Text="actuator stuck open"/>
+<Item Value="115" Text="actuator stuck closed"/>
+<Item Value="116" Text="actuator slipping"/>
+<Item Value="117" Text="emergency position not reachable"/>
+<Item Value="118" Text="wrong mounting position"/>
+<Item Value="119" Text="commanded position not reachable"/>
+<Item Value="120" Text="alignment or adjustment incorrect"/>
+<Item Value="121" Text="mechanical linkage failure"/>
+<Item Value="122" Text="fluid leak or seal failure"/>
+<Item Value="123" Text="low fluid level"/>
+<Item Value="124" Text="Slow Response"/>
+<Item Value="125" Text="Actuator Stuck On"/>
+<Item Value="127" Text="Actuator Stuck Off"/>
+<Item Value="129" Text="invalid serial data received"/>
+<Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+<Item Value="131" Text="value of signal protection calculation incorrect"/>
+<Item Value="132" Text="signal below allowable range"/>
+<Item Value="133" Text="signal above allowable range"/>
+<Item Value="134" Text="signal invalid"/>
+<Item Value="135" Text="missing message"/>
+<Item Value="136" Text="bus off"/>
+<Item Value="143" Text="erratic"/>
+<Item Value="145" Text="parametric"/>
+<Item Value="146" Text="performance or incorrect operation"/>
+<Item Value="147" Text="no operation"/>
+<Item Value="148" Text="unexpected operation"/>
+<Item Value="149" Text="incorrect assembly"/>
+<Item Value="150" Text="component internal failure"/>
+<Item Value="151" Text="Component or sys. operation obstructed or blocked"/>
+<Item Value="152" Text="component or system over temperature"/>
+<Item Value="153" Text="Exceeded Learning Limit"/>
+<Item Value="154" Text="component or system operating conditions"/>
+<Item Value="155" Text="High/Excessive Flow"/>
+<Item Value="156" Text="Low/Insufficient Flow"/>
+<Item Value="158" Text="Stuck On"/>
+<Item Value="159" Text="Stuck Off"/>
+<Item Value="161" Text="System Voltage"/>
+<Item Value="162" Text="System Voltage Low"/>
+<Item Value="163" Text="System Voltage High"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceIdentifier">
+<Bits count="16">
+<List>
+<Item Value="57665" Text="ATCU_COMMUNICATION_FAILURE"/>
+<Item Value="57679" Text="BCM_COMMUNICATION_FAILURE"/>
+<Item Value="57708" Text="BSWL_COMMUNICATION_FAILURE"/>
+<Item Value="57667" Text="HEVC_COMMUNICATION_FAILURE"/>
+<Item Value="49272" Text="IC-CAN_BusOFF"/>
+<Item Value="57710" Text="BSWR_COMMUNICATION_FAILURE"/>
+<Item Value="57684" Text="IVI_COMMUNICATION_FAILURE"/>
+<Item Value="38448" Text="LCU_Fail"/>
+<Item Value="57701" Text="SONAR_COMMUNICATION_FAILURE"/>
+<Item Value="57691" Text="USM_COMMUNICATION_FAILURE"/>
+<Item Value="49269" Text="V2-CAN_BusOFF"/>
+<Item Value="57672" Text="VDC_COMMUNICATION_FAILURE"/>
+<Item Value="57718" Text="IDM_COMMUNICATION_FAILURE"/>
+<Item Value="57963" Text="FrCAM_COMMUNICATION_FAILURE"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceAndFailureTypeOBD">
+<Comment><![CDATA[Not applicable]]></Comment>
+<Mnemonic>DTCDEVICE_AND_FAILURE_TYPE_OBD</Mnemonic>
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.ManufacturerOrSupplier">
+<Comment><![CDATA[Not applicable]]></Comment>
+<Mnemonic>DTCFAILURE_TYPE_MANUFACTURER_OR_SUPPLIER</Mnemonic>
+<Bits count="4">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCStatusAvailabilityMask">
+<Mnemonic>DTCSAM</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCMaskRecord">
+<Mnemonic>DTCMREC_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCRecord">
+<Mnemonic>DTCASR_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCExtendedData.Mileage">
+<Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>MILEAGE</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedDataRecordNumber">
+<Mnemonic>DTCEDRN</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Mileage"/>
+<Item Value="129" Text="AgingCounter"/>
+<Item Value="130" Text="DTCOccurrenceCounter"/></List>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.AgingCounter">
+<Comment><![CDATA[Description of the extendedData AgingCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>AGINGCOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.DTCOccurrenceCounter">
+<Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="systemSupplierECUSoftwareVersionNumber">
+<Comment><![CDATA[Software Version (Supplier)]]></Comment>
+<Mnemonic>DID_$F195</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software version number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="ECUSerialNumber">
+<Comment><![CDATA[ECU serial number]]></Comment>
+<Mnemonic>DID_$F18C</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the ECU (server) serial number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific.</FONT></P>]]></Description>
+<Bytes count="20" ascii="1"/>
+</Data>
+<Data Name="TrafficSignDIM.Configuration">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="WelcomeStyle.Configuration">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="TrafficDimming_CF.Value">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="TrafficDimming_CF.Enable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Off"/>
+<Item Value="1" Text="On"/></List>
+</Bits>
+</Data>
+<Data Name="vehicleManufacturerSparePartNumber">
+<Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM]]></Comment>
+<Mnemonic>DID_$F187</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer spare part number. </FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="MEXADB_CF.MEXMode">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Normal"/>
+<Item Value="1" Text="Sport"/>
+<Item Value="2" Text="Reserved"/></List>
+</Bits>
+</Data>
+<Data Name="Motorshow.Configuration">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Highway.Configuration">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCCount">
+<Comment><![CDATA[DTC count]]></Comment>
+<Mnemonic>DTCC</Mnemonic>
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AFS_CONF.Speed_AFS_ON">
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="AFS_CONF.Speed_AFS_OFF">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="AFS_CONF.AFS_mode">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Off"/>
+<Item Value="1" Text="Type1"/>
+<Item Value="2" Text="Type2"/>
+<Item Value="3" Text="Type3"/></List>
+</Bits>
+</Data>
+<Data Name="ADB_CF.SpeedNormalON">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="ADB_CF.SpeedNormalOFF">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="ADB_CF.SpeedSportON">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="ADB_CF.SpeedSportOFF">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="ADB_CF.WelcomeDelayTM">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="ADB_CF.WelcomeTM">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="ADB_CF.GoodbyeDelayTM">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="ADB_CF.GoodbyeTM">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="ADB_CF.RemoteLightingTM">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="ADB_CF.ADBEnable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="False"/>
+<Item Value="1" Text="True"/></List>
+</Bits>
+</Data>
+<Data Name="ADB_CF.MEXModeEnable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="False"/>
+<Item Value="1" Text="True"/></List>
+</Bits>
+</Data>
+<Data Name="ADB_CF.ADBRoadtypeEnable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="False"/>
+<Item Value="1" Text="True"/></List>
+</Bits>
+</Data>
+<Data Name="ADB_CF.TrafficSide">
+<Bits count="1">
+<List>
+<Item Value="0" Text="False"/>
+<Item Value="1" Text="True"/></List>
+</Bits>
+</Data>
+<Data Name="ADB_CF.RemoteLighting">
+<Bits count="1">
+<List>
+<Item Value="0" Text="False"/>
+<Item Value="1" Text="True"/></List>
+</Bits>
+</Data>
+<Data Name="ADB_CF.WelcomeScenario">
+<Bits count="1">
+<List>
+<Item Value="0" Text="False"/>
+<Item Value="1" Text="True"/></List>
+</Bits>
+</Data>
+<Data Name="ADB_CF.MagicLBHBEnable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="False"/>
+<Item Value="1" Text="True"/></List>
+</Bits>
+</Data>
+<Data Name="ADB_CF.Opening">
+<Bits count="1">
+<List>
+<Item Value="0" Text="False"/>
+<Item Value="1" Text="True"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFormatIdentifier">
+<Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+<Mnemonic>DTCFID</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="SAE_J2012-DA_DTC"/>
+<Item Value="1" Text="ISO_14229-1_DTC"/>
+<Item Value="2" Text="SAE_J1939-73_DTC"/>
+<Item Value="3" Text="ISO_11992-4_DTC"/>
+<Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/></List>
+</Bits>
+</Data>
+<Data Name="vehicleManufacturerECUHardwareNumber">
+<Comment><![CDATA[Hardware Number]]></Comment>
+<Mnemonic>DID_$F191</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used by reading services to reference the vehicle-manufacturer-specific ECU (server) hardware number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be serverspecific and defined by vehicle manufacturer.</FONT></P>]]></Description>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="TunnelBoundary_CF.TunnelMarging">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="TunnelBoundary_CF.TrafficMarging">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Delay_Configuration.LostTM">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BSW_CF.DelayValue">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BSW_CF.Enable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Off"/>
+<Item Value="1" Text="On"/></List>
+</Bits>
+</Data>
+<Data Name="BaseChangeCf.Width1_OC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BaseChangeCf.Depth1_OC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BaseChangeCf.Width1_LE">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BaseChangeCf.Depth1_LE">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BaseChangeCf.Width2_OC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BaseChangeCf.Depth2_OC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BaseChangeCf.Width2_LE">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BaseChangeCf.Depth2_LE">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BaseChangeCf.Width_CL">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BaseChangeCf.Depth_CL">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BaseChangeCf.Width_TK">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BaseChangeCf.Depth_TK">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SystemConfiguration_CF.InputX">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SystemConfiguration_CF.InputY">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SystemConfiguration_CF.InputZ">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SystemConfiguration_CF.OutputR_X">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SystemConfiguration_CF.OutputR_Y">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SystemConfiguration_CF.OutputR_Z">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SystemConfiguration_CF.OutputL_X">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SystemConfiguration_CF.OutputL_Y">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SystemConfiguration_CF.OutputL_Z">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DimmingStrategy.MovingThrsValue">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DimmingStrategy.StoppedThrsValue">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DimmingStrategy.DimmingSpeedThrsEN">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DimmingStrategy.LeadingDimmingStgyEN">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.CalibFail">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.ConfFail">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.PWR_SCG">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.PWR_SCS">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.ADBDriverCommOFF">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.CANFail">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="SpeedConf.SpeedHW_ON">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SpeedConf.SpeedHW_OFF">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="HWDelayConf.HWDelay_TM">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="HWDelayConf.HWTraffic_Mngt">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.DiagMUX_BCM">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.DiagMUX_USM">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.DiagMUX_FrCAM">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.DiagMUX_BSWL">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.DiagMUX_BSWR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.DiagMUX_Sonar">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.DiagMUX_IVI">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.DiagMUX_IDM">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.DiagMUX_HEVC">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="VehicleMoving_Conf.VhMoving_Thrs">
+<Bits count="9">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="VehicleMoving_Conf.VhStopped_Thrs">
+<Bits count="9">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="LCU_State.LCUStatus">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_State.CheckSum">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_State.CANRADB">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_State.CANLADB">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_CANFailureFlag.USM_Unavailable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_CANFailureFlag.BCM_Unavailable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_CANFailureFlag.FCAM_Unavailable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_CANFailureFlag.BSWL_Unavailable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_CANFailureFlag.BSWR_Unavailable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_CANFailureFlag.SONAR_Unavailable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_CANFailureFlag.IVI_Unavailable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_CANFailureFlag.IDM_Unavailable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_CANFailureFlag.HEVC_Unavailable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_CANFailureFlag.ATCU_Unavailable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_CANFailureFlag.VDC_Unavailable">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="ADBdriver_FailureStatus">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CANFilter.Filter_TM">
+<Bits count="9">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Delay_Configuration.LeadingONTM">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Delay_Configuration.ClusterONTM">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.DiagMUX_ATCU">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Off"/>
+<Item Value="1" Text="On"/></List>
+</Bits>
+</Data>
+<Data Name="DTC_Inhibition.DiagMUX_VDC">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="LCU_Vsupply.Value">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="secutity accessFingerPrint">
+<Mnemonic>DID_$F011</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="programmingOperationFingerPrint">
+<Comment><![CDATA[Only for programmable ECU]]></Comment>
+<Mnemonic>DID_$F010</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>The value is written by the ECU when executing the SendKey SecurityAccess service</FONT></P>
+<P><FONT size=2>The value can be read in boot loader mode.</FONT></P>]]></Description>
+<Bytes count="16"/>
+</Data>
+<Data Name="vehicleManufacturerECUSoftwareNumber">
+<Mnemonic>DID_$F188</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="IndexSrvData">
+<Mnemonic>INDEX_SRV_DATA</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+<Sent>
+<SentBytes>3E00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1003</SentBytes>
+<DataItem Name="SessionName" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5003</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.ExtendedDiagnostic">
+
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1003</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5003</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Default">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1001</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5001</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Programming">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1002</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5002</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.applicationDataIdentification">
+
+<Comment><![CDATA[Read applicationDataIdentification]]></Comment>
+<Sent>
+<SentBytes>22F182</SentBytes>
+</Sent>
+<Received MinBytes="14">
+<ReplyBytes>62F182</ReplyBytes>
+<DataItem Name="applicationDataIdentification" Ref="1" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierIdentifier">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read systemSupplierIdentifier]]></Comment>
+<Sent>
+<SentBytes>22F18A</SentBytes>
+</Sent>
+<Received MinBytes="67">
+<ReplyBytes>62F18A</ReplyBytes>
+<DataItem Name="systemSupplierIdentifier" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VIN">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VIN]]></Comment>
+<Sent>
+<SentBytes>22F190</SentBytes>
+</Sent>
+<Received MinBytes="20">
+<ReplyBytes>62F190</ReplyBytes>
+<DataItem Name="VIN" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierECUSoftwareNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read systemSupplierECUSoftwareNumber]]></Comment>
+<Sent>
+<SentBytes>22F194</SentBytes>
+</Sent>
+<Received MinBytes="35">
+<ReplyBytes>62F194</ReplyBytes>
+<DataItem Name="systemSupplierECUSoftwareNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.diagnosticVersion">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read diagnosticVersion]]></Comment>
+<Sent>
+<SentBytes>22F1A0</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62F1A0</ReplyBytes>
+<DataItem Name="diagnosticVersion" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="ClearDiagnosticInformation.All">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+<Sent>
+<SentBytes>14FFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>54</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC">
+
+<Comment><![CDATA[DDT2000 Failures page requests / DDT : Unusable for Clip import]]></Comment>
+<Sent>
+<SentBytes>1902FF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+<DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSnapshot">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1904000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590400000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000080</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>59060000000080000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.AgingCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000081</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="8">
+<ReplyBytes>5906000000008100</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.DTCOccurrenceCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000082</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="8">
+<ReplyBytes>5906000000008200</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData">
+
+<Comment><![CDATA[DDT2000 Failures page requests : Unusable in the standard tools of DDT2000 nor for Clip import]]></Comment>
+<Sent>
+<SentBytes>1906000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>590600000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read systemSupplierECUVersionNumber]]></Comment>
+<Sent>
+<SentBytes>22F195</SentBytes>
+</Sent>
+<Received MinBytes="35">
+<ReplyBytes>62F195</ReplyBytes>
+<DataItem Name="systemSupplierECUSoftwareVersionNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ECUSerialNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read ECUSerialNumber]]></Comment>
+<Sent>
+<SentBytes>22F18C</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<ReplyBytes>62F18C</ReplyBytes>
+<DataItem Name="ECUSerialNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerSparePartNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read vehicleManufacturerSparePartNumber]]></Comment>
+<Sent>
+<SentBytes>22F187</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F187</ReplyBytes>
+<DataItem Name="vehicleManufacturerSparePartNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report number of DTC]]></Comment>
+<Sent>
+<SentBytes>1901FF</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>5901FF000000</ReplyBytes>
+<DataItem Name="DTCCount" FirstByte="5"/>
+<DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSupportedDTC">
+
+<Comment><![CDATA[Report supported DTC]]></Comment>
+<Sent>
+<SentBytes>190A</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>590AFF00000000</ReplyBytes>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.AFS_CONF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220407</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>620407</ReplyBytes>
+<DataItem Name="AFS_CONF.Speed_AFS_ON" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="AFS_CONF.Speed_AFS_OFF" Ref="1" FirstByte="5" Endian="Little"/>
+<DataItem Name="AFS_CONF.AFS_mode" Ref="1" FirstByte="6" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.AFS_CONF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E040700000000</SentBytes>
+<DataItem Name="AFS_CONF.Speed_AFS_ON" FirstByte="4" Endian="Little"/>
+<DataItem Name="AFS_CONF.Speed_AFS_OFF" FirstByte="5" Endian="Little"/>
+<DataItem Name="AFS_CONF.AFS_mode" FirstByte="6" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0407</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.ADB_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220400</SentBytes>
+</Sent>
+<Received MinBytes="18">
+<ReplyBytes>620400</ReplyBytes>
+<DataItem Name="ADB_CF.SpeedNormalON" Ref="1" FirstByte="5" Endian="Little"/>
+<DataItem Name="ADB_CF.SpeedNormalOFF" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="ADB_CF.SpeedSportON" Ref="1" FirstByte="6" Endian="Little"/>
+<DataItem Name="ADB_CF.SpeedSportOFF" Ref="1" FirstByte="7" Endian="Little"/>
+<DataItem Name="ADB_CF.WelcomeDelayTM" Ref="1" FirstByte="8" Endian="Little"/>
+<DataItem Name="ADB_CF.WelcomeTM" Ref="1" FirstByte="10" Endian="Little"/>
+<DataItem Name="ADB_CF.GoodbyeDelayTM" Ref="1" FirstByte="12" Endian="Little"/>
+<DataItem Name="ADB_CF.GoodbyeTM" Ref="1" FirstByte="14" Endian="Little"/>
+<DataItem Name="ADB_CF.RemoteLightingTM" Ref="1" FirstByte="16" Endian="Little"/>
+<DataItem Name="ADB_CF.ADBEnable" Ref="1" FirstByte="18" Endian="Little"/>
+<DataItem Name="ADB_CF.MEXModeEnable" Ref="1" FirstByte="18" BitOffset="1" Endian="Little"/>
+<DataItem Name="ADB_CF.ADBRoadtypeEnable" Ref="1" FirstByte="18" BitOffset="2" Endian="Little"/>
+<DataItem Name="ADB_CF.TrafficSide" Ref="1" FirstByte="18" BitOffset="3" Endian="Little"/>
+<DataItem Name="ADB_CF.RemoteLighting" Ref="1" FirstByte="18" BitOffset="4" Endian="Little"/>
+<DataItem Name="ADB_CF.WelcomeScenario" Ref="1" FirstByte="18" BitOffset="5" Endian="Little"/>
+<DataItem Name="ADB_CF.MagicLBHBEnable" Ref="1" FirstByte="18" BitOffset="6" Endian="Little"/>
+<DataItem Name="ADB_CF.Opening" Ref="1" FirstByte="18" BitOffset="7" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataRead.MEXADB_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220401</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620401</ReplyBytes>
+<DataItem Name="MEXADB_CF.MEXMode" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.MEXADB_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E040100</SentBytes>
+<DataItem Name="MEXADB_CF.MEXMode" FirstByte="4" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0401</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.TrafficSignDIM">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220405</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620405</ReplyBytes>
+<DataItem Name="TrafficSignDIM.Configuration" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.TrafficSignDIM">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E040500</SentBytes>
+<DataItem Name="TrafficSignDIM.Configuration" FirstByte="4" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0405</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Highway">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220404</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620404</ReplyBytes>
+<DataItem Name="Highway.Configuration" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Highway">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E040400</SentBytes>
+<DataItem Name="Highway.Configuration" FirstByte="4" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0404</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.ADB_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E0400000000000000000000000000000000</SentBytes>
+<DataItem Name="ADB_CF.SpeedNormalON" FirstByte="5" Endian="Little"/>
+<DataItem Name="ADB_CF.SpeedNormalOFF" FirstByte="4" Endian="Little"/>
+<DataItem Name="ADB_CF.SpeedSportON" FirstByte="6" Endian="Little"/>
+<DataItem Name="ADB_CF.SpeedSportOFF" FirstByte="7" Endian="Little"/>
+<DataItem Name="ADB_CF.WelcomeDelayTM" FirstByte="8" Endian="Little"/>
+<DataItem Name="ADB_CF.WelcomeTM" FirstByte="10" Endian="Little"/>
+<DataItem Name="ADB_CF.GoodbyeDelayTM" FirstByte="12" Endian="Little"/>
+<DataItem Name="ADB_CF.GoodbyeTM" FirstByte="14" Endian="Little"/>
+<DataItem Name="ADB_CF.RemoteLightingTM" FirstByte="16" Endian="Little"/>
+<DataItem Name="ADB_CF.ADBEnable" FirstByte="18" Endian="Little"/>
+<DataItem Name="ADB_CF.MEXModeEnable" FirstByte="18" BitOffset="1" Endian="Little"/>
+<DataItem Name="ADB_CF.ADBRoadtypeEnable" FirstByte="18" BitOffset="2" Endian="Little"/>
+<DataItem Name="ADB_CF.TrafficSide" FirstByte="18" BitOffset="3" Endian="Little"/>
+<DataItem Name="ADB_CF.RemoteLighting" FirstByte="18" BitOffset="4" Endian="Little"/>
+<DataItem Name="ADB_CF.WelcomeScenario" FirstByte="18" BitOffset="5" Endian="Little"/>
+<DataItem Name="ADB_CF.MagicLBHBEnable" FirstByte="18" BitOffset="6" Endian="Little"/>
+<DataItem Name="ADB_CF.Opening" FirstByte="18" BitOffset="7" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0400</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Motorshow">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220402</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620402</ReplyBytes>
+<DataItem Name="Motorshow.Configuration" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Motorshow">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E040200</SentBytes>
+<DataItem Name="Motorshow.Configuration" FirstByte="4" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0402</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.WelcomeStyle">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220403</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620403</ReplyBytes>
+<DataItem Name="WelcomeStyle.Configuration" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.WelcomeStyle">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E040300</SentBytes>
+<DataItem Name="WelcomeStyle.Configuration" FirstByte="4" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0403</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.CANFilter">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220406</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620406</ReplyBytes>
+<DataItem Name="CANFilter.Filter_TM" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.CANFilter">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E04060000</SentBytes>
+<DataItem Name="CANFilter.Filter_TM" FirstByte="4" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0406</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.TrafficDimming_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220408</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620408</ReplyBytes>
+<DataItem Name="TrafficDimming_CF.Value" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="TrafficDimming_CF.Enable" Ref="1" FirstByte="5" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.TrafficDimming_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E04080000</SentBytes>
+<DataItem Name="TrafficDimming_CF.Value" FirstByte="4" Endian="Little"/>
+<DataItem Name="TrafficDimming_CF.Enable" FirstByte="5" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0408</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerECUHardwareNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read vehicleManufacturerECUHardwareNumber]]></Comment>
+<Sent>
+<SentBytes>22F191</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F191</ReplyBytes>
+<DataItem Name="vehicleManufacturerECUHardwareNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerECUSoftwareNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read autoconfigurationFingerPrint]]></Comment>
+<Sent>
+<SentBytes>22F188</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F188</ReplyBytes>
+<DataItem Name="vehicleManufacturerECUSoftwareNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.TunnelBoundary_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220409</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620409</ReplyBytes>
+<DataItem Name="TunnelBoundary_CF.TunnelMarging" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="TunnelBoundary_CF.TrafficMarging" Ref="1" FirstByte="5" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.TunnelBoundary_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E04090000</SentBytes>
+<DataItem Name="TunnelBoundary_CF.TunnelMarging" FirstByte="4" Endian="Little"/>
+<DataItem Name="TunnelBoundary_CF.TrafficMarging" FirstByte="5" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0409</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Delay_Configuration">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220410</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>620410</ReplyBytes>
+<DataItem Name="Delay_Configuration.LeadingONTM" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="Delay_Configuration.LostTM" Ref="1" FirstByte="5" Endian="Little"/>
+<DataItem Name="Delay_Configuration.ClusterONTM" Ref="1" FirstByte="6" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Delay_Configuration">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E0410000000</SentBytes>
+<DataItem Name="Delay_Configuration.LeadingONTM" FirstByte="4" Endian="Little"/>
+<DataItem Name="Delay_Configuration.LostTM" FirstByte="5" Endian="Little"/>
+<DataItem Name="Delay_Configuration.ClusterONTM" FirstByte="6" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0410</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.BSW_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220411</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620411</ReplyBytes>
+<DataItem Name="BSW_CF.DelayValue" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="BSW_CF.Enable" Ref="1" FirstByte="5" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.BSW_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E04110000</SentBytes>
+<DataItem Name="BSW_CF.DelayValue" FirstByte="4" Endian="Little"/>
+<DataItem Name="BSW_CF.Enable" FirstByte="5" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0411</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.BaseChangeCf">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220418</SentBytes>
+</Sent>
+<Received MinBytes="15">
+<ReplyBytes>620418</ReplyBytes>
+<DataItem Name="BaseChangeCf.Width1_OC" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Depth1_OC" Ref="1" FirstByte="5" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Width1_LE" Ref="1" FirstByte="6" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Depth1_LE" Ref="1" FirstByte="7" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Width2_OC" Ref="1" FirstByte="8" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Depth2_OC" Ref="1" FirstByte="9" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Width2_LE" Ref="1" FirstByte="10" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Depth2_LE" Ref="1" FirstByte="11" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Width_CL" Ref="1" FirstByte="12" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Depth_CL" Ref="1" FirstByte="13" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Width_TK" Ref="1" FirstByte="14" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Depth_TK" Ref="1" FirstByte="15" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.BaseChangeCf">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E0418000000000000000000000000</SentBytes>
+<DataItem Name="BaseChangeCf.Width1_OC" FirstByte="4" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Depth1_OC" FirstByte="5" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Width1_LE" FirstByte="6" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Depth1_LE" FirstByte="7" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Width2_OC" FirstByte="8" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Depth2_OC" FirstByte="9" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Width2_LE" FirstByte="10" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Depth2_LE" FirstByte="11" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Width_CL" FirstByte="12" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Depth_CL" FirstByte="13" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Width_TK" FirstByte="14" Endian="Little"/>
+<DataItem Name="BaseChangeCf.Depth_TK" FirstByte="15" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0418</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SystemConfiguration_CF">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220415</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<ReplyBytes>620415</ReplyBytes>
+<DataItem Name="SystemConfiguration_CF.InputX" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.InputY" Ref="1" FirstByte="6" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.InputZ" Ref="1" FirstByte="8" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.OutputR_X" Ref="1" FirstByte="10" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.OutputR_Y" Ref="1" FirstByte="12" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.OutputR_Z" Ref="1" FirstByte="14" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.OutputL_X" Ref="1" FirstByte="16" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.OutputL_Y" Ref="1" FirstByte="18" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.OutputL_Z" Ref="1" FirstByte="20" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataRead.DimmingStrategy">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220412</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>620412</ReplyBytes>
+<DataItem Name="DimmingStrategy.MovingThrsValue" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="DimmingStrategy.StoppedThrsValue" Ref="1" FirstByte="5" Endian="Little"/>
+<DataItem Name="DimmingStrategy.DimmingSpeedThrsEN" Ref="1" FirstByte="6" Endian="Little"/>
+<DataItem Name="DimmingStrategy.LeadingDimmingStgyEN" Ref="1" FirstByte="6" BitOffset="1" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.DimmingStrategy">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E0412000000</SentBytes>
+<DataItem Name="DimmingStrategy.MovingThrsValue" FirstByte="4" Endian="Little"/>
+<DataItem Name="DimmingStrategy.StoppedThrsValue" FirstByte="5" Endian="Little"/>
+<DataItem Name="DimmingStrategy.DimmingSpeedThrsEN" FirstByte="6" Endian="Little"/>
+<DataItem Name="DimmingStrategy.LeadingDimmingStgyEN" FirstByte="6" BitOffset="1" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0412</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.DTC_Inhibition">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220414</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>620414</ReplyBytes>
+<DataItem Name="DTC_Inhibition.CalibFail" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.ConfFail" Ref="1" FirstByte="4" BitOffset="1" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.PWR_SCG" Ref="1" FirstByte="4" BitOffset="2" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.PWR_SCS" Ref="1" FirstByte="4" BitOffset="3" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.ADBDriverCommOFF" Ref="1" FirstByte="4" BitOffset="4" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.CANFail" Ref="1" FirstByte="4" BitOffset="5" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_BCM" Ref="1" FirstByte="4" BitOffset="6" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_USM" Ref="1" FirstByte="4" BitOffset="7" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_FrCAM" Ref="1" FirstByte="5" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_BSWL" Ref="1" FirstByte="5" BitOffset="1" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_BSWR" Ref="1" FirstByte="5" BitOffset="2" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_Sonar" Ref="1" FirstByte="5" BitOffset="3" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_IVI" Ref="1" FirstByte="5" BitOffset="4" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_IDM" Ref="1" FirstByte="5" BitOffset="5" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_HEVC" Ref="1" FirstByte="5" BitOffset="6" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_ATCU" Ref="1" FirstByte="5" BitOffset="7" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_VDC" Ref="1" FirstByte="6" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataWrite.DTC_Inhibition">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E0414000000</SentBytes>
+<DataItem Name="DTC_Inhibition.CalibFail" FirstByte="4" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.ConfFail" FirstByte="4" BitOffset="1" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.PWR_SCG" FirstByte="4" BitOffset="2" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.PWR_SCS" FirstByte="4" BitOffset="3" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.ADBDriverCommOFF" FirstByte="4" BitOffset="4" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.CANFail" FirstByte="4" BitOffset="5" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_BCM" FirstByte="4" BitOffset="6" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_USM" FirstByte="4" BitOffset="7" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_FrCAM" FirstByte="5" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_BSWL" FirstByte="5" BitOffset="1" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_BSWR" FirstByte="5" BitOffset="2" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_Sonar" FirstByte="5" BitOffset="3" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_IVI" FirstByte="5" BitOffset="4" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_IDM" FirstByte="5" BitOffset="5" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_HEVC" FirstByte="5" BitOffset="6" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_ATCU" FirstByte="5" BitOffset="7" Endian="Little"/>
+<DataItem Name="DTC_Inhibition.DiagMUX_VDC" FirstByte="6" BitOffset="7"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0414</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SpeedConf">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220416</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620416</ReplyBytes>
+<DataItem Name="SpeedConf.SpeedHW_ON" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="SpeedConf.SpeedHW_OFF" Ref="1" FirstByte="5" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SpeedConf">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E04160000</SentBytes>
+<DataItem Name="SpeedConf.SpeedHW_ON" FirstByte="4" Endian="Little"/>
+<DataItem Name="SpeedConf.SpeedHW_OFF" FirstByte="5" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0416</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.HWDelayConf">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220417</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620417</ReplyBytes>
+<DataItem Name="HWDelayConf.HWDelay_TM" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="HWDelayConf.HWTraffic_Mngt" Ref="1" FirstByte="5" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.HWDelayConf">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E04170000</SentBytes>
+<DataItem Name="HWDelayConf.HWDelay_TM" FirstByte="4" Endian="Little"/>
+<DataItem Name="HWDelayConf.HWTraffic_Mngt" FirstByte="5" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0417</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.VehicleMoving_Conf">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220413</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>620413</ReplyBytes>
+<DataItem Name="VehicleMoving_Conf.VhMoving_Thrs" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="VehicleMoving_Conf.VhStopped_Thrs" Ref="1" FirstByte="6" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.VehicleMoving_Conf">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E041300000000</SentBytes>
+<DataItem Name="VehicleMoving_Conf.VhMoving_Thrs" FirstByte="4" Endian="Little"/>
+<DataItem Name="VehicleMoving_Conf.VhStopped_Thrs" FirstByte="6" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0413</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.LCU_Vsupply">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220466</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620466</ReplyBytes>
+<DataItem Name="LCU_Vsupply.Value" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.LCU_State">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220330</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620330</ReplyBytes>
+<DataItem Name="LCU_State.LCUStatus" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="LCU_State.CheckSum" Ref="1" FirstByte="4" BitOffset="1" Endian="Little"/>
+<DataItem Name="LCU_State.CANRADB" Ref="1" FirstByte="4" BitOffset="2" Endian="Little"/>
+<DataItem Name="LCU_State.CANLADB" Ref="1" FirstByte="4" BitOffset="3" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataRead.LCU_CANFailureFlag">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220359</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620359</ReplyBytes>
+<DataItem Name="LCU_CANFailureFlag.BCM_Unavailable" Ref="1" FirstByte="4" BitOffset="7" Endian="Little"/>
+<DataItem Name="LCU_CANFailureFlag.USM_Unavailable" Ref="1" FirstByte="4" BitOffset="6" Endian="Little"/>
+<DataItem Name="LCU_CANFailureFlag.FCAM_Unavailable" Ref="1" FirstByte="4" BitOffset="5" Endian="Little"/>
+<DataItem Name="LCU_CANFailureFlag.BSWL_Unavailable" Ref="1" FirstByte="4" BitOffset="4" Endian="Little"/>
+<DataItem Name="LCU_CANFailureFlag.BSWR_Unavailable" Ref="1" FirstByte="4" BitOffset="3" Endian="Little"/>
+<DataItem Name="LCU_CANFailureFlag.SONAR_Unavailable" Ref="1" FirstByte="4" BitOffset="2" Endian="Little"/>
+<DataItem Name="LCU_CANFailureFlag.IVI_Unavailable" Ref="1" FirstByte="4" BitOffset="1" Endian="Little"/>
+<DataItem Name="LCU_CANFailureFlag.IDM_Unavailable" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="LCU_CANFailureFlag.HEVC_Unavailable" Ref="1" FirstByte="5" BitOffset="7" Endian="Little"/>
+<DataItem Name="LCU_CANFailureFlag.ATCU_Unavailable" Ref="1" FirstByte="5" BitOffset="6" Endian="Little"/>
+<DataItem Name="LCU_CANFailureFlag.VDC_Unavailable" Ref="1" FirstByte="5" BitOffset="5" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataRead.ADBdriver_FailureStatus">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220357</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620357</ReplyBytes>
+<DataItem Name="ADBdriver_FailureStatus" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SystemConfiguration_CF">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E0415000000000000000000000000000000000000</SentBytes>
+<DataItem Name="SystemConfiguration_CF.InputX" FirstByte="4" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.InputY" FirstByte="6" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.InputZ" FirstByte="8" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.OutputR_X" FirstByte="10" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.OutputR_Y" FirstByte="12" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.OutputR_Z" FirstByte="14" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.OutputL_X" FirstByte="16" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.OutputL_Y" FirstByte="18" Endian="Little"/>
+<DataItem Name="SystemConfiguration_CF.OutputL_Z" FirstByte="20" Endian="Little"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0415</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.IndexSrvData">
+
+<Sent>
+<SentBytes>22F011</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F011</ReplyBytes>
+<DataItem Name="IndexSrvData" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="BCM_COMMUNICATION_FAILURE" DTC="57679">
+<Mnemonic>BCM_COMMUNICATION_FAILURE</Mnemonic>
+
+<Test Type="135" Severity="0">
+<Description>BCM_Missing_Frame</Description>
+</Test>
+</Device>
+<Device Name="USM_COMMUNICATION_FAILURE" DTC="57691">
+<Mnemonic>USM_COMMUNICATION_FAILURE</Mnemonic>
+
+<Test Type="135" Severity="0">
+<Description>USM_Missing_Frame</Description>
+</Test>
+</Device>
+<Device Name="FrCAM_COMMUNICATION_FAILURE" DTC="57963">
+<Mnemonic>FrCAM_COMMUNICATION_FAILURE</Mnemonic>
+
+<Test Type="135" Severity="0">
+<Description>FrCAM_Missing_Frame</Description>
+</Test>
+</Device>
+<Device Name="BSWL_COMMUNICATION_FAILURE" DTC="57708">
+<Mnemonic>BSWL_COMMUNICATION_FAILURE</Mnemonic>
+
+<Test Type="135" Severity="0">
+<Description>BSWL_Missing_Frame</Description>
+</Test>
+</Device>
+<Device Name="BSWR_COMMUNICATION_FAILURE" DTC="57710">
+<Mnemonic>BSWR_COMMUNICATION_FAILURE</Mnemonic>
+
+<Test Type="135" Severity="0">
+<Description>BSWR_Missing_Frame</Description>
+</Test>
+</Device>
+<Device Name="SONAR_COMMUNICATION_FAILURE" DTC="57701">
+<Mnemonic>SONAR_COMMUNICATION_FAILURE</Mnemonic>
+
+<Test Type="135" Severity="0">
+<Description>Sonar_Missing_Frame</Description>
+</Test>
+</Device>
+<Device Name="IVI_COMMUNICATION_FAILURE" DTC="57684">
+<Mnemonic>IVI_COMMUNICATION_FAILURE</Mnemonic>
+
+<Test Type="135" Severity="0">
+<Description>IVI_Missing_Frame</Description>
+</Test>
+</Device>
+<Device Name="IDM_COMMUNICATION_FAILURE" DTC="57718">
+<Mnemonic>IDM_COMMUNICATION_FAILURE</Mnemonic>
+
+<Test Type="135" Severity="0">
+<Description>IDM_Missing_Frame</Description>
+</Test>
+</Device>
+<Device Name="HEVC_COMMUNICATION_FAILURE" DTC="57667">
+<Mnemonic>HEVC_COMMUNICATION_FAILURE</Mnemonic>
+
+<Test Type="135" Severity="0">
+<Description>HEVC_Missing_Frame</Description>
+</Test>
+</Device>
+<Device Name="LCU_Fail" DTC="38448">
+<Mnemonic>LCU_FAIL</Mnemonic>
+
+<Test Type="136" Severity="0">
+<Description>ADBDriver_COMM_OFF</Description>
+</Test><Test Type="85" Severity="0">
+<Description>LCU_CONF_FAIL</Description>
+</Test><Test Type="22" Severity="0">
+<Description>LCU_PWR_SCG</Description>
+</Test><Test Type="23" Severity="0">
+<Description>LCU_PWR_SCS</Description>
+</Test>
+</Device>
+<Device Name="VDC_COMMUNICATION_FAILURE" DTC="57672">
+<Mnemonic>VDC_COMMUNICATION_FAILURE</Mnemonic>
+
+<Test Type="135" Severity="0">
+<Description>VDC_Missing_Frame</Description>
+</Test>
+</Device>
+<Device Name="ATCU_COMMUNICATION_FAILURE" DTC="57665">
+<Mnemonic>ATCU_COMMUNICATION_FAILURE</Mnemonic>
+
+<Test Type="135" Severity="0">
+<Description>ATCU_Missing_Frame</Description>
+</Test>
+</Device>
+<Device Name="V2-CAN_BusOFF" DTC="49269">
+<Mnemonic>V2-CAN_BUSOFF</Mnemonic>
+
+<Test Type="0" Severity="0">
+<Description>Bus_V2_OFF</Description>
+</Test>
+</Device>
+<Device Name="IC-CAN_BusOFF" DTC="49272">
+<Mnemonic>IC-CAN_BUSOFF</Mnemonic>
+
+<Test Type="0" Severity="0">
+<Description>BusCAN-IC_OFF</Description>
+</Test>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Ident">
+
+<Screen Name="Ident1" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+
+
+<Display Width="3815" Color="16777215" DataName="systemSupplierECUSoftwareNumber" RequestName="DataRead.systemSupplierECUSoftwareNumber">
+<Rectangle Left="240" Top="360" Height="300" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3860" Color="16777215" DataName="systemSupplierECUSoftwareVersionNumber" RequestName="DataRead.systemSupplierECUSoftwareVersionNumber">
+<Rectangle Left="240" Top="720" Height="300" Width="4800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Config">
+
+<Screen Name="ADB - Config" Color="16777088" WindowState="0" Width="9780" Height="28740">
+
+<Label Text="READ" Color="16744448" Alignment="2">
+<Rectangle Left="3480" Top="120" Height="360" Width="1920"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="WRITE" Color="16744448" Alignment="2">
+<Rectangle Left="6120" Top="120" Height="360" Width="1920"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Send">
+<Rectangle Left="8280" Top="600" Height="5100" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="0" RequestName="DataRead.ADB_CF"/><Send Delay="0" RequestName="StartDiagnosticSession.Default"/>
+</Button>
+
+<Display Width="3335" Color="8454143" DataName="ADB_CF.SpeedNormalOFF" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="600" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3335" Color="8454143" DataName="ADB_CF.SpeedNormalON" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="900" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3335" Color="8454143" DataName="ADB_CF.SpeedSportON" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="1200" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3335" Color="8454143" DataName="ADB_CF.SpeedSportOFF" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="1500" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3305" Color="8454143" DataName="ADB_CF.WelcomeDelayTM" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="1800" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3305" Color="8454143" DataName="ADB_CF.WelcomeTM" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="2100" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3305" Color="8454143" DataName="ADB_CF.GoodbyeDelayTM" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="2400" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3290" Color="8454143" DataName="ADB_CF.GoodbyeTM" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="2700" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3290" Color="8454143" DataName="ADB_CF.RemoteLightingTM" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="3000" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3275" Color="8454143" DataName="ADB_CF.ADBEnable" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="3300" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3275" Color="8454143" DataName="ADB_CF.MEXModeEnable" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="3600" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3275" Color="8454143" DataName="ADB_CF.ADBRoadtypeEnable" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="3900" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3275" Color="8454143" DataName="ADB_CF.TrafficSide" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="4200" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3275" Color="8454143" DataName="ADB_CF.RemoteLighting" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="4500" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="8454143" DataName="ADB_CF.WelcomeScenario" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="4800" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="8454143" DataName="ADB_CF.MagicLBHBEnable" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="5100" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="8454143" DataName="ADB_CF.Opening" RequestName="DataRead.ADB_CF">
+<Rectangle Left="120" Top="5400" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="8454143" DataName="MEXADB_CF.MEXMode" RequestName="DataRead.MEXADB_CF">
+<Rectangle Left="120" Top="5700" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="8454143" DataName="Motorshow.Configuration" RequestName="DataRead.Motorshow">
+<Rectangle Left="120" Top="6000" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="8454143" DataName="WelcomeStyle.Configuration" RequestName="DataRead.WelcomeStyle">
+<Rectangle Left="120" Top="6300" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3275" Color="8454143" DataName="Highway.Configuration" RequestName="DataRead.Highway">
+<Rectangle Left="120" Top="6600" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3275" Color="8454143" DataName="TrafficSignDIM.Configuration" RequestName="DataRead.TrafficSignDIM">
+<Rectangle Left="120" Top="6900" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3275" Color="8454143" DataName="CANFilter.Filter_TM" RequestName="DataRead.CANFilter">
+<Rectangle Left="120" Top="7200" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3275" Color="8454143" DataName="AFS_CONF.Speed_AFS_ON" RequestName="DataRead.AFS_CONF">
+<Rectangle Left="120" Top="7500" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3275" Color="8454143" DataName="AFS_CONF.Speed_AFS_OFF" RequestName="DataRead.AFS_CONF">
+<Rectangle Left="120" Top="7800" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3275" Color="8454143" DataName="AFS_CONF.AFS_mode" RequestName="DataRead.AFS_CONF">
+<Rectangle Left="120" Top="8100" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="8454143" DataName="TrafficDimming_CF.Value" RequestName="DataRead.TrafficDimming_CF">
+<Rectangle Left="120" Top="8400" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3255" Color="8454143" DataName="TrafficDimming_CF.Enable" RequestName="DataRead.TrafficDimming_CF">
+<Rectangle Left="120" Top="8700" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="8454143" DataName="TunnelBoundary_CF.TunnelMarging" RequestName="DataRead.TunnelBoundary_CF">
+<Rectangle Left="120" Top="9000" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="8454143" DataName="TunnelBoundary_CF.TrafficMarging" RequestName="DataRead.TunnelBoundary_CF">
+<Rectangle Left="120" Top="9300" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3275" Color="8454143" DataName="Delay_Configuration.LeadingONTM" RequestName="DataRead.Delay_Configuration">
+<Rectangle Left="120" Top="9600" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3275" Color="8454143" DataName="Delay_Configuration.LostTM" RequestName="DataRead.Delay_Configuration">
+<Rectangle Left="120" Top="9900" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="8454143" DataName="Delay_Configuration.ClusterONTM" RequestName="DataRead.Delay_Configuration">
+<Rectangle Left="120" Top="10200" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3245" Color="8454143" DataName="BSW_CF.DelayValue" RequestName="DataRead.BSW_CF">
+<Rectangle Left="120" Top="10500" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3245" Color="8454143" DataName="BSW_CF.Enable" RequestName="DataRead.BSW_CF">
+<Rectangle Left="120" Top="10800" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3225" Color="8454143" DataName="DimmingStrategy.MovingThrsValue" RequestName="DataRead.DimmingStrategy">
+<Rectangle Left="120" Top="11100" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3230" Color="8454143" DataName="DimmingStrategy.StoppedThrsValue" RequestName="DataRead.DimmingStrategy">
+<Rectangle Left="120" Top="11400" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3695" Color="8454143" DataName="DimmingStrategy.DimmingSpeedThrsEN" RequestName="DataRead.DimmingStrategy">
+<Rectangle Left="120" Top="11700" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3695" Color="8454143" DataName="DimmingStrategy.LeadingDimmingStgyEN" RequestName="DataRead.DimmingStrategy">
+<Rectangle Left="120" Top="12000" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3230" Color="8454143" DataName="DTC_Inhibition.CalibFail" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="12300" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3215" Color="8454143" DataName="DTC_Inhibition.ConfFail" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="12600" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3215" Color="8454143" DataName="DTC_Inhibition.PWR_SCG" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="12900" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3230" Color="8454143" DataName="DTC_Inhibition.PWR_SCS" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="13200" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3230" Color="8454143" DataName="DTC_Inhibition.ADBDriverCommOFF" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="13500" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3215" Color="8454143" DataName="DTC_Inhibition.CANFail" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="13800" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3215" Color="8454143" DataName="DTC_Inhibition.DiagMUX_BCM" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="14100" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DTC_Inhibition.DiagMUX_USM" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="14400" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3185" Color="8454143" DataName="DTC_Inhibition.DiagMUX_FrCAM" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="14700" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DTC_Inhibition.DiagMUX_BSWL" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="15000" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="DTC_Inhibition.DiagMUX_BSWR" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="15300" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3185" Color="8454143" DataName="DTC_Inhibition.DiagMUX_Sonar" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="15600" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3170" Color="8454143" DataName="DTC_Inhibition.DiagMUX_IVI" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="15900" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3170" Color="8454143" DataName="DTC_Inhibition.DiagMUX_IDM" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="16200" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3155" Color="8454143" DataName="DTC_Inhibition.DiagMUX_HEVC" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="16500" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="8454143" DataName="DTC_Inhibition.DiagMUX_ATCU" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="16800" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3140" Color="8454143" DataName="DTC_Inhibition.DiagMUX_VDC" RequestName="DataRead.DTC_Inhibition">
+<Rectangle Left="120" Top="17040" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3110" Color="8454143" DataName="SystemConfiguration_CF.InputX" RequestName="DataRead.SystemConfiguration_CF">
+<Rectangle Left="120" Top="17400" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3110" Color="8454143" DataName="SystemConfiguration_CF.InputY" RequestName="DataRead.SystemConfiguration_CF">
+<Rectangle Left="120" Top="17700" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3110" Color="8454143" DataName="SystemConfiguration_CF.InputZ" RequestName="DataRead.SystemConfiguration_CF">
+<Rectangle Left="120" Top="18000" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3185" Color="8454143" DataName="SystemConfiguration_CF.OutputR_X" RequestName="DataRead.SystemConfiguration_CF">
+<Rectangle Left="120" Top="18300" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="SystemConfiguration_CF.OutputR_Y" RequestName="DataRead.SystemConfiguration_CF">
+<Rectangle Left="120" Top="18600" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="SystemConfiguration_CF.OutputR_Z" RequestName="DataRead.SystemConfiguration_CF">
+<Rectangle Left="120" Top="18900" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3200" Color="8454143" DataName="SystemConfiguration_CF.OutputL_X" RequestName="DataRead.SystemConfiguration_CF">
+<Rectangle Left="120" Top="19200" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3185" Color="8454143" DataName="SystemConfiguration_CF.OutputL_Y" RequestName="DataRead.SystemConfiguration_CF">
+<Rectangle Left="120" Top="19500" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3185" Color="8454143" DataName="SystemConfiguration_CF.OutputL_Z" RequestName="DataRead.SystemConfiguration_CF">
+<Rectangle Left="120" Top="19800" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3125" Color="8454143" DataName="BaseChangeCf.Width1_OC" RequestName="DataRead.BaseChangeCf">
+<Rectangle Left="120" Top="20100" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3125" Color="8454143" DataName="BaseChangeCf.Depth1_OC" RequestName="DataRead.BaseChangeCf">
+<Rectangle Left="120" Top="20400" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3125" Color="8454143" DataName="BaseChangeCf.Width1_LE" RequestName="DataRead.BaseChangeCf">
+<Rectangle Left="120" Top="20700" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3110" Color="8454143" DataName="BaseChangeCf.Depth1_LE" RequestName="DataRead.BaseChangeCf">
+<Rectangle Left="120" Top="21000" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3110" Color="8454143" DataName="BaseChangeCf.Width2_OC" RequestName="DataRead.BaseChangeCf">
+<Rectangle Left="120" Top="21300" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3110" Color="8454143" DataName="BaseChangeCf.Depth2_OC" RequestName="DataRead.BaseChangeCf">
+<Rectangle Left="120" Top="21600" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3110" Color="8454143" DataName="BaseChangeCf.Width2_LE" RequestName="DataRead.BaseChangeCf">
+<Rectangle Left="120" Top="21900" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3110" Color="8454143" DataName="BaseChangeCf.Depth2_LE" RequestName="DataRead.BaseChangeCf">
+<Rectangle Left="120" Top="22200" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="BaseChangeCf.Width_CL" RequestName="DataRead.BaseChangeCf">
+<Rectangle Left="120" Top="22500" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3095" Color="8454143" DataName="BaseChangeCf.Depth_CL" RequestName="DataRead.BaseChangeCf">
+<Rectangle Left="120" Top="22800" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="8454143" DataName="BaseChangeCf.Width_TK" RequestName="DataRead.BaseChangeCf">
+<Rectangle Left="120" Top="23100" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="8454143" DataName="BaseChangeCf.Depth_TK" RequestName="DataRead.BaseChangeCf">
+<Rectangle Left="120" Top="23400" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="8454143" DataName="SpeedConf.SpeedHW_ON" RequestName="DataRead.SpeedConf">
+<Rectangle Left="120" Top="23700" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="8454143" DataName="SpeedConf.SpeedHW_OFF" RequestName="DataRead.SpeedConf">
+<Rectangle Left="120" Top="24000" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="8454143" DataName="HWDelayConf.HWDelay_TM" RequestName="DataRead.HWDelayConf">
+<Rectangle Left="120" Top="24300" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3065" Color="8454143" DataName="HWDelayConf.HWTraffic_Mngt" RequestName="DataRead.HWDelayConf">
+<Rectangle Left="120" Top="24600" Height="255" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="0" Color="16777215" DataName="ADB_CF.SpeedNormalOFF" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="600" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.SpeedNormalON" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="900" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.SpeedSportON" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="1200" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.SpeedSportOFF" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="1500" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.WelcomeDelayTM" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="1800" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.WelcomeTM" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="2100" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.GoodbyeDelayTM" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="2400" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.GoodbyeTM" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="2700" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.RemoteLightingTM" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="3000" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.ADBEnable" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="3300" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.MEXModeEnable" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="3600" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.ADBRoadtypeEnable" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="3900" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.TrafficSide" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="4200" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.RemoteLighting" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="4500" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.WelcomeScenario" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="4800" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.MagicLBHBEnable" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="5100" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="ADB_CF.Opening" RequestName="DataWrite.ADB_CF">
+<Rectangle Left="6120" Top="5400" Height="255" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

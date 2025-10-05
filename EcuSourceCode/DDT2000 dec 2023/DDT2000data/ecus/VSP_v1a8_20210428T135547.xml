@@ -1,0 +1,2843 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+  <Generator name="DDT2000 XML library" version="2.3.0.0" date="2021-04-23T13:11"/>
+  <ddt:Target Name="VSP_v1a8" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="DOUICHI Ilias (renexter) &lt;ilias.douichi-extern@renault.com&gt;" href="VSP_v1a8_20210428T135547.xml" upload="4/28/2021" group="VSP"><Description><![CDATA[********************          HISTORY      ********************
+Version DD/MM/YYYY: Change description
+
+v0.1 31/mar/2017  : Initial Version
+v0.2  13/Jul/2017  : Name modified as VSP instead of VSP_R0-13.
+v0.3  03/Oct/2017 : Added  X10ph2 vehicle project
+v0.4  10/Oct/2017 : Added Diag mux DTCs as per DTS V1.5
+                                 Added DID $4A01 as per DTS V1.5
+                                 Other DIDs & LIDs added as per DTS V1.5.
+                                 Deleted LID $2101-Vehicle group information data.
+         21/Feb/2018 : DTC $9341 55 Missing configuration is added as per DED_VSP_V1.3 (EN).doc.
+v0.5  29/Mar/2018 : Modification done as per DTS V1.8 especially the LIDs section.
+         29-May-2018 : DID F187 is deleted as we have this info in LID $2180 itself.
+
+V0.6  6-Jun-2018    : Communication Failure of ATCU ECU DTC is changed from $E15D to E141 as per DUD as discussed with George
+
+V0.7 27/07/2018: [Hariharan sheela] Auto identification : Vdiag Modified
+Snapshot requests added
+
+V0.8 09/08/2018: (Tutuianu George) Modified PartNumber.BasicPartList (28115 --> 256A8)	
+
+V0.9 09/08/2018: (Tutuianu George) Modified PartNumber.BasicPartList (283C2 --> 285R7)	
+
+V1.0 27/11/2018: autoident added 04 U2F 004 007
+
+V1.1 22/01/2019 : AutoIdent added  04 U2F 005 001
+                               AutoIdent added  04 U2F 004 005
+                              Add configuration parameters
+                                      - DTC_SWITCH_ENABLE
+                                      - DTC_LED_ENABLE
+
+V1a2 09/05/2019 : AutoIdent added  04 U2F 00 05 00 04
+                               Add configuration parameters
+                                      - ENG_SPD_TRESH
+
+V1a3 11/06/2019 : AutoIdent added  04 U2F 00 05 00 07
+                               AutoIdent added  04 U2F 00 05 00 97
+
+V1a4 13/12/2019 : AutoIdent added  04 U2F 00 05 00 08
+                               Project XJL added
+                               1906 / 1904 services updated
+                               22F0D0/22FOD1 updated 
+                               Requests tagged maintainability report
+                               ECM/ATCU config screen update
+V1a8 22/04/2021:AutoIdent updated 04 U2F 00 05 00 09
+                             only X07 sxs applicability 
+                             lower part ref updated                      
+
+
+
+
+
+]]></Description><Projects xmlns=""><Edison/><VS11/><x07Ph2/></Projects>
+    <Checks Version="V1.11" Date="20210428T135525">
+      <Ctrl Type="DDT2000" Warning="11" Error="0"/>
+      <Ctrl Type="CPDD" Warning="50" Error="0"/>
+      <Ctrl Type="DAIMLER-ODX" Warning="0" Error="0"/>
+      <Ctrl Type="ALLIANCE-ODX" Warning="0" Error="0"/>
+    </Checks>
+    
+    <Function Name="VSP" Address="129" LogicalAddress="0081"/>
+    <Language Name="Français" Reference="1"/>
+    
+    <DateOfficialisation>06/06/2018 13:14:03</DateOfficialisation>
+    <Failures Name="DTC Failures" Id="3"/>
+    <PowerSupply>
+      <Ground/>
+      <Vbat/>
+      <AfterContact/>
+    </PowerSupply>
+    <CAN BaudRate="10400" Multipoint="1">
+      <SendId>
+        <CANId Value="1855"/>
+      </SendId>
+      <ReceiveId>
+        <CANId Value="1889"/>
+      </ReceiveId>
+    </CAN>
+    <AutoIdents>
+      <AutoIdent DiagVersion="4" Supplier="U2F" Soft="0005" Version="0009"/>
+    </AutoIdents>
+    <Datas>
+      <Data Name="StatusOfDTC">
+        <Mnemonic>DTCASR_SODTC</Mnemonic>
+        <Bits>
+          <Scaled Offset="-8"/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailed">
+        <Comment><![CDATA[DTC Test failed]]></Comment>
+        <Mnemonic>TF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.confirmedDTC">
+        <Comment><![CDATA[Confirmation of DTC]]></Comment>
+        <Mnemonic>CDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedSinceLastClear">
+        <Comment><![CDATA[DTC Test not complete since last clear]]></Comment>
+        <Mnemonic>TNCSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedSinceLastClear">
+        <Comment><![CDATA[DTC Test failes since last clear]]></Comment>
+        <Mnemonic>TFSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.Category">
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="General Failure Information"/>
+            <Item Value="1" Text="General Electrical Failures"/>
+            <Item Value="2" Text="General Signal Failures"/>
+            <Item Value="3" Text="FM / PWM Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="15" Text="Vehicle manufacturer / System supplier specific"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Device and failure type ODB codding"/>
+            <Item Value="1" Text="General Electrical Failure"/>
+            <Item Value="2" Text="General signal failure"/>
+            <Item Value="3" Text="FM / PWM Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="17" Text="circuit short to ground"/>
+            <Item Value="18" Text="circuit short to battery"/>
+            <Item Value="19" Text="circuit open"/>
+            <Item Value="20" Text="circuit short to ground or open"/>
+            <Item Value="21" Text="circuit short to battery or open"/>
+            <Item Value="22" Text="circuit voltage below threshold"/>
+            <Item Value="23" Text="circuit voltage above threshold"/>
+            <Item Value="24" Text="circuit current below threshold"/>
+            <Item Value="25" Text="circuit current above threshold"/>
+            <Item Value="26" Text="circuit resistance below threshold"/>
+            <Item Value="27" Text="circuit resistance above threshold"/>
+            <Item Value="28" Text="circuit voltage out of range"/>
+            <Item Value="29" Text="circuit current out of range"/>
+            <Item Value="30" Text="circuit resistance out of range"/>
+            <Item Value="31" Text="circuit intermittent"/>
+            <Item Value="33" Text="signal amplitude &lt; minimum"/>
+            <Item Value="34" Text="signal amplitude &gt; maximum"/>
+            <Item Value="35" Text="signal stuck low"/>
+            <Item Value="36" Text="signal stuck high"/>
+            <Item Value="37" Text="signal shape / waveform failure"/>
+            <Item Value="38" Text="signal rate of change below threshold"/>
+            <Item Value="39" Text="signal rate of change above threshold"/>
+            <Item Value="40" Text="signal level out of range/zero adjustment failure"/>
+            <Item Value="41" Text="signal signal invalid"/>
+            <Item Value="47" Text="signal erratic"/>
+            <Item Value="49" Text="no signal"/>
+            <Item Value="50" Text="signal low time &lt; minimum"/>
+            <Item Value="51" Text="signal low time &gt; maximum"/>
+            <Item Value="52" Text="signal high time &lt; minimum"/>
+            <Item Value="53" Text="signal high time &gt; maximum"/>
+            <Item Value="54" Text="signal frequency too low"/>
+            <Item Value="55" Text="signal frequency too high"/>
+            <Item Value="56" Text="signal frequency incorrect"/>
+            <Item Value="57" Text="incorrect has too few pulses"/>
+            <Item Value="58" Text="incorrect has too many pulses"/>
+            <Item Value="65" Text="general checksum failure"/>
+            <Item Value="66" Text="general memory failure"/>
+            <Item Value="67" Text="special memory failure"/>
+            <Item Value="68" Text="data memory failure"/>
+            <Item Value="69" Text="program memory failure"/>
+            <Item Value="70" Text="calibration / parameter memory failure"/>
+            <Item Value="71" Text="watchdog / safety µC failure"/>
+            <Item Value="72" Text="supervision software failure"/>
+            <Item Value="73" Text="internal electronic failure"/>
+            <Item Value="74" Text="incorrect component installed"/>
+            <Item Value="75" Text="over temperature"/>
+            <Item Value="81" Text="not programmed"/>
+            <Item Value="82" Text="not activated"/>
+            <Item Value="83" Text="deactivated"/>
+            <Item Value="84" Text="missing calibration"/>
+            <Item Value="85" Text="not configured"/>
+            <Item Value="97" Text="signal calculation failure"/>
+            <Item Value="98" Text="signal compare failure"/>
+            <Item Value="99" Text="circuit / component protection time-out"/>
+            <Item Value="100" Text="signal plausibility failure"/>
+            <Item Value="101" Text="signal has too few transitions / events"/>
+            <Item Value="102" Text="signal has too many transitions / events"/>
+            <Item Value="103" Text="signal incorrect after event"/>
+            <Item Value="104" Text="event information"/>
+            <Item Value="113" Text="actuator stuck"/>
+            <Item Value="114" Text="actuator stuck open"/>
+            <Item Value="115" Text="actuator stuck closed"/>
+            <Item Value="116" Text="actuator slipping"/>
+            <Item Value="117" Text="emergency position not reachable"/>
+            <Item Value="118" Text="wrong mounting position"/>
+            <Item Value="119" Text="commanded position not reachable"/>
+            <Item Value="120" Text="alignment or adjustment incorrect"/>
+            <Item Value="121" Text="mechanical linkage failure"/>
+            <Item Value="122" Text="fluid leak or seal failure"/>
+            <Item Value="123" Text="low fluid level"/>
+            <Item Value="129" Text="invalid serial data received"/>
+            <Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+            <Item Value="131" Text="value of signal protection calculation incorrect"/>
+            <Item Value="132" Text="signal below allowable range"/>
+            <Item Value="133" Text="signal above allowable range"/>
+            <Item Value="134" Text="signal invalid"/>
+            <Item Value="135" Text="missing message"/>
+            <Item Value="136" Text="bus off"/>
+            <Item Value="143" Text="erratic"/>
+            <Item Value="145" Text="parametric"/>
+            <Item Value="146" Text="performance or incorrect operation"/>
+            <Item Value="147" Text="no operation"/>
+            <Item Value="148" Text="unexpected operation"/>
+            <Item Value="149" Text="incorrect assembly"/>
+            <Item Value="150" Text="component internal failure"/>
+            <Item Value="151" Text="Component | system operation obstructed or blocked"/>
+            <Item Value="152" Text="component or system over temperature"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceIdentifier">
+        <Bits count="16">
+          <List>
+            <Item Value="43104" Text="CONTROL UNIT(CAN) *2"/>
+            <Item Value="43105" Text="DSC_FAILURE"/>
+            <Item Value="43106" Text="ECU Missing Configuration"/>
+            <Item Value="49269" Text="CAN_COMM_CIRCUIT"/>
+            <Item Value="57664" Text="Communication Failure of ECM ECU"/>
+            <Item Value="57665" Text="Communication Failure of ATCU ECU"/>
+            <Item Value="57667" Text="Communication Failure of HEVC ECU"/>
+            <Item Value="57672" Text="Communication Failure of VDC ECU"/>
+            <Item Value="57678" Text="Communication Failure of METER ECU"/>
+            <Item Value="57679" Text="Communication Failure of BCM ECU"/>
+            <Item Value="57691" Text="Communication Failure of USM ECU"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.ManufacturerOrSupplier">
+        <Bits count="4">
+          <List/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatusAvailabilityMask">
+        <Mnemonic>DTCSAM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceAndFailureTypeOBD">
+        <Bits count="16">
+          <List/>
+        </Bits>
+      </Data>
+      <Data Name="Status mask">
+        <Comment><![CDATA[Mask of DTC status to reply with 1 byte]]></Comment>
+        <Mnemonic>DTCSM</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Test Failed"/>
+            <Item Value="3" Text="Confirmed DTC"/>
+            <Item Value="4" Text="Test Not Complete Since Last Clear"/>
+            <Item Value="5" Text="Test Failed Since Last Clear"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.warningIndicatorRequested">
+        <Bits count="1">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+        <Bits count="1">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.pendingDTC">
+        <Bits count="1">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedThisMonitoringCycle">
+        <Bits count="1">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="VIN.CRC">
+        <Comment><![CDATA[key code confirming the validity of the VIN, written at Renault factory]]></Comment>
+        <Mnemonic>CRC</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="VID">
+        <Mnemonic>INT_ACODE</Mnemonic>
+        <Bytes count="4"/>
+      </Data>
+      <Data Name="Traceability.SupplierCode">
+        <Comment><![CDATA[Supplier code]]></Comment>
+        <Mnemonic>TRAITG</Mnemonic>
+        <Bytes count="3" ascii="1"/>
+      </Data>
+      <Data Name="Traceability.ProductionWeek">
+        <Comment><![CDATA[week number in the year]]></Comment>
+        <Mnemonic>TRAPW</Mnemonic>
+        <Bytes count="2" ascii="1"/>
+      </Data>
+      <Data Name="Traceability.ProductionYear">
+        <Comment><![CDATA[Year of production]]></Comment>
+        <Mnemonic>TRAPY</Mnemonic>
+        <Bytes count="4" ascii="1"/>
+      </Data>
+      <Data Name="Traceability.SerialNumber">
+        <Comment><![CDATA[ECU Serial Number]]></Comment>
+        <Mnemonic>TRASN</Mnemonic>
+        <Bytes count="11" ascii="1"/>
+      </Data>
+      <Data Name="IO.Status">
+        <Mnemonic>CTRLSTAT1</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Test in progress"/>
+            <Item Value="2" Text="No test in progress. Test OK"/>
+            <Item Value="18" Text="Internal problem"/>
+            <Item Value="19" Text="Test NOK"/>
+            <Item Value="255" Text="Error : no status"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IO.Temporary_Test">
+        <Comment><![CDATA[test control temporary]]></Comment>
+        <Mnemonic>CTRLOPT1</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Start temporary test"/>
+            <Item Value="1" Text="Status request"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IO.Permanent_Test">
+        <Comment><![CDATA[test control]]></Comment>
+        <Mnemonic>CTRLOPT1</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Status request"/>
+            <Item Value="17" Text="Stop test"/>
+            <Item Value="32" Text="Start permanent test"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="PartNumber.BasicPartList">
+        <Mnemonic>IDENT-8</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="NA"/>
+            <Item Value="1" Text="256A8"/>
+            <Item Value="2" Text="285N7"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Output Permanent Control List">
+        <Comment><![CDATA[IOControl tests list]]></Comment>
+        <Bits>
+          <List>
+            <Item Value="1" Text="VSP Speaker request"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Output Temporary Control List">
+        <Comment><![CDATA[IOControl tests list]]></Comment>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Support information"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Output Control Command">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Start temporary control"/>
+            <Item Value="1" Text="Status request"/>
+            <Item Value="17" Text="Stop control"/>
+            <Item Value="32" Text="Start permanent control"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Output Control Status">
+        <Comment><![CDATA[Front display test card status]]></Comment>
+        <Mnemonic>CTRLSTAT</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Control in progress"/>
+            <Item Value="2" Text="Control complete and OK"/>
+            <Item Value="17" Text="Control stopped by ControlOption parameter set to &quot;Stop Control&quot; (11)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VIN.VIN">
+        <Comment><![CDATA[Serial number of the car, written at Renault factory]]></Comment>
+        <Mnemonic>VIN</Mnemonic>
+        <Bytes count="17" ascii="1"/>
+      </Data>
+      <Data Name="VSP Configuration Parameters.START sound">
+        <Comment><![CDATA[START sound]]></Comment>
+        <Mnemonic>START_SND_INHIBIT</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="absent"/>
+            <Item Value="1" Text="present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VSP Configuration Parameters.D_R_Identical_sound">
+        <Comment><![CDATA[D_R_Identical_sound]]></Comment>
+        <Mnemonic>DR_IDENT_SND</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="absent"/>
+            <Item Value="1" Text="present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VSP Configuration Parameters.CHARGING sound">
+        <Comment><![CDATA[CHARGING sound]]></Comment>
+        <Mnemonic>CHARGE_SND</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="absent"/>
+            <Item Value="1" Text="present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VSP Configuration Parameters.REVERSE sound">
+        <Comment><![CDATA[REVERSE sound]]></Comment>
+        <Mnemonic>REV_SND</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="absent"/>
+            <Item Value="1" Text="present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VSP Configuration Parameters.Activation by switch">
+        <Comment><![CDATA[Activation by switch]]></Comment>
+        <Mnemonic>ACT_SW</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="absent"/>
+            <Item Value="1" Text="present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="NissanID.DiagnosticIdentificationCode">
+        <Comment><![CDATA[Fixed value (identifies a break in the ECU diag definition)]]></Comment>
+        <Mnemonic>IDENT-2</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="NissanID.EditionNumber">
+        <Comment><![CDATA[Identifies the software version (edition) active in the ECU]]></Comment>
+        <Mnemonic>IDENT-6</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="NissanID.HardwareNumberLowerPart">
+        <Comment><![CDATA[Identifies the hardware version of the ECU]]></Comment>
+        <Mnemonic>IDENT-4</Mnemonic>
+        <Bytes count="5"/>
+      </Data>
+      <Data Name="NissanID.ManufacturerIdentificationCode">
+        <Comment><![CDATA[Renault unified references]]></Comment>
+        <Mnemonic>IDENT-9</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Renault R1"/>
+            <Item Value="128" Text="Nissan N1"/>
+            <Item Value="129" Text="Nissan N2"/>
+            <Item Value="130" Text="Nissan N3"/>
+            <Item Value="136" Text="5DIGITS"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="NissanID.PartNumberLowerPart">
+        <Comment><![CDATA[Reference software number lower part]]></Comment>
+        <Mnemonic>IDENT-1</Mnemonic>
+        <Bytes count="5" ascii="1"/>
+      </Data>
+      <Data Name="NissanID.SoftwareNumber">
+        <Comment><![CDATA[Identifies the software version active in the ECU]]></Comment>
+        <Mnemonic>IDENT-5</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="NissanID.SupplierNumberITG">
+        <Comment><![CDATA[Supplier ITG code]]></Comment>
+        <Mnemonic>IDENT-3</Mnemonic>
+        <Bytes count="3" ascii="1"/>
+      </Data>
+      <Data Name="NissanID.CalibrationNumber">
+        <Comment><![CDATA[Calibration number]]></Comment>
+        <Mnemonic>IDENT-7</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="NissanID.Other system features">
+        <Comment><![CDATA[Nissan's Other system features]]></Comment>
+        <Mnemonic>IDENT-8</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="Support LID data">
+        <Comment><![CDATA[Support LID data]]></Comment>
+        <Mnemonic>Support LID data</Mnemonic>
+        <Bytes count="4"/>
+      </Data>
+      <Data Name="Vehicle group information data">
+        <Comment><![CDATA[Vehicle group information data]]></Comment>
+        <Mnemonic>Vehicle group information data</Mnemonic>
+        <Bytes count="8"/>
+      </Data>
+      <Data Name="SoundVolumeValue VSP.SoundVolumeValue_VSP_S">
+        <Comment><![CDATA[SoundVolumeValue_VSP_S]]></Comment>
+        <Mnemonic>SoundVolumeValue_VSP_S</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="SoundVolumeValue VSP.SoundVolumeValue_VSP_D">
+        <Comment><![CDATA[SoundVolumeValue_VSP_D]]></Comment>
+        <Mnemonic>SoundVolumeValue_VSP_D</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="SoundVolumeValue VSP.SoundVolumeValue_VSP_R">
+        <Comment><![CDATA[SoundVolumeValue_VSP_R]]></Comment>
+        <Mnemonic>SoundVolumeValue_VSP_R</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="SoundVolumeValue ChargingSound.SoundVolumeValue_ChargingSound">
+        <Comment><![CDATA[SoundVolumeValue_ChargingSound]]></Comment>
+        <Mnemonic>SoundVolumeValue_ChargingSound</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="SoundVolumeValue ChargingSound.Fixed">
+        <Comment><![CDATA[Fixed $00]]></Comment>
+        <Mnemonic>Fixed $00</Mnemonic>
+        <Bytes count="4"/>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.Mute Module_Current_fault status">
+        <Comment><![CDATA[Current_fault status]]></Comment>
+        <Mnemonic>Current_fault status</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="failure absent"/>
+            <Item Value="1" Text="failure present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.Mute Module_Confirmed_fault status">
+        <Comment><![CDATA[Confirmed_fault status]]></Comment>
+        <Mnemonic>Confirmed_fault status</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="failure absent"/>
+            <Item Value="1" Text="failure present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.Mute Module_Fault counter">
+        <Comment><![CDATA[Fault counter]]></Comment>
+        <Mnemonic>Fault counter</Mnemonic>
+        <Bits count="6">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.METER Absent_Confirmed_fault status">
+        <Comment><![CDATA[Confirmed_fault status]]></Comment>
+        <Mnemonic>Confirmed_fault status</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="failure absent"/>
+            <Item Value="1" Text="failure present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.METER Absent_Current_fault status">
+        <Comment><![CDATA[Current_fault status]]></Comment>
+        <Mnemonic>Current_fault status</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="failure absent"/>
+            <Item Value="1" Text="failure present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.METER Absent_Fault counter">
+        <Comment><![CDATA[Fault counter]]></Comment>
+        <Mnemonic>Fault counter</Mnemonic>
+        <Bits count="6">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.BCM Absent_Confirmed_fault status">
+        <Comment><![CDATA[Confirmed_fault status]]></Comment>
+        <Mnemonic>Confirmed_fault status</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="failure absent"/>
+            <Item Value="1" Text="failure present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.BCM Absent_Current_fault status">
+        <Comment><![CDATA[Current_fault status]]></Comment>
+        <Mnemonic>Current_fault status</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="failure absent"/>
+            <Item Value="1" Text="failure present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.BCM Absent_Fault counter">
+        <Comment><![CDATA[Fault counter]]></Comment>
+        <Mnemonic>Fault counter</Mnemonic>
+        <Bits count="6">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.VCM Absent_Confirmed_fault status">
+        <Comment><![CDATA[Confirmed_fault status]]></Comment>
+        <Mnemonic>Confirmed_fault status</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="failure absent"/>
+            <Item Value="1" Text="failure present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.VCM Absent_Current_fault status">
+        <Comment><![CDATA[Current_fault status]]></Comment>
+        <Mnemonic>Current_fault status</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="failure absent"/>
+            <Item Value="1" Text="failure present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.VCM Absent_Fault counter">
+        <Comment><![CDATA[Fault counter]]></Comment>
+        <Mnemonic>Fault counter</Mnemonic>
+        <Bits count="6">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="SoundVolumeValue_ ChargingSound">
+        <Comment><![CDATA[SoundVolumeValue_ ChargingSound]]></Comment>
+        <Mnemonic>SoundVolumeValue_ ChargingSound</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="IO.VSP speaker Status">
+        <Comment><![CDATA[.VSP speaker Status]]></Comment>
+        <Mnemonic>VSP speaker Status</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Control in progress"/>
+            <Item Value="2" Text="Control complete and OK"/>
+            <Item Value="17" Text="Control stopped by ControlOption parameter set to &quot;Stop Control&quot; (11)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IO.Support information Status">
+        <Comment><![CDATA[Support information Status]]></Comment>
+        <Mnemonic>Support information Status</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="Control in progress"/>
+            <Item Value="2" Text="Control complete and OK"/>
+            <Item Value="17" Text="Control stopped by ControlOption parameter set to &quot;Stop Control&quot; (11)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="HardwareNumber.BasicPartList">
+        <Mnemonic>IDENT-8</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="HARDW"/>
+            <Item Value="1" Text="285J9"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ApprovalNumber.BasicPartList">
+        <Mnemonic>IDENT-8</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="NA"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.AT Absent_HEV_Confirmed_fault status">
+        <Comment><![CDATA[Confirmed_fault status]]></Comment>
+        <Mnemonic>Confirmed_fault status</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="failure absent"/>
+            <Item Value="1" Text="failure present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.AT Absent_HEV_Current_fault status">
+        <Comment><![CDATA[Current_fault status]]></Comment>
+        <Mnemonic>Current_fault status</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="failure absent"/>
+            <Item Value="1" Text="failure present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Multiplex network diagnostic request.AT Absent_HEV_Fault counter">
+        <Comment><![CDATA[Fault counter]]></Comment>
+        <Mnemonic>Fault counter</Mnemonic>
+        <Bits count="6">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Data Monitor parameter">
+        <Comment><![CDATA[Data Monitor parameter]]></Comment>
+        <Mnemonic>Data Monitor parameter</Mnemonic>
+        <Bytes count="15"/>
+      </Data>
+      <Data Name="Data monitor value request.IgnitionSupplyConfirmation">
+        <Comment><![CDATA[IgnitionSupplyConfirmation]]></Comment>
+        <Mnemonic>CNF_IgnSupply</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="no primary ignition supply"/>
+            <Item Value="1" Text="primary ignition supply on"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Parameter VSP_Sound_A">
+        <Comment><![CDATA[Parameter VSP_Sound_A]]></Comment>
+        <Mnemonic>VSP_Sound_A</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="Parameter VSP_Sound_B">
+        <Comment><![CDATA[Parameter VSP_Sound_B]]></Comment>
+        <Mnemonic>VSP_Sound_B</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="Parameter VSP_Sound_C">
+        <Comment><![CDATA[Parameter VSP_Sound_C]]></Comment>
+        <Mnemonic>VSP_Sound_C</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="VSP Configuration Parameters.Sound type">
+        <Comment><![CDATA[Sound type]]></Comment>
+        <Mnemonic>CONF_ST</Mnemonic>
+        <Bits count="2">
+          <List>
+            <Item Value="0" Text="Sound 1"/>
+            <Item Value="1" Text="Sound 2"/>
+            <Item Value="2" Text="Sound 3"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Data monitor value request.VSPstatusDisplay">
+        <Comment><![CDATA[VSPstatusDisplay]]></Comment>
+        <Mnemonic>CNF_VSPstatus</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="VSP deactivated not request"/>
+            <Item Value="1" Text="VSP deactivated request"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Data monitor value request.EngineRPM">
+        <Comment><![CDATA[EngineRPM]]></Comment>
+        <Mnemonic>CNF_EngineRPM</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="rpm" DivideBy=" 8"/>
+        </Bits>
+      </Data>
+      <Data Name="Data monitor value request.PowerTrainStatus">
+        <Comment><![CDATA[PowerTrainStatus]]></Comment>
+        <Mnemonic>CNF_PWT_Status</Mnemonic>
+        <Bits count="2">
+          <List>
+            <Item Value="0" Text="Powertrain Stopped"/>
+            <Item Value="1" Text="Reserved"/>
+            <Item Value="2" Text="Powertrain Running"/>
+            <Item Value="3" Text="Powertrain Starting"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Data monitor value request.DayNightForBacklights">
+        <Comment><![CDATA[DayNightForBacklights]]></Comment>
+        <Mnemonic>CNF_DayNightForBacklights</Mnemonic>
+        <Bits count="2">
+          <List>
+            <Item Value="0" Text="Day"/>
+            <Item Value="1" Text="Twilight"/>
+            <Item Value="2" Text="Night"/>
+            <Item Value="3" Text="Unavailable"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Data monitor value request.ChargingSoundRequest">
+        <Comment><![CDATA[ChargingSoundRequest]]></Comment>
+        <Mnemonic>CNF_ChargingSoundRequest</Mnemonic>
+        <Bits count="2">
+          <List>
+            <Item Value="0" Text="No request"/>
+            <Item Value="1" Text="Play charging plug sound request"/>
+            <Item Value="2" Text="Play Admit to charge battery sound request"/>
+            <Item Value="3" Text="Play Unlock charging plug sound request"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Data monitor value request.PeriodicReverseBuzzerTrigger">
+        <Comment><![CDATA[PeriodicReverseBuzzerTrigger]]></Comment>
+        <Mnemonic>CNF_PeriodicReverseBuzzerTrigger</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No request"/>
+            <Item Value="1" Text="Reverse alert trigger"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Data monitor value request.DiagMuxOn_BCM">
+        <Comment><![CDATA[DiagMuxOn_BCM]]></Comment>
+        <Mnemonic>CNF_DiagMuxOn_BCM</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="counting and storage of CAN mute/absent failures  masked"/>
+            <Item Value="1" Text="counting and storage of CAN mute/absent failures not masked"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Data monitor value request.VehicleSpeed">
+        <Comment><![CDATA[VehicleSpeed]]></Comment>
+        <Mnemonic>CNF_VehicleSpeed</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="km/h" DivideBy=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="Data monitor value request.VehicleStateExtented">
+        <Comment><![CDATA[VehicleStateExtented]]></Comment>
+        <Mnemonic>CNF_VehicleStateExtented</Mnemonic>
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="Sleeping"/>
+            <Item Value="1" Text="Technical Wakeup"/>
+            <Item Value="2" Text="CutOffPending"/>
+            <Item Value="3" Text="BatTempoLevel"/>
+            <Item Value="4" Text="AccessoryLevel"/>
+            <Item Value="5" Text="IgnitionLevel"/>
+            <Item Value="6" Text="StartingInProgress"/>
+            <Item Value="7" Text="EngineRunning"/>
+            <Item Value="8" Text="AutoStart"/>
+            <Item Value="9" Text="EngineSystemStop"/>
+            <Item Value="10" Text="UnvailableValue"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Data monitor value request.DistanceTotalizer">
+        <Comment><![CDATA[DistanceTotalizer]]></Comment>
+        <Mnemonic>CNF_DistanceTotalizer</Mnemonic>
+        <Bits count="28">
+          <Scaled Unit="km" DivideBy=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="Data monitor value request.BrakeInfoStatus">
+        <Comment><![CDATA[BrakeInfoStatus]]></Comment>
+        <Mnemonic>CNF_BrakeInfoStatus</Mnemonic>
+        <Bits count="3">
+          <List>
+            <Item Value="0" Text="Not used"/>
+            <Item Value="1" Text="Brake pedal not pressed"/>
+            <Item Value="2" Text="Brake pedal pressed"/>
+            <Item Value="4" Text="Brake pedal confirmed pressed"/>
+            <Item Value="7" Text="unavailable"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VSP Configuration Parameters. SWITCH_DTC_ENABLE">
+        <Comment><![CDATA[SWITCH_DTC_ENABLE]]></Comment>
+        <Mnemonic>SWITCH_DTC_ENABLE</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Absent"/>
+            <Item Value="1" Text="Present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VSP Configuration Parameters. LED_DTC_ENABLE">
+        <Comment><![CDATA[LED_DTC_ENABLE]]></Comment>
+        <Mnemonic>LED_DTC_ENABLE</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Absent"/>
+            <Item Value="1" Text="Present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VSP Configuration Parameters. Engine Speed Treshold">
+        <Comment><![CDATA[Engine speed treshold for hybrid vehicle]]></Comment>
+        <Mnemonic>ENG_SPD_TRESH</Mnemonic>
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="300rpm"/>
+            <Item Value="1" Text="400rpm"/>
+            <Item Value="2" Text="500rpm"/>
+            <Item Value="3" Text="600rpm"/>
+            <Item Value="4" Text="700rpm"/>
+            <Item Value="5" Text="800rpm"/>
+            <Item Value="6" Text="900rpm"/>
+            <Item Value="7" Text="1000rpm"/>
+            <Item Value="8" Text="1100rpm"/>
+            <Item Value="9" Text="1200rpm"/>
+            <Item Value="10" Text="1300rpm"/>
+            <Item Value="11" Text="1400rpm"/>
+            <Item Value="12" Text="1500rpm"/>
+            <Item Value="13" Text="1600rpm"/>
+            <Item Value="14" Text="1700rpm"/>
+            <Item Value="15" Text="1800rpm"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="PartNumber.LowerPart">
+        <Comment><![CDATA[Reference software number lower part]]></Comment>
+        <Mnemonic>IDENT-1</Mnemonic>
+        <Bytes count="5" ascii="1"/>
+      </Data>
+      <Data Name="DiagnosticIdentificationCode">
+        <Comment><![CDATA[Fixed value (identifies a break in the ECU diag definition)]]></Comment>
+        <Mnemonic>IDENT-2</Mnemonic>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="HardwareNumber.LowerPart">
+        <Comment><![CDATA[Identifies the hardware version of the ECU]]></Comment>
+        <Mnemonic>IDENT-4</Mnemonic>
+        <Bytes count="5" ascii="1"/>
+      </Data>
+      <Data Name="SoftwareNumber">
+        <Comment><![CDATA[Identifies the software version active in the ECU]]></Comment>
+        <Mnemonic>IDENT-5</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="EditionNumber">
+        <Comment><![CDATA[Identifies the software version (edition) active in the ECU]]></Comment>
+        <Mnemonic>IDENT-6</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="ManufacturerIdentificationCode">
+        <Comment><![CDATA[Renault unified references]]></Comment>
+        <Mnemonic>IDENT-9</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Renault R1"/>
+            <Item Value="128" Text="Nissan N1"/>
+            <Item Value="129" Text="Nissan N2"/>
+            <Item Value="130" Text="Nissan N3"/>
+            <Item Value="136" Text="5DIGITS"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="SupplierNumber.ITG">
+        <Comment><![CDATA[Supplier ITG code]]></Comment>
+        <Mnemonic>IDENT-3</Mnemonic>
+        <Bytes count="3" ascii="1"/>
+      </Data>
+      <Data Name="VehicleManufacturerSparePartReference">
+        <Comment><![CDATA[Part Number]]></Comment>
+        <Mnemonic>CNF_REF</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="DaimlerID.HardwarePartNumber">
+        <Comment><![CDATA[Daimler ID Hardware part number]]></Comment>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="DaimlerID.SoftwarePartNumber">
+        <Comment><![CDATA[Daimler ID Software part number]]></Comment>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="DTCMaskRecord">
+        <Mnemonic>DDT</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="Configuration of DiagMUX DTCs.ATCU_Presence">
+        <Comment><![CDATA[ATCU_Presence]]></Comment>
+        <Mnemonic>CNF_ATCU_Presence</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Absent"/>
+            <Item Value="1" Text="Present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Configuration of DiagMUX DTCs.HEVC_Presence">
+        <Comment><![CDATA[ECM_Presence]]></Comment>
+        <Mnemonic>CNF_ECM_Presence</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Absent"/>
+            <Item Value="1" Text="Present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Configuration of DiagMUX DTCs.ECM_Presence">
+        <Comment><![CDATA[HEVC_Presence]]></Comment>
+        <Mnemonic>CNF_HEVC_Presence</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Absent"/>
+            <Item Value="1" Text="Present"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTC Occurrence Counter">
+        <Comment><![CDATA[DTC Occurrence Counter]]></Comment>
+        <Mnemonic>ID_DTC_OCC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCRecord">
+        <Mnemonic>DDT</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="DTCSnapshotRecordNumber">
+        <Mnemonic>DTCASR_SODTC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCExtendedData.AgingCounter">
+        <Comment><![CDATA[Description of the extendedData AgingCounter (use by Failure Page to decode data)]]></Comment>
+        <Mnemonic>AGINGCOUNTER</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCExtendedData.DTCOccurrenceCounter">
+        <Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+        <Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCExtendedData.Mileage">
+        <Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+        <Mnemonic>MILEAGE</Mnemonic>
+        <Bits count="24">
+          <Scaled Unit="km"/>
+        </Bits>
+      </Data>
+      <Data Name="CalibrationNumber">
+        <Comment><![CDATA[Calibration number]]></Comment>
+        <Mnemonic>IDENT-7</Mnemonic>
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="DTC Mileage">
+        <Comment><![CDATA[Mileage]]></Comment>
+        <Mnemonic>ID_MLG</Mnemonic>
+        <Bits count="24">
+          <Scaled Unit="km"/>
+        </Bits>
+      </Data>
+      <Data Name="DTCExtendedDataRecordNumber">
+        <Mnemonic>DTCEDRN</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="128" Text="Mileage"/>
+            <Item Value="129" Text="AgingCounter"/>
+            <Item Value="130" Text="DTCOccurrenceCounter"/>
+          </List>
+        </Bits>
+      </Data>
+    </Datas>
+    <Requests Endian="Big">
+      <Request Name="ClearDiagnosticInformation.All">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+        <Sent>
+          <SentBytes>14FFFFFF</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>54</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ECUReset.hard">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Reset HARD of ECU]]></Comment>
+        <Sent>
+          <SentBytes>1101</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5101</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ECUReset.config">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Reset HARD of ECU]]></Comment>
+        <Sent>
+          <SentBytes>1140</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5140</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="TesterPresent.WithResponse">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[TesterPresent]]></Comment>
+        <Sent>
+          <SentBytes>3E01</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>7E</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VIN">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+        <Sent>
+          <SentBytes>2181</SentBytes>
+        </Sent>
+        <Received MinBytes="21">
+          <ReplyBytes>6181</ReplyBytes>
+          <DataItem Name="VIN.VIN" Ref="1" FirstByte="3"/>
+          <DataItem Name="VIN.CRC" Ref="1" FirstByte="20"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Traceability">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+        <Sent>
+          <SentBytes>2184</SentBytes>
+        </Sent>
+        <Received MinBytes="22">
+          <ReplyBytes>6184</ReplyBytes>
+          <DataItem Name="Traceability.SupplierCode" Ref="1" FirstByte="3"/>
+          <DataItem Name="Traceability.ProductionYear" Ref="1" FirstByte="6"/>
+          <DataItem Name="Traceability.ProductionWeek" Ref="1" FirstByte="10"/>
+          <DataItem Name="Traceability.SerialNumber" Ref="1" FirstByte="12"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTC">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+        <Sent>
+          <SentBytes>1902FF</SentBytes>
+          <DataItem Name="Status mask" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>590239</ReplyBytes>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+          <DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+          <DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+          <DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+          <DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+          <DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+          <DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+          <DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+          <DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+          <DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+          <DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="StartReprogSession">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>1085</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5085</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDefaultSession">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1081</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5081</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>10C0</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>50C0</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ECUReset.keyoffon">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Key OFF / Key ON Reset of ECU]]></Comment>
+        <Sent>
+          <SentBytes>1102</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5102</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.VIN">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+        <Sent>
+          <SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+          <DataItem Name="VIN.VIN" FirstByte="3"/>
+          <DataItem Name="VIN.CRC" FirstByte="20"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>7B81</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="outputcontrol">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>300000</SentBytes>
+          <DataItem Name="Output Temporary Control List" FirstByte="2"/>
+          <DataItem Name="Output Permanent Control List" FirstByte="2"/>
+          <DataItem Name="Output Control Command" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>700000</ReplyBytes>
+          <DataItem Name="Output Control Status" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VSP Configuration Parameters">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2109</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6109</ReplyBytes>
+          <DataItem Name="VSP Configuration Parameters.D_R_Identical_sound" Ref="1" FirstByte="3" BitOffset="6"/>
+          <DataItem Name="VSP Configuration Parameters.CHARGING sound" Ref="1" FirstByte="3" BitOffset="5"/>
+          <DataItem Name="VSP Configuration Parameters.REVERSE sound" Ref="1" FirstByte="3" BitOffset="4"/>
+          <DataItem Name="VSP Configuration Parameters.Activation by switch" Ref="1" FirstByte="3" BitOffset="3"/>
+          <DataItem Name="VSP Configuration Parameters.Sound type" Ref="1" FirstByte="3"/>
+          <DataItem Name="VSP Configuration Parameters. LED_DTC_ENABLE" Ref="1" FirstByte="3" BitOffset="2"/>
+          <DataItem Name="VSP Configuration Parameters. SWITCH_DTC_ENABLE" Ref="1" FirstByte="3" BitOffset="7"/>
+          <DataItem Name="VSP Configuration Parameters. Engine Speed Treshold" Ref="1" FirstByte="4" BitOffset="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.VSP Configuration Parameters">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>3B090000</SentBytes>
+          <DataItem Name="VSP Configuration Parameters.D_R_Identical_sound" FirstByte="3" BitOffset="6"/>
+          <DataItem Name="VSP Configuration Parameters.CHARGING sound" FirstByte="3" BitOffset="5"/>
+          <DataItem Name="VSP Configuration Parameters.REVERSE sound" FirstByte="3" BitOffset="4"/>
+          <DataItem Name="VSP Configuration Parameters.Activation by switch" FirstByte="3" BitOffset="3"/>
+          <DataItem Name="VSP Configuration Parameters.Sound type" FirstByte="3"/>
+          <DataItem Name="VSP Configuration Parameters. LED_DTC_ENABLE" FirstByte="3" BitOffset="2"/>
+          <DataItem Name="VSP Configuration Parameters. SWITCH_DTC_ENABLE" FirstByte="3" BitOffset="7"/>
+          <DataItem Name="VSP Configuration Parameters. Engine Speed Treshold" FirstByte="4" BitOffset="4"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>7B09</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Identification.Nissan">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+        <Sent>
+          <SentBytes>2183</SentBytes>
+        </Sent>
+        <Received MinBytes="26">
+          <ReplyBytes>6183</ReplyBytes>
+          <DataItem Name="NissanID.Other system features" Ref="1" FirstByte="23"/>
+          <DataItem Name="NissanID.PartNumberLowerPart" Ref="1" FirstByte="3"/>
+          <DataItem Name="NissanID.DiagnosticIdentificationCode" Ref="1" FirstByte="8"/>
+          <DataItem Name="NissanID.SupplierNumberITG" Ref="1" FirstByte="9"/>
+          <DataItem Name="NissanID.HardwareNumberLowerPart" Ref="1" FirstByte="12"/>
+          <DataItem Name="NissanID.SoftwareNumber" Ref="1" FirstByte="17"/>
+          <DataItem Name="NissanID.EditionNumber" Ref="1" FirstByte="19"/>
+          <DataItem Name="NissanID.CalibrationNumber" Ref="1" FirstByte="21"/>
+          <DataItem Name="NissanID.ManufacturerIdentificationCode" Ref="1" FirstByte="26"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Identification.RenaultR2">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+        <Sent>
+          <SentBytes>2180</SentBytes>
+        </Sent>
+        <Received MinBytes="26">
+          <ReplyBytes>6180</ReplyBytes>
+          <DataItem Name="CalibrationNumber" Ref="1" FirstByte="21"/>
+          <DataItem Name="DiagnosticIdentificationCode" Ref="1" FirstByte="8"/>
+          <DataItem Name="SoftwareNumber" Ref="1" FirstByte="17"/>
+          <DataItem Name="SupplierNumber.ITG" Ref="1" FirstByte="9"/>
+          <DataItem Name="EditionNumber" Ref="1" FirstByte="19"/>
+          <DataItem Name="PartNumber.BasicPartList" Ref="1" FirstByte="23"/>
+          <DataItem Name="PartNumber.LowerPart" Ref="1" FirstByte="3"/>
+          <DataItem Name="HardwareNumber.LowerPart" Ref="1" FirstByte="12"/>
+          <DataItem Name="ManufacturerIdentificationCode" Ref="1" FirstByte="26"/>
+          <DataItem Name="HardwareNumber.BasicPartList" Ref="1" FirstByte="24"/>
+          <DataItem Name="ApprovalNumber.BasicPartList" Ref="1" FirstByte="25"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Support information">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2100</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>6100</ReplyBytes>
+          <DataItem Name="Support LID data" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.SoundVolumeValue ChargingSound">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2104</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>6104</ReplyBytes>
+          <DataItem Name="SoundVolumeValue ChargingSound.SoundVolumeValue_ChargingSound" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Data monitor value request">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2105</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>6105</ReplyBytes>
+          <DataItem Name="Data monitor value request.BrakeInfoStatus" FirstByte="13"/>
+          <DataItem Name="Data monitor value request.ChargingSoundRequest" FirstByte="6" BitOffset="4"/>
+          <DataItem Name="Data monitor value request.DayNightForBacklights" FirstByte="6" BitOffset="2"/>
+          <DataItem Name="Data monitor value request.DiagMuxOn_BCM" FirstByte="6" BitOffset="7"/>
+          <DataItem Name="Data monitor value request.DistanceTotalizer" FirstByte="9" BitOffset="4"/>
+          <DataItem Name="Data monitor value request.EngineRPM" FirstByte="4"/>
+          <DataItem Name="Data monitor value request.IgnitionSupplyConfirmation" FirstByte="3"/>
+          <DataItem Name="Data monitor value request.PeriodicReverseBuzzerTrigger" FirstByte="6" BitOffset="6"/>
+          <DataItem Name="Data monitor value request.PowerTrainStatus" FirstByte="6"/>
+          <DataItem Name="Data monitor value request.VehicleSpeed" FirstByte="7"/>
+          <DataItem Name="Data monitor value request.VehicleStateExtented" FirstByte="9"/>
+          <DataItem Name="Data monitor value request.VSPstatusDisplay" FirstByte="3" BitOffset="1"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Multiplex network diagnostic request">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Multiplex network diagnostic request]]></Comment>
+        <Sent>
+          <SentBytes>2182</SentBytes>
+        </Sent>
+        <Received MinBytes="54">
+          <ReplyBytes>6182</ReplyBytes>
+          <DataItem Name="Multiplex network diagnostic request.Mute Module_Current_fault status" FirstByte="6"/>
+          <DataItem Name="Multiplex network diagnostic request.Mute Module_Confirmed_fault status" FirstByte="6" BitOffset="1"/>
+          <DataItem Name="Multiplex network diagnostic request.Mute Module_Fault counter" FirstByte="6" BitOffset="2"/>
+          <DataItem Name="Multiplex network diagnostic request.METER Absent_Confirmed_fault status" FirstByte="9" BitOffset="1"/>
+          <DataItem Name="Multiplex network diagnostic request.METER Absent_Current_fault status" FirstByte="9"/>
+          <DataItem Name="Multiplex network diagnostic request.METER Absent_Fault counter" FirstByte="9" BitOffset="2"/>
+          <DataItem Name="Multiplex network diagnostic request.BCM Absent_Current_fault status" FirstByte="10"/>
+          <DataItem Name="Multiplex network diagnostic request.BCM Absent_Confirmed_fault status" FirstByte="10" BitOffset="1"/>
+          <DataItem Name="Multiplex network diagnostic request.BCM Absent_Fault counter" FirstByte="10" BitOffset="2"/>
+          <DataItem Name="Multiplex network diagnostic request.AT Absent_HEV_Current_fault status" FirstByte="15"/>
+          <DataItem Name="Multiplex network diagnostic request.AT Absent_HEV_Confirmed_fault status" FirstByte="15" BitOffset="1"/>
+          <DataItem Name="Multiplex network diagnostic request.AT Absent_HEV_Fault counter" FirstByte="15" BitOffset="2"/>
+          <DataItem Name="Multiplex network diagnostic request.VCM Absent_Current_fault status" FirstByte="54"/>
+          <DataItem Name="Multiplex network diagnostic request.VCM Absent_Confirmed_fault status" FirstByte="54" BitOffset="1"/>
+          <DataItem Name="Multiplex network diagnostic request.VCM Absent_Fault counter" FirstByte="54" BitOffset="2"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Support information">
+        <Sent>
+          <SentBytes>3B00E2000000</SentBytes>
+          <DataItem Name="Support LID data" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>7B00</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.SoundVolumeValue_ChargingSound Parameter">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>3B040000000000</SentBytes>
+          <DataItem Name="SoundVolumeValue_ ChargingSound" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>7B04</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="IO.VSP Speaker request">
+        <Sent>
+          <SentBytes>300120</SentBytes>
+          <DataItem Name="IO.Permanent_Test" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>700100</ReplyBytes>
+          <DataItem Name="IO.VSP speaker Status" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="IO.Support information">
+        <Sent>
+          <SentBytes>300000</SentBytes>
+          <DataItem Name="IO.Temporary_Test" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>700000</ReplyBytes>
+          <DataItem Name="IO.Support information Status" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Identification.Daimler">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Nissan ID]]></Comment>
+        <Sent>
+          <SentBytes>21EF</SentBytes>
+        </Sent>
+        <Received MinBytes="22">
+          <ReplyBytes>61EF</ReplyBytes>
+          <DataItem Name="DaimlerID.HardwarePartNumber" Ref="1" FirstByte="3"/>
+          <DataItem Name="DaimlerID.SoftwarePartNumber" Ref="1" FirstByte="13"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DiagMuxDTC_Configuration">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2103</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6103</ReplyBytes>
+          <DataItem Name="Configuration of DiagMUX DTCs.ATCU_Presence" FirstByte="3" BitOffset="7"/>
+          <DataItem Name="Configuration of DiagMUX DTCs.ECM_Presence" FirstByte="3" BitOffset="5"/>
+          <DataItem Name="Configuration of DiagMUX DTCs.HEVC_Presence" FirstByte="3" BitOffset="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.DiagMuxDTC_Configuration">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>3B0300</SentBytes>
+          <DataItem Name="Configuration of DiagMUX DTCs.ATCU_Presence" FirstByte="3" BitOffset="7"/>
+          <DataItem Name="Configuration of DiagMUX DTCs.HEVC_Presence" FirstByte="3" BitOffset="6"/>
+          <DataItem Name="Configuration of DiagMUX DTCs.ECM_Presence" FirstByte="3" BitOffset="5"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>7B03</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Parameter VSP_Sound_A">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>3B0600</SentBytes>
+          <DataItem Name="Parameter VSP_Sound_A" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>7B06</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Parameter VSP_Sound_C">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>3B0800</SentBytes>
+          <DataItem Name="Parameter VSP_Sound_C" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>7B08</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Parameter VSP_Sound_B">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>3B0700</SentBytes>
+          <DataItem Name="Parameter VSP_Sound_B" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>7B07</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Parameter VSP_Sound_A">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2106</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6106</ReplyBytes>
+          <DataItem Name="Parameter VSP_Sound_A" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Parameter VSP_Sound_B">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2107</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6107</ReplyBytes>
+          <DataItem Name="Parameter VSP_Sound_B" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Parameter VSP_Sound_C">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2108</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6108</ReplyBytes>
+          <DataItem Name="Parameter VSP_Sound_C" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DTC Occurrence Counter">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>22F0D1</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F0D1</ReplyBytes>
+          <DataItem Name="DTC Occurrence Counter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Identification.RenaultR1.FC">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R1 or 5DIGITS]]></Comment>
+        <Sent>
+          <SentBytes>21FC</SentBytes>
+        </Sent>
+        <Received MinBytes="26">
+          <ReplyBytes>61FC</ReplyBytes>
+          <DataItem Name="CalibrationNumber" FirstByte="21"/>
+          <DataItem Name="DiagnosticIdentificationCode" FirstByte="8"/>
+          <DataItem Name="SoftwareNumber" FirstByte="17"/>
+          <DataItem Name="SupplierNumber.ITG" FirstByte="9"/>
+          <DataItem Name="EditionNumber" FirstByte="19"/>
+          <DataItem Name="PartNumber.BasicPartList" FirstByte="23"/>
+          <DataItem Name="PartNumber.LowerPart" FirstByte="3"/>
+          <DataItem Name="HardwareNumber.LowerPart" FirstByte="12"/>
+          <DataItem Name="ManufacturerIdentificationCode" FirstByte="26"/>
+          <DataItem Name="HardwareNumber.BasicPartList" FirstByte="24"/>
+          <DataItem Name="ApprovalNumber.BasicPartList" FirstByte="25"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Identification.RenaultR1.FA">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R1 or 5DIGITS]]></Comment>
+        <Sent>
+          <SentBytes>21FA</SentBytes>
+        </Sent>
+        <Received MinBytes="26">
+          <ReplyBytes>61FA</ReplyBytes>
+          <DataItem Name="CalibrationNumber" FirstByte="21"/>
+          <DataItem Name="DiagnosticIdentificationCode" FirstByte="8"/>
+          <DataItem Name="SoftwareNumber" FirstByte="17"/>
+          <DataItem Name="SupplierNumber.ITG" FirstByte="9"/>
+          <DataItem Name="EditionNumber" FirstByte="19"/>
+          <DataItem Name="PartNumber.BasicPartList" FirstByte="23"/>
+          <DataItem Name="PartNumber.LowerPart" FirstByte="3"/>
+          <DataItem Name="HardwareNumber.LowerPart" FirstByte="12"/>
+          <DataItem Name="ManufacturerIdentificationCode" FirstByte="26"/>
+          <DataItem Name="HardwareNumber.BasicPartList" FirstByte="24"/>
+          <DataItem Name="ApprovalNumber.BasicPartList" FirstByte="25"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Identification.RenaultR1.FE">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R1 or 5DIGITS]]></Comment>
+        <Sent>
+          <SentBytes>21FE</SentBytes>
+        </Sent>
+        <Received MinBytes="26">
+          <ReplyBytes>61FE</ReplyBytes>
+          <DataItem Name="CalibrationNumber" FirstByte="21"/>
+          <DataItem Name="DiagnosticIdentificationCode" FirstByte="8"/>
+          <DataItem Name="SoftwareNumber" FirstByte="17"/>
+          <DataItem Name="SupplierNumber.ITG" FirstByte="9"/>
+          <DataItem Name="EditionNumber" FirstByte="19"/>
+          <DataItem Name="PartNumber.BasicPartList" FirstByte="23"/>
+          <DataItem Name="PartNumber.LowerPart" FirstByte="3"/>
+          <DataItem Name="HardwareNumber.LowerPart" FirstByte="12"/>
+          <DataItem Name="ManufacturerIdentificationCode" FirstByte="26"/>
+          <DataItem Name="HardwareNumber.BasicPartList" FirstByte="24"/>
+          <DataItem Name="ApprovalNumber.BasicPartList" FirstByte="25"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Request for the import in the Clip]]></Comment>
+        <Sent>
+          <SentBytes>190600000080</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="10">
+          <ReplyBytes>59060000000080000000</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+          <DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+          <DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DDT2000 Failures page requests : Unusable in the standard tools of DDT2000 nor for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1906000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>590600000000</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+          <DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+          <DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+          <DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+          <DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSnapshot">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+        <Sent>
+          <SentBytes>1904000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>590400000000</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DTC Mileage">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>22F0D0</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>62F0D0</ReplyBytes>
+          <DataItem Name="DTC Mileage" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_VSP_SPEAKER_START">
+        <Sent>
+          <SentBytes>30012032</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>700100</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="R_AFS_IO_VSP_SPEAKER_STOP">
+        <Sent>
+          <SentBytes>30012017</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>700100</ReplyBytes>
+        </Received>
+      </Request>
+    </Requests>
+    <Devices>
+      <Device Name="CAN_COMM_CIRCUIT" DTC="49269">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="CONTROL UNIT(CAN) *2" DTC="43104" Type="2">
+        <Test Type="73" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="DSC_FAILURE" DTC="43105" Type="2">
+        <Test Type="73" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Communication Failure of ATCU ECU" DTC="57665" Type="4">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Communication Failure of BCM ECU" DTC="57679" Type="4">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Communication Failure of VDC ECU" DTC="57672" Type="4">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Communication Failure of HEVC ECU" DTC="57667" Type="4">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Communication Failure of ECM ECU" DTC="57664" Type="4">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Communication Failure of METER ECU" DTC="57678" Type="4">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Communication Failure of USM ECU" DTC="57691" Type="4">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="ECU Missing Configuration" DTC="43106" Type="4">
+        <Test Type="85" Severity="0">
+        </Test>
+      </Device>
+    </Devices>
+    <ds:Categories xmlns="http://www-diag.renault.com/2002/screens">
+      <Category Name="Diagnosis">
+        <Screen Name="Session Management" Color="16777215" WindowState="0" Width="11580" Height="6780">
+          <Label Text="Session Management" Color="4144959" Alignment="2">
+            <Rectangle Left="240" Top="120" Height="360" Width="10800"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="SESSION CHOICE" Color="15724527" Alignment="0">
+            <Rectangle Left="600" Top="1080" Height="3120" Width="10080"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="$1081 : Default session" Color="15724527" Alignment="0">
+            <Rectangle Left="5280" Top="2040" Height="360" Width="4560"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="$1085 : ECU reprogramming session" Color="15724527" Alignment="0">
+            <Rectangle Left="5280" Top="2760" Height="360" Width="3960"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="$10C0 : Extended diagnostic session (for factory/aftersale)" Color="15724527" Alignment="0">
+            <Rectangle Left="5280" Top="3480" Height="360" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="TESTER PRESENCE" Color="15724527" Alignment="0">
+            <Rectangle Left="600" Top="4440" Height="1560" Width="10080"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="Default Session">
+            <Rectangle Left="960" Top="1800" Height="600" Width="3240"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Reprogramming Session">
+            <Rectangle Left="960" Top="2520" Height="600" Width="3240"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartReprogSession"/>
+          </Button>
+          <Button Text="Extended Session">
+            <Rectangle Left="960" Top="3240" Height="660" Width="3240"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+          </Button>
+          <Button Text="TP activation">
+            <Rectangle Left="960" Top="4920" Height="720" Width="3240"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="TesterPresent.WithResponse"/>
+          </Button>
+        </Screen>
+        <Screen Name="ECU Reset" Color="16777215" WindowState="0" Width="14700" Height="7260">
+          <Label Text="ECU Reset" Color="4144959" Alignment="2">
+            <Rectangle Left="0" Top="120" Height="360" Width="15360"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="HARDWARE RESET" Color="15724527" Alignment="0">
+            <Rectangle Left="2280" Top="720" Height="1320" Width="10080"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Hardware reset is used to :" Color="15724527" Alignment="0">
+            <Rectangle Left="2640" Top="1080" Height="240" Width="2640"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- force data storage in memory" Color="15724527" Alignment="0">
+            <Rectangle Left="3480" Top="1440" Height="240" Width="2640"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- force configuration to be taken into account" Color="15724527" Alignment="0">
+            <Rectangle Left="3480" Top="1680" Height="240" Width="3960"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="CONFIGURATION RESET" Color="15724527" Alignment="0">
+            <Rectangle Left="2280" Top="3720" Height="1440" Width="10080"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Configuration reset is used to :" Color="15724527" Alignment="0">
+            <Rectangle Left="2640" Top="4080" Height="240" Width="2640"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- reset configuration parameters to default values" Color="15724527" Alignment="0">
+            <Rectangle Left="3480" Top="4440" Height="240" Width="4560"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- except for phone acoustic parameters, acoustic paremeters, radio reception, ..." Color="15724527" Alignment="0">
+            <Rectangle Left="3480" Top="4680" Height="480" Width="4560"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="CLEAR DTC" Color="15724527" Alignment="0">
+            <Rectangle Left="2280" Top="5400" Height="1440" Width="10080"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Clear DTC is used to :" Color="15724527" Alignment="0">
+            <Rectangle Left="2640" Top="5760" Height="240" Width="2640"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- clear DTC information (use with caution)" Color="15724527" Alignment="0">
+            <Rectangle Left="3480" Top="6120" Height="360" Width="4560"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="KEY OFF / KEY ON RESET" Color="15724527" Alignment="0">
+            <Rectangle Left="2280" Top="2160" Height="1320" Width="10080"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Key off / key on reset is used to :" Color="15724527" Alignment="0">
+            <Rectangle Left="2760" Top="2520" Height="240" Width="2640"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- force data storage in memory" Color="15724527" Alignment="0">
+            <Rectangle Left="3480" Top="2880" Height="240" Width="2640"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- force configuration to be taken into account" Color="15724527" Alignment="0">
+            <Rectangle Left="3480" Top="3120" Height="240" Width="3960"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="- reset buttons memorized status" Color="15724527" Alignment="0">
+            <Rectangle Left="3480" Top="6480" Height="360" Width="4560"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="Hard Reset">
+            <Rectangle Left="8640" Top="960" Height="720" Width="3000"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="ECUReset.hard"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Configuration Reset">
+            <Rectangle Left="8640" Top="4080" Height="720" Width="3000"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="ECUReset.config"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Clear DTC">
+            <Rectangle Left="8640" Top="5640" Height="720" Width="3000"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="ClearDiagnosticInformation.All"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Key off / Key on Reset">
+            <Rectangle Left="8640" Top="2400" Height="720" Width="3000"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="ECUReset.keyoffon"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+        </Screen>
+        <Screen Name="Traceability" Color="16777215" WindowState="0" Width="11460" Height="8940">
+          <Label Text="Traceability information" Color="4144959" Alignment="2">
+            <Rectangle Left="0" Top="120" Height="360" Width="11400"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="TRACEABILITY" Color="15724527" Alignment="0">
+            <Rectangle Left="600" Top="1560" Height="2520" Width="10080"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="($2184)" Color="15724527" Alignment="0">
+            <Rectangle Left="1440" Top="1800" Height="240" Width="720"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="1" Color="0"/>
+          </Label>
+          <Label Text="Serial number" Color="15724527" Alignment="1">
+            <Rectangle Left="3240" Top="2760" Height="360" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Supplier code" Color="15724527" Alignment="1">
+            <Rectangle Left="3240" Top="2280" Height="360" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="PART NUMBERS" Color="15724527" Alignment="0">
+            <Rectangle Left="600" Top="4560" Height="2160" Width="10080"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Software number" Color="15724527" Alignment="1">
+            <Rectangle Left="2760" Top="5280" Height="240" Width="2280"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="($2180)" Color="15724527" Alignment="1">
+            <Rectangle Left="4320" Top="5520" Height="225" Width="720"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="1" Color="0"/>
+          </Label>
+          <Label Text="VIN" Color="15724527" Alignment="0">
+            <Rectangle Left="600" Top="6960" Height="1320" Width="10080"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Year of production" Color="15724527" Alignment="1">
+            <Rectangle Left="3240" Top="3240" Height="360" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Week of production" Color="15724527" Alignment="1">
+            <Rectangle Left="3240" Top="3720" Height="360" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Hardware number" Color="15724527" Alignment="1">
+            <Rectangle Left="2760" Top="5880" Height="240" Width="2280"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="($2180)" Color="15724527" Alignment="1">
+            <Rectangle Left="4320" Top="6120" Height="225" Width="720"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="1" Color="0"/>
+          </Label>
+          <Button Text="READ ALL">
+            <Rectangle Left="6960" Top="720" Height="600" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataRead.Identification.RenaultR2"/>
+            <Send Delay="0" RequestName="DataRead.Traceability"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="write VIN">
+            <Rectangle Left="1200" Top="6960" Height="300" Width="1080"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataWrite.VIN"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Display Width="0" Color="8454016" DataName="Traceability.ProductionYear" RequestName="DataRead.Traceability">
+            <Rectangle Left="5760" Top="3120" Height="420" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Traceability.ProductionWeek" RequestName="DataRead.Traceability">
+            <Rectangle Left="5760" Top="3600" Height="420" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Traceability.SerialNumber" RequestName="DataRead.Traceability">
+            <Rectangle Left="5760" Top="2640" Height="420" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Traceability.SupplierCode" RequestName="DataRead.Traceability">
+            <Rectangle Left="5760" Top="2160" Height="420" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="PartNumber.LowerPart" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="7800" Top="5280" Height="420" Width="1920"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="PartNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="5760" Top="5280" Height="420" Width="1920"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="15" Color="8454016" DataName="VIN.VIN" RequestName="DataRead.VIN">
+            <Rectangle Left="6000" Top="7440" Height="450" Width="3600"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="VIN.CRC" RequestName="DataRead.VIN">
+            <Rectangle Left="9720" Top="7440" Height="450" Width="690"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="0" Color="12615935" DataName="VIN.VIN" RequestName="DataWrite.VIN">
+            <Rectangle Left="1135" Top="7440" Height="510" Width="3545"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="12615935" DataName="VIN.CRC" RequestName="DataWrite.VIN">
+            <Rectangle Left="4800" Top="7440" Height="510" Width="575"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="0" Color="8454016" DataName="HardwareNumber.LowerPart" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="7800" Top="5880" Height="420" Width="1920"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Identification" Color="16777215" WindowState="0" Width="16860" Height="7020">
+          <Label Text="Identification" Color="4144959" Alignment="2">
+            <Rectangle Left="120" Top="240" Height="360" Width="16320"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="RENAULT" Color="15724527" Alignment="0">
+            <Rectangle Left="480" Top="1920" Height="4800" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="PartNumberLowerPart" Color="15724527" Alignment="1">
+            <Rectangle Left="3000" Top="2400" Height="225" Width="1560"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="DiagnosticIdentification Code" Color="15724527" Alignment="1">
+            <Rectangle Left="2400" Top="2760" Height="225" Width="2160"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="SupplierNumberITG" Color="15724527" Alignment="1">
+            <Rectangle Left="3000" Top="3120" Height="225" Width="1560"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="HardwareNumberLowerPart" Color="15724527" Alignment="1">
+            <Rectangle Left="2040" Top="3480" Height="225" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="SoftwareNumber" Color="15724527" Alignment="1">
+            <Rectangle Left="3000" Top="3840" Height="225" Width="1560"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="EditionNumber" Color="15724527" Alignment="1">
+            <Rectangle Left="3000" Top="4200" Height="225" Width="1560"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="CalibrationNumber" Color="15724527" Alignment="1">
+            <Rectangle Left="3000" Top="4560" Height="225" Width="1560"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="PartNumberBasicPartList" Color="15724527" Alignment="1">
+            <Rectangle Left="1920" Top="4920" Height="225" Width="2640"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="HardwareNumberBasicPartList" Color="15724527" Alignment="1">
+            <Rectangle Left="1560" Top="5280" Height="225" Width="3000"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="ApprovalNumberBasicPartList" Color="15724527" Alignment="1">
+            <Rectangle Left="1680" Top="5640" Height="225" Width="2880"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="ManufacturerIdentificationNumber" Color="15724527" Alignment="1">
+            <Rectangle Left="1800" Top="6000" Height="225" Width="2760"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="NISSAN" Color="15724527" Alignment="0">
+            <Rectangle Left="7920" Top="1920" Height="4800" Width="7320"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="PartNumberLowerPart" Color="15724527" Alignment="1">
+            <Rectangle Left="9120" Top="2520" Height="225" Width="1560"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="DiagnosticIdentification Code" Color="15724527" Alignment="1">
+            <Rectangle Left="8520" Top="2880" Height="225" Width="2160"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="SupplierNumberITG" Color="15724527" Alignment="1">
+            <Rectangle Left="9120" Top="3240" Height="225" Width="1560"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="HardwareNumberLowerPart" Color="15724527" Alignment="1">
+            <Rectangle Left="8160" Top="3600" Height="225" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="SoftwareNumber" Color="15724527" Alignment="1">
+            <Rectangle Left="9120" Top="3960" Height="225" Width="1560"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="EditionNumber" Color="15724527" Alignment="1">
+            <Rectangle Left="9120" Top="4320" Height="225" Width="1560"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="CalibrationNumber" Color="15724527" Alignment="1">
+            <Rectangle Left="9120" Top="4680" Height="225" Width="1560"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="ManufacturerIdentificationNumber" Color="15724527" Alignment="1">
+            <Rectangle Left="8040" Top="5400" Height="225" Width="2640"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Other system features" Color="15724527" Alignment="1">
+            <Rectangle Left="8040" Top="5040" Height="225" Width="2640"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="READ ALL">
+            <Rectangle Left="7080" Top="960" Height="600" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataRead.Identification.RenaultR2"/>
+            <Send Delay="0" RequestName="DataRead.Identification.Nissan"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Display Width="0" Color="8454016" DataName="PartNumber.LowerPart" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="4800" Top="2400" Height="300" Width="2040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="DiagnosticIdentificationCode" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="4800" Top="2760" Height="300" Width="2040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="SupplierNumber.ITG" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="4800" Top="3120" Height="300" Width="2040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="HardwareNumber.LowerPart" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="4800" Top="3480" Height="300" Width="2040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="SoftwareNumber" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="4800" Top="3840" Height="300" Width="2040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="EditionNumber" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="4800" Top="4200" Height="300" Width="2040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="CalibrationNumber" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="4800" Top="4560" Height="300" Width="2040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="PartNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="4800" Top="4920" Height="300" Width="2040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="ManufacturerIdentificationCode" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="4800" Top="6000" Height="300" Width="2040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="NissanID.PartNumberLowerPart" RequestName="DataRead.Identification.Nissan">
+            <Rectangle Left="10920" Top="2520" Height="300" Width="2760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="NissanID.DiagnosticIdentificationCode" RequestName="DataRead.Identification.Nissan">
+            <Rectangle Left="10920" Top="2880" Height="300" Width="2760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="NissanID.SupplierNumberITG" RequestName="DataRead.Identification.Nissan">
+            <Rectangle Left="10920" Top="3240" Height="300" Width="2760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="NissanID.HardwareNumberLowerPart" RequestName="DataRead.Identification.Nissan">
+            <Rectangle Left="10920" Top="3600" Height="300" Width="2760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="NissanID.SoftwareNumber" RequestName="DataRead.Identification.Nissan">
+            <Rectangle Left="10920" Top="3960" Height="300" Width="2760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="NissanID.EditionNumber" RequestName="DataRead.Identification.Nissan">
+            <Rectangle Left="10920" Top="4320" Height="300" Width="2760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="NissanID.CalibrationNumber" RequestName="DataRead.Identification.Nissan">
+            <Rectangle Left="10920" Top="4680" Height="300" Width="2760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="NissanID.Other system features" RequestName="DataRead.Identification.Nissan">
+            <Rectangle Left="10920" Top="5040" Height="300" Width="2760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="NissanID.ManufacturerIdentificationCode" RequestName="DataRead.Identification.Nissan">
+            <Rectangle Left="10920" Top="5400" Height="300" Width="2760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="HardwareNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="4800" Top="5280" Height="300" Width="2040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="ApprovalNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+            <Rectangle Left="4800" Top="5640" Height="300" Width="2040"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Multiplex network diagnostic request" Color="16777215" WindowState="0" Width="11460" Height="8340">
+          <Label Text="Multiplex network diagnostic request" Color="4144959" Alignment="2">
+            <Rectangle Left="0" Top="240" Height="360" Width="10080"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Multiplex network diagnostic request" Color="15724527" Alignment="0">
+            <Rectangle Left="960" Top="1800" Height="5160" Width="3480"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="READ ALL">
+            <Rectangle Left="6480" Top="840" Height="600" Width="1920"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataRead.Multiplex network diagnostic request"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.Mute Module_Current_fault status" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="1800" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.Mute Module_Confirmed_fault status" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="2100" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.Mute Module_Fault counter" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="2400" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.METER Absent_Current_fault status" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="2880" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.METER Absent_Confirmed_fault status" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="3180" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.METER Absent_Fault counter" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="3480" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.BCM Absent_Current_fault status" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="3960" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.BCM Absent_Confirmed_fault status" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="4260" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.BCM Absent_Fault counter" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="4560" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.AT Absent_HEV_Current_fault status" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="5040" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.AT Absent_HEV_Confirmed_fault status" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="5340" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.AT Absent_HEV_Fault counter" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="5640" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.VCM Absent_Current_fault status" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="6120" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.VCM Absent_Confirmed_fault status" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="6420" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Multiplex network diagnostic request.VCM Absent_Fault counter" RequestName="DataRead.Multiplex network diagnostic request">
+            <Rectangle Left="4920" Top="6720" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+      </Category>
+      <Category Name="Configuration">
+        <Screen Name="VSP Configuration Parameters" Color="16777215" WindowState="0" Width="21300" Height="12780">
+          <Label Text="WRITE ALL" Color="12615935" Alignment="2">
+            <Rectangle Left="6000" Top="1560" Height="360" Width="1440"/>
+            <Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="READ ALL" Color="4259584" Alignment="2">
+            <Rectangle Left="13680" Top="1440" Height="360" Width="1560"/>
+            <Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="VSP Configuration Parameters" Color="4144959" Alignment="2">
+            <Rectangle Left="0" Top="240" Height="360" Width="18960"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="VSP Configuration Parameters" Color="14671839" Alignment="0">
+            <Rectangle Left="360" Top="6240" Height="3360" Width="3240"/>
+            <Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Sound Type (0 à 3)" Color="14671839" Alignment="1">
+            <Rectangle Left="960" Top="6600" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Activation by switch" Color="14671839" Alignment="1">
+            <Rectangle Left="960" Top="6960" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="REVERSE sound" Color="14671839" Alignment="1">
+            <Rectangle Left="960" Top="7320" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="CHARGING sound " Color="14671839" Alignment="1">
+            <Rectangle Left="960" Top="7680" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="LED_DTC_ENABLE" Color="14671839" Alignment="1">
+            <Rectangle Left="960" Top="8400" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="SoundVolumeValue ChargingSound" Color="14671839" Alignment="2">
+            <Rectangle Left="360" Top="3720" Height="360" Width="3240"/>
+            <Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="DiagMUX DTCs Configuration" Color="14671839" Alignment="0">
+            <Rectangle Left="360" Top="2040" Height="1320" Width="3240"/>
+            <Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="ATCU_Presence" Color="14671839" Alignment="1">
+            <Rectangle Left="960" Top="2880" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="HEVC_Presence" Color="14671839" Alignment="1">
+            <Rectangle Left="960" Top="2640" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Parameter VSP_Sound_A " Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="4380" Height="360" Width="3240"/>
+            <Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Parameter VSP_Sound_B " Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="4980" Height="360" Width="3240"/>
+            <Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Parameter VSP_Sound_C " Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="5580" Height="360" Width="3240"/>
+            <Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="ECM_Presence" Color="14671839" Alignment="1">
+            <Rectangle Left="960" Top="2400" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="SWITCH_DTC_ENABLE" Color="14671839" Alignment="1">
+            <Rectangle Left="960" Top="8760" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="ENGINE_SPEED_TRESHOLD (0 à 15)" Color="14671839" Alignment="1">
+            <Rectangle Left="600" Top="9120" Height="240" Width="2880"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="D_R_Identical_sound" Color="14671839" Alignment="1">
+            <Rectangle Left="960" Top="8040" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="Hard reset">
+            <Rectangle Left="600" Top="720" Height="360" Width="1680"/>
+            <Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="ECUReset.hard"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Key Off On reset">
+            <Rectangle Left="2520" Top="720" Height="360" Width="1680"/>
+            <Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="ECUReset.keyoffon"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="WRITE ALL">
+            <Rectangle Left="7680" Top="1560" Height="360" Width="1680"/>
+            <Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataWrite.VSP Configuration Parameters"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="READ ALL">
+            <Rectangle Left="15480" Top="1440" Height="360" Width="1680"/>
+            <Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataRead.VSP Configuration Parameters"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Write VSP Configuration Parameters">
+            <Rectangle Left="7680" Top="6480" Height="3000" Width="3120"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataWrite.VSP Configuration Parameters"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Write SoundVolumeValue_ChargingSound Parameter">
+            <Rectangle Left="7680" Top="3600" Height="480" Width="3120"/>
+            <Font Name="Arial" Size=" 9" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataWrite.SoundVolumeValue_ChargingSound Parameter"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Read SoundVolumeValue ChargingSound">
+            <Rectangle Left="15480" Top="3570" Height="480" Width="3120"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataRead.SoundVolumeValue ChargingSound"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Read VSP Configuration Parameters">
+            <Rectangle Left="15480" Top="6450" Height="3030" Width="3120"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataRead.VSP Configuration Parameters"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Read Configuration of DiagMUX DTCs">
+            <Rectangle Left="15480" Top="2130" Height="1200" Width="3120"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataRead.DiagMuxDTC_Configuration"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Write Configuration of DiagMUX DTCs">
+            <Rectangle Left="7680" Top="2160" Height="1200" Width="3120"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataWrite.DiagMuxDTC_Configuration"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Write Parameter VSP_Sound_A">
+            <Rectangle Left="7680" Top="4320" Height="360" Width="3120"/>
+            <Font Name="Arial" Size=" 9" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataWrite.Parameter VSP_Sound_A"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Read Parameter VSP_Sound_A">
+            <Rectangle Left="15480" Top="4290" Height="360" Width="3120"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataRead.Parameter VSP_Sound_A"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Write Parameter VSP_Sound_B">
+            <Rectangle Left="7680" Top="4920" Height="360" Width="3120"/>
+            <Font Name="Arial" Size=" 9" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataWrite.Parameter VSP_Sound_B"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Read Parameter VSP_Sound_B">
+            <Rectangle Left="15480" Top="4890" Height="360" Width="3120"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataRead.Parameter VSP_Sound_B"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Write Parameter VSP_Sound_C">
+            <Rectangle Left="7680" Top="5520" Height="360" Width="3120"/>
+            <Font Name="Arial" Size=" 9" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataWrite.Parameter VSP_Sound_C"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Read Parameter VSP_Sound_C">
+            <Rectangle Left="15480" Top="5490" Height="360" Width="3120"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataRead.Parameter VSP_Sound_C"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Input Width="0" Color="12615935" DataName="VSP Configuration Parameters.Sound type" RequestName="DataWrite.VSP Configuration Parameters">
+            <Rectangle Left="3600" Top="6600" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="12615935" DataName="VSP Configuration Parameters.Activation by switch" RequestName="DataWrite.VSP Configuration Parameters">
+            <Rectangle Left="3600" Top="6960" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="12615935" DataName="VSP Configuration Parameters.REVERSE sound" RequestName="DataWrite.VSP Configuration Parameters">
+            <Rectangle Left="3600" Top="7320" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="12615935" DataName="VSP Configuration Parameters.CHARGING sound" RequestName="DataWrite.VSP Configuration Parameters">
+            <Rectangle Left="3600" Top="7680" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="12615935" DataName="VSP Configuration Parameters.D_R_Identical_sound" RequestName="DataWrite.VSP Configuration Parameters">
+            <Rectangle Left="3600" Top="8040" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="0" Color="8454016" DataName="VSP Configuration Parameters.Sound type" RequestName="DataRead.VSP Configuration Parameters">
+            <Rectangle Left="11400" Top="6600" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="VSP Configuration Parameters.Activation by switch" RequestName="DataRead.VSP Configuration Parameters">
+            <Rectangle Left="11400" Top="6960" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="VSP Configuration Parameters.REVERSE sound" RequestName="DataRead.VSP Configuration Parameters">
+            <Rectangle Left="11400" Top="7320" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="VSP Configuration Parameters.CHARGING sound" RequestName="DataRead.VSP Configuration Parameters">
+            <Rectangle Left="11400" Top="7680" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="VSP Configuration Parameters.D_R_Identical_sound" RequestName="DataRead.VSP Configuration Parameters">
+            <Rectangle Left="11400" Top="8040" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="0" Color="12615935" DataName="SoundVolumeValue_ ChargingSound" RequestName="DataWrite.SoundVolumeValue_ChargingSound Parameter">
+            <Rectangle Left="3600" Top="3720" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="0" Color="8454016" DataName="SoundVolumeValue ChargingSound.SoundVolumeValue_ChargingSound" RequestName="DataRead.SoundVolumeValue ChargingSound">
+            <Rectangle Left="11400" Top="3720" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Parameter VSP_Sound_A" RequestName="DataRead.Parameter VSP_Sound_A">
+            <Rectangle Left="11400" Top="4320" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="0" Color="12615935" DataName="Parameter VSP_Sound_A" RequestName="DataWrite.Parameter VSP_Sound_A">
+            <Rectangle Left="3600" Top="4380" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="0" Color="8454016" DataName="Parameter VSP_Sound_B" RequestName="DataRead.Parameter VSP_Sound_B">
+            <Rectangle Left="11400" Top="4920" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Parameter VSP_Sound_C" RequestName="DataRead.Parameter VSP_Sound_C">
+            <Rectangle Left="11400" Top="5520" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="0" Color="12615935" DataName="Parameter VSP_Sound_B" RequestName="DataWrite.Parameter VSP_Sound_B">
+            <Rectangle Left="3600" Top="4980" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="12615935" DataName="Parameter VSP_Sound_C" RequestName="DataWrite.Parameter VSP_Sound_C">
+            <Rectangle Left="3600" Top="5580" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="0" Color="8454016" DataName="Configuration of DiagMUX DTCs.ECM_Presence" RequestName="DataRead.DiagMuxDTC_Configuration">
+            <Rectangle Left="11400" Top="2280" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Configuration of DiagMUX DTCs.HEVC_Presence" RequestName="DataRead.DiagMuxDTC_Configuration">
+            <Rectangle Left="11400" Top="2580" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Configuration of DiagMUX DTCs.ATCU_Presence" RequestName="DataRead.DiagMuxDTC_Configuration">
+            <Rectangle Left="11400" Top="2880" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="0" Color="12615935" DataName="Configuration of DiagMUX DTCs.ECM_Presence" RequestName="DataWrite.DiagMuxDTC_Configuration">
+            <Rectangle Left="3600" Top="2310" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="12615935" DataName="Configuration of DiagMUX DTCs.HEVC_Presence" RequestName="DataWrite.DiagMuxDTC_Configuration">
+            <Rectangle Left="3600" Top="2610" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="12615935" DataName="Configuration of DiagMUX DTCs.ATCU_Presence" RequestName="DataWrite.DiagMuxDTC_Configuration">
+            <Rectangle Left="3600" Top="2910" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="15" Color="12615935" DataName="VSP Configuration Parameters. LED_DTC_ENABLE" RequestName="DataWrite.VSP Configuration Parameters">
+            <Rectangle Left="3600" Top="8400" Height="300" Width="3990"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="15" Color="12615935" DataName="VSP Configuration Parameters. SWITCH_DTC_ENABLE" RequestName="DataWrite.VSP Configuration Parameters">
+            <Rectangle Left="3600" Top="8760" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="15" Color="8454016" DataName="VSP Configuration Parameters. LED_DTC_ENABLE" RequestName="DataRead.VSP Configuration Parameters">
+            <Rectangle Left="11400" Top="8400" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="15" Color="8454016" DataName="VSP Configuration Parameters. SWITCH_DTC_ENABLE" RequestName="DataRead.VSP Configuration Parameters">
+            <Rectangle Left="11400" Top="8760" Height="300" Width="4005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="15" Color="8454016" DataName="VSP Configuration Parameters. Engine Speed Treshold" RequestName="DataRead.VSP Configuration Parameters">
+            <Rectangle Left="11400" Top="9120" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="15" Color="12615935" DataName="VSP Configuration Parameters. Engine Speed Treshold" RequestName="DataWrite.VSP Configuration Parameters">
+            <Rectangle Left="3600" Top="9120" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+        </Screen>
+      </Category>
+      <Category Name="I/O Control">
+        <Screen Name="VSP Speaker Request" Color="16777215" WindowState="0" Width="9180" Height="3060">
+          <Label Text="TEST CONTROL" Color="15724527" Alignment="0">
+            <Rectangle Left="3120" Top="960" Height="600" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="VSP Speaker Request" Color="4144959" Alignment="2">
+            <Rectangle Left="0" Top="240" Height="360" Width="9120"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="CONTROL STATUS" Color="15724527" Alignment="0">
+            <Rectangle Left="3120" Top="2040" Height="600" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Sent" Color="15724527" Alignment="0">
+            <Rectangle Left="3120" Top="1275" Height="225" Width="1500"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Received" Color="15724527" Alignment="0">
+            <Rectangle Left="3120" Top="2355" Height="225" Width="1500"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="VSP Speaker Request">
+            <Rectangle Left="600" Top="1200" Height="1200" Width="1920"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="IO.VSP Speaker request"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Input Width="0" Color="12615935" DataName="IO.Permanent_Test" RequestName="IO.VSP Speaker request">
+            <Rectangle Left="5880" Top="1200" Height="300" Width="2800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="0" Color="8454016" DataName="IO.VSP speaker Status" RequestName="IO.VSP Speaker request">
+            <Rectangle Left="5880" Top="2280" Height="300" Width="2800"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Support information" Color="16777215" WindowState="0" Width="9180" Height="3060">
+          <Label Text="TEST CONTROL" Color="15724527" Alignment="0">
+            <Rectangle Left="3120" Top="960" Height="600" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Support information" Color="4144959" Alignment="2">
+            <Rectangle Left="0" Top="240" Height="360" Width="9120"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="CONTROL STATUS" Color="15724527" Alignment="0">
+            <Rectangle Left="3120" Top="2040" Height="600" Width="5640"/>
+            <Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Sent" Color="15724527" Alignment="0">
+            <Rectangle Left="3120" Top="1275" Height="225" Width="1500"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Received" Color="15724527" Alignment="0">
+            <Rectangle Left="3120" Top="2355" Height="225" Width="1500"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="Support information">
+            <Rectangle Left="600" Top="1200" Height="1200" Width="1920"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="IO.Support information"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Input Width="0" Color="12615935" DataName="IO.Temporary_Test" RequestName="IO.Support information">
+            <Rectangle Left="5280" Top="1080" Height="300" Width="3400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="0" Color="8454016" DataName="IO.Support information Status" RequestName="IO.Support information">
+            <Rectangle Left="5280" Top="2160" Height="300" Width="3400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+      </Category>
+      <Category Name="Monitoring">
+        <Screen Name="Data Monitor Parameter" Color="16777215" WindowState="0" Width="14820" Height="11220">
+          <Label Text="READ ALL" Color="4259584" Alignment="2">
+            <Rectangle Left="7200" Top="705" Height="360" Width="1560"/>
+            <Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Data Monitor Parameter" Color="4144959" Alignment="2">
+            <Rectangle Left="120" Top="120" Height="360" Width="11760"/>
+            <Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Data monitor value request" Color="14671839" Alignment="2">
+            <Rectangle Left="720" Top="2040" Height="4560" Width="3240"/>
+            <Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="IgnitionSupplyConfirmation" Color="14671839" Alignment="1">
+            <Rectangle Left="1320" Top="2280" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="VSPstatusDisplay" Color="14671839" Alignment="1">
+            <Rectangle Left="1320" Top="2640" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="EngineRPM" Color="14671839" Alignment="1">
+            <Rectangle Left="1320" Top="3000" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="PowerTrainStatus" Color="14671839" Alignment="1">
+            <Rectangle Left="1320" Top="3360" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="DayNightForBacklights" Color="14671839" Alignment="1">
+            <Rectangle Left="1320" Top="3720" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="ChargingSoundRequest" Color="14671839" Alignment="1">
+            <Rectangle Left="1320" Top="4080" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="PeriodicReverseBuzzerTrigger" Color="14671839" Alignment="1">
+            <Rectangle Left="1320" Top="4440" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="DiagMuxOn_BCM" Color="14671839" Alignment="1">
+            <Rectangle Left="1320" Top="4800" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="VehicleSpeed" Color="14671839" Alignment="1">
+            <Rectangle Left="1320" Top="5160" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="VehicleStateExtented" Color="14671839" Alignment="1">
+            <Rectangle Left="1320" Top="5490" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="DistanceTotalizer" Color="14671839" Alignment="1">
+            <Rectangle Left="1320" Top="5880" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="BrakeInfoStatus" Color="14671839" Alignment="1">
+            <Rectangle Left="1320" Top="6240" Height="240" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Support information" Color="14671839" Alignment="2">
+            <Rectangle Left="720" Top="6855" Height="345" Width="3240"/>
+            <Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Button Text="Hard reset">
+            <Rectangle Left="600" Top="720" Height="360" Width="1680"/>
+            <Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="ECUReset.hard"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Key Off On reset">
+            <Rectangle Left="2520" Top="720" Height="360" Width="1680"/>
+            <Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="ECUReset.keyoffon"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="READ ALL">
+            <Rectangle Left="5400" Top="720" Height="360" Width="1680"/>
+            <Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataRead.Data monitor value request"/>
+            <Send Delay="0" RequestName="DataRead.Support information"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Read Data Monitor Parameter">
+            <Rectangle Left="8220" Top="2160" Height="4440" Width="3120"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataRead.Data monitor value request"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Button Text="Read Support information">
+            <Rectangle Left="8220" Top="6840" Height="360" Width="3120"/>
+            <Font Name="Arial" Size=" 8" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession"/>
+            <Send Delay="0" RequestName="DataRead.Support information"/>
+            <Send Delay="0" RequestName="StartDefaultSession"/>
+          </Button>
+          <Display Width="0" Color="8454016" DataName="Data monitor value request.IgnitionSupplyConfirmation" RequestName="DataRead.Data monitor value request">
+            <Rectangle Left="4080" Top="2250" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Data monitor value request.VSPstatusDisplay" RequestName="DataRead.Data monitor value request">
+            <Rectangle Left="4080" Top="2580" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Data monitor value request.EngineRPM" RequestName="DataRead.Data monitor value request">
+            <Rectangle Left="4080" Top="2970" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Data monitor value request.PowerTrainStatus" RequestName="DataRead.Data monitor value request">
+            <Rectangle Left="4080" Top="3300" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Data monitor value request.DayNightForBacklights" RequestName="DataRead.Data monitor value request">
+            <Rectangle Left="4080" Top="3690" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Data monitor value request.ChargingSoundRequest" RequestName="DataRead.Data monitor value request">
+            <Rectangle Left="4080" Top="4020" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Data monitor value request.PeriodicReverseBuzzerTrigger" RequestName="DataRead.Data monitor value request">
+            <Rectangle Left="4080" Top="4410" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Data monitor value request.DiagMuxOn_BCM" RequestName="DataRead.Data monitor value request">
+            <Rectangle Left="4080" Top="4740" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Data monitor value request.VehicleSpeed" RequestName="DataRead.Data monitor value request">
+            <Rectangle Left="4080" Top="5100" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Data monitor value request.VehicleStateExtented" RequestName="DataRead.Data monitor value request">
+            <Rectangle Left="4080" Top="5445" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Data monitor value request.DistanceTotalizer" RequestName="DataRead.Data monitor value request">
+            <Rectangle Left="4080" Top="5850" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Data monitor value request.BrakeInfoStatus" RequestName="DataRead.Data monitor value request">
+            <Rectangle Left="4080" Top="6210" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454016" DataName="Support LID data" RequestName="DataRead.Support information">
+            <Rectangle Left="4080" Top="6855" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+      </Category>
+    </ds:Categories>
+  </ddt:Target>
+</xml>

@@ -1,0 +1,4239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<ddt:Target Name="ABS ESP - X74ph2 J81ph1p/ph2 X73ph2 - version 14" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="fabien.meriguet@renault.com" href="ABS_ESP___X74ph2_J81ph1p_ph2_X73ph2_version_14.xml" upload="9/7/06"><Description><![CDATA[ABS MK70 & ESP MK60P
+
+Véhicule  X74 phase 2
+Véhicule J81 phase 1' et J81 phase 2
+Véhicule  X73 phase 2
+
+Pilote: Fabien Mériguet (56431)
+          Denis Coat (32764)
+
+CdC diagnostic 65630/2003/26 v1.12
+
+Version ABS Client : NO_RAB00018 (F08)
+Version ESP Client x74ph2/J81ph1': NP_RAD00075 (F08.2)
+
+Version ESP X73ph2/J81ph2: NP_RAD00044 (F55)
+Version ESP X73ph2/J81ph2: NR_RAB00031 (F06)
+Version ESP X73ph2/J81ph2: NR_RAC00030 (F07)
+Version ESP Client X73ph2/J81ph2: NR_RAD00014 (F08)
+
+
+Modification de la résolution de l'odométrie interne.
+
+ATTENTION : Timeout P2 passe à 500ms (dérogation)
+fabien.meriguet@renault.com
+denis.coat@reanult.com]]></Description><Projects xmlns=""><x73Ph2/><x74Ph2/><x81/><x81Ph2/></Projects>
+
+<Function Name="ABS-VDC - ABS-ESP" Address="1"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>01/09/2006 11:58:32</DateOfficialisation>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<K BaudRate="10400">
+<KWP Multipoint="0">
+<FastInit><KW1 Value="208"/>
+<KW2 Value="143"/></FastInit>
+</KWP>
+<InterByte Delay="0"/>
+<ReplyToRequest Delay="5"/>
+<RequestToReply Timeout="500"/>
+<TesterPresent Delay="3000"/>
+<OnError Delay="300"/>
+</K>
+<AutoIdents>
+<AutoIdent DiagVersion="16" Supplier="368" Soft="50AA" Version="0017"/><AutoIdent DiagVersion="20" Supplier="368" Soft="4FAA" Version="0020"/><AutoIdent DiagVersion="16" Supplier="368" Soft="50AC" Version="0030"/><AutoIdent DiagVersion="20" Supplier="368" Soft="50AB" Version="0018"/><AutoIdent DiagVersion="16" Supplier="368" Soft="50AD" Version="0013"/><AutoIdent DiagVersion="16" Supplier="368" Soft="50AD" Version="0075"/><AutoIdent DiagVersion="16" Supplier="368" Soft="50AD" Version="0044"/><AutoIdent DiagVersion="16" Supplier="368" Soft="52AB" Version="0025"/><AutoIdent DiagVersion="16" Supplier="368" Soft="52AB" Version="0031"/><AutoIdent DiagVersion="16" Supplier="368" Soft="52AC" Version="0030"/><AutoIdent DiagVersion="17" Supplier="368" Soft="52AD" Version="0014"/></AutoIdents>
+<Datas>
+
+<Data Name="VIN">
+<Comment><![CDATA[Numéro d'identification véhicule]]></Comment>
+<Mnemonic>TR_VIN</Mnemonic>
+<Bytes count="19" ascii="1"/>
+</Data>
+<Data Name="Calibrage ABS_ESP">
+<Comment><![CDATA[Identification du châssis et du moteur]]></Comment>
+<Mnemonic>TR_CAL_ESP</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Calculateur neuf"/>
+<Item Value="1" Text="1 - X74 - K4M+/K4M ou tous véhicules avec un bloc ABS"/>
+<Item Value="2" Text="2 - X74 - F4R - (Ressorts: Ble-Ble Ble-O Ble-R)=(TAV: 10 à 19)"/>
+<Item Value="3" Text="3 - X74 - F4R - (Ressorts: V-Blc V-R)=(TAV: 20 à 27)"/>
+<Item Value="4" Text="4 - X74 - F4Rt - (Ressorts: Ble-R V-Blc)=(TAV: 16 à 23)"/>
+<Item Value="5" Text="5 - X74 - F4Rt - (Ressorts: V-R Blc-Blc)=(TAV: 24 à 31)"/>
+<Item Value="6" Text="6 - X74 - F4Rt MT (sport)"/>
+<Item Value="7" Text="7 - X74 - F9Qt (Ressorts:Ble-Ble Ble-O Ble-R V-Blc)=(TAV:10 à 23) (Puiss &lt; 88kw)"/>
+<Item Value="8" Text="8 - X74 - F9Qt (Ressorts: V-R Blc-Blc)=(TAV: 24 à 31) (Puiss &lt; 88kw)"/>
+<Item Value="9" Text="9 - X74 - F9Qt (Ressorts: Ble-Ble Ble-O Ble-R V-Blc)=(TAV:10 à 23) (Puiss &gt;= 88kw)"/>
+<Item Value="10" Text="10 - X74 - F9Qt (Ressorts: V-R Blc-Blc)=(TAV: 24 à 31) (Puiss &gt;= 88kw)"/>
+<Item Value="11" Text="11 - X74 - G9Tt (Ressorts: V-R Blc-Blc)=(TAV: 24 à 31)"/>
+<Item Value="12" Text="12 - X74 - G9Tt (Ressorts: Blc-M)"/>
+<Item Value="13" Text="13 - X74 - M9R (Ressorts: Blc-Blc Blc-M)=(TAV: 28 à 36) (Puiss =105kw)"/>
+<Item Value="14" Text="14 - X74 - M9R (Ressorts: V-Blc V-R)=(TAV:20 à 27) (Puiss =105kw)"/>
+<Item Value="15" Text="15 - X74 - M9R (Ressorts: Blc-Blc Blc-M)=(TAV: 28 à 36) (Puiss =130kw)"/>
+<Item Value="16" Text="16 - X74 - M9R (Ressorts: V-Blc V-R)=(TAV:20 à 27) (Puiss =130kw)"/>
+<Item Value="17" Text="17 - X74 - L7X (Ressorts: Blc-Blc)=(TAV: 28 à 31)"/>
+<Item Value="18" Text="18 - X74 - L7X (Ressorts: Blc-M)=(TAV: 32 à 36)"/>
+<Item Value="19" Text="19 - X74 - L7X Mercosur - (Ressorts: Blc-M)=(TAV: 32 à 36)"/>
+<Item Value="20" Text="20 - X74 - M9R - (sport)"/>
+<Item Value="31" Text="31 - X73 - F4RT"/>
+<Item Value="34" Text="34 - X73 - G9T"/>
+<Item Value="36" Text="36 - X73 - P9X"/>
+<Item Value="38" Text="38 - X73 - V4Y"/>
+<Item Value="39" Text="39 - X73 - M9RB"/>
+<Item Value="46" Text="46 - J81 - F4R"/>
+<Item Value="49" Text="49 - J81 - F4Rt"/>
+<Item Value="52" Text="52 - J81 - F9Qt"/>
+<Item Value="55" Text="55 - J81 - G9Tt"/>
+<Item Value="58" Text="58 - J81 - M9RA"/>
+<Item Value="61" Text="61 - J81 - M9RB"/>
+<Item Value="66" Text="66 - J81 - P9X"/>
+<Item Value="69" Text="69 - J81 - V4Y"/></List>
+</Bits>
+</Data>
+<Data Name="Durée powerlatch">
+<Comment><![CDATA[Durée du powerlatch]]></Comment>
+<Mnemonic>TR_PWRL</Mnemonic>
+<Bits>
+<List>
+<Item Value="5" Text="SANS Frein de Parking Assisté (50s)"/>
+<Item Value="30" Text="AVEC Frein de Parking Assisté (5mn)"/></List>
+</Bits>
+</Data>
+<Data Name="Type de boîte">
+<Comment><![CDATA[Type de boîte de vitesse]]></Comment>
+<Mnemonic>TR_TYPE_BV</Mnemonic>
+<Bits>
+<List>
+<Item Value="181" Text="boîte manuelle"/>
+<Item Value="186" Text="boîte automatique"/>
+<Item Value="255" Text="Absence de prog."/></List>
+</Bits>
+</Data>
+<Data Name="Index tachy">
+<Comment><![CDATA[Index tachymétrique]]></Comment>
+<Mnemonic>TR_TACHY</Mnemonic>
+<Bits>
+<List>
+<Item Value="64" Text="X74 - Tableau de Bord en km/h"/>
+<Item Value="75" Text="X74 - Tableau de Bord en Miles"/>
+<Item Value="105" Text="X74 - 205 60 R16"/>
+<Item Value="226" Text="J81 &amp; X73"/>
+<Item Value="255" Text="Absence de prog."/></List>
+</Bits>
+</Data>
+<Data Name="Status remplissage">
+<Comment><![CDATA[Etat du remplissage du groupe hydraulique]]></Comment>
+<Mnemonic>TR_FILLING_PROCESS_BYTE</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Remplissage terminé -&gt; Bloc OK"/>
+<Item Value="48" Text="Anomalie interne ABS/ESP -&gt; Bloc sec"/>
+<Item Value="128" Text="Anomalie interne ABS/ESP -&gt; Bloc humide"/>
+<Item Value="176" Text="Anomalie cycle machine remplissage -&gt; Bloc sec"/>
+<Item Value="192" Text="Anomalie cycle machine remplissage -&gt; Bloc humide"/>
+<Item Value="255" Text="Calculateur neuf"/></List>
+</Bits>
+</Data>
+<Data Name="Jour APV">
+<Comment><![CDATA[Jour de la dernière intervention APV]]></Comment>
+<Mnemonic>TR_DATE_APV_JOUR</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Mois APV">
+<Comment><![CDATA[Mois de la dernière intervention APV]]></Comment>
+<Mnemonic>TR_DATE_APV_MOIS</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Année APV">
+<Comment><![CDATA[Année de la dernière intervention APV]]></Comment>
+<Mnemonic>TR_DATE_APV_ANNEE</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Identification diag">
+<Comment><![CDATA[Code d'identification diagnostic]]></Comment>
+<Mnemonic>TR_ID_ABS_VDIAG</Mnemonic>
+<Bits>
+<List>
+<Item Value="16" Text="ESP MK60P"/>
+<Item Value="20" Text="ABS MK70"/></List>
+</Bits>
+</Data>
+<Data Name="Code ITG">
+<Comment><![CDATA[Code ITG TEVES]]></Comment>
+<Mnemonic>TR_ID_ABS_ITG</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Numéro version logiciel">
+<Comment><![CDATA[Numéro de version logiciel TEVES]]></Comment>
+<Mnemonic>TR_ID_ABS_RELEASE</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Numéro homologation">
+<Comment><![CDATA[Numéro d'homologation TEVES]]></Comment>
+<Mnemonic>TR_ID_ABS_HOMOL</Mnemonic>
+<Bits count="4">
+<List>
+<Item Value="5" Text="F05"/>
+<Item Value="6" Text="F06"/>
+<Item Value="7" Text="F07"/>
+<Item Value="8" Text="F08"/></List>
+</Bits>
+</Data>
+<Data Name="Numéro version homologation">
+<Comment><![CDATA[Numéro de version d'homologation TEVES]]></Comment>
+<Mnemonic>TR_ID_ABS_REL_HOMOL</Mnemonic>
+<Bits count="4">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Numéro version CdC diag">
+<Comment><![CDATA[Numéro de version du CdC diagnostic RENAULT]]></Comment>
+<Mnemonic>TR_ID_ABS_CDC</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Vitesse roue AVD">
+<Comment><![CDATA[Vitesse de la roue avant droite]]></Comment>
+<Mnemonic>TR_VIT_AVD</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km/h" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Vitesse roue AVG">
+<Comment><![CDATA[Vitesse de la roue avant gauche]]></Comment>
+<Mnemonic>TR_VIT_AVG</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km/h" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Vitesse roue ARD">
+<Comment><![CDATA[Vitesse de la roue arrière droite]]></Comment>
+<Mnemonic>TR_VIT_ARD</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km/h" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Vitesse roue ARG">
+<Comment><![CDATA[Vitesse de la roue arrière gauche]]></Comment>
+<Mnemonic>TR_VIT_ARG</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km/h" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Vitesse véhicule">
+<Comment><![CDATA[Vitesse du véhicule]]></Comment>
+<Mnemonic>TR_VIT_VEH</Mnemonic>
+<Bits count="16">
+<Scaled Unit="km/h" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Etat relais BLA">
+<Comment><![CDATA[Etat du relais BLA]]></Comment>
+<Mnemonic>TR_INFO_SYS_BLA</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="pilotage opérationnel"/>
+<Item Value="1" Text="pilotage inhibé"/></List>
+</Bits>
+</Data>
+<Data Name="Etat fonction ASR">
+<Comment><![CDATA[Etat de la fonction ASR]]></Comment>
+<Mnemonic>TR_INFO_SYS_ASR</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="ASR opérationnel"/>
+<Item Value="1" Text="ASR déconnecté par le conducteur"/>
+<Item Value="2" Text="ASR déconnecté par l'outil de diagnostic"/>
+<Item Value="3" Text="ASR en défaut ou absent"/></List>
+</Bits>
+</Data>
+<Data Name="Etat fonction MSR">
+<Comment><![CDATA[Etat de la fonction MSR]]></Comment>
+<Mnemonic>TR_INFO_SYS_MSR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="MSR opérationnel"/>
+<Item Value="1" Text="MSR en défaut"/></List>
+</Bits>
+</Data>
+<Data Name="Etat fonction ABS">
+<Comment><![CDATA[Etat de la fonction ABS]]></Comment>
+<Mnemonic>TR_INFO_SYS_ABS</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="ABS opérationnel"/>
+<Item Value="1" Text="ABS en défaut"/></List>
+</Bits>
+</Data>
+<Data Name="Etat fonction REF">
+<Comment><![CDATA[Etat de la fonction REF]]></Comment>
+<Mnemonic>TR_INFO_SYS_REF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="REF opérationnel"/>
+<Item Value="1" Text="REF en défaut"/></List>
+</Bits>
+</Data>
+<Data Name="Offset angle volant">
+<Comment><![CDATA[Offset du capteur d'angle volant]]></Comment>
+<Mnemonic>TR_OFFSET_SWA</Mnemonic>
+<Bits count="16" signed="1">
+<Scaled Unit="°" Step=" .0006836" Format="00.00"/>
+</Bits>
+</Data>
+<Data Name="Offset accélération transversale">
+<Comment><![CDATA[Offset du capteur d'accélération transversale]]></Comment>
+<Mnemonic>TR_OFFSET_ACCEL</Mnemonic>
+<Bits count="16">
+<Scaled Unit="g" Step=" .00001"/>
+</Bits>
+</Data>
+<Data Name="Offset pression freinage">
+<Comment><![CDATA[Offset du capteur de pression de freinage]]></Comment>
+<Mnemonic>TR_OFFSET_FREIN</Mnemonic>
+<Bits count="16">
+<Scaled Unit="bar" Step=" .000625"/>
+</Bits>
+</Data>
+<Data Name="Tension d'alimentation">
+<Comment><![CDATA[Tension d'alimentation du calculateur]]></Comment>
+<Mnemonic>TR_IN_PHYS_UBATT</Mnemonic>
+<Bits>
+<Scaled Unit="V" Step=" .071"/>
+</Bits>
+</Data>
+<Data Name="Angle volant">
+<Comment><![CDATA[Valeur d'angle volant]]></Comment>
+<Mnemonic>TR_IN_PHYS_SWA</Mnemonic>
+<Bits>
+<Scaled Unit="°" Step=" 5.6"/>
+</Bits>
+</Data>
+<Data Name="Accélération transversale">
+<Comment><![CDATA[Valeur de l'accélération transversale]]></Comment>
+<Mnemonic>TR_IN_PHYS_ACCEL</Mnemonic>
+<Bits signed="1">
+<Scaled Unit="g" Step=" .01" Format="0.00"/>
+</Bits>
+</Data>
+<Data Name="Vitesse de lacet">
+<Comment><![CDATA[Valeur de la vitesse de lacet]]></Comment>
+<Mnemonic>TR_IN_PHYS_YAW</Mnemonic>
+<Bits>
+<Scaled Unit="°/s" Offset="-127" Format="00.00"/>
+</Bits>
+</Data>
+<Data Name="Pression de freinage">
+<Comment><![CDATA[Valeur de la pression de freinage]]></Comment>
+<Mnemonic>TR_IN_PHYS_PRESSION</Mnemonic>
+<Bits>
+<Scaled Unit="bar" Step=" 2.56"/>
+</Bits>
+</Data>
+<Data Name="Température liquide frein">
+<Comment><![CDATA[Valeur de la température du liquide de frein dans le GH]]></Comment>
+<Mnemonic>TR_IN_PHYS_TEMP_LIQ</Mnemonic>
+<Bits>
+<Scaled Unit="°C"/>
+</Bits>
+</Data>
+<Data Name="Contact feux de stop">
+<Comment><![CDATA[Etat du contact feux de stop]]></Comment>
+<Mnemonic>TR_IN_PHYS_BLS</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="relâché"/>
+<Item Value="1" Text="appuyé"/></List>
+</Bits>
+</Data>
+<Data Name="Bouton on/off ESP">
+<Comment><![CDATA[Etat du bouton on/off ESP]]></Comment>
+<Mnemonic>TR_IN_PHYS_ON_OFF_ESP</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="relâché"/>
+<Item Value="1" Text="appuyé"/></List>
+</Bits>
+</Data>
+<Data Name="DiagMuxOn">
+<Comment><![CDATA[Paramètre CAN INJECTION DiagMuxOn]]></Comment>
+<Mnemonic>TR_IN_VIRT_1</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="EngineRPM">
+<Comment><![CDATA[Paramètre CAN INJECTION EngineRPM]]></Comment>
+<Mnemonic>TR_IN_VIRT_2</Mnemonic>
+<Bits count="16">
+<Scaled Unit="tr/min" DivideBy=" 8"/>
+</Bits>
+</Data>
+<Data Name="MeanEffectiveTorque">
+<Comment><![CDATA[Paramètre CAN INJECTION MeanEffectiveTorque]]></Comment>
+<Mnemonic>TR_IN_VIRT_3</Mnemonic>
+<Bits>
+<Scaled Unit="%" Offset="-50" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="DriverRequest">
+<Comment><![CDATA[Paramètre CAN INJECTION DriverRequest]]></Comment>
+<Mnemonic>TR_IN_VIRT_4</Mnemonic>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="RequestedTorqueAfterProcessing">
+<Comment><![CDATA[Paramètre CAN INJECTION RequestedTorqueAfterProcessing]]></Comment>
+<Mnemonic>TR_IN_VIRT_5</Mnemonic>
+<Bits>
+<Scaled Unit="%" Offset="-50" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="FrictionTorque">
+<Comment><![CDATA[Paramètre CAN INJECTION FrictionTorque]]></Comment>
+<Mnemonic>TR_IN_VIRT_6</Mnemonic>
+<Bits>
+<Scaled Unit="%" Offset="-50" DivideBy=" 2"/>
+</Bits>
+</Data>
+<Data Name="TorqueRequestStatus">
+<Comment><![CDATA[Paramètre CAN INJECTION TorqueRequestStatus]]></Comment>
+<Mnemonic>TR_IN_VIRT_8</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="Normal"/>
+<Item Value="1" Text="Couple exact ne peut être obtenu"/>
+<Item Value="2" Text="Couple demandé pas entièrement réalisable"/>
+<Item Value="3" Text="Impossible d'executer la demande"/></List>
+</Bits>
+</Data>
+<Data Name="ClutchSwitch">
+<Comment><![CDATA[Paramètre CAN INJECTION ClutchSwitch]]></Comment>
+<Mnemonic>TR_IN_VIRT_7</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="embrayé"/>
+<Item Value="1" Text="débrayé"/>
+<Item Value="2" Text="réservé"/>
+<Item Value="3" Text="invalide"/></List>
+</Bits>
+</Data>
+<Data Name="ASR/MSRAcknowledgement">
+<Comment><![CDATA[Paramètre CAN INJECTION ASR/MSRAcknowledgement]]></Comment>
+<Mnemonic>TR_IN_VIRT_9</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="dialogue non correct"/>
+<Item Value="1" Text="dialogue correct"/></List>
+</Bits>
+</Data>
+<Data Name="ShiftInProgress">
+<Comment><![CDATA[Paramètre CAN BVA ShiftInProgress]]></Comment>
+<Mnemonic>TR_IN_VIRT_10</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="pas de changement de rapport en cours"/>
+<Item Value="1" Text="changement de rapport en cours"/></List>
+</Bits>
+</Data>
+<Data Name="TransRangeEngaged">
+<Comment><![CDATA[Paramètre CAN BVA TransRangeEngaged]]></Comment>
+<Mnemonic>TR_IN_VIRT_11</Mnemonic>
+<Bits count="4">
+<List>
+<Item Value="0" Text="débrayé"/>
+<Item Value="1" Text="rapport 1"/>
+<Item Value="2" Text="rapport 2"/>
+<Item Value="3" Text="rapport 3"/>
+<Item Value="4" Text="rapport 4"/>
+<Item Value="5" Text="rapport 5"/>
+<Item Value="6" Text="rapport 6"/>
+<Item Value="9" Text="marche arrière"/>
+<Item Value="10" Text="point mort"/>
+<Item Value="15" Text="mode refuge"/></List>
+</Bits>
+</Data>
+<Data Name="IgnitionSwitch">
+<Comment><![CDATA[Paramètre CAN UCH position clé de contact]]></Comment>
+<Mnemonic>TR_IN_VIRT_12</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="APC off ACC off"/>
+<Item Value="1" Text="APC off ACC on"/>
+<Item Value="2" Text="APC on ACC off"/>
+<Item Value="3" Text="APC on ACC on"/></List>
+</Bits>
+</Data>
+<Data Name="PowerlatchABS">
+<Comment><![CDATA[Paramètre CAN UCH demande de maintien du powerlatch de l'ABS]]></Comment>
+<Mnemonic>TR_IN_VIRT_13</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Pas de maintien powerlatch ABS"/>
+<Item Value="1" Text="Maintien powerlatch ABS demandé"/></List>
+</Bits>
+</Data>
+<Data Name="WindShieldWiperOperatingMode">
+<Comment><![CDATA[Paramètre CAN UCH mode de fonctionnement de l'essuie vitre]]></Comment>
+<Mnemonic>TR_IN_VIRT_14</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="arrêté"/>
+<Item Value="1" Text="cadencé"/>
+<Item Value="2" Text="petite vitesse"/>
+<Item Value="3" Text="grande vitesse"/></List>
+</Bits>
+</Data>
+<Data Name="Odométrie interne">
+<Comment><![CDATA[Odométrie interne permettant le calcul de la datation d'un défaut]]></Comment>
+<Mnemonic>TR_ODO</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km" Step=" 25.6" DivideBy=" 1000"/>
+</Bits>
+</Data>
+<Data Name="FFN">
+<Comment><![CDATA[Numéro de freezeframe]]></Comment>
+<Mnemonic>FFN</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Comment><![CDATA[Liste des codes DTC]]></Comment>
+<Mnemonic>FirstDTC</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="20482" Text="Capteur vitesse roue AVD - comparaison de vitesse"/>
+<Item Value="20485" Text="Capteur vitesse roue AVD - défaut électrique"/>
+<Item Value="20495" Text="Capteur vitesse roue AVD"/>
+<Item Value="20497" Text="Capteur vitesse roue AVG - comparaison de vitesse"/>
+<Item Value="20501" Text="Capteur vitesse roue AVG - défaut électrique"/>
+<Item Value="20511" Text="Capteur vitesse roue AVG"/>
+<Item Value="20513" Text="Capteur vitesse roue ARD - comparaison de vitesse"/>
+<Item Value="20517" Text="Capteur vitesse roue ARD - défaut électrique"/>
+<Item Value="20527" Text="Capteur vitesse roue ARD"/>
+<Item Value="20529" Text="Capteur vitesse roue ARG - comparaison de vitesse"/>
+<Item Value="20533" Text="Capteur vitesse roue ARG - défaut électrique"/>
+<Item Value="20543" Text="Capteur vitesse roue ARG"/>
+<Item Value="20545" Text="Cible magnétique AVD"/>
+<Item Value="20546" Text="Cible magnétique AVG"/>
+<Item Value="20547" Text="Cible magnétique ARD"/>
+<Item Value="20548" Text="Cible magnétique ARG"/>
+<Item Value="20675" Text="Calculateur"/>
+<Item Value="20678" Text="Contact feux de stop"/>
+<Item Value="20684" Text="Alimentation calculateur"/>
+<Item Value="20691" Text="Pompe hydraulique"/>
+<Item Value="20706" Text="CAN : absence trame INJECTION"/>
+<Item Value="20707" Text="CAN : absence trame BVA"/>
+<Item Value="20708" Text="CAN : absence trame UCH"/>
+<Item Value="20710" Text="Réseau CAN"/>
+<Item Value="20711" Text="CAN privé - bus off"/>
+<Item Value="20712" Text="CAN privé - absence trame angle volant"/>
+<Item Value="20713" Text="CAN privé - absence trame Cluster"/>
+<Item Value="20721" Text="Capteur d'accélération transversale"/>
+<Item Value="20722" Text="Capteur de vitesse de lacet"/>
+<Item Value="20736" Text="Défaut interne Cluster"/>
+<Item Value="20743" Text="Régulation continue AYC"/>
+<Item Value="20744" Text="Défaut alimentation Cluster"/>
+<Item Value="20750" Text="Initialisation angle volant / Reconnaissance tour"/>
+<Item Value="20751" Text="Capteur accél latérale - défaut offset"/>
+<Item Value="20752" Text="Capteur angle volant - défaut interne"/>
+<Item Value="20753" Text="Capteur angle volant - défaut signal"/>
+<Item Value="20755" Text="Capteur angle volant - défaut offset / plausibilité / hors limite"/>
+<Item Value="20772" Text="Capteur de pression de frein"/>
+<Item Value="20791" Text="Capteur de température PS60i"/>
+<Item Value="20800" Text="Absence programmation index tachy"/>
+<Item Value="20803" Text="Absence programmation calibrage ABS/ESP"/>
+<Item Value="20808" Text="Défaut checksum EEPROM"/>
+<Item Value="20816" Text="Absence ou mauvais codage BVM/BVA"/>
+<Item Value="20928" Text="Déconnexion fonction AYC"/>
+<Item Value="20929" Text="Déconnexion fonctions ASR + AYC"/>
+<Item Value="20930" Text="Déconnexion fonction HBA et/ou ASTM"/>
+<Item Value="53527" Text="CAN INJ : &quot;Engine RPM&quot; - inavilde"/>
+<Item Value="53533" Text="CAN INJ : &quot;TorqueRequestStatus&quot; - couple non réalisable par le GMP"/>
+<Item Value="20724" Text="Cluster - non initialisé"/>
+<Item Value="53529" Text="CAN INJ : &quot;DriverRequest&quot; - invalide"/>
+<Item Value="53528" Text="CAN INJ : &quot;MeanEffectiveTorque&quot; - invalide"/>
+<Item Value="53536" Text="CAN INJ : &quot;ResquestedTorqueAfterProcessing&quot; - invalide"/>
+<Item Value="53551" Text="CAN INJ : &quot;FrictionTorque&quot; - invalide"/>
+<Item Value="20687" Text="Boutton ESP - Défaut électrique"/>
+<Item Value="53554" Text="CAN INJ : ASR/MSRAcknowledgement = b0"/></List>
+</Bits>
+</Data>
+<Data Name="Nombre d'apparition du défaut">
+<Comment><![CDATA[Compteur du nombre d'apparition du défaut]]></Comment>
+<Mnemonic>FF_NBRE_APPA</Mnemonic>
+<Bits count="7">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Vitesse AVD">
+<Comment><![CDATA[Vitesse de la roue AVD à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_AVD</Mnemonic>
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="Vitesse AVG">
+<Comment><![CDATA[Vitesse de la roue AVG à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_AVG</Mnemonic>
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="Vitesse ARD">
+<Comment><![CDATA[Vitesse de la roue ARD à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_ARD</Mnemonic>
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="Vitesse ARG">
+<Comment><![CDATA[Vitesse de la roue ARG à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_ARG</Mnemonic>
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="Déconnexion conducteur de l'ESP">
+<Comment><![CDATA[Etat de la déconnexion conducteur de l'ESP à l'apparition du défaut]]></Comment>
+<Mnemonic>ESP_ON_OFF_DRIVER</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="Régulateur REF">
+<Comment><![CDATA[Etat du régulateur REF à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_REG_REF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="au repos"/>
+<Item Value="1" Text="en régulation"/></List>
+</Bits>
+</Data>
+<Data Name="Régulateur ABS">
+<Comment><![CDATA[Etat du régulateur ABS à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_REG_ABS</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="au repos"/>
+<Item Value="1" Text="en régulation"/></List>
+</Bits>
+</Data>
+<Data Name="Régulateur MSR">
+<Comment><![CDATA[Etat du régulateur MSR à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_REG_MSR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="au repos"/>
+<Item Value="1" Text="en régulation"/></List>
+</Bits>
+</Data>
+<Data Name="Régulateur ASR">
+<Comment><![CDATA[Etat du régulateur ASR à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_REG_ASR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="au repos"/>
+<Item Value="1" Text="en régulation"/></List>
+</Bits>
+</Data>
+<Data Name="Régulateur CSV sous virage">
+<Comment><![CDATA[Etat du régulateur CSV en sous virage à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_REG_CSV</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="au repos"/>
+<Item Value="1" Text="en régulation"/></List>
+</Bits>
+</Data>
+<Data Name="Développée mini">
+<Comment><![CDATA[Talon inférieur de la développée pneumatique]]></Comment>
+<Mnemonic>TR_TACHY_MIN</Mnemonic>
+<Bits count="16">
+<Scaled Unit="mm"/>
+</Bits>
+</Data>
+<Data Name="Développée maxi">
+<Comment><![CDATA[Talon supérieur de la développée pneumatique]]></Comment>
+<Mnemonic>TR_TACHY_MAX</Mnemonic>
+<Bits count="16">
+<Scaled Unit="mm"/>
+</Bits>
+</Data>
+<Data Name="Développée réelle">
+<Comment><![CDATA[Développée pneumatique calculée / index tachy]]></Comment>
+<Mnemonic>TR_TACHY_REAL</Mnemonic>
+<Bits count="16">
+<Scaled Unit="mm"/>
+</Bits>
+</Data>
+<Data Name="Etat contact feux de stop">
+<Comment><![CDATA[Etat du contact feux de stop]]></Comment>
+<Mnemonic>BLS_STAT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Pédale relâchée"/>
+<Item Value="1" Text="Pédale appuyée"/></List>
+</Bits>
+</Data>
+<Data Name="NDTC">
+<Comment><![CDATA[Nombre de code défaut DTC]]></Comment>
+<Mnemonic>NDTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Traçabilité TEVES numéro série">
+<Comment><![CDATA[Traçabilité unitaire - numéro de série]]></Comment>
+<Mnemonic>TR_TRACA_SERIE</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Traçabilité TEVES site fab ECU">
+<Comment><![CDATA[Traçabilité unitaire - site de fabrication]]></Comment>
+<Mnemonic>TR_TRACA_SITE</Mnemonic>
+<Bits count="4">
+<List>
+<Item Value="1" Text="T"/>
+<Item Value="2" Text="U"/>
+<Item Value="3" Text="R"/>
+<Item Value="4" Text="H"/>
+<Item Value="5" Text="6"/>
+<Item Value="6" Text="5"/>
+<Item Value="7" Text="3"/>
+<Item Value="8" Text="2"/>
+<Item Value="9" Text="4"/></List>
+</Bits>
+</Data>
+<Data Name="Traçabilité TEVES n° soft">
+<Comment><![CDATA[Traçabilité unitaire - numéro logiciel]]></Comment>
+<Mnemonic>TR_TRACA_N_SW</Mnemonic>
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="Traçabilité TEVES mois de fab">
+<Comment><![CDATA[Traçabilité unitaire - mois de fabrication]]></Comment>
+<Mnemonic>TR_TRACA_MOIS</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="JANVIER"/>
+<Item Value="2" Text="FEVRIER"/>
+<Item Value="3" Text="MARS"/>
+<Item Value="4" Text="AVRIL"/>
+<Item Value="5" Text="MAI"/>
+<Item Value="6" Text="JUIN"/>
+<Item Value="7" Text="JUILLET"/>
+<Item Value="8" Text="AOUT"/>
+<Item Value="9" Text="SEPTEMBRE"/>
+<Item Value="10" Text="OCTOBRE"/>
+<Item Value="11" Text="NOVEMBRE"/>
+<Item Value="12" Text="DECEMBRE"/></List>
+</Bits>
+</Data>
+<Data Name="Traçabilité TEVES jour de fab">
+<Comment><![CDATA[Traçabilité unitaire - jour de fabrication]]></Comment>
+<Mnemonic>TR_TRACA_JOUR</Mnemonic>
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="Traçabilité TEVES année de fab">
+<Comment><![CDATA[Traçabilité unitaire - année de fabrication]]></Comment>
+<Mnemonic>TR_TRACA_ANNEE</Mnemonic>
+<Bits>
+<List>
+<Item Value="3" Text="2003"/>
+<Item Value="4" Text="2004"/>
+<Item Value="5" Text="2005"/>
+<Item Value="6" Text="2006"/>
+<Item Value="7" Text="2007"/></List>
+</Bits>
+</Data>
+<Data Name="Numéro Hardware TEVES">
+<Comment><![CDATA[Numéro hardware calculateur TEVES]]></Comment>
+<Mnemonic>TR_ID_ABS_HW</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Etat fonction AYC/CSV">
+<Comment><![CDATA[Etat de la fonction AYC]]></Comment>
+<Mnemonic>TR_INFO_SYS_AYC</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="AYC opérationnel"/>
+<Item Value="1" Text="AYC déconnecté par le conducteur"/>
+<Item Value="2" Text="AYC déconnecté par l'outil de diagnostic"/>
+<Item Value="3" Text="AYC en défaut ou absent"/></List>
+</Bits>
+</Data>
+<Data Name="Choix de la roue à tester">
+<Comment><![CDATA[Sélectionne la roue à tester pour le contrôle de la denture]]></Comment>
+<Mnemonic>TR_CHOIX_ROUE</Mnemonic>
+<Bits>
+<List>
+<Item Value="160" Text="AVG"/>
+<Item Value="161" Text="AVD"/>
+<Item Value="162" Text="ARG"/>
+<Item Value="163" Text="ARD"/></List>
+</Bits>
+</Data>
+<Data Name="Choix du capteur">
+<Comment><![CDATA[Paramètre de choix du capteur]]></Comment>
+<Mnemonic>TR_SENSOR</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="angle volant"/>
+<Item Value="1" Text="accélération transversale"/>
+<Item Value="2" Text="pression de freinage"/></List>
+</Bits>
+</Data>
+<Data Name="Status - choix de la roue">
+<Comment><![CDATA[Status d'entrée dans la routine sur le choix de la roue]]></Comment>
+<Mnemonic>TR_STATUS_CHX_ROUE</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="roue sélectionnée invalide"/>
+<Item Value="1" Text="roue sélectionnée valide"/></List>
+</Bits>
+</Data>
+<Data Name="Status - fin de comptage / résultat">
+<Comment><![CDATA[Status d'entrée dans la routine sur le début et fin de comptage]]></Comment>
+<Mnemonic>TR_STATUS_COMPT_RESULT</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="test prêt à démarrer"/>
+<Item Value="1" Text="test en cours"/>
+<Item Value="255" Text="roue sélectionnée invalide"/></List>
+</Bits>
+</Data>
+<Data Name="Nombre de dents">
+<Comment><![CDATA[Résultat du comptage de dent]]></Comment>
+<Mnemonic>TR_RESULT</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Status de pilotage">
+<Comment><![CDATA[Status du pilotage de la sortie]]></Comment>
+<Mnemonic>TR_STATUS</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="pilotage en cours"/>
+<Item Value="2" Text="pilotage terminé"/>
+<Item Value="17" Text="pilotage arrêté"/>
+<Item Value="255" Text="erreur actuateur"/></List>
+</Bits>
+</Data>
+<Data Name="Couple ASR à émettre">
+<Comment><![CDATA[Valeur de couple ASR à générer]]></Comment>
+<Mnemonic>TR_ASR_TORQUE</Mnemonic>
+<Bits>
+<Scaled Unit="% de 400Nm" Offset="-25"/>
+</Bits>
+</Data>
+<Data Name="Vitesse sur appui on/off ESP">
+<Comment><![CDATA[Vitesse véhicule mémorisée à l'appui du bouton on/off ESP]]></Comment>
+<Mnemonic>TR_SW_ESP_V_VEH</Mnemonic>
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="Vitesse de lacet (FF)">
+<Comment><![CDATA[Valeur de la vitesse de lacet à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_YAW</Mnemonic>
+<Bits>
+<Scaled Unit="°/s" Step=" .6" Offset="-76.2" Format="00.00"/>
+</Bits>
+</Data>
+<Data Name="Vitesse véhicule à générer">
+<Comment><![CDATA[Valeur de la vitesse véhicule à générer]]></Comment>
+<Mnemonic>TR_VSO</Mnemonic>
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="ABS">
+<Comment><![CDATA[Calculateur ABS]]></Comment>
+<Mnemonic>ECU_BRAKE</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="INJECTION">
+<Comment><![CDATA[Calculateur INJECTION]]></Comment>
+<Mnemonic>ECU_ECM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="TdB">
+<Comment><![CDATA[Calculateur TdB]]></Comment>
+<Mnemonic>ECU_CLUSTER</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="UCH">
+<Comment><![CDATA[Calculateur UCH]]></Comment>
+<Mnemonic>ECU_BCM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="AIRBAG">
+<Comment><![CDATA[Calculateur AIRBAG]]></Comment>
+<Mnemonic>ECU_AIRBAG</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="VERROU">
+<Comment><![CDATA[Calculateur VERROU]]></Comment>
+<Mnemonic>ECU_ESCL</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="CLIM">
+<Comment><![CDATA[Calculateur CLIM]]></Comment>
+<Mnemonic>ECU_CLIM</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="BVA">
+<Comment><![CDATA[Calculateur BVA]]></Comment>
+<Mnemonic>ECU_AT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="UCC">
+<Comment><![CDATA[Calculateur UCC]]></Comment>
+<Mnemonic>ECU_CCU</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="SYP">
+<Comment><![CDATA[Calculateur SYP]]></Comment>
+<Mnemonic>ECU_SYP</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="FPA">
+<Comment><![CDATA[Calculateur FPA]]></Comment>
+<Mnemonic>ECU_APB</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="COSLAD">
+<Comment><![CDATA[Calculateur COSLAD]]></Comment>
+<Mnemonic>ECU_HLS</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="CHAUDIERE">
+<Comment><![CDATA[Calculateur CHAUDIERE]]></Comment>
+<Mnemonic>ECU_BOILER</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="Défaut ayant été réhabilité">
+<Comment><![CDATA[Identifie la phase de forget time]]></Comment>
+<Mnemonic>FF_REHAB</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="Status RAZ offset capteurs ESP">
+<Comment><![CDATA[Status d'entrée dans la routine pour le calibrage capteurs]]></Comment>
+<Mnemonic>TR_STATUS_SENSOR</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="routine en cours"/>
+<Item Value="2" Text="routine terminée OK"/>
+<Item Value="3" Text="routine terminée - RAZ non effectuée"/></List>
+</Bits>
+</Data>
+<Data Name="Etat fonction RBS">
+<Comment><![CDATA[Etat de la fonction RBS]]></Comment>
+<Mnemonic>TR_INFO_SYS_RBS</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="RBS opérationnel"/>
+<Item Value="2" Text="RBS déconnecté par l'outil de diagnostic"/>
+<Item Value="3" Text="RBS en défaut ou absent"/></List>
+</Bits>
+</Data>
+<Data Name="Numéro MPR groupe seul">
+<Comment><![CDATA[Référence MPR du groupe hydraulique seul]]></Comment>
+<Mnemonic>TR_ID_ABS_MPR_GH_S</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Numéro MPR groupe complet">
+<Comment><![CDATA[Référence MPR du groupe hydraulique complet]]></Comment>
+<Mnemonic>TR_ID_ABS_MPR_GH_C</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Numéro PIE groupe complet">
+<Comment><![CDATA[Référence PIE du groupe hydraulique complet]]></Comment>
+<Mnemonic>TR_ID_ABS_PIE_GH</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="Numéro MPR calculateur">
+<Comment><![CDATA[Référence MPR du calculateur]]></Comment>
+<Mnemonic>TR_ID_ABS_MPR_ECU</Mnemonic>
+<Bytes count="5"/>
+</Data>
+<Data Name="MoreDTC">
+<Comment><![CDATA[ReadDTC parameter (for DDT2000 automatic failure screen)]]></Comment>
+<Mnemonic>MOREDTC</Mnemonic>
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Pression de freinage (FF)">
+<Comment><![CDATA[Valeur de la pression de freinage à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_PRES_BRAKE</Mnemonic>
+<Bits>
+<Scaled Unit="bar"/>
+</Bits>
+</Data>
+<Data Name="Tension d'alimentation (FF)">
+<Comment><![CDATA[Tension d'alimentation à l'appartition du défaut]]></Comment>
+<Mnemonic>FF_ALIM</Mnemonic>
+<Bits>
+<Scaled Unit="V" Step=" .071"/>
+</Bits>
+</Data>
+<Data Name="Standard Fault">
+<Comment><![CDATA[Octet de status lié au code DTC]]></Comment>
+<Mnemonic>STATUS_DTC</Mnemonic>
+<Bits count="5">
+<List>
+<Item Value="0" Text="non utilisé"/>
+<Item Value="1" Text="circuit ouvert"/>
+<Item Value="2" Text="court circuit à la masse"/>
+<Item Value="3" Text="court circuit au +BAT"/>
+<Item Value="4" Text="paramètre en butée mini"/>
+<Item Value="5" Text="paramètre en butée maxi"/>
+<Item Value="6" Text="incohérence, non plausible"/>
+<Item Value="7" Text="pas de signal"/>
+<Item Value="8" Text="en dessous du seuil mini"/>
+<Item Value="9" Text="au dessus du seuil maxi"/>
+<Item Value="10" Text="niveau bas permanent"/>
+<Item Value="11" Text="niveau haut permanent"/>
+<Item Value="12" Text="lignes en court circuit"/>
+<Item Value="13" Text="anomalie électronique interne"/>
+<Item Value="14" Text="problème réseau"/>
+<Item Value="15" Text="diagnostic distant"/>
+<Item Value="16" Text="communication perturbée"/>
+<Item Value="17" Text="micro coupures"/>
+<Item Value="18" Text="tension anormale"/>
+<Item Value="19" Text="valeur hors limite"/></List>
+</Bits>
+</Data>
+<Data Name="Repet BVA">
+<Comment><![CDATA[Repetiteur BVA]]></Comment>
+<Mnemonic>ECU_BVA</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="Régulateur AYC">
+<Comment><![CDATA[Etat du régulateur AYC en survirage à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_REG_AYC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="au repos"/>
+<Item Value="1" Text="en régulation"/></List>
+</Bits>
+</Data>
+<Data Name="Topo / Schéma élec">
+<Comment><![CDATA[Caractèrisation de la topologie du réseau CAN ($B1) ou numéro du schéma électrique ($B2)]]></Comment>
+<Mnemonic>TR_TOPO_ELEC</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Output Control Command">
+<Comment><![CDATA[Testing output : Command enumeration]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="Start Temporary"/>
+<Item Value="1" Text="Status"/>
+<Item Value="17" Text="Stop"/>
+<Item Value="32" Text="Start Permanent"/></List>
+</Bits>
+</Data>
+<Data Name="Output Control Parameters">
+<Comment><![CDATA[Testing output : Number of cycle]]></Comment>
+<Bits>
+<List>
+<Item Value="1" Text="1 cycle"/>
+<Item Value="2" Text="2 cycles"/>
+<Item Value="3" Text="3 cycles"/></List>
+</Bits>
+</Data>
+<Data Name="Output Permanent Control List">
+<Comment><![CDATA[Testing output : List of all output with permanent test]]></Comment>
+<Bits>
+<List/>
+</Bits>
+</Data>
+<Data Name="Output Temporary Control List">
+<Comment><![CDATA[Testing output : List of all output with temporary test]]></Comment>
+<Bits>
+<List/>
+</Bits>
+</Data>
+<Data Name="Odométrie sur appui on/off ESP">
+<Comment><![CDATA[Odométrie mémorisée à l'appui du bouton on/off ESP]]></Comment>
+<Mnemonic>TR_SW_ESP_ODO</Mnemonic>
+<Bits count="24">
+<Scaled Unit="m" Step=" 25.5"/>
+</Bits>
+</Data>
+<Data Name="Etat fonction ESP">
+<Comment><![CDATA[Etat de la fonction ESP mémorisée à l'appui du bouton on/off ESP]]></Comment>
+<Mnemonic>TR_SW_ESP_FUNCT</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Fonction désactivée"/>
+<Item Value="1" Text="Fonction activée"/></List>
+</Bits>
+</Data>
+<Data Name="Compteur de mission">
+<Comment><![CDATA[Nombre de mission depuis le dernier appui du bouton on/off ESP]]></Comment>
+<Mnemonic>TR_SW_ESP_CNT</Mnemonic>
+<Bits count="7">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Nom software TEVES">
+<Comment><![CDATA[Identification du nom de soft TEVES]]></Comment>
+<Mnemonic>SOFT_TVS</Mnemonic>
+<Bytes count="12" ascii="1"/>
+</Data>
+<Data Name="Numéro logiciel 1">
+<Comment><![CDATA[Numéro du logiciel TEVES]]></Comment>
+<Mnemonic>TR_ID_ABS_SW_1</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Numéro logiciel 2">
+<Comment><![CDATA[Numéro du logiciel TEVES]]></Comment>
+<Mnemonic>TR_ID_ABS_SW_2</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Angle volant (FF)">
+<Comment><![CDATA[Angle volant à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_SWA</Mnemonic>
+<Bits>
+<Scaled Unit="°" Step=" 5.6"/>
+</Bits>
+</Data>
+<Data Name="Accélération transversale (FF)">
+<Comment><![CDATA[Valeur de l'accélération transversale à l'apparition du défaut]]></Comment>
+<Mnemonic>FF_ACC_LAT</Mnemonic>
+<Bits signed="1">
+<Scaled Unit="g" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="ACC">
+<Comment><![CDATA[Calculateur ACC]]></Comment>
+<Mnemonic>ECU_ACC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="Kit main libre">
+<Comment><![CDATA[Kit main libre]]></Comment>
+<Mnemonic>ECU_HFCK</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="Odométrie premier défaut (Km)">
+<Comment><![CDATA[Odométrie interne à l'apparition du premier défaut]]></Comment>
+<Mnemonic>FF_ODO_FIRST</Mnemonic>
+<Bits count="24">
+<Scaled Unit="Km" Step=" 25.6" DivideBy=" 1000"/>
+</Bits>
+</Data>
+<Data Name="Odométrie dernier défaut (km)">
+<Comment><![CDATA[Odométrie interne à l'apparition du dernier défaut]]></Comment>
+<Mnemonic>FF_ODO_LAST</Mnemonic>
+<Bits count="24">
+<Scaled Unit="Km" Step=" 25.6" DivideBy=" 1000"/>
+</Bits>
+</Data>
+<Data Name="Output Control Status">
+<Comment><![CDATA[Testing output : Status]]></Comment>
+<Bits>
+<List>
+<Item Value="1" Text="Running"/>
+<Item Value="2" Text="Stopped"/>
+<Item Value="17" Text="Manually Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Current Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Etat fonction HBA">
+<Comment><![CDATA[Etat de la fonction HBA]]></Comment>
+<Mnemonic>TR_INFO_SYS_HBA</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="HBA opérationnel"/>
+<Item Value="1" Text="HBA désactivé par l'outil de diagnostic"/></List>
+</Bits>
+</Data>
+<Data Name="Etat fonction ASTM">
+<Comment><![CDATA[Etat de la fonction auto adaptation du modèle châssis]]></Comment>
+<Mnemonic>TR_INFO_SYS_CR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="ASTM opérationnel"/>
+<Item Value="1" Text="ASTM désactivé par l'outil de diagnostic"/></List>
+</Bits>
+</Data>
+<Data Name="AAP Ligne K">
+<Comment><![CDATA[Calculateur AAP sur le K]]></Comment>
+<Mnemonic>ECU_AAP</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="AAP Ligne CAN">
+<Comment><![CDATA[Calculateur AAP sur la CAN]]></Comment>
+<Mnemonic>ECU_AAP</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="non"/>
+<Item Value="1" Text="oui"/></List>
+</Bits>
+</Data>
+<Data Name="Historical Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="ACC absent - panne confirmée">
+<Mnemonic>r_acc_abs_conf</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="ACC absent - panne présente">
+<Mnemonic>r_acc_abs_pres</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Bus off - panne confirmée">
+<Mnemonic>r_boff_conf</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Bus off - panne présente">
+<Mnemonic>r_boff_pres</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="BVA absent - panne confirmée">
+<Mnemonic>r_bva_abs_conf</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="BVA absent - panne présente">
+<Mnemonic>r_bva_abs_pres</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Compteur - ACC absent">
+<Mnemonic>r_compt_acc</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur - bus off">
+<Mnemonic>r_compt_bus_off</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur - BVA absent">
+<Mnemonic>r_compt_bva</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur - INJ absent">
+<Mnemonic>r_compt_inj</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur - module muet">
+<Mnemonic>r_compt_mute</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur - TdB absent">
+<Mnemonic>r_compt_tdb</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Compteur - UCH absent">
+<Mnemonic>r_compt_uch</Mnemonic>
+<Bits count="6">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="INJ absent - panne confirmée">
+<Mnemonic>r_inj_abs_conf</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="INJ absent - panne présente">
+<Mnemonic>r_inj_abs_conf</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Module muet - panne confirmée">
+<Mnemonic>r_mute_abs_conf</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="Module muet - panne présente">
+<Mnemonic>r_mute_abs_pres</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="TdB absent - panne confirmée">
+<Mnemonic>r_tdb_abs_conf</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="TdB absent - panne présente">
+<Mnemonic>r_tdb_abs_pres</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="UCH absent - panne confirmée">
+<Mnemonic>r_uch_abs_conf</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="UCH absent - panne présente">
+<Mnemonic>r_uch_abs_pres</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NON"/>
+<Item Value="1" Text="OUI"/></List>
+</Bits>
+</Data>
+<Data Name="SessionName">
+<Bits>
+<List>
+<Item Value="160" Text="Bureau d'étude"/>
+<Item Value="169" Text="Fournisseur"/>
+<Item Value="192" Text="Après vente"/></List>
+</Bits>
+</Data>
+<Data Name="Version messagerie CAN">
+<Mnemonic>r_vers_msg_can</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Inconnue"/>
+<Item Value="24" Text="v1.8"/>
+<Item Value="25" Text="v1.9"/>
+<Item Value="26" Text="v2.0"/>
+<Item Value="27" Text="v2.1"/>
+<Item Value="28" Text="v2.2"/>
+<Item Value="48" Text="v3.0"/>
+<Item Value="49" Text="v3.1"/></List>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="Ecriture code VIN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Ecriture du code VIN]]></Comment>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="VIN" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Ecriture calibrage ABS/ESP">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet l'adaptation de l'ABS/ESP en fonction du châssis et moteur du véhicule]]></Comment>
+<Sent>
+<SentBytes>3B9100</SentBytes>
+<DataItem Name="Calibrage ABS_ESP" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Ecriture durée powerlatch">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet de définir la durée du powerlatch]]></Comment>
+<Sent>
+<SentBytes>3B9205</SentBytes>
+<DataItem Name="Durée powerlatch" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Ecriture du type de BV">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet de paramétrer le type de boîte de vitesse]]></Comment>
+<Sent>
+<SentBytes>3B9D00</SentBytes>
+<DataItem Name="Type de boîte" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Ecriture index tachy">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet de définir l'index tachymétrique donnant la développée pneumatiques]]></Comment>
+<Sent>
+<SentBytes>3B9E00</SentBytes>
+<DataItem Name="Index tachy" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Ecriture status remplissage">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'écrire l'état du remplissage hydraulique de l'ABS/ESP]]></Comment>
+<Sent>
+<SentBytes>3BB300</SentBytes>
+<DataItem Name="Status remplissage" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Ecriture date APV">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'écrire la date de la dernière intervention APV]]></Comment>
+<Sent>
+<SentBytes>3BC0000000</SentBytes>
+<DataItem Name="Jour APV" FirstByte="3"/>
+<DataItem Name="Mois APV" FirstByte="4"/>
+<DataItem Name="Année APV" FirstByte="5"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Lecture identification système">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire les informations d'identification du système]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="Identification diag" Ref="1" FirstByte="8"/>
+<DataItem Name="Code ITG" Ref="1" FirstByte="9"/>
+<DataItem Name="Numéro Hardware TEVES" Ref="1" FirstByte="12"/>
+<DataItem Name="Numéro logiciel 1" Ref="1" FirstByte="17"/>
+<DataItem Name="Numéro version logiciel" Ref="1" FirstByte="19"/>
+<DataItem Name="Numéro homologation" Ref="1" FirstByte="23"/>
+<DataItem Name="Numéro version CdC diag" Ref="1" FirstByte="24"/>
+<DataItem Name="Numéro version homologation" Ref="1" FirstByte="23" BitOffset="4"/>
+<DataItem Name="Numéro MPR calculateur" Ref="1" FirstByte="3"/>
+<DataItem Name="Numéro logiciel 2" Ref="1" FirstByte="18"/>
+</Received>
+</Request>
+<Request Name="Lecture code VIN">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire le code VIN]]></Comment>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="VIN" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture calibrage ABS/ESP">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire la valeur de calibrage ABS/ESP (châssis, moteur)]]></Comment>
+<Sent>
+<SentBytes>2191</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Calibrage ABS_ESP" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture durée powerlatch">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire la durée du powerlatch]]></Comment>
+<Sent>
+<SentBytes>2192</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Durée powerlatch" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture des vitesses">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire les vitesses de roue et la vitesse véhicule]]></Comment>
+<Sent>
+<SentBytes>2193</SentBytes>
+</Sent>
+<Received MinBytes="12">
+<DataItem Name="Vitesse roue AVD" Ref="1" FirstByte="3"/>
+<DataItem Name="Vitesse roue AVG" Ref="1" FirstByte="5"/>
+<DataItem Name="Vitesse roue ARD" Ref="1" FirstByte="7"/>
+<DataItem Name="Vitesse roue ARG" Ref="1" FirstByte="9"/>
+<DataItem Name="Vitesse véhicule" Ref="1" FirstByte="11"/>
+</Received>
+</Request>
+<Request Name="Lecture état système">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire l'état des sous fonctions de l'ABS/ESP]]></Comment>
+<Sent>
+<SentBytes>2194</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat relais BLA" Ref="1" FirstByte="3"/>
+<DataItem Name="Etat fonction AYC/CSV" Ref="1" FirstByte="3" BitOffset="1"/>
+<DataItem Name="Etat fonction ASR" Ref="1" FirstByte="3" BitOffset="3"/>
+<DataItem Name="Etat fonction MSR" Ref="1" FirstByte="4"/>
+<DataItem Name="Etat fonction ABS" Ref="1" FirstByte="4" BitOffset="1"/>
+<DataItem Name="Etat fonction REF" Ref="1" FirstByte="4" BitOffset="2"/>
+<DataItem Name="Etat fonction RBS" Ref="1" FirstByte="3" BitOffset="5"/>
+<DataItem Name="Etat fonction HBA" Ref="1" FirstByte="4" BitOffset="3"/>
+<DataItem Name="Etat fonction ASTM" Ref="1" FirstByte="4" BitOffset="4"/>
+</Received>
+</Request>
+<Request Name="Lecture offset capteurs ESP">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire l'offset des capteurs de l'ESP]]></Comment>
+<Sent>
+<SentBytes>2195</SentBytes>
+</Sent>
+<Received MinBytes="8">
+<DataItem Name="Offset angle volant" Ref="1" FirstByte="3"/>
+<DataItem Name="Offset accélération transversale" Ref="1" FirstByte="5"/>
+<DataItem Name="Offset pression freinage" Ref="1" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="Lecture traçabilité ECU">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire la traçabilité unitaire du calculateur]]></Comment>
+<Sent>
+<SentBytes>2196</SentBytes>
+</Sent>
+<Received MinBytes="14">
+<DataItem Name="Traçabilité TEVES n° soft" Ref="1" FirstByte="5"/>
+<DataItem Name="Traçabilité TEVES site fab ECU" Ref="1" FirstByte="7"/>
+<DataItem Name="Traçabilité TEVES jour de fab" Ref="1" FirstByte="8"/>
+<DataItem Name="Traçabilité TEVES mois de fab" Ref="1" FirstByte="9"/>
+<DataItem Name="Traçabilité TEVES année de fab" Ref="1" FirstByte="10"/>
+<DataItem Name="Traçabilité TEVES numéro série" Ref="1" FirstByte="11"/>
+</Received>
+</Request>
+<Request Name="Lecture entrées physiques">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire la valeur des entrées physiques du calculateur]]></Comment>
+<Sent>
+<SentBytes>2197</SentBytes>
+</Sent>
+<Received MinBytes="9">
+<DataItem Name="Tension d'alimentation" Ref="1" FirstByte="3"/>
+<DataItem Name="Angle volant" Ref="1" FirstByte="4"/>
+<DataItem Name="Accélération transversale" Ref="1" FirstByte="5"/>
+<DataItem Name="Vitesse de lacet" Ref="1" FirstByte="6"/>
+<DataItem Name="Pression de freinage" Ref="1" FirstByte="7"/>
+<DataItem Name="Température liquide frein" Ref="1" FirstByte="8"/>
+<DataItem Name="Contact feux de stop" Ref="1" FirstByte="9"/>
+<DataItem Name="Bouton on/off ESP" Ref="1" FirstByte="9" BitOffset="1"/>
+</Received>
+</Request>
+<Request Name="Lecture entrées virtuelles">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire la valeur des entrées virtuelles du calculateur]]></Comment>
+<Sent>
+<SentBytes>2198</SentBytes>
+</Sent>
+<Received MinBytes="12">
+<DataItem Name="DiagMuxOn" Ref="1" FirstByte="3"/>
+<DataItem Name="EngineRPM" Ref="1" FirstByte="4"/>
+<DataItem Name="MeanEffectiveTorque" Ref="1" FirstByte="6"/>
+<DataItem Name="DriverRequest" Ref="1" FirstByte="7"/>
+<DataItem Name="RequestedTorqueAfterProcessing" Ref="1" FirstByte="8"/>
+<DataItem Name="FrictionTorque" Ref="1" FirstByte="9"/>
+<DataItem Name="ClutchSwitch" Ref="1" FirstByte="10"/>
+<DataItem Name="TorqueRequestStatus" Ref="1" FirstByte="10" BitOffset="2"/>
+<DataItem Name="ASR/MSRAcknowledgement" Ref="1" FirstByte="10" BitOffset="4"/>
+<DataItem Name="ShiftInProgress" Ref="1" FirstByte="11"/>
+<DataItem Name="TransRangeEngaged" Ref="1" FirstByte="11" BitOffset="1"/>
+<DataItem Name="IgnitionSwitch" Ref="1" FirstByte="12"/>
+<DataItem Name="PowerlatchABS" Ref="1" FirstByte="12" BitOffset="2"/>
+<DataItem Name="WindShieldWiperOperatingMode" Ref="1" FirstByte="12" BitOffset="3"/>
+</Received>
+</Request>
+<Request Name="Lecture odométrie interne">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire l'odométrie interne (nécessaire dansle calcul de la datation des défauts)]]></Comment>
+<Sent>
+<SentBytes>219C</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="Odométrie interne" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture du type de BV">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire le type de boîte de vitesse]]></Comment>
+<Sent>
+<SentBytes>219D</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Type de boîte" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture index tachy">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire l'index tachymétrique donnant la développée pneumatiques]]></Comment>
+<Sent>
+<SentBytes>219E</SentBytes>
+</Sent>
+<Received MinBytes="9">
+<DataItem Name="Développée réelle" Ref="1" FirstByte="3"/>
+<DataItem Name="Développée mini" Ref="1" FirstByte="5"/>
+<DataItem Name="Développée maxi" Ref="1" FirstByte="7"/>
+<DataItem Name="Index tachy" Ref="1" FirstByte="9"/>
+</Received>
+</Request>
+<Request Name="Lecture status remplissage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire l'état du remplissage hydraulique de l'ABS/ESP]]></Comment>
+<Sent>
+<SentBytes>21B3</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status remplissage" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture date APV">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire la date de la dernière intervention APV]]></Comment>
+<Sent>
+<SentBytes>21C0</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="Jour APV" FirstByte="3"/>
+<DataItem Name="Mois APV" FirstByte="4"/>
+<DataItem Name="Année APV" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="Contrôle de denture - début comptage">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet de démarrer le comptage de dent pour le contrôle de denture]]></Comment>
+<Sent>
+<SentBytes>31C000</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status - fin de comptage / résultat" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Contrôle de denture - résultat">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'obtenir le résultat du comptage de dent pour le contrôle de denture]]></Comment>
+<Sent>
+<SentBytes>31C100</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Status - fin de comptage / résultat" FirstByte="3"/>
+<DataItem Name="Nombre de dents" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Pilotage en couple GMP">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet l'envoi d'une consigne ASR en couple vers le GMP]]></Comment>
+<Sent>
+<SentBytes>30822000</SentBytes>
+<DataItem Name="Couple ASR à émettre" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Génération vitesse véhicule">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet de générer une vitesse véhicule sur la sortie filaire]]></Comment>
+<Sent>
+<SentBytes>30832000</SentBytes>
+<DataItem Name="Vitesse véhicule à générer" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage warning">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet de piloter le paramètre CAN de demande allumage WARNING]]></Comment>
+<Sent>
+<SentBytes>308420</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Read Freeze Frame">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Lecture du contexte de panne associé au DTC]]></Comment>
+<Sent>
+<SentBytes>1200040000</SentBytes>
+<DataItem Name="FirstDTC" FirstByte="4"/>
+<DataItem Name="FFN" FirstByte="2"/>
+</Sent>
+<Received MinBytes="22">
+<DataItem Name="Défaut ayant été réhabilité" FirstByte="3"/>
+<DataItem Name="Nombre d'apparition du défaut" FirstByte="3" BitOffset="1"/>
+<DataItem Name="Odométrie premier défaut (Km)" FirstByte="14"/>
+<DataItem Name="Odométrie dernier défaut (km)" FirstByte="17"/>
+<DataItem Name="Vitesse AVD" FirstByte="4"/>
+<DataItem Name="Vitesse AVG" FirstByte="5"/>
+<DataItem Name="Vitesse ARD" FirstByte="6"/>
+<DataItem Name="Vitesse ARG" FirstByte="7"/>
+<DataItem Name="Etat contact feux de stop" FirstByte="13"/>
+<DataItem Name="Déconnexion conducteur de l'ESP" FirstByte="13" BitOffset="1"/>
+<DataItem Name="Régulateur REF" FirstByte="13" BitOffset="2"/>
+<DataItem Name="Régulateur ABS" FirstByte="13" BitOffset="3"/>
+<DataItem Name="Régulateur MSR" FirstByte="13" BitOffset="4"/>
+<DataItem Name="Régulateur ASR" FirstByte="13" BitOffset="5"/>
+<DataItem Name="Régulateur AYC" FirstByte="13" BitOffset="6"/>
+<DataItem Name="Régulateur CSV sous virage" FirstByte="13" BitOffset="7"/>
+<DataItem Name="Angle volant (FF)" FirstByte="8"/>
+<DataItem Name="Accélération transversale (FF)" FirstByte="9"/>
+<DataItem Name="Vitesse de lacet (FF)" FirstByte="10"/>
+<DataItem Name="Pression de freinage (FF)" FirstByte="11"/>
+<DataItem Name="Tension d'alimentation (FF)" FirstByte="12"/>
+</Received>
+</Request>
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet la lecture des défauts]]></Comment>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+<DataItem Name="MoreDTC" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<DataItem Name="NDTC" FirstByte="2"/>
+<DataItem Name="FirstDTC" FirstByte="3"/>
+<DataItem Name="Standard Fault" FirstByte="5" BitOffset="3"/>
+<DataItem Name="Current Failure" FirstByte="5" BitOffset="2"/>
+<DataItem Name="Historical Failure" FirstByte="5" BitOffset="1"/>
+</Received>
+</Request>
+<Request Name="Contrôle de denture - choix de la roue">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet de choisir la roue pour le contrôle de denture]]></Comment>
+<Sent>
+<SentBytes>310000</SentBytes>
+<DataItem Name="Choix de la roue à tester" FirstByte="2"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status - choix de la roue" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage temporaire pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Pilotage temporaire de la pompe - 2 secondes]]></Comment>
+<Sent>
+<SentBytes>308000FFBF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Pilotage RAZ hydraulique">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Arrête le pilotage des actuateurs hydrauliques (pompe + EV)]]></Comment>
+<Sent>
+<SentBytes>308000FFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Pilotage - chute ARD + pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Effectue une chute de pression sur la roue ARD]]></Comment>
+<Sent>
+<SentBytes>3080003FBF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - chute ARG + pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Effectue une chute de pression sur la roue ARG]]></Comment>
+<Sent>
+<SentBytes>308000CFBF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - chute AVD + pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Effectue une chute de pression sur la roue AVD]]></Comment>
+<Sent>
+<SentBytes>308000F3BF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - chute AVG + pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Effectue une chute de pression sur la roue AVG]]></Comment>
+<Sent>
+<SentBytes>308000FCBF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - maintien ARD + pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Effectue un maintien de pression sur la roue ARD]]></Comment>
+<Sent>
+<SentBytes>308000BFBF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - maintien ARG + pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Effectue un maintien de pression sur la roue ARG]]></Comment>
+<Sent>
+<SentBytes>308000EFBF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - maintien AVD + pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Effectue un maintien de pression sur la roue AVD]]></Comment>
+<Sent>
+<SentBytes>308000FBBF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - maintien AVG + pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Effectue un maintien de pression sur la roue AVG]]></Comment>
+<Sent>
+<SentBytes>308000FEBF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - Purge APV - AVD">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'effectuer la purge type APV pour la roue AVD]]></Comment>
+<Sent>
+<SentBytes>308000F7FF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - Purge APV - AVG">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'effectuer la purge type APV pour la roue AVG]]></Comment>
+<Sent>
+<SentBytes>308000FDFF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - Purge APV - ARD">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'effectuer la purge type APV pour la roue ARD]]></Comment>
+<Sent>
+<SentBytes>3080007FFF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - Purge APV - ARG">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'effectuer la purge type APV pour la roue ARG]]></Comment>
+<Sent>
+<SentBytes>308000DFFF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage RAZ relais BLA">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet l'arrêt du pilotage du relais d'allumage des feux de stop]]></Comment>
+<Sent>
+<SentBytes>308111</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage RAZ couple GMP">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet l'arrêt de l'envoi d'une consigne ASR en couple vers le GMP]]></Comment>
+<Sent>
+<SentBytes>30821100</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage RAZ vitesse véhicule">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'arrêter la génération de la vitesse véhicule sur la sortie filaire]]></Comment>
+<Sent>
+<SentBytes>30831100</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage RAZ warning">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'arrêter de piloter le paramètre CAN de demande allumage WARNING]]></Comment>
+<Sent>
+<SentBytes>308411</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RAZ offset capteurs ESP">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'effectuer la RAZ des offsets des capteurs de l'ESP]]></Comment>
+<Sent>
+<SentBytes>31900000</SentBytes>
+<DataItem Name="Choix du capteur" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status RAZ offset capteurs ESP" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage relais BLA">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet le pilotage du relais d'allumage des feux de stop]]></Comment>
+<Sent>
+<SentBytes>308120</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture numéros système">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire les numéros MPR et PIE du groupe hydraulique et du calculateur]]></Comment>
+<Sent>
+<SentBytes>21C1</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<DataItem Name="Numéro MPR calculateur" FirstByte="13"/>
+<DataItem Name="Numéro MPR groupe complet" Ref="1" FirstByte="3"/>
+<DataItem Name="Numéro MPR groupe seul" Ref="1" FirstByte="8"/>
+<DataItem Name="Numéro PIE groupe complet" Ref="1" FirstByte="18"/>
+</Received>
+</Request>
+<Request Name="CDI_RAZ_Mem_Def">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Output Control">
+
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic testing screen]]></Comment>
+<Sent>
+<SentBytes>30010001</SentBytes>
+<DataItem Name="Output Control Command" FirstByte="3"/>
+<DataItem Name="Output Control Parameters" FirstByte="4"/>
+<DataItem Name="Output Permanent Control List" FirstByte="2"/>
+<DataItem Name="Output Temporary Control List" FirstByte="2"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700000</ReplyBytes>
+<DataItem Name="Output Control Status" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Lecture contexte véhicule sur appui bouton ESP">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire de contexte véhicule mémorisé à l'appui du bouton on/off ESP]]></Comment>
+<Sent>
+<SentBytes>21C2</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<DataItem Name="Odométrie sur appui on/off ESP" FirstByte="3"/>
+<DataItem Name="Vitesse sur appui on/off ESP" FirstByte="6"/>
+<DataItem Name="Etat fonction ESP" FirstByte="7"/>
+<DataItem Name="Compteur de mission" FirstByte="7" BitOffset="1"/>
+</Received>
+</Request>
+<Request Name="Lecture software TEVES">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire la liste des défauts avec le codage TEVES (liée avec le Fail Safe)]]></Comment>
+<Sent>
+<SentBytes>21A1</SentBytes>
+</Sent>
+<Received MinBytes="32">
+<DataItem Name="Nom software TEVES" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="RAZ offset capteur pression">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'effectuer la RAZ des offsets des capteurs de l'ESP]]></Comment>
+<Sent>
+<SentBytes>31900002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status RAZ offset capteurs ESP" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RAZ offset angle volant">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'effectuer la RAZ des offsets des capteurs de l'ESP]]></Comment>
+<Sent>
+<SentBytes>31900000</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status RAZ offset capteurs ESP" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RAZ offset capteur transverse">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'effectuer la RAZ des offsets des capteurs de l'ESP]]></Comment>
+<Sent>
+<SentBytes>31900001</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status RAZ offset capteurs ESP" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Inhibition fonction AYC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'inhiber la fonction AYC+CSV (contrôle de lacet + contrôle de sous virage)]]></Comment>
+<Sent>
+<SentBytes>3B9AAA</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Activation fonction AYC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'activer la fonction AYC+CSV (contrôle de lacet + contrôle de sous virage)]]></Comment>
+<Sent>
+<SentBytes>3B9A00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Inhibition pilotage relais BLA">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'inhiber le pilotage du relais d'allumage des feux de stop]]></Comment>
+<Sent>
+<SentBytes>3B99AA</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Activation pilotage relais BLA">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'inhiber/activer le pilotage du relais d'allumage des feux de stop]]></Comment>
+<Sent>
+<SentBytes>3B9900</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Inhibition fonctions ASR + AYC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'inhiber la fonction ASR + AYC/CSV (anti patinage + contrôle de lacet + contrôle de sous virage)]]></Comment>
+<Sent>
+<SentBytes>3B9BAA</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Activation fonctions ASR + AYC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'activer la fonction ASR + AYC/CSV (anti patinage + contrôle de lacet + contrôle de sous virage)]]></Comment>
+<Sent>
+<SentBytes>3B9B00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Inhibition fonction HBA">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'inhiber la fonction HBA (Assistance de freinage par la pompe)]]></Comment>
+<Sent>
+<SentBytes>3B11AA</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Activation fonction HBA">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'activer la fonction HBA (Assistance de freinage par la pompe)]]></Comment>
+<Sent>
+<SentBytes>3B1100</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Activation fonction Modele châssis">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'activer la fonction auto adaptation du modèle châssis]]></Comment>
+<Sent>
+<SentBytes>3B1000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Inhibition fonction Modele châssis">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'inhiber auto adaptation du modèle châssis]]></Comment>
+<Sent>
+<SentBytes>3B10AA</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Stop diagnostic">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet de sortir du mode diagnostique]]></Comment>
+<Sent>
+<SentBytes>82</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Tester present">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet de reinitialiser le time out du calculateur pourr eviter de sortir du mode diagnostique]]></Comment>
+<Sent>
+<SentBytes>3E</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Lecture ECU diagnostiquables">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire la liste des calculateurs diagnostiquables]]></Comment>
+<Sent>
+<SentBytes>21B2</SentBytes>
+</Sent>
+<Received MinBytes="10">
+<DataItem Name="Topo / Schéma élec" FirstByte="3"/>
+<DataItem Name="INJECTION" FirstByte="4"/>
+<DataItem Name="ABS" FirstByte="4" BitOffset="1"/>
+<DataItem Name="TdB" FirstByte="4" BitOffset="2"/>
+<DataItem Name="UCH" FirstByte="4" BitOffset="3"/>
+<DataItem Name="AIRBAG" FirstByte="4" BitOffset="4"/>
+<DataItem Name="VERROU" FirstByte="4" BitOffset="5"/>
+<DataItem Name="CLIM" FirstByte="4" BitOffset="7"/>
+<DataItem Name="BVA" FirstByte="5"/>
+<DataItem Name="UCC" FirstByte="5" BitOffset="1"/>
+<DataItem Name="SYP" FirstByte="5" BitOffset="2"/>
+<DataItem Name="FPA" FirstByte="5" BitOffset="4"/>
+<DataItem Name="COSLAD" FirstByte="7" BitOffset="4"/>
+<DataItem Name="AAP Ligne K" FirstByte="10" BitOffset="6"/>
+<DataItem Name="CHAUDIERE" FirstByte="10" BitOffset="7"/>
+<DataItem Name="ACC" FirstByte="4" BitOffset="6"/>
+<DataItem Name="Repet BVA" FirstByte="7" BitOffset="1"/>
+<DataItem Name="AAP Ligne CAN" FirstByte="9"/>
+<DataItem Name="Kit main libre" FirstByte="10" BitOffset="2"/>
+</Received>
+</Request>
+<Request Name="Ecriture ECU diagnostiquables">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'écrire la liste des calculateurs diagnostiquables]]></Comment>
+<Sent>
+<SentBytes>3BB20000000000000000</SentBytes>
+<DataItem Name="Topo / Schéma élec" FirstByte="3"/>
+<DataItem Name="INJECTION" FirstByte="4"/>
+<DataItem Name="ABS" FirstByte="4" BitOffset="1"/>
+<DataItem Name="TdB" FirstByte="4" BitOffset="2"/>
+<DataItem Name="UCH" FirstByte="4" BitOffset="3"/>
+<DataItem Name="AIRBAG" FirstByte="4" BitOffset="4"/>
+<DataItem Name="VERROU" FirstByte="4" BitOffset="5"/>
+<DataItem Name="CLIM" FirstByte="4" BitOffset="7"/>
+<DataItem Name="BVA" FirstByte="5"/>
+<DataItem Name="UCC" FirstByte="5" BitOffset="1"/>
+<DataItem Name="SYP" FirstByte="5" BitOffset="2"/>
+<DataItem Name="FPA" FirstByte="5" BitOffset="4"/>
+<DataItem Name="COSLAD" FirstByte="7" BitOffset="4"/>
+<DataItem Name="AAP Ligne K" FirstByte="10" BitOffset="6"/>
+<DataItem Name="CHAUDIERE" FirstByte="10" BitOffset="7"/>
+<DataItem Name="ACC" FirstByte="4" BitOffset="6"/>
+<DataItem Name="Repet BVA" FirstByte="7" BitOffset="1"/>
+<DataItem Name="AAP Ligne CAN" FirstByte="9"/>
+<DataItem Name="Kit main libre" FirstByte="10" BitOffset="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Ecriture topologie CAN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'écrire la liste des calculateurs présents sur le CAN]]></Comment>
+<Sent>
+<SentBytes>3BB10000000000000000</SentBytes>
+<DataItem Name="Topo / Schéma élec" FirstByte="3"/>
+<DataItem Name="INJECTION" FirstByte="4"/>
+<DataItem Name="ABS" FirstByte="4" BitOffset="1"/>
+<DataItem Name="TdB" FirstByte="4" BitOffset="2"/>
+<DataItem Name="UCH" FirstByte="4" BitOffset="3"/>
+<DataItem Name="AIRBAG" FirstByte="4" BitOffset="4"/>
+<DataItem Name="VERROU" FirstByte="4" BitOffset="5"/>
+<DataItem Name="CLIM" FirstByte="4" BitOffset="7"/>
+<DataItem Name="BVA" FirstByte="5"/>
+<DataItem Name="UCC" FirstByte="5" BitOffset="1"/>
+<DataItem Name="SYP" FirstByte="5" BitOffset="2"/>
+<DataItem Name="FPA" FirstByte="5" BitOffset="4"/>
+<DataItem Name="COSLAD" FirstByte="7" BitOffset="4"/>
+<DataItem Name="CHAUDIERE" FirstByte="10" BitOffset="7"/>
+<DataItem Name="ACC" FirstByte="4" BitOffset="6"/>
+<DataItem Name="Repet BVA" FirstByte="7" BitOffset="1"/>
+<DataItem Name="AAP Ligne CAN" FirstByte="9"/>
+<DataItem Name="Kit main libre" FirstByte="10" BitOffset="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Lecture topologie CAN">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet de lire la liste des calculateurs présents sur le CAN et ceux diagnostiquables]]></Comment>
+<Sent>
+<SentBytes>21B1</SentBytes>
+</Sent>
+<Received MinBytes="10">
+<DataItem Name="Topo / Schéma élec" FirstByte="3"/>
+<DataItem Name="INJECTION" FirstByte="4"/>
+<DataItem Name="ABS" FirstByte="4" BitOffset="1"/>
+<DataItem Name="TdB" FirstByte="4" BitOffset="2"/>
+<DataItem Name="UCH" FirstByte="4" BitOffset="3"/>
+<DataItem Name="AIRBAG" FirstByte="4" BitOffset="4"/>
+<DataItem Name="VERROU" FirstByte="4" BitOffset="5"/>
+<DataItem Name="CLIM" FirstByte="4" BitOffset="7"/>
+<DataItem Name="BVA" FirstByte="5"/>
+<DataItem Name="UCC" FirstByte="5" BitOffset="1"/>
+<DataItem Name="SYP" FirstByte="5" BitOffset="2"/>
+<DataItem Name="FPA" FirstByte="5" BitOffset="4"/>
+<DataItem Name="COSLAD" FirstByte="7" BitOffset="4"/>
+<DataItem Name="CHAUDIERE" FirstByte="10" BitOffset="7"/>
+<DataItem Name="ACC" FirstByte="4" BitOffset="6"/>
+<DataItem Name="Repet BVA" FirstByte="7" BitOffset="1"/>
+<DataItem Name="AAP Ligne CAN" FirstByte="9"/>
+<DataItem Name="Kit main libre" FirstByte="10" BitOffset="2"/>
+</Received>
+</Request>
+<Request Name="RAZ ECU diagnostiquables">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'écrire la liste des calculateurs diagnostiquables]]></Comment>
+<Sent>
+<SentBytes>3BB20000000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RAZ Topologie CAN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet d'écrire la liste des calculateurs diagnostiquables]]></Comment>
+<Sent>
+<SentBytes>3BB10000000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Start diagnostic communication">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Permet au outil de rentrer en communication avec l'ECU]]></Comment>
+<Sent>
+<SentBytes>81</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Start Diagnostic Session">
+
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="SessionName" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Etat Pilotage - Purge APV - AVD">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Permet d'effectuer la purge type APV pour la roue AVD]]></Comment>
+<Sent>
+<SentBytes>308001FDFF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - EV inlet AR + inlet AV + outlet AR">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Activation EV inlet AR + inlet AV + outlet AR]]></Comment>
+<Sent>
+<SentBytes>3080000AFF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - EV inlet AR + inlet AV">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Activation EV inlet AR + inlet AV + outlet AR]]></Comment>
+<Sent>
+<SentBytes>308000AAFF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - EV inlet AV">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Activation EV Inlet roue AV]]></Comment>
+<Sent>
+<SentBytes>308000FAFF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - EV inlet AV + Pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Activation EV Inlet roue AV]]></Comment>
+<Sent>
+<SentBytes>308000FABF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - EV inlet AR + inlet AV + Pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Activation EV inlet AR + inlet AV + outlet AR + pompe]]></Comment>
+<Sent>
+<SentBytes>308000AABF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - EV inlet AR + inlet AV + outlet AR + Pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Activation EV inlet AR + inlet AV + outlet AR + Pompe]]></Comment>
+<Sent>
+<SentBytes>3080000ABF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - EV inlet AR">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Activation EV Inlet roue AR]]></Comment>
+<Sent>
+<SentBytes>308000AFFF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - EV inlet AR + Pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Activation EV Inlet roue AR + Pompe]]></Comment>
+<Sent>
+<SentBytes>308000AFBF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - EV inlet AR + inlet AV + outlet AV">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Activation EV inlet AR + inlet AV + outlet AV]]></Comment>
+<Sent>
+<SentBytes>308000A0FF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Pilotage - EV inlet AR + inlet AV + outlet AV + Pompe">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Activation EV inlet AR + inlet AV + outlet AV + Pompe]]></Comment>
+<Sent>
+<SentBytes>308000A0FF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Status de pilotage" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Start Diagnostic Session supplier">
+
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>10A9</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Lecture Etat Bus CAN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2182</SentBytes>
+</Sent>
+<Received MinBytes="30">
+<DataItem Name="ACC absent - panne confirmée" Ref="1" FirstByte="13" BitOffset="1"/>
+<DataItem Name="ACC absent - panne présente" Ref="1" FirstByte="13"/>
+<DataItem Name="Bus off - panne confirmée" Ref="1" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Bus off - panne présente" Ref="1" FirstByte="5"/>
+<DataItem Name="BVA absent - panne confirmée" Ref="1" FirstByte="15" BitOffset="1"/>
+<DataItem Name="BVA absent - panne présente" Ref="1" FirstByte="15"/>
+<DataItem Name="Compteur - ACC absent" Ref="1" FirstByte="13" BitOffset="2"/>
+<DataItem Name="Compteur - bus off" Ref="1" FirstByte="5" BitOffset="2"/>
+<DataItem Name="Compteur - BVA absent" Ref="1" FirstByte="15" BitOffset="2"/>
+<DataItem Name="Compteur - INJ absent" Ref="1" FirstByte="7" BitOffset="2"/>
+<DataItem Name="Compteur - module muet" Ref="1" FirstByte="6" BitOffset="2"/>
+<DataItem Name="Compteur - TdB absent" Ref="1" FirstByte="9" BitOffset="2"/>
+<DataItem Name="Compteur - UCH absent" Ref="1" FirstByte="10" BitOffset="2"/>
+<DataItem Name="INJ absent - panne confirmée" Ref="1" FirstByte="7" BitOffset="1"/>
+<DataItem Name="INJ absent - panne présente" Ref="1" FirstByte="7"/>
+<DataItem Name="Module muet - panne confirmée" Ref="1" FirstByte="6" BitOffset="1"/>
+<DataItem Name="Module muet - panne présente" Ref="1" FirstByte="6"/>
+<DataItem Name="TdB absent - panne confirmée" Ref="1" FirstByte="9" BitOffset="1"/>
+<DataItem Name="TdB absent - panne présente" Ref="1" FirstByte="9"/>
+<DataItem Name="UCH absent - panne confirmée" Ref="1" FirstByte="10" BitOffset="1"/>
+<DataItem Name="UCH absent - panne présente" Ref="1" FirstByte="10"/>
+<DataItem Name="Version messagerie CAN" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Capteur vitesse roue AVD - comparaison de vitesse" DTC="20482" FreezeFrame="Read Freeze Frame">
+<Mnemonic>WSS_AVD_CV</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur vitesse roue AVD - défaut électrique" DTC="20485" FreezeFrame="Read Freeze Frame">
+<Mnemonic>WSS_AVD_DE</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur vitesse roue AVD" DTC="20495" FreezeFrame="Read Freeze Frame">
+<Mnemonic>WSS_AVD</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur vitesse roue AVG - comparaison de vitesse" DTC="20497" FreezeFrame="Read Freeze Frame">
+<Mnemonic>WSS_AVG_CV</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur vitesse roue AVG - défaut électrique" DTC="20501" FreezeFrame="Read Freeze Frame">
+<Mnemonic>WSS_AVG_DE</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur vitesse roue AVG" DTC="20511" FreezeFrame="Read Freeze Frame">
+<Mnemonic>WSS_AVG</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur vitesse roue ARD - comparaison de vitesse" DTC="20513" FreezeFrame="Read Freeze Frame">
+<Mnemonic>WSS_ARD_CV</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur vitesse roue ARD - défaut électrique" DTC="20517" FreezeFrame="Read Freeze Frame">
+<Mnemonic>WSS_ARD_DE</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur vitesse roue ARD" DTC="20527" FreezeFrame="Read Freeze Frame">
+<Mnemonic>WSS_ARD</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur vitesse roue ARG - comparaison de vitesse" DTC="20529" FreezeFrame="Read Freeze Frame">
+<Mnemonic>WSS_ARG_CV</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur vitesse roue ARG - défaut électrique" DTC="20533" FreezeFrame="Read Freeze Frame">
+<Mnemonic>WSS_ARD_DE</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur vitesse roue ARG" DTC="20543" FreezeFrame="Read Freeze Frame">
+<Mnemonic>WSS_ARD</Mnemonic>
+
+
+</Device>
+<Device Name="Cible magnétique AVD" DTC="20545" Type="4" FreezeFrame="Read Freeze Frame">
+<Mnemonic>TW_AVD</Mnemonic>
+
+
+</Device>
+<Device Name="Cible magnétique AVG" DTC="20546" Type="4" FreezeFrame="Read Freeze Frame">
+<Mnemonic>TW_AVG</Mnemonic>
+
+
+</Device>
+<Device Name="Cible magnétique ARD" DTC="20547" Type="4" FreezeFrame="Read Freeze Frame">
+<Mnemonic>TW_ARD</Mnemonic>
+
+
+</Device>
+<Device Name="Cible magnétique ARG" DTC="20548" Type="4" FreezeFrame="Read Freeze Frame">
+<Mnemonic>TW_ARG</Mnemonic>
+
+
+</Device>
+<Device Name="Calculateur" DTC="20675" Type="2" FreezeFrame="Read Freeze Frame">
+<Mnemonic>ECU</Mnemonic>
+<DeviceData Name="Calibrage ABS_ESP" FailureFlag="0"/><DeviceData Name="PowerlatchABS" FailureFlag="0"/><DeviceData Name="Tension d'alimentation" FailureFlag="0"/><DeviceData Name="Offset accélération transversale" FailureFlag="0"/><DeviceData Name="Offset angle volant" FailureFlag="0"/><DeviceData Name="Offset pression freinage" FailureFlag="0"/><DeviceData Name="Etat fonction ASR" FailureFlag="0"/><DeviceData Name="Etat fonction AYC/CSV" FailureFlag="0"/><DeviceData Name="Etat fonction MSR" FailureFlag="0"/><DeviceData Name="Etat fonction REF" FailureFlag="0"/><DeviceData Name="Etat fonction ASTM" FailureFlag="0"/><DeviceData Name="Etat fonction HBA" FailureFlag="0"/><DeviceData Name="Type de boîte" FailureFlag="0"/><DeviceData Name="Index tachy" FailureFlag="0"/><DeviceData Name="Numéro Hardware TEVES" FailureFlag="0"/><DeviceData Name="Numéro MPR calculateur" FailureFlag="0"/><DeviceData Name="Numéro PIE groupe complet" FailureFlag="0"/><DeviceData Name="Numéro MPR groupe seul" FailureFlag="0"/><DeviceData Name="Odométrie interne" FailureFlag="0"/><DeviceData Name="Status remplissage" FailureFlag="0"/><DeviceData Name="Numéro MPR groupe complet" FailureFlag="0"/><DeviceData Name="Numéro logiciel 2" FailureFlag="0"/><DeviceData Name="Numéro version logiciel" FailureFlag="0"/>
+
+</Device>
+<Device Name="Contact feux de stop" DTC="20678" FreezeFrame="Read Freeze Frame">
+<Mnemonic>BLS</Mnemonic>
+
+
+</Device>
+<Device Name="Alimentation calculateur" DTC="20684" FreezeFrame="Read Freeze Frame">
+<Mnemonic>ECU_PWR</Mnemonic>
+
+
+</Device>
+<Device Name="Pompe hydraulique" DTC="20691" Type="3" FreezeFrame="Read Freeze Frame">
+<Mnemonic>H_PUMP</Mnemonic>
+
+
+</Device>
+<Device Name="CAN : absence trame INJECTION" DTC="20706" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CAN_INJ_TO</Mnemonic>
+
+
+</Device>
+<Device Name="CAN : absence trame BVA" DTC="20707" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CAN_BVA_TO</Mnemonic>
+
+
+</Device>
+<Device Name="CAN : absence trame UCH" DTC="20708" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CAN_UCH_TO</Mnemonic>
+
+
+</Device>
+<Device Name="Réseau CAN" DTC="20710" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CAN</Mnemonic>
+
+
+</Device>
+<Device Name="CAN privé - bus off" DTC="20711" FreezeFrame="Read Freeze Frame">
+<Mnemonic>P_CAN_B_OFF</Mnemonic>
+
+
+</Device>
+<Device Name="CAN privé - absence trame angle volant" DTC="20712" FreezeFrame="Read Freeze Frame">
+<Mnemonic>P_CAN_SWA_TO</Mnemonic>
+
+
+</Device>
+<Device Name="CAN privé - absence trame Cluster" DTC="20713" FreezeFrame="Read Freeze Frame">
+<Mnemonic>P_CAN_CLU_TO</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur d'accélération transversale" DTC="20721" FreezeFrame="Read Freeze Frame">
+<Mnemonic>ACC_LAT_SENS</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur de vitesse de lacet" DTC="20722" FreezeFrame="Read Freeze Frame">
+<Mnemonic>YAW_SENS</Mnemonic>
+
+
+</Device>
+<Device Name="Défaut interne Cluster" DTC="20736" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CLU_INT</Mnemonic>
+
+
+</Device>
+<Device Name="Régulation continue AYC" DTC="20743" Type="4" FreezeFrame="Read Freeze Frame">
+<Mnemonic>REG_AYC_CONT</Mnemonic>
+
+
+</Device>
+<Device Name="Défaut alimentation Cluster" DTC="20744" Type="3" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CLU_PWR</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur angle volant - défaut signal" DTC="20753" FreezeFrame="Read Freeze Frame">
+<Mnemonic>SWA_SIG</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur de température PS60i" DTC="20791" FreezeFrame="Read Freeze Frame">
+<Mnemonic>TEMP_PS60_SENS</Mnemonic>
+
+
+</Device>
+<Device Name="Absence programmation index tachy" DTC="20800" Type="4" FreezeFrame="Read Freeze Frame">
+<Mnemonic>IND_TACHY</Mnemonic>
+
+
+</Device>
+<Device Name="Absence programmation calibrage ABS/ESP" DTC="20803" Type="4" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CALIB_ABS_ESP</Mnemonic>
+
+
+</Device>
+<Device Name="Défaut checksum EEPROM" DTC="20808" Type="2" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CKS_EEPROM</Mnemonic>
+
+
+</Device>
+<Device Name="Absence ou mauvais codage BVM/BVA" DTC="20816" Type="4" FreezeFrame="Read Freeze Frame">
+<Mnemonic>COD_BV</Mnemonic>
+
+
+</Device>
+<Device Name="Déconnexion fonction AYC" DTC="20928" Type="4" FreezeFrame="Read Freeze Frame">
+<Mnemonic>DEC_AYC</Mnemonic>
+
+
+</Device>
+<Device Name="Déconnexion fonctions ASR + AYC" DTC="20929" Type="4" FreezeFrame="Read Freeze Frame">
+<Mnemonic>DEC_ASR_AYC</Mnemonic>
+
+
+</Device>
+<Device Name="CAN INJ : ASR/MSRAcknowledgement = b0" DTC="53554" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CAN_INJ_AMA</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur angle volant - défaut interne" DTC="20752" FreezeFrame="Read Freeze Frame">
+<Mnemonic>SWA_INT</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur accél latérale - défaut offset" DTC="20751" Type="2" FreezeFrame="Read Freeze Frame">
+<Mnemonic>ACCEL_OFFSET</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur de pression de frein" DTC="20772" FreezeFrame="Read Freeze Frame">
+<Mnemonic>PRES_SENS</Mnemonic>
+
+
+</Device>
+<Device Name="Déconnexion fonction HBA et/ou ASTM" DTC="20930" Type="4" FreezeFrame="Read Freeze Frame">
+<Mnemonic>DEC_HBA_CR</Mnemonic>
+
+
+</Device>
+<Device Name="Cluster - non initialisé" DTC="20724" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CLU_INIT</Mnemonic>
+
+
+</Device>
+<Device Name="Initialisation angle volant / Reconnaissance tour" DTC="20750" Type="4" FreezeFrame="Read Freeze Frame">
+<Mnemonic>INIT_SWA</Mnemonic>
+
+
+</Device>
+<Device Name="Capteur angle volant - défaut offset / plausibilité / hors limite" DTC="20755" Type="2" FreezeFrame="Read Freeze Frame">
+<Mnemonic>SWA_OFFSET</Mnemonic>
+
+
+</Device>
+<Device Name="CAN INJ : &quot;DriverRequest&quot; - invalide" DTC="53529" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CAN_INJ_DriverRequest</Mnemonic>
+
+
+</Device>
+<Device Name="CAN INJ : &quot;MeanEffectiveTorque&quot; - invalide" DTC="53528" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CAN_INJ_MeanEffectiveTorque</Mnemonic>
+
+
+</Device>
+<Device Name="CAN INJ : &quot;Engine RPM&quot; - inavilde" DTC="53527" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CAN_INJ_EngineRPM</Mnemonic>
+
+
+</Device>
+<Device Name="CAN INJ : &quot;TorqueRequestStatus&quot; - couple non réalisable par le GMP" DTC="53533" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CAN_INJ_TRS</Mnemonic>
+
+
+</Device>
+<Device Name="CAN INJ : &quot;ResquestedTorqueAfterProcessing&quot; - invalide" DTC="53536" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CAN_INJ_ResquestedTorqueAfterProcessing</Mnemonic>
+
+
+</Device>
+<Device Name="CAN INJ : &quot;FrictionTorque&quot; - invalide" DTC="53551" FreezeFrame="Read Freeze Frame">
+<Mnemonic>CAN_INJ_FrictionTorque</Mnemonic>
+
+
+</Device>
+<Device Name="Boutton ESP - Défaut électrique" DTC="20687" FreezeFrame="Read Freeze Frame">
+<Mnemonic>ESP_BUT</Mnemonic>
+
+
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Diagnostic">
+
+<Screen Name="Programmation ABS/ESP" Color="16777215" WindowState="0" Width="12420" Height="9180">
+
+<Label Text="pour la programmation de l'ABS/ESP" Color="13619151" Alignment="2">
+<Rectangle Left="3360" Top="720" Height="390" Width="5880"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="986895"/></Label>
+<Label Text="Paramétrage système" Color="13619151" Alignment="2">
+<Rectangle Left="120" Top="5160" Height="1800" Width="12120"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="Dernière intervention APV" Color="13619151" Alignment="2">
+<Rectangle Left="3600" Top="7200" Height="1560" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="Calibrage du bloc ABS/ESP " Color="13619151" Alignment="2">
+<Rectangle Left="120" Top="1320" Height="3600" Width="12120"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="ECRITURE" Color="13619151" Alignment="2">
+<Rectangle Left="3360" Top="120" Height="390" Width="1920"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="LECTURE" Color="13619151" Alignment="0">
+<Rectangle Left="5280" Top="120" Height="390" Width="1680"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="VIN" Color="13619151" Alignment="0">
+<Rectangle Left="240" Top="5640" Height="240" Width="1320"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="Durée du powerlatch" Color="13619151" Alignment="0">
+<Rectangle Left="240" Top="6000" Height="300" Width="2205"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="Type de Boite" Color="13619151" Alignment="0">
+<Rectangle Left="2190" Top="3045" Height="300" Width="2040"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="Status remplissage" Color="13619151" Alignment="0">
+<Rectangle Left="240" Top="6360" Height="300" Width="2280"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="Index Tacky" Color="13619151" Alignment="0">
+<Rectangle Left="2280" Top="3450" Height="210" Width="2160"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="PARAMETRES" Color="13619151" Alignment="0">
+<Rectangle Left="6960" Top="120" Height="390" Width="2280"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="986895"/></Label>
+<Label Text="Calibrage ABS/ESP" Color="13619151" Alignment="0">
+<Rectangle Left="240" Top="1800" Height="300" Width="1770"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="(A RENSEIGNER OBLIGATOIREMENT)" Color="13619151" Alignment="0">
+<Rectangle Left="240" Top="1320" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="255"/></Label>
+<Label Text="Aide sur la couleur des ressorts" Color="12566463" Alignment="2">
+<Rectangle Left="120" Top="3840" Height="1080" Width="4080"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="1" Color="4194368"/></Label>
+<Label Text="M=Marron" Color="12566463" Alignment="0">
+<Rectangle Left="1320" Top="4440" Height="240" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="O=Orange" Color="12566463" Alignment="0">
+<Rectangle Left="2400" Top="4440" Height="360" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="R=Rouge " Color="12566463" Alignment="0">
+<Rectangle Left="240" Top="4680" Height="240" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="V=Vert" Color="12566463" Alignment="0">
+<Rectangle Left="1320" Top="4680" Height="240" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="J=Jaune" Color="12566463" Alignment="0">
+<Rectangle Left="240" Top="4440" Height="240" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="G=Gris" Color="12566463" Alignment="0">
+<Rectangle Left="2400" Top="4200" Height="240" Width="720"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Ble=Bleu " Color="12566463" Alignment="0">
+<Rectangle Left="1320" Top="4200" Height="240" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Blc=Blanc" Color="12566463" Alignment="0">
+<Rectangle Left="240" Top="4200" Height="240" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="(Pour un bloc ABS choisir la valeur 1)" Color="13619151" Alignment="0">
+<Rectangle Left="240" Top="2160" Height="240" Width="3840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="8388863"/></Label>
+
+<Button Text="Envoyer">
+<Rectangle Left="6120" Top="5640" Height="360" Width="1080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="200" RequestName="Ecriture code VIN"/><Send Delay="0" RequestName="Lecture code VIN"/>
+</Button>
+<Button Text="Envoyer">
+<Rectangle Left="5760" Top="2160" Height="360" Width="1080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="200" RequestName="Ecriture calibrage ABS/ESP"/><Send Delay="0" RequestName="Lecture calibrage ABS/ESP"/>
+</Button>
+<Button Text="Envoyer">
+<Rectangle Left="6120" Top="6000" Height="360" Width="1080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="200" RequestName="Ecriture durée powerlatch"/><Send Delay="0" RequestName="Lecture durée powerlatch"/>
+</Button>
+<Button Text="Envoyer">
+<Rectangle Left="6240" Top="3000" Height="360" Width="1320"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="200" RequestName="Ecriture du type de BV"/><Send Delay="0" RequestName="Lecture du type de BV"/>
+</Button>
+<Button Text="Envoyer">
+<Rectangle Left="6240" Top="3405" Height="345" Width="1305"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="200" RequestName="Ecriture index tachy"/><Send Delay="0" RequestName="Lecture index tachy"/>
+</Button>
+<Button Text="Envoyer">
+<Rectangle Left="6120" Top="6360" Height="360" Width="1080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="200" RequestName="Ecriture status remplissage"/><Send Delay="0" RequestName="Lecture status remplissage"/>
+</Button>
+<Button Text="Envoyer">
+<Rectangle Left="6000" Top="7560" Height="960" Width="1080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="200" RequestName="Ecriture date APV"/><Send Delay="0" RequestName="Lecture date APV"/>
+</Button>
+
+<Input Width="0" Color="13619151" DataName="VIN" RequestName="Ecriture code VIN">
+<Rectangle Left="2040" Top="5640" Height="300" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="0" Color="13619151" DataName="Durée powerlatch" RequestName="Ecriture durée powerlatch">
+<Rectangle Left="2040" Top="6000" Height="300" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="0" Color="13619151" DataName="Type de boîte" RequestName="Ecriture du type de BV">
+<Rectangle Left="3480" Top="3000" Height="315" Width="2640"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="0" Color="13619151" DataName="Index tachy" RequestName="Ecriture index tachy">
+<Rectangle Left="3480" Top="3480" Height="300" Width="2640"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="0" Color="13619151" DataName="Status remplissage" RequestName="Ecriture status remplissage">
+<Rectangle Left="2040" Top="6360" Height="300" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Display Width="15" Color="13619151" DataName="VIN" RequestName="Lecture code VIN">
+<Rectangle Left="7440" Top="5640" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="1910" Color="13619151" DataName="Calibrage ABS_ESP" RequestName="Lecture calibrage ABS/ESP">
+<Rectangle Left="255" Top="2550" Height="345" Width="10560"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 1" Color="8454016"/></Display>
+<Display Width="0" Color="13619151" DataName="Durée powerlatch" RequestName="Lecture durée powerlatch">
+<Rectangle Left="7440" Top="6000" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 5" Color="8454016"/></Display>
+<Display Width="0" Color="13619151" DataName="Type de boîte" RequestName="Lecture du type de BV">
+<Rectangle Left="7755" Top="3045" Height="300" Width="3030"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 181" Color="8454016"/><Threshold Value=" 255" Color="8421631"/></Display>
+<Display Width="2105" Color="13619151" DataName="Développée réelle" RequestName="Lecture index tachy">
+<Rectangle Left="5640" Top="3840" Height="300" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2120" Color="13619151" DataName="Développée mini" RequestName="Lecture index tachy">
+<Rectangle Left="5640" Top="4200" Height="300" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="1" Color="4194368"/></Display>
+<Display Width="2120" Color="13619151" DataName="Développée maxi" RequestName="Lecture index tachy">
+<Rectangle Left="5640" Top="4560" Height="300" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="1" Color="4194368"/></Display>
+<Display Width="15" Color="13619151" DataName="Index tachy" RequestName="Lecture index tachy">
+<Rectangle Left="7725" Top="3435" Height="300" Width="3060"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 64" Color="8454016"/><Threshold Value=" 255" Color="8421631"/></Display>
+<Display Width="0" Color="13619151" DataName="Status remplissage" RequestName="Lecture status remplissage">
+<Rectangle Left="7440" Top="6360" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 30" Color="8421631"/></Display>
+<Input Width="1115" Color="13619151" DataName="Jour APV" RequestName="Ecriture date APV">
+<Rectangle Left="3960" Top="7560" Height="300" Width="1920"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="1115" Color="13619151" DataName="Mois APV" RequestName="Ecriture date APV">
+<Rectangle Left="3960" Top="7920" Height="300" Width="1920"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="1115" Color="13619151" DataName="Année APV" RequestName="Ecriture date APV">
+<Rectangle Left="3960" Top="8280" Height="300" Width="1920"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Display Width="0" Color="13619151" DataName="Jour APV" RequestName="Lecture date APV">
+<Rectangle Left="7200" Top="7560" Height="300" Width="775"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="0" Color="13619151" DataName="Mois APV" RequestName="Lecture date APV">
+<Rectangle Left="7200" Top="7920" Height="300" Width="775"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="0" Color="13619151" DataName="Année APV" RequestName="Lecture date APV">
+<Rectangle Left="7200" Top="8280" Height="300" Width="775"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Input Width="0" Color="13619151" DataName="Calibrage ABS_ESP" RequestName="Ecriture calibrage ABS/ESP">
+<Rectangle Left="2040" Top="1800" Height="315" Width="8670"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+</Screen>
+<Screen Name="Lecture des entrées et états" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+<Label Text="LECTURE DES ENTREES ET ETATS" Color="16777215" Alignment="2">
+<Rectangle Left="3000" Top="120" Height="345" Width="6060"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text=" " Color="13619151" Alignment="0">
+<Rectangle Left="120" Top="480" Height="8520" Width="11760"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="16711680"/></Label>
+
+
+<Display Width="2810" Color="13619151" DataName="Vitesse roue AVD" RequestName="Lecture des vitesses">
+<Rectangle Left="360" Top="600" Height="300" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2810" Color="13619151" DataName="Vitesse roue AVG" RequestName="Lecture des vitesses">
+<Rectangle Left="360" Top="960" Height="300" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2810" Color="13619151" DataName="Vitesse roue ARD" RequestName="Lecture des vitesses">
+<Rectangle Left="360" Top="1320" Height="300" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2810" Color="13619151" DataName="Vitesse roue ARG" RequestName="Lecture des vitesses">
+<Rectangle Left="360" Top="1680" Height="300" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2825" Color="13619151" DataName="Vitesse véhicule" RequestName="Lecture des vitesses">
+<Rectangle Left="360" Top="2040" Height="300" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2825" Color="13619151" DataName="Tension d'alimentation" RequestName="Lecture entrées physiques">
+<Rectangle Left="360" Top="2400" Height="300" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2825" Color="13619151" DataName="Angle volant" RequestName="Lecture entrées physiques">
+<Rectangle Left="360" Top="2760" Height="300" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2825" Color="13619151" DataName="Accélération transversale" RequestName="Lecture entrées physiques">
+<Rectangle Left="360" Top="3120" Height="300" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2825" Color="13619151" DataName="Vitesse de lacet" RequestName="Lecture entrées physiques">
+<Rectangle Left="360" Top="3480" Height="300" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2825" Color="13619151" DataName="Pression de freinage" RequestName="Lecture entrées physiques">
+<Rectangle Left="360" Top="3840" Height="300" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2825" Color="13619151" DataName="Température liquide frein" RequestName="Lecture entrées physiques">
+<Rectangle Left="360" Top="4200" Height="300" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2480" Color="13619151" DataName="Contact feux de stop" RequestName="Lecture entrées physiques">
+<Rectangle Left="360" Top="4920" Height="240" Width="5880"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2480" Color="13619151" DataName="Bouton on/off ESP" RequestName="Lecture entrées physiques">
+<Rectangle Left="360" Top="5280" Height="240" Width="5880"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2465" Color="13619151" DataName="Etat relais BLA" RequestName="Lecture état système">
+<Rectangle Left="360" Top="5640" Height="240" Width="5880"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2465" Color="13619151" DataName="Etat fonction AYC/CSV" RequestName="Lecture état système">
+<Rectangle Left="360" Top="7440" Height="240" Width="5880"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 1" Color="8421631"/></Display>
+<Display Width="2465" Color="13619151" DataName="Etat fonction ASR" RequestName="Lecture état système">
+<Rectangle Left="360" Top="7080" Height="240" Width="5880"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 1" Color="8421631"/></Display>
+<Display Width="2465" Color="13619151" DataName="Etat fonction MSR" RequestName="Lecture état système">
+<Rectangle Left="360" Top="6720" Height="240" Width="5880"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 1" Color="8421631"/></Display>
+<Display Width="2465" Color="13619151" DataName="Etat fonction ABS" RequestName="Lecture état système">
+<Rectangle Left="360" Top="6360" Height="240" Width="5880"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 1" Color="8421631"/></Display>
+<Display Width="2465" Color="13619151" DataName="Etat fonction REF" RequestName="Lecture état système">
+<Rectangle Left="360" Top="6000" Height="240" Width="5880"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 1" Color="8421631"/></Display>
+<Display Width="3215" Color="13619151" DataName="DiagMuxOn" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="5760" Top="600" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="3215" Color="13619151" DataName="EngineRPM" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="5760" Top="960" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="3215" Color="13619151" DataName="MeanEffectiveTorque" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="5760" Top="1320" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="3215" Color="13619151" DataName="DriverRequest" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="5760" Top="1680" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="3215" Color="13619151" DataName="RequestedTorqueAfterProcessing" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="5760" Top="2040" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="3215" Color="13619151" DataName="FrictionTorque" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="5760" Top="2400" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="3215" Color="13619151" DataName="ClutchSwitch" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="5760" Top="2760" Height="300" Width="5040"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2210" Color="13619151" DataName="TorqueRequestStatus" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="5760" Top="3120" Height="300" Width="6000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2615" Color="13619151" DataName="ASR/MSRAcknowledgement" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="6360" Top="3720" Height="300" Width="5160"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2615" Color="13619151" DataName="ShiftInProgress" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="6360" Top="4080" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2615" Color="13619151" DataName="TransRangeEngaged" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="6360" Top="4440" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2750" Color="13619151" DataName="IgnitionSwitch" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="7560" Top="5400" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2750" Color="13619151" DataName="PowerlatchABS" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="7560" Top="5040" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2765" Color="13619151" DataName="WindShieldWiperOperatingMode" RequestName="Lecture entrées virtuelles">
+<Rectangle Left="7560" Top="5760" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2825" Color="13619151" DataName="Odométrie interne" RequestName="Lecture odométrie interne">
+<Rectangle Left="360" Top="4560" Height="240" Width="3720"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="3335" Color="13619151" DataName="Offset angle volant" RequestName="Lecture offset capteurs ESP">
+<Rectangle Left="7320" Top="6480" Height="300" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="3350" Color="13619151" DataName="Offset accélération transversale" RequestName="Lecture offset capteurs ESP">
+<Rectangle Left="7320" Top="6840" Height="300" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="3350" Color="13619151" DataName="Offset pression freinage" RequestName="Lecture offset capteurs ESP">
+<Rectangle Left="7320" Top="7200" Height="300" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2465" Color="13619151" DataName="Etat fonction HBA" RequestName="Lecture état système">
+<Rectangle Left="360" Top="7800" Height="240" Width="5880"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 1" Color="8421631"/></Display>
+<Display Width="2465" Color="13619151" DataName="Etat fonction ASTM" RequestName="Lecture état système">
+<Rectangle Left="360" Top="8160" Height="240" Width="5880"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 0" Color="8454016"/><Threshold Value=" 1" Color="8421631"/></Display>
+</Screen>
+<Screen Name="Pilotage Divers" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+<Label Text="Pilotage des WARNING via CAN" Color="8421504" Alignment="2">
+<Rectangle Left="2880" Top="1680" Height="960" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="65535"/></Label>
+<Label Text="Pilotage relais allumage feux de stop" Color="8421504" Alignment="2">
+<Rectangle Left="2880" Top="2760" Height="960" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="65535"/></Label>
+<Label Text="Génération d'une vitesse véhicule" Color="8421504" Alignment="2">
+<Rectangle Left="2880" Top="3840" Height="1080" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="65535"/></Label>
+<Label Text="Génération d'une consigne de couple ASR" Color="8421504" Alignment="2">
+<Rectangle Left="2880" Top="5040" Height="960" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="65535"/></Label>
+<Label Text="Arrêt pilotage" Color="255" Alignment="2">
+<Rectangle Left="4680" Top="6120" Height="1080" Width="2880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="PILOTAGE DIVERS" Color="16777215" Alignment="2">
+<Rectangle Left="3600" Top="480" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="OK">
+<Rectangle Left="3720" Top="3120" Height="480" Width="840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Pilotage relais BLA"/><Send Delay="0" RequestName="Lecture entrées physiques"/>
+</Button>
+<Button Text="OK">
+<Rectangle Left="5760" Top="2040" Height="480" Width="840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Pilotage warning"/>
+</Button>
+<Button Text="OK">
+<Rectangle Left="8430" Top="4200" Height="480" Width="840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Génération vitesse véhicule"/>
+</Button>
+<Button Text="OK">
+<Rectangle Left="8430" Top="5400" Height="480" Width="840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Pilotage en couple GMP"/>
+</Button>
+<Button Text="STOP">
+<Rectangle Left="5160" Top="6480" Height="504" Width="1920"/>
+<Font Name="Arial" Size=" 14" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="100" RequestName="Pilotage RAZ hydraulique"/><Send Delay="100" RequestName="Pilotage RAZ warning"/><Send Delay="100" RequestName="Pilotage RAZ relais BLA"/><Send Delay="100" RequestName="Pilotage RAZ couple GMP"/><Send Delay="100" RequestName="Pilotage RAZ vitesse véhicule"/>
+</Button>
+
+<Input Width="3815" Color="8421504" DataName="Vitesse véhicule à générer" RequestName="Génération vitesse véhicule">
+<Rectangle Left="3360" Top="4320" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16777215"/></Input>
+<Input Width="4055" Color="8421504" DataName="Couple ASR à émettre" RequestName="Pilotage en couple GMP">
+<Rectangle Left="3120" Top="5520" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16777215"/></Input>
+<Display Width="2195" Color="8421504" DataName="Contact feux de stop" RequestName="Lecture entrées physiques">
+<Rectangle Left="4800" Top="3240" Height="300" Width="3840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16777215"/></Display>
+</Screen>
+<Screen Name="Identification système" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+<Label Text="IDENTIFICATION SYSTEME" Color="13619151" Alignment="2">
+<Rectangle Left="3120" Top="120" Height="360" Width="6120"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text=" " Color="13619151" Alignment="0">
+<Rectangle Left="3120" Top="480" Height="8520" Width="6120"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="16711680"/></Label>
+<Send Delay="0" RequestName="Start Diagnostic Session supplier"/>
+
+<Display Width="2900" Color="13619151" DataName="Identification diag" RequestName="Lecture identification système">
+<Rectangle Left="3480" Top="1440" Height="300" Width="5285"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Code ITG" RequestName="Lecture identification système">
+<Rectangle Left="3480" Top="1800" Height="300" Width="5285"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Numéro Hardware TEVES" RequestName="Lecture identification système">
+<Rectangle Left="3480" Top="2160" Height="300" Width="5285"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Numéro logiciel 1" RequestName="Lecture identification système">
+<Rectangle Left="3480" Top="2520" Height="300" Width="5285"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Numéro version logiciel" RequestName="Lecture identification système">
+<Rectangle Left="3480" Top="3240" Height="300" Width="5285"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Numéro homologation" RequestName="Lecture identification système">
+<Rectangle Left="3480" Top="3600" Height="300" Width="5285"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Numéro version homologation" RequestName="Lecture identification système">
+<Rectangle Left="3480" Top="3960" Height="300" Width="5285"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Numéro version CdC diag" RequestName="Lecture identification système">
+<Rectangle Left="3480" Top="4320" Height="300" Width="5285"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="VIN" RequestName="Lecture code VIN">
+<Rectangle Left="3600" Top="600" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Traçabilité TEVES jour de fab" RequestName="Lecture traçabilité ECU">
+<Rectangle Left="3480" Top="5640" Height="326" Width="5285"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Traçabilité TEVES mois de fab" RequestName="Lecture traçabilité ECU">
+<Rectangle Left="3480" Top="6032" Height="326" Width="5285"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Traçabilité TEVES année de fab" RequestName="Lecture traçabilité ECU">
+<Rectangle Left="3480" Top="6423" Height="326" Width="5285"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Traçabilité TEVES numéro série" RequestName="Lecture traçabilité ECU">
+<Rectangle Left="3480" Top="6823" Height="330" Width="5285"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Traçabilité TEVES site fab ECU" RequestName="Lecture traçabilité ECU">
+<Rectangle Left="3480" Top="5249" Height="326" Width="5280"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Traçabilité TEVES numéro série" RequestName="Lecture traçabilité ECU">
+<Rectangle Left="3480" Top="4858" Height="326" Width="5280"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Numéro MPR groupe complet" RequestName="Lecture numéros système">
+<Rectangle Left="3480" Top="7440" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Numéro MPR groupe seul" RequestName="Lecture numéros système">
+<Rectangle Left="3480" Top="7800" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Numéro MPR calculateur" RequestName="Lecture numéros système">
+<Rectangle Left="3480" Top="8160" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Numéro PIE groupe complet" RequestName="Lecture numéros système">
+<Rectangle Left="3480" Top="8520" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Nom software TEVES" RequestName="Lecture software TEVES">
+<Rectangle Left="3480" Top="960" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2900" Color="13619151" DataName="Numéro logiciel 2" RequestName="Lecture identification système">
+<Rectangle Left="3480" Top="2880" Height="300" Width="5280"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="16711680"/></Display>
+</Screen>
+<Screen Name="Inhibition / activation des fonctions" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+<Label Text="INHIBITION / ACTIVATION DES FONCTIONS" Color="16777215" Alignment="2">
+<Rectangle Left="360" Top="120" Height="360" Width="11520"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Pilotage du relais d'allumage des feux de stop" Color="13619151" Alignment="2">
+<Rectangle Left="120" Top="480" Height="1200" Width="11760"/>
+<Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="Fonctions AYC/CSV (Contrôle de lacet + Contrôle de sous virage)" Color="13619151" Alignment="2">
+<Rectangle Left="120" Top="1800" Height="1200" Width="11760"/>
+<Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="Fonctions ASR + AYC/CSV (Anti patinage /contrôle de lacet + contrôle de sous virage)" Color="13619151" Alignment="2">
+<Rectangle Left="120" Top="3120" Height="1560" Width="11760"/>
+<Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="Fonction HBA (Assistance de freinage par la pompe)" Color="13619151" Alignment="2">
+<Rectangle Left="120" Top="5880" Height="960" Width="11760"/>
+<Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="Fonction ASTM (Auto-Adaptation du modèle châssis)" Color="13619151" Alignment="2">
+<Rectangle Left="120" Top="4800" Height="960" Width="11760"/>
+<Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="32768"/></Label>
+
+<Button Text="Activer">
+<Rectangle Left="9720" Top="2160" Height="360" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Activation fonction AYC"/><Send Delay="0" RequestName="Lecture état système"/>
+</Button>
+<Button Text="Inhiber">
+<Rectangle Left="9720" Top="2520" Height="360" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Inhibition fonction AYC"/><Send Delay="0" RequestName="Lecture état système"/>
+</Button>
+<Button Text="Activer">
+<Rectangle Left="9720" Top="720" Height="360" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Activation pilotage relais BLA"/><Send Delay="0" RequestName="Lecture état système"/>
+</Button>
+<Button Text="Inhiber">
+<Rectangle Left="9720" Top="1080" Height="360" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Inhibition pilotage relais BLA"/><Send Delay="0" RequestName="Lecture état système"/>
+</Button>
+<Button Text="Activer">
+<Rectangle Left="9720" Top="3720" Height="360" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Activation fonctions ASR + AYC"/><Send Delay="0" RequestName="Lecture état système"/>
+</Button>
+<Button Text="Inhiber">
+<Rectangle Left="9720" Top="4080" Height="360" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Inhibition fonctions ASR + AYC"/><Send Delay="0" RequestName="Lecture état système"/>
+</Button>
+<Button Text="Activer">
+<Rectangle Left="9720" Top="6000" Height="360" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Activation fonction HBA"/><Send Delay="0" RequestName="Lecture état système"/>
+</Button>
+<Button Text="Inhiber">
+<Rectangle Left="9720" Top="6360" Height="360" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Inhibition fonction HBA"/><Send Delay="0" RequestName="Lecture état système"/>
+</Button>
+<Button Text="Activer">
+<Rectangle Left="9720" Top="4920" Height="360" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Activation fonction Modele châssis"/><Send Delay="0" RequestName="Lecture état système"/>
+</Button>
+<Button Text="Inhiber">
+<Rectangle Left="9720" Top="5280" Height="360" Width="1440"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Inhibition fonction Modele châssis"/><Send Delay="0" RequestName="Lecture état système"/>
+</Button>
+
+<Display Width="3215" Color="13619151" DataName="Etat relais BLA" RequestName="Lecture état système">
+<Rectangle Left="360" Top="960" Height="300" Width="9000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 1" Color="8421631"/></Display>
+<Display Width="3245" Color="13619151" DataName="Etat fonction AYC/CSV" RequestName="Lecture état système">
+<Rectangle Left="360" Top="2400" Height="300" Width="9000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 1" Color="8421631"/></Display>
+<Display Width="3260" Color="13619151" DataName="Etat fonction AYC/CSV" RequestName="Lecture état système">
+<Rectangle Left="360" Top="4200" Height="300" Width="9000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 1" Color="8421631"/></Display>
+<Display Width="3260" Color="13619151" DataName="Etat fonction ASR" RequestName="Lecture état système">
+<Rectangle Left="360" Top="3840" Height="300" Width="9000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 1" Color="8421631"/></Display>
+<Display Width="3335" Color="13619151" DataName="Etat fonction HBA" RequestName="Lecture état système">
+<Rectangle Left="360" Top="6360" Height="300" Width="9000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 1" Color="8421631"/></Display>
+<Display Width="3350" Color="13619151" DataName="Etat fonction ASTM" RequestName="Lecture état système">
+<Rectangle Left="360" Top="5160" Height="300" Width="9000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16711680"/><Threshold Value=" 1" Color="8421631"/></Display>
+</Screen>
+<Screen Name="Service Topologie CAN (B1)" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+<Label Text="TOPOLOGIE CAN" Color="16777215" Alignment="2">
+<Rectangle Left="4320" Top="120" Height="360" Width="3360"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="Ecriture" Color="13619151" Alignment="2">
+<Rectangle Left="870" Top="990" Height="7680" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="32768"/></Label>
+<Label Text="Lecture" Color="13619151" Alignment="2">
+<Rectangle Left="6345" Top="960" Height="7680" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16711680"/></Label>
+
+<Button Text="Ecrire">
+<Rectangle Left="1560" Top="7920" Height="480" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture topologie CAN"/>
+</Button>
+<Button Text="Lire">
+<Rectangle Left="8160" Top="7920" Height="480" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture topologie CAN"/>
+</Button>
+<Button Text="RAZ Trame B1">
+<Rectangle Left="2880" Top="7920" Height="480" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="RAZ Topologie CAN"/>
+</Button>
+
+<Input Width="2000" Color="13619151" DataName="Topo / Schéma élec" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1200" Top="1620" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="INJECTION" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="2235" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="ABS" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="2535" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="TdB" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="2835" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="UCH" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="3135" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="AIRBAG" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="3435" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="VERROU" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="3735" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="ACC" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1170" Top="4035" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="CLIM" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="4335" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="BVA" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="4635" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="UCC" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="4935" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="SYP" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="5235" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="FPA" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="5535" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="Repet BVA" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="5835" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="COSLAD" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="6135" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="AAP Ligne CAN" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="6435" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="Kit main libre" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="6735" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="CHAUDIERE" RequestName="Ecriture topologie CAN">
+<Rectangle Left="1185" Top="7035" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Display Width="2000" Color="13619151" DataName="Topo / Schéma élec" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="1635" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="INJECTION" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="2250" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="ABS" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="2550" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="TdB" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="2850" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="UCH" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="3150" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="AIRBAG" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="3450" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="VERROU" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="3750" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="ACC" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="4050" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="CLIM" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="4350" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="BVA" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="4650" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="UCC" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="4950" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="SYP" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="5250" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="FPA" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="5550" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="Repet BVA" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="5850" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="COSLAD" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="6150" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="AAP Ligne CAN" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="6450" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="Kit main libre" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="6750" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="CHAUDIERE" RequestName="Lecture topologie CAN">
+<Rectangle Left="6645" Top="7050" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+</Screen>
+<Screen Name="Analyse BE" Color="16777215" WindowState="0" Width="11940" Height="8940">
+
+<Label Text="AIDE A L'ANALYSE" Color="16777215" Alignment="2">
+<Rectangle Left="4320" Top="120" Height="375" Width="3210"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="Contexte véhicule mémorisé à l'appui du bouton on/off ESP" Color="8421504" Alignment="2">
+<Rectangle Left="2160" Top="1320" Height="3240" Width="7440"/>
+<Font Name="Arial" Size=" 11" Bold="1" Italic="0" Color="65535"/></Label>
+
+
+<Display Width="3530" Color="8421504" DataName="Odométrie sur appui on/off ESP" RequestName="Lecture contexte véhicule sur appui bouton ESP">
+<Rectangle Left="3240" Top="2130" Height="338" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16777215"/></Display>
+<Display Width="3545" Color="8421504" DataName="Vitesse sur appui on/off ESP" RequestName="Lecture contexte véhicule sur appui bouton ESP">
+<Rectangle Left="3240" Top="2670" Height="338" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16777215"/></Display>
+<Display Width="1865" Color="8421504" DataName="Etat fonction ESP" RequestName="Lecture contexte véhicule sur appui bouton ESP">
+<Rectangle Left="4920" Top="3210" Height="338" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16777215"/></Display>
+<Display Width="2240" Color="8421504" DataName="Compteur de mission" RequestName="Lecture contexte véhicule sur appui bouton ESP">
+<Rectangle Left="4560" Top="3750" Height="338" Width="3960"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16777215"/></Display>
+</Screen>
+<Screen Name="Résoudre problème capteur" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+<Label Text="Problème lié au capteur angle volant" Color="13619151" Alignment="2">
+<Rectangle Left="2880" Top="1080" Height="1680" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Valeur de l'OFFSET lue :" Color="13619151" Alignment="2">
+<Rectangle Left="3120" Top="1920" Height="240" Width="2280"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="Problème lié au capteur de pression" Color="13619151" Alignment="2">
+<Rectangle Left="2880" Top="3000" Height="1680" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Valeur de l'OFFSET lue :" Color="13619151" Alignment="2">
+<Rectangle Left="3000" Top="3960" Height="240" Width="2280"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="Problème lié au capteur d'accélération transversale" Color="13619151" Alignment="2">
+<Rectangle Left="2880" Top="5160" Height="1680" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Valeur de l'OFFSET lue :" Color="13619151" Alignment="2">
+<Rectangle Left="3120" Top="5880" Height="240" Width="2280"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="Résoudre les problèmes des capteurs de l'ESP" Color="13619151" Alignment="2">
+<Rectangle Left="2640" Top="240" Height="390" Width="7800"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Si défaut capteur angle volant $5113 ou $510E réaliser l'action suivante -&gt;" Color="13619151" Alignment="2">
+<Rectangle Left="360" Top="1320" Height="1320" Width="2280"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="255"/></Label>
+<Label Text="Si défaut capteur pression $5125 réaliser l'action suivante -&gt;" Color="13619151" Alignment="2">
+<Rectangle Left="360" Top="3240" Height="1320" Width="2280"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="255"/></Label>
+<Label Text="Si défaut capteur accélération transversale $510F réaliser l'action suivante -&gt;" Color="13619151" Alignment="2">
+<Rectangle Left="360" Top="5400" Height="1320" Width="2280"/>
+<Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="255"/></Label>
+
+<Button Text="Correction du défaut">
+<Rectangle Left="7800" Top="3720" Height="720" Width="1800"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="RAZ offset capteur pression"/><Send Delay="0" RequestName="Lecture offset capteurs ESP"/>
+</Button>
+<Button Text="Correction du défaut">
+<Rectangle Left="7800" Top="1800" Height="720" Width="1800"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="RAZ offset angle volant"/><Send Delay="0" RequestName="Lecture offset capteurs ESP"/>
+</Button>
+<Button Text="Correction du défaut">
+<Rectangle Left="7800" Top="5640" Height="720" Width="1800"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="RAZ offset capteur transverse"/><Send Delay="0" RequestName="Lecture offset capteurs ESP"/>
+</Button>
+
+<Display Width="0" Color="13619151" DataName="Offset angle volant" RequestName="Lecture offset capteurs ESP">
+<Rectangle Left="5400" Top="1920" Height="300" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="16711680"/></Display>
+<Display Width="0" Color="13619151" DataName="Offset accélération transversale" RequestName="Lecture offset capteurs ESP">
+<Rectangle Left="5400" Top="5880" Height="300" Width="1800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="16711680"/></Display>
+<Display Width="0" Color="13619151" DataName="Offset pression freinage" RequestName="Lecture offset capteurs ESP">
+<Rectangle Left="5400" Top="3960" Height="300" Width="1800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="16711680"/></Display>
+</Screen>
+<Screen Name="Service ECU Diagnosticables (B2)" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+<Label Text="ECU DIAGNOSTICABLES" Color="16777215" Alignment="2">
+<Rectangle Left="2880" Top="120" Height="360" Width="6120"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="Lecture" Color="13619151" Alignment="2">
+<Rectangle Left="6465" Top="960" Height="7680" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="Ecriture" Color="13619151" Alignment="2">
+<Rectangle Left="840" Top="975" Height="7680" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="32768"/></Label>
+
+<Button Text="Lire">
+<Rectangle Left="8520" Top="7920" Height="480" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Lecture ECU diagnostiquables"/>
+</Button>
+<Button Text="Ecrire">
+<Rectangle Left="1920" Top="7920" Height="480" Width="840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Ecriture ECU diagnostiquables"/>
+</Button>
+<Button Text="RAZ Trame B2">
+<Rectangle Left="3240" Top="7920" Height="480" Width="1800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="RAZ ECU diagnostiquables"/>
+</Button>
+
+<Input Width="2000" Color="13619151" DataName="Topo / Schéma élec" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="1560" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="INJECTION" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="1860" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="ABS" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="2160" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="TdB" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="2460" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="UCH" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="2760" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="AIRBAG" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="3060" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="VERROU" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="3360" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="ACC" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="3660" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="CLIM" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="3960" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="BVA" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="4260" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="UCC" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="4560" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="SYP" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1215" Top="4875" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="FPA" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1215" Top="5190" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="COSLAD" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1215" Top="5775" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="AAP Ligne K" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="6660" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="CHAUDIERE" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="6960" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="Repet BVA" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1215" Top="5490" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="AAP Ligne CAN" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1215" Top="6075" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Input Width="2000" Color="13619151" DataName="Kit main libre" RequestName="Ecriture ECU diagnostiquables">
+<Rectangle Left="1200" Top="6375" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="32768"/></Input>
+<Display Width="2000" Color="13619151" DataName="Topo / Schéma élec" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6840" Top="1575" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="INJECTION" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="1875" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="ABS" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="2175" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="TdB" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="2475" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="UCH" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="2775" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="AIRBAG" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="3075" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="VERROU" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="3375" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="ACC" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="3675" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="CLIM" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="3975" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="BVA" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="4275" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="UCC" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="4575" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="SYP" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="4875" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="FPA" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="5175" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="Repet BVA" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="5475" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="COSLAD" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="5775" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="AAP Ligne CAN" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="6075" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="Kit main libre" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="6375" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="AAP Ligne K" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="6675" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+<Display Width="2000" Color="13619151" DataName="CHAUDIERE" RequestName="Lecture ECU diagnostiquables">
+<Rectangle Left="6855" Top="6975" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16711680"/></Display>
+</Screen>
+<Screen Name="Lecture trame Diag MUX" Color="-2147483643" WindowState="0" Width="12045" Height="9300">
+
+<Label Text=" " Color="13619151" Alignment="0">
+<Rectangle Left="240" Top="720" Height="1800" Width="11520"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="13619151" Alignment="0">
+<Rectangle Left="240" Top="2760" Height="4680" Width="11520"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Effacement des défauts" Color="255" Alignment="2">
+<Rectangle Left="4320" Top="7680" Height="1260" Width="3900"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="Lecture de la trame DIAG MUX" Color="13619151" Alignment="2">
+<Rectangle Left="2100" Top="60" Height="600" Width="7620"/>
+<Font Name="Arial" Size=" 24" Bold="1" Italic="0" Color="16711680"/></Label>
+
+<Button Text="OK">
+<Rectangle Left="5640" Top="8160" Height="480" Width="1620"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0"/>
+<Message Text="ATTENTION ! Effacement de la mémoire de défaut"/>
+<Send Delay="0" RequestName="CDI_RAZ_Mem_Def"/>
+</Button>
+
+<Display Width="2540" Color="13619151" DataName="Version messagerie CAN" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="2160" Top="840" Height="300" Width="4600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2540" Color="13619151" DataName="Bus off - panne présente" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="720" Top="1320" Height="300" Width="4600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2540" Color="13619151" DataName="Bus off - panne confirmée" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="720" Top="1680" Height="300" Width="4600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2555" Color="13619151" DataName="Compteur - bus off" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="720" Top="2040" Height="300" Width="4600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2885" Color="13619151" DataName="Module muet - panne présente" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="6960" Top="1320" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2900" Color="13619151" DataName="Module muet - panne confirmée" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="6960" Top="1680" Height="300" Width="4720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2900" Color="13619151" DataName="Compteur - module muet" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="6960" Top="2040" Height="300" Width="4720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2930" Color="13619151" DataName="INJ absent - panne présente" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="720" Top="3000" Height="300" Width="4960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2960" Color="13619151" DataName="INJ absent - panne confirmée" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="720" Top="3360" Height="300" Width="4960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="13619151" DataName="Compteur - INJ absent" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="720" Top="3720" Height="300" Width="4960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2915" Color="13619151" DataName="TdB absent - panne présente" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="6960" Top="3000" Height="300" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2915" Color="13619151" DataName="TdB absent - panne confirmée" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="6960" Top="3360" Height="300" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2930" Color="13619151" DataName="Compteur - TdB absent" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="6960" Top="3720" Height="300" Width="4560"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="13619151" DataName="UCH absent - panne présente" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="720" Top="4320" Height="300" Width="4960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2990" Color="13619151" DataName="UCH absent - panne confirmée" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="720" Top="4680" Height="300" Width="4960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2990" Color="13619151" DataName="Compteur - UCH absent" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="720" Top="5040" Height="300" Width="4960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2915" Color="13619151" DataName="ACC absent - panne présente" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="6960" Top="4440" Height="300" Width="4600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2930" Color="13619151" DataName="ACC absent - panne confirmée" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="6960" Top="4800" Height="300" Width="4600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2945" Color="13619151" DataName="Compteur - ACC absent" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="6960" Top="5160" Height="300" Width="4600"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2975" Color="13619151" DataName="BVA absent - panne présente" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="720" Top="5640" Height="300" Width="4960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2990" Color="13619151" DataName="BVA absent - panne confirmée" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="720" Top="6000" Height="300" Width="4960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2990" Color="13619151" DataName="Compteur - BVA absent" RequestName="Lecture Etat Bus CAN">
+<Rectangle Left="720" Top="6360" Height="300" Width="4960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Purge du circuit secondaire du bloc ABS/ESP" Color="16777215" WindowState="0" Width="11940" Height="9060">
+
+<Label Text="Purge du circuit secondaire du bloc ABS/ESP" Color="16777215" Alignment="2">
+<Rectangle Left="1320" Top="0" Height="405" Width="9240"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text=". Pour réaliser la purge du circuit secondaire du bloc hydraulique et afin de ne pas introduire d'air,  il faut:" Color="16777215" Alignment="0">
+<Rectangle Left="-120" Top="480" Height="600" Width="12480"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="-1- s'assurer que le circuit de freinage du véhicule a été purgé par la méthode de purge traditionnelle." Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="840" Height="360" Width="12000"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="-5- appuyer fortement sur la pédale de frein et tout en maintenant le pression sur celle ci lancer l'ordre de purge de la roue ARG." Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="2520" Height="600" Width="11640"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="4227327"/></Label>
+<Label Text="-2- moteur coupé, après 3 appuis sur la pédale de frein, contrôler la course de la pédale qui doit être correcte (pédale dure)." Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="1200" Height="600" Width="11760"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="-3- installer l'appareil de purge sur le bocal de liquide frein." Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="1800" Height="360" Width="10680"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="-7- purger la roue ARG afin dévacuer l'air dans ce circuit, puis refermer le purgeur" Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="3480" Height="360" Width="10680"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="4227327"/></Label>
+<Label Text="-8- appuyer fortement sur la pédale de frein et tout en maintenant le pression sur celle ci lancer l'ordre de purge de la roue AVD." Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="3840" Height="600" Width="11640"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16744448"/></Label>
+<Label Text="-10- purger la roue AVD afin dévacuer l'air dans ce circuit, puis refermer le purgeur" Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="4800" Height="360" Width="10680"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16744448"/></Label>
+<Label Text="-11- appuyer fortement sur la pédale de frein et tout en maintenant le pression sur celle ci lancer l'ordre de purge de la roue ARD." Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="5160" Height="600" Width="11640"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16744703"/></Label>
+<Label Text="-13- purger la roue ARD afin dévacuer l'air dans ce circuit, puis refermer le purgeur" Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="6120" Height="360" Width="10680"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16744703"/></Label>
+<Label Text="-14- appuyer fortement sur la pédale de frein et tout en maintenant le pression sur celle ci lancer l'ordre de purge de la roue AVG." Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="6480" Height="600" Width="11640"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="8421631"/></Label>
+<Label Text="-17- Contrôle final: Moteur coupé et après 3 appuis sur la pédale de frein, contrôler de nouveau la course pédale qui doit être correcte (pédale dure)purger la roue AVG afin dévacuer l'air dans ce circuit, puis refermer le purgeur" Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="7920" Height="1080" Width="11880"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="8454016"/></Label>
+<Label Text="-4- s'assurer que les vis de purge (purgeur) soient fermées." Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="2160" Height="360" Width="10680"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="-6- attendre la fin du cycle avant de relacher la pédale." Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="3120" Height="240" Width="11640"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="4227327"/></Label>
+<Label Text="-15- attendre la fin du cycle avant de relacher la pédale." Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="7080" Height="240" Width="11640"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="8421631"/></Label>
+<Label Text="-9- attendre la fin du cycle avant de relacher la pédale." Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="4440" Height="240" Width="11640"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16744448"/></Label>
+<Label Text="-12- attendre la fin du cycle avant de relacher la pédale." Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="5760" Height="240" Width="11640"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16744703"/></Label>
+<Label Text="-16- purger la roue AVG afin dévacuer l'air dans ce circuit, puis refermer le purgeur" Color="16777215" Alignment="0">
+<Rectangle Left="0" Top="7440" Height="360" Width="10680"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="8421631"/></Label>
+
+<Button Text="Purge AVD">
+<Rectangle Left="3120" Top="4080" Height="360" Width="1560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text="Appuyer sur la pédale de frein et maintenir la pression jusqu'à la fin du cycle"/>
+<Send Delay="1000" RequestName="Pilotage - Purge APV - AVD"/><Send Delay="1000" RequestName="Pilotage - Purge APV - AVD"/><Send Delay="1000" RequestName="Pilotage - Purge APV - AVD"/><Send Delay="1000" RequestName="Pilotage - Purge APV - AVD"/><Send Delay="1000" RequestName="Pilotage - Purge APV - AVD"/><Send Delay="100" RequestName="Pilotage RAZ hydraulique"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/>
+</Button>
+<Button Text="Purge AVG">
+<Rectangle Left="3120" Top="6720" Height="360" Width="1560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text="Appuyer sur la pédale de frein et maintenir la pression jusqu'à la fin du cycle"/>
+<Send Delay="1000" RequestName="Pilotage - Purge APV - AVG"/><Send Delay="2000" RequestName="Pilotage - Purge APV - AVG"/><Send Delay="2000" RequestName="Pilotage - Purge APV - AVG"/><Send Delay="2000" RequestName="Pilotage - Purge APV - AVG"/><Send Delay="1000" RequestName="Pilotage - Purge APV - AVG"/><Send Delay="100" RequestName="Pilotage RAZ hydraulique"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/>
+</Button>
+<Button Text="Purge ARD">
+<Rectangle Left="3120" Top="5400" Height="360" Width="1560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text="Appuyer sur la pédale de frein et maintenir la pression jusqu'à la fin du cycle"/>
+<Send Delay="1000" RequestName="Pilotage - Purge APV - ARD"/><Send Delay="1000" RequestName="Pilotage - Purge APV - ARD"/><Send Delay="1000" RequestName="Pilotage - Purge APV - ARD"/><Send Delay="1000" RequestName="Pilotage - Purge APV - ARD"/><Send Delay="1000" RequestName="Pilotage - Purge APV - ARD"/><Send Delay="100" RequestName="Pilotage RAZ hydraulique"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/>
+</Button>
+<Button Text="Purge ARG">
+<Rectangle Left="3000" Top="2760" Height="360" Width="1560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text="Appuyer sur la pédale de frein et maintenir la pression jusqu'à la fin du cycle"/>
+<Send Delay="1000" RequestName="Pilotage - Purge APV - ARD"/><Send Delay="1000" RequestName="Pilotage - Purge APV - ARD"/><Send Delay="1000" RequestName="Pilotage - Purge APV - ARD"/><Send Delay="1000" RequestName="Pilotage - Purge APV - ARD"/><Send Delay="1000" RequestName="Pilotage - Purge APV - ARD"/><Send Delay="100" RequestName="Pilotage RAZ hydraulique"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/><Send Delay="1000" RequestName="Pilotage temporaire pompe"/>
+</Button>
+
+</Screen>
+<Screen Name="Controle Hydraulique" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+<Label Text="Véhicule" Color="13619151" Alignment="2">
+<Rectangle Left="4920" Top="5520" Height="2640" Width="2400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="CONTROLE HYDRAULIQUE" Color="16777215" Alignment="2">
+<Rectangle Left="2760" Top="120" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text=". Si la PEDALE est LONGUE, moteur arrété, alors il y a de l'air dans le circuit primaire de freinage." Color="16777215" Alignment="0">
+<Rectangle Left="600" Top="720" Height="720" Width="11520"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="255"/></Label>
+<Label Text=". Dans ce cas NE PAS réaliser ce contôle MAIS réaliser une purge classique." Color="16777215" Alignment="0">
+<Rectangle Left="600" Top="1080" Height="360" Width="11520"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="255"/></Label>
+<Label Text=". Pour tester le circuit de freinage, arrétez le moteur puis appuyez 3 fois sur la pédale de frein." Color="16777215" Alignment="0">
+<Rectangle Left="600" Top="1560" Height="240" Width="11520"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Pour réaliser le test:" Color="16777215" Alignment="0">
+<Rectangle Left="600" Top="3000" Height="360" Width="11520"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text=". Si la pédale s'enfonce toujours alors il y a de l'air dans le circuit primaire de freinage." Color="16777215" Alignment="0">
+<Rectangle Left="960" Top="1920" Height="360" Width="11640"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text=". Sinon le circuit de freinage est OK" Color="16777215" Alignment="0">
+<Rectangle Left="960" Top="2280" Height="360" Width="11520"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="1 - Appuyer sur la pédale de frein" Color="16777215" Alignment="0">
+<Rectangle Left="600" Top="3360" Height="360" Width="11520"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="2 - Une autre personne essaye de tourner une roue" Color="16777215" Alignment="0">
+<Rectangle Left="600" Top="3720" Height="360" Width="11520"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="3 - Cliquer sur le bouton correspondant à la roue testée" Color="16777215" Alignment="0">
+<Rectangle Left="600" Top="4080" Height="360" Width="11520"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="Résultat: Au début la personne se trouvant à la roue ne peut pas la tourner et après l'étape (3) la roue peut être tournée par intermitence" Color="16777215" Alignment="0">
+<Rectangle Left="120" Top="4440" Height="720" Width="11640"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16711680"/></Label>
+
+<Button Text="POMPE">
+<Rectangle Left="5520" Top="6600" Height="503" Width="1305"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Pilotage temporaire pompe"/>
+</Button>
+<Button Text="Roue AVD">
+<Rectangle Left="6720" Top="5880" Height="377" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text="Appuyer sur la pédale de frein et tourner manuellement la roue AVD"/>
+<Send Delay="500" RequestName="Pilotage - maintien AVD + pompe"/><Send Delay="500" RequestName="Pilotage - chute AVD + pompe"/><Send Delay="500" RequestName="Pilotage - maintien AVD + pompe"/><Send Delay="500" RequestName="Pilotage - chute AVD + pompe"/><Send Delay="500" RequestName="Pilotage - maintien AVD + pompe"/><Send Delay="500" RequestName="Pilotage - chute AVD + pompe"/><Send Delay="500" RequestName="Pilotage RAZ hydraulique"/>
+</Button>
+<Button Text="Roue AVG">
+<Rectangle Left="4320" Top="5880" Height="377" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text="Appuyer sur la pédale de frein et tourner manuellement la roue AVG"/>
+<Send Delay="500" RequestName="Pilotage - maintien AVG + pompe"/><Send Delay="500" RequestName="Pilotage - chute AVG + pompe"/><Send Delay="500" RequestName="Pilotage - maintien AVG + pompe"/><Send Delay="500" RequestName="Pilotage - chute AVG + pompe"/><Send Delay="500" RequestName="Pilotage - maintien AVG + pompe"/><Send Delay="500" RequestName="Pilotage - chute AVG + pompe"/><Send Delay="500" RequestName="Pilotage RAZ hydraulique"/>
+</Button>
+<Button Text="Roue ARD">
+<Rectangle Left="6720" Top="7560" Height="377" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text="Appuyer sur la pédale de frein et tourner manuellement la roue ARD"/>
+<Send Delay="500" RequestName="Pilotage - maintien ARD + pompe"/><Send Delay="500" RequestName="Pilotage - chute ARD + pompe"/><Send Delay="500" RequestName="Pilotage - maintien ARD + pompe"/><Send Delay="500" RequestName="Pilotage - chute ARD + pompe"/><Send Delay="500" RequestName="Pilotage - maintien ARD + pompe"/><Send Delay="500" RequestName="Pilotage - chute ARD + pompe"/><Send Delay="500" RequestName="Pilotage RAZ hydraulique"/>
+</Button>
+<Button Text="Roue ARG">
+<Rectangle Left="4320" Top="7560" Height="377" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text="Appuyer sur la pédale de frein et tourner manuellement la roue ARG"/>
+<Send Delay="500" RequestName="Pilotage - maintien ARG + pompe"/><Send Delay="500" RequestName="Pilotage - chute ARG + pompe"/><Send Delay="500" RequestName="Pilotage - maintien ARG + pompe"/><Send Delay="500" RequestName="Pilotage - chute ARG + pompe"/><Send Delay="500" RequestName="Pilotage - maintien ARG + pompe"/><Send Delay="500" RequestName="Pilotage - chute ARG + pompe"/><Send Delay="500" RequestName="Pilotage RAZ hydraulique"/>
+</Button>
+
+</Screen>
+</Category><Category Name="Contrôle denture">
+
+<Screen Name="1- Choix de la roue" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+<Label Text="ETAPE 1 - CHOIX DE LA ROUE" Color="16777215" Alignment="2">
+<Rectangle Left="3120" Top="120" Height="480" Width="5760"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text=" " Color="8421504" Alignment="0">
+<Rectangle Left="960" Top="1920" Height="1080" Width="7560"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="  " Color="8421504" Alignment="0">
+<Rectangle Left="960" Top="3240" Height="720" Width="7560"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="1- Choisir la roue à tester" Color="16777215" Alignment="0">
+<Rectangle Left="945" Top="1335" Height="330" Width="3900"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="2- Passer à l'étape 2 - Début comptage" Color="16777215" Alignment="0">
+<Rectangle Left="960" Top="4680" Height="405" Width="5580"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="OK">
+<Rectangle Left="6840" Top="2160" Height="540" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Contrôle de denture - choix de la roue"/>
+</Button>
+
+<Input Width="2990" Color="8421504" DataName="Choix de la roue à tester" RequestName="Contrôle de denture - choix de la roue">
+<Rectangle Left="1440" Top="2280" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16777215"/></Input>
+<Display Width="2765" Color="8421504" DataName="Status - choix de la roue" RequestName="Contrôle de denture - choix de la roue">
+<Rectangle Left="1560" Top="3480" Height="300" Width="6030"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16777215"/></Display>
+</Screen>
+<Screen Name="2- Début comptage" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+<Label Text="ETAPE 2 - DEBUT DU COMPTAGE" Color="16777215" Alignment="2">
+<Rectangle Left="3360" Top="120" Height="465" Width="5265"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="1- Prendre un repère sur la roue et autre en regard sur la carrosserie" Color="16777215" Alignment="0">
+<Rectangle Left="465" Top="1230" Height="345" Width="7462"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="2- Lancer le début du comptage" Color="16777215" Alignment="0">
+<Rectangle Left="480" Top="2040" Height="285" Width="4815"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="3- Effectuer un tour précis et complet de la roue sans revenir en arrière" Color="16777215" Alignment="0">
+<Rectangle Left="480" Top="4320" Height="345" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="4- Passer à l'étape 3 - Résultat" Color="16777215" Alignment="0">
+<Rectangle Left="480" Top="5160" Height="420" Width="7155"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="8421504" Alignment="0">
+<Rectangle Left="480" Top="2505" Height="1320" Width="8760"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Début comptage">
+<Rectangle Left="3840" Top="2625" Height="465" Width="2152"/>
+<Font Name="" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Contrôle de denture - début comptage"/>
+</Button>
+
+<Display Width="3845" Color="8421504" DataName="Status - fin de comptage / résultat" RequestName="Contrôle de denture - début comptage">
+<Rectangle Left="990" Top="3345" Height="300" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16777215"/></Display>
+</Screen>
+<Screen Name="3- Résultat" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+<Label Text="ETAPE 3 - RESULTAT" Color="16777215" Alignment="2">
+<Rectangle Left="3600" Top="120" Height="360" Width="4800"/>
+<Font Name="Arial" Size=" 16" Bold="1" Italic="0" Color="16711680"/></Label>
+<Label Text="1- Si le premier résultat = 47 dents :" Color="16777215" Alignment="0">
+<Rectangle Left="1080" Top="4200" Height="240" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="- Décaler le repère sur la roue de 1 cm" Color="16777215" Alignment="0">
+<Rectangle Left="2760" Top="4560" Height="240" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="- Recommencer à l'étape 1" Color="16777215" Alignment="0">
+<Rectangle Left="2760" Top="4800" Height="240" Width="5205"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="2- Si le premier résultat est inférieur à 47 dents, si le deuxième résultat est inférieur à 48 dents, alors la cible est défectueuse" Color="16777215" Alignment="0">
+<Rectangle Left="1080" Top="5640" Height="600" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="3- Si le résultat est supérieur à 48 dents, plus d'un tour a été effectué ; recommencer à l'étape 1" Color="16777215" Alignment="0">
+<Rectangle Left="1080" Top="6720" Height="480" Width="7680"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Résultat attendu : 48 dents" Color="8421504" Alignment="0">
+<Rectangle Left="2520" Top="2040" Height="240" Width="2760"/>
+<Font Name="Arial" Size=" 8" Bold="1" Italic="0" Color="16776960"/></Label>
+<Label Text=" " Color="8421504" Alignment="0">
+<Rectangle Left="1200" Top="1320" Height="960" Width="7560"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="8421504" Alignment="0">
+<Rectangle Left="1200" Top="2520" Height="1080" Width="7560"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Résultat">
+<Rectangle Left="6000" Top="1560" Height="480" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Contrôle de denture - résultat"/>
+</Button>
+
+<Display Width="3575" Color="8421504" DataName="Status - fin de comptage / résultat" RequestName="Contrôle de denture - résultat">
+<Rectangle Left="1470" Top="2880" Height="300" Width="6720"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16777215"/></Display>
+<Display Width="1895" Color="8421504" DataName="Nombre de dents" RequestName="Contrôle de denture - résultat">
+<Rectangle Left="2280" Top="1680" Height="300" Width="3000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="16777215"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

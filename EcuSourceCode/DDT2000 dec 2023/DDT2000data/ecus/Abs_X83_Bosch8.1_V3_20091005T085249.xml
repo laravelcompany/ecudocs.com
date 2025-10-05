@@ -1,0 +1,2759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.0.0.1" date="2009-10-01T16:56"/>
+<ddt:Target Name="Abs_X83_Bosch8.1_V3" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="gilles.dammacco@renault.com" href="Abs_X83_Bosch8.1_V3_20091005T085249.xml" upload="10/5/2009" group="IDVU_Brake"><Description><![CDATA[Base DiagOnCAN ABS  X83 8.1 V1
+<-------------------------------------------------------------------------------->
+Le 17/12/2007
+-------------------------
+         -:- Création de la base ABS : (reprise de la base X61 V3)
+
+Le 25/03/2008 (Version V1)
+-------------------------
+         -:-  Traduction Francais -=> Anglais
+
+Le 24/09/2008 (version V2)
+-------------------------
+         -:-  Intégration des softs pour auto-identification
+
+<-------------------------------------------------------------------------------->
+            iDVU 3040 Jean-Paul Mersseman
+                             Tel : 99 251
+e-mail : jean-paul.mersseman-renexter@renault.com
+<-------------------------------------------------------------------------------->
+
+
+Le 01/10/2009
+-----------------------------
+         -:- Modification Index Pneumatique
+
+65625 - Gilles D'Ammacco - 98694]]></Description>
+<Projects xmlns=""><x83Ph2/><x83Ph3/></Projects>
+<Function Name="ABS" Address="1"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation/>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="500000" Multipoint="1">
+<SendId>
+<CANId Value="1856"/>
+</SendId><ReceiveId>
+<CANId Value="1888"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="8" Supplier="037" Soft="F27A" Version="0100"/><AutoIdent DiagVersion="8" Supplier="037" Soft="F27A" Version="0201"/><AutoIdent DiagVersion="8" Supplier="037" Soft="F27A" Version="0202"/><AutoIdent DiagVersion="8" Supplier="037" Soft="F27A" Version="0303"/><AutoIdent DiagVersion="8" Supplier="037" Soft="F27A" Version="0304"/><AutoIdent DiagVersion="8" Supplier="037" Soft="F27A" Version="0306"/></AutoIdents>
+<Datas>
+
+<Data Name="Affectation">
+<Bits count="1">
+<List>
+<Item Value="0" Text="For Plant"/>
+<Item Value="1" Text="For After Sale"/></List>
+</Bits>
+</Data>
+<Data Name="FFN">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="MoreDTC">
+<Mnemonic>MoreDTC</Mnemonic>
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="NDTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="ProcessByte Remplissage">
+<Bits>
+<List>
+<Item Value="0" Text="ABS/ESP sec, remplissage RF autorisé"/>
+<Item Value="25" Text="ABS/ESP pour après-vente"/>
+<Item Value="49" Text="ABS/ESP rempli"/></List>
+</Bits>
+</Data>
+<Data Name="Session Name">
+<Bits>
+<List>
+<Item Value="129" Text="Defaut session - Stop Diag"/>
+<Item Value="133" Text="Session Reprogrammation"/>
+<Item Value="192" Text="Session After Sale"/></List>
+</Bits>
+</Data>
+<Data Name="Store Condition">
+<Comment><![CDATA[Condition de stockage]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="Alimentation (Freeze)">
+<Bits>
+<Scaled Unit="V" Step=" .08" Offset=" 7" Format="00.00"/>
+</Bits>
+</Data>
+<Data Name="Current ICC">
+<Comment><![CDATA[Cycle de roulage en cours]]></Comment>
+<Bytes count="2"/>
+</Data>
+<Data Name="Failure Path">
+<Comment><![CDATA[Chemin de la faute]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="Failure Type">
+<Comment><![CDATA[Type de faute]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="Drive Cycle information">
+<Comment><![CDATA[Information sur le Drive Cycle]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="Debug information 0">
+<Comment><![CDATA[Information de debug 0]]></Comment>
+<Bytes count="4"/>
+</Data>
+<Data Name="Fault Location">
+<Comment><![CDATA[Numéro de la localisation Bosch de la faute]]></Comment>
+<Bits>
+<List>
+<Item Value="1" Text="Faute à la localisation Bosch 1"/>
+<Item Value="2" Text="Faute à la localisation Bosch 2"/>
+<Item Value="3" Text="Faute à la localisation Bosch 3"/>
+<Item Value="4" Text="Faute à la localisation Bosch 4"/>
+<Item Value="5" Text="Faute à la localisation Bosch 5"/>
+<Item Value="6" Text="Faute à la localisation Bosch 6"/></List>
+</Bits>
+</Data>
+<Data Name="Debug information 1">
+<Comment><![CDATA[Information de debug 1]]></Comment>
+<Bytes count="4"/>
+</Data>
+<Data Name="Environment information">
+<Comment><![CDATA[Données d'environnement de la faute]]></Comment>
+<Bytes count="4"/>
+</Data>
+<Data Name="Fault ICC">
+<Comment><![CDATA[Cycle de roulage à l'apparition de la faute]]></Comment>
+<Bytes count="2"/>
+</Data>
+<Data Name="Current Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Historical Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Standard Fault">
+<Bits count="5">
+<List>
+<Item Value="0" Text="Not Used"/>
+<Item Value="1" Text="Open Circuit / Circuit Ouvert (1h)"/>
+<Item Value="2" Text="Short Circuit at the Ground / Court-circuit à la masse (2h)"/>
+<Item Value="3" Text="Short circuit at the power supply / Court-circuit au +bat (3h)"/>
+<Item Value="4" Text="Parametre in Low Limite / Parametre en butée Min (4h)"/>
+<Item Value="5" Text="Parametre in High Limite / Param en butée Haute (5h)"/>
+<Item Value="6" Text="Incoherence, impossible (6h)"/>
+<Item Value="7" Text="No signal / Pas de signal (7h)"/>
+<Item Value="8" Text="Below Low Threshold / En dessous du seuil bas (8h)"/>
+<Item Value="9" Text="Under Higth Threshold / Au dessus du seuil haut (9h)"/>
+<Item Value="10" Text="Permanent Low Level /  Niveau bas permanent (Ah)"/>
+<Item Value="11" Text="Permanent High Level / Niveau haut permanent (Bh)"/>
+<Item Value="12" Text="Lines in Short Circuit / Lignes en court-circuit (Ch)"/>
+<Item Value="13" Text="Interne Electronic Anomalie / Anomalie éléctronique interne (Dh)"/>
+<Item Value="14" Text="Network Anomaly / Anomaly du réseau (Eh)"/>
+<Item Value="15" Text="Remote Diagnostic / Diagnostique erroné (Fh)"/>
+<Item Value="16" Text="Disturbed Communication / Communication perturbée (10h)"/>
+<Item Value="17" Text="Microbreaks / Microcoupures (11h)"/>
+<Item Value="18" Text="Abnormal Voltage / Tension anormale (12h)"/>
+<Item Value="19" Text="Value out of range / Valeur en dehors de la plage (13h)"/>
+<Item Value="20" Text="Open or short Circuit to ground / Circuit ouvert ou court-circuit à la masse (14h)"/>
+<Item Value="21" Text="Open or Short circuit to battery / Circuit ouvert ou court-circuit au +Bat(15h)"/>
+<Item Value="22" Text="Init or config not valid / Init ou config non valide (16h)"/>
+<Item Value="23" Text="Init not valid / Init non valide(17h)"/>
+<Item Value="24" Text="Anomaly / Anomalie (18h)"/></List>
+</Bits>
+</Data>
+<Data Name="Type Of Fault">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Standard"/>
+<Item Value="1" Text="Specific"/></List>
+</Bits>
+</Data>
+<Data Name="DiagMuxOn (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="DiagMuxOff (0)"/>
+<Item Value="1" Text="DiagMuxOn (1)"/></List>
+</Bits>
+</Data>
+<Data Name="DTC Number (Freeze)">
+<Bytes count="2"/>
+</Data>
+<Data Name="CRC">
+<Bytes count="2"/>
+</Data>
+<Data Name="Specific Fault">
+<Bits count="5">
+<List>
+<Item Value="1" Text="Open Circuit or Short Circuit in +bat or Ground (1h)"/>
+<Item Value="2" Text="Wheel_speed_continuity"/>
+<Item Value="4" Text="Interference between one or more wheels (4h)"/>
+<Item Value="5" Text="Config véhicule not chose (5h)"/>
+<Item Value="6" Text="Config véhicule not OK (6h)"/>
+<Item Value="8" Text="Missing Tooth (8h)"/>
+<Item Value="12" Text="Index pneu not select (Ch)"/>
+<Item Value="13" Text="Pb Mecanic Failure or Magnetic Failure on the targuet (Dh)"/>
+<Item Value="14" Text="Wrong Montage (Eh)"/>
+<Item Value="15" Text="CAN message absent"/></List>
+</Bits>
+</Data>
+<Data Name="Traçabilité - ABS/ESP">
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Traçabilité - Compteur">
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="Rear Right Wheel Speed">
+<Bits count="16">
+<Scaled Unit="Km/H" DivideBy=" 100" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Rear Right Admission">
+<Bits count="1">
+<List>
+<Item Value="0" Text="In Action"/>
+<Item Value="1" Text="Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Rear Left Admission">
+<Bits count="1">
+<List>
+<Item Value="0" Text="In Action"/>
+<Item Value="1" Text="Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Power Suppley">
+<Bits>
+<Scaled Unit="V" Step=" .08" Format="00.00"/>
+</Bits>
+</Data>
+<Data Name="Traçabilité - libre">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Identificateur de Diagnostic">
+<Bits>
+<List>
+<Item Value="8" Text="Vdiag = 08H OK pour ABS"/>
+<Item Value="10" Text="Vdiag = 0AH OK pour ESP"/></List>
+</Bits>
+</Data>
+<Data Name="Front Right Admission">
+<Bits count="1">
+<List>
+<Item Value="0" Text="In Action"/>
+<Item Value="1" Text="Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Front Left Admission">
+<Bits count="1">
+<List>
+<Item Value="0" Text="In Action"/>
+<Item Value="1" Text="Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Filling Autorisation RF">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Agree"/>
+<Item Value="1" Text="Forbidden"/></List>
+</Bits>
+</Data>
+<Data Name="Wheel Selection">
+<Bits>
+<List>
+<Item Value="1" Text="Front Left Wheel"/>
+<Item Value="2" Text="Front Right Wheel"/>
+<Item Value="3" Text="Rear Left Wheel"/>
+<Item Value="4" Text="Rear Right Wheel"/></List>
+</Bits>
+</Data>
+<Data Name="Activation processus Selection">
+<Bits>
+<List>
+<Item Value="0" Text="Launching temporary control"/>
+<Item Value="1" Text="Status demand"/>
+<Item Value="17" Text="Stop of control"/></List>
+</Bits>
+</Data>
+<Data Name="Stop Selection">
+<Bits>
+<List>
+<Item Value="128" Text="Now"/></List>
+</Bits>
+</Data>
+<Data Name="Answer Selection">
+<Bits>
+<List>
+<Item Value="1" Text="with answer"/>
+<Item Value="2" Text="without answer"/></List>
+</Bits>
+</Data>
+<Data Name="VIN Code">
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="Failure about filling">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Without failure"/>
+<Item Value="1" Text="Intern Bloc Failure"/>
+<Item Value="2" Text="Extern Bloc Failure"/></List>
+</Bits>
+</Data>
+<Data Name="Time activation Selection">
+<Bits>
+<List>
+<Item Value="62" Text="5s"/>
+<Item Value="125" Text="10s"/>
+<Item Value="187" Text="15s"/>
+<Item Value="250" Text="20s"/></List>
+</Bits>
+</Data>
+<Data Name="Time activation Selection EV/Pompe">
+<Bits>
+<List>
+<Item Value="50" Text="1s"/>
+<Item Value="100" Text="2s"/>
+<Item Value="150" Text="3s"/>
+<Item Value="200" Text="4s"/>
+<Item Value="250" Text="5s"/></List>
+</Bits>
+</Data>
+<Data Name="Tire circumference">
+<Bits count="16">
+<Scaled Unit="mm" Format="0000"/>
+</Bits>
+</Data>
+<Data Name="Tire circumference maximum">
+<Bits count="16">
+<Scaled Unit="mm" Format="000000"/>
+</Bits>
+</Data>
+<Data Name="Tire circumference minimum">
+<Bits count="16">
+<Scaled Unit="mm" Format="000000"/>
+</Bits>
+</Data>
+<Data Name="Builder Code">
+<Bits>
+<List>
+<Item Value="0" Text="Renault"/></List>
+</Bits>
+</Data>
+<Data Name="After Sale Code">
+<Bytes count="5"/>
+</Data>
+<Data Name="Car Configuration">
+<Comment><![CDATA[A coder]]></Comment>
+<Bits>
+<List>
+<Item Value="1" Text="Chassis L0 type VU Freins Tambour AVEC MSR"/>
+<Item Value="2" Text="Chassis L1 type VU et VP Freins disque AVEC MSR"><![CDATA[<P><STRONG>C'est celle-là la bonne</STRONG></P>]]></Item>
+<Item Value="4" Text="Chassis L1 type VU et VP Freins disque  SANS MSR (Boite Automatique)"/>
+<Item Value="5" Text="Chassis ACCESS (L1 + freins arrière à tambour) avec MSR"/>
+<Item Value="6" Text="Chassis ACCESS (L1 + freins arrière à tambour) SANS MSR"/>
+<Item Value="8" Text="Chassis L2 type VU Freins disque"/>
+<Item Value="9" Text="Chassis TC type VU et VP Freins disque"/>
+<Item Value="255" Text="Invalide (FFh)"/></List>
+</Bits>
+</Data>
+<Data Name="Driving Cycle (Freeze)">
+<Comment><![CDATA[ICC]]></Comment>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Rear Right Exhaust">
+<Bits count="1">
+<List>
+<Item Value="0" Text="In Action"/>
+<Item Value="1" Text="Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Rear Left Exhaust">
+<Bits count="1">
+<List>
+<Item Value="0" Text="In action"/>
+<Item Value="1" Text="Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Front Right Exhaust">
+<Bits count="1">
+<List>
+<Item Value="0" Text="In Action"/>
+<Item Value="1" Text="Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Front Left Exhaust">
+<Bits count="1">
+<List>
+<Item Value="0" Text="In Action"/>
+<Item Value="1" Text="Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="ABS State (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="ABS not in regulation"/>
+<Item Value="1" Text="ABS in regulation"/></List>
+</Bits>
+</Data>
+<Data Name="ABS And REF State">
+<Bits count="3">
+<List>
+<Item Value="0" Text="ABS and REF not available"/>
+<Item Value="1" Text="ABS not available, REF Backup available"/>
+<Item Value="2" Text="ABS not available, REF available"/>
+<Item Value="3" Text="ABS and REF Backup available"/>
+<Item Value="4" Text="ABS Backup available, REF available"/>
+<Item Value="7" Text="ABS and REF available"/></List>
+</Bits>
+</Data>
+<Data Name="Brake Circuit State">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Incompletly fill"/>
+<Item Value="1" Text="Completly fill"/></List>
+</Bits>
+</Data>
+<Data Name="Routine State about the stop">
+<Bits>
+<List>
+<Item Value="144" Text="Routine interrupt by diagnostic tool"/></List>
+</Bits>
+</Data>
+<Data Name="Hydraulic Bloc State">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Bloc Empty"/>
+<Item Value="1" Text="Bloc filling"/></List>
+</Bits>
+</Data>
+<Data Name="Routine State">
+<Bits>
+<List>
+<Item Value="0" Text="Not active Routine"/>
+<Item Value="1" Text="Active Routine"/>
+<Item Value="2" Text="Routine Finish =&gt; OK"/>
+<Item Value="4" Text="Routine Finish =&gt; NOT OK"/>
+<Item Value="8" Text="Routine Finish &amp; Global problem"/>
+<Item Value="16" Text="Writting Failure"/>
+<Item Value="128" Text="Test Ready"/>
+<Item Value="132" Text="Invalid Wheel Selection"/>
+<Item Value="144" Text="Routine interrupt by diagnostic tool"/></List>
+</Bits>
+</Data>
+<Data Name="Brake switch State (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Not Braking"/>
+<Item Value="1" Text="Braking"/></List>
+</Bits>
+</Data>
+<Data Name="Brake switch State">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Not Braking"/>
+<Item Value="1" Text="Braking"/>
+<Item Value="3" Text="Invalid"/></List>
+</Bits>
+</Data>
+<Data Name="Activation processus State">
+<Bits>
+<List>
+<Item Value="1" Text="Activation in action"/>
+<Item Value="2" Text="Activation finish"/>
+<Item Value="17" Text="Activation stop"/>
+<Item Value="128" Text="Failure during the activation"/>
+<Item Value="129" Text="Activation interrupt"/>
+<Item Value="130" Text="Activation available"/></List>
+</Bits>
+</Data>
+<Data Name="REF State (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="REF Not in regulation"/>
+<Item Value="1" Text="REF in regulation"/></List>
+</Bits>
+</Data>
+<Data Name="Supplier Code">
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Day">
+<Bits>
+<List>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/></List>
+</Bits>
+</Data>
+<Data Name="Month">
+<Bits>
+<List>
+<Item Value="1" Text="Janvier"/>
+<Item Value="2" Text="Février"/>
+<Item Value="3" Text="Mars"/>
+<Item Value="4" Text="Avril"/>
+<Item Value="5" Text="Mai"/>
+<Item Value="6" Text="Juin"/>
+<Item Value="7" Text="Juillet"/>
+<Item Value="8" Text="Août"/>
+<Item Value="9" Text="Septembre"/>
+<Item Value="10" Text="Octobre"/>
+<Item Value="11" Text="Novembre"/>
+<Item Value="12" Text="Décembre"/></List>
+</Bits>
+</Data>
+<Data Name="Selection Name of the Wheel">
+<Bits>
+<List>
+<Item Value="1" Text="Wheel Front Left / Roue avant gauche"/>
+<Item Value="2" Text="Wheel Front Right / Roue avant droite"/>
+<Item Value="3" Text="Wheel Rear Left / Roue arrière gauche"/>
+<Item Value="4" Text="Wheel Rear Right / Roue arrière droite"/></List>
+</Bits>
+</Data>
+<Data Name="Edition Number">
+<Bytes count="2"/>
+</Data>
+<Data Name="Calibration Number">
+<Bytes count="2"/>
+</Data>
+<Data Name="Tooth Number">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="Bloc Number : 0 265">
+<Bytes count="3"/>
+</Data>
+<Data Name="Hardware Number">
+<Bytes count="5"/>
+</Data>
+<Data Name="Software Number BB-Number">
+<Bytes count="2"/>
+</Data>
+<Data Name="Odometer">
+<Bits count="16">
+<Scaled Unit="cm" DivideBy=" 10" Format="00000.00"/>
+</Bits>
+</Data>
+<Data Name="Purge state after sale">
+<Bits>
+<List>
+<Item Value="1" Text="Phase 1"/>
+<Item Value="2" Text="Phase 2"/>
+<Item Value="3" Text="Phase 3"/>
+<Item Value="4" Text="Phase 4"/></List>
+</Bits>
+</Data>
+<Data Name="Activation Pompe">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Actived"/>
+<Item Value="1" Text="Stopped"/></List>
+</Bits>
+</Data>
+<Data Name="Plant Reference">
+<Comment><![CDATA[Plant Reference about ABS Bloc / Référence usine du bloc ABS]]></Comment>
+<Bytes count="5"/>
+</Data>
+<Data Name="Groupe failure selection">
+<Bits>
+<List>
+<Item Value="64" Text="Chassis failure"/>
+<Item Value="255" Text="All"/></List>
+</Bits>
+</Data>
+<Data Name="IgnOn Time(Freeze)">
+<Bits count="16">
+<Scaled Unit="s" Format="0000000"/>
+</Bits>
+</Data>
+<Data Name="Traçabilité - Year of production of Bloc">
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="Traçabilité - Team for production of Bloc">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Traçabilité - Production Line of Bloc">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Traçabilité - Day of production of Bloc">
+<Bits>
+<List>
+<Item Value="48" Text="NC"/>
+<Item Value="49" Text="Monday"/>
+<Item Value="50" Text="Thusday"/>
+<Item Value="51" Text="Wednesday"/>
+<Item Value="52" Text="Thursday"/>
+<Item Value="53" Text="Friday"/>
+<Item Value="54" Text="Saturday"/>
+<Item Value="55" Text="Sunday"/></List>
+</Bits>
+</Data>
+<Data Name="Traçabilité - Week of production of Bloc">
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="Traçabilité - Plan of production of Bloc">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Wheel Speed Rear Right (Freeze)">
+<Bits>
+<Scaled Unit="Km/H" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Wheel Speed Rear Left (Freeze)">
+<Bits>
+<Scaled Unit="Km/H" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Wheel Speed Rear Left">
+<Bits count="16">
+<Scaled Unit="Km/H" DivideBy=" 100" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Wheel Speed Front Right">
+<Bits count="16">
+<Scaled Unit="Km/H" DivideBy=" 100" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Wheel Speed Front Right (Freeze)">
+<Bits>
+<Scaled Unit="Km/H" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Wheel Speed Front Left">
+<Bits count="16">
+<Scaled Unit="Km/H" DivideBy=" 100" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Wheel Speed Front Left (Freeze)">
+<Bits>
+<Scaled Unit="Km/H" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Speed Vehicle">
+<Bits count="16">
+<Scaled Unit="Km/H" DivideBy=" 100" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Bits count="16">
+<List>
+<Item Value="20495" Text="Capteur vitesse roue AvD"/>
+<Item Value="20511" Text="Capteur vitesse roue AvG"/>
+<Item Value="20527" Text="Capteur vitesse roue ArD"/>
+<Item Value="20543" Text="Capteur vitesse roue ArG"/>
+<Item Value="20545" Text="Cible magnétique multipoles roue AvD"/>
+<Item Value="20546" Text="Cible magnétique multipoles roue AvG"/>
+<Item Value="20547" Text="Cible magnétique multipoles roue ArD"/>
+<Item Value="20548" Text="Cible magnétique multipoles roue ArG"/>
+<Item Value="20550" Text="Défaut général capteurs vitesses roues"/>
+<Item Value="20675" Text="Calculateur"/>
+<Item Value="20678" Text="Contacteur pédale de frein"/>
+<Item Value="20682" Text="Alimentation Moteur de Pompe"/>
+<Item Value="20683" Text="Alimentation Electrovannes"/>
+<Item Value="20684" Text="Alimentation calculateur"/>
+<Item Value="20710" Text="Réseau CAN"/>
+<Item Value="20864" Text="Contrôle moteur"/>
+<Item Value="20867" Text="BCM (Unité Centrale Habitacle)"/></List>
+</Bits>
+</Data>
+<Data Name="Tire odometer index">
+<Bits>
+<Scaled Unit="mm" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Dimension du pneumatique">
+<Comment><![CDATA[A coder]]></Comment>
+<Bits>
+<List>
+<Item Value="44" Text="195/65R16"/>
+<Item Value="80" Text="205/65R16"/>
+<Item Value="120" Text="215/65R16"/>
+<Item Value="154" Text="195/75R16"/>
+<Item Value="255" Text="Invalid Value (FFh)"/></List>
+</Bits>
+</Data>
+<Data Name="Valeur de la vitesse CAN a l'initialisation">
+<Comment><![CDATA[Value of CAN speed during the initialisation / Valeur de la vitesse Can a l'initialisation]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="Speed = 0km/h / Vitesse nulle (00h)"/>
+<Item Value="128" Text="Value of init speed not program / Valeur vitesse init non programmée (80h)"/>
+<Item Value="255" Text="Invalid Speed / Vitesse invalide (FFh)"/></List>
+</Bits>
+</Data>
+<Data Name="Year">
+<Bits>
+<List>
+<Item Value="0" Text="2000"/>
+<Item Value="1" Text="2001"/>
+<Item Value="2" Text="2002"/>
+<Item Value="3" Text="2003"/>
+<Item Value="4" Text="2004"/>
+<Item Value="5" Text="2005"/>
+<Item Value="6" Text="2006"/>
+<Item Value="7" Text="2007"/>
+<Item Value="8" Text="2008"/>
+<Item Value="9" Text="2009"/>
+<Item Value="10" Text="2010"/>
+<Item Value="11" Text="2011"/>
+<Item Value="12" Text="2012"/>
+<Item Value="13" Text="2013"/>
+<Item Value="14" Text="2014"/>
+<Item Value="15" Text="2015"/>
+<Item Value="16" Text="2016"/>
+<Item Value="17" Text="2017"/>
+<Item Value="18" Text="2018"/>
+<Item Value="19" Text="2019"/>
+<Item Value="20" Text="2020"/>
+<Item Value="21" Text="2021"/>
+<Item Value="22" Text="2022"/>
+<Item Value="23" Text="2023"/>
+<Item Value="24" Text="2024"/>
+<Item Value="25" Text="2025"/>
+<Item Value="26" Text="2026"/>
+<Item Value="27" Text="2027"/>
+<Item Value="28" Text="2028"/>
+<Item Value="29" Text="2029"/>
+<Item Value="30" Text="2030"/>
+<Item Value="31" Text="2031"/>
+<Item Value="32" Text="2032"/>
+<Item Value="33" Text="2033"/>
+<Item Value="34" Text="2034"/>
+<Item Value="35" Text="2035"/>
+<Item Value="36" Text="2036"/>
+<Item Value="37" Text="2037"/>
+<Item Value="38" Text="2038"/>
+<Item Value="39" Text="2039"/>
+<Item Value="40" Text="2040"/>
+<Item Value="41" Text="2041"/>
+<Item Value="42" Text="2042"/>
+<Item Value="43" Text="2043"/>
+<Item Value="44" Text="2044"/>
+<Item Value="45" Text="2045"/>
+<Item Value="46" Text="2046"/>
+<Item Value="47" Text="2047"/>
+<Item Value="48" Text="2048"/>
+<Item Value="49" Text="2049"/>
+<Item Value="50" Text="2050"/></List>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+<DataItem Name="MoreDTC" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<DataItem Name="FirstDTC" FirstByte="3"/>
+<DataItem Name="NDTC" FirstByte="2"/>
+<DataItem Name="Historical Failure" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Current Failure" FirstByte="5" BitOffset="2"/>
+<DataItem Name="Standard Fault" FirstByte="5" BitOffset="3"/>
+<DataItem Name="Type Of Fault" FirstByte="5"/>
+<DataItem Name="Specific Fault" FirstByte="5" BitOffset="3"/>
+</Received>
+</Request>
+<Request Name="Start Diagnostic Session">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="Session Name" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Read - BoschDTCLocation1">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2191</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<DataItem Name="Fault Location" Ref="1" FirstByte="3"/>
+<DataItem Name="Current ICC" Ref="1" FirstByte="4"/>
+<DataItem Name="Failure Path" Ref="1" FirstByte="6"/>
+<DataItem Name="Failure Type" Ref="1" FirstByte="7"/>
+<DataItem Name="Drive Cycle information" Ref="1" FirstByte="8"/>
+<DataItem Name="Store Condition" Ref="1" FirstByte="9"/>
+<DataItem Name="Debug information 0" Ref="1" FirstByte="10"/>
+<DataItem Name="Debug information 1" Ref="1" FirstByte="14"/>
+<DataItem Name="Environment information" Ref="1" FirstByte="18"/>
+<DataItem Name="Fault ICC" Ref="1" FirstByte="22"/>
+</Received>
+</Request>
+<Request Name="Read - BoschDTCLocation2">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2192</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<DataItem Name="Fault Location" FirstByte="3"/>
+<DataItem Name="Current ICC" FirstByte="4"/>
+<DataItem Name="Failure Path" FirstByte="6"/>
+<DataItem Name="Failure Type" FirstByte="7"/>
+<DataItem Name="Drive Cycle information" FirstByte="8"/>
+<DataItem Name="Store Condition" FirstByte="9"/>
+<DataItem Name="Debug information 0" FirstByte="10"/>
+<DataItem Name="Debug information 1" FirstByte="14"/>
+<DataItem Name="Environment information" FirstByte="18"/>
+<DataItem Name="Fault ICC" FirstByte="22"/>
+</Received>
+</Request>
+<Request Name="Read - BoschDTCLocation3">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2193</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<DataItem Name="Fault Location" FirstByte="3"/>
+<DataItem Name="Current ICC" FirstByte="4"/>
+<DataItem Name="Failure Path" FirstByte="6"/>
+<DataItem Name="Failure Type" FirstByte="7"/>
+<DataItem Name="Drive Cycle information" FirstByte="8"/>
+<DataItem Name="Store Condition" FirstByte="9"/>
+<DataItem Name="Debug information 0" FirstByte="10"/>
+<DataItem Name="Debug information 1" FirstByte="14"/>
+<DataItem Name="Environment information" FirstByte="18"/>
+<DataItem Name="Fault ICC" FirstByte="22"/>
+</Received>
+</Request>
+<Request Name="Read - BoschDTCLocation4">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2194</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<DataItem Name="Fault Location" FirstByte="3"/>
+<DataItem Name="Current ICC" FirstByte="4"/>
+<DataItem Name="Failure Path" FirstByte="6"/>
+<DataItem Name="Failure Type" FirstByte="7"/>
+<DataItem Name="Drive Cycle information" FirstByte="8"/>
+<DataItem Name="Store Condition" FirstByte="9"/>
+<DataItem Name="Debug information 0" FirstByte="10"/>
+<DataItem Name="Debug information 1" FirstByte="14"/>
+<DataItem Name="Environment information" FirstByte="18"/>
+<DataItem Name="Fault ICC" FirstByte="22"/>
+</Received>
+</Request>
+<Request Name="Read - BoschDTCLocation5">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2195</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<DataItem Name="Fault Location" FirstByte="3"/>
+<DataItem Name="Current ICC" FirstByte="4"/>
+<DataItem Name="Failure Path" FirstByte="6"/>
+<DataItem Name="Failure Type" FirstByte="7"/>
+<DataItem Name="Drive Cycle information" FirstByte="8"/>
+<DataItem Name="Store Condition" FirstByte="9"/>
+<DataItem Name="Debug information 0" FirstByte="10"/>
+<DataItem Name="Debug information 1" FirstByte="14"/>
+<DataItem Name="Environment information" FirstByte="18"/>
+<DataItem Name="Fault ICC" FirstByte="22"/>
+</Received>
+</Request>
+<Request Name="Read - BoschDTCLocation6">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2196</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<DataItem Name="Fault Location" FirstByte="3"/>
+<DataItem Name="Current ICC" FirstByte="4"/>
+<DataItem Name="Failure Path" FirstByte="6"/>
+<DataItem Name="Failure Type" FirstByte="7"/>
+<DataItem Name="Drive Cycle information" FirstByte="8"/>
+<DataItem Name="Store Condition" FirstByte="9"/>
+<DataItem Name="Debug information 0" FirstByte="10"/>
+<DataItem Name="Debug information 1" FirstByte="14"/>
+<DataItem Name="Environment information" FirstByte="18"/>
+<DataItem Name="Fault ICC" FirstByte="22"/>
+</Received>
+</Request>
+<Request Name="Read - FillingProcessByte">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2103</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>610300</ReplyBytes>
+<DataItem Name="Affectation" Ref="1" FirstByte="3" BitOffset="4"/>
+<DataItem Name="Filling Autorisation RF" Ref="1" FirstByte="3" BitOffset="7"/>
+<DataItem Name="Failure about filling" Ref="1" FirstByte="3" BitOffset="5"/>
+<DataItem Name="Hydraulic Bloc State" Ref="1" FirstByte="3" BitOffset="3"/>
+<DataItem Name="Brake Circuit State" Ref="1" FirstByte="3" BitOffset="2"/>
+</Received>
+</Request>
+<Request Name="Read - VIN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<ReplyBytes>6181</ReplyBytes>
+<DataItem Name="VIN Code" Ref="1" FirstByte="3"/>
+<DataItem Name="CRC" Ref="1" FirstByte="20"/>
+</Received>
+</Request>
+<Request Name="Write - FillingProcessByte">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B0300</SentBytes>
+<DataItem Name="ProcessByte Remplissage" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B03</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Write - VIN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="VIN Code" FirstByte="3"/>
+<DataItem Name="CRC" FirstByte="20"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B81</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Write - DateAfterSales">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3BB0010101</SentBytes>
+<DataItem Name="Year" FirstByte="3"/>
+<DataItem Name="Day" FirstByte="5"/>
+<DataItem Name="Month" FirstByte="4"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7BB0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="IO Control - VSOonWire">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300200FA</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Activation processus State" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - HazardWarningRequest">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300300FA</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Activation processus State" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - WheelSpeedOutput">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300400FA</SentBytes>
+<DataItem Name="Time activation Selection" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Activation processus State" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - WheelSpeedOutput Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>30040105</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Activation processus State" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - HazardWarningRequest Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300301FA</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Activation processus State" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - VSOonWire Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300201FA</SentBytes>
+<DataItem Name="Activation processus Selection" FirstByte="3"/>
+<DataItem Name="Time activation Selection" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Activation processus State" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="CDIFailure">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+<DataItem Name="Groupe failure selection" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Read - VehicleConfiguration">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2101</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>610100</ReplyBytes>
+<DataItem Name="Car Configuration" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Read - TachyIndex">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2102</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>610200</ReplyBytes>
+<DataItem Name="Dimension du pneumatique" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Read - Speeds">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2104</SentBytes>
+</Sent>
+<Received MinBytes="12">
+<ReplyBytes>610400000000000000000000</ReplyBytes>
+<DataItem Name="Rear Right Wheel Speed" Ref="1" FirstByte="9"/>
+<DataItem Name="Wheel Speed Rear Left" Ref="1" FirstByte="7"/>
+<DataItem Name="Wheel Speed Front Right" Ref="1" FirstByte="5"/>
+<DataItem Name="Wheel Speed Front Left" Ref="1" FirstByte="3"/>
+<DataItem Name="Speed Vehicle" Ref="1" FirstByte="11"/>
+</Received>
+</Request>
+<Request Name="Read - Odometer">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2105</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<ReplyBytes>6105000000000000000000</ReplyBytes>
+<DataItem Name="Tire circumference" Ref="1" FirstByte="3"/>
+<DataItem Name="Tire circumference maximum" Ref="1" FirstByte="7"/>
+<DataItem Name="Tire circumference minimum" Ref="1" FirstByte="5"/>
+<DataItem Name="Odometer" Ref="1" FirstByte="10"/>
+<DataItem Name="Tire odometer index" Ref="1" FirstByte="9"/>
+</Received>
+</Request>
+<Request Name="Read - SystemStatus">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2106</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>61060000</ReplyBytes>
+<DataItem Name="Power Suppley" Ref="1" FirstByte="3"/>
+<DataItem Name="ABS And REF State" Ref="1" FirstByte="4" BitOffset="2"/>
+<DataItem Name="Brake switch State" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Read - CANVehicleSpeedInitialisationValue">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>210D</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>610D00</ReplyBytes>
+<DataItem Name="Valeur de la vitesse CAN a l'initialisation" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Read - AfterSalesDate">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21B0</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>61B0</ReplyBytes>
+<DataItem Name="Year" Ref="1" FirstByte="3"/>
+<DataItem Name="Day" Ref="1" FirstByte="5"/>
+<DataItem Name="Month" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Read - PartIdNumberFor Plant">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>210B</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>610B0000000000</ReplyBytes>
+<DataItem Name="Plant Reference" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - ValvesAndPump">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300100FFFFFA01F41601F401F4</SentBytes>
+<DataItem Name="Activation Pompe" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Rear Right Admission" FirstByte="4" BitOffset="1"/>
+<DataItem Name="Rear Left Admission" FirstByte="4" BitOffset="3"/>
+<DataItem Name="Front Right Admission" FirstByte="4" BitOffset="5"/>
+<DataItem Name="Front Left Admission" FirstByte="4" BitOffset="7"/>
+<DataItem Name="Time activation Selection EV/Pompe" FirstByte="6"/>
+<DataItem Name="Rear Right Exhaust" FirstByte="4"/>
+<DataItem Name="Rear Left Exhaust" FirstByte="4" BitOffset="2"/>
+<DataItem Name="Front Right Exhaust" FirstByte="4" BitOffset="4"/>
+<DataItem Name="Front Left Exhaust" FirstByte="4" BitOffset="6"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Activation processus State" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - ValvesAndPump Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300101FFFF0501F41601F401F4</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Activation processus State" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - BLAOutput">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300500FA</SentBytes>
+<DataItem Name="Time activation Selection" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Activation processus State" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - BLAOutput Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>30050105</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Activation processus State" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting_FL Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010001</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Selection Name of the Wheel" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting_FR Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010002</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Selection Name of the Wheel" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting_RL Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010003</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Selection Name of the Wheel" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting_RR Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010004</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Selection Name of the Wheel" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>31010101</SentBytes>
+<DataItem Name="Wheel Selection" FirstByte="4"/>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Selection Name of the Wheel" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>310200</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Tooth Number" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting Stop Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>310201</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Tooth Number" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - HydraulicCircuitTest_FL Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31030001</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Selection Name of the Wheel" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - HydraulicCircuitTest_FR Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31030002</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Selection Name of the Wheel" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - HydraulicCircuitTest_RL Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31030003</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Selection Name of the Wheel" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - HydraulicCircuitTest_RR Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31030004</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Selection Name of the Wheel" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - HydraulicCircuitTest Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>31030101</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Selection Name of the Wheel" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - EvacAndFillProcedure Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3104005A</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Routine State" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="StartRoutine - EvacAndFillProcedure Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3104010A</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Routine State" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Routine - BleedingProcedure Part1 Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Lancement Purge pour Roue Arrière Gauche avec 4 cycles]]></Comment>
+<Sent>
+<SentBytes>3105000304</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>7105</ReplyBytes>
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Purge state after sale" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - BleedingProcedure Part2 Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Lancement Purge pour Roue Avant Gauche]]></Comment>
+<Sent>
+<SentBytes>3105000100</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>7105</ReplyBytes>
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Purge state after sale" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - BleedingProcedure Part3 Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Lancement Purge pour Roue Avant Droit]]></Comment>
+<Sent>
+<SentBytes>3105000200</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>7105</ReplyBytes>
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Purge state after sale" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - BleedingProcedure Part4 Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Lancement Purge pour Roue Arrière Droit avec 4 cycles]]></Comment>
+<Sent>
+<SentBytes>3105000404</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Purge state after sale" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - BleedingProcedure Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3105010100</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Routine State" FirstByte="3"/>
+<DataItem Name="Purge state after sale" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting Emergency Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>320180</SentBytes>
+<DataItem Name="Stop Selection" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Routine State about the stop" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Routine - HydraulicCircuitTest Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>320380</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Routine State about the stop" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Routine - EvacAndFillProcedure Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>320480</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Routine State about the stop" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Routine - BleedingProcedure Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>320580</SentBytes>
+<DataItem Name="Stop Selection" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Routine State about the stop" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Write - VehicleConfiguration">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B0101</SentBytes>
+<DataItem Name="Car Configuration" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B01</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Write - TachyIndex">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B0218</SentBytes>
+<DataItem Name="Dimension du pneumatique" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B02</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Write - CANVehicleSpeedInitialisationValue">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B0DFF</SentBytes>
+<DataItem Name="Valeur de la vitesse CAN a l'initialisation" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B0DFF</ReplyBytes>
+</Received>
+</Request>
+<Request Name="TesterPresent">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3E02</SentBytes>
+<DataItem Name="Answer Selection" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RW-RDBLI-Traceability">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<DataItem Name="Traçabilité - ABS/ESP" Ref="1" FirstByte="3"/>
+<DataItem Name="Traçabilité - Year of production of Bloc" Ref="1" FirstByte="6"/>
+<DataItem Name="Traçabilité - Week of production of Bloc" Ref="1" FirstByte="8"/>
+<DataItem Name="Traçabilité - Day of production of Bloc" Ref="1" FirstByte="10"/>
+<DataItem Name="Traçabilité - Plan of production of Bloc" Ref="1" FirstByte="11"/>
+<DataItem Name="Traçabilité - Production Line of Bloc" Ref="1" FirstByte="12"/>
+<DataItem Name="Traçabilité - Team for production of Bloc" Ref="1" FirstByte="13"/>
+<DataItem Name="Traçabilité - Compteur" Ref="1" FirstByte="14"/>
+<DataItem Name="Traçabilité - libre" Ref="1" FirstByte="18"/>
+</Received>
+</Request>
+<Request Name="*ReadFreezeFrame">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>1200040000</SentBytes>
+<DataItem Name="FFN" FirstByte="2"/>
+<DataItem Name="FirstDTC" FirstByte="4"/>
+</Sent>
+<Received MinBytes="17">
+<DataItem Name="Alimentation (Freeze)" FirstByte="10"/>
+<DataItem Name="DiagMuxOn (Freeze)" FirstByte="14" BitOffset="3"/>
+<DataItem Name="DTC Number (Freeze)" FirstByte="16"/>
+<DataItem Name="ABS State (Freeze)" FirstByte="11"/>
+<DataItem Name="Brake switch State (Freeze)" FirstByte="11" BitOffset="2"/>
+<DataItem Name="REF State (Freeze)" FirstByte="11" BitOffset="1"/>
+<DataItem Name="Driving Cycle (Freeze)" FirstByte="3"/>
+<DataItem Name="IgnOn Time(Freeze)" FirstByte="4"/>
+<DataItem Name="Wheel Speed Rear Right (Freeze)" FirstByte="9"/>
+<DataItem Name="Wheel Speed Rear Left (Freeze)" FirstByte="8"/>
+<DataItem Name="Wheel Speed Front Right (Freeze)" FirstByte="7"/>
+<DataItem Name="Wheel Speed Front Left (Freeze)" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="RW-RDBLI - RenaultSystemId">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="Software Number BB-Number" Ref="1" FirstByte="17"/>
+<DataItem Name="Builder Code" Ref="1" FirstByte="26"/>
+<DataItem Name="Supplier Code" Ref="1" FirstByte="9"/>
+<DataItem Name="After Sale Code" Ref="1" FirstByte="3"/>
+<DataItem Name="Identificateur de Diagnostic" Ref="1" FirstByte="8"/>
+<DataItem Name="Bloc Number : 0 265" Ref="1" FirstByte="23"/>
+<DataItem Name="Hardware Number" Ref="1" FirstByte="12"/>
+<DataItem Name="Calibration Number" Ref="1" FirstByte="21"/>
+<DataItem Name="Edition Number" Ref="1" FirstByte="19"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Alimentation calculateur" DTC="20684" FreezeFrame="*ReadFreezeFrame">
+<DeviceData Name="Power Suppley" FailureFlag="0"/>
+
+</Device>
+<Device Name="Calculateur" DTC="20675" Type="2" FreezeFrame="*ReadFreezeFrame">
+<DeviceData Name="Year" FailureFlag="0"/><DeviceData Name="Dimension du pneumatique" FailureFlag="0"/><DeviceData Name="ABS And REF State" FailureFlag="0"/><DeviceData Name="Day" FailureFlag="0"/><DeviceData Name="Month" FailureFlag="0"/><DeviceData Name="Identificateur de Diagnostic" FailureFlag="0"/>
+
+</Device>
+<Device Name="Capteur vitesse roue ArD" DTC="20527" FreezeFrame="*ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Capteur vitesse roue ArG" DTC="20543" FreezeFrame="*ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Capteur vitesse roue AvD" DTC="20495" FreezeFrame="*ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Cible magnétique multipoles roue ArD" DTC="20547" FreezeFrame="*ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Cible magnétique multipoles roue ArG" DTC="20548" FreezeFrame="*ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Cible magnétique multipoles roue AvD" DTC="20545" FreezeFrame="*ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Cible magnétique multipoles roue AvG" DTC="20546" FreezeFrame="*ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Contacteur pédale de frein" DTC="20678" FreezeFrame="*ReadFreezeFrame">
+<DeviceData Name="Brake switch State" FailureFlag="0"/>
+
+</Device>
+<Device Name="Contrôle moteur" DTC="20864" Type="4" FreezeFrame="*ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Défaut général capteurs vitesses roues" DTC="20550" FreezeFrame="*ReadFreezeFrame">
+<DeviceData Name="Rear Right Wheel Speed" FailureFlag="0"/><DeviceData Name="Wheel Speed Rear Left" FailureFlag="0"/><DeviceData Name="Wheel Speed Front Right" FailureFlag="0"/><DeviceData Name="Wheel Speed Front Left" FailureFlag="0"/><DeviceData Name="Speed Vehicle" FailureFlag="0"/>
+
+</Device>
+<Device Name="Réseau CAN" DTC="20710" Type="4" FreezeFrame="*ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Capteur vitesse roue AvG" DTC="20511" FreezeFrame="*ReadFreezeFrame">
+
+
+</Device>
+<Device Name="BCM (Unité Centrale Habitacle)" DTC="20867" FreezeFrame="*ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Alimentation Moteur de Pompe" DTC="20682" FreezeFrame="*ReadFreezeFrame">
+
+
+</Device>
+<Device Name="Alimentation Electrovannes" DTC="20683" FreezeFrame="*ReadFreezeFrame">
+
+
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="01 - INFORMATION">
+
+<Screen Name="Identification système" Color="16777215" WindowState="0" Width="9090" Height="7020">
+
+<Label Text="Global" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="480" Height="2280" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Hardware" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="5160" Height="1440" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Systeme Identification" Color="16777215" Alignment="2">
+<Rectangle Left="-360" Top="120" Height="240" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Software" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="2880" Height="1920" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+
+
+<Display Width="4130" Color="16777215" DataName="Plant Reference" RequestName="Read - PartIdNumberFor Plant">
+<Rectangle Left="480" Top="840" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4115" Color="16777215" DataName="After Sale Code" RequestName="RW-RDBLI - RenaultSystemId">
+<Rectangle Left="480" Top="1200" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4115" Color="16777215" DataName="Identificateur de Diagnostic" RequestName="RW-RDBLI - RenaultSystemId">
+<Rectangle Left="480" Top="1560" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4115" Color="16777215" DataName="Supplier Code" RequestName="RW-RDBLI - RenaultSystemId">
+<Rectangle Left="480" Top="1920" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4055" Color="16777215" DataName="Hardware Number" RequestName="RW-RDBLI - RenaultSystemId">
+<Rectangle Left="480" Top="5760" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3920" Color="16777215" DataName="Software Number BB-Number" RequestName="RW-RDBLI - RenaultSystemId">
+<Rectangle Left="600" Top="3240" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3905" Color="16777215" DataName="Edition Number" RequestName="RW-RDBLI - RenaultSystemId">
+<Rectangle Left="600" Top="3960" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3920" Color="16777215" DataName="Calibration Number" RequestName="RW-RDBLI - RenaultSystemId">
+<Rectangle Left="600" Top="3600" Height="300" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4115" Color="16777215" DataName="Builder Code" RequestName="RW-RDBLI - RenaultSystemId">
+<Rectangle Left="480" Top="2280" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4055" Color="16777215" DataName="Bloc Number : 0 265" RequestName="RW-RDBLI - RenaultSystemId">
+<Rectangle Left="480" Top="5400" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4055" Color="16777215" DataName="Plant Reference" RequestName="Read - PartIdNumberFor Plant">
+<Rectangle Left="480" Top="6120" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Informations globales" Color="16777215" WindowState="0" Width="12060" Height="9060">
+
+<Label Text="State ECU" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="600" Height="1560" Width="11520"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Reading about global Informations" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="11760"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Bosch Failure" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="6000" Height="240" Width="11520"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Wheels Speed" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="2280" Height="1560" Width="11520"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Parameter" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="3960" Height="1920" Width="11520"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="DTC1" Color="14671839" Alignment="2">
+<Rectangle Left="360" Top="6960" Height="720" Width="3360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Current ICC" Color="16777215" Alignment="0">
+<Rectangle Left="8520" Top="6600" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Failure Path" Color="16777215" Alignment="2">
+<Rectangle Left="9600" Top="6480" Height="480" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Failure Type" Color="16777215" Alignment="2">
+<Rectangle Left="10920" Top="6480" Height="480" Width="720"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="DTC6" Color="14671839" Alignment="2">
+<Rectangle Left="8400" Top="7800" Height="720" Width="3360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="DTC5" Color="14671839" Alignment="2">
+<Rectangle Left="8400" Top="6960" Height="720" Width="3360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="DTC4" Color="14671839" Alignment="2">
+<Rectangle Left="4440" Top="7800" Height="720" Width="3360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="DTC3" Color="14671839" Alignment="2">
+<Rectangle Left="4440" Top="6960" Height="720" Width="3360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="DTC2" Color="14671839" Alignment="2">
+<Rectangle Left="360" Top="7800" Height="720" Width="3360"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Current ICC" Color="16777215" Alignment="0">
+<Rectangle Left="480" Top="6600" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Failure Path" Color="16777215" Alignment="2">
+<Rectangle Left="1680" Top="6480" Height="480" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Failure Type" Color="16777215" Alignment="2">
+<Rectangle Left="2760" Top="6480" Height="480" Width="720"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Current ICC" Color="16777215" Alignment="0">
+<Rectangle Left="4560" Top="6600" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Failure Path" Color="16777215" Alignment="2">
+<Rectangle Left="5760" Top="6480" Height="480" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Failure Type" Color="16777215" Alignment="2">
+<Rectangle Left="6960" Top="6480" Height="480" Width="720"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+
+
+<Display Width="3260" Color="14671839" DataName="ABS And REF State" RequestName="Read - SystemStatus">
+<Rectangle Left="480" Top="1320" Height="300" Width="11040"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="14671839" DataName="Brake switch State" RequestName="Read - SystemStatus">
+<Rectangle Left="480" Top="1680" Height="300" Width="11040"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3245" Color="14671839" DataName="Wheel Speed Front Left" RequestName="Read - Speeds">
+<Rectangle Left="720" Top="2640" Height="300" Width="4920"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="16777215"/><Threshold Value=" 655.35" Color="255"/></Display>
+<Display Width="3245" Color="14671839" DataName="Wheel Speed Rear Left" RequestName="Read - Speeds">
+<Rectangle Left="720" Top="3000" Height="300" Width="4920"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="16777215"/><Threshold Value=" 655.35" Color="255"/></Display>
+<Display Width="3245" Color="14671839" DataName="Odometer" RequestName="Read - Odometer">
+<Rectangle Left="720" Top="3360" Height="300" Width="4920"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3245" Color="14671839" DataName="Wheel Speed Front Right" RequestName="Read - Speeds">
+<Rectangle Left="6600" Top="2640" Height="300" Width="4920"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="16777215"/><Threshold Value=" 655.35" Color="255"/></Display>
+<Display Width="3245" Color="14671839" DataName="Rear Right Wheel Speed" RequestName="Read - Speeds">
+<Rectangle Left="6600" Top="3000" Height="300" Width="4920"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="16777215"/><Threshold Value=" 655.35" Color="255"/></Display>
+<Display Width="3245" Color="14671839" DataName="Speed Vehicle" RequestName="Read - Speeds">
+<Rectangle Left="6600" Top="3360" Height="300" Width="4920"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="16777215"/><Threshold Value=" 655.35" Color="255"/></Display>
+<Display Width="2165" Color="14671839" DataName="Power Suppley" RequestName="Read - SystemStatus">
+<Rectangle Left="7800" Top="960" Height="300" Width="3720"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="14671839" DataName="Tire circumference" RequestName="Read - Odometer">
+<Rectangle Left="480" Top="4320" Height="300" Width="11040"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="14671839" DataName="Brake Circuit State" RequestName="Read - FillingProcessByte">
+<Rectangle Left="840" Top="4680" Height="300" Width="10680"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="14671839" DataName="Hydraulic Bloc State" RequestName="Read - FillingProcessByte">
+<Rectangle Left="840" Top="5040" Height="300" Width="10680"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3935" Color="14671839" DataName="Valeur de la vitesse CAN a l'initialisation" RequestName="Read - CANVehicleSpeedInitialisationValue">
+<Rectangle Left="360" Top="5400" Height="360" Width="11160"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="14671839" DataName="Current ICC" RequestName="Read - BoschDTCLocation1">
+<Rectangle Left="480" Top="7200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Path" RequestName="Read - BoschDTCLocation1">
+<Rectangle Left="1560" Top="7200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Type" RequestName="Read - BoschDTCLocation1">
+<Rectangle Left="2640" Top="7200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Current ICC" RequestName="Read - BoschDTCLocation2">
+<Rectangle Left="480" Top="8040" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Path" RequestName="Read - BoschDTCLocation2">
+<Rectangle Left="1560" Top="8040" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Type" RequestName="Read - BoschDTCLocation2">
+<Rectangle Left="2640" Top="8040" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Type" RequestName="Read - BoschDTCLocation3">
+<Rectangle Left="6720" Top="7200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Path" RequestName="Read - BoschDTCLocation3">
+<Rectangle Left="5640" Top="7200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Current ICC" RequestName="Read - BoschDTCLocation3">
+<Rectangle Left="4560" Top="7200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Current ICC" RequestName="Read - BoschDTCLocation4">
+<Rectangle Left="4560" Top="8040" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Path" RequestName="Read - BoschDTCLocation4">
+<Rectangle Left="5640" Top="8040" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Type" RequestName="Read - BoschDTCLocation4">
+<Rectangle Left="6720" Top="8040" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Type" RequestName="Read - BoschDTCLocation5">
+<Rectangle Left="10680" Top="7200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Path" RequestName="Read - BoschDTCLocation5">
+<Rectangle Left="9600" Top="7200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Current ICC" RequestName="Read - BoschDTCLocation5">
+<Rectangle Left="8520" Top="7200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Current ICC" RequestName="Read - BoschDTCLocation6">
+<Rectangle Left="8520" Top="8040" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Path" RequestName="Read - BoschDTCLocation6">
+<Rectangle Left="9600" Top="8040" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Type" RequestName="Read - BoschDTCLocation6">
+<Rectangle Left="10680" Top="8040" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Trame de Traçabilité" Color="16777215" WindowState="0" Width="9000" Height="5580">
+
+<Label Text="Bloc Traceability" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="360" Height="4680" Width="8520"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+
+
+<Display Width="4985" Color="15724527" DataName="Traçabilité - ABS/ESP" RequestName="RW-RDBLI-Traceability">
+<Rectangle Left="960" Top="960" Height="300" Width="7032"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4955" Color="15724527" DataName="Traçabilité - Year of production of Bloc" RequestName="RW-RDBLI-Traceability">
+<Rectangle Left="960" Top="2880" Height="300" Width="7080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4955" Color="15724527" DataName="Traçabilité - Week of production of Bloc" RequestName="RW-RDBLI-Traceability">
+<Rectangle Left="960" Top="3360" Height="300" Width="7080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4955" Color="15724527" DataName="Traçabilité - Day of production of Bloc" RequestName="RW-RDBLI-Traceability">
+<Rectangle Left="960" Top="3840" Height="300" Width="7080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4970" Color="15724527" DataName="Traçabilité - Production Line of Bloc" RequestName="RW-RDBLI-Traceability">
+<Rectangle Left="960" Top="1920" Height="300" Width="7080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4970" Color="15724527" DataName="Traçabilité - Team for production of Bloc" RequestName="RW-RDBLI-Traceability">
+<Rectangle Left="960" Top="2400" Height="300" Width="7080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4955" Color="15724527" DataName="Traçabilité - Compteur" RequestName="RW-RDBLI-Traceability">
+<Rectangle Left="960" Top="4320" Height="300" Width="7080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4970" Color="15724527" DataName="Traçabilité - Plan of production of Bloc" RequestName="RW-RDBLI-Traceability">
+<Rectangle Left="960" Top="1440" Height="300" Width="7032"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="02 - DIAGNOSTIC">
+
+<Screen Name="DTC Bosch" Color="16777215" WindowState="0" Width="10770" Height="5370">
+
+<Label Text="Reading DTC Bosch" Color="16777215" Alignment="2">
+<Rectangle Left="165" Top="120" Height="360" Width="10440"/>
+<Font Name="Arial" Size=" 14" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Fault ICC" Color="16777215" Alignment="0">
+<Rectangle Left="9600" Top="600" Height="360" Width="720"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="DTC2" Color="14671839" Alignment="0">
+<Rectangle Left="120" Top="1800" Height="600" Width="10560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="DTC3" Color="14671839" Alignment="0">
+<Rectangle Left="120" Top="2520" Height="600" Width="10560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="DTC4" Color="14671839" Alignment="0">
+<Rectangle Left="120" Top="3240" Height="600" Width="10560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="DTC5" Color="14671839" Alignment="0">
+<Rectangle Left="120" Top="3960" Height="600" Width="10560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="DTC6" Color="14671839" Alignment="0">
+<Rectangle Left="120" Top="4680" Height="600" Width="10560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="DTC1" Color="14671839" Alignment="0">
+<Rectangle Left="120" Top="1080" Height="600" Width="10560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Current ICC" Color="16777215" Alignment="0">
+<Rectangle Left="960" Top="600" Height="360" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Failure Path" Color="16777215" Alignment="0">
+<Rectangle Left="2040" Top="600" Height="480" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Failure Type" Color="16777215" Alignment="0">
+<Rectangle Left="3120" Top="600" Height="480" Width="720"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Drive Cycle" Color="16777215" Alignment="0">
+<Rectangle Left="4200" Top="600" Height="480" Width="720"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Store Condition" Color="16777215" Alignment="0">
+<Rectangle Left="5160" Top="600" Height="480" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Debug Info 0" Color="16777215" Alignment="0">
+<Rectangle Left="6360" Top="600" Height="480" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Debug Info 1" Color="16777215" Alignment="0">
+<Rectangle Left="7440" Top="600" Height="480" Width="840"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+<Label Text="Environ ment" Color="16777215" Alignment="0">
+<Rectangle Left="8520" Top="600" Height="360" Width="720"/>
+<Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="4194368"/></Label>
+
+
+<Display Width="15" Color="14671839" DataName="Current ICC" RequestName="Read - BoschDTCLocation1">
+<Rectangle Left="840" Top="1200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Path" RequestName="Read - BoschDTCLocation1">
+<Rectangle Left="1920" Top="1200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Type" RequestName="Read - BoschDTCLocation1">
+<Rectangle Left="3000" Top="1200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Drive Cycle information" RequestName="Read - BoschDTCLocation1">
+<Rectangle Left="4080" Top="1200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Store Condition" RequestName="Read - BoschDTCLocation1">
+<Rectangle Left="5160" Top="1200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Debug information 0" RequestName="Read - BoschDTCLocation1">
+<Rectangle Left="6240" Top="1200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Debug information 1" RequestName="Read - BoschDTCLocation1">
+<Rectangle Left="7320" Top="1200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Environment information" RequestName="Read - BoschDTCLocation1">
+<Rectangle Left="8400" Top="1200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Fault ICC" RequestName="Read - BoschDTCLocation1">
+<Rectangle Left="9480" Top="1200" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Current ICC" RequestName="Read - BoschDTCLocation2">
+<Rectangle Left="840" Top="1920" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Path" RequestName="Read - BoschDTCLocation2">
+<Rectangle Left="1920" Top="1920" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Type" RequestName="Read - BoschDTCLocation2">
+<Rectangle Left="3000" Top="1920" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Drive Cycle information" RequestName="Read - BoschDTCLocation2">
+<Rectangle Left="4080" Top="1920" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Store Condition" RequestName="Read - BoschDTCLocation2">
+<Rectangle Left="5160" Top="1920" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Debug information 0" RequestName="Read - BoschDTCLocation2">
+<Rectangle Left="6240" Top="1920" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Debug information 1" RequestName="Read - BoschDTCLocation2">
+<Rectangle Left="7320" Top="1920" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Environment information" RequestName="Read - BoschDTCLocation2">
+<Rectangle Left="8400" Top="1920" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Fault ICC" RequestName="Read - BoschDTCLocation2">
+<Rectangle Left="9480" Top="1920" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Current ICC" RequestName="Read - BoschDTCLocation3">
+<Rectangle Left="840" Top="2640" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Path" RequestName="Read - BoschDTCLocation3">
+<Rectangle Left="1920" Top="2640" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Type" RequestName="Read - BoschDTCLocation3">
+<Rectangle Left="3000" Top="2640" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Drive Cycle information" RequestName="Read - BoschDTCLocation3">
+<Rectangle Left="4080" Top="2640" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Store Condition" RequestName="Read - BoschDTCLocation3">
+<Rectangle Left="5160" Top="2640" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Debug information 0" RequestName="Read - BoschDTCLocation3">
+<Rectangle Left="6240" Top="2640" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Debug information 1" RequestName="Read - BoschDTCLocation3">
+<Rectangle Left="7320" Top="2640" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Environment information" RequestName="Read - BoschDTCLocation3">
+<Rectangle Left="8400" Top="2640" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Fault ICC" RequestName="Read - BoschDTCLocation3">
+<Rectangle Left="9480" Top="2640" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Current ICC" RequestName="Read - BoschDTCLocation4">
+<Rectangle Left="840" Top="3360" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Path" RequestName="Read - BoschDTCLocation4">
+<Rectangle Left="1920" Top="3360" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Type" RequestName="Read - BoschDTCLocation4">
+<Rectangle Left="3000" Top="3360" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Drive Cycle information" RequestName="Read - BoschDTCLocation4">
+<Rectangle Left="4080" Top="3360" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="14671839" DataName="Store Condition" RequestName="Read - BoschDTCLocation4">
+<Rectangle Left="5160" Top="3360" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Debug information 0" RequestName="Read - BoschDTCLocation4">
+<Rectangle Left="6240" Top="3360" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Debug information 1" RequestName="Read - BoschDTCLocation4">
+<Rectangle Left="7320" Top="3360" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="14671839" DataName="Environment information" RequestName="Read - BoschDTCLocation4">
+<Rectangle Left="8400" Top="3360" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Fault ICC" RequestName="Read - BoschDTCLocation4">
+<Rectangle Left="9480" Top="3360" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Current ICC" RequestName="Read - BoschDTCLocation5">
+<Rectangle Left="840" Top="4080" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Path" RequestName="Read - BoschDTCLocation5">
+<Rectangle Left="1920" Top="4080" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Type" RequestName="Read - BoschDTCLocation5">
+<Rectangle Left="3000" Top="4080" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Drive Cycle information" RequestName="Read - BoschDTCLocation5">
+<Rectangle Left="4080" Top="4080" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Store Condition" RequestName="Read - BoschDTCLocation5">
+<Rectangle Left="5160" Top="4080" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Debug information 0" RequestName="Read - BoschDTCLocation5">
+<Rectangle Left="6240" Top="4080" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Debug information 1" RequestName="Read - BoschDTCLocation5">
+<Rectangle Left="7320" Top="4080" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Environment information" RequestName="Read - BoschDTCLocation5">
+<Rectangle Left="8400" Top="4080" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Fault ICC" RequestName="Read - BoschDTCLocation5">
+<Rectangle Left="9480" Top="4080" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Current ICC" RequestName="Read - BoschDTCLocation6">
+<Rectangle Left="840" Top="4800" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Path" RequestName="Read - BoschDTCLocation6">
+<Rectangle Left="1920" Top="4800" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Failure Type" RequestName="Read - BoschDTCLocation6">
+<Rectangle Left="3000" Top="4800" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Drive Cycle information" RequestName="Read - BoschDTCLocation6">
+<Rectangle Left="4080" Top="4800" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Store Condition" RequestName="Read - BoschDTCLocation6">
+<Rectangle Left="5160" Top="4800" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Debug information 0" RequestName="Read - BoschDTCLocation6">
+<Rectangle Left="6240" Top="4800" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Debug information 1" RequestName="Read - BoschDTCLocation6">
+<Rectangle Left="7320" Top="4800" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Environment information" RequestName="Read - BoschDTCLocation6">
+<Rectangle Left="8400" Top="4800" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Fault ICC" RequestName="Read - BoschDTCLocation6">
+<Rectangle Left="9480" Top="4800" Height="360" Width="960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="03 - CONFIGURATION">
+
+<Screen Name="Code VIN et date après vente" Color="16777215" WindowState="0" Width="9660" Height="7980">
+
+<Label Text="VIN code and Date of after sale intervention" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="240" Height="480" Width="9000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Writing code VIN" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="4080" Height="360" Width="9000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Writing Date" Color="14671839" Alignment="2">
+<Rectangle Left="4680" Top="720" Height="1920" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Reading code VIN" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="2760" Height="1200" Width="9000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Reading Date" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="720" Height="1920" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="For writting of the VIN, used the DDT2000 sheet who calculate the CRC                                                                   Pour l écriture du VIN, utiliser la page  DDT2000 qui calcule automatiquement le CRC" Color="255" Alignment="2">
+<Rectangle Left="120" Top="4680" Height="1920" Width="9000"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text="DDT2000 ----&gt; PLAYER ----&gt;IDENT+INFO---&gt; VIN" Color="8421631" Alignment="2">
+<Rectangle Left="120" Top="6720" Height="1080" Width="9000"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="16777215"/></Label>
+
+<Button Text="Writing  Date">
+<Rectangle Left="4920" Top="2160" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write - DateAfterSales"/>
+</Button>
+
+<Display Width="2000" Color="14671839" DataName="VIN Code" RequestName="Read - VIN">
+<Rectangle Left="240" Top="3120" Height="300" Width="8680"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="14671839" DataName="Day" RequestName="Read - AfterSalesDate">
+<Rectangle Left="360" Top="1080" Height="300" Width="4000"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="14671839" DataName="Month" RequestName="Read - AfterSalesDate">
+<Rectangle Left="360" Top="1560" Height="300" Width="4000"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="14671839" DataName="Year" RequestName="Read - AfterSalesDate">
+<Rectangle Left="360" Top="2040" Height="300" Width="4000"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2000" Color="14671839" DataName="Day" RequestName="Write - DateAfterSales">
+<Rectangle Left="4920" Top="1080" Height="300" Width="4000"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="14671839" DataName="Month" RequestName="Write - DateAfterSales">
+<Rectangle Left="4920" Top="1440" Height="300" Width="4000"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="14671839" DataName="Year" RequestName="Write - DateAfterSales">
+<Rectangle Left="4920" Top="1800" Height="300" Width="4000"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2000" Color="14671839" DataName="CRC" RequestName="Read - VIN">
+<Rectangle Left="4920" Top="3480" Height="300" Width="4000"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Information pneumatique" Color="16777215" WindowState="0" Width="9450" Height="6780">
+
+<Label Text="Warning :" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="5520" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Writting pneumatic informations" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="4200" Height="1189" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Pneumatic informations" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="120" Height="480" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Reading pneumatic informations" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="600" Height="2280" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="The information about the size of tires" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="5760" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="is only reactivated after" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="6000" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text=" exit of the Diagnostic mode" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="6240" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Reading tire index 2102" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="3240" Height="840" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+
+<Button Text="Starting of wrtting">
+<Rectangle Left="480" Top="4920" Height="382" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write - TachyIndex"/>
+</Button>
+
+<Display Width="3425" Color="14671839" DataName="Tire circumference" RequestName="Read - Odometer">
+<Rectangle Left="480" Top="960" Height="300" Width="8400"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="14671839" DataName="Tire circumference minimum" RequestName="Read - Odometer">
+<Rectangle Left="480" Top="1320" Height="300" Width="8400"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="14671839" DataName="Tire circumference maximum" RequestName="Read - Odometer">
+<Rectangle Left="480" Top="1680" Height="300" Width="8400"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="14671839" DataName="Odometer" RequestName="Read - Odometer">
+<Rectangle Left="480" Top="2040" Height="300" Width="8400"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="3425" Color="14671839" DataName="Dimension du pneumatique" RequestName="Write - TachyIndex">
+<Rectangle Left="480" Top="4560" Height="300" Width="8400"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3425" Color="14671839" DataName="Dimension du pneumatique" RequestName="Read - TachyIndex">
+<Rectangle Left="480" Top="3600" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3410" Color="14671839" DataName="Tire odometer index" RequestName="Read - Odometer">
+<Rectangle Left="480" Top="2400" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="ProcessByte Pour Remplissage" Color="16777215" WindowState="0" Width="9090" Height="5250">
+
+<Label Text="Writting of ProcessByte" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="3000" Height="1440" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Information about the filling processus" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="forbidden for each personnel not authorised " Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="4800" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="The modification of the ProcessByte is" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="4560" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Reading of ProcessByte" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="600" Height="2280" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+
+<Button Text="Writting of ProcessByte">
+<Rectangle Left="240" Top="3840" Height="420" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write - FillingProcessByte"/>
+</Button>
+
+<Display Width="3080" Color="14671839" DataName="Brake Circuit State" RequestName="Read - FillingProcessByte">
+<Rectangle Left="240" Top="960" Height="300" Width="8520"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="14671839" DataName="Filling Autorisation RF" RequestName="Read - FillingProcessByte">
+<Rectangle Left="240" Top="1320" Height="300" Width="8520"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="14671839" DataName="Hydraulic Bloc State" RequestName="Read - FillingProcessByte">
+<Rectangle Left="240" Top="1680" Height="300" Width="8520"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="14671839" DataName="Failure about filling" RequestName="Read - FillingProcessByte">
+<Rectangle Left="240" Top="2040" Height="300" Width="8520"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="14671839" DataName="Affectation" RequestName="Read - FillingProcessByte">
+<Rectangle Left="240" Top="2400" Height="300" Width="8520"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2990" Color="14671839" DataName="ProcessByte Remplissage" RequestName="Write - FillingProcessByte">
+<Rectangle Left="240" Top="3480" Height="300" Width="8640"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Vitesse envoyé en phase d'init" Color="16777215" WindowState="0" Width="9090" Height="5250">
+
+<Label Text="Writting of the configuration of CAN speed during init" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="2280" Height="2040" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Config of speed CAN during init" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="720" Width="8880"/>
+<Font Name="Arial" Size=" 14" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="forbidden for each personnel not authorised " Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="4800" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="The modification about the Byte of config is" Color="16777215" Alignment="2">
+<Rectangle Left="0" Top="4560" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Reading of the configuration of CAN speed during init" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="840" Height="1200" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+
+<Button Text="Writting">
+<Rectangle Left="240" Top="3480" Height="420" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write - CANVehicleSpeedInitialisationValue"/>
+</Button>
+
+<Input Width="3935" Color="14671839" DataName="Valeur de la vitesse CAN a l'initialisation" RequestName="Write - CANVehicleSpeedInitialisationValue">
+<Rectangle Left="480" Top="2880" Height="360" Width="8040"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3935" Color="14671839" DataName="Valeur de la vitesse CAN a l'initialisation" RequestName="Read - CANVehicleSpeedInitialisationValue">
+<Rectangle Left="480" Top="1440" Height="360" Width="8040"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="04 - ACTIVATION &amp; ROUTINE">
+
+<Screen Name="IO - Activation of valves and pompe" Color="16777215" WindowState="0" Width="9660" Height="7290">
+
+<Label Text="Activation of valves and pompe" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="9240"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="This activation drive one or more actuators (valves/pompe)" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="6000" Height="360" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="ABS Valves Selection" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="600" Height="2280" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Test Description" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="5520" Height="480" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="State of activation" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="4560" Height="840" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Activation of routine" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="3000" Height="1440" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="For a good functionnality, active the Green Point and the PLAY button" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="6360" Height="360" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+
+<Button Text="Activation">
+<Rectangle Left="480" Top="3840" Height="420" Width="8520"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="IO Control - ValvesAndPump"/>
+</Button>
+
+<Input Width="2675" Color="14671839" DataName="Front Left Admission" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="960" Height="300" Width="4080"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2675" Color="14671839" DataName="Front Left Exhaust" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="1320" Height="300" Width="4080"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2675" Color="14671839" DataName="Rear Left Admission" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="1680" Height="300" Width="4080"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2675" Color="14671839" DataName="Rear Left Exhaust" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="2040" Height="300" Width="4080"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="3395" Color="14671839" DataName="Activation Pompe" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="2400" Height="300" Width="8400"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="5135" Color="14671839" DataName="Time activation Selection EV/Pompe" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="3360" Height="300" Width="8400"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="3035" Color="14671839" DataName="Activation processus State" RequestName="IO Control - ValvesAndPump Status">
+<Rectangle Left="480" Top="4920" Height="300" Width="8400"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2675" Color="14671839" DataName="Front Right Admission" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="4800" Top="960" Height="300" Width="4080"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2675" Color="14671839" DataName="Front Right Exhaust" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="4800" Top="1320" Height="300" Width="4080"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2675" Color="14671839" DataName="Rear Right Admission" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="4800" Top="1680" Height="300" Width="4080"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="2675" Color="14671839" DataName="Rear Right Exhaust" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="4800" Top="2040" Height="300" Width="4080"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="IO - Vitesse véhicule filaire" Color="16777215" WindowState="0" Width="8610" Height="5370">
+
+<Label Text="Activation of signal generation" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="3360" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Test Description" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="3000" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Activation advence state" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="2040" Height="840" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="(F=100Hz ~ 70Km/h)" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="4080" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Activation" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="720" Height="1200" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="For a good functionnality, active the Green Point and the PLAY button" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="4440" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Outup : Vehicle Speed Wire" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="on the wire speed vehicle" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="3720" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+
+<Button Text="Activation">
+<Rectangle Left="240" Top="1200" Height="420" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="IO Control - VSOonWire"/>
+</Button>
+
+<Display Width="3440" Color="14671839" DataName="Activation processus State" RequestName="IO Control - VSOonWire Status">
+<Rectangle Left="240" Top="2400" Height="300" Width="8160"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="IO - Activation des capteurs vitesse roue" Color="16777215" WindowState="0" Width="9540" Height="6780">
+
+<Label Text="Activation of Wheel speed Sensor" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="9240"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="This acitvation, supply the wheel speed sensor during 20s" Color="14671839" Alignment="2">
+<Rectangle Left="840" Top="3960" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Test Description" Color="14671839" Alignment="2">
+<Rectangle Left="840" Top="3480" Height="480" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Activation State" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="2520" Height="840" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Activation" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="720" Height="1560" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="For a good functionnality, active the Green Point and the PLAY button" Color="14671839" Alignment="2">
+<Rectangle Left="840" Top="4680" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Activation">
+<Rectangle Left="480" Top="1680" Height="420" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="IO Control - WheelSpeedOutput"/>
+</Button>
+
+<Display Width="3650" Color="14671839" DataName="Activation processus State" RequestName="IO Control - WheelSpeedOutput Status">
+<Rectangle Left="480" Top="2880" Height="300" Width="8440"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="4790" Color="14671839" DataName="Time activation Selection" RequestName="IO Control - WheelSpeedOutput">
+<Rectangle Left="360" Top="1200" Height="360" Width="8640"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Routine - Comptage des pôles" Color="16777215" WindowState="0" Width="9000" Height="8610">
+
+<Label Text="Stop of Counted" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="4080" Height="1320" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="This routine active the counting of the theet" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="6840" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Selection of wheel" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="720" Height="2280" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="of the select whee. After one turn of the wheel" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="7200" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Test of Description" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="6480" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="advancement state of counting" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="3240" Height="720" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="The number of pôles is equal at 96 (+/- 2)." Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="7560" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="For a good functionnality, active the Green Point and the PLAY button" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="7920" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Result" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="5520" Height="840" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Routine of counting of the theet" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+
+<Button Text="End of counting">
+<Rectangle Left="720" Top="4440" Height="420" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - PolesCounting Stop"/>
+</Button>
+<Button Text="Starting of counting for the Rear Right wheel">
+<Rectangle Left="840" Top="2400" Height="435" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - PolesCounting_RR Start"/>
+</Button>
+<Button Text="Starting of counting for the Rear Left wheel">
+<Rectangle Left="840" Top="1920" Height="435" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - PolesCounting_RL Start"/>
+</Button>
+<Button Text="Starting of counting for the Front Right wheel">
+<Rectangle Left="840" Top="1440" Height="435" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - PolesCounting_FR Start"/>
+</Button>
+<Button Text="Starting of counting for the Front Left wheel">
+<Rectangle Left="840" Top="960" Height="435" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - PolesCounting_FL Start"/>
+</Button>
+
+<Display Width="2000" Color="14671839" DataName="Routine State" RequestName="Routine - PolesCounting Status">
+<Rectangle Left="720" Top="3600" Height="300" Width="7240"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="14671839" DataName="Routine State" RequestName="Routine - PolesCounting Stop">
+<Rectangle Left="720" Top="4920" Height="300" Width="7200"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="14671839" DataName="Tooth Number" RequestName="Routine - PolesCounting Stop">
+<Rectangle Left="720" Top="5880" Height="300" Width="7200"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="255"/><Threshold Value=" 95" Color="32768"/><Threshold Value=" 97" Color="32768"/><Threshold Value=" 256" Color="255"/></Display>
+</Screen>
+<Screen Name="Routine - Procédure de remplissage usine" Color="16777215" WindowState="0" Width="9000" Height="5850">
+
+<Label Text="Warning Stop !!!" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="2520" Height="840" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Warning :" Color="16777215" Alignment="2">
+<Rectangle Left="720" Top="5160" Height="240" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Test Description" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="3600" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Processus states advancement " Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="1680" Height="720" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Procedure Activation" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="720" Height="840" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Procedure activation of" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="3960" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="For a good functionnality, active the Green Point and the PLAY button" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="4680" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Filling plant." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="4320" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Routine - Procedure of plant filling" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Only use a emplty bloc!!!!" Color="16777215" Alignment="2">
+<Rectangle Left="720" Top="5400" Height="240" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+
+<Button Text="Warning Stop !!!">
+<Rectangle Left="840" Top="2880" Height="420" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - EvacAndFillProcedure Stop"/>
+</Button>
+<Button Text="Procedure Activation">
+<Rectangle Left="840" Top="1080" Height="420" Width="7200"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - EvacAndFillProcedure Start"/>
+</Button>
+
+<Display Width="2000" Color="14671839" DataName="Routine State" RequestName="StartRoutine - EvacAndFillProcedure Status">
+<Rectangle Left="840" Top="2040" Height="300" Width="7200"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Routine - Purge après vente" Color="16777215" WindowState="0" Width="9000" Height="8370">
+
+<Label Text="Arrêt d'urgence !!!" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="3240" Height="1080" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Cette routine permet d'effectuer une" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="4560" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Description du Test" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="4200" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="et pomper sur la pédale de frein à la " Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="5640" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Etat d'avancement du processus" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="2160" Height="1080" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="fréquence de 1 Hz." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6000" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Lancement de la purge après vente" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="600" Height="1560" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Phase 1 : Desserrer la vis de purge ArG." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6360" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Phase 2 : Desserrer la vis de purge AvG." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6720" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Phase 3 : Desserrer la vis de purge AvD." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="7080" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Phase 4 : Desserrer la vis de purge ArD." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="7440" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Pour un bon fonctionnement, mettre en mode rebouclé." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="7800" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="purge après vente. Pour cela il faut :" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="4920" Height="480" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="respecter scrupuleusement l’ordre des phases" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="5280" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Routine de purge apès vente" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+
+<Button Text="Arrêt d'urgence !!!">
+<Rectangle Left="840" Top="3600" Height="420" Width="7320"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - BleedingProcedure Stop"/>
+</Button>
+<Button Text="Lancement de la procedure phase 1">
+<Rectangle Left="840" Top="1080" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - BleedingProcedure Part1 Start"/>
+</Button>
+<Button Text="Lancement de la procedure phase 2">
+<Rectangle Left="840" Top="1560" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - BleedingProcedure Part2 Start"/>
+</Button>
+<Button Text="Lancement de la procedure phase 3">
+<Rectangle Left="4560" Top="1080" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - BleedingProcedure Part3 Start"/>
+</Button>
+<Button Text="Lancement de la procedure phase 4">
+<Rectangle Left="4560" Top="1560" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - BleedingProcedure Part4 Start"/>
+</Button>
+
+<Display Width="2255" Color="14671839" DataName="Routine State" RequestName="Routine - BleedingProcedure Status">
+<Rectangle Left="960" Top="2520" Height="300" Width="7200"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="2270" Color="14671839" DataName="Stop Selection" RequestName="Routine - BleedingProcedure Stop">
+<Rectangle Left="960" Top="2880" Height="360" Width="7200"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Routine - Test du citcuit hydaulique" Color="16777215" WindowState="0" Width="9000" Height="8250">
+
+<Label Text="affectation des voies hydrauliques." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="5520" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Arrêt du test" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="3360" Height="1320" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Cette routine est prévue pour valider" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="5160" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Choix de la roue" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="720" Height="1560" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="de frein enfoncée et faire tourner à la main la" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6240" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Déroulement de la routine : Maintenir la pédale" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="5880" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Description du Test" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="4800" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Etat d'avancement du test" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="2400" Height="840" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Les autres roues sont bloquées durant le test." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6960" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Pour un bon fonctionnement, mettre en mode rebouclé." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="7320" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="roue testée. Elle doit se bloquer et se débloquer." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6600" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="0"/></Label>
+<Label Text="Routine de test du circuit hydraulique" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+
+<Button Text="Arrêt du Test">
+<Rectangle Left="1200" Top="3720" Height="420" Width="6600"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - HydraulicCircuitTest Stop"/>
+</Button>
+<Button Text="Test de la roue ArD">
+<Rectangle Left="4560" Top="1680" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - HydraulicCircuitTest_RR Start"/>
+</Button>
+<Button Text="Test de la roue ArG">
+<Rectangle Left="840" Top="1680" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - HydraulicCircuitTest_RL Start"/>
+</Button>
+<Button Text="Test de la roue AvD">
+<Rectangle Left="4560" Top="1200" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - HydraulicCircuitTest_FR Start"/>
+</Button>
+<Button Text="Test de la roue AvG">
+<Rectangle Left="840" Top="1200" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - HydraulicCircuitTest_FL Start"/>
+</Button>
+
+<Display Width="2330" Color="14671839" DataName="Routine State" RequestName="Routine - HydraulicCircuitTest Status">
+<Rectangle Left="960" Top="2760" Height="300" Width="7080"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2735" Color="14671839" DataName="Routine State about the stop" RequestName="Routine - HydraulicCircuitTest Stop">
+<Rectangle Left="960" Top="4200" Height="300" Width="7080"/>
+<Font Name="Arial Rounded MT Bold" Size=" 9" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

@@ -1,0 +1,3121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<ddt:Target Name="Esp X84 Phase 2 v4" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="samira.ben-boubaker@renault.com" href="Esp_X84_Phase_2_v4.xml" upload="6/21/07"><Description><![CDATA[Base DiagOnCAN Esp X84 Phase 2 Bosch8.0 
+-------------------------------------------------------------------------
+Version 4
+
+
+Projet : X84 - Phase 2
+Calculateur : ESP 8.0 EV 1001.01
+VDIAG : 0Bh, 12h
+
+Logiciels concernés :
+Logiciel ESP JR NSK avec variantes J baroudeur moteurs K - numéro BB61332 v18.00
+Logiciel ESP JR NSK avec variantes J baroudeur moteurs F - numéro BB60791 v17.00
+Logiciel ESP B TRW Phase II avec variantes pour BC 84 GT - numéro BB 39682 v15.39 et v15.40 (prototype)
+Logiciel ESP B TRW Phase II Pack Dièse Plus - numéro BB 39668 v14.36
+Logiciel ESP JR NSK Pack Dièse Plus - numéro BB 38696 v14.39
+Logiciel ESP JR NSK Pack Dièse Plus avec variantes BVA AJ0 activées - numéro BB39170 15.41
+Logiciel M5 (Renault Sport) Phase II - numéro BB38791 5.17
+
+Base précédente :
+Esp X84 Phase 2 v3
+
+-----------------------------------------------------------------------
+Dernière MAJ : 19/06/2007
+-----------------------------------------------------------------------
+- Modification du 19/06/2007
+La base pour le banc
+Rajout des variantes véhicule moteur K
+- Modification du 27/02/2007
+Data "Parametre TorqueStatus (Freeze) -> paramètre -> parametre
+Rajout du paramètre Trame ECM_TC (Freeze) dans la freezeframe
+-----------------------------------------------------------------------
+- Modification du 22/02/2007
+Rajout du logiciel BB60791 v17.00
+Rajout de la trame de traçabilité 2184 et des paramètres associés
+Rajout de la trame de lecture de la référence usine et du paramètre associés
+Rajout de l'écran de lecture de la traçabilité et de la référence usine
+-----------------------------------------------------------------------
+- Modification du 23/05/2006
+Rajout des variantes ESP pour BC 84 GT :
+variante F4R et variante M9R
+--------------------------------------------------------------------
+-----------------------------------------------------------------------
+Diese 65630 Samira Ben Boubaker
+Tel : 52596
+e-mail :samira.ben-boubaker@renault.com]]></Description>
+<Projects xmlns=""><x84/><x84ABSonly/><x84bugABS/><x84Ph2/></Projects>
+<Function Name="ABS" Address="1"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>26/09/2005 10:52:28</DateOfficialisation>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="500000" Multipoint="1">
+<SendId>
+<CANId Value="1856"/>
+</SendId><ReceiveId>
+<CANId Value="1888"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="11" Supplier="037" Soft="9AF4" Version="0E24"/><AutoIdent DiagVersion="11" Supplier="037" Soft="9902" Version="0F29"/><AutoIdent DiagVersion="11" Supplier="037" Soft="9728" Version="0E27"/><AutoIdent DiagVersion="11" Supplier="037" Soft="9B02" Version="0F27"/><AutoIdent DiagVersion="11" Supplier="037" Soft="9B02" Version="0F28"/><AutoIdent DiagVersion="11" Supplier="037" Soft="9902" Version="0F2A"/><AutoIdent DiagVersion="18" Supplier="037" Soft="ED77" Version="1100"/><AutoIdent DiagVersion="18" Supplier="037" Soft="EF94" Version="1200"/></AutoIdents>
+<Datas>
+
+<Data Name="Activation de la pompe">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Active"/>
+<Item Value="1" Text="Repos"/></List>
+</Bits>
+</Data>
+<Data Name="Admission arrière droite">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Active"/>
+<Item Value="1" Text="Repos"/></List>
+</Bits>
+</Data>
+<Data Name="Admission arrière gauche">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Active"/>
+<Item Value="1" Text="Repos"/></List>
+</Bits>
+</Data>
+<Data Name="Admission avant droite">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Active"/>
+<Item Value="1" Text="Repos"/></List>
+</Bits>
+</Data>
+<Data Name="Admission avant gauche">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Active"/>
+<Item Value="1" Text="Repos"/></List>
+</Bits>
+</Data>
+<Data Name="Affectation">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Pour usine"/>
+<Item Value="1" Text="Pour l'après-vente"/></List>
+</Bits>
+</Data>
+<Data Name="Algorithme Serveur BB-Number">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Algorithme Serveur Version Number">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Algorithme Serveur Version Number 2">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Algorithme Serveur Version Number 3et4">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="Alimentation">
+<Bits>
+<Scaled Unit="V" Step=" .08" Format="00.00"/>
+</Bits>
+</Data>
+<Data Name="Année">
+<Bits>
+<List>
+<Item Value="0" Text="2000"/>
+<Item Value="1" Text="2001"/>
+<Item Value="2" Text="2002"/>
+<Item Value="3" Text="2003"/>
+<Item Value="4" Text="2004"/>
+<Item Value="5" Text="2005"/>
+<Item Value="6" Text="2006"/>
+<Item Value="7" Text="2007"/>
+<Item Value="8" Text="2008"/>
+<Item Value="9" Text="2009"/>
+<Item Value="10" Text="2010"/>
+<Item Value="11" Text="2011"/>
+<Item Value="12" Text="2012"/>
+<Item Value="13" Text="2013"/>
+<Item Value="14" Text="2014"/>
+<Item Value="15" Text="2015"/>
+<Item Value="16" Text="2016"/>
+<Item Value="17" Text="2017"/>
+<Item Value="18" Text="2018"/>
+<Item Value="19" Text="2019"/>
+<Item Value="20" Text="2020"/>
+<Item Value="21" Text="2021"/>
+<Item Value="22" Text="2022"/>
+<Item Value="23" Text="2023"/>
+<Item Value="24" Text="2024"/>
+<Item Value="25" Text="2025"/>
+<Item Value="26" Text="2026"/>
+<Item Value="27" Text="2027"/>
+<Item Value="28" Text="2028"/>
+<Item Value="29" Text="2029"/>
+<Item Value="30" Text="2030"/>
+<Item Value="31" Text="2031"/>
+<Item Value="32" Text="2032"/>
+<Item Value="33" Text="2033"/>
+<Item Value="34" Text="2034"/>
+<Item Value="35" Text="2035"/>
+<Item Value="36" Text="2036"/>
+<Item Value="37" Text="2037"/>
+<Item Value="38" Text="2038"/>
+<Item Value="39" Text="2039"/>
+<Item Value="40" Text="2040"/>
+<Item Value="41" Text="2041"/>
+<Item Value="42" Text="2042"/>
+<Item Value="43" Text="2043"/>
+<Item Value="44" Text="2044"/>
+<Item Value="45" Text="2045"/>
+<Item Value="46" Text="2046"/>
+<Item Value="47" Text="2047"/>
+<Item Value="48" Text="2048"/>
+<Item Value="49" Text="2049"/>
+<Item Value="50" Text="2050"/></List>
+</Bits>
+</Data>
+<Data Name="Année de production du bloc">
+<Bits>
+<List>
+<Item Value="0" Text="2000"/>
+<Item Value="1" Text="2001"/>
+<Item Value="2" Text="2002"/>
+<Item Value="3" Text="2003"/>
+<Item Value="4" Text="2004"/>
+<Item Value="5" Text="2005"/>
+<Item Value="6" Text="2006"/>
+<Item Value="7" Text="2007"/>
+<Item Value="8" Text="2008"/>
+<Item Value="9" Text="2009"/>
+<Item Value="10" Text="2010"/>
+<Item Value="11" Text="2011"/>
+<Item Value="12" Text="2012"/>
+<Item Value="13" Text="2013"/>
+<Item Value="14" Text="2014"/>
+<Item Value="15" Text="2015"/>
+<Item Value="16" Text="2016"/>
+<Item Value="17" Text="2017"/>
+<Item Value="18" Text="2018"/>
+<Item Value="19" Text="2019"/>
+<Item Value="20" Text="2020"/>
+<Item Value="21" Text="2021"/>
+<Item Value="22" Text="2022"/>
+<Item Value="23" Text="2023"/>
+<Item Value="24" Text="2024"/>
+<Item Value="25" Text="2025"/>
+<Item Value="26" Text="2026"/>
+<Item Value="27" Text="2027"/>
+<Item Value="28" Text="2028"/>
+<Item Value="29" Text="2029"/>
+<Item Value="30" Text="2030"/>
+<Item Value="31" Text="2031"/>
+<Item Value="32" Text="2032"/>
+<Item Value="33" Text="2033"/>
+<Item Value="34" Text="2034"/>
+<Item Value="35" Text="2035"/>
+<Item Value="36" Text="2036"/>
+<Item Value="37" Text="2037"/>
+<Item Value="38" Text="2038"/>
+<Item Value="39" Text="2039"/>
+<Item Value="40" Text="2040"/>
+<Item Value="41" Text="2041"/>
+<Item Value="42" Text="2042"/>
+<Item Value="43" Text="2043"/>
+<Item Value="44" Text="2044"/>
+<Item Value="45" Text="2045"/>
+<Item Value="46" Text="2046"/>
+<Item Value="47" Text="2047"/>
+<Item Value="48" Text="2048"/>
+<Item Value="49" Text="2049"/>
+<Item Value="50" Text="2050"/></List>
+</Bits>
+</Data>
+<Data Name="Autorisation remplissage RF">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Autorisé"/>
+<Item Value="1" Text="Interdit"/></List>
+</Bits>
+</Data>
+<Data Name="Choix de la roue">
+<Bits>
+<List>
+<Item Value="1" Text="Roue avant gauche"/>
+<Item Value="2" Text="Roue avant droite"/>
+<Item Value="3" Text="Roue arrière gauche"/>
+<Item Value="4" Text="Roue arrière droite"/></List>
+</Bits>
+</Data>
+<Data Name="Choix du processus d'activation">
+<Bits>
+<List>
+<Item Value="0" Text="Lancement d'un contrôle temporaire"/>
+<Item Value="1" Text="Demande de statut"/>
+<Item Value="17" Text="Arrêt du contrôle"/></List>
+</Bits>
+</Data>
+<Data Name="Choix du type d'arrêt">
+<Bits>
+<List>
+<Item Value="128" Text="Maintenant"/></List>
+</Bits>
+</Data>
+<Data Name="Choix du type de réponse">
+<Bits>
+<List>
+<Item Value="1" Text="Avec réponse"/>
+<Item Value="2" Text="Sans réponse"/></List>
+</Bits>
+</Data>
+<Data Name="Circonférence pneu">
+<Bits count="16">
+<Scaled Unit="mm" Format="0000"/>
+</Bits>
+</Data>
+<Data Name="Circonférence pneu maximum">
+<Bits count="16">
+<Scaled Unit="mm" Format="000000"/>
+</Bits>
+</Data>
+<Data Name="Circonférence pneu minimum">
+<Bits count="16">
+<Scaled Unit="mm" Format="000000"/>
+</Bits>
+</Data>
+<Data Name="Code constructeur">
+<Bits>
+<List>
+<Item Value="0" Text="Renault"/></List>
+</Bits>
+</Data>
+<Data Name="Code ITG">
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Code MPR">
+<Bytes count="5"/>
+</Data>
+<Data Name="Code VIN">
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="Compteur">
+<Bits count="13">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Défaut de remplissage">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Aucun défaut"/>
+<Item Value="1" Text="Défaut interne au bloc"/>
+<Item Value="2" Text="Défaut externe au bloc"/></List>
+</Bits>
+</Data>
+<Data Name="Dimension du pneumatique">
+<Comment><![CDATA[A coder]]></Comment>
+<Bits>
+<List>
+<Item Value="21" Text="225/45 R17 (M5)"/>
+<Item Value="30" Text="205/55 R16"/>
+<Item Value="36" Text="195/65 R15"/>
+<Item Value="37" Text="235/40 R18 (M5 châssis sport)"/>
+<Item Value="40" Text="225/40 R18 (M5)"/>
+<Item Value="42" Text="205/50 R17"/>
+<Item Value="68" Text="205/60 R16"/>
+<Item Value="73" Text="205/55 R17"/>
+<Item Value="255" Text="Valeur invalide (FFh)"/></List>
+</Bits>
+</Data>
+<Data Name="DTC Number">
+<Bytes count="2"/>
+</Data>
+<Data Name="Echappement arrière droite">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Active"/>
+<Item Value="1" Text="Repos"/></List>
+</Bits>
+</Data>
+<Data Name="Echappement arrière gauche">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Active"/>
+<Item Value="1" Text="Repos"/></List>
+</Bits>
+</Data>
+<Data Name="Echappement avant droite">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Active"/>
+<Item Value="1" Text="Repos"/></List>
+</Bits>
+</Data>
+<Data Name="Echappement avant gauche">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Active"/>
+<Item Value="1" Text="Repos"/></List>
+</Bits>
+</Data>
+<Data Name="Etat ABS et REF">
+<Bits count="3">
+<List>
+<Item Value="0" Text="ABS et REF indisponibles"/>
+<Item Value="1" Text="ABS indisponible, EBV Backup disponible"/>
+<Item Value="2" Text="ABS indisponible, EBV disponible"/>
+<Item Value="3" Text="ABS et EBV Backup disponibles"/>
+<Item Value="4" Text="ABS Backup disponible, EBV disponible "/>
+<Item Value="7" Text="ABS et EBV disponibles"/></List>
+</Bits>
+</Data>
+<Data Name="Etat de la pédale de frein">
+<Bits count="2">
+<List>
+<Item Value="0" Text="Relâchée"/>
+<Item Value="1" Text="Enfoncée"/>
+<Item Value="3" Text="Invalide / En défaut"/></List>
+</Bits>
+</Data>
+<Data Name="Etat de la pédale de frein (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Relachée"/>
+<Item Value="1" Text="Enfoncée"/></List>
+</Bits>
+</Data>
+<Data Name="Etat de la routine">
+<Bits>
+<List>
+<Item Value="0" Text="Routine non active"/>
+<Item Value="1" Text="Routine en cours"/>
+<Item Value="2" Text="Routine terminée OK"/>
+<Item Value="4" Text="Routine terminée non OK"/>
+<Item Value="8" Text="Routine terminée et problème global"/>
+<Item Value="16" Text="Erreur d'écriture"/>
+<Item Value="128" Text="Test prêt"/>
+<Item Value="132" Text="Choix de la roue invalide"/>
+<Item Value="144" Text="Routine interrompue par l'outil de diagnostic"/></List>
+</Bits>
+</Data>
+<Data Name="Etat de l'arrêt de la routine">
+<Bits>
+<List>
+<Item Value="144" Text="Routine interrompue par l'outil de diagnostic"/></List>
+</Bits>
+</Data>
+<Data Name="Etat du bloc hydraulique">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Encore sec"/>
+<Item Value="1" Text="Humide"/></List>
+</Bits>
+</Data>
+<Data Name="Etat du circuit de frein">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Imconplètement rempli"/>
+<Item Value="1" Text="Complètement rempli"/></List>
+</Bits>
+</Data>
+<Data Name="Etat du processus d'activation">
+<Bits>
+<List>
+<Item Value="1" Text="Activation en cours"/>
+<Item Value="2" Text="Activation terminée"/>
+<Item Value="17" Text="Activation arrêtée"/>
+<Item Value="128" Text="Problème en cours d'activation"/>
+<Item Value="129" Text="Activation interrompue"/>
+<Item Value="130" Text="Activation disponible"/></List>
+</Bits>
+</Data>
+<Data Name="Etat ESP">
+<Bits count="1">
+<List>
+<Item Value="0" Text="ESP indisponible"/>
+<Item Value="1" Text="ESP disponible"/></List>
+</Bits>
+</Data>
+<Data Name="Etat ESP (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="ESP non en régulation"/>
+<Item Value="1" Text="ESP en régulation"/></List>
+</Bits>
+</Data>
+<Data Name="Etat MSR">
+<Bits count="1">
+<List>
+<Item Value="0" Text="MSR indisponible"/>
+<Item Value="1" Text="MSR disponible"/></List>
+</Bits>
+</Data>
+<Data Name="Etat MSR (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="MSR non en régulation"/>
+<Item Value="1" Text="MSR en régulation"/></List>
+</Bits>
+</Data>
+<Data Name="FFN">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Bits count="16">
+<List>
+<Item Value="20495" Text="Capteur vitesse roue AvD"/>
+<Item Value="20511" Text="Capteur vitesse roue AvG"/>
+<Item Value="20527" Text="Capteur vitesse roue ArD"/>
+<Item Value="20543" Text="Capteur vitesse roue ArG"/>
+<Item Value="20545" Text="Cible magnétique multipoles roue AvD"/>
+<Item Value="20546" Text="Cible magnétique multipoles roue AvG"/>
+<Item Value="20547" Text="Cible magnétique multipoles roue ArD"/>
+<Item Value="20548" Text="Cible magnétique multipoles roue ArG"/>
+<Item Value="20550" Text="Défaut général capteurs vitesses roues"/>
+<Item Value="20675" Text="Calculateur"/>
+<Item Value="20678" Text="Contacteur pédale de frein"/>
+<Item Value="20681" Text="Bouton ESP"/>
+<Item Value="20684" Text="Alimentation calculateur"/>
+<Item Value="20686" Text="Sortie relai feux stop"/>
+<Item Value="20710" Text="Réseau CAN"/>
+<Item Value="20724" Text="Gyromètre &amp; accéléromètre"/>
+<Item Value="20824" Text="Direction assistée électrique"/>
+<Item Value="20864" Text="Contrôle moteur"/>
+<Item Value="20866" Text="Tableau de bord"/>
+<Item Value="20872" Text="Boite de vitesse automatique"/></List>
+</Bits>
+</Data>
+<Data Name="Jour">
+<Bits>
+<List>
+<Item Value="1" Text="1"/>
+<Item Value="2" Text="2"/>
+<Item Value="3" Text="3"/>
+<Item Value="4" Text="4"/>
+<Item Value="5" Text="5"/>
+<Item Value="6" Text="6"/>
+<Item Value="7" Text="7"/>
+<Item Value="8" Text="8"/>
+<Item Value="9" Text="9"/>
+<Item Value="10" Text="10"/>
+<Item Value="11" Text="11"/>
+<Item Value="12" Text="12"/>
+<Item Value="13" Text="13"/>
+<Item Value="14" Text="14"/>
+<Item Value="15" Text="15"/>
+<Item Value="16" Text="16"/>
+<Item Value="17" Text="17"/>
+<Item Value="18" Text="18"/>
+<Item Value="19" Text="19"/>
+<Item Value="20" Text="20"/>
+<Item Value="21" Text="21"/>
+<Item Value="22" Text="22"/>
+<Item Value="23" Text="23"/>
+<Item Value="24" Text="24"/>
+<Item Value="25" Text="25"/>
+<Item Value="26" Text="26"/>
+<Item Value="27" Text="27"/>
+<Item Value="28" Text="28"/>
+<Item Value="29" Text="29"/>
+<Item Value="30" Text="30"/>
+<Item Value="31" Text="31"/></List>
+</Bits>
+</Data>
+<Data Name="Jour de production du bloc">
+<Bits count="3">
+<List>
+<Item Value="1" Text="Lundi"/>
+<Item Value="2" Text="Mardi"/>
+<Item Value="3" Text="Mercredi"/>
+<Item Value="4" Text="Jeudi"/>
+<Item Value="5" Text="Vendredi"/>
+<Item Value="6" Text="Samedi"/>
+<Item Value="7" Text="Dimanche"/></List>
+</Bits>
+</Data>
+<Data Name="Mois">
+<Bits>
+<List>
+<Item Value="1" Text="Janvier"/>
+<Item Value="2" Text="Février"/>
+<Item Value="3" Text="Mars"/>
+<Item Value="4" Text="Avril"/>
+<Item Value="5" Text="Mai"/>
+<Item Value="6" Text="Juin"/>
+<Item Value="7" Text="Juillet"/>
+<Item Value="8" Text="Août"/>
+<Item Value="9" Text="Septembre"/>
+<Item Value="10" Text="Octobre"/>
+<Item Value="11" Text="Novembre"/>
+<Item Value="12" Text="Décembre"/></List>
+</Bits>
+</Data>
+<Data Name="MoreDTC">
+<Mnemonic>MoreDTC</Mnemonic>
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="NDTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Nom de la roue choisie">
+<Bits>
+<List>
+<Item Value="1" Text="Roue avant gauche"/>
+<Item Value="2" Text="Roue avant droite"/>
+<Item Value="3" Text="Roue arrière gauche"/>
+<Item Value="4" Text="Roue arrière droite"/></List>
+</Bits>
+</Data>
+<Data Name="Nombre de dents">
+<Bits>
+<Scaled Format="00"/>
+</Bits>
+</Data>
+<Data Name="Numéro de la ligne de production du bloc">
+<Bits count="3">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Numéro de l'équipe de production du bloc">
+<Bits count="2">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Numéro de l'usine de production du bloc">
+<Bits count="3">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Numéro du bloc  : 0 265">
+<Bytes count="3"/>
+</Data>
+<Data Name="Odomètre">
+<Bits count="16">
+<Scaled Unit="cm" DivideBy=" 10" Format="00000.00"/>
+</Bits>
+</Data>
+<Data Name="ProcessByte Remplissage">
+<Bits>
+<List>
+<Item Value="0" Text="ABS/ESP sec, remplissage RF autorisé"/>
+<Item Value="25" Text="ABS/ESP pour après-vente"/>
+<Item Value="49" Text="ABS/ESP rempli"/></List>
+</Bits>
+</Data>
+<Data Name="Sélection du groupe de défaut">
+<Bits>
+<List>
+<Item Value="64" Text="Défaut Châssis"/>
+<Item Value="255" Text="Tous"/></List>
+</Bits>
+</Data>
+<Data Name="Semaine de production du bloc">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Session Name">
+<Bits>
+<List>
+<Item Value="129" Text="Session par défaut - Stop Diag"/>
+<Item Value="192" Text="Session après Vente"/></List>
+</Bits>
+</Data>
+<Data Name="Seuil de reconnexion automatique de l'ESP">
+<Bits count="16">
+<List>
+<Item Value="5000" Text="Reconnexion automatique (à 50,00 Km/h)"/>
+<Item Value="25000" Text="Reconnexion manuelle"/>
+<Item Value="65500" Text="Valeur invalide"/></List>
+</Bits>
+</Data>
+<Data Name="Statut">
+<Bits>
+<List>
+<Item Value="0" Text="Déf:.Statut:0"/>
+<Item Value="1" Text="Déf:.Statut:Circuit ouvert (1h)"/>
+<Item Value="2" Text="Déf:.Statut:Court-circuit à la masse (2h)"/>
+<Item Value="3" Text="Déf:.Statut:Court-circuit au +bat (3h)"/>
+<Item Value="4" Text="Déf:.Statut:Param à la limite basse (4h)"/>
+<Item Value="5" Text="Déf:.Statut:Param à la limite haute (5h)"/>
+<Item Value="6" Text="Déf:.Statut:Incohérence, impossible (6h)"/>
+<Item Value="7" Text="Déf:.Statut:Pas de signal (7h)"/>
+<Item Value="8" Text="Déf:.Statut:En dessous du seuil bas (8h)"/>
+<Item Value="9" Text="Déf:.Statut:Au dessus du seuil haut (9h)"/>
+<Item Value="10" Text="Déf:.Statut:Niveau bas permanent (Ah)"/>
+<Item Value="11" Text="Déf:.Statut:Niveau haut permanent (Bh)"/>
+<Item Value="12" Text="Déf:.Statut:Lignes en court-circuit (Ch)"/>
+<Item Value="13" Text="Déf:.Statut:Anomalie éléctronique interne (Dh)"/>
+<Item Value="14" Text="Déf:.Statut:Anomaly du réseau (Eh)"/>
+<Item Value="15" Text="Déf:.Statut:Diagnostique erroné (Fh)"/>
+<Item Value="16" Text="Déf:.Statut:Communication perturbée (10h)"/>
+<Item Value="17" Text="Déf:.Statut:Microcoupures (11h)"/>
+<Item Value="18" Text="Déf:.Statut:Tension anormale (12h)"/>
+<Item Value="19" Text="Déf:.Statut:Valeur en dehors de la plage (13h)"/>
+<Item Value="20" Text="Déf:.Statut:Circuit ouvert ou court-circuit à la masse (14h)"/>
+<Item Value="21" Text="Déf:.Statut:Circuit ouvert ou court-circuit au +Bat(15h)"/>
+<Item Value="22" Text="Déf:.Statut:Init / config non valide (16h)"/>
+<Item Value="23" Text="Déf:.Statut:Init non valide(17h)"/>
+<Item Value="24" Text="Déf:.Statut:Anomalie (18h)"/>
+<Item Value="32" Text="Déf:Présent.Statut:0"/>
+<Item Value="33" Text="Déf:Présent.Statut:Circuit ouvert (1h)"/>
+<Item Value="34" Text="Déf:Présent.Statut:Court-circuit à la masse (2h)"/>
+<Item Value="35" Text="Déf:Présent.Statut:Court-circuit au +bat (3h)"/>
+<Item Value="36" Text="Déf:Présent.Statut:Param à la limite basse (4h)"/>
+<Item Value="37" Text="Déf:Présent.Statut:Param à la limite haute (5h)"/>
+<Item Value="38" Text="Déf:Présent.Statut:Incohérence, impossible (6h)"/>
+<Item Value="39" Text="Déf:Présent.Statut:Pas de signal (7h)"/>
+<Item Value="40" Text="Déf:Présent.Statut:En dessous du seuil bas (8h)"/>
+<Item Value="41" Text="Déf:Présent.Statut:Au dessus du seuil haut (9h)"/>
+<Item Value="42" Text="Déf:Présent.Statut:Niveau bas permanent (Ah)"/>
+<Item Value="43" Text="Déf:Présent.Statut:Niveau haut permanent (Bh)"/>
+<Item Value="44" Text="Déf:Présent.Statut:Lignes en court-circuit (Ch)"/>
+<Item Value="45" Text="Déf:Présent.Statut:Anomalie éléctronique interne (Dh)"/>
+<Item Value="46" Text="Déf:Présent.Statut:Anomaly du réseau (Eh)"/>
+<Item Value="47" Text="Déf:Présent.Statut:Diagnostique erroné (Fh)"/>
+<Item Value="48" Text="Déf:Présent.Statut:Communication perturbée (10h)"/>
+<Item Value="49" Text="Déf:Présent.Statut:Microcoupures (11h)"/>
+<Item Value="50" Text="Déf:Présent.Statut:Tension anormale (12h)"/>
+<Item Value="51" Text="Déf:Présent.Statut:Valeur en dehors de la plage (13h)"/>
+<Item Value="52" Text="Déf:Présent.Statut:Circuit ouvert ou court-circuit à la masse (14h)"/>
+<Item Value="53" Text="Déf:Présent.Statut:Circuit ouvert ou court-circuit au +Bat(15h)"/>
+<Item Value="54" Text="Déf:Présent.Statut:Init / config non valide (16h)"/>
+<Item Value="55" Text="Déf:Présent.Statut:Init non valide(17h)"/>
+<Item Value="56" Text="Déf:Présent.Statut:Anomalie (18h)"/>
+<Item Value="64" Text="Déf:Mémo.Statut:0"/>
+<Item Value="65" Text="Déf:Mémo.Statut:Circuit ouvert (1h)"/>
+<Item Value="66" Text="Déf:Mémo.Statut:Court-circuit à la masse (2h)"/>
+<Item Value="67" Text="Déf:Mémo.Statut:Court-circuit au +bat (3h)"/>
+<Item Value="68" Text="Déf:Mémo.Statut:Param à la limite basse (4h)"/>
+<Item Value="69" Text="Déf:Mémo.Statut:Param à la limite haute (5h)"/>
+<Item Value="70" Text="Déf:Mémo.Statut:Incohérence, impossible (6h)"/>
+<Item Value="71" Text="Déf:Mémo.Statut:Pas de signal (7h)"/>
+<Item Value="72" Text="Déf:Mémo.Statut:En dessous du seuil bas (8h)"/>
+<Item Value="73" Text="Déf:Mémo.Statut:Au dessus du seuil haut (9h)"/>
+<Item Value="74" Text="Déf:Mémo.Statut:Niveau bas permanent (Ah)"/>
+<Item Value="75" Text="Déf:Mémo.Statut:Niveau haut permanent (Bh)"/>
+<Item Value="76" Text="Déf:Mémo.Statut:Lignes en court-circuit (Ch)"/>
+<Item Value="77" Text="Déf:Mémo.Statut:Anomalie éléctronique interne (Dh)"/>
+<Item Value="78" Text="Déf:Mémo.Statut:Anomaly du réseau (Eh)"/>
+<Item Value="79" Text="Déf:Mémo.Statut:Diagnostique erroné (Fh)"/>
+<Item Value="80" Text="Déf:Mémo.Statut:Communication perturbée (10h)"/>
+<Item Value="81" Text="Déf:Mémo.Statut:Microcoupures (11h)"/>
+<Item Value="82" Text="Déf:Mémo.Statut:Tension anormale (12h)"/>
+<Item Value="83" Text="Déf:Mémo.Statut:Valeur en dehors de la plage (13h)"/>
+<Item Value="84" Text="Déf:Mémo.Statut:Circuit ouvert ou court-circuit à la masse (14h)"/>
+<Item Value="85" Text="Déf:Mémo.Statut:Circuit ouvert ou court-circuit au +Bat(15h)"/>
+<Item Value="86" Text="Déf:Mémo.Statut:Init / config non valide (16h)"/>
+<Item Value="87" Text="Déf:Mémo.Statut:Init non valide(17h)"/>
+<Item Value="88" Text="Déf:Mémo.Statut:Anomalie (18h)"/>
+<Item Value="96" Text="Déf:Présent,Mémo.Statut:0"/>
+<Item Value="97" Text="Déf:Présent,Mémo.Statut:Circuit ouvert (1h)"/>
+<Item Value="98" Text="Déf:Présent,Mémo.Statut:Court-circuit à la masse (2h)"/>
+<Item Value="99" Text="Déf:Présent,Mémo.Statut:Court-circuit au +bat (3h)"/>
+<Item Value="100" Text="Déf:Présent,Mémo.Statut:Param à la limite basse (4h)"/>
+<Item Value="101" Text="Déf:Présent,Mémo.Statut:Param à la limite haute (5h)"/>
+<Item Value="102" Text="Déf:Présent,Mémo.Statut:Incohérence, impossible (6h)"/>
+<Item Value="103" Text="Déf:Présent,Mémo.Statut:Pas de signal (7h)"/>
+<Item Value="104" Text="Déf:Présent,Mémo.Statut:En dessous du seuil bas (8h)"/>
+<Item Value="105" Text="Déf:Présent,Mémo.Statut:Au dessus du seuil haut (9h)"/>
+<Item Value="106" Text="Déf:Présent,Mémo.Statut:Niveau bas permanent (Ah)"/>
+<Item Value="107" Text="Déf:Présent,Mémo.Statut:Niveau haut permanent (Bh)"/>
+<Item Value="108" Text="Déf:Présent,Mémo.Statut:Lignes en court-circuit (Ch)"/>
+<Item Value="109" Text="Déf:Présent,Mémo.Statut:Anomalie éléctronique interne (Dh)"/>
+<Item Value="110" Text="Déf:Présent,Mémo.Statut:Anomaly du réseau (Eh)"/>
+<Item Value="111" Text="Déf:Présent,Mémo.Statut:Diagnostique erroné (Fh)"/>
+<Item Value="112" Text="Déf:Présent,Mémo.Statut:Communication perturbée (10h)"/>
+<Item Value="113" Text="Déf:Présent,Mémo.Statut:Microcoupures (11h)"/>
+<Item Value="114" Text="Déf:Présent,Mémo.Statut:Tension anormale (12h)"/>
+<Item Value="115" Text="Déf:Présent,Mémo.Statut:Valeur en dehors de la plage (13h)"/>
+<Item Value="116" Text="Déf:Présent,Mémo.Statut:Circuit ouvert ou court-circuit à la masse (14h)"/>
+<Item Value="117" Text="Déf:Présent,Mémo.Statut:Circuit ouvert ou court-circuit au +Bat(15h)"/>
+<Item Value="118" Text="Déf:Présent,Mémo.Statut:Init / config non valide (16h)"/>
+<Item Value="119" Text="Déf:Présent,Mémo.Statut:Init non valide(17h)"/>
+<Item Value="120" Text="Déf:Présent,Mémo.Statut:Anomalie (18h)"/>
+<Item Value="129" Text="Déf:.Statut:Circuit ouvert ou court circuit au +Bat ou à la masse (1h)"/>
+<Item Value="132" Text="Déf:.Statut:Interférence entre une ou plusieurs roues (4h)"/>
+<Item Value="133" Text="Déf:.Statut:Config véhicule non sélectionnée (5h)"/>
+<Item Value="134" Text="Déf:.Statut:Config véhicule non valide (6h)"/>
+<Item Value="136" Text="Déf:.Statut:Dent manquante (8h)"/>
+<Item Value="140" Text="Déf:.Statut:Index pneu non sélectionné (Ch)"/>
+<Item Value="141" Text="Déf:.Statut:Pb Mécanique ou Magnétique sur la cible (Dh)"/>
+<Item Value="142" Text="Déf:.Statut:Montage incorrect (Eh)"/>
+<Item Value="161" Text="Déf:Présent.Statut:Circuit ouvert ou court circuit au +Bat ou à la masse (1h)"/>
+<Item Value="164" Text="Déf:Présent.Statut:Interférence entre une ou plusieurs roues (4h)"/>
+<Item Value="165" Text="Déf:Présent.Statut:Config véhicule non sélectionnée (5h)"/>
+<Item Value="166" Text="Déf:Présent.Statut:Config véhicule non valide (6h)"/>
+<Item Value="168" Text="Déf:Présent.Statut:Dent manquante (8h)"/>
+<Item Value="172" Text="Déf:Présent.Statut:Index pneu non sélectionné (Ch)"/>
+<Item Value="173" Text="Déf:Présent.Statut:Pb Mécanique ou Magnétique sur la cible (Dh)"/>
+<Item Value="174" Text="Déf:Présent.Statut:Montage incorrect (Eh)"/>
+<Item Value="193" Text="Déf:Mémo.Statut:Circuit ouvert ou court circuit au +Bat ou à la masse (1h)"/>
+<Item Value="196" Text="Déf:Mémo.Statut:Interférence entre une ou plusieurs roues (4h)"/>
+<Item Value="197" Text="Déf:Mémo.Statut:Config véhicule non sélectionnée (5h)"/>
+<Item Value="198" Text="Déf:Mémo.Statut:Config véhicule non valide (6h)"/>
+<Item Value="200" Text="Déf:Mémo.Statut:Dent manquante (8h)"/>
+<Item Value="204" Text="Déf:Mémo.Statut:Index pneu non sélectionné (Ch)"/>
+<Item Value="205" Text="Déf:Mémo.Statut:Pb Mécanique ou Magnétique sur la cible (Dh)"/>
+<Item Value="206" Text="Déf:Mémo.Statut:Montage incorrect (Eh)"/>
+<Item Value="225" Text="Déf:Présent,Mémo.Statut:Circuit ouvert ou court circuit au +Bat ou à la masse (1"/>
+<Item Value="228" Text="Déf:Présent,Mémo.Statut:Interférence entre une ou plusieurs roues (4h)"/>
+<Item Value="229" Text="Déf:Présent,Mémo.Statut:Config véhicule non sélectionnée (5h)"/>
+<Item Value="230" Text="Déf:Présent,Mémo.Statut:Config véhicule non valide (6h)"/>
+<Item Value="232" Text="Déf:Présent,Mémo.Statut:Dent manquante (8h)"/>
+<Item Value="236" Text="Déf:Présent,Mémo.Statut:Index pneu non sélectionné (Ch)"/>
+<Item Value="237" Text="Déf:Présent,Mémo.Statut:Pb Mécanique ou Magnétique sur la cible (Dh)"/>
+<Item Value="238" Text="Déf:Présent,Mémo.Statut:Montage incorrect (Eh)"/></List>
+</Bits>
+</Data>
+<Data Name="Système Serveur">
+<Bits>
+<List>
+<Item Value="2" Text="Pluto C05 SR2 : BB28031"/>
+<Item Value="3" Text="Pluto C05 SR3 : BB28409"/>
+<Item Value="4" Text="A définir"/>
+<Item Value="5" Text="Pluto C05 SR5 : BB29140 1_1"/>
+<Item Value="19" Text="Mars F10 : BB28234"/>
+<Item Value="20" Text="Mars F10 : BB28848 1_1"/></List>
+</Bits>
+</Data>
+<Data Name="Valve Hsv1">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Active"/>
+<Item Value="1" Text="Repos"/></List>
+</Bits>
+</Data>
+<Data Name="Valve Hsv2">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Active"/>
+<Item Value="1" Text="Repos"/></List>
+</Bits>
+</Data>
+<Data Name="Valve Usv1">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Active"/>
+<Item Value="1" Text="Repos"/></List>
+</Bits>
+</Data>
+<Data Name="Valve Usv2">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Active"/>
+<Item Value="1" Text="Repos"/></List>
+</Bits>
+</Data>
+<Data Name="Vitesse roue arrière droite">
+<Bits count="16">
+<Scaled Unit="Km/H" DivideBy=" 100" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Vitesse roue arrière droite (Freeze)">
+<Bits>
+<Scaled Unit="Km/H" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Vitesse roue arrière gauche">
+<Bits count="16">
+<Scaled Unit="Km/H" DivideBy=" 100" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Vitesse roue arrière gauche (Freeze)">
+<Bits>
+<Scaled Unit="Km/H" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Vitesse roue avant droite">
+<Bits count="16">
+<Scaled Unit="Km/H" DivideBy=" 100" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Vitesse roue avant droite (Freeze)">
+<Bits>
+<Scaled Unit="Km/H" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Vitesse roue avant gauche">
+<Bits count="16">
+<Scaled Unit="Km/H" DivideBy=" 100" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Vitesse roue avant gauche (Freeze)">
+<Bits>
+<Scaled Unit="Km/H" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Vitesse de lacet">
+<Bits count="16">
+<Scaled Unit="°/s) (min : -200 ; max :200" Step=" 2" Offset="-65534" DivideBy=" 10" Format="0.0"/>
+</Bits>
+</Data>
+<Data Name="Vitesse véhicule">
+<Bits count="16">
+<Scaled Unit="Km/H" DivideBy=" 100" Format="000.00"/>
+</Bits>
+</Data>
+<Data Name="Offset SWA">
+<Bits count="16" signed="1">
+<Scaled Unit="°" Step=" .0015625" Format="00.0000"/>
+</Bits>
+</Data>
+<Data Name="Etat REF (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="REF non en régulation"/>
+<Item Value="1" Text="REF en régulation"/></List>
+</Bits>
+</Data>
+<Data Name="Valeur de la vitesse CAN à l'initialisation">
+<Comment><![CDATA[Valeur de la vitesse Can à l'initialisation]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="Vitesse nulle (00h)"/>
+<Item Value="33" Text="Valeur vitesse init non programmée"/>
+<Item Value="255" Text="Vitesse invalide (FFh)"/></List>
+</Bits>
+</Data>
+<Data Name="Valeurs invalides ECM_TC (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Pas de valeurs invalides dans la trame ECM_TC"/>
+<Item Value="1" Text="Valeur invalide dans la trame ECM_TC (ou trame non reçue)"/></List>
+</Bits>
+</Data>
+<Data Name="Alimentation (Freeze)">
+<Bits count="4">
+<Scaled Unit="V" Offset=" 7" Format="00"/>
+</Bits>
+</Data>
+<Data Name="Angle volant">
+<Bits count="16">
+<Scaled Unit="°) (min : -720 ; max : 720" Offset="-32767" DivideBy=" 10" Format="000.0"/>
+</Bits>
+</Data>
+<Data Name="CRC">
+<Bytes count="2"/>
+</Data>
+<Data Name="Etat ABS (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="ABS non en régulation"/>
+<Item Value="1" Text="ABS en régulation"/></List>
+</Bits>
+</Data>
+<Data Name="Autorisation allumage feux stop">
+<Bits>
+<List>
+<Item Value="0" Text="Fonction inhibée"/>
+<Item Value="1" Text="Fonction activée"/>
+<Item Value="3" Text="Valeur invalide (3)"/></List>
+</Bits>
+</Data>
+<Data Name="Etat du bouton ESP">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Relaché"/>
+<Item Value="1" Text="Appuyé"/></List>
+</Bits>
+</Data>
+<Data Name="Etat du bouton ESP (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Relâché"/>
+<Item Value="1" Text="Appuyé"/></List>
+</Bits>
+</Data>
+<Data Name="Phase de la purge après-vente">
+<Bits>
+<List>
+<Item Value="1" Text="Phase 1"/>
+<Item Value="2" Text="Phase 2"/>
+<Item Value="3" Text="Phase 3"/>
+<Item Value="4" Text="Phase 4"/></List>
+</Bits>
+</Data>
+<Data Name="Configuration Véhicule">
+<Comment><![CDATA[A coder]]></Comment>
+<Bits>
+<List>
+<Item Value="0" Text="Invalide"/>
+<Item Value="1" Text="(1) Caisse J / Moteur F9Q / Boite BVM"/>
+<Item Value="2" Text="(2) [Caisses BCELKSG / Moteur M9R / Boite BVA]"/>
+<Item Value="3" Text="(3) [Caisse J / Moteur F4R / Boite BVM] OU [Renault Sport]"/>
+<Item Value="4" Text="(4) Caisse J / Moteur F4R / Boite BVA"/>
+<Item Value="5" Text="(5) Caisse J / Moteur K9K / Boite BVM"/>
+<Item Value="6" Text="(6) [Caisse J / Moteur K9K ou F9Q / Boite BVA]"/>
+<Item Value="7" Text="(7) Caisse J / Moteur K4M / Boite BVM"/>
+<Item Value="8" Text="(8) Caisse J / Moteur K4M / Boite BVA"/>
+<Item Value="9" Text="(9) [Caisse J / Moteur K4J / Boite BVM] OU [Caisse BC **GT** / Moteur M9R / Boite BVM]"/>
+<Item Value="10" Text="(10) [Caisse : R / Moteur : K9K ou F9Q / Boite : BVM] OU [Caisse : BC **GT** / Moteur F4R / Boite BVM]"/>
+<Item Value="11" Text="(11) Caisses BCELKSG **non GT** et J / Moteur M9R / Boite BVM"/>
+<Item Value="12" Text="(12) [Caisse BCELKSG / Moteur K9K ou F9Q / Boite BVM] OU [Caisse J / Moteur M9R / Boite BVA6]"/>
+<Item Value="13" Text="(13) [Caisse BCELKSG / Moteur K9K ou F9Q / Boite BVA] OU [Caisse R / Moteur M9R / Boite BVM]"/>
+<Item Value="14" Text="(14) [Caisse BCELKSG **non GT** / Moteur K4M ou F4R / Boite BVM] OU [Caisse R / Moteur M9R / Boite BVA6]"/>
+<Item Value="15" Text="(15) [Caisse BCELKSG / Moteur K4M ou F4R / Boite BVA]  OU [Caisse J baroudeur / Moteur F9Q ou K9K / Boite BVM]"/>
+<Item Value="16" Text="(16) [Caisse K / Moteur K4J / Boite BVM] OU [Caisse J baroudeur / Moteur F4R ou K4M / Boite BVM]"/>
+<Item Value="17" Text="(17) Caisse BCEL   SG / Moteur K4J / Boite BVM"/>
+<Item Value="18" Text="(18) Caisse R / Moteur K4M ou F4R / Boite BVM"/>
+<Item Value="19" Text="(19) Caisse R / Moteur K4M ou F4R / Boite BVA"/>
+<Item Value="20" Text="(20) Caisse R / Moteur K9K ou F9Q / Boite BVA"/></List>
+</Bits>
+</Data>
+<Data Name="Offset vitesse de lacet (vGi)">
+<Bits count="16" signed="1">
+<Scaled Unit="°/s" Step=" .0005305" Format="00.0000"/>
+</Bits>
+</Data>
+<Data Name="Offset accélération transversale (Ay)">
+<Bits count="16" signed="1">
+<Scaled Unit="m/s²" Step=" .00042391" Format="00.0000"/>
+</Bits>
+</Data>
+<Data Name="DiagMuxOn (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="DiagMuxOff (0)"/>
+<Item Value="1" Text="DiagMuxOn (1)"/></List>
+</Bits>
+</Data>
+<Data Name="Etat ASR (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="ASR non en régulation"/>
+<Item Value="1" Text="ASR en régulation"/></List>
+</Bits>
+</Data>
+<Data Name="Temps depuis IgnOn (Freeze)">
+<Bits count="16">
+<Scaled Unit="s" Format="0000000"/>
+</Bits>
+</Data>
+<Data Name="Offset angle volant (Freeze)">
+<Bits>
+<Scaled Unit="°) (min : -25,6 ; max : 25,2" Step=" .2" Offset="-25.6" Format="000"/>
+</Bits>
+</Data>
+<Data Name="Current Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Accélération transversale">
+<Bits count="16">
+<Scaled Unit="g) (min : -1,8 ; max : 1,8" Step=" 4" Offset="-131068" DivideBy=" 1000" Format="0.000"/>
+</Bits>
+</Data>
+<Data Name="Accélération longitudinale">
+<Bits>
+<Scaled Unit="m/s²) (min : -10 ; max : 2,7" Step=" 5" Offset="-1000" DivideBy=" 100" Format="00.00"/>
+</Bits>
+</Data>
+<Data Name="Historical Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Standard Fault">
+<Bits count="5">
+<List>
+<Item Value="0" Text="0"/>
+<Item Value="1" Text="Circuit ouvert (1h)"/>
+<Item Value="2" Text="Court-circuit à la masse (2h)"/>
+<Item Value="3" Text="Court-circuit au +bat (3h)"/>
+<Item Value="4" Text="Param à la limite basse (4h)"/>
+<Item Value="5" Text="Param à la limite haute (5h)"/>
+<Item Value="6" Text="Incohérence, impossible (6h)"/>
+<Item Value="7" Text="Pas de signal (7h)"/>
+<Item Value="8" Text="En dessous du seuil bas (8h)"/>
+<Item Value="9" Text="Au dessus du seuil haut (9h)"/>
+<Item Value="10" Text="Niveau bas permanent (Ah)"/>
+<Item Value="11" Text="Niveau haut permanent (Bh)"/>
+<Item Value="12" Text="Lignes en court-circuit (Ch)"/>
+<Item Value="13" Text="Anomalie éléctronique interne (Dh)"/>
+<Item Value="14" Text="Anomaly du réseau (Eh)"/>
+<Item Value="15" Text="Diagnostique erroné (Fh)"/>
+<Item Value="16" Text="Communication perturbée (10h)"/>
+<Item Value="17" Text="Microcoupures (11h)"/>
+<Item Value="18" Text="Tension anormale (12h)"/>
+<Item Value="19" Text="Valeur en dehors de la plage (13h)"/>
+<Item Value="20" Text="Circuit ouvert ou court-circuit à la masse (14h)"/>
+<Item Value="21" Text="Circuit ouvert ou court-circuit au +Bat(15h)"/>
+<Item Value="22" Text="Init / config non valide (16h)"/>
+<Item Value="23" Text="Init non valide(17h)"/>
+<Item Value="24" Text="Anomalie (18h)"/></List>
+</Bits>
+</Data>
+<Data Name="Traçabilité - Usine de production du bloc">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Traçabilité - Semaine de production du bloc">
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="Traçabilité - réservé">
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="Traçabilité - Ligne de production du bloc">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Traçabilité - libre">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Traçabilité - Jour de la semaine">
+<Bits>
+<List>
+<Item Value="48" Text="NC"/>
+<Item Value="49" Text="Lundi"/>
+<Item Value="50" Text="Mardi"/>
+<Item Value="51" Text="Mercredi"/>
+<Item Value="52" Text="Jeudi"/>
+<Item Value="53" Text="Vendredi"/>
+<Item Value="54" Text="Samedi"/>
+<Item Value="55" Text="Dimanche"/></List>
+</Bits>
+</Data>
+<Data Name="Traçabilité - Equipe">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Traçabilité - Compteur">
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="Traçabilité - Année de production du bloc">
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="Traçabilité - ABS/ESP">
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Trame ECM_TC (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Trame ECM_TorqueControl non reçue"/>
+<Item Value="1" Text="Trame ECM_TorqueControl reçue"/></List>
+</Bits>
+</Data>
+<Data Name="Type Of Fault">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Standard"/>
+<Item Value="1" Text="Specific"/></List>
+</Bits>
+</Data>
+<Data Name="Choix du temps d'activation EV/Pompe">
+<Bits>
+<List>
+<Item Value="50" Text="1s"/>
+<Item Value="100" Text="2s"/>
+<Item Value="150" Text="3s"/>
+<Item Value="200" Text="4s"/>
+<Item Value="250" Text="5s"/></List>
+</Bits>
+</Data>
+<Data Name="Choix du temps d'activation">
+<Bits>
+<List>
+<Item Value="10" Text="800ms"/>
+<Item Value="62" Text="5s"/>
+<Item Value="125" Text="10s"/>
+<Item Value="187" Text="15s"/>
+<Item Value="250" Text="20s"/>
+<Item Value="255" Text="XXXs"/></List>
+</Bits>
+</Data>
+<Data Name="Identificateur de diagnostic">
+<Bits>
+<List>
+<Item Value="8" Text="Système ESP F10"/>
+<Item Value="9" Text="Système ESP F05"/>
+<Item Value="10" Text="Ah (ESP)"/>
+<Item Value="11" Text="Bh (ESP)"/>
+<Item Value="12" Text="Système ABS F10"/>
+<Item Value="13" Text="Système ABS F05"/>
+<Item Value="14" Text="Eh (ABS)"/>
+<Item Value="15" Text="Fh (ABS)"/></List>
+</Bits>
+</Data>
+<Data Name="Specific Fault">
+<Bits count="5">
+<List>
+<Item Value="1" Text="Circuit ouvert ou court circuit au +Bat ou à la masse (1h)"/>
+<Item Value="4" Text="Interférence entre une ou plusieurs roues (4h)"/>
+<Item Value="5" Text="Config véhicule non sélectionnée (5h)"/>
+<Item Value="6" Text="Config véhicule non valide (6h)"/>
+<Item Value="8" Text="Dent manquante (8h)"/>
+<Item Value="12" Text="Index pneu non sélectionné (Ch)"/>
+<Item Value="13" Text="Pb Mécanique ou Magnétique sur la cible (Dh)"/>
+<Item Value="14" Text="Montage incorrect (Eh)"/></List>
+</Bits>
+</Data>
+<Data Name="Code d'identification usine">
+<Bytes count="5"/>
+</Data>
+<Data Name="Parametre TorqueStatus (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Requête en couple possible (0,1 ou 2)"/>
+<Item Value="1" Text="Requête en couple impossible (3) ou non reçue"/></List>
+</Bits>
+</Data>
+<Data Name="Angle volant (Min-720/Max720) (Freeze)">
+<Bits>
+<Scaled Unit="°) (min : -720 ; max : 720" Step=" 6" Offset="-762" Format="000"/>
+</Bits>
+</Data>
+<Data Name="Etat de la sortie feux stop (Freeze)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Niveau bas - Lampes éteintes"/>
+<Item Value="1" Text="Niveau haut - Lampes allumées"/></List>
+</Bits>
+</Data>
+<Data Name="Référence usine">
+<Comment><![CDATA[Référence usine du bloc ESP]]></Comment>
+<Bytes count="5"/>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+<DataItem Name="MoreDTC" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<DataItem Name="FirstDTC" FirstByte="3"/>
+<DataItem Name="NDTC" FirstByte="2"/>
+<DataItem Name="Historical Failure" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Current Failure" FirstByte="5" BitOffset="2"/>
+<DataItem Name="Standard Fault" FirstByte="5" BitOffset="3"/>
+<DataItem Name="Type Of Fault" FirstByte="5"/>
+<DataItem Name="Specific Fault" FirstByte="5" BitOffset="3"/>
+</Received>
+</Request>
+<Request Name="CDIFailure">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+<DataItem Name="Sélection du groupe de défaut" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Read - VehicleConfiguration">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2101</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Configuration Véhicule" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Read - TachyIndex">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2102</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Dimension du pneumatique" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Read - FillingProcessByte">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2103</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Affectation" Ref="1" FirstByte="3" BitOffset="4"/>
+<DataItem Name="Autorisation remplissage RF" Ref="1" FirstByte="3" BitOffset="7"/>
+<DataItem Name="Défaut de remplissage" Ref="1" FirstByte="3" BitOffset="5"/>
+<DataItem Name="Etat du bloc hydraulique" Ref="1" FirstByte="3" BitOffset="3"/>
+<DataItem Name="Etat du circuit de frein" Ref="1" FirstByte="3" BitOffset="2"/>
+</Received>
+</Request>
+<Request Name="Read - Speeds">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2104</SentBytes>
+</Sent>
+<Received MinBytes="12">
+<DataItem Name="Vitesse roue arrière droite" Ref="1" FirstByte="9"/>
+<DataItem Name="Vitesse roue arrière gauche" Ref="1" FirstByte="7"/>
+<DataItem Name="Vitesse roue avant droite" Ref="1" FirstByte="5"/>
+<DataItem Name="Vitesse roue avant gauche" Ref="1" FirstByte="3"/>
+<DataItem Name="Vitesse véhicule" Ref="1" FirstByte="11"/>
+</Received>
+</Request>
+<Request Name="Read - Odometer">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2105</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<DataItem Name="Circonférence pneu" Ref="1" FirstByte="3"/>
+<DataItem Name="Circonférence pneu maximum" Ref="1" FirstByte="7"/>
+<DataItem Name="Circonférence pneu minimum" Ref="1" FirstByte="5"/>
+<DataItem Name="Dimension du pneumatique" FirstByte="9"/>
+<DataItem Name="Odomètre" Ref="1" FirstByte="10"/>
+</Received>
+</Request>
+<Request Name="Read - SystemStatus">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2106</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Alimentation" Ref="1" FirstByte="3"/>
+<DataItem Name="Etat ABS et REF" Ref="1" FirstByte="4" BitOffset="2"/>
+<DataItem Name="Etat de la pédale de frein" Ref="1" FirstByte="4"/>
+<DataItem Name="Etat du bouton ESP" Ref="1" FirstByte="4" BitOffset="7"/>
+<DataItem Name="Etat ESP" Ref="1" FirstByte="4" BitOffset="6"/>
+<DataItem Name="Etat MSR" Ref="1" FirstByte="4" BitOffset="5"/>
+</Received>
+</Request>
+<Request Name="Read - ESPReconnectionThreshold (ESP only)">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2108</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Seuil de reconnexion automatique de l'ESP" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Read - VehicleDynamicFrame (ESP only)">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2107</SentBytes>
+</Sent>
+<Received MinBytes="9">
+<DataItem Name="Accélération longitudinale" Ref="1" FirstByte="5"/>
+<DataItem Name="Accélération transversale" Ref="1" FirstByte="6"/>
+<DataItem Name="Angle volant" Ref="1" FirstByte="3"/>
+<DataItem Name="Vitesse de lacet" Ref="1" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="Read - BLAEnable (ESP only)">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2109</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Autorisation allumage feux stop" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Read - CANVehicleSpeedInitialisationValue">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>210D</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Valeur de la vitesse CAN à l'initialisation" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Read - SystemIdentification">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="Algorithme Serveur BB-Number" Ref="1" FirstByte="17"/>
+<DataItem Name="Algorithme Serveur Version Number" Ref="1" FirstByte="19"/>
+<DataItem Name="Algorithme Serveur Version Number 2" Ref="1" FirstByte="20"/>
+<DataItem Name="Algorithme Serveur Version Number 3et4" Ref="1" FirstByte="21"/>
+<DataItem Name="Année de production du bloc" Ref="1" FirstByte="13"/>
+<DataItem Name="Code constructeur" Ref="1" FirstByte="26"/>
+<DataItem Name="Code ITG" Ref="1" FirstByte="9"/>
+<DataItem Name="Code MPR" Ref="1" FirstByte="3"/>
+<DataItem Name="Compteur" Ref="1" FirstByte="15" BitOffset="3"/>
+<DataItem Name="Identificateur de diagnostic" Ref="1" FirstByte="8"/>
+<DataItem Name="Jour de production du bloc" Ref="1" FirstByte="15"/>
+<DataItem Name="Numéro de la ligne de production du bloc" Ref="1" FirstByte="14" BitOffset="3"/>
+<DataItem Name="Numéro de l'équipe de production du bloc" Ref="1" FirstByte="14" BitOffset="6"/>
+<DataItem Name="Numéro de l'usine de production du bloc" Ref="1" FirstByte="14"/>
+<DataItem Name="Numéro du bloc  : 0 265" Ref="1" FirstByte="23"/>
+<DataItem Name="Semaine de production du bloc" Ref="1" FirstByte="12"/>
+<DataItem Name="Système Serveur" Ref="1" FirstByte="22"/>
+</Received>
+</Request>
+<Request Name="Read - VIN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<DataItem Name="Code VIN" Ref="1" FirstByte="3"/>
+<DataItem Name="CRC" Ref="1" FirstByte="20"/>
+</Received>
+</Request>
+<Request Name="Read - AfterSalesDate">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21B0</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="Année" Ref="1" FirstByte="3"/>
+<DataItem Name="Jour" Ref="1" FirstByte="5"/>
+<DataItem Name="Mois" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="IO Control - ValvesAndPump">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300100FFFFFA01F41601F401F4</SentBytes>
+<DataItem Name="Activation de la pompe" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Admission arrière droite" FirstByte="4" BitOffset="1"/>
+<DataItem Name="Admission arrière gauche" FirstByte="4" BitOffset="3"/>
+<DataItem Name="Admission avant droite" FirstByte="4" BitOffset="5"/>
+<DataItem Name="Admission avant gauche" FirstByte="4" BitOffset="7"/>
+<DataItem Name="Choix du temps d'activation EV/Pompe" FirstByte="6"/>
+<DataItem Name="Echappement arrière droite" FirstByte="4"/>
+<DataItem Name="Echappement arrière gauche" FirstByte="4" BitOffset="2"/>
+<DataItem Name="Echappement avant droite" FirstByte="4" BitOffset="4"/>
+<DataItem Name="Echappement avant gauche" FirstByte="4" BitOffset="6"/>
+<DataItem Name="Valve Hsv1" FirstByte="5" BitOffset="6"/>
+<DataItem Name="Valve Hsv2" FirstByte="5" BitOffset="7"/>
+<DataItem Name="Valve Usv1" FirstByte="5" BitOffset="4"/>
+<DataItem Name="Valve Usv2" FirstByte="5" BitOffset="5"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat du processus d'activation" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - ValvesAndPump Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300101FFFF0501F41601F401F4</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat du processus d'activation" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - VSOonWire">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300200FA</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat du processus d'activation" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - VSOonWire Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300201FA</SentBytes>
+<DataItem Name="Choix du processus d'activation" FirstByte="3"/>
+<DataItem Name="Choix du temps d'activation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat du processus d'activation" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - HazardWarningRequest">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300300FA</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat du processus d'activation" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - HazardWarningRequest Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300301FA</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat du processus d'activation" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - WheelSpeedOutput">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300400FA</SentBytes>
+<DataItem Name="Choix du temps d'activation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat du processus d'activation" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - WheelSpeedOutput Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>30040105</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat du processus d'activation" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - BLAOutput">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>300500FA</SentBytes>
+<DataItem Name="Choix du temps d'activation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat du processus d'activation" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="IO Control - BLAOutput Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>30050105</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat du processus d'activation" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting_FL Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010001</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Nom de la roue choisie" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting_FR Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010002</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Nom de la roue choisie" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting_RL Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010003</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Nom de la roue choisie" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting_RR Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31010004</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Nom de la roue choisie" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>31010101</SentBytes>
+<DataItem Name="Choix de la roue" FirstByte="4"/>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Nom de la roue choisie" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>310200</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Nombre de dents" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting Stop Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>310201</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Nombre de dents" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - HydraulicCircuitTest_FL Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31030001</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Nom de la roue choisie" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - HydraulicCircuitTest_FR Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31030002</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Nom de la roue choisie" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - HydraulicCircuitTest_RL Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31030003</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Nom de la roue choisie" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - HydraulicCircuitTest_RR Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31030004</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Nom de la roue choisie" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - HydraulicCircuitTest Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>31030101</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Nom de la roue choisie" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - EvacAndFillProcedure Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3104005A</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Routine - EvacAndFillProcedure Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3104010A</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Routine - BleedingProcedure Part1 Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3105000100</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Phase de la purge après-vente" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - BleedingProcedure Part2 Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3105000200</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Phase de la purge après-vente" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - BleedingProcedure Part3 Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3105000304</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Phase de la purge après-vente" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - BleedingProcedure Part4 Start">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3105000404</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Phase de la purge après-vente" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - BleedingProcedure Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3105010100</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<DataItem Name="Etat de la routine" FirstByte="3"/>
+<DataItem Name="Phase de la purge après-vente" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Routine - PolesCounting Emergency Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>320180</SentBytes>
+<DataItem Name="Choix du type d'arrêt" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat de l'arrêt de la routine" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Routine - HydraulicCircuitTest Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>320380</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat de l'arrêt de la routine" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Routine - EvacAndFillProcedure Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>320480</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat de l'arrêt de la routine" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Routine - BleedingProcedure Stop">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>320580</SentBytes>
+<DataItem Name="Choix du type d'arrêt" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<DataItem Name="Etat de l'arrêt de la routine" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Write - VehicleConfiguration">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B0105</SentBytes>
+<DataItem Name="Configuration Véhicule" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Write - TachyIndex">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B0218</SentBytes>
+<DataItem Name="Dimension du pneumatique" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Write - FillingProcessByte">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B0300</SentBytes>
+<DataItem Name="ProcessByte Remplissage" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Read - SensorOffsets (ESP only)">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>210A</SentBytes>
+</Sent>
+<Received MinBytes="8">
+<DataItem Name="Offset vitesse de lacet (vGi)" Ref="1" FirstByte="7"/>
+<DataItem Name="Offset accélération transversale (Ay)" Ref="1" FirstByte="5"/>
+<DataItem Name="Offset SWA" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Write - ESPReconnectionThreshold (ESP only)">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B080000</SentBytes>
+<DataItem Name="Seuil de reconnexion automatique de l'ESP" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Write - BLAEnable (ESP only)">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B0900</SentBytes>
+<DataItem Name="Autorisation allumage feux stop" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Write - ClearSensorOffsets (ESP only)">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B0A000000000000</SentBytes>
+</Sent>
+<Received MinBytes="2">
+</Received>
+</Request>
+<Request Name="Write - VIN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="Code VIN" FirstByte="3"/>
+<DataItem Name="CRC" FirstByte="20"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Write - AfterSalesDate">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3BB0010101</SentBytes>
+<DataItem Name="Année" FirstByte="3"/>
+<DataItem Name="Jour" FirstByte="5"/>
+<DataItem Name="Mois" FirstByte="4"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="TesterPresent">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3E02</SentBytes>
+<DataItem Name="Choix du type de réponse" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Write - CANVehicleSpeedInitialisationValue">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>3B0DFF</SentBytes>
+<DataItem Name="Valeur de la vitesse CAN à l'initialisation" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Read - FreezeFrame">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>1200040000</SentBytes>
+<DataItem Name="FFN" FirstByte="2"/>
+<DataItem Name="FirstDTC" FirstByte="4"/>
+</Sent>
+<Received MinBytes="16">
+<DataItem Name="Angle volant (Min-720/Max720) (Freeze)" FirstByte="11"/>
+<DataItem Name="DTC Number" FirstByte="15"/>
+<DataItem Name="Etat ABS (Freeze)" FirstByte="8"/>
+<DataItem Name="Etat de la pédale de frein (Freeze)" FirstByte="8" BitOffset="6"/>
+<DataItem Name="Etat REF (Freeze)" FirstByte="8" BitOffset="1"/>
+<DataItem Name="Vitesse roue arrière droite (Freeze)" FirstByte="7"/>
+<DataItem Name="Vitesse roue arrière gauche (Freeze)" FirstByte="6"/>
+<DataItem Name="Vitesse roue avant droite (Freeze)" FirstByte="5"/>
+<DataItem Name="Vitesse roue avant gauche (Freeze)" FirstByte="4"/>
+<DataItem Name="DiagMuxOn (Freeze)" FirstByte="13" BitOffset="3"/>
+<DataItem Name="Etat MSR (Freeze)" FirstByte="8" BitOffset="2"/>
+<DataItem Name="Etat ASR (Freeze)" FirstByte="8" BitOffset="3"/>
+<DataItem Name="Etat ESP (Freeze)" FirstByte="8" BitOffset="4"/>
+<DataItem Name="Etat de la sortie feux stop (Freeze)" FirstByte="8" BitOffset="5"/>
+<DataItem Name="Temps depuis IgnOn (Freeze)" FirstByte="9"/>
+<DataItem Name="Offset angle volant (Freeze)" FirstByte="12"/>
+<DataItem Name="Valeurs invalides ECM_TC (Freeze)" FirstByte="13" BitOffset="2"/>
+<DataItem Name="Parametre TorqueStatus (Freeze)" FirstByte="13" BitOffset="1"/>
+<DataItem Name="Alimentation (Freeze)" FirstByte="13" BitOffset="4"/>
+<DataItem Name="Etat du bouton ESP (Freeze)" FirstByte="8" BitOffset="7"/>
+<DataItem Name="Trame ECM_TC (Freeze)" FirstByte="13"/>
+</Received>
+</Request>
+<Request Name="Start Diagnostic Session">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="Session Name" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Read - ECUTraceability">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<DataItem Name="Traçabilité - ABS/ESP" Ref="1" FirstByte="3"/>
+<DataItem Name="Traçabilité - Année de production du bloc" Ref="1" FirstByte="6"/>
+<DataItem Name="Traçabilité - Semaine de production du bloc" Ref="1" FirstByte="8"/>
+<DataItem Name="Traçabilité - Jour de la semaine" Ref="1" FirstByte="10"/>
+<DataItem Name="Traçabilité - Usine de production du bloc" Ref="1" FirstByte="11"/>
+<DataItem Name="Traçabilité - Ligne de production du bloc" Ref="1" FirstByte="12"/>
+<DataItem Name="Traçabilité - Compteur" Ref="1" FirstByte="14"/>
+<DataItem Name="Traçabilité - libre" Ref="1" FirstByte="18"/>
+<DataItem Name="Traçabilité - Equipe" Ref="1" FirstByte="13"/>
+</Received>
+</Request>
+<Request Name="Read - PartIdNumberFor Plant">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>210B</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<DataItem Name="Référence usine" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Alimentation calculateur" DTC="20684" FreezeFrame="Read - FreezeFrame">
+<DeviceData Name="Alimentation" FailureFlag="0"/>
+
+</Device>
+<Device Name="Boite de vitesse automatique" DTC="20872" Type="4" FreezeFrame="Read - FreezeFrame">
+
+
+</Device>
+<Device Name="Bouton ESP" DTC="20681" FreezeFrame="Read - FreezeFrame">
+<DeviceData Name="Etat du bouton ESP" FailureFlag="0"/>
+
+</Device>
+<Device Name="Calculateur" DTC="20675" Type="2" FreezeFrame="Read - FreezeFrame">
+<DeviceData Name="Année" FailureFlag="0"/><DeviceData Name="Dimension du pneumatique" FailureFlag="0"/><DeviceData Name="Etat ABS et REF" FailureFlag="0"/><DeviceData Name="Etat ESP" FailureFlag="0"/><DeviceData Name="Etat MSR" FailureFlag="0"/><DeviceData Name="Jour" FailureFlag="0"/><DeviceData Name="Mois" FailureFlag="0"/><DeviceData Name="Algorithme Serveur BB-Number" FailureFlag="0"/><DeviceData Name="Algorithme Serveur Version Number" FailureFlag="0"/><DeviceData Name="Algorithme Serveur Version Number 2" FailureFlag="0"/><DeviceData Name="Algorithme Serveur Version Number 3et4" FailureFlag="0"/><DeviceData Name="Année de production du bloc" FailureFlag="0"/><DeviceData Name="Code constructeur" FailureFlag="0"/><DeviceData Name="Code ITG" FailureFlag="0"/><DeviceData Name="Code MPR" FailureFlag="0"/><DeviceData Name="Compteur" FailureFlag="0"/><DeviceData Name="Identificateur de diagnostic" FailureFlag="0"/><DeviceData Name="Jour de production du bloc" FailureFlag="0"/><DeviceData Name="Numéro de la ligne de production du bloc" FailureFlag="0"/><DeviceData Name="Seuil de reconnexion automatique de l'ESP" FailureFlag="0"/><DeviceData Name="Configuration Véhicule" FailureFlag="0"/><DeviceData Name="Numéro de l'équipe de production du bloc" FailureFlag="0"/><DeviceData Name="Numéro de l'usine de production du bloc" FailureFlag="0"/><DeviceData Name="Numéro du bloc  : 0 265" FailureFlag="0"/><DeviceData Name="Semaine de production du bloc" FailureFlag="0"/><DeviceData Name="Système Serveur" FailureFlag="0"/>
+
+</Device>
+<Device Name="Capteur vitesse roue ArD" DTC="20527" FreezeFrame="Read - FreezeFrame">
+
+
+</Device>
+<Device Name="Capteur vitesse roue ArG" DTC="20543" FreezeFrame="Read - FreezeFrame">
+
+
+</Device>
+<Device Name="Capteur vitesse roue AvD" DTC="20495" FreezeFrame="Read - FreezeFrame">
+
+
+</Device>
+<Device Name="Capteur vitesse roue AvG" DTC="20511" FreezeFrame="Read - FreezeFrame">
+
+
+</Device>
+<Device Name="Cible magnétique multipoles roue ArD" DTC="20547" FreezeFrame="Read - FreezeFrame">
+
+
+</Device>
+<Device Name="Cible magnétique multipoles roue ArG" DTC="20548" FreezeFrame="Read - FreezeFrame">
+
+
+</Device>
+<Device Name="Cible magnétique multipoles roue AvD" DTC="20545" FreezeFrame="Read - FreezeFrame">
+
+
+</Device>
+<Device Name="Cible magnétique multipoles roue AvG" DTC="20546" FreezeFrame="Read - FreezeFrame">
+
+
+</Device>
+<Device Name="Contacteur pédale de frein" DTC="20678" FreezeFrame="Read - FreezeFrame">
+<DeviceData Name="Etat de la pédale de frein" FailureFlag="0"/>
+
+</Device>
+<Device Name="Contrôle moteur" DTC="20864" Type="4" FreezeFrame="Read - FreezeFrame">
+
+
+</Device>
+<Device Name="Défaut général capteurs vitesses roues" DTC="20550" FreezeFrame="Read - FreezeFrame">
+<DeviceData Name="Vitesse roue arrière droite" FailureFlag="0"/><DeviceData Name="Vitesse roue arrière gauche" FailureFlag="0"/><DeviceData Name="Vitesse roue avant droite" FailureFlag="0"/><DeviceData Name="Vitesse roue avant gauche" FailureFlag="0"/><DeviceData Name="Vitesse véhicule" FailureFlag="0"/>
+
+</Device>
+<Device Name="Direction assistée électrique" DTC="20824" Type="4" FreezeFrame="Read - FreezeFrame">
+<DeviceData Name="Angle volant" FailureFlag="0"/>
+
+</Device>
+<Device Name="Gyromètre &amp; accéléromètre" DTC="20724" FreezeFrame="Read - FreezeFrame">
+<DeviceData Name="Accélération longitudinale" FailureFlag="0"/><DeviceData Name="Accélération transversale" FailureFlag="0"/><DeviceData Name="Vitesse de lacet" FailureFlag="0"/>
+
+</Device>
+<Device Name="Réseau CAN" DTC="20710" Type="4" FreezeFrame="Read - FreezeFrame">
+
+
+</Device>
+<Device Name="Sortie relai feux stop" DTC="20686" Type="3" FreezeFrame="Read - FreezeFrame">
+<DeviceData Name="Autorisation allumage feux stop" FailureFlag="0"/>
+
+</Device>
+<Device Name="Tableau de bord" DTC="20866" Type="4" FreezeFrame="Read - FreezeFrame">
+
+
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Ecrans Usine + Après vente">
+
+<Screen Name="IO - Allumage des warning" Color="16777215" WindowState="0" Width="9540" Height="4620">
+
+<Label Text="Allumage des warning" Color="16777215" Alignment="2">
+<Rectangle Left="480" Top="360" Height="480" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Etat d'avancement de l'activation" Color="14671839" Alignment="2">
+<Rectangle Left="150" Top="2520" Height="1365" Width="5415"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Lancement de l'activation" Color="14671839" Alignment="2">
+<Rectangle Left="150" Top="1095" Height="1320" Width="5400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Etat du processus d'activation" Color="14671839" Alignment="2">
+<Rectangle Left="330" Top="2940" Height="315" Width="2760"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Description du Test" Color="14671839" Alignment="2">
+<Rectangle Left="5670" Top="1104" Height="651" Width="3600"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Pour un bon fonctionnement, mettre en mode rebouclé." Color="14671839" Alignment="2">
+<Rectangle Left="5670" Top="2640" Height="1260" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="L'activation déclenche l'allumage des warning durant 20s (sous réserve d'un fonctionnement nominal de l'UCH). " Color="14671839" Alignment="2">
+<Rectangle Left="5670" Top="1755" Height="900" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Lancer l'activation">
+<Rectangle Left="450" Top="1620" Height="480" Width="4920"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="IO Control - HazardWarningRequest"/>
+</Button>
+
+<Display Width="15" Color="14671839" DataName="Etat du processus d'activation" RequestName="IO Control - HazardWarningRequest Status">
+<Rectangle Left="390" Top="3240" Height="360" Width="4920"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="IO - Vitesse véhicule filaire" Color="16777215" WindowState="0" Width="8610" Height="6330">
+
+<Label Text="activé durant cette routine." Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="5640" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Attention : La tachymètrie n’est pas" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="5280" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Description du Test" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="3120" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Etat d'avancement de l'activation" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="2040" Height="840" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="frequentiel (F=100Hz soit environ 70Km/h)" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="4200" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="génération d'un signal (durée 20s)" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="3840" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="L'activation déclenche la" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="3480" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Lancement de l'activation" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="720" Height="1200" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Pour un bon fonctionnement mettre en mode rebouclé" Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="4920" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Sortie vitesse véhicule filaire" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="sur la sortie filaire Vitesse véhicule." Color="14671839" Alignment="2">
+<Rectangle Left="600" Top="4560" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Lancer l'activation">
+<Rectangle Left="240" Top="1200" Height="420" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="IO Control - VSOonWire"/>
+</Button>
+
+<Display Width="3440" Color="14671839" DataName="Etat du processus d'activation" RequestName="IO Control - VSOonWire Status">
+<Rectangle Left="240" Top="2400" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture - Identification système" Color="16777215" WindowState="0" Width="9090" Height="7530">
+
+<Label Text="Global" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="720" Height="1920" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Hardware" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="4080" Height="3240" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Identification système" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Software" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="2760" Height="1200" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+
+
+<Display Width="4100" Color="14671839" DataName="Code MPR" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="1080" Height="300" Width="8155"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4100" Color="14671839" DataName="Identificateur de diagnostic" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="1440" Height="300" Width="8155"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4100" Color="14671839" DataName="Code ITG" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="1800" Height="300" Width="8155"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4100" Color="14671839" DataName="Code constructeur" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="2160" Height="300" Width="8155"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3005" Color="14671839" DataName="Algorithme Serveur BB-Number" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="3120" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="2990" Color="14671839" DataName="Système Serveur" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="3480" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4100" Color="14671839" DataName="Numéro du bloc  : 0 265" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="4440" Height="300" Width="8155"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4100" Color="14671839" DataName="Numéro de l'usine de production du bloc" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="4800" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4100" Color="14671839" DataName="Numéro de la ligne de production du bloc" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="5160" Height="300" Width="8155"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4100" Color="14671839" DataName="Numéro de l'équipe de production du bloc" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="5520" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4100" Color="14671839" DataName="Année de production du bloc" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="5880" Height="300" Width="8155"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4100" Color="14671839" DataName="Semaine de production du bloc" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="6240" Height="300" Width="8155"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4100" Color="14671839" DataName="Jour de production du bloc" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="6600" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4100" Color="14671839" DataName="Compteur" RequestName="Read - SystemIdentification">
+<Rectangle Left="480" Top="6960" Height="300" Width="8155"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Algorithme Serveur Version Number" RequestName="Read - SystemIdentification">
+<Rectangle Left="4800" Top="3120" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="14671839" DataName="Algorithme Serveur Version Number 2" RequestName="Read - SystemIdentification">
+<Rectangle Left="6120" Top="3120" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Algorithme Serveur Version Number 3et4" RequestName="Read - SystemIdentification">
+<Rectangle Left="7560" Top="3120" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture - Informations globales" Color="16777215" WindowState="0" Width="10770" Height="8490">
+
+<Label Text="Etat du calculateur" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="1920" Height="2640" Width="10320"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Software" Color="14671839" Alignment="2">
+<Rectangle Left="1080" Top="600" Height="1200" Width="8520"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Vitesses Roues" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="4680" Height="1560" Width="10320"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Capteurs ESP" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="6360" Height="1920" Width="10320"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Lecture des informations globales" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="120" Height="480" Width="10440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+
+
+<Display Width="3260" Color="14671839" DataName="Etat ABS et REF" RequestName="Read - SystemStatus">
+<Rectangle Left="480" Top="2640" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="14671839" DataName="Etat MSR" RequestName="Read - SystemStatus">
+<Rectangle Left="480" Top="3000" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="14671839" DataName="Etat ESP" RequestName="Read - SystemStatus">
+<Rectangle Left="480" Top="3360" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="14671839" DataName="Etat du bouton ESP" RequestName="Read - SystemStatus">
+<Rectangle Left="480" Top="3720" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3260" Color="14671839" DataName="Etat de la pédale de frein" RequestName="Read - SystemStatus">
+<Rectangle Left="480" Top="4080" Height="300" Width="9840"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3245" Color="14671839" DataName="Vitesse roue avant gauche" RequestName="Read - Speeds">
+<Rectangle Left="480" Top="5040" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/><Threshold Value=" 0" Color="16777215"/><Threshold Value=" 655.35" Color="255"/></Display>
+<Display Width="3245" Color="14671839" DataName="Vitesse roue arrière gauche" RequestName="Read - Speeds">
+<Rectangle Left="480" Top="5400" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/><Threshold Value=" 0" Color="16777215"/><Threshold Value=" 655.35" Color="255"/></Display>
+<Display Width="3245" Color="14671839" DataName="Odomètre" RequestName="Read - Odometer">
+<Rectangle Left="480" Top="5760" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5675" Color="14671839" DataName="Accélération transversale" RequestName="Read - VehicleDynamicFrame (ESP only)">
+<Rectangle Left="480" Top="6720" Height="300" Width="9960"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5675" Color="14671839" DataName="Accélération longitudinale" RequestName="Read - VehicleDynamicFrame (ESP only)">
+<Rectangle Left="480" Top="7080" Height="300" Width="9960"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5675" Color="14671839" DataName="Angle volant" RequestName="Read - VehicleDynamicFrame (ESP only)">
+<Rectangle Left="480" Top="7440" Height="300" Width="9960"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="5675" Color="14671839" DataName="Vitesse de lacet" RequestName="Read - VehicleDynamicFrame (ESP only)">
+<Rectangle Left="480" Top="7800" Height="300" Width="9960"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3005" Color="14671839" DataName="Algorithme Serveur BB-Number" RequestName="Read - SystemIdentification">
+<Rectangle Left="1320" Top="960" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3005" Color="14671839" DataName="Système Serveur" RequestName="Read - SystemIdentification">
+<Rectangle Left="1320" Top="1320" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3245" Color="14671839" DataName="Vitesse roue avant droite" RequestName="Read - Speeds">
+<Rectangle Left="5520" Top="5040" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/><Threshold Value=" 0" Color="16777215"/><Threshold Value=" 655.35" Color="255"/></Display>
+<Display Width="3245" Color="14671839" DataName="Vitesse roue arrière droite" RequestName="Read - Speeds">
+<Rectangle Left="5520" Top="5400" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/><Threshold Value=" 0" Color="16777215"/><Threshold Value=" 655.35" Color="255"/></Display>
+<Display Width="3245" Color="14671839" DataName="Vitesse véhicule" RequestName="Read - Speeds">
+<Rectangle Left="5520" Top="5760" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/><Threshold Value=" 0" Color="16777215"/><Threshold Value=" 655.35" Color="255"/></Display>
+<Display Width="0" Color="14671839" DataName="Algorithme Serveur Version Number" RequestName="Read - SystemIdentification">
+<Rectangle Left="5640" Top="960" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="2165" Color="14671839" DataName="Alimentation" RequestName="Read - SystemStatus">
+<Rectangle Left="6480" Top="2280" Height="300" Width="3840"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="14671839" DataName="Algorithme Serveur Version Number 2" RequestName="Read - SystemIdentification">
+<Rectangle Left="6960" Top="960" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Algorithme Serveur Version Number 3et4" RequestName="Read - SystemIdentification">
+<Rectangle Left="8400" Top="960" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture - Resumé du paramètrage" Color="16777215" WindowState="0" Width="10620" Height="4860">
+
+<Label Text="Résumé du paramètrage ESP" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="10440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Software" Color="14671839" Alignment="2">
+<Rectangle Left="1200" Top="720" Height="1200" Width="8520"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Variante véhicule" Color="14671839" Alignment="2">
+<Rectangle Left="360" Top="2640" Height="240" Width="1560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="986895"/></Label>
+<Label Text="Paramètrage" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="2280" Height="2400" Width="10320"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+
+
+<Display Width="4805" Color="14671839" DataName="Dimension du pneumatique" RequestName="Read - TachyIndex">
+<Rectangle Left="360" Top="3480" Height="300" Width="9960"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/><Threshold Value=" 0" Color="14671839"/><Threshold Value=" 255" Color="255"/></Display>
+<Display Width="4805" Color="14671839" DataName="Seuil de reconnexion automatique de l'ESP" RequestName="Read - ESPReconnectionThreshold (ESP only)">
+<Rectangle Left="360" Top="3840" Height="300" Width="9960"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/><Threshold Value=" 65500" Color="255"/></Display>
+<Display Width="0" Color="14671839" DataName="Configuration Véhicule" RequestName="Read - VehicleConfiguration">
+<Rectangle Left="360" Top="2880" Height="330" Width="9960"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4805" Color="14671839" DataName="Autorisation allumage feux stop" RequestName="Read - BLAEnable (ESP only)">
+<Rectangle Left="360" Top="4200" Height="300" Width="9960"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/><Threshold Value=" 3" Color="255"/></Display>
+<Display Width="3005" Color="14671839" DataName="Algorithme Serveur BB-Number" RequestName="Read - SystemIdentification">
+<Rectangle Left="1320" Top="1080" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3005" Color="14671839" DataName="Système Serveur" RequestName="Read - SystemIdentification">
+<Rectangle Left="1320" Top="1440" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Algorithme Serveur Version Number" RequestName="Read - SystemIdentification">
+<Rectangle Left="5640" Top="1080" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="14671839" DataName="Algorithme Serveur Version Number 2" RequestName="Read - SystemIdentification">
+<Rectangle Left="6960" Top="1080" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="14671839" DataName="Algorithme Serveur Version Number 3et4" RequestName="Read - SystemIdentification">
+<Rectangle Left="8400" Top="1080" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture Ecriture - Code VIN et date après vente" Color="16777215" WindowState="0" Width="9330" Height="7260">
+
+<Label Text="Code VIN et date d'intervention après vente" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="9000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Ecriture code VIN" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="4080" Height="2880" Width="9000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Ecriture Date" Color="14671839" Alignment="2">
+<Rectangle Left="4680" Top="720" Height="1920" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Lecture code VIN" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="2760" Height="1200" Width="9000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Lecture Date" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="720" Height="1920" Width="4440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Pour l écriture du VIN, utiliser la page  DDT2000 qui calcule automatiquement le CRC" Color="255" Alignment="2">
+<Rectangle Left="360" Top="4560" Height="1080" Width="8520"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text="LIEN: page de Garde DDT2000 ----&gt; PLAYER ----&gt;IDENT+INFO---&gt; VIN" Color="8421631" Alignment="2">
+<Rectangle Left="360" Top="5760" Height="1080" Width="8520"/>
+<Font Name="MS Sans Serif" Size=" 18" Bold="0" Italic="0" Color="16777215"/></Label>
+
+<Button Text="Ecriture Date">
+<Rectangle Left="4920" Top="2160" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write - AfterSalesDate"/>
+</Button>
+
+<Display Width="2000" Color="14671839" DataName="Code VIN" RequestName="Read - VIN">
+<Rectangle Left="240" Top="3120" Height="300" Width="8680"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="14671839" DataName="Jour" RequestName="Read - AfterSalesDate">
+<Rectangle Left="360" Top="1080" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="14671839" DataName="Mois" RequestName="Read - AfterSalesDate">
+<Rectangle Left="360" Top="1560" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="14671839" DataName="Année" RequestName="Read - AfterSalesDate">
+<Rectangle Left="360" Top="2040" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Input Width="2000" Color="14671839" DataName="Jour" RequestName="Write - AfterSalesDate">
+<Rectangle Left="4920" Top="1080" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="14671839" DataName="Mois" RequestName="Write - AfterSalesDate">
+<Rectangle Left="4920" Top="1440" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="14671839" DataName="Année" RequestName="Write - AfterSalesDate">
+<Rectangle Left="4920" Top="1800" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Display Width="2000" Color="14671839" DataName="CRC" RequestName="Read - VIN">
+<Rectangle Left="4920" Top="3480" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture Ecriture - Information pneumatique" Color="16777215" WindowState="0" Width="9450" Height="5490">
+
+<Label Text="Attention :" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="4320" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Ecriture d'un nouveau pneumatique" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="3000" Height="1189" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Informations des pneumatiques" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="120" Height="480" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Lecture des informations des pneumatiques" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="600" Height="2280" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Les informations circonférence des pneumatiques" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="4560" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="ne sont mises à jour qu'après" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="4800" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="une sortie du mode diagnostic" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="5040" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+
+<Button Text="Lancement de l'écriture">
+<Rectangle Left="480" Top="3720" Height="382" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write - TachyIndex"/>
+</Button>
+
+<Display Width="3425" Color="14671839" DataName="Circonférence pneu" RequestName="Read - Odometer">
+<Rectangle Left="480" Top="960" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="14671839" DataName="Circonférence pneu minimum" RequestName="Read - Odometer">
+<Rectangle Left="480" Top="1320" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="14671839" DataName="Circonférence pneu maximum" RequestName="Read - Odometer">
+<Rectangle Left="480" Top="1680" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="14671839" DataName="Odomètre" RequestName="Read - Odometer">
+<Rectangle Left="480" Top="2040" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3425" Color="14671839" DataName="Dimension du pneumatique" RequestName="Read - Odometer">
+<Rectangle Left="480" Top="2400" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/><Threshold Value=" 0" Color="14671839"/><Threshold Value=" 255" Color="255"/></Display>
+<Input Width="3425" Color="14671839" DataName="Dimension du pneumatique" RequestName="Write - TachyIndex">
+<Rectangle Left="480" Top="3360" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Lecture Ecriture - Paramètres ESP" Color="16777215" WindowState="0" Width="10290" Height="6930">
+
+<Label Text="Attention :" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="5880" Height="240" Width="10080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Ecriture des paramètres" Color="14671839" Alignment="2">
+<Rectangle Left="225" Top="2640" Height="3120" Width="9840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Lecture des paramètres" Color="14671839" Alignment="2">
+<Rectangle Left="225" Top="480" Height="2040" Width="9840"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Les informations modifiées" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="6120" Height="240" Width="10080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="ne sont mise à jour qu'après" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="6360" Height="240" Width="10080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="une sortie du mode diagnostic" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="6600" Height="240" Width="10080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Variante véhicule" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="720" Height="240" Width="1680"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="986895"/></Label>
+<Label Text="Variante véhicule" Color="14671839" Alignment="2">
+<Rectangle Left="360" Top="2880" Height="240" Width="1560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="986895"/></Label>
+<Label Text="Lecture Ecriture des paramètres ESP" Color="16777215" Alignment="2">
+<Rectangle Left="2145" Top="120" Height="240" Width="6000"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+
+<Button Text="Ecriture de la fonction allumage auto feux stop">
+<Rectangle Left="600" Top="5280" Height="300" Width="9039"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write - BLAEnable (ESP only)"/>
+</Button>
+<Button Text="Ecriture de la variante véhicule">
+<Rectangle Left="561" Top="3600" Height="300" Width="9039"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write - VehicleConfiguration"/>
+</Button>
+<Button Text="Ecriture du seuil de reconnexion automatique">
+<Rectangle Left="600" Top="4440" Height="300" Width="9039"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write - ESPReconnectionThreshold (ESP only)"/>
+</Button>
+
+<Display Width="0" Color="14671839" DataName="Configuration Véhicule" RequestName="Read - VehicleConfiguration">
+<Rectangle Left="360" Top="1080" Height="300" Width="9600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/><Threshold Value=" 0" Color="255"/><Threshold Value=" 1" Color="14671839"/></Display>
+<Display Width="4625" Color="14671839" DataName="Seuil de reconnexion automatique de l'ESP" RequestName="Read - ESPReconnectionThreshold (ESP only)">
+<Rectangle Left="720" Top="1560" Height="300" Width="8880"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/><Threshold Value=" 65500" Color="255"/></Display>
+<Display Width="4790" Color="14671839" DataName="Autorisation allumage feux stop" RequestName="Read - BLAEnable (ESP only)">
+<Rectangle Left="561" Top="2040" Height="300" Width="9039"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/><Threshold Value=" 3" Color="255"/></Display>
+<Input Width="4475" Color="14671839" DataName="Seuil de reconnexion automatique de l'ESP" RequestName="Write - ESPReconnectionThreshold (ESP only)">
+<Rectangle Left="561" Top="4080" Height="300" Width="9039"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="14671839" DataName="Configuration Véhicule" RequestName="Write - VehicleConfiguration">
+<Rectangle Left="360" Top="3240" Height="300" Width="9600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="4790" Color="14671839" DataName="Autorisation allumage feux stop" RequestName="Write - BLAEnable (ESP only)">
+<Rectangle Left="600" Top="4920" Height="300" Width="9000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Lecture Ecriture - ProcessByte" Color="16777215" WindowState="0" Width="9090" Height="5250">
+
+<Label Text="Ecriture du ProcessByte" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="3000" Height="1440" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Informations sur le processus de remplissage" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="interdite aux personnes non autorisées" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="4800" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="La modification du ProcessByte est" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="4560" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Lecture du ProcessByte" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="600" Height="2280" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+
+<Button Text="Ecriture du ProcessByte">
+<Rectangle Left="240" Top="3840" Height="420" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write - FillingProcessByte"/>
+</Button>
+
+<Display Width="3080" Color="14671839" DataName="Etat du circuit de frein" RequestName="Read - FillingProcessByte">
+<Rectangle Left="240" Top="960" Height="300" Width="8520"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="14671839" DataName="Autorisation remplissage RF" RequestName="Read - FillingProcessByte">
+<Rectangle Left="240" Top="1320" Height="300" Width="8520"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="14671839" DataName="Etat du bloc hydraulique" RequestName="Read - FillingProcessByte">
+<Rectangle Left="240" Top="1680" Height="300" Width="8520"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="14671839" DataName="Défaut de remplissage" RequestName="Read - FillingProcessByte">
+<Rectangle Left="240" Top="2040" Height="300" Width="8520"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="3080" Color="14671839" DataName="Affectation" RequestName="Read - FillingProcessByte">
+<Rectangle Left="240" Top="2400" Height="300" Width="8520"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Input Width="2990" Color="14671839" DataName="ProcessByte Remplissage" RequestName="Write - FillingProcessByte">
+<Rectangle Left="240" Top="3480" Height="300" Width="8640"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Routine - Comptage des pôles" Color="16777215" WindowState="0" Width="9000" Height="8250">
+
+<Label Text="Arrêt du comptage" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="3960" Height="1320" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Cette routine déclenche le comptage des pôles" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6720" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Choix de la roue" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="600" Height="2400" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="de la roue sélectionnée. Après un tour de roue" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="7080" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Description du Test" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6360" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Etat d'avancement du comptage" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="3120" Height="720" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="le nombre de pôles doit être égal à 96 (+/- 2)." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="7440" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Pour un bon fonctionnement mettre en mode rebouclé" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="7800" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Résultat" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="5400" Height="840" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Routine de comptage des pôles" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+
+<Button Text="Fin du comptage">
+<Rectangle Left="840" Top="4320" Height="420" Width="7200"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - PolesCounting Stop"/>
+</Button>
+<Button Text="Lancement du comptage de la roue ArD">
+<Rectangle Left="840" Top="2400" Height="435" Width="7200"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - PolesCounting_RR Start"/>
+</Button>
+<Button Text="Lancement du comptage de la roue ArG">
+<Rectangle Left="840" Top="1920" Height="435" Width="7200"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - PolesCounting_RL Start"/>
+</Button>
+<Button Text="Lancement du comptage de la roue AvD">
+<Rectangle Left="840" Top="1440" Height="435" Width="7200"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - PolesCounting_FR Start"/>
+</Button>
+<Button Text="Lancement du comptage de la roue AvG">
+<Rectangle Left="840" Top="960" Height="435" Width="7200"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - PolesCounting_FL Start"/>
+</Button>
+
+<Display Width="2000" Color="14671839" DataName="Etat de la routine" RequestName="Routine - PolesCounting Status">
+<Rectangle Left="840" Top="3480" Height="300" Width="7240"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="14671839" DataName="Etat de la routine" RequestName="Routine - PolesCounting Stop">
+<Rectangle Left="840" Top="4800" Height="300" Width="7200"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="14671839" DataName="Nombre de dents" RequestName="Routine - PolesCounting Stop">
+<Rectangle Left="840" Top="5760" Height="300" Width="7200"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/><Threshold Value=" 0" Color="255"/><Threshold Value=" 95" Color="32768"/><Threshold Value=" 97" Color="32768"/><Threshold Value=" 256" Color="255"/></Display>
+</Screen>
+<Screen Name="Routine - Procédure de remplissage usine" Color="16777215" WindowState="0" Width="9000" Height="5850">
+
+<Label Text="Arrêt d'urgence !!!" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="2520" Height="840" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Attention :" Color="16777215" Alignment="2">
+<Rectangle Left="720" Top="5160" Height="240" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="255"/></Label>
+<Label Text="Description du Test" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="3600" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Etat d'avancement du processus" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="1680" Height="720" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Lancement de la procédure" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="720" Height="840" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Lancement de la procedure de" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="3960" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Pour un bon fonctionnement mettre en mode rebouclé" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="4680" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="remplissage usine." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="4320" Height="360" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Routine - Procédure de remplissage usine" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Utilisation d'un bloc sec uniquement!!!" Color="16777215" Alignment="2">
+<Rectangle Left="720" Top="5400" Height="240" Width="7440"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="255"/></Label>
+
+<Button Text="Arrêt d'urgence !!!">
+<Rectangle Left="840" Top="2880" Height="420" Width="7200"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - EvacAndFillProcedure Stop"/>
+</Button>
+<Button Text="Lancement de la procédure">
+<Rectangle Left="840" Top="1080" Height="420" Width="7200"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - EvacAndFillProcedure Start"/>
+</Button>
+
+<Display Width="2000" Color="14671839" DataName="Etat de la routine" RequestName="Routine - EvacAndFillProcedure Status">
+<Rectangle Left="840" Top="2040" Height="300" Width="7200"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Routine - Purge après vente" Color="16777215" WindowState="0" Width="9000" Height="8370">
+
+<Label Text="Arrêt d'urgence !!!" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="3360" Height="1200" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Cette routine permet d'effectuer une" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="4560" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Description du Test" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="4200" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="et pomper sur la pédale de frein à la " Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="5640" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Etat d'avancement du processus" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="2160" Height="1200" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="fréquence de 1 Hz." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6000" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Lancement de la purge après vente" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="480" Height="1560" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Phase 1 : Desserrer la vis de purge ArG." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6360" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Phase 2 : Desserrer la vis de purge AvG." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6720" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Phase 3 : Desserrer la vis de purge AvD." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="7080" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Phase 4 : Desserrer la vis de purge ArD." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="7440" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Pour un bon fonctionnement mettre en mode rebouclé" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="7800" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="purge après vente. Pour cela il faut :" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="4920" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="respecter scrupuleusement l’ordre des phases" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="5280" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Routine de purge apès vente" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="360" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+
+<Button Text="Arrêt d'urgence !!!">
+<Rectangle Left="840" Top="3600" Height="420" Width="7320"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - BleedingProcedure Stop"/>
+</Button>
+<Button Text="Lancement de la procedure phase 1">
+<Rectangle Left="840" Top="1080" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - BleedingProcedure Part1 Start"/>
+</Button>
+<Button Text="Lancement de la procedure phase 2">
+<Rectangle Left="840" Top="1560" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - BleedingProcedure Part2 Start"/>
+</Button>
+<Button Text="Lancement de la procedure phase 3">
+<Rectangle Left="4560" Top="1080" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - BleedingProcedure Part3 Start"/>
+</Button>
+<Button Text="Lancement de la procedure phase 4">
+<Rectangle Left="4560" Top="1560" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - BleedingProcedure Part4 Start"/>
+</Button>
+
+<Display Width="2765" Color="14671839" DataName="Etat de la routine" RequestName="Routine - BleedingProcedure Status">
+<Rectangle Left="960" Top="2520" Height="300" Width="7200"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Input Width="2795" Color="14671839" DataName="Choix du type d'arrêt" RequestName="Routine - BleedingProcedure Stop">
+<Rectangle Left="930" Top="3000" Height="300" Width="7230"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Routine - Test du citcuit hydaulique" Color="16777215" WindowState="0" Width="9000" Height="8250">
+
+<Label Text="Arrêt du test" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="3360" Height="1320" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Cette routine est prévue pour valider" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="5160" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Choix de la roue" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="720" Height="1560" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="de frein enfoncée et faire tourner à la main la" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6240" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Déroulement de la routine : Maintenir la pédale" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="5880" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Description du Test" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="4800" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Etat d'avancement du test" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="2400" Height="840" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="l'affectation des voies hydrauliques." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="5520" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Les autres roues sont bloquées durant le test." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6960" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Pour un bon fonctionnement mettre en mode rebouclé" Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="7320" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="roue testée. Elle doit se bloquer et se débloquer." Color="14671839" Alignment="2">
+<Rectangle Left="720" Top="6600" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Routine de test du circuit hydraulique" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="8760"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+
+<Button Text="Arrêt du Test">
+<Rectangle Left="1200" Top="3720" Height="420" Width="6600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - HydraulicCircuitTest Stop"/>
+</Button>
+<Button Text="Test de la roue ArD">
+<Rectangle Left="4560" Top="1680" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - HydraulicCircuitTest_RR Start"/>
+</Button>
+<Button Text="Test de la roue ArG">
+<Rectangle Left="840" Top="1680" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - HydraulicCircuitTest_RL Start"/>
+</Button>
+<Button Text="Test de la roue AvD">
+<Rectangle Left="4560" Top="1200" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - HydraulicCircuitTest_FR Start"/>
+</Button>
+<Button Text="Test de la roue AvG">
+<Rectangle Left="840" Top="1200" Height="420" Width="3600"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Routine - HydraulicCircuitTest_FL Start"/>
+</Button>
+
+<Display Width="2330" Color="14671839" DataName="Etat de la routine" RequestName="Routine - HydraulicCircuitTest Status">
+<Rectangle Left="960" Top="2760" Height="300" Width="7080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="2735" Color="14671839" DataName="Etat de l'arrêt de la routine" RequestName="Routine - HydraulicCircuitTest Stop">
+<Rectangle Left="960" Top="4200" Height="300" Width="7080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture Effacement - Offsets ESP" Color="16777215" WindowState="0" Width="9450" Height="4500">
+
+<Label Text="Attention :" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="3600" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Effacement des offsets ESP" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="2520" Height="960" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Offset ESP" Color="16777215" Alignment="2">
+<Rectangle Left="240" Top="120" Height="480" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Lecture des offsets ESP" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="600" Height="1800" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="La modification des offsets Esp est" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="3840" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="interdite aux personnes non autorisées" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="4080" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+
+<Button Text="Lancement de l'effacement">
+<Rectangle Left="480" Top="2880" Height="382" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write - ClearSensorOffsets (ESP only)"/>
+</Button>
+
+<Display Width="4175" Color="14671839" DataName="Offset SWA" RequestName="Read - SensorOffsets (ESP only)">
+<Rectangle Left="480" Top="960" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4175" Color="14671839" DataName="Offset accélération transversale (Ay)" RequestName="Read - SensorOffsets (ESP only)">
+<Rectangle Left="480" Top="1440" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Display Width="4190" Color="14671839" DataName="Offset vitesse de lacet (vGi)" RequestName="Read - SensorOffsets (ESP only)">
+<Rectangle Left="480" Top="1920" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="IO - Activation des capteurs vitesse roue" Color="16777215" WindowState="0" Width="9420" Height="6900">
+
+<Label Text="Activation des capteurs vitesse roue" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="9240"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Cette activation dèclenche l'alimentation" Color="14671839" Alignment="2">
+<Rectangle Left="960" Top="3960" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="des capteurs vitesse roue. Durée 20s" Color="14671839" Alignment="2">
+<Rectangle Left="960" Top="4320" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Description du Test" Color="14671839" Alignment="2">
+<Rectangle Left="960" Top="3480" Height="480" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Etat de l'activation" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="2520" Height="840" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Lancement de l'activation" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="807" Height="1560" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Pour un bon fonctionnement mettre en mode rebouclé" Color="14671839" Alignment="2">
+<Rectangle Left="960" Top="4680" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Lancer l'activation">
+<Rectangle Left="480" Top="1800" Height="496" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="IO Control - WheelSpeedOutput"/>
+</Button>
+
+<Display Width="3650" Color="14671839" DataName="Etat du processus d'activation" RequestName="IO Control - WheelSpeedOutput Status">
+<Rectangle Left="480" Top="2880" Height="300" Width="8440"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Display>
+<Input Width="3770" Color="14671839" DataName="Choix du temps d'activation" RequestName="IO Control - WheelSpeedOutput">
+<Rectangle Left="360" Top="1232" Height="355" Width="8520"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Lecture Ecriture - Configuration de l'init vitesse" Color="16777215" WindowState="0" Width="9090" Height="5250">
+
+<Label Text="Ecriture de la config de la vitesse Can à l'init" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="2280" Height="2040" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Config de la vitesse Can à l'init" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="720" Width="8880"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="interdite aux personnes non autorisées" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="4800" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="La modification de ce byte de config est" Color="16777215" Alignment="2">
+<Rectangle Left="0" Top="4560" Height="240" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+<Label Text="Lecture de la config de la vitesse Can à l'init" Color="14671839" Alignment="2">
+<Rectangle Left="120" Top="840" Height="1200" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+
+<Button Text="Ecriture ">
+<Rectangle Left="240" Top="3480" Height="420" Width="8640"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Write - CANVehicleSpeedInitialisationValue"/>
+</Button>
+
+<Input Width="3935" Color="14671839" DataName="Valeur de la vitesse CAN à l'initialisation" RequestName="Write - CANVehicleSpeedInitialisationValue">
+<Rectangle Left="480" Top="2880" Height="360" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/></Input>
+<Display Width="3935" Color="14671839" DataName="Valeur de la vitesse CAN à l'initialisation" RequestName="Read - CANVehicleSpeedInitialisationValue">
+<Rectangle Left="480" Top="1440" Height="360" Width="8040"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="0"/><Threshold Value=" 1" Color="255"/><Threshold Value=" 254" Color="14671839"/></Display>
+</Screen>
+<Screen Name="IO - Activation des feux stop" Color="16777215" WindowState="0" Width="9450" Height="4530">
+
+<Label Text="Activation des feux stop" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="9240"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Cette activation dèclenche l'allumage" Color="14671839" Alignment="2">
+<Rectangle Left="960" Top="3240" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="des feux stop. Durée 20s" Color="14671839" Alignment="2">
+<Rectangle Left="960" Top="3600" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Description du Test" Color="14671839" Alignment="2">
+<Rectangle Left="960" Top="2760" Height="480" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Etat de l'activation" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="1800" Height="840" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Lancement de l'activation" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="360" Height="1320" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Pour un bon fonctionnement mettre en mode rebouclé" Color="14671839" Alignment="2">
+<Rectangle Left="960" Top="3960" Height="360" Width="7560"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Lancer l'activation">
+<Rectangle Left="480" Top="1200" Height="420" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="IO Control - BLAOutput"/>
+</Button>
+
+<Display Width="3635" Color="14671839" DataName="Etat du processus d'activation" RequestName="IO Control - BLAOutput Status">
+<Rectangle Left="480" Top="2160" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Input Width="3620" Color="14671839" DataName="Choix du temps d'activation" RequestName="IO Control - BLAOutput">
+<Rectangle Left="480" Top="720" Height="360" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="0" Color="986895"/></Input>
+</Screen>
+<Screen Name="IO - Activation des électrovannes et de la pompe" Color="16777215" WindowState="0" Width="9450" Height="8610">
+
+<Label Text="Activation des électrovannes et de la pompe" Color="16777215" Alignment="2">
+<Rectangle Left="120" Top="120" Height="480" Width="9240"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="8421440"/></Label>
+<Label Text="Cette activation permet le contrôle" Color="14671839" Alignment="2">
+<Rectangle Left="840" Top="7320" Height="360" Width="3720"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Choix des électrovannes ABS" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="600" Height="2280" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Choix des électrovannes ESP" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="3000" Height="1200" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Description du Test" Color="14671839" Alignment="2">
+<Rectangle Left="840" Top="6840" Height="480" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="d'un ou plusieurs actionneurs (électrovannes" Color="14671839" Alignment="2">
+<Rectangle Left="4320" Top="7320" Height="360" Width="4320"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="et/ou pompe) durant 5s indépendamment." Color="14671839" Alignment="2">
+<Rectangle Left="840" Top="7680" Height="360" Width="7800"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Etat d'avancement de l'activation" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="5880" Height="840" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Lancement de l'activation" Color="14671839" Alignment="2">
+<Rectangle Left="240" Top="4320" Height="1440" Width="8880"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="32768"/></Label>
+<Label Text="Pour un bon fonctionnement mettre en mode rebouclé" Color="14671839" Alignment="2">
+<Rectangle Left="840" Top="8040" Height="360" Width="7800"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Lancer l'activation">
+<Rectangle Left="480" Top="5160" Height="420" Width="8520"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="IO Control - ValvesAndPump"/>
+</Button>
+
+<Input Width="2675" Color="14671839" DataName="Admission avant gauche" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="960" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="2675" Color="14671839" DataName="Echappement avant gauche" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="1320" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="2675" Color="14671839" DataName="Admission arrière gauche" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="1680" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="2675" Color="14671839" DataName="Echappement arrière gauche" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="2040" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="3395" Color="14671839" DataName="Activation de la pompe" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="2400" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="14671839" DataName="Valve Usv1" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="3360" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="14671839" DataName="Valve Usv2" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="3720" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="5135" Color="14671839" DataName="Choix du temps d'activation EV/Pompe" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="480" Top="4680" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Display Width="3035" Color="14671839" DataName="Etat du processus d'activation" RequestName="IO Control - ValvesAndPump Status">
+<Rectangle Left="480" Top="6240" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Display>
+<Input Width="2675" Color="14671839" DataName="Admission avant droite" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="4800" Top="960" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="2675" Color="14671839" DataName="Echappement avant droite" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="4800" Top="1320" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="2675" Color="14671839" DataName="Admission arrière droite" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="4800" Top="1680" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="2675" Color="14671839" DataName="Echappement arrière droite" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="4800" Top="2040" Height="300" Width="4080"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="14671839" DataName="Valve Hsv1" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="4920" Top="3360" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+<Input Width="2000" Color="14671839" DataName="Valve Hsv2" RequestName="IO Control - ValvesAndPump">
+<Rectangle Left="4920" Top="3720" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 9" Bold="1" Italic="0" Color="0"/></Input>
+</Screen>
+<Screen Name="Lecture - Traçabilité et référence usine (pour J et R)" Color="16777215" WindowState="0" Width="7740" Height="6000">
+
+<Label Text="Référence usine Renault de l'ESP" Color="14671839" Alignment="2">
+<Rectangle Left="360" Top="240" Height="1080" Width="7080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Trame de traçabilité de l'ESP" Color="14671839" Alignment="2">
+<Rectangle Left="360" Top="1440" Height="3600" Width="7080"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="4227072"/></Label>
+<Label Text="Note : ces informations ne sont disponibles que sur des véhicules type J ou R." Color="16777215" Alignment="2">
+<Rectangle Left="1320" Top="5160" Height="720" Width="5280"/>
+<Font Name="Arial" Size=" 10" Bold="1" Italic="1" Color="255"/></Label>
+
+
+<Display Width="3860" Color="14671839" DataName="Référence usine" RequestName="Read - PartIdNumberFor Plant">
+<Rectangle Left="480" Top="720" Height="345" Width="6915"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3860" Color="14671839" DataName="Traçabilité - ABS/ESP" RequestName="Read - ECUTraceability">
+<Rectangle Left="480" Top="1920" Height="322" Width="6918"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3860" Color="14671839" DataName="Traçabilité - Année de production du bloc" RequestName="Read - ECUTraceability">
+<Rectangle Left="480" Top="2280" Height="322" Width="6918"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3860" Color="14671839" DataName="Traçabilité - Semaine de production du bloc" RequestName="Read - ECUTraceability">
+<Rectangle Left="483" Top="2640" Height="322" Width="6918"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3860" Color="14671839" DataName="Traçabilité - Jour de la semaine" RequestName="Read - ECUTraceability">
+<Rectangle Left="483" Top="3000" Height="322" Width="6918"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3860" Color="14671839" DataName="Traçabilité - Usine de production du bloc" RequestName="Read - ECUTraceability">
+<Rectangle Left="480" Top="3360" Height="322" Width="6918"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3860" Color="14671839" DataName="Traçabilité - Ligne de production du bloc" RequestName="Read - ECUTraceability">
+<Rectangle Left="483" Top="3720" Height="322" Width="6918"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3860" Color="14671839" DataName="Traçabilité - Equipe" RequestName="Read - ECUTraceability">
+<Rectangle Left="483" Top="4080" Height="322" Width="6918"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3860" Color="14671839" DataName="Traçabilité - Compteur" RequestName="Read - ECUTraceability">
+<Rectangle Left="480" Top="4440" Height="322" Width="6918"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

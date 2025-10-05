@@ -1,0 +1,1391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+  <Generator name="DDT2000 XML library" version="2.4.0.0" date="2022-07-07T09:57"/>
+  <ddt:Target Name="XLR-GW1_v6" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="sav@pvi.fr" group="GW1" upload="7/8/2022" href="XLR-GW1_v6_20220708T173327.xml"><Description><![CDATA[2022-07-07: Initial definition of GTW1 on Master XLR BT4.]]></Description>
+    <Projects xmlns=""><x62Ph2/></Projects><Checks Version="V1.12.006" Date="20220708T173256">
+      <Ctrl Type="DDT2000" Warning="0" Error="0"/>
+      <Ctrl Type="CPDD" Warning="57" Error="0"/>
+      <Ctrl Type="DAIMLER-ODX" Warning="0" Error="2"/>
+      <Ctrl Type="ALLIANCE-ODX" Warning="0" Error="0"/>
+    </Checks>
+    
+    <Function Name="GW" Address="65" LogicalAddress="0041"/>
+    <Language Name="Français" Reference="1"/>
+    
+    <DateOfficialisation>07/07/2022 09:54:00</DateOfficialisation>
+    <Failures Name="DTC Failures" Id="3"/>
+    <PowerSupply>
+      <Ground/>
+      <Vbat/>
+      <AfterContact/>
+    </PowerSupply>
+    <CAN BaudRate="10400" Multipoint="1">
+      <SendId>
+        <CANId Value="1808"/>
+      </SendId>
+      <ReceiveId>
+        <CANId Value="1840"/>
+      </ReceiveId>
+    </CAN>
+    <AutoIdents>
+      <AutoIdent DiagVersion="1" Supplier="Sensor-Technik Wiedemann" Soft="UNKOWN----" Version="V2.2.1r0----"/>
+    </AutoIdents>
+    <Datas>
+      <Data Name="SessionName">
+        <Comment><![CDATA[Diagnostic session values. See documentation for more information.]]></Comment>
+        <Mnemonic>LEV_DS</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>[0x00] : ISO / SAE Reserved<BR>[0x01] : Default session<BR>[0x02] : Programming session<BR>[0x03] : Extended diagnostic session<BR>[0x04] : Safety system diagnostic session<BR>[0x05 - 0x3F] : ISO / SAE Reserved<BR>[0x40 - 0x5F] : Vehicle manufacturer specific<BR>[0x60 - 0x7E] : System supplier specific<BR>[0x7F] : ISO / SAE Reserved</FONT></P>]]></Description>
+        <Bits>
+          <List>
+            <Item Value="1" Text="DefaultSession"/>
+            <Item Value="2" Text="ProgrammingSession"/>
+            <Item Value="3" Text="ExtendedDiagnosticSession"/>
+            <Item Value="4" Text="SafetySystemDiagnosticSession"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCCount">
+        <Comment><![CDATA[DTC count]]></Comment>
+        <Mnemonic>DTCC</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCFormatIdentifier">
+        <Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+        <Mnemonic>DTCFID</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="SAE_J2012-DA_DTC"/>
+            <Item Value="1" Text="ISO_14229-1_DTC"/>
+            <Item Value="2" Text="SAE_J1939-73_DTC"/>
+            <Item Value="3" Text="ISO_11992-4_DTC"/>
+            <Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatusAvailabilityMask">
+        <Mnemonic>DTCSAM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="StatusOfDTC">
+        <Mnemonic>DTCASR_SODTC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailed">
+        <Mnemonic>TF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedThisMonitoringCycle">
+        <Mnemonic>TFTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.pendingDTC">
+        <Mnemonic>PDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.confirmedDTC">
+        <Mnemonic>CDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedSinceLastClear">
+        <Mnemonic>TNCSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedSinceLastClear">
+        <Mnemonic>TFSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+        <Mnemonic>TNCTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.warningIndicatorRequested">
+        <Mnemonic>WIR</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.Category">
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="General Failure Information"/>
+            <Item Value="1" Text="General Electrical Failures"/>
+            <Item Value="2" Text="General Signal Failures"/>
+            <Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="15" Text="Vehicle manufacturer / System supplier specific"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Device and failure type ODB codding"/>
+            <Item Value="1" Text="General Electrical Failure"/>
+            <Item Value="2" Text="General signal failure"/>
+            <Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="17" Text="circuit short to ground"/>
+            <Item Value="18" Text="circuit short to battery"/>
+            <Item Value="19" Text="circuit open"/>
+            <Item Value="20" Text="circuit short to ground or open"/>
+            <Item Value="21" Text="circuit short to battery or open"/>
+            <Item Value="22" Text="circuit voltage below threshold"/>
+            <Item Value="23" Text="circuit voltage above threshold"/>
+            <Item Value="24" Text="circuit current below threshold"/>
+            <Item Value="25" Text="circuit current above threshold"/>
+            <Item Value="26" Text="circuit resistance below threshold"/>
+            <Item Value="27" Text="circuit resistance above threshold"/>
+            <Item Value="28" Text="circuit voltage out of range"/>
+            <Item Value="29" Text="circuit current out of range"/>
+            <Item Value="30" Text="circuit resistance out of range"/>
+            <Item Value="31" Text="circuit intermittent"/>
+            <Item Value="33" Text="signal amplitude &lt; minimum"/>
+            <Item Value="34" Text="signal amplitude &gt; maximum"/>
+            <Item Value="35" Text="signal stuck low"/>
+            <Item Value="36" Text="signal stuck high"/>
+            <Item Value="37" Text="signal shape / waveform failure"/>
+            <Item Value="38" Text="signal rate of change below threshold"/>
+            <Item Value="39" Text="signal rate of change above threshold"/>
+            <Item Value="40" Text="signal bias level out of range / zero adjustment failure"/>
+            <Item Value="41" Text="signal signal invalid"/>
+            <Item Value="47" Text="signal erratic"/>
+            <Item Value="49" Text="no signal"/>
+            <Item Value="50" Text="signal low time &lt; minimum"/>
+            <Item Value="51" Text="signal low time &gt; maximum"/>
+            <Item Value="52" Text="signal high time &lt; minimum"/>
+            <Item Value="53" Text="signal high time &gt; maximum"/>
+            <Item Value="54" Text="signal frequency too low"/>
+            <Item Value="55" Text="signal frequency too high"/>
+            <Item Value="56" Text="signal frequency incorrect"/>
+            <Item Value="57" Text="incorrect has too few pulses"/>
+            <Item Value="58" Text="incorrect has too many pulses"/>
+            <Item Value="65" Text="general checksum failure"/>
+            <Item Value="66" Text="general memory failure"/>
+            <Item Value="67" Text="special memory failure"/>
+            <Item Value="68" Text="data memory failure"/>
+            <Item Value="69" Text="program memory failure"/>
+            <Item Value="70" Text="calibration / parameter memory failure"/>
+            <Item Value="71" Text="watchdog / safety µC failure"/>
+            <Item Value="72" Text="supervision software failure"/>
+            <Item Value="73" Text="internal electronic failure"/>
+            <Item Value="74" Text="incorrect component installed"/>
+            <Item Value="75" Text="over temperature"/>
+            <Item Value="81" Text="not programmed"/>
+            <Item Value="82" Text="not activated"/>
+            <Item Value="83" Text="deactivated"/>
+            <Item Value="84" Text="missing calibration"/>
+            <Item Value="85" Text="not configured"/>
+            <Item Value="97" Text="signal calculation failure"/>
+            <Item Value="98" Text="signal compare failure"/>
+            <Item Value="99" Text="circuit / component protection time-out"/>
+            <Item Value="100" Text="signal plausibility failure"/>
+            <Item Value="101" Text="signal has too few transitions / events"/>
+            <Item Value="102" Text="signal has too many transitions / events"/>
+            <Item Value="103" Text="signal incorrect after event"/>
+            <Item Value="104" Text="event information"/>
+            <Item Value="113" Text="actuator stuck"/>
+            <Item Value="114" Text="actuator stuck open"/>
+            <Item Value="115" Text="actuator stuck closed"/>
+            <Item Value="116" Text="actuator slipping"/>
+            <Item Value="117" Text="emergency position not reachable"/>
+            <Item Value="118" Text="wrong mounting position"/>
+            <Item Value="119" Text="commanded position not reachable"/>
+            <Item Value="120" Text="alignment or adjustment incorrect"/>
+            <Item Value="121" Text="mechanical linkage failure"/>
+            <Item Value="122" Text="fluid leak or seal failure"/>
+            <Item Value="123" Text="low fluid level"/>
+            <Item Value="129" Text="invalid serial data received"/>
+            <Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+            <Item Value="131" Text="value of signal protection calculation incorrect"/>
+            <Item Value="132" Text="signal below allowable range"/>
+            <Item Value="133" Text="signal above allowable range"/>
+            <Item Value="134" Text="signal invalid"/>
+            <Item Value="135" Text="missing message"/>
+            <Item Value="136" Text="bus off"/>
+            <Item Value="143" Text="erratic"/>
+            <Item Value="145" Text="parametric"/>
+            <Item Value="146" Text="performance or incorrect operation"/>
+            <Item Value="147" Text="no operation"/>
+            <Item Value="148" Text="unexpected operation"/>
+            <Item Value="149" Text="incorrect assembly"/>
+            <Item Value="150" Text="component internal failure"/>
+            <Item Value="151" Text="Component or system operation obstructed or blocked"/>
+            <Item Value="152" Text="component or system over temperature"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceIdentifier">
+        <Bits count="16">
+          <List>
+            <Item Value="42539" Text="AC Inlet - Temperature sensors"/>
+            <Item Value="56372" Text="CAN Lost Comm. with BMS"/>
+            <Item Value="56373" Text="BMS malfunction"/>
+            <Item Value="56370" Text="CAN Lost Comm. with EVC"/>
+            <Item Value="56374" Text="CAN Lost Comm. with OBC"/>
+            <Item Value="56369" Text="CAN Lost Comm. with PEB"/>
+            <Item Value="56368" Text="CAN Lost Comm. with SACHA"/>
+            <Item Value="42514" Text="DC Box - Interlocks"/>
+            <Item Value="42519" Text="DC Box - Negative Relay Command Output"/>
+            <Item Value="42518" Text="DC Box - Positive Relay Command Output"/>
+            <Item Value="42515" Text="DC Box - Power Relay Autocheck"/>
+            <Item Value="42517" Text="DC Box - Power Relays Activation"/>
+            <Item Value="42516" Text="DC Box - Power Relays Safety"/>
+            <Item Value="42520" Text="DC Box - Temperature Sensor"/>
+            <Item Value="42521" Text="DC Box - Voltage Detection Controller"/>
+            <Item Value="42524" Text="DC Charge - Current Monitoring"/>
+            <Item Value="42529" Text="DC Charge - Isolation"/>
+            <Item Value="42525" Text="DC Charge - Voltage Monitoring"/>
+            <Item Value="42534" Text="DC Inlet - Temperature sensors"/>
+            <Item Value="42499" Text="GTW - Green Inlet LED malfunction"/>
+            <Item Value="42497" Text="GTW - HW Intern. main supply switch"/>
+            <Item Value="42496" Text="GTW - HW Main Processor"/>
+            <Item Value="42506" Text="GTW - Power Supply"/>
+            <Item Value="42501" Text="GTW - Reset Warning"/>
+            <Item Value="42511" Text="GTW - Wrong Mounting Location"/>
+            <Item Value="56375" Text="CAN Lost Comm. with CPLC"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceAndFailureTypeOBD">
+        <Bits count="16">
+          <List/>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.ManufacturerOrSupplier">
+        <Bits count="4">
+          <List/>
+        </Bits>
+      </Data>
+      <Data Name="DTCMaskRecord">
+        <Mnemonic>DTCMREC_DTC</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="DTCRecord">
+        <Mnemonic>DTCASR_DTC</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="VIN">
+        <Comment><![CDATA[VIN saved in ECU]]></Comment>
+        <Mnemonic>DID_$F190</Mnemonic>
+        <Bytes count="17" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerSparePartNumber">
+        <Mnemonic>DID_$F187</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerKitAssemblyPartNumber">
+        <Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM.]]></Comment>
+        <Mnemonic>DID_$F18E</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer order number for a kit (assembled parts bought as a whole for production e.g. cockpit), when the spare part number designates only the server (e.g. for aftersales).</FONT></P>
+<P><FONT size=2>The record data content and format shall be server specific and defined by the vehicle manufacturer.<BR></FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUSoftwareNumber">
+        <Mnemonic>DID_$F188</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierIdentifier">
+        <Comment><![CDATA[ECU supplier name]]></Comment>
+        <Mnemonic>DID_$F18A</Mnemonic>
+        <Bytes count="24" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareVersionNumber">
+        <Comment><![CDATA[Software Version (Supplier)]]></Comment>
+        <Mnemonic>DID_$F195</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software version number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="12" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUHardwareNumber">
+        <Comment><![CDATA[Hardware Number]]></Comment>
+        <Mnemonic>DID_$F191</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used by reading services to reference the vehicle-manufacturer-specific ECU (server) hardware number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be serverspecific and defined by vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="diagnosticVersion">
+        <Comment><![CDATA[ECU software diag version in CLIP]]></Comment>
+        <Mnemonic>DID_$F1A0</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the diagnostic version of the ECU.</FONT></P>
+<P><FONT size=2>It is defined by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>Refer to manufacture ECU designer.</FONT></P>]]></Description>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareNumber">
+        <Comment><![CDATA[Software Number (Supplier)]]></Comment>
+        <Mnemonic>DID_$F194</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="EcuPowerSupplyVoltage">
+        <Comment><![CDATA[ECU power supply voltage]]></Comment>
+        <Mnemonic>DID_$1001</Mnemonic>
+        <Bits>
+          <Scaled Unit="V" Step=" .05" Offset=" 8"/>
+        </Bits>
+      </Data>
+      <Data Name="DCTargetVoltage">
+        <Comment><![CDATA[DC charge target voltage]]></Comment>
+        <Mnemonic>DID_$1003</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="V" Step=" .1"/>
+        </Bits>
+      </Data>
+      <Data Name="DCTargetCurrent">
+        <Comment><![CDATA[DC charge target current]]></Comment>
+        <Mnemonic>DID_$1002</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="A" Step=" .1"/>
+        </Bits>
+      </Data>
+      <Data Name="ACInletOvertempFlag">
+        <Comment><![CDATA[AC inlet overtemperature flag]]></Comment>
+        <Mnemonic>DID_$2001</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DCInletOvertempFlag">
+        <Comment><![CDATA[DC inlet overtemperature flag]]></Comment>
+        <Mnemonic>DID_$2002</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DcboxOvertempFlag">
+        <Comment><![CDATA[DCBox overtemperature flag]]></Comment>
+        <Mnemonic>DID_$2003</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ACInletTemperature1">
+        <Comment><![CDATA[AC inlet measured temperature 1]]></Comment>
+        <Mnemonic>DID_$2004</Mnemonic>
+        <Bits>
+          <Scaled Unit="°C" Offset="-40"/>
+        </Bits>
+      </Data>
+      <Data Name="ACInletTemperature2">
+        <Comment><![CDATA[AC inlet measured temperature 2]]></Comment>
+        <Mnemonic>DID_$2005</Mnemonic>
+        <Bits>
+          <Scaled Unit="°C" Offset="-40"/>
+        </Bits>
+      </Data>
+      <Data Name="DCInletTemperature1">
+        <Comment><![CDATA[DC inlet measured temperature 1]]></Comment>
+        <Mnemonic>DID_$2006</Mnemonic>
+        <Bits>
+          <Scaled Unit="°C" Offset="-40"/>
+        </Bits>
+      </Data>
+      <Data Name="DCInletTemperature2">
+        <Comment><![CDATA[DC inlet measured temperature 2]]></Comment>
+        <Mnemonic>DID_$2007</Mnemonic>
+        <Bits>
+          <Scaled Unit="°C" Offset="-40"/>
+        </Bits>
+      </Data>
+      <Data Name="DcboxTemperature1">
+        <Comment><![CDATA[DCBox measured temperature 1]]></Comment>
+        <Mnemonic>DID_$2008</Mnemonic>
+        <Bits>
+          <Scaled Unit="°C" Offset="-40"/>
+        </Bits>
+      </Data>
+      <Data Name="DcboxTemperature2">
+        <Comment><![CDATA[DCBox measured temperature 2]]></Comment>
+        <Mnemonic>DID_$2009</Mnemonic>
+        <Bits>
+          <Scaled Unit="°C" Offset="-40"/>
+        </Bits>
+      </Data>
+      <Data Name="DcboxInterlockClosedFlag">
+        <Comment><![CDATA[DCBox interlock closed flag]]></Comment>
+        <Mnemonic>DID_$200A</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Not used"/>
+            <Item Value="1" Text="interlock opened"/>
+            <Item Value="2" Text="interlock closed"/>
+            <Item Value="3" Text="unavailable"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VdcSensorStatus">
+        <Comment><![CDATA[VDC sensor status]]></Comment>
+        <Mnemonic>DID_$200B</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="No HV present on DCBox"/>
+            <Item Value="1" Text="HV is present on DCBox"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="EVSEPresentCurrent">
+        <Comment><![CDATA[EVSE present current]]></Comment>
+        <Mnemonic>DID_$200C</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="A" Step=" .1"/>
+        </Bits>
+      </Data>
+      <Data Name="EVSEPresentVoltage">
+        <Comment><![CDATA[EVSE present voltage]]></Comment>
+        <Mnemonic>DID_$200D</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="V" Step=" .1"/>
+        </Bits>
+      </Data>
+      <Data Name="HVBatterySOC">
+        <Comment><![CDATA[HV battery SOC]]></Comment>
+        <Mnemonic>DID_$200E</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="%" Step=" .02"/>
+        </Bits>
+      </Data>
+      <Data Name="ComboHLCRequest">
+        <Comment><![CDATA[HLC request in combo DC charge]]></Comment>
+        <Mnemonic>DID_$2010</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="No HLC Request"/>
+            <Item Value="1" Text="Hand Shake request"/>
+            <Item Value="2" Text="Charge parameter Discovery request"/>
+            <Item Value="3" Text="Cable Check request"/>
+            <Item Value="4" Text="Precharge request"/>
+            <Item Value="5" Text="Power delivery request"/>
+            <Item Value="6" Text="Current demand request"/>
+            <Item Value="7" Text="Metering receipt request"/>
+            <Item Value="8" Text="Welding detection request"/>
+            <Item Value="9" Text="Session stop request"/>
+            <Item Value="10" Text="Matching reset"/>
+            <Item Value="11" Text="Charging Status request"/>
+            <Item Value="12" Text="Not used"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="ComboHLCResponse">
+        <Comment><![CDATA[HLC response in combo DC charge]]></Comment>
+        <Mnemonic>DID_$2011</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="0 - No HLC communication is established"/>
+            <Item Value="1" Text="1 - Communication &amp; Service setting is established"/>
+            <Item Value="2" Text="2 - Charge parameter Discovery response"/>
+            <Item Value="3" Text="3 - Cable Check response"/>
+            <Item Value="4" Text="4 - Precharge response"/>
+            <Item Value="5" Text="5 - Power delivery response"/>
+            <Item Value="6" Text="6 - Current demande response"/>
+            <Item Value="7" Text="7 - Metering receipt response"/>
+            <Item Value="8" Text="8 - Welding detection response"/>
+            <Item Value="9" Text="9 - Session stop response with EVSE (Station charging)"/>
+            <Item Value="10" Text="Not used"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Mileage">
+        <Comment><![CDATA[Vehicle milage]]></Comment>
+        <Mnemonic>DID_$F1D0</Mnemonic>
+        <Bits count="24">
+          <Scaled Unit="km"/>
+        </Bits>
+      </Data>
+      <Data Name="DTCOccurrence">
+        <Mnemonic>DID_$F1D1</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="ECUSerialNumber">
+        <Comment><![CDATA[ECU hardware serial number]]></Comment>
+        <Mnemonic>DID_$F18C</Mnemonic>
+        <Bytes count="20" ascii="1"/>
+      </Data>
+    </Datas>
+    <Requests Endian="Big">
+      <Request Name="StartDiagnosticSession.Default">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1001</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5001</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.Programming">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1002</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5002</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.ExtendedDiagnostic">
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1003</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5003</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1003</SentBytes>
+          <DataItem Name="SessionName" FirstByte="2"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5003</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report number of DTC]]></Comment>
+        <Sent>
+          <SentBytes>1901FF</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>5901FF000000</ReplyBytes>
+          <DataItem Name="DTCCount" FirstByte="5"/>
+          <DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTC">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+        <Sent>
+          <SentBytes>1902FF</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>59020000000000</ReplyBytes>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+          <DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+          <DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+          <DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+          <DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+          <DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+          <DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+          <DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+          <DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+          <DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTCSnapshotIdentification">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report snapshot identification]]></Comment>
+        <Sent>
+          <SentBytes>1903</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5903</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSnapshot">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+        <Sent>
+          <SentBytes>1904000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>590400000000</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSupportedDTC">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report supported DTC]]></Comment>
+        <Sent>
+          <SentBytes>190A</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>590AFF00000000</ReplyBytes>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VIN">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read VIN]]></Comment>
+        <Sent>
+          <SentBytes>22F190</SentBytes>
+        </Sent>
+        <Received MinBytes="20">
+          <ReplyBytes>62F1900000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="VIN" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerSparePartNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerSparePartNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F187</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F187</ReplyBytes>
+          <DataItem Name="vehicleManufacturerSparePartNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerKitAssemblyPartNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerKitAssemblyPartNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F18E</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F18E</ReplyBytes>
+          <DataItem Name="vehicleManufacturerKitAssemblyPartNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUSoftwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerSparePartNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F188</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F188</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUHardwareNumber">
+        <DossierMaintenabilite/>
+        <DenyAccess>
+          <NoSDS/>
+          <Plant/>
+          <AfterSales/>
+          <Engineering/>
+          <Supplier/>
+        </DenyAccess>
+        <Comment><![CDATA[Read vehicleManufacturerECUHardwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F191</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F191</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUHardwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="ClearDiagnosticInformation.All">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+        <Sent>
+          <SentBytes>14FFFFFF</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>54</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierECUSoftwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F194</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F194</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EcuPowerSupplyVoltage">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read EcuPowerSupplyVoltage]]></Comment>
+        <Sent>
+          <SentBytes>221001</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>621001</ReplyBytes>
+          <DataItem Name="EcuPowerSupplyVoltage" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DCTargetCurrent">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read DCTargetCurrent]]></Comment>
+        <Sent>
+          <SentBytes>221002</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>621002</ReplyBytes>
+          <DataItem Name="DCTargetCurrent" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DCTargetVoltage">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read DCTargetVoltage]]></Comment>
+        <Sent>
+          <SentBytes>221003</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>621003</ReplyBytes>
+          <DataItem Name="DCTargetVoltage" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ACInletOvertempFlag">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read ACInletOvertempFlag]]></Comment>
+        <Sent>
+          <SentBytes>222001</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622001</ReplyBytes>
+          <DataItem Name="ACInletOvertempFlag" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DCInletOvertempFlag">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read DCInletOvertempFlag]]></Comment>
+        <Sent>
+          <SentBytes>222002</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622002</ReplyBytes>
+          <DataItem Name="DCInletOvertempFlag" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DcboxOvertempFlag">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read DcboxOvertempFlag]]></Comment>
+        <Sent>
+          <SentBytes>222003</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622003</ReplyBytes>
+          <DataItem Name="DcboxOvertempFlag" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ACInletTemperature1">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read ACInletTemperature1]]></Comment>
+        <Sent>
+          <SentBytes>222004</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622004</ReplyBytes>
+          <DataItem Name="ACInletTemperature1" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ACInletTemperature2">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read ACInletTemperature2]]></Comment>
+        <Sent>
+          <SentBytes>222005</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622005</ReplyBytes>
+          <DataItem Name="ACInletTemperature2" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DCInletTemperature1">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read DCInletTemperature1]]></Comment>
+        <Sent>
+          <SentBytes>222006</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622006</ReplyBytes>
+          <DataItem Name="DCInletTemperature1" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DCInletTemperature2">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read DCInletTemperature2]]></Comment>
+        <Sent>
+          <SentBytes>222007</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622007</ReplyBytes>
+          <DataItem Name="DCInletTemperature2" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DcboxTemperature1">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read DcboxTemperature1]]></Comment>
+        <Sent>
+          <SentBytes>222008</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622008</ReplyBytes>
+          <DataItem Name="DcboxTemperature1" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DcboxTemperature2">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read DcboxTemperature2]]></Comment>
+        <Sent>
+          <SentBytes>222009</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622009</ReplyBytes>
+          <DataItem Name="DcboxTemperature2" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DcboxInterlockClosedFlag">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read DcboxInterlockClosedFlag]]></Comment>
+        <Sent>
+          <SentBytes>22200A</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62200A</ReplyBytes>
+          <DataItem Name="DcboxInterlockClosedFlag" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VdcSensorStatus">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read VdcSensorStatus]]></Comment>
+        <Sent>
+          <SentBytes>22200B</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62200B</ReplyBytes>
+          <DataItem Name="VdcSensorStatus" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EVSEPresentCurrent">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read EVSEPresentCurrent]]></Comment>
+        <Sent>
+          <SentBytes>22200C</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62200C</ReplyBytes>
+          <DataItem Name="EVSEPresentCurrent" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EVSEPresentVoltage">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read EVSEPresentVoltage]]></Comment>
+        <Sent>
+          <SentBytes>22200D</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62200D</ReplyBytes>
+          <DataItem Name="EVSEPresentVoltage" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.HVBatterySOC">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read HVBatterySOC]]></Comment>
+        <Sent>
+          <SentBytes>22200E</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62200E</ReplyBytes>
+          <DataItem Name="HVBatterySOC" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ComboHLCRequest">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read ComboHLCRequest]]></Comment>
+        <Sent>
+          <SentBytes>222010</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622010</ReplyBytes>
+          <DataItem Name="ComboHLCRequest" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ComboHLCResponse">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read ComboHLCResponse]]></Comment>
+        <Sent>
+          <SentBytes>222011</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>622011</ReplyBytes>
+          <DataItem Name="ComboHLCResponse" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.VIN">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2EF1900000000000000000000000000000000000</SentBytes>
+          <DataItem Name="VIN" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF190</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Mileage">
+        <ManuelSend/>
+        <Comment><![CDATA[Read Mileage]]></Comment>
+        <Sent>
+          <SentBytes>22F1D0</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>62F1D0</ReplyBytes>
+          <DataItem Name="Mileage" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DTCOccurrence">
+        <ManuelSend/>
+        <Comment><![CDATA[Read DTCOccurrence]]></Comment>
+        <Sent>
+          <SentBytes>22F1D1</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F1D1</ReplyBytes>
+          <DataItem Name="DTCOccurrence" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="TesterPresent.WithResponse">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+        <Sent>
+          <SentBytes>3E00</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>7E</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierIdentifier">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read EcuSupplierName]]></Comment>
+        <Sent>
+          <SentBytes>22F18A</SentBytes>
+        </Sent>
+        <Received MinBytes="27">
+          <ReplyBytes>62F18A</ReplyBytes>
+          <DataItem Name="systemSupplierIdentifier" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ECUSerialNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read EcuHwSerialNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F18C</SentBytes>
+        </Sent>
+        <Received MinBytes="23">
+          <ReplyBytes>62F18C</ReplyBytes>
+          <DataItem Name="ECUSerialNumber" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.diagnosticVersion">
+        <Comment><![CDATA[Read VDIAG]]></Comment>
+        <Sent>
+          <SentBytes>22F1A0</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F1A0</ReplyBytes>
+          <DataItem Name="diagnosticVersion" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.diagnosticVersion">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2EF1A000</SentBytes>
+          <DataItem Name="diagnosticVersion" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF1A0</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierECUVersionNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F195</SentBytes>
+        </Sent>
+        <Received MinBytes="15">
+          <ReplyBytes>62F195</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareVersionNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+    </Requests>
+    <Devices>
+      <Device Name="DC Box - Interlocks" DTC="42514">
+        <Mnemonic>DTC_$A612</Mnemonic>
+        <Test Type="150">
+        </Test>
+      </Device>
+      <Device Name="GTW - Power Supply" DTC="42506">
+        <Mnemonic>DTC_$A60A</Mnemonic>
+        <Test Type="22">
+        </Test>
+        <Test Type="23">
+        </Test>
+      </Device>
+      <Device Name="GTW - HW Main Processor" DTC="42496">
+        <Mnemonic>DTC_$A600</Mnemonic>
+        <Test Type="6">
+        </Test>
+        <Test Type="73">
+        </Test>
+      </Device>
+      <Device Name="GTW - Reset Warning" DTC="42501">
+        <Mnemonic>DTC_$A605</Mnemonic>
+        <Test Type="53">
+        </Test>
+      </Device>
+      <Device Name="GTW - HW Intern. main supply switch" DTC="42497">
+        <Mnemonic>DTC_$A601</Mnemonic>
+        <Test Type="119">
+        </Test>
+        <Test Type="9">
+        </Test>
+        <Test Type="6">
+        </Test>
+        <Test Type="73">
+        </Test>
+      </Device>
+      <Device Name="GTW - Wrong Mounting Location" DTC="42511">
+        <Mnemonic>DTC_$A60F</Mnemonic>
+        <Test Type="118">
+        </Test>
+      </Device>
+      <Device Name="GTW - Green Inlet LED malfunction" DTC="42499">
+        <Mnemonic>DTC_$A603</Mnemonic>
+        <Test Type="146">
+        </Test>
+      </Device>
+      <Device Name="CAN Lost Comm. with SACHA" DTC="56368">
+        <Mnemonic>DTC_$DC30</Mnemonic>
+        <Test Type="135">
+        </Test>
+      </Device>
+      <Device Name="CAN Lost Comm. with EVC" DTC="56370">
+        <Mnemonic>DTC_$DC32</Mnemonic>
+        <Test Type="135">
+        </Test>
+      </Device>
+      <Device Name="CAN Lost Comm. with PEB" DTC="56369">
+        <Mnemonic>DTC_$DC31</Mnemonic>
+        <Test Type="135">
+        </Test>
+      </Device>
+      <Device Name="BMS malfunction" DTC="56373">
+        <Mnemonic>DTC_$DC35</Mnemonic>
+        <Test Type="134">
+        </Test>
+      </Device>
+      <Device Name="DC Charge - Voltage Monitoring" DTC="42525">
+        <Mnemonic>DTC_$A61D</Mnemonic>
+        <Test Type="148">
+        </Test>
+      </Device>
+      <Device Name="DC Charge - Isolation" DTC="42529">
+        <Mnemonic>DTC_$A621</Mnemonic>
+        <Test Type="27">
+        </Test>
+      </Device>
+      <Device Name="DC Box - Power Relay Autocheck" DTC="42515">
+        <Mnemonic>DTC_$A613</Mnemonic>
+        <Test Type="113">
+        </Test>
+      </Device>
+      <Device Name="DC Box - Power Relays Safety" DTC="42516">
+        <Mnemonic>DTC_$A614</Mnemonic>
+        <Test Type="115">
+        </Test>
+        <Test Type="148">
+        </Test>
+      </Device>
+      <Device Name="DC Box - Power Relays Activation" DTC="42517">
+        <Mnemonic>DTC_$A615</Mnemonic>
+        <Test Type="119">
+        </Test>
+      </Device>
+      <Device Name="DC Box - Positive Relay Command Output" DTC="42518">
+        <Mnemonic>DTC_$A616</Mnemonic>
+        <Test Type="19">
+        </Test>
+        <Test Type="28">
+        </Test>
+      </Device>
+      <Device Name="DC Box - Negative Relay Command Output" DTC="42519">
+        <Mnemonic>DTC_$A617</Mnemonic>
+        <Test Type="19">
+        </Test>
+        <Test Type="28">
+        </Test>
+      </Device>
+      <Device Name="DC Box - Temperature Sensor" DTC="42520">
+        <Mnemonic>DTC_$A618</Mnemonic>
+        <Test Type="28">
+        </Test>
+        <Test Type="75">
+        </Test>
+        <Test Type="98">
+        </Test>
+      </Device>
+      <Device Name="DC Box - Voltage Detection Controller" DTC="42521">
+        <Mnemonic>DTC_$A619</Mnemonic>
+        <Test Type="17">
+        </Test>
+        <Test Type="18">
+        </Test>
+        <Test Type="19">
+        </Test>
+        <Test Type="146">
+        </Test>
+        <Test Type="100">
+        </Test>
+      </Device>
+      <Device Name="AC Inlet - Temperature sensors" DTC="42539">
+        <Mnemonic>DTC_$A62B</Mnemonic>
+        <DeviceData Name="ACInletTemperature1" FailureFlag="0"/>
+        <DeviceData Name="ACInletOvertempFlag" FailureFlag="0"/>
+        <DeviceData Name="ACInletTemperature2" FailureFlag="0"/>
+        <Test Type="28">
+        </Test>
+        <Test Type="75">
+        </Test>
+        <Test Type="98">
+        </Test>
+      </Device>
+      <Device Name="DC Inlet - Temperature sensors" DTC="42534">
+        <Mnemonic>DTC_$A626</Mnemonic>
+        <DeviceData Name="DCInletTemperature1" FailureFlag="0"/>
+        <DeviceData Name="DCInletOvertempFlag" FailureFlag="0"/>
+        <DeviceData Name="DCInletTemperature2" FailureFlag="0"/>
+        <Test Type="98">
+        </Test>
+        <Test Type="75">
+        </Test>
+        <Test Type="28">
+        </Test>
+      </Device>
+      <Device Name="DC Charge - Current Monitoring" DTC="42524">
+        <Mnemonic>DTC_$A61C</Mnemonic>
+        <Test Type="148">
+        </Test>
+        <Test Type="119">
+        </Test>
+      </Device>
+      <Device Name="CAN Lost Comm. with BMS" DTC="56372">
+        <Mnemonic>DTC_$DC34</Mnemonic>
+        <Test Type="135">
+        </Test>
+      </Device>
+      <Device Name="CAN Lost Comm. with OBC" DTC="56374">
+        <Mnemonic>DTC_$DC36</Mnemonic>
+        <Test Type="135">
+        </Test>
+      </Device>
+      <Device Name="CAN Lost Comm. with CPLC" DTC="56375">
+        <Mnemonic>DTC_$DC37</Mnemonic>
+        <Test Type="134">
+        </Test>
+        <Test Type="135">
+        </Test>
+      </Device>
+    </Devices>
+    <ds:Categories xmlns="http://www-diag.renault.com/2002/screens">
+      <Category Name="General">
+        <Screen Name="Measurements" Color="16777215" WindowState="0" Width="12060" Height="9060">
+          <Label Text="AC temperature sensor" Color="13619151" Alignment="0">
+            <Rectangle Left="360" Top="2640" Height="1680" Width="5760"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="10485760"/>
+          </Label>
+          <Label Text="DC temperature sensor" Color="16777215" Alignment="0">
+            <Rectangle Left="360" Top="4560" Height="1800" Width="5760"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="16711680"/>
+          </Label>
+          <Label Text="DCBox temperature sensor" Color="12615808" Alignment="0">
+            <Rectangle Left="6240" Top="960" Height="1800" Width="5640"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="0" Italic="0" Color="16711680"/>
+          </Label>
+          <Display Width="2705" Color="16777215" DataName="EcuPowerSupplyVoltage" RequestName="DataRead.EcuPowerSupplyVoltage">
+            <Rectangle Left="360" Top="1440" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2690" Color="16777215" DataName="DCTargetCurrent" RequestName="DataRead.DCTargetCurrent">
+            <Rectangle Left="6360" Top="5040" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2705" Color="16777215" DataName="DCTargetVoltage" RequestName="DataRead.DCTargetVoltage">
+            <Rectangle Left="6360" Top="5400" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2690" Color="13619151" DataName="ACInletOvertempFlag" RequestName="DataRead.ACInletOvertempFlag">
+            <Rectangle Left="360" Top="3120" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2675" Color="16777215" DataName="DCInletOvertempFlag" RequestName="DataRead.DCInletOvertempFlag">
+            <Rectangle Left="360" Top="5040" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2675" Color="16777215" DataName="DcboxOvertempFlag" RequestName="DataRead.DcboxOvertempFlag">
+            <Rectangle Left="6360" Top="1440" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2675" Color="13619151" DataName="ACInletTemperature1" RequestName="DataRead.ACInletTemperature1">
+            <Rectangle Left="360" Top="3480" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2675" Color="13619151" DataName="ACInletTemperature2" RequestName="DataRead.ACInletTemperature2">
+            <Rectangle Left="360" Top="3840" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2705" Color="16777215" DataName="DCInletTemperature1" RequestName="DataRead.DCInletTemperature1">
+            <Rectangle Left="360" Top="5400" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2690" Color="16777215" DataName="DCInletTemperature2" RequestName="DataRead.DCInletTemperature2">
+            <Rectangle Left="360" Top="5760" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2675" Color="16777215" DataName="DcboxTemperature1" RequestName="DataRead.DcboxTemperature1">
+            <Rectangle Left="6360" Top="1800" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2690" Color="16777215" DataName="DcboxTemperature2" RequestName="DataRead.DcboxTemperature2">
+            <Rectangle Left="6360" Top="2160" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2690" Color="16777215" DataName="DcboxInterlockClosedFlag" RequestName="DataRead.DcboxInterlockClosedFlag">
+            <Rectangle Left="6360" Top="3120" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2690" Color="16777215" DataName="VdcSensorStatus" RequestName="DataRead.VdcSensorStatus">
+            <Rectangle Left="6360" Top="4080" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2690" Color="16777215" DataName="EVSEPresentCurrent" RequestName="DataRead.EVSEPresentCurrent">
+            <Rectangle Left="6360" Top="6000" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2705" Color="16777215" DataName="EVSEPresentVoltage" RequestName="DataRead.EVSEPresentVoltage">
+            <Rectangle Left="6360" Top="6360" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2690" Color="16777215" DataName="HVBatterySOC" RequestName="DataRead.HVBatterySOC">
+            <Rectangle Left="360" Top="2160" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="ComboHLCRequest" RequestName="DataRead.ComboHLCRequest">
+            <Rectangle Left="360" Top="6960" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="2000" Color="16777215" DataName="ComboHLCResponse" RequestName="DataRead.ComboHLCResponse">
+            <Rectangle Left="360" Top="7320" Height="300" Width="5400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Identification" Color="16777215" WindowState="0" Width="9000" Height="6000">
+          <Label Text="Read" Color="16777215" Alignment="0">
+            <Rectangle Left="2880" Top="360" Height="300" Width="960"/>
+            <Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="16711680"/>
+          </Label>
+          <Label Text="Write" Color="16777215" Alignment="0">
+            <Rectangle Left="5280" Top="360" Height="300" Width="960"/>
+            <Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="4194432"/>
+          </Label>
+          <Button Text="Write">
+            <Rectangle Left="7560" Top="900" Height="300" Width="900"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="DataWrite.VIN"/>
+          </Button>
+          <Button Text="Write">
+            <Rectangle Left="7560" Top="1350" Height="300" Width="900"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="DataWrite.diagnosticVersion"/>
+          </Button>
+          <Input Width="15" Color="16777215" DataName="VIN" RequestName="DataWrite.VIN">
+            <Rectangle Left="4680" Top="900" Height="300" Width="2640"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="1395" Color="16777215" DataName="VIN" RequestName="DataRead.VIN">
+            <Rectangle Left="300" Top="840" Height="300" Width="4140"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4130" Color="16777215" DataName="systemSupplierECUSoftwareVersionNumber" RequestName="DataRead.systemSupplierECUSoftwareVersionNumber">
+            <Rectangle Left="300" Top="2400" Height="300" Width="8220"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="4145" Color="16777215" DataName="ECUSerialNumber" RequestName="DataRead.ECUSerialNumber">
+            <Rectangle Left="300" Top="2850" Height="300" Width="8220"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="1685" Color="16777215" DataName="diagnosticVersion" RequestName="DataRead.diagnosticVersion">
+            <Rectangle Left="240" Top="1320" Height="300" Width="4260"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="15" Color="16777215" DataName="diagnosticVersion" RequestName="DataWrite.diagnosticVersion">
+            <Rectangle Left="4680" Top="1350" Height="300" Width="2640"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+        </Screen>
+      </Category>
+    </ds:Categories>
+  </ddt:Target>
+</xml>

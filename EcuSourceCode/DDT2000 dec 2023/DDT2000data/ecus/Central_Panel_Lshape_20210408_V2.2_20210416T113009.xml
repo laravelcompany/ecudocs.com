@@ -1,0 +1,2862 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+  <Generator name="DDT2000 XML library" version="2.3.0.0" date="2021-04-15T12:41"/>
+  <ddt:Target Name="Central_Panel_Lshape_20210408_V2.2" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="sameh.s.ben-said@renault.com" href="Central_Panel_Lshape_20210408_V2.2_20210416T113009.xml" upload="4/16/2021" group="Interface Multimedia"><Description><![CDATA[V2.2 - 08/04/2021 (Soumya Ranjan Nayak)
+Add AutoIdent info for SW6.0
+===================
+V2.1 - 22/10/2020 (H. LEE)
+- Add AutoIdent info for SW5.0
+- Add DTC $9F31 $46
+==============
+V2.0 - 01/08/2020 (S. BEN-SAID)
+- official version for ABVC HHN BCB
+- add Continental DTC 
+- add VC part identification SW4.0
+==============
+V1.0 - 27/01/2020 (L. MONJO) :
+- Base DDT creation
+
+==============
+Author: Sameh BEN SAID (A027808)]]></Description>
+    <Projects xmlns=""><xCB/><xHC/><xHN/></Projects><Checks Version="V1.11" Date="20210416T112941">
+      <Ctrl Type="DDT2000" Warning="0" Error="0"/>
+      <Ctrl Type="CPDD" Warning="96" Error="0"/>
+      <Ctrl Type="DAIMLER-ODX" Warning="0" Error="2"/>
+      <Ctrl Type="ALLIANCE-ODX" Warning="0" Error="0"/>
+    </Checks>
+    
+    <Function Name="MIU" Address="89" LogicalAddress="0059"/>
+    <Language Name="Français" Reference="1"/>
+    
+    <DateOfficialisation>08-04-2021</DateOfficialisation>
+    <Failures Name="DTC Failures" Id="3"/>
+    <PowerSupply>
+      <Ground/>
+      <Vbat/>
+      <AfterContact/>
+    </PowerSupply>
+    <CAN BaudRate="10400" Multipoint="1">
+      <SendId>
+        <CANId Value="1812"/>
+      </SendId>
+      <ReceiveId>
+        <CANId Value="1844"/>
+      </ReceiveId>
+    </CAN>
+    <AutoIdents>
+      <AutoIdent DiagVersion="20" Supplier="ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ" Soft="SW04.00" Version="TC02.07"/>
+      <AutoIdent DiagVersion="20" Supplier="ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ" Soft="SW04.00" Version="TC01.04"/>
+      <AutoIdent DiagVersion="20" Supplier="ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ" Soft="SW03.70" Version="TC01.03"/>
+      <AutoIdent DiagVersion="20" Supplier="ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ" Soft="SW03.70" Version="TC01.04"/>
+      <AutoIdent DiagVersion="20" Supplier="Continental Automotive                                          " Soft="SW04.00" Version="TC01.04"/>
+      <AutoIdent DiagVersion="20" Supplier="Continental Automotive                                          " Soft="SW04.00" Version="TC02.07"/>
+      <AutoIdent DiagVersion="20" Supplier="Continental GZ4                                                
+" Soft="SW05.00" Version="TC02.05"/>
+      <AutoIdent DiagVersion="20" Supplier="Continental GZ4                                                
+" Soft="SW05.00" Version="TC03.08"/>
+      <AutoIdent DiagVersion="20" Supplier="Continental GZ4                                                
+" Soft="SW06.00" Version="TC02.07"/>
+      <AutoIdent DiagVersion="20" Supplier="Continental GZ4                                                
+" Soft="SW06.00" Version="TC03.10"/>
+    </AutoIdents>
+    <Datas>
+      <Data Name="HW_Reset_Counter">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="SW_Reset_Counter">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="T_PWM_ON_TP">
+        <Bits count="6">
+          <Scaled Unit="ms" Step=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="T_PWM_OFF_TP">
+        <Bits count="6">
+          <Scaled Unit="ms" Step=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="SessionName">
+        <Comment><![CDATA[Diagnostic session values. See documentation for more information.]]></Comment>
+        <Mnemonic>LEV_DS</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>[0x00] : ISO / SAE Reserved<BR>[0x01] : Default session<BR>[0x02] : Programming session<BR>[0x03] : Extended diagnostic session<BR>[0x04] : Safety system diagnostic session<BR>[0x05 - 0x3F] : ISO / SAE Reserved<BR>[0x40 - 0x5F] : Vehicle manufacturer specific<BR>[0x60 - 0x7E] : System supplier specific<BR>[0x7F] : ISO / SAE Reserved</FONT></P>]]></Description>
+        <Bits>
+          <List>
+            <Item Value="1" Text="DefaultSession"/>
+            <Item Value="2" Text="ProgrammingSession"/>
+            <Item Value="3" Text="ExtendedDiagnosticSession"/>
+            <Item Value="4" Text="SafetySystemDiagnosticSession"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCMaskRecord">
+        <Mnemonic>DTCMREC_DTC</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="StatusOfDTC">
+        <Mnemonic>DTCASR_SODTC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailed">
+        <Mnemonic>TF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedThisMonitoringCycle">
+        <Mnemonic>TFTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.pendingDTC">
+        <Mnemonic>PDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.confirmedDTC">
+        <Mnemonic>CDTC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedSinceLastClear">
+        <Mnemonic>TNCSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedSinceLastClear">
+        <Mnemonic>TFSLC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+        <Mnemonic>TNCTMC</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.warningIndicatorRequested">
+        <Mnemonic>WIR</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.Category">
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="General Failure Information"/>
+            <Item Value="1" Text="General Electrical Failures"/>
+            <Item Value="2" Text="General Signal Failures"/>
+            <Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="15" Text="Vehicle manufacturer / System supplier specific"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Device and failure type ODB codding"/>
+            <Item Value="1" Text="General Electrical Failure"/>
+            <Item Value="2" Text="General signal failure"/>
+            <Item Value="3" Text="FM / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="17" Text="circuit short to ground"/>
+            <Item Value="18" Text="circuit short to battery"/>
+            <Item Value="19" Text="circuit open"/>
+            <Item Value="20" Text="circuit short to ground or open"/>
+            <Item Value="21" Text="circuit short to battery or open"/>
+            <Item Value="22" Text="circuit voltage below threshold"/>
+            <Item Value="23" Text="circuit voltage above threshold"/>
+            <Item Value="24" Text="circuit current below threshold"/>
+            <Item Value="25" Text="circuit current above threshold"/>
+            <Item Value="26" Text="circuit resistance below threshold"/>
+            <Item Value="27" Text="circuit resistance above threshold"/>
+            <Item Value="28" Text="circuit voltage out of range"/>
+            <Item Value="29" Text="circuit current out of range"/>
+            <Item Value="30" Text="circuit resistance out of range"/>
+            <Item Value="31" Text="circuit intermittent"/>
+            <Item Value="33" Text="signal amplitude &lt; minimum"/>
+            <Item Value="34" Text="signal amplitude &gt; maximum"/>
+            <Item Value="35" Text="signal stuck low"/>
+            <Item Value="36" Text="signal stuck high"/>
+            <Item Value="37" Text="signal shape / waveform failure"/>
+            <Item Value="38" Text="signal rate of change below threshold"/>
+            <Item Value="39" Text="signal rate of change above threshold"/>
+            <Item Value="40" Text="signal bias level out of range / zero adj. failure"/>
+            <Item Value="41" Text="signal signal invalid"/>
+            <Item Value="47" Text="signal erratic"/>
+            <Item Value="49" Text="no signal"/>
+            <Item Value="50" Text="signal low time &lt; minimum"/>
+            <Item Value="51" Text="signal low time &gt; maximum"/>
+            <Item Value="52" Text="signal high time &lt; minimum"/>
+            <Item Value="53" Text="signal high time &gt; maximum"/>
+            <Item Value="54" Text="signal frequency too low"/>
+            <Item Value="55" Text="signal frequency too high"/>
+            <Item Value="56" Text="signal frequency incorrect"/>
+            <Item Value="57" Text="incorrect has too few pulses"/>
+            <Item Value="58" Text="incorrect has too many pulses"/>
+            <Item Value="65" Text="general checksum failure"/>
+            <Item Value="66" Text="general memory failure"/>
+            <Item Value="67" Text="special memory failure"/>
+            <Item Value="68" Text="data memory failure"/>
+            <Item Value="69" Text="program memory failure"/>
+            <Item Value="70" Text="NVM failure"/>
+            <Item Value="71" Text="watchdog / safety µC failure"/>
+            <Item Value="72" Text="supervision software failure"/>
+            <Item Value="73" Text="internal electronic failure"/>
+            <Item Value="74" Text="incorrect component installed"/>
+            <Item Value="75" Text="over temperature"/>
+            <Item Value="81" Text="not programmed"/>
+            <Item Value="82" Text="not activated"/>
+            <Item Value="83" Text="deactivated"/>
+            <Item Value="84" Text="missing calibration"/>
+            <Item Value="85" Text="not configured"/>
+            <Item Value="97" Text="signal calculation failure"/>
+            <Item Value="98" Text="signal compare failure"/>
+            <Item Value="99" Text="circuit / component protection time-out"/>
+            <Item Value="100" Text="signal plausibility failure"/>
+            <Item Value="101" Text="signal has too few transitions / events"/>
+            <Item Value="102" Text="signal has too many transitions / events"/>
+            <Item Value="103" Text="signal incorrect after event"/>
+            <Item Value="104" Text="event information"/>
+            <Item Value="113" Text="actuator stuck"/>
+            <Item Value="114" Text="actuator stuck open"/>
+            <Item Value="115" Text="actuator stuck closed"/>
+            <Item Value="116" Text="actuator slipping"/>
+            <Item Value="117" Text="emergency position not reachable"/>
+            <Item Value="118" Text="wrong mounting position"/>
+            <Item Value="119" Text="commanded position not reachable"/>
+            <Item Value="120" Text="alignment or adjustment incorrect"/>
+            <Item Value="121" Text="mechanical linkage failure"/>
+            <Item Value="122" Text="fluid leak or seal failure"/>
+            <Item Value="123" Text="low fluid level"/>
+            <Item Value="129" Text="invalid serial data received"/>
+            <Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+            <Item Value="131" Text="value of signal protection calculation incorrect"/>
+            <Item Value="132" Text="signal below allowable range"/>
+            <Item Value="133" Text="signal above allowable range"/>
+            <Item Value="134" Text="signal invalid"/>
+            <Item Value="135" Text="missing message"/>
+            <Item Value="136" Text="bus off"/>
+            <Item Value="143" Text="erratic"/>
+            <Item Value="145" Text="parametric"/>
+            <Item Value="146" Text="performance or incorrect operation"/>
+            <Item Value="147" Text="no operation"/>
+            <Item Value="148" Text="unexpected operation"/>
+            <Item Value="149" Text="incorrect assembly"/>
+            <Item Value="150" Text="component internal failure"/>
+            <Item Value="151" Text="Component or sys. operation obstructed or blocked"/>
+            <Item Value="152" Text="component or system over temperature"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceIdentifier">
+        <Bits count="16">
+          <List>
+            <Item Value="40754" Text="buttons/touchpad"/>
+            <Item Value="40756" Text="CAN M defaut"/>
+            <Item Value="57400" Text="Conti Display"/>
+            <Item Value="57399" Text="Conti power supply"/>
+            <Item Value="40760" Text="Display over temperature"/>
+            <Item Value="40758" Text="I2C touch controler"/>
+            <Item Value="40753" Text="Internal Default"/>
+            <Item Value="40755" Text="LVDS default"/>
+            <Item Value="40759" Text="Power Supply Monitoring"/>
+            <Item Value="57401" Text="Conti LED_driver"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.ManufacturerOrSupplier">
+        <Bits count="4">
+          <List/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatusAvailabilityMask">
+        <Mnemonic>DTCSAM</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCCount">
+        <Comment><![CDATA[DTC count]]></Comment>
+        <Mnemonic>DTCC</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCFormatIdentifier">
+        <Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+        <Mnemonic>DTCFID</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="SAE_J2012-DA_DTC"/>
+            <Item Value="1" Text="ISO_14229-1_DTC"/>
+            <Item Value="2" Text="SAE_J1939-73_DTC"/>
+            <Item Value="3" Text="ISO_11992-4_DTC"/>
+            <Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFaultDetectionCounter">
+        <Comment><![CDATA[DTC fault detction counter]]></Comment>
+        <Mnemonic>DTCFDC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCRecord">
+        <Mnemonic>DTCASR_DTC</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="diagnosticVersion">
+        <Comment><![CDATA[VDIAG]]></Comment>
+        <Mnemonic>DID_$F1A0</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the diagnostic version of the ECU.</FONT></P>
+<P><FONT size=2>It is defined by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>Refer to manufacture ECU designer.</FONT></P>]]></Description>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="ECUSerialNumber">
+        <Comment><![CDATA[ECU serial number]]></Comment>
+        <Mnemonic>DID_$F18C</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the ECU (server) serial number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific.</FONT></P>]]></Description>
+        <Bytes count="20" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareNumber">
+        <Comment><![CDATA[Software Number (Supplier)]]></Comment>
+        <Mnemonic>DID_$F194</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="7" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareVersionNumber">
+        <Comment><![CDATA[Software Version (Supplier)]]></Comment>
+        <Mnemonic>DID_$F195</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier specific ECU (server) software version number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="7" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierIdentifier">
+        <Comment><![CDATA[Name and address information of the supplier.]]></Comment>
+        <Mnemonic>DID_$F18A</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the system supplier name and address information.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the system supplier.</FONT></P>]]></Description>
+        <Bytes count="64" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUHardwareNumber">
+        <Comment><![CDATA[Hardware Number]]></Comment>
+        <Mnemonic>DID_$F191</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used by reading services to reference the vehicle-manufacturer-specific ECU (server) hardware number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be serverspecific and defined by vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUSoftwareNumber">
+        <Mnemonic>DID_$F188</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerKitAssemblyPartNumber">
+        <Comment><![CDATA[Ordered assembly Part Number - This value shall contain the number of the part ordered by OEM]]></Comment>
+        <Mnemonic>DID_$F18E</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer spare part number. </FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="VehicleManufacturerSparePartNumber_N">
+        <Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM]]></Comment>
+        <Mnemonic>DID_$F1A1</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer spare part number. </FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerSparePartNumber">
+        <Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM]]></Comment>
+        <Mnemonic>DID_$F187</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer spare part number. </FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="EEPROM_default">
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Part Identification">
+        <Bytes count="15" ascii="1"/>
+      </Data>
+      <Data Name="SmoothingLow.K_value">
+        <Bits>
+          <Scaled Step=" 5" DivideBy=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="SmoothingLow.J_value">
+        <Bits>
+          <Scaled Step=" 5" DivideBy=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="SmoothingLow.TE_value">
+        <Bits count="4">
+          <Scaled Unit="ms" Step=" 5"/>
+        </Bits>
+      </Data>
+      <Data Name="SwitchLum.1">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="SwitchLum.10">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="SwitchLum.11">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="SwitchLum.2">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="SwitchLum.3">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="SwitchLum.4">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="SwitchLum.5">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="SwitchLum.6">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="SwitchLum.7">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="SwitchLum.8">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="SwitchLum.9">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="Switch_Press.ON_OFF">
+        <Mnemonic>DID_$0101</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Release"/>
+            <Item Value="1" Text="ON/OFF press"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Switch_Press.VOL_Plus">
+        <Mnemonic>DID_$0101</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Release"/>
+            <Item Value="1" Text="VOL + press"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Switch_Press.VOL_Moins">
+        <Mnemonic>DID_$0101</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="release"/>
+            <Item Value="1" Text="VOL - press"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VIN">
+        <Comment><![CDATA[Vehicle Identification Number]]></Comment>
+        <Mnemonic>DID_$F190</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the VIN number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be specified by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>It shall not be erased when the ECU is reprogrammed.</FONT></P>]]></Description>
+        <Bytes count="17" ascii="1"/>
+      </Data>
+      <Data Name="OutputControlCommand">
+        <Comment><![CDATA[Input Output control parameter list]]></Comment>
+        <Mnemonic>COR_IOCP</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Stop"/>
+            <Item Value="2" Text="freeze"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IOCTL.DataIdentifier">
+        <Comment><![CDATA[Data Identifier received in reply to InputOutputControl request]]></Comment>
+        <Mnemonic>IOI_READ</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="IOCTL.StatusRecord.Parameter">
+        <Comment><![CDATA[Input Output control status]]></Comment>
+        <Mnemonic>CSR_IOCP</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="returnControlToECU"/>
+            <Item Value="1" Text="resetToDefault"/>
+            <Item Value="2" Text="freezeCurrentState"/>
+            <Item Value="3" Text="shortTermAdjustment"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Output control PWM Display">
+        <Bits>
+          <Scaled Unit="%"/>
+        </Bits>
+      </Data>
+      <Data Name="Output Duration">
+        <Bits>
+          <Scaled Unit="s"/>
+        </Bits>
+      </Data>
+      <Data Name="DTCoccurenceCounter">
+        <Mnemonic>DTC_Counter</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Mileage">
+        <Mnemonic>DTC_Mileage</Mnemonic>
+        <Bits count="24">
+          <Scaled Unit="km"/>
+        </Bits>
+      </Data>
+      <Data Name="Display_Temperature">
+        <Comment><![CDATA[temparature of the display]]></Comment>
+        <Bits>
+          <Scaled Unit="°C" Offset="-40"/>
+        </Bits>
+      </Data>
+      <Data Name="Output Control Display Color Test">
+        <Bits>
+          <List>
+            <Item Value="0" Text="Black"/>
+            <Item Value="1" Text="Red"/>
+            <Item Value="2" Text="Green"/>
+            <Item Value="3" Text="Blue"/>
+            <Item Value="4" Text="White"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Last_Touch.CoordinateX">
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Last_Touch.CoordinateY">
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Operationnal_Reference">
+        <Comment><![CDATA[REF SW renault]]></Comment>
+        <Mnemonic>DID_$F012</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="DayLum.9">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.8">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.7">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.6">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.5">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.4">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.3">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.2">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.11">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.10">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.1">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.12">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.13">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.14">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.1">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.10">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.11">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.12">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.13">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.14">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.15">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.2">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.3">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.4">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.5">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.6">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.7">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.8">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="NightLum.9">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="DayLum.15">
+        <Bits>
+          <Scaled Unit="%" Step=" .4"/>
+        </Bits>
+      </Data>
+      <Data Name="External_ShortPush">
+        <Bits>
+          <Scaled Unit="ms" Step=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_sent.CPdisplayAvailability">
+        <Mnemonic>CAN CPdisplayAvailability</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="CentralPanel not ready to display"/>
+            <Item Value="1" Text="CentralPanel  ready to display"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_sent.CPdisplayDayLuminosityStatus">
+        <Mnemonic>CAN CPdisplayDayLuminosityStatus</Mnemonic>
+        <Bits>
+          <Scaled Unit="%" Step=" 5"/>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_sent.CPdisplayNightLuminosityStatus">
+        <Mnemonic>CPdisplayDayLuminosityStatus</Mnemonic>
+        <Bits>
+          <Scaled Unit="%" Step=" 5"/>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_sent.CP_DisplayFailure">
+        <Mnemonic>CAN CP_DisplayFailure</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No default"/>
+            <Item Value="1" Text="Display failure"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_sent.CentralPanelMMSwitch">
+        <Mnemonic>Can CentralPanelMMSwitch</Mnemonic>
+        <Bits count="3">
+          <List>
+            <Item Value="0" Text="All Button Released"/>
+            <Item Value="1" Text="Button ON/OFF press"/>
+            <Item Value="2" Text="Button Vol+ press"/>
+            <Item Value="3" Text="Button Vol- press"/>
+            <Item Value="4" Text="Button Vehicle control press"/>
+            <Item Value="5" Text="Button 5 press"/>
+            <Item Value="6" Text="Button 6 press"/>
+            <Item Value="7" Text="Button 7 press"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_received.AutoDimmingOffsetY0_MM">
+        <Mnemonic>Autodimvalue</Mnemonic>
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="Unavailable"/>
+            <Item Value="1" Text="Step1"/>
+            <Item Value="2" Text="Step2"/>
+            <Item Value="3" Text="Step3"/>
+            <Item Value="4" Text="Step4"/>
+            <Item Value="5" Text="Step5"/>
+            <Item Value="6" Text="Step6"/>
+            <Item Value="7" Text="Step7"/>
+            <Item Value="8" Text="Step8"/>
+            <Item Value="9" Text="Step9"/>
+            <Item Value="10" Text="Step10"/>
+            <Item Value="11" Text="Step11"/>
+            <Item Value="13" Text="Step13"/>
+            <Item Value="14" Text="Step14"/>
+            <Item Value="15" Text="Step15"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_received.AutoDimmingState">
+        <Mnemonic>AutoDimmingState</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="AutoDimming Not activated"/>
+            <Item Value="1" Text="AutoDimming  activated"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_received.CPdisplayDayLuminosityRequest">
+        <Mnemonic>CAN CpDisplayDayLum Request</Mnemonic>
+        <Bits>
+          <Scaled Unit="%" Step=" 5"/>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_received.CPdisplayNightLuminosityRequest">
+        <Mnemonic>CAN CpDisplayNightLum Request</Mnemonic>
+        <Bits>
+          <Scaled Unit="%" Step=" 5"/>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_received.DayNightStatus">
+        <Mnemonic>DayNightStatus</Mnemonic>
+        <Bits count="2">
+          <List>
+            <Item Value="0" Text="Day"/>
+            <Item Value="1" Text="night"/>
+            <Item Value="2" Text="Twilight"/>
+            <Item Value="3" Text="Invalid Value"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_received.DimmingValue">
+        <Mnemonic>CAN dim</Mnemonic>
+        <Bits>
+          <Scaled Unit="%" Step=" 4" DivideBy=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_received.DisplayActivation">
+        <Mnemonic>DA</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No display"/>
+            <Item Value="1" Text="Display"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_received.GADE_MM_V2">
+        <Mnemonic>Gade</Mnemonic>
+        <Bits count="3">
+          <List>
+            <Item Value="0" Text="Sleep or Crank fault, Disable DiagMuxDTC"/>
+            <Item Value="1" Text="AutoACC fault, Disable DiagMuxDTC"/>
+            <Item Value="2" Text="ALL fault, Disable DiagMuxDTC"/>
+            <Item Value="3" Text="ALL fault, Enable DiagMuxDTC"/>
+            <Item Value="4" Text="FOTA switch fault, Disable DiagMuxDTC"/>
+            <Item Value="5" Text="Not used"/>
+            <Item Value="6" Text="Not used2"/>
+            <Item Value="7" Text="Unavailable"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_received.ProbableCustomerFeedBackNeed">
+        <Mnemonic>PCFN</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="Customer feedback probably not needed"/>
+            <Item Value="1" Text="Customer feedback needed"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Mcan_received.VehicleStates_MM">
+        <Mnemonic>CAN VehicleStates</Mnemonic>
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="Sleeping"/>
+            <Item Value="1" Text="Not used"/>
+            <Item Value="2" Text="CutoffPending"/>
+            <Item Value="3" Text="AutoACC  - BatTempoLevel"/>
+            <Item Value="4" Text="Not used1"/>
+            <Item Value="5" Text="IgnitionLevel"/>
+            <Item Value="6" Text="StartingInProgress"/>
+            <Item Value="7" Text="PowertrainRunning"/>
+            <Item Value="8" Text="AutoStart"/>
+            <Item Value="9" Text="EngineSystemStop"/>
+            <Item Value="10" Text="Not used2"/>
+            <Item Value="11" Text="Not used3"/>
+            <Item Value="12" Text="Not used4"/>
+            <Item Value="13" Text="Not used5"/>
+            <Item Value="15" Text="Unavailable"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Last_Touch_Sent.CoordinateX">
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="Last_Touch_Sent.CoordinateY">
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="OutputPermanentControlList">
+        <Comment><![CDATA[List of Data Identifiers for Input Output Control]]></Comment>
+        <Description><![CDATA[<P><FONT size=2><STRONG><U>Definition of IOControl</U></STRONG></FONT></P>
+<P><FONT size=2>Data: IOCTL.DataIdentifierList</FONT></P>
+<P><FONT size=2>&nbsp; Contains the list of all IO devices that may be<BR>&nbsp; controlled by InputOutputControl service.<BR>&nbsp; <BR>&nbsp; Example:<BR>&nbsp; <BR>&nbsp;&nbsp;&nbsp; 0 - DID_Pump<BR>&nbsp;&nbsp;&nbsp; 1 - DID_Wiper</FONT></P>
+<P><FONT size=2>If some of these IO devices have parameters, you should defined a data with the same name as the IO devices followed by a dot and a text</FONT></P>
+<P><FONT size=2>&nbsp; Example:<BR>&nbsp; <BR>&nbsp; Data: DID_Wiper.Mode<BR>&nbsp;&nbsp;&nbsp;&nbsp; Type: List<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 - Slow speed<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 - High speed</FONT></P>
+<P><FONT size=2>Then, you should add theses data in the "Send tab" of the&nbsp;InputOutpuControl request, after the IOCTL.OptionRecord.Parameter data.</FONT></P>]]></Description>
+        <Bits count="16">
+          <List>
+            <Item Value="277" Text="I/O control PWM Display"/>
+            <Item Value="278" Text="I/O control Display Color Test"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="CP_On_Off">
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="switch Off"/>
+            <Item Value="1" Text="switch On"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="BaterryVoltage">
+        <Bits count="16">
+          <Scaled Unit="V" DivideBy=" 1000"/>
+        </Bits>
+      </Data>
+      <Data Name="Capacitive_ShortPush">
+        <Bits>
+          <Scaled Unit="ms" Step=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceAndFailureTypeOBD">
+        <Mnemonic>DTCOBD</Mnemonic>
+        <Bits count="16">
+          <List>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCSnapshotRecordNumber">
+        <Mnemonic>DTCASR_SODTC</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+    </Datas>
+    <Requests Endian="Big">
+      <Request Name="DataRead.HW_Reset_Counter">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220301</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620301</ReplyBytes>
+          <DataItem Name="HW_Reset_Counter" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.SW_Reset_Counter">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220302</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620302</ReplyBytes>
+          <DataItem Name="SW_Reset_Counter" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.T_PWM_ON_TP">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E022500</SentBytes>
+          <DataItem Name="T_PWM_ON_TP" FirstByte="4" BitOffset="2"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0225</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.T_PWM_OFF_TP">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <DenyAccess>
+          <Plant/>
+          <AfterSales/>
+        </DenyAccess>
+        <Sent>
+          <SentBytes>2E022600</SentBytes>
+          <DataItem Name="T_PWM_OFF_TP" FirstByte="4" BitOffset="2"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0226</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1003</SentBytes>
+          <DataItem Name="SessionName" FirstByte="2"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5003</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.ExtendedDiagnostic">
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1003</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5003</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.Programming">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1002</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5002</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.Default">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+        <Sent>
+          <SentBytes>1001</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5001</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ClearDiagnosticInformation.All">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+        <Sent>
+          <SentBytes>14FFFFFF</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>54</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report number of DTC]]></Comment>
+        <Sent>
+          <SentBytes>1901FF</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>5901FF000000</ReplyBytes>
+          <DataItem Name="DTCCount" FirstByte="5"/>
+          <DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="ReportDTCInformation.ReportDTCFaultDetectionCounter">
+        <Comment><![CDATA[Report DTC fault detection]]></Comment>
+        <Sent>
+          <SentBytes>1914</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>591400000000</ReplyBytes>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="3"/>
+          <DataItem Name="DTCFailureType" FirstByte="5"/>
+          <DataItem Name="DTCFaultDetectionCounter" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="ReportDTCInformation.ReportDTCFaultDetectionCounter_CPDD Import">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report DTC fault detection counter counter for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1914</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>591400000000</ReplyBytes>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="3"/>
+          <DataItem Name="DTCFailureType" FirstByte="5"/>
+          <DataItem Name="DTCFaultDetectionCounter" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSupportedDTC">
+        <Comment><![CDATA[Report supported DTC]]></Comment>
+        <Sent>
+          <SentBytes>190A</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>590AFF00000000</ReplyBytes>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSupportedDTC_CPDD Import">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report supported DTC for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>190A</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>590AFF00000000</ReplyBytes>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="TesterPresent.WithResponse">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+        <Sent>
+          <SentBytes>3E00</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>7E</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.diagnosticVersion">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read diagnosticVersion]]></Comment>
+        <Sent>
+          <SentBytes>22F1A0</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F1A0</ReplyBytes>
+          <DataItem Name="diagnosticVersion" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ECUSerialNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read ECUSerialNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F18C</SentBytes>
+        </Sent>
+        <Received MinBytes="23">
+          <ReplyBytes>62F18C</ReplyBytes>
+          <DataItem Name="ECUSerialNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierECUSoftwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F194</SentBytes>
+        </Sent>
+        <Received MinBytes="10">
+          <ReplyBytes>62F194</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierECUVersionNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F195</SentBytes>
+        </Sent>
+        <Received MinBytes="10">
+          <ReplyBytes>62F195</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareVersionNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierIdentifier">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read systemSupplierIdentifier]]></Comment>
+        <Sent>
+          <SentBytes>22F18A</SentBytes>
+        </Sent>
+        <Received MinBytes="67">
+          <ReplyBytes>62F18A</ReplyBytes>
+          <DataItem Name="systemSupplierIdentifier" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUHardwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerECUHardwareNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F191</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F191</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUHardwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUSoftwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read autoconfigurationFingerPrint]]></Comment>
+        <Sent>
+          <SentBytes>22F188</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F188</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerSparePartNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerSparePartNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F187</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F187</ReplyBytes>
+          <DataItem Name="vehicleManufacturerSparePartNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VIN">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read VIN]]></Comment>
+        <Sent>
+          <SentBytes>22F190</SentBytes>
+        </Sent>
+        <Received MinBytes="20">
+          <ReplyBytes>62F190</ReplyBytes>
+          <DataItem Name="VIN" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="ECUReset">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>1101</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5101</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTCSnapshotIdentification">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report snapshot identification]]></Comment>
+        <Sent>
+          <SentBytes>1903000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>5903</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="DTCSnapshotRecordNumber" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.DT_Vehicle">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E010700</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0107</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.EEPROM_default">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220321</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620321</ReplyBytes>
+          <DataItem Name="EEPROM_default" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="OutputControl">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Input Output Control]]></Comment>
+        <Sent>
+          <SentBytes>2F0000030000</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="Output control PWM Display" FirstByte="5"/>
+          <DataItem Name="Output Duration" FirstByte="6"/>
+          <DataItem Name="Output Control Display Color Test" FirstByte="5"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F000003</ReplyBytes>
+          <DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Part Identification">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220323</SentBytes>
+        </Sent>
+        <Received MinBytes="18">
+          <ReplyBytes>620323</ReplyBytes>
+          <DataItem Name="Part Identification" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.VIN">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Write VIN]]></Comment>
+        <Sent>
+          <SentBytes>2EF1900000000000000000000000000000000000</SentBytes>
+          <DataItem Name="VIN" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF190</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.SmoothingLow">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220260</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>620260</ReplyBytes>
+          <DataItem Name="SmoothingLow.K_value" Ref="1" FirstByte="4"/>
+          <DataItem Name="SmoothingLow.J_value" Ref="1" FirstByte="5"/>
+          <DataItem Name="SmoothingLow.TE_value" Ref="1" FirstByte="6" BitOffset="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.SmoothingLow">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E0260050406</SentBytes>
+          <DataItem Name="SmoothingLow.K_value" FirstByte="4"/>
+          <DataItem Name="SmoothingLow.J_value" FirstByte="5"/>
+          <DataItem Name="SmoothingLow.TE_value" FirstByte="6" BitOffset="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0260</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.CP_On_Off">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220121</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620121</ReplyBytes>
+          <DataItem Name="CP_On_Off" Ref="1" FirstByte="4" BitOffset="7"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSnapshot">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+        <Sent>
+          <SentBytes>1904000000FF</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>590400000000</ReplyBytes>
+          <DataItem Name="DTCRecord" FirstByte="3"/>
+          <DataItem Name="DTCSnapshotRecordNumber" FirstByte="6"/>
+          <DataItem Name="StatusOfDTC" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DTCoccurenceCounter">
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>22F0D1</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F0D1</ReplyBytes>
+          <DataItem Name="DTCoccurenceCounter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Mileage">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F0D0</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>62F0D0</ReplyBytes>
+          <DataItem Name="Mileage" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.BaterryVoltage">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>22F0D2</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62F0D2</ReplyBytes>
+          <DataItem Name="BaterryVoltage" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Display_Temperature">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read display temperature]]></Comment>
+        <Sent>
+          <SentBytes>22F0D3</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F0D3</ReplyBytes>
+          <DataItem Name="Display_Temperature" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Last_Touch">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Coordinate_Touch X/Y]]></Comment>
+        <Sent>
+          <SentBytes>220123</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>620123</ReplyBytes>
+          <DataItem Name="Last_Touch.CoordinateX" Ref="1" FirstByte="4"/>
+          <DataItem Name="Last_Touch.CoordinateY" Ref="1" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Operationnal_Reference">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Operationnal_Reference]]></Comment>
+        <Sent>
+          <SentBytes>22F012</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F012</ReplyBytes>
+          <DataItem Name="Operationnal_Reference" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Output Control Display Color Test">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220116</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620116</ReplyBytes>
+          <DataItem Name="Output Control Display Color Test" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Output control PWM Display">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220115</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620115</ReplyBytes>
+          <DataItem Name="Output control PWM Display" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Switch_Press">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220101</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620101</ReplyBytes>
+          <DataItem Name="Switch_Press.ON_OFF" Ref="1" FirstByte="4" BitOffset="7"/>
+          <DataItem Name="Switch_Press.VOL_Plus" Ref="1" FirstByte="4" BitOffset="6"/>
+          <DataItem Name="Switch_Press.VOL_Moins" Ref="1" FirstByte="4" BitOffset="5"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.SwitchLum">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220204</SentBytes>
+        </Sent>
+        <Received MinBytes="14">
+          <ReplyBytes>620204</ReplyBytes>
+          <DataItem Name="SwitchLum.1" Ref="1" FirstByte="4"/>
+          <DataItem Name="SwitchLum.10" Ref="1" FirstByte="13"/>
+          <DataItem Name="SwitchLum.11" Ref="1" FirstByte="14"/>
+          <DataItem Name="SwitchLum.2" Ref="1" FirstByte="5"/>
+          <DataItem Name="SwitchLum.3" Ref="1" FirstByte="6"/>
+          <DataItem Name="SwitchLum.4" Ref="1" FirstByte="7"/>
+          <DataItem Name="SwitchLum.5" Ref="1" FirstByte="8"/>
+          <DataItem Name="SwitchLum.6" Ref="1" FirstByte="9"/>
+          <DataItem Name="SwitchLum.7" Ref="1" FirstByte="10"/>
+          <DataItem Name="SwitchLum.8" Ref="1" FirstByte="11"/>
+          <DataItem Name="SwitchLum.9" Ref="1" FirstByte="12"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.SwitchLum">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E020405090D131D2C405880B5FA</SentBytes>
+          <DataItem Name="SwitchLum.1" FirstByte="4"/>
+          <DataItem Name="SwitchLum.10" FirstByte="13"/>
+          <DataItem Name="SwitchLum.11" FirstByte="14"/>
+          <DataItem Name="SwitchLum.2" FirstByte="5"/>
+          <DataItem Name="SwitchLum.3" FirstByte="6"/>
+          <DataItem Name="SwitchLum.4" FirstByte="7"/>
+          <DataItem Name="SwitchLum.5" FirstByte="8"/>
+          <DataItem Name="SwitchLum.6" FirstByte="9"/>
+          <DataItem Name="SwitchLum.7" FirstByte="10"/>
+          <DataItem Name="SwitchLum.8" FirstByte="11"/>
+          <DataItem Name="SwitchLum.9" FirstByte="12"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0204</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DayLum">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220205</SentBytes>
+        </Sent>
+        <Received MinBytes="18">
+          <ReplyBytes>620205</ReplyBytes>
+          <DataItem Name="DayLum.1" Ref="1" FirstByte="4"/>
+          <DataItem Name="DayLum.10" Ref="1" FirstByte="13"/>
+          <DataItem Name="DayLum.11" Ref="1" FirstByte="14"/>
+          <DataItem Name="DayLum.12" Ref="1" FirstByte="15"/>
+          <DataItem Name="DayLum.13" Ref="1" FirstByte="16"/>
+          <DataItem Name="DayLum.14" Ref="1" FirstByte="17"/>
+          <DataItem Name="DayLum.2" Ref="1" FirstByte="5"/>
+          <DataItem Name="DayLum.3" Ref="1" FirstByte="6"/>
+          <DataItem Name="DayLum.4" Ref="1" FirstByte="7"/>
+          <DataItem Name="DayLum.5" Ref="1" FirstByte="8"/>
+          <DataItem Name="DayLum.6" Ref="1" FirstByte="9"/>
+          <DataItem Name="DayLum.7" Ref="1" FirstByte="10"/>
+          <DataItem Name="DayLum.8" Ref="1" FirstByte="11"/>
+          <DataItem Name="DayLum.9" Ref="1" FirstByte="12"/>
+          <DataItem Name="DayLum.15" Ref="1" FirstByte="18"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.DayLum">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E02053F5264778A9DAFC2D5E7FAFAFAFAFA</SentBytes>
+          <DataItem Name="DayLum.1" FirstByte="4"/>
+          <DataItem Name="DayLum.10" FirstByte="13"/>
+          <DataItem Name="DayLum.11" FirstByte="14"/>
+          <DataItem Name="DayLum.12" FirstByte="15"/>
+          <DataItem Name="DayLum.13" FirstByte="16"/>
+          <DataItem Name="DayLum.14" FirstByte="17"/>
+          <DataItem Name="DayLum.2" FirstByte="5"/>
+          <DataItem Name="DayLum.3" FirstByte="6"/>
+          <DataItem Name="DayLum.4" FirstByte="7"/>
+          <DataItem Name="DayLum.5" FirstByte="8"/>
+          <DataItem Name="DayLum.6" FirstByte="9"/>
+          <DataItem Name="DayLum.7" FirstByte="10"/>
+          <DataItem Name="DayLum.8" FirstByte="11"/>
+          <DataItem Name="DayLum.9" FirstByte="12"/>
+          <DataItem Name="DayLum.15" FirstByte="18"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0205</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.NightLum">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220206</SentBytes>
+        </Sent>
+        <Received MinBytes="18">
+          <ReplyBytes>620206</ReplyBytes>
+          <DataItem Name="NightLum.1" Ref="1" FirstByte="4"/>
+          <DataItem Name="NightLum.10" Ref="1" FirstByte="13"/>
+          <DataItem Name="NightLum.11" Ref="1" FirstByte="14"/>
+          <DataItem Name="NightLum.13" Ref="1" FirstByte="16"/>
+          <DataItem Name="NightLum.12" Ref="1" FirstByte="15"/>
+          <DataItem Name="NightLum.14" Ref="1" FirstByte="17"/>
+          <DataItem Name="NightLum.15" Ref="1" FirstByte="18"/>
+          <DataItem Name="NightLum.2" Ref="1" FirstByte="5"/>
+          <DataItem Name="NightLum.3" Ref="1" FirstByte="6"/>
+          <DataItem Name="NightLum.4" Ref="1" FirstByte="7"/>
+          <DataItem Name="NightLum.5" Ref="1" FirstByte="8"/>
+          <DataItem Name="NightLum.6" Ref="1" FirstByte="9"/>
+          <DataItem Name="NightLum.7" Ref="1" FirstByte="10"/>
+          <DataItem Name="NightLum.8" Ref="1" FirstByte="11"/>
+          <DataItem Name="NightLum.9" Ref="1" FirstByte="12"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.NightLum">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E020601020305080B1016202E3F3F3F3F3F</SentBytes>
+          <DataItem Name="NightLum.1" FirstByte="4"/>
+          <DataItem Name="NightLum.10" FirstByte="13"/>
+          <DataItem Name="NightLum.11" FirstByte="14"/>
+          <DataItem Name="NightLum.13" FirstByte="16"/>
+          <DataItem Name="NightLum.12" FirstByte="15"/>
+          <DataItem Name="NightLum.14" FirstByte="17"/>
+          <DataItem Name="NightLum.15" FirstByte="18"/>
+          <DataItem Name="NightLum.2" FirstByte="5"/>
+          <DataItem Name="NightLum.3" FirstByte="6"/>
+          <DataItem Name="NightLum.4" FirstByte="7"/>
+          <DataItem Name="NightLum.5" FirstByte="8"/>
+          <DataItem Name="NightLum.6" FirstByte="9"/>
+          <DataItem Name="NightLum.7" FirstByte="10"/>
+          <DataItem Name="NightLum.8" FirstByte="11"/>
+          <DataItem Name="NightLum.9" FirstByte="12"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0206</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Capacitive_ShortPush">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220218</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620218</ReplyBytes>
+          <DataItem Name="Capacitive_ShortPush" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.External_ShortPush">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>220219</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>620219</ReplyBytes>
+          <DataItem Name="External_ShortPush" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.Capacitive_ShortPush">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2E021803</SentBytes>
+          <DataItem Name="Capacitive_ShortPush" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0218</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.External_ShortPush">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <DenyAccess>
+          <Plant/>
+          <AfterSales/>
+        </DenyAccess>
+        <Sent>
+          <SentBytes>2E021903</SentBytes>
+          <DataItem Name="External_ShortPush" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6E0219</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerKitAssemblyPartNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read vehicleManufacturerKitAssemblyPartNumber]]></Comment>
+        <Sent>
+          <SentBytes>22F18E</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F18E</ReplyBytes>
+          <DataItem Name="vehicleManufacturerKitAssemblyPartNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Mcan_received">
+        <DenyAccess>
+          <NoSDS/>
+        </DenyAccess>
+        <Sent>
+          <SentBytes>220124</SentBytes>
+        </Sent>
+        <Received MinBytes="18">
+          <ReplyBytes>620124</ReplyBytes>
+          <DataItem Name="Mcan_received.GADE_MM_V2" FirstByte="4" BitOffset="5"/>
+          <DataItem Name="Mcan_received.DayNightStatus" FirstByte="5" BitOffset="6"/>
+          <DataItem Name="Mcan_received.DimmingValue" FirstByte="6"/>
+          <DataItem Name="Mcan_received.AutoDimmingState" FirstByte="7" BitOffset="7"/>
+          <DataItem Name="Mcan_received.ProbableCustomerFeedBackNeed" FirstByte="8" BitOffset="7"/>
+          <DataItem Name="Mcan_received.DisplayActivation" FirstByte="9" BitOffset="7"/>
+          <DataItem Name="Mcan_received.AutoDimmingOffsetY0_MM" FirstByte="10" BitOffset="4"/>
+          <DataItem Name="Mcan_received.CPdisplayDayLuminosityRequest" FirstByte="11"/>
+          <DataItem Name="Mcan_received.CPdisplayNightLuminosityRequest" FirstByte="12"/>
+          <DataItem Name="Mcan_received.VehicleStates_MM" FirstByte="13" BitOffset="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Mcan_sent">
+        <Sent>
+          <SentBytes>220125</SentBytes>
+        </Sent>
+        <Received MinBytes="8">
+          <ReplyBytes>620125</ReplyBytes>
+          <DataItem Name="Mcan_sent.CPdisplayAvailability" FirstByte="4" BitOffset="7"/>
+          <DataItem Name="Mcan_sent.CentralPanelMMSwitch" FirstByte="5" BitOffset="5"/>
+          <DataItem Name="Mcan_sent.CP_DisplayFailure" FirstByte="6" BitOffset="7"/>
+          <DataItem Name="Mcan_sent.CPdisplayDayLuminosityStatus" FirstByte="7"/>
+          <DataItem Name="Mcan_sent.CPdisplayNightLuminosityStatus" FirstByte="8"/>
+        </Received>
+      </Request>
+      <Request Name="OutputControlfreezeStop">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Input Output Control]]></Comment>
+        <Sent>
+          <SentBytes>2F000000</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>6F000000</ReplyBytes>
+          <DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Last_Touch_Sent">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read Coordinate_Touch X/Y]]></Comment>
+        <Sent>
+          <SentBytes>220126</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>620126</ReplyBytes>
+          <DataItem Name="Last_Touch_Sent.CoordinateX" Ref="1" FirstByte="4"/>
+          <DataItem Name="Last_Touch_Sent.CoordinateY" Ref="1" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTC">
+        <Comment><![CDATA[DDT2000 Failures page requests / DDT : Unusable for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1902FF</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>59020000000000</ReplyBytes>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+          <DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+          <DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+          <DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+          <DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+          <DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+          <DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+          <DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+          <DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+          <DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTC_CPDD Import">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT]]></Comment>
+        <Sent>
+          <SentBytes>1902FF</SentBytes>
+        </Sent>
+        <Received MinBytes="7">
+          <ReplyBytes>59020000000000</ReplyBytes>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+          <DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+          <DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+          <DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+          <DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+          <DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+          <DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+          <DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+          <DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+          <DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VehicleManufacturerSparePartNumber_N">
+        <Comment><![CDATA[Read VehicleManufacturerSparePartNumber_N]]></Comment>
+        <Sent>
+          <SentBytes>22F1A1</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F1A1</ReplyBytes>
+          <DataItem Name="VehicleManufacturerSparePartNumber_N" FirstByte="4"/>
+        </Received>
+      </Request>
+    </Requests>
+    <Devices>
+      <Device Name="Internal Default" DTC="40753" Type="2">
+        <Test Type="73" Severity="0" Autocheck="0">
+          <Description>lost backlight</Description>
+        </Test>
+        <Test Type="66" Severity="0">
+          <Description>memory faliure</Description>
+        </Test>
+        <Test Type="70" Severity="0" Autocheck="0">
+          <Description>NVM failure</Description>
+        </Test>
+      </Device>
+      <Device Name="LVDS default" DTC="40755">
+        <Test Type="134" Severity="0">
+        </Test>
+        <Test Type="136" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="CAN M defaut" DTC="40756">
+        <Test Type="136" Severity="0">
+        </Test>
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Power Supply Monitoring" DTC="40759">
+        <Test Type="22">
+        </Test>
+        <Test Type="23">
+        </Test>
+      </Device>
+      <Device Name="I2C touch controler" DTC="40758">
+        <Test Type="135" Severity="0">
+        </Test>
+        <Test Type="136" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="buttons/touchpad" DTC="40754" Type="2">
+        <Test Type="115" Severity="0">
+        </Test>
+        <Test Type="147">
+        </Test>
+        <Test Type="148">
+        </Test>
+      </Device>
+      <Device Name="Display over temperature" DTC="40760" Type="2">
+        <Test Type="75" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Conti Display" DTC="57400" Type="2">
+        <Test Type="75" Severity="0">
+        </Test>
+        <Test Type="21" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Conti LED_driver" DTC="57401" Type="2">
+        <Test Type="75" Severity="0">
+        </Test>
+        <Test Type="21" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="Conti power supply" DTC="57399" Type="2">
+        <Test Type="75" Severity="0">
+        </Test>
+        <Test Type="21" Severity="0">
+        </Test>
+        <Test Type="22" Severity="0">
+        </Test>
+        <Test Type="23" Severity="0">
+        </Test>
+        <Test Type="152">
+        </Test>
+      </Device>
+    </Devices>
+    <ds:Categories xmlns="http://www-diag.renault.com/2002/screens">
+      <Category Name="ECU Configuration">
+        <Screen Name="Identifiactions" Color="16777215" WindowState="0" Width="12660" Height="9780">
+          <Label Text="Identifications" Color="986895" Alignment="2">
+            <Rectangle Left="-30" Top="240" Height="720" Width="12120"/>
+            <Font Name="Comic Sans MS" Size=" 24" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Read Data" Color="12615935" Alignment="0">
+            <Rectangle Left="360" Top="1320" Height="1080" Width="3120"/>
+            <Font Name="Comic Sans MS" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="VIN (F190)" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="3000" Height="480" Width="4080"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="REF part (F187)" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="3750" Height="450" Width="4080"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="REF SW (F188 F012)" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="4500" Height="480" Width="4080"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Vdiag (F1A0)" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="5250" Height="480" Width="4080"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Supplier identifier (F18A)" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="6000" Height="600" Width="4080"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text=" REF HW (F191)" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="6720" Height="480" Width="4080"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="SW number &amp; version (F194 F195)" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="7440" Height="600" Width="4080"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Serial number (F18C)" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="8160" Height="480" Width="4080"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="AssemblyPartNumber (F18E)" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="8880" Height="480" Width="4080"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Send Delay="0" RequestName="DataRead.VIN"/>
+          <Send Delay="0" RequestName="DataRead.diagnosticVersion"/>
+          <Send Delay="0" RequestName="DataRead.vehicleManufacturerECUHardwareNumber"/>
+          <Send Delay="0" RequestName="DataRead.vehicleManufacturerECUSoftwareNumber"/>
+          <Send Delay="0" RequestName="DataRead.vehicleManufacturerSparePartNumber"/>
+          <Send Delay="0" RequestName="DataRead.Part Identification"/>
+          <Send Delay="0" RequestName="DataRead.vehicleManufacturerKitAssemblyPartNumber"/>
+          <Send Delay="0" RequestName="DataRead.systemSupplierECUSoftwareVersionNumber"/>
+          <Send Delay="0" RequestName="DataRead.systemSupplierECUSoftwareNumber"/>
+          <Send Delay="0" RequestName="DataRead.Operationnal_Reference"/>
+          <Send Delay="0" RequestName="DataRead.ECUSerialNumber"/>
+          <Button Text="Read All">
+            <Rectangle Left="7200" Top="1800" Height="480" Width="1440"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="DataRead.VIN"/>
+            <Send Delay="0" RequestName="DataRead.diagnosticVersion"/>
+            <Send Delay="0" RequestName="DataRead.vehicleManufacturerECUHardwareNumber"/>
+            <Send Delay="0" RequestName="DataRead.vehicleManufacturerECUSoftwareNumber"/>
+            <Send Delay="0" RequestName="DataRead.vehicleManufacturerSparePartNumber"/>
+            <Send Delay="0" RequestName="DataRead.Part Identification"/>
+            <Send Delay="0" RequestName="DataRead.vehicleManufacturerKitAssemblyPartNumber"/>
+            <Send Delay="0" RequestName="DataRead.systemSupplierECUSoftwareVersionNumber"/>
+            <Send Delay="0" RequestName="DataRead.systemSupplierECUSoftwareNumber"/>
+            <Send Delay="0" RequestName="DataRead.Operationnal_Reference"/>
+            <Send Delay="0" RequestName="DataRead.ECUSerialNumber"/>
+          </Button>
+          <Display Width="0" Color="12615935" DataName="diagnosticVersion" RequestName="DataRead.diagnosticVersion">
+            <Rectangle Left="4800" Top="5250" Height="480" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="VIN" RequestName="DataRead.VIN">
+            <Rectangle Left="4800" Top="3000" Height="480" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="15" Color="12615935" DataName="vehicleManufacturerSparePartNumber" RequestName="DataRead.vehicleManufacturerSparePartNumber">
+            <Rectangle Left="4800" Top="3720" Height="525" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="vehicleManufacturerECUSoftwareNumber" RequestName="DataRead.vehicleManufacturerECUSoftwareNumber">
+            <Rectangle Left="4800" Top="4560" Height="495" Width="3240"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="15" Color="12615935" DataName="vehicleManufacturerECUHardwareNumber" RequestName="DataRead.vehicleManufacturerECUHardwareNumber">
+            <Rectangle Left="4800" Top="6750" Height="510" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="systemSupplierECUSoftwareNumber" RequestName="DataRead.systemSupplierECUSoftwareNumber">
+            <Rectangle Left="4800" Top="7440" Height="495" Width="3240"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="systemSupplierIdentifier" RequestName="DataRead.systemSupplierIdentifier">
+            <Rectangle Left="4800" Top="6000" Height="495" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="20" Color="12615935" DataName="ECUSerialNumber" RequestName="DataRead.ECUSerialNumber">
+            <Rectangle Left="4800" Top="8160" Height="495" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="Operationnal_Reference" RequestName="DataRead.Operationnal_Reference">
+            <Rectangle Left="8280" Top="4560" Height="480" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="systemSupplierECUSoftwareVersionNumber" RequestName="DataRead.systemSupplierECUSoftwareVersionNumber">
+            <Rectangle Left="8280" Top="7440" Height="495" Width="3000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="vehicleManufacturerKitAssemblyPartNumber" RequestName="DataRead.vehicleManufacturerKitAssemblyPartNumber">
+            <Rectangle Left="4800" Top="8880" Height="540" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Diagnostic Session" Color="16777215" WindowState="0" Width="12060" Height="8820">
+          <Label Text="Diagnostic Session" Color="986895" Alignment="2">
+            <Rectangle Left="-30" Top="240" Height="720" Width="12120"/>
+            <Font Name="Comic Sans MS" Size=" 24" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Button Text="Default Session">
+            <Rectangle Left="3667" Top="3360" Height="960" Width="4725"/>
+            <Font Name="Comic Sans MS" Size=" 16" Bold="1" Italic="1"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.Default"/>
+          </Button>
+          <Button Text="ECU Reprogramming Session">
+            <Rectangle Left="3667" Top="4560" Height="960" Width="4725"/>
+            <Font Name="Comic Sans MS" Size=" 16" Bold="1" Italic="1"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.Programming"/>
+          </Button>
+          <Button Text="Extended Diagnostic Session">
+            <Rectangle Left="3660" Top="5760" Height="960" Width="4725"/>
+            <Font Name="Comic Sans MS" Size=" 16" Bold="1" Italic="1"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+          </Button>
+          <Button Text="Reset">
+            <Rectangle Left="3720" Top="2040" Height="1080" Width="4725"/>
+            <Font Name="MS Sans Serif" Size=" 18" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="200" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="200" RequestName="ECUReset"/>
+          </Button>
+        </Screen>
+        <Screen Name="Counters/environement data" Color="16777215" WindowState="0" Width="12060" Height="8820">
+          <Label Text="Counters/environement data" Color="986895" Alignment="2">
+            <Rectangle Left="-30" Top="240" Height="720" Width="12120"/>
+            <Font Name="Comic Sans MS" Size=" 24" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Read Data" Color="16711808" Alignment="0">
+            <Rectangle Left="360" Top="1320" Height="1080" Width="3120"/>
+            <Font Name="Comic Sans MS" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="HW_Reset_Counter" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="3240" Height="360" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="SW_Reset_Counter" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="3840" Height="360" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="EEPROM_default" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="4440" Height="360" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Battery voltage" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="6840" Height="360" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Mileage" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="5640" Height="360" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="LCD temperature" Color="14671839" Alignment="1">
+            <Rectangle Left="360" Top="6240" Height="360" Width="2520"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Send Delay="0" RequestName="DataRead.HW_Reset_Counter"/>
+          <Send Delay="0" RequestName="DataRead.SW_Reset_Counter"/>
+          <Send Delay="0" RequestName="DataRead.Mileage"/>
+          <Send Delay="0" RequestName="DataRead.Display_Temperature"/>
+          <Send Delay="0" RequestName="DataRead.BaterryVoltage"/>
+          <Send Delay="0" RequestName="DataRead.EEPROM_default"/>
+          <Button Text="Read All">
+            <Rectangle Left="2040" Top="1920" Height="480" Width="1440"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="DataRead.HW_Reset_Counter"/>
+            <Send Delay="0" RequestName="DataRead.SW_Reset_Counter"/>
+            <Send Delay="0" RequestName="DataRead.Mileage"/>
+            <Send Delay="0" RequestName="DataRead.Display_Temperature"/>
+            <Send Delay="0" RequestName="DataRead.BaterryVoltage"/>
+            <Send Delay="0" RequestName="DataRead.EEPROM_default"/>
+          </Button>
+          <Display Width="0" Color="12615935" DataName="HW_Reset_Counter" RequestName="DataRead.HW_Reset_Counter">
+            <Rectangle Left="3000" Top="3240" Height="360" Width="3120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="SW_Reset_Counter" RequestName="DataRead.SW_Reset_Counter">
+            <Rectangle Left="3000" Top="3840" Height="360" Width="3120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="EEPROM_default" RequestName="DataRead.EEPROM_default">
+            <Rectangle Left="3000" Top="4440" Height="360" Width="3120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16744448" DataName="BaterryVoltage" RequestName="DataRead.BaterryVoltage">
+            <Rectangle Left="3000" Top="6840" Height="360" Width="3120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16744448" DataName="Mileage" RequestName="DataRead.Mileage">
+            <Rectangle Left="3000" Top="5640" Height="360" Width="3120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16744448" DataName="Display_Temperature" RequestName="DataRead.Display_Temperature">
+            <Rectangle Left="3000" Top="6240" Height="360" Width="3120"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+      </Category>
+      <Category Name="readable state">
+        <Screen Name="Switches/TouchScreen" Color="16777215" WindowState="0" Width="12060" Height="9060">
+          <Label Text="Read Clim Control State" Color="986895" Alignment="2">
+            <Rectangle Left="-30" Top="240" Height="720" Width="12120"/>
+            <Font Name="Comic Sans MS" Size=" 24" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Last touch screen coordinate received" Color="14671839" Alignment="0">
+            <Rectangle Left="120" Top="5160" Height="480" Width="4680"/>
+            <Font Name="Comic Sans MS" Size=" 12" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Switch On/OFF state" Color="14671839" Alignment="0">
+            <Rectangle Left="9720" Top="5040" Height="240" Width="1800"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Switch Vol + state" Color="14671839" Alignment="0">
+            <Rectangle Left="9840" Top="3840" Height="240" Width="1560"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Switch Vol -  state" Color="14671839" Alignment="0">
+            <Rectangle Left="9840" Top="6240" Height="240" Width="1680"/>
+            <Font Name="MS Sans Serif" Size=" 8" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Read Data" Color="12615935" Alignment="0">
+            <Rectangle Left="240" Top="1200" Height="1080" Width="3120"/>
+            <Font Name="Comic Sans MS" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Last touch screen coordinate sent" Color="14671839" Alignment="0">
+            <Rectangle Left="120" Top="6360" Height="480" Width="4680"/>
+            <Font Name="Comic Sans MS" Size=" 12" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Send Delay="50" RequestName="DataRead.Last_Touch"/>
+          <Send Delay="0" RequestName="DataRead.Switch_Press"/>
+          <Send Delay="50" RequestName="DataRead.Last_Touch_Sent"/>
+          <Button Text="Read All">
+            <Rectangle Left="1680" Top="1680" Height="600" Width="1680"/>
+            <Font Name="Comic Sans MS" Size=" 11" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="50" RequestName="DataRead.Last_Touch"/>
+            <Send Delay="0" RequestName="DataRead.Switch_Press"/>
+            <Send Delay="50" RequestName="DataRead.Last_Touch_Sent"/>
+          </Button>
+          <Display Width="0" Color="16744703" DataName="Last_Touch.CoordinateX" RequestName="DataRead.Last_Touch">
+            <Rectangle Left="5040" Top="5160" Height="540" Width="1440"/>
+            <Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16744703" DataName="Last_Touch.CoordinateY" RequestName="DataRead.Last_Touch">
+            <Rectangle Left="7080" Top="5160" Height="540" Width="1440"/>
+            <Font Name="Arial" Size=" 12" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454143" DataName="Switch_Press.VOL_Moins" RequestName="DataRead.Switch_Press">
+            <Rectangle Left="9960" Top="6480" Height="540" Width="1440"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454143" DataName="Switch_Press.VOL_Plus" RequestName="DataRead.Switch_Press">
+            <Rectangle Left="9960" Top="4080" Height="540" Width="1440"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="8454143" DataName="Switch_Press.ON_OFF" RequestName="DataRead.Switch_Press">
+            <Rectangle Left="9960" Top="5280" Height="540" Width="1440"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16777088" DataName="Last_Touch_Sent.CoordinateX" RequestName="DataRead.Last_Touch_Sent">
+            <Rectangle Left="5040" Top="6240" Height="540" Width="1440"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16777088" DataName="Last_Touch_Sent.CoordinateY" RequestName="DataRead.Last_Touch_Sent">
+            <Rectangle Left="7080" Top="6240" Height="540" Width="1440"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="CAN parameter sending" Color="16777215" WindowState="0" Width="9000" Height="6000">
+          <Label Text="Read CAN  Data sent" Color="12615935" Alignment="0">
+            <Rectangle Left="2160" Top="120" Height="720" Width="4320"/>
+            <Font Name="Comic Sans MS" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Send Delay="100" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+          <Send Delay="100" RequestName="DataRead.Mcan_sent"/>
+          <Button Text="Read All">
+            <Rectangle Left="4920" Top="1200" Height="600" Width="1680"/>
+            <Font Name="Comic Sans MS" Size=" 11" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="50" RequestName="DataRead.Mcan_sent"/>
+          </Button>
+          <Display Width="3080" Color="16777215" DataName="Mcan_sent.CPdisplayAvailability" RequestName="DataRead.Mcan_sent">
+            <Rectangle Left="720" Top="2040" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3830" Color="16777215" DataName="Mcan_sent.CentralPanelMMSwitch" RequestName="DataRead.Mcan_sent">
+            <Rectangle Left="720" Top="2520" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3860" Color="16777215" DataName="Mcan_sent.CP_DisplayFailure" RequestName="DataRead.Mcan_sent">
+            <Rectangle Left="720" Top="3000" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3905" Color="16777215" DataName="Mcan_sent.CPdisplayDayLuminosityStatus" RequestName="DataRead.Mcan_sent">
+            <Rectangle Left="720" Top="3480" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3890" Color="16777215" DataName="Mcan_sent.CPdisplayNightLuminosityStatus" RequestName="DataRead.Mcan_sent">
+            <Rectangle Left="720" Top="3960" Height="300" Width="6480"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Can parameter receiving" Color="16777215" WindowState="0" Width="12060" Height="8940">
+          <Label Text="Read CAN  Data received" Color="12615935" Alignment="0">
+            <Rectangle Left="3840" Top="120" Height="720" Width="5400"/>
+            <Font Name="Comic Sans MS" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Send Delay="100" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+          <Send Delay="0" RequestName="DataRead.Mcan_received"/>
+          <Button Text="Read All">
+            <Rectangle Left="6000" Top="1320" Height="600" Width="1680"/>
+            <Font Name="Comic Sans MS" Size=" 11" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="50" RequestName="DataRead.Mcan_received"/>
+          </Button>
+          <Display Width="5015" Color="16777215" DataName="Mcan_received.GADE_MM_V2" RequestName="DataRead.Mcan_received">
+            <Rectangle Left="840" Top="7200" Height="300" Width="8880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5015" Color="16777215" DataName="Mcan_received.DayNightStatus" RequestName="DataRead.Mcan_received">
+            <Rectangle Left="840" Top="3120" Height="300" Width="8880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5015" Color="16777215" DataName="Mcan_received.DimmingValue" RequestName="DataRead.Mcan_received">
+            <Rectangle Left="840" Top="3600" Height="300" Width="8880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5015" Color="16777215" DataName="Mcan_received.AutoDimmingState" RequestName="DataRead.Mcan_received">
+            <Rectangle Left="840" Top="4200" Height="300" Width="8880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5015" Color="16777215" DataName="Mcan_received.ProbableCustomerFeedBackNeed" RequestName="DataRead.Mcan_received">
+            <Rectangle Left="840" Top="2640" Height="300" Width="8880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5015" Color="16777215" DataName="Mcan_received.DisplayActivation" RequestName="DataRead.Mcan_received">
+            <Rectangle Left="840" Top="2160" Height="300" Width="8880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5015" Color="16777215" DataName="Mcan_received.AutoDimmingOffsetY0_MM" RequestName="DataRead.Mcan_received">
+            <Rectangle Left="840" Top="4680" Height="300" Width="8880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5015" Color="16777215" DataName="Mcan_received.CPdisplayDayLuminosityRequest" RequestName="DataRead.Mcan_received">
+            <Rectangle Left="840" Top="5280" Height="300" Width="8880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5015" Color="16777215" DataName="Mcan_received.CPdisplayNightLuminosityRequest" RequestName="DataRead.Mcan_received">
+            <Rectangle Left="840" Top="5880" Height="360" Width="8880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5015" Color="16777215" DataName="Mcan_received.VehicleStates_MM" RequestName="DataRead.Mcan_received">
+            <Rectangle Left="840" Top="6600" Height="300" Width="8880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+      </Category>
+      <Category Name="Adjustable Values">
+        <Screen Name="Switches" Color="16777215" WindowState="0" Width="12060" Height="9060">
+          <Label Text="Radio/Clim Switches" Color="986895" Alignment="2">
+            <Rectangle Left="-30" Top="240" Height="720" Width="12120"/>
+            <Font Name="Comic Sans MS" Size=" 24" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Capacitive _ShortPush (ms)" Color="14671839" Alignment="2">
+            <Rectangle Left="960" Top="2640" Height="600" Width="3120"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Write Data" Color="8454016" Alignment="0">
+            <Rectangle Left="9360" Top="1080" Height="1080" Width="2400"/>
+            <Font Name="Comic Sans MS" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Read Data" Color="12615935" Alignment="0">
+            <Rectangle Left="4200" Top="1080" Height="1080" Width="2400"/>
+            <Font Name="Comic Sans MS" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+          <Send Delay="100" RequestName="DataRead.Capacitive_ShortPush"/>
+          <Button Text="Read All">
+            <Rectangle Left="4200" Top="1680" Height="480" Width="2400"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="DataRead.Capacitive_ShortPush"/>
+            <Send Delay="0" RequestName="DataRead.External_ShortPush"/>
+          </Button>
+          <Button Text="Write Capacitive_ShortPush">
+            <Rectangle Left="6840" Top="2640" Height="600" Width="2280"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="DataWrite.Capacitive_ShortPush"/>
+            <Send Delay="500" RequestName="DataRead.Capacitive_ShortPush"/>
+          </Button>
+          <Display Width="0" Color="12615935" DataName="Capacitive_ShortPush" RequestName="DataRead.Capacitive_ShortPush">
+            <Rectangle Left="4320" Top="2640" Height="585" Width="2190"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Input Width="0" Color="16777215" DataName="Capacitive_ShortPush" RequestName="DataWrite.Capacitive_ShortPush">
+            <Rectangle Left="9360" Top="2640" Height="540" Width="2400"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+        </Screen>
+        <Screen Name="Dimming switch" Color="16777215" WindowState="0" Width="12900" Height="9060">
+          <Label Text="Dimming switch table" Color="986895" Alignment="2">
+            <Rectangle Left="120" Top="240" Height="720" Width="12120"/>
+            <Font Name="Comic Sans MS" Size=" 24" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Write Data" Color="8454016" Alignment="0">
+            <Rectangle Left="6960" Top="1080" Height="720" Width="2160"/>
+            <Font Name="Comic Sans MS" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Read Data" Color="12615935" Alignment="0">
+            <Rectangle Left="3000" Top="1080" Height="720" Width="1920"/>
+            <Font Name="Comic Sans MS" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+          <Send Delay="100" RequestName="DataRead.SwitchLum"/>
+          <Button Text="Read All">
+            <Rectangle Left="600" Top="3240" Height="480" Width="2400"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="DataRead.SwitchLum"/>
+          </Button>
+          <Button Text="Write All">
+            <Rectangle Left="9600" Top="3360" Height="480" Width="2400"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="DataWrite.SwitchLum"/>
+            <Send Delay="500" RequestName="DataRead.SwitchLum"/>
+          </Button>
+          <Input Width="2000" Color="8454016" DataName="SwitchLum.1" RequestName="DataWrite.SwitchLum">
+            <Rectangle Left="5160" Top="2160" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="SwitchLum.2" RequestName="DataWrite.SwitchLum">
+            <Rectangle Left="5160" Top="2460" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="SwitchLum.3" RequestName="DataWrite.SwitchLum">
+            <Rectangle Left="5160" Top="2760" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="SwitchLum.4" RequestName="DataWrite.SwitchLum">
+            <Rectangle Left="5160" Top="3060" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="SwitchLum.5" RequestName="DataWrite.SwitchLum">
+            <Rectangle Left="5160" Top="3360" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="SwitchLum.6" RequestName="DataWrite.SwitchLum">
+            <Rectangle Left="5160" Top="3660" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="SwitchLum.7" RequestName="DataWrite.SwitchLum">
+            <Rectangle Left="5160" Top="3960" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="SwitchLum.8" RequestName="DataWrite.SwitchLum">
+            <Rectangle Left="5160" Top="4260" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="SwitchLum.9" RequestName="DataWrite.SwitchLum">
+            <Rectangle Left="5160" Top="4560" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="SwitchLum.10" RequestName="DataWrite.SwitchLum">
+            <Rectangle Left="5160" Top="4860" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="SwitchLum.11" RequestName="DataWrite.SwitchLum">
+            <Rectangle Left="5160" Top="5160" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="5" Color="12615935" DataName="SwitchLum.1" RequestName="DataRead.SwitchLum">
+            <Rectangle Left="3240" Top="2160" Height="300" Width="1720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="SwitchLum.2" RequestName="DataRead.SwitchLum">
+            <Rectangle Left="3240" Top="2460" Height="300" Width="1720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="SwitchLum.3" RequestName="DataRead.SwitchLum">
+            <Rectangle Left="3240" Top="2760" Height="300" Width="1720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="SwitchLum.4" RequestName="DataRead.SwitchLum">
+            <Rectangle Left="3240" Top="3060" Height="300" Width="1720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="SwitchLum.5" RequestName="DataRead.SwitchLum">
+            <Rectangle Left="3240" Top="3360" Height="300" Width="1720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="SwitchLum.6" RequestName="DataRead.SwitchLum">
+            <Rectangle Left="3240" Top="3660" Height="300" Width="1720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="SwitchLum.7" RequestName="DataRead.SwitchLum">
+            <Rectangle Left="3240" Top="3960" Height="300" Width="1720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="SwitchLum.8" RequestName="DataRead.SwitchLum">
+            <Rectangle Left="3240" Top="4260" Height="300" Width="1720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="SwitchLum.9" RequestName="DataRead.SwitchLum">
+            <Rectangle Left="3240" Top="4560" Height="300" Width="1720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="SwitchLum.10" RequestName="DataRead.SwitchLum">
+            <Rectangle Left="3240" Top="4860" Height="300" Width="1720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="SwitchLum.11" RequestName="DataRead.SwitchLum">
+            <Rectangle Left="3240" Top="5160" Height="300" Width="1720"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Dimming Display" Color="16777215" WindowState="0" Width="12900" Height="10140">
+          <Label Text="Dimming display table" Color="986895" Alignment="2">
+            <Rectangle Left="360" Top="5760" Height="3600" Width="2790"/>
+            <Font Name="Comic Sans MS" Size=" 24" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Write Data" Color="8454016" Alignment="0">
+            <Rectangle Left="10080" Top="360" Height="1080" Width="2400"/>
+            <Font Name="Comic Sans MS" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Read Data" Color="12615935" Alignment="0">
+            <Rectangle Left="720" Top="360" Height="1080" Width="2400"/>
+            <Font Name="Comic Sans MS" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+          <Send Delay="0" RequestName="DataRead.DayLum"/>
+          <Send Delay="0" RequestName="DataRead.NightLum"/>
+          <Button Text="Read All">
+            <Rectangle Left="600" Top="4800" Height="480" Width="2400"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="DataRead.NightLum"/>
+            <Send Delay="0" RequestName="DataRead.DayLum"/>
+          </Button>
+          <Button Text="Write  Day lum">
+            <Rectangle Left="10080" Top="2160" Height="480" Width="2400"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="500" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.DayLum"/>
+            <Send Delay="500" RequestName="DataRead.DayLum"/>
+          </Button>
+          <Button Text="Write  Night lum">
+            <Rectangle Left="10080" Top="5280" Height="480" Width="2400"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="500" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="0" RequestName="DataWrite.NightLum"/>
+            <Send Delay="500" RequestName="DataRead.NightLum"/>
+          </Button>
+          <Input Width="2000" Color="8454016" DataName="DayLum.1" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="360" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.2" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="660" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.3" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="960" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.4" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="1260" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.5" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="1560" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.6" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="1860" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.7" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="2160" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.8" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="2460" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.9" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="2760" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.10" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="3060" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.11" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="3360" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.12" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="3660" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.13" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="3960" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.14" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="4260" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="DayLum.15" RequestName="DataWrite.DayLum">
+            <Rectangle Left="5760" Top="4560" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.1" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="5280" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.2" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="5580" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.3" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="5880" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.4" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="6180" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.5" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="6480" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.6" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="6780" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.7" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="7080" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.8" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="7380" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.9" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="7680" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.10" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="7980" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.11" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="8280" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.12" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="8580" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.13" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="8880" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.14" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="9180" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="2000" Color="8454016" DataName="NightLum.15" RequestName="DataWrite.NightLum">
+            <Rectangle Left="5760" Top="9480" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="0" Color="12615935" DataName="DayLum.1" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="360" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="DayLum.2" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="660" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="DayLum.3" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="960" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="DayLum.4" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="1260" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="DayLum.5" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="1560" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="DayLum.6" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="1860" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="DayLum.7" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="2160" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="DayLum.8" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="2460" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="DayLum.9" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="2760" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="DayLum.10" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="3060" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="DayLum.11" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="3360" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="DayLum.12" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="3660" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="DayLum.13" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="3960" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="DayLum.14" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="4245" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="12615935" DataName="DayLum.15" RequestName="DataRead.DayLum">
+            <Rectangle Left="3360" Top="4530" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.1" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="5280" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.2" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="5580" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.3" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="5880" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.4" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="6180" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.5" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="6480" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.6" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="6780" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.7" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="7080" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.8" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="7380" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.9" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="7680" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.10" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="7980" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.11" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="8280" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.12" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="8580" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.13" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="8880" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.14" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="9180" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5" Color="12615935" DataName="NightLum.15" RequestName="DataRead.NightLum">
+            <Rectangle Left="3360" Top="9480" Height="300" Width="2320"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="smoothing law parameter" Color="16777215" WindowState="0" Width="12060" Height="8820">
+          <Label Text="Logical values adjustable timing" Color="986895" Alignment="2">
+            <Rectangle Left="-30" Top="240" Height="720" Width="12120"/>
+            <Font Name="Comic Sans MS" Size=" 24" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Read Data" Color="12615935" Alignment="0">
+            <Rectangle Left="4680" Top="2160" Height="1080" Width="2760"/>
+            <Font Name="Comic Sans MS" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Write Data" Color="8454016" Alignment="0">
+            <Rectangle Left="7680" Top="2160" Height="1080" Width="2760"/>
+            <Font Name="Comic Sans MS" Size=" 18" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="K" Color="14671839" Alignment="1">
+            <Rectangle Left="120" Top="3600" Height="480" Width="4320"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="J" Color="14671839" Alignment="1">
+            <Rectangle Left="120" Top="4200" Height="480" Width="4320"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="TE" Color="14671839" Alignment="1">
+            <Rectangle Left="120" Top="4800" Height="480" Width="4320"/>
+            <Font Name="MS Sans Serif" Size=" 10" Bold="1" Italic="0" Color="0"/>
+          </Label>
+          <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+          <Send Delay="0" RequestName="DataRead.SmoothingLow"/>
+          <Button Text="Read All">
+            <Rectangle Left="5280" Top="2760" Height="480" Width="1230"/>
+            <Font Name="Comic Sans MS" Size=" 10" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="DataRead.SmoothingLow"/>
+          </Button>
+          <Button Text="Write All">
+            <Rectangle Left="8160" Top="2760" Height="480" Width="1320"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="0" RequestName="DataWrite.SmoothingLow"/>
+            <Send Delay="500" RequestName="DataRead.SmoothingLow"/>
+          </Button>
+          <Input Width="0" Color="16777215" DataName="SmoothingLow.K_value" RequestName="DataWrite.SmoothingLow">
+            <Rectangle Left="7920" Top="3720" Height="300" Width="2005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="16777215" DataName="SmoothingLow.J_value" RequestName="DataWrite.SmoothingLow">
+            <Rectangle Left="7920" Top="4200" Height="300" Width="2005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="16777215" DataName="SmoothingLow.TE_value" RequestName="DataWrite.SmoothingLow">
+            <Rectangle Left="7920" Top="4680" Height="300" Width="2005"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Display Width="0" Color="16777215" DataName="SmoothingLow.K_value" RequestName="DataRead.SmoothingLow">
+            <Rectangle Left="4800" Top="3720" Height="300" Width="2160"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16777215" DataName="SmoothingLow.J_value" RequestName="DataRead.SmoothingLow">
+            <Rectangle Left="4800" Top="4320" Height="300" Width="2160"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="0" Color="16777215" DataName="SmoothingLow.TE_value" RequestName="DataRead.SmoothingLow">
+            <Rectangle Left="4800" Top="4800" Height="300" Width="2080"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+      </Category>
+      <Category Name="I/O controls">
+        <Screen Name="I/O conrols" Color="16777215" WindowState="0" Width="12060" Height="8820">
+          <Label Text="I/O Controls" Color="986895" Alignment="2">
+            <Rectangle Left="-30" Top="240" Height="720" Width="12120"/>
+            <Font Name="Comic Sans MS" Size=" 24" Bold="1" Italic="0" Color="16777215"/>
+          </Label>
+          <Label Text="Select I/O" Color="14671839" Alignment="0">
+            <Rectangle Left="360" Top="1200" Height="480" Width="3000"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="986895"/>
+          </Label>
+          <Label Text="Select Duration" Color="16777215" Alignment="0">
+            <Rectangle Left="360" Top="2640" Height="360" Width="4800"/>
+            <Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0" Color="986895"/>
+          </Label>
+          <Label Text="Select type of command" Color="14671839" Alignment="0">
+            <Rectangle Left="1320" Top="7920" Height="480" Width="3000"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="986895"/>
+          </Label>
+          <Label Text="Duration (s)" Color="14671839" Alignment="0">
+            <Rectangle Left="360" Top="3000" Height="360" Width="4800"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="986895"/>
+          </Label>
+          <Label Text="I/O control PWM Display (%)" Color="14671839" Alignment="0">
+            <Rectangle Left="375" Top="4650" Height="360" Width="4800"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="986895"/>
+          </Label>
+          <Label Text="Select Value " Color="16777215" Alignment="0">
+            <Rectangle Left="360" Top="4080" Height="360" Width="4800"/>
+            <Font Name="MS Sans Serif" Size=" 14" Bold="1" Italic="0" Color="986895"/>
+          </Label>
+          <Label Text="color display test" Color="13619151" Alignment="0">
+            <Rectangle Left="360" Top="5400" Height="375" Width="4800"/>
+            <Font Name="MS Sans Serif" Size=" 14" Bold="0" Italic="0" Color="0"/>
+          </Label>
+          <Label Text="Select I/O" Color="14671839" Alignment="0">
+            <Rectangle Left="1320" Top="7080" Height="480" Width="3000"/>
+            <Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="986895"/>
+          </Label>
+          <Send Delay="0" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+          <Button Text="Start I/O">
+            <Rectangle Left="9600" Top="1200" Height="1200" Width="2160"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="100" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="300" RequestName="OutputControl"/>
+          </Button>
+          <Button Text="Stop/freeze I/O">
+            <Rectangle Left="9360" Top="7200" Height="840" Width="1920"/>
+            <Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+            <Message Text=""/>
+            <Send Delay="100" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/>
+            <Send Delay="300" RequestName="OutputControlfreezeStop"/>
+          </Button>
+          <Input Width="0" Color="14002344" DataName="OutputPermanentControlList" RequestName="OutputControl">
+            <Rectangle Left="3600" Top="1200" Height="480" Width="5760"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="14002344" DataName="Output control PWM Display" RequestName="OutputControl">
+            <Rectangle Left="5415" Top="4635" Height="360" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="14002344" DataName="Output Duration" RequestName="OutputControl">
+            <Rectangle Left="5400" Top="3000" Height="360" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="0" Color="14002344" DataName="Output Control Display Color Test" RequestName="OutputControl">
+            <Rectangle Left="5400" Top="5400" Height="360" Width="6360"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="30" Color="16777215" DataName="OutputPermanentControlList" RequestName="OutputControlfreezeStop">
+            <Rectangle Left="4800" Top="7080" Height="300" Width="3370"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+          <Input Width="50" Color="16777215" DataName="OutputControlCommand" RequestName="OutputControlfreezeStop">
+            <Rectangle Left="4560" Top="8040" Height="300" Width="4000"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Input>
+        </Screen>
+      </Category>
+    </ds:Categories>
+  </ddt:Target>
+</xml>

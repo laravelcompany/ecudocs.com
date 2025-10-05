@@ -1,0 +1,1699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+  <Generator name="DDT2000 XML library" version="2.2.0.0" date="2020-07-24T17:24"/>
+  <ddt:Target Name="N_HJB_EVAP_UDS_SOP_20200724" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" href="N_HJB_EVAP_UDS_SOP_20200724_20200803T182018.xml" upload="8/3/2020" group="EVCU" email="PROTAIS Emmanuel (renexter) &lt;emmanuel.protais-extern@renault.com&gt;"><Description><![CDATA[[3] Feb 11th, 2020 Nissan XX6
+Modified FFD, DM and ID items, based on Rev3.
+
+[2] Nov 28th, 2018 Nissan XX6
+Modified CANID.
+
+[1] Jul 3rd, 2018 Nissan XX6
+Added, Modified item ID,FFD,DM,AT,WS,DF.
+
+[N] Feb 12th, 2018 Nissan XX6
+Initial Creation.]]></Description>
+    <Projects xmlns=""><xFBPh2/><xJB/></Projects><Checks Version="V1.10" Date="20200803T181225">
+      <Ctrl Type="DDT2000" Warning="47" Error="0"/>
+      <Ctrl Type="CPDD" Warning="103" Error="0"/>
+      <Ctrl Type="DAIMLER-ODX" Warning="44" Error="0"/>
+      <Ctrl Type="ALLIANCE-ODX" Warning="0" Error="0"/>
+    </Checks>
+    
+    <Function Name="EVAP_29b" Address="224" LogicalAddress="00E0"/>
+    <Language Name="Français" Reference="1"/>
+    
+    <DateOfficialisation>11/02/2020 10:31:56</DateOfficialisation>
+    <Failures Name="Ne contient pas de pannes" Id="0"/>
+    <PowerSupply>
+      <Ground/>
+      <Vbat/>
+      <AfterContact/>
+    </PowerSupply>
+    <CAN BaudRate="10400" Multipoint="1">
+      <SendId>
+        <CANId Value="416997617" Extended="1"/>
+      </SendId>
+      <ReceiveId>
+        <CANId Value="417001952" Extended="1"/>
+      </ReceiveId>
+    </CAN>
+    <AutoIdents>
+      <AutoIdent DiagVersion="1" Supplier="Hitachi" Soft="F9EVAPCVKE3" Version="SW9"/>
+      <AutoIdent DiagVersion="1" Supplier="Hitachi" Soft="F9EVAPCUAE2" Version="SW8"/>
+    </AutoIdents>
+    <Datas>
+      <Data Name="SessionName">
+        <Comment><![CDATA[for Start diagnostic session]]></Comment>
+        <Mnemonic>SDS</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="DefaultSession"/>
+            <Item Value="2" Text="ReprogrammingSession"/>
+            <Item Value="3" Text="ExtendedDiagSession"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="SessionParameterRecord#1[P2max]">
+        <Bits count="16">
+          <Scaled Unit="ms"/>
+        </Bits>
+      </Data>
+      <Data Name="SessionParameterRecord#2[P2*max]">
+        <Bits count="16">
+          <Scaled Unit="ms" Step=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="DTCCount">
+        <Comment><![CDATA[DTC count]]></Comment>
+        <Mnemonic>DTCC</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCFormatIdentifier">
+        <Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+        <Mnemonic>DTCFID</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="SAE_J2012-DA_DTC"/>
+            <Item Value="1" Text="ISO_14229-1_DTC"/>
+            <Item Value="2" Text="SAE_J1939-73_DTC"/>
+            <Item Value="3" Text="ISO_11992-4_DTC"/>
+            <Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatusAvailabilityMask">
+        <Comment><![CDATA[DTCSAM]]></Comment>
+        <Mnemonic>DF</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailed">
+        <Comment><![CDATA[TF]]></Comment>
+        <Mnemonic>DF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedThisMonitoringCycle">
+        <Comment><![CDATA[TFTMC]]></Comment>
+        <Mnemonic>DF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.pendingDTC">
+        <Comment><![CDATA[PDTC]]></Comment>
+        <Mnemonic>DF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.confirmedDTC">
+        <Comment><![CDATA[CDTC]]></Comment>
+        <Mnemonic>DF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedSinceLastClear">
+        <Comment><![CDATA[TNCSLC]]></Comment>
+        <Mnemonic>DF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testFailedSinceLastClear">
+        <Comment><![CDATA[TFSLC]]></Comment>
+        <Mnemonic>DF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+        <Comment><![CDATA[TNCTMC]]></Comment>
+        <Mnemonic>DF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCStatus.warningIndicatorRequested">
+        <Comment><![CDATA[WIR]]></Comment>
+        <Mnemonic>DF</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="No"/>
+            <Item Value="1" Text="Yes"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.Category">
+        <Mnemonic>DF</Mnemonic>
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="General Failure Information"/>
+            <Item Value="1" Text="General Electrical Failures"/>
+            <Item Value="2" Text="General Signal Failures"/>
+            <Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="15" Text="Vehicle manufacturer / System supplier specific"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceIdentifier">
+        <Mnemonic>DF</Mnemonic>
+        <Bits count="16">
+          <List>
+            <Item Value="1086" Text="[P043E]EVAP System Leak Detection Reference Orifice Low Flow"/>
+            <Item Value="1087" Text="[P043F]EVAP System Leak Detection Reference Orifice High Flow"/>
+            <Item Value="1201" Text="[P04B1]Refueling Vapor Control Valve Circuit Low"/>
+            <Item Value="1202" Text="[P04B2]Refueling Vapor Control Valve Circuit High"/>
+            <Item Value="1203" Text="[P04B3]Refueling Vapor Control Valve Stuck Performance/Stuck Open"/>
+            <Item Value="1204" Text="[P04B4]Refueling Vapor Control Valve Stuck Closed"/>
+            <Item Value="1206" Text="[P04B6]Fuel Fill Door Stuck Closed"/>
+            <Item Value="1211" Text="[P04BB]Fuel Fill Door Unlock Control Circuit/Open"/>
+            <Item Value="1213" Text="[P04BD]Fuel Fill Door Unlock Control Circuit Low"/>
+            <Item Value="1214" Text="[P04BE]Fuel Fill Door Unlock Control Circuit High"/>
+            <Item Value="1260" Text="[P04EC]EVAP System Large Leak Detected - Fuel Tank Side"/>
+            <Item Value="1261" Text="[P04ED]EVAP System Large Leak Detected - Fresh Air Side"/>
+            <Item Value="1262" Text="[P04EE]EVAP System Very Small Leak Detected - Fuel Tank Side"/>
+            <Item Value="1263" Text="[P04EF]EVAP System Very Small Leak Detected - Fresh Air Side"/>
+            <Item Value="1539" Text="[P0603]Internal Control Module Keep Alive Memory (KAM) Error"/>
+            <Item Value="1540" Text="[P0604]Internal Control Module Random Access Memory (RAM) Error"/>
+            <Item Value="1541" Text="[P0605]Internal Control Module Read Only Memory (ROM) Error"/>
+            <Item Value="1542" Text="[P0606]Control Module Processor"/>
+            <Item Value="1543" Text="[P0607]Control Module Performance"/>
+            <Item Value="1546" Text="[P060A]Internal Control Module Monitoring Processor Performance"/>
+            <Item Value="1547" Text="[P060B]Internal Control Module A/D Processing Performance"/>
+            <Item Value="1583" Text="[P062F]Internal Control Module EEPROM Error"/>
+            <Item Value="1639" Text="[P0667]Control Module Internal Temperature Sensor &quot;A&quot; Range/Performance"/>
+            <Item Value="1640" Text="[P0668]Control Module Internal Temperature Sensor &quot;A&quot; Circuit Low"/>
+            <Item Value="1641" Text="[P0669]Control Module Internal Temperature Sensor &quot;A&quot; Circuit High"/>
+            <Item Value="5635" Text="[P1603]Internal Control Module EEPROM Error (Reading EEPROM not OBD Related)"/>
+            <Item Value="9216" Text="[P2400]EVAP System Leak Detection Pump Control Circuit/Open"/>
+            <Item Value="9217" Text="[P2401]EVAP System Leak Detection Pump Control Circuit Low"/>
+            <Item Value="9218" Text="[P2402]EVAP System Leak Detection Pump Control Circuit High"/>
+            <Item Value="9241" Text="[P2419]EVAP System Switching Valve Control Circuit Low"/>
+            <Item Value="9248" Text="[P2420]EVAP System Switching Valve Control Circuit High"/>
+            <Item Value="9296" Text="[P2450]EVAP System Switching Valve Performance/Stuck Open"/>
+            <Item Value="9401" Text="[P24B9]EVAP System Leak Detection Pump Pressure Sensor Circuit Range/Performance"/>
+            <Item Value="9402" Text="[P24BA]EVAP System Leak Detection Pump Pressure Sensor Circuit Low"/>
+            <Item Value="9403" Text="[P24BB]EVAP System Leak Detection Pump Pressure Sensor Circuit High"/>
+            <Item Value="9404" Text="[P24BC]EVAP System Leak Detection Pump Pressure Sensor Circuit Intermittent"/>
+            <Item Value="9406" Text="[P24BE]EVAP System Leak Detection Pump Switching Valve Control Circuit Low"/>
+            <Item Value="9407" Text="[P24BF]EVAP System Leak Detection Pump Switching Valve Control Circuit High"/>
+            <Item Value="9408" Text="[P24C0]EVAP System Leak Detection Pump Switching Valve Stuck On"/>
+            <Item Value="9409" Text="[P24C1]EVAP System Leak Detection Pump Switching Valve Performance/Stuck Off"/>
+            <Item Value="9430" Text="[P24D6]EVAP System Pressure Sensor/Switch &quot;B&quot; Circuit Range/Performance"/>
+            <Item Value="9431" Text="[P24D7]EVAP System Pressure Sensor/Switch &quot;B&quot; Circuit Low"/>
+            <Item Value="9432" Text="[P24D8]EVAP System Pressure Sensor/Switch &quot;B&quot; Circuit High"/>
+            <Item Value="9433" Text="[P24D9]EVAP System Pressure Sensor/Switch &quot;B&quot; Circuit Intermittent"/>
+            <Item Value="9744" Text="[P2610]ECM/PCM Engine Off Timer Performance"/>
+            <Item Value="11131" Text="[P2B7B]EVAP System Pressure Sensor/Switch &quot;C&quot; Circuit Range/Performance"/>
+            <Item Value="11132" Text="[P2B7C]EVAP System Pressure Sensor/Switch &quot;C&quot; Circuit Low"/>
+            <Item Value="11133" Text="[P2B7D]EVAP System Pressure Sensor/Switch &quot;C&quot; Circuit High"/>
+            <Item Value="57664" Text="[U2140]CAN comm err (ECM)"/>
+            <Item Value="57667" Text="[U2143]CAN comm err (VCM/HCM)"/>
+            <Item Value="57672" Text="[U2148]CAN comm err (brake control unit)"/>
+            <Item Value="57678" Text="[U214E]CAN comm err (combination meter)"/>
+            <Item Value="57679" Text="[U214F]CAN comm err (BCM)"/>
+            <Item Value="57691" Text="[U215B]CAN comm err (IPDM E/R)"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCDeviceAndFailureTypeOBD">
+        <Mnemonic>DF</Mnemonic>
+        <Bits count="16">
+          <List/>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType.ManufacturerOrSupplier">
+        <Mnemonic>DF</Mnemonic>
+        <Bits count="4">
+          <List/>
+        </Bits>
+      </Data>
+      <Data Name="DTCFailureType">
+        <Comment><![CDATA[Pending]]></Comment>
+        <Mnemonic>DF</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Device and failure type ODB codding"/>
+            <Item Value="1" Text="General Electrical Failure"/>
+            <Item Value="2" Text="General signal failure"/>
+            <Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+            <Item Value="4" Text="System Internal Failures"/>
+            <Item Value="5" Text="System Programming Failures"/>
+            <Item Value="6" Text="Algorithm Based Failures"/>
+            <Item Value="7" Text="Mechanical Failures"/>
+            <Item Value="8" Text="Bus Signal / Message Failures"/>
+            <Item Value="9" Text="Component Failures"/>
+            <Item Value="17" Text="circuit short to ground"/>
+            <Item Value="18" Text="circuit short to battery"/>
+            <Item Value="19" Text="circuit open"/>
+            <Item Value="20" Text="circuit short to ground or open"/>
+            <Item Value="21" Text="circuit short to battery or open"/>
+            <Item Value="22" Text="circuit voltage below threshold"/>
+            <Item Value="23" Text="circuit voltage above threshold"/>
+            <Item Value="24" Text="circuit current below threshold"/>
+            <Item Value="25" Text="circuit current above threshold"/>
+            <Item Value="26" Text="circuit resistance below threshold"/>
+            <Item Value="27" Text="circuit resistance above threshold"/>
+            <Item Value="28" Text="circuit voltage out of range"/>
+            <Item Value="29" Text="circuit current out of range"/>
+            <Item Value="30" Text="circuit resistance out of range"/>
+            <Item Value="31" Text="circuit intermittent"/>
+            <Item Value="33" Text="signal amplitude &lt; minimum"/>
+            <Item Value="34" Text="signal amplitude &gt; maximum"/>
+            <Item Value="35" Text="signal stuck low"/>
+            <Item Value="36" Text="signal stuck high"/>
+            <Item Value="37" Text="signal shape / waveform failure"/>
+            <Item Value="38" Text="signal rate of change below threshold"/>
+            <Item Value="39" Text="signal rate of change above threshold"/>
+            <Item Value="40" Text="signal bias level out of range / zero adjustment failure"/>
+            <Item Value="41" Text="signal signal invalid"/>
+            <Item Value="47" Text="signal erratic"/>
+            <Item Value="49" Text="no signal"/>
+            <Item Value="50" Text="signal low time &lt; minimum"/>
+            <Item Value="51" Text="signal low time &gt; maximum"/>
+            <Item Value="52" Text="signal high time &lt; minimum"/>
+            <Item Value="53" Text="signal high time &gt; maximum"/>
+            <Item Value="54" Text="signal frequency too low"/>
+            <Item Value="55" Text="signal frequency too high"/>
+            <Item Value="56" Text="signal frequency incorrect"/>
+            <Item Value="57" Text="incorrect has too few pulses"/>
+            <Item Value="58" Text="incorrect has too many pulses"/>
+            <Item Value="65" Text="general checksum failure"/>
+            <Item Value="66" Text="general memory failure"/>
+            <Item Value="67" Text="special memory failure"/>
+            <Item Value="68" Text="data memory failure"/>
+            <Item Value="69" Text="program memory failure"/>
+            <Item Value="70" Text="calibration / parameter memory failure"/>
+            <Item Value="71" Text="watchdog / safety microC failure"/>
+            <Item Value="72" Text="supervision software failure"/>
+            <Item Value="73" Text="internal electronic failure"/>
+            <Item Value="74" Text="incorrect component installed"/>
+            <Item Value="75" Text="over temperature"/>
+            <Item Value="81" Text="not programmed"/>
+            <Item Value="82" Text="not activated"/>
+            <Item Value="83" Text="deactivated"/>
+            <Item Value="84" Text="missing calibration"/>
+            <Item Value="85" Text="not configured"/>
+            <Item Value="97" Text="signal calculation failure"/>
+            <Item Value="98" Text="signal compare failure"/>
+            <Item Value="99" Text="circuit / component protection time-out"/>
+            <Item Value="100" Text="signal plausibility failure"/>
+            <Item Value="101" Text="signal has too few transitions / events"/>
+            <Item Value="102" Text="signal has too many transitions / events"/>
+            <Item Value="103" Text="signal incorrect after event"/>
+            <Item Value="104" Text="event information"/>
+            <Item Value="113" Text="actuator stuck"/>
+            <Item Value="114" Text="actuator stuck open"/>
+            <Item Value="115" Text="actuator stuck closed"/>
+            <Item Value="116" Text="actuator slipping"/>
+            <Item Value="117" Text="emergency position not reachable"/>
+            <Item Value="118" Text="wrong mounting position"/>
+            <Item Value="119" Text="commanded position not reachable"/>
+            <Item Value="120" Text="alignment or adjustment incorrect"/>
+            <Item Value="121" Text="mechanical linkage failure"/>
+            <Item Value="122" Text="fluid leak or seal failure"/>
+            <Item Value="123" Text="low fluid level"/>
+            <Item Value="129" Text="invalid serial data received"/>
+            <Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+            <Item Value="131" Text="value of signal protection calculation incorrect"/>
+            <Item Value="132" Text="signal below allowable range"/>
+            <Item Value="133" Text="signal above allowable range"/>
+            <Item Value="134" Text="signal invalid"/>
+            <Item Value="135" Text="missing message"/>
+            <Item Value="136" Text="bus off"/>
+            <Item Value="143" Text="erratic"/>
+            <Item Value="145" Text="parametric"/>
+            <Item Value="146" Text="performance or incorrect operation"/>
+            <Item Value="147" Text="no operation"/>
+            <Item Value="148" Text="unexpected operation"/>
+            <Item Value="149" Text="incorrect assembly"/>
+            <Item Value="150" Text="component internal failure"/>
+            <Item Value="151" Text="Component or system operation obstructed or blocked"/>
+            <Item Value="152" Text="component or system over temperature"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="StatusOfDTC">
+        <Comment><![CDATA[DTCASR_SODTC]]></Comment>
+        <Mnemonic>DF</Mnemonic>
+        <Bits>
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="OperationnalReference">
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierIdentifier">
+        <Bytes count="7" ascii="1"/>
+      </Data>
+      <Data Name="ECUSerialNumber">
+        <Bytes count="20" ascii="1"/>
+      </Data>
+      <Data Name="VIN">
+        <Bytes count="17" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUHardwareNumber">
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareNumber">
+        <Bytes count="11" ascii="1"/>
+      </Data>
+      <Data Name="systemSupplierECUSoftwareVersionNumber">
+        <Bytes count="3" ascii="1"/>
+      </Data>
+      <Data Name="DataRead.FFD_$F0D1_#004_bit0_DTC count">
+        <Mnemonic>FFD</Mnemonic>
+        <Bits>
+          <Scaled Unit="'"/>
+        </Bits>
+      </Data>
+      <Data Name="DataRead.FFD_$0401_#004_bit0_ENG Coolant Temp">
+        <Mnemonic>FFD</Mnemonic>
+        <Bits>
+          <Scaled Unit="°C" Offset="-40"/>
+        </Bits>
+      </Data>
+      <Data Name="DataRead.FFD_$0402_#004_bit6_Atom Pressure">
+        <Mnemonic>FFD</Mnemonic>
+        <Bits count="10">
+          <Scaled Unit="kPa" Offset=" 100" DivideBy=" 10"/>
+        </Bits>
+      </Data>
+      <Data Name="DataRead.FFD_$F0D0_#004_bit0_ODO/TRIP METER">
+        <Mnemonic>FFD</Mnemonic>
+        <Bits count="24">
+          <Scaled Unit="km"/>
+        </Bits>
+      </Data>
+      <Data Name="DataRead.FFD_$0403_#004_bit0_ENG RPM">
+        <Mnemonic>FFD</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="rpm" Step=" 125" DivideBy=" 1000"/>
+        </Bits>
+      </Data>
+      <Data Name="DataRead.FFD_$0405_#004_bit0_Vehicle Speed">
+        <Mnemonic>FFD</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="km/h" DivideBy=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="DataRead_$1007_#004_bit7_Switching Valve Status">
+        <Mnemonic>DM</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="OPEN"/>
+            <Item Value="1" Text="CLOSE"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DataRead_$1006_#004_bit7_Bypass Valve Status">
+        <Mnemonic>DM</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="OPEN"/>
+            <Item Value="1" Text="CLOSE"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DataRead_$1008_#004_bit7_Leak Detection Pump Status">
+        <Mnemonic>DM</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DataRead_$1009_#004_bit7_Lid ACTR Status">
+        <Mnemonic>DM</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DataRead_$1001_#004_bit0_Tank Pressure Sensor_Rel">
+        <Mnemonic>DM</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="kPa" Step=" 5" Offset="-3000" DivideBy=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="vehicleManufacturerSparePartNumber">
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerSparePartNumber_N">
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="RoutineControlType">
+        <Comment><![CDATA[Routine control type - VALUES OTHER THAN 1, 2 & 3 ARE RESERVED AND SHOULD NOT BE USED.]]></Comment>
+        <Mnemonic>RCTP</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="1" Text="StartRoutine"/>
+            <Item Value="2" Text="StopRoutine"/>
+            <Item Value="3" Text="RequestRoutineResults"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RoutineIdentifier">
+        <Comment><![CDATA[Routine identifier]]></Comment>
+        <Mnemonic>RI</Mnemonic>
+        <Description><![CDATA[<FONT size=2>
+<P><FONT size=2><STRONG><U>Definition of RoutineControl</U></STRONG></FONT></P>
+<P><FONT size=2>Data: RoutineIdentifierList</FONT></P>
+<P><FONT size=2>&nbsp; Contains the list of all routine identifier that may be&nbsp;used with InputOutputControl service.<BR>&nbsp; <BR>&nbsp; Example:<BR>&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;0x4501 -&nbsp;ROUTINE_Temperature_Wave<BR></FONT></P>
+<P><FONT size=2>If some of these routine identifer have parameters, you should defined a data with the same name as the&nbsp;routine identifer followed by a dot and a text</FONT></P>
+<P><FONT size=2>&nbsp; Example:<BR>&nbsp; <BR>&nbsp; Data: ROUTINE_Temperature_Wave.Min<BR>&nbsp; Data: ROUTINE_Temperature_Wave.Max<BR>&nbsp; Data: ROUTINE_Temperature_Wave.Freq<BR></FONT><FONT size=2></P></FONT>
+<P><FONT size=2>Then, you should add theses data in the "Send tab" of the&nbsp;RoutineControl request, after the RoutineIdentifierList data.</FONT></P></FONT>]]></Description>
+        <Bits count="16">
+          <List>
+            <Item Value="513" Text="OBD Leak Test"/>
+            <Item Value="514" Text="First Filling"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="RoutineStatusRecord">
+        <Comment><![CDATA[Routine information]]></Comment>
+        <Mnemonic>RSR</Mnemonic>
+        <Bits count="4">
+          <List>
+            <Item Value="0" Text="Routine completed"/>
+            <Item Value="1" Text="Routine aborted or disabled"/>
+            <Item Value="2" Text="Routine running"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DTCMaskRecord">
+        <Comment><![CDATA[DTCMREC_DTC]]></Comment>
+        <Mnemonic>DF</Mnemonic>
+        <Bytes count="3"/>
+      </Data>
+      <Data Name="Digest">
+        <Bytes count="20"/>
+      </Data>
+      <Data Name="Fingerprint">
+        <Bytes count="16"/>
+      </Data>
+      <Data Name="IndexSrvData">
+        <Bytes count="10"/>
+      </Data>
+      <Data Name="CalibrationNumber">
+        <Bytes count="2"/>
+      </Data>
+      <Data Name="exhaustRegulationOrTypeApprovalNumberDataIdentifier">
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="SystemNameOrEngineType">
+        <Bytes count="32" ascii="1"/>
+      </Data>
+      <Data Name="ConfigurationFileReferenceLink-RUC">
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="Switching Valve.value">
+        <Mnemonic>AT</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Switching Valve.param">
+        <Mnemonic>AT</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="IOCTL.DataIdentifier">
+        <Comment><![CDATA[Data Identifier received in reply to InputOutputControl request]]></Comment>
+        <Mnemonic>IOI_READ</Mnemonic>
+        <Bits count="16">
+          <Scaled/>
+        </Bits>
+      </Data>
+      <Data Name="IOCTL.StatusRecord.Parameter">
+        <Comment><![CDATA[Input Output control status]]></Comment>
+        <Mnemonic>CSR_IOCP</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="returnControlToECU"/>
+            <Item Value="1" Text="resetToDefault"/>
+            <Item Value="2" Text="freezeCurrentState"/>
+            <Item Value="3" Text="shortTermAdjustment"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="OutputPermanentControlList">
+        <Comment><![CDATA[List of Data Identifiers for Input Output Control]]></Comment>
+        <Mnemonic>IOI</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2><STRONG><U>Definition of IOControl</U></STRONG></FONT></P>
+<P><FONT size=2>Data: IOCTL.DataIdentifierList</FONT></P>
+<P><FONT size=2>&nbsp; Contains the list of all IO devices that may be<BR>&nbsp; controlled by InputOutputControl service.<BR>&nbsp; <BR>&nbsp; Example:<BR>&nbsp; <BR>&nbsp;&nbsp;&nbsp; 0 - DID_Pump<BR>&nbsp;&nbsp;&nbsp; 1 - DID_Wiper</FONT></P>
+<P><FONT size=2>If some of these IO devices have parameters, you should defined a data with the same name as the IO devices followed by a dot and a text</FONT></P>
+<P><FONT size=2>&nbsp; Example:<BR>&nbsp; <BR>&nbsp; Data: DID_Wiper.Mode<BR>&nbsp;&nbsp;&nbsp;&nbsp; Type: List<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 - Slow speed<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 - High speed</FONT></P>
+<P><FONT size=2>Then, you should add theses data in the "Send tab" of the&nbsp;InputOutpuControl request, after the IOCTL.OptionRecord.Parameter data.</FONT></P>]]></Description>
+        <Bits count="16">
+          <List>
+            <Item Value="4101" Text="Fuel Tank Isolation Valve"/>
+            <Item Value="4102" Text="Bypass Valve"/>
+            <Item Value="4103" Text="Switching Valve"/>
+            <Item Value="4104" Text="Leak Detection Pump"/>
+            <Item Value="4105" Text="Lid ACTR"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DataRead_$1005_#004_bit7_Fuel Tank Isolation Valve">
+        <Mnemonic>DM</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="CLOSE"/>
+            <Item Value="1" Text="OPEN"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Fuel Tank Isolation Valve.value">
+        <Mnemonic>AT</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Bypass Valve.value">
+        <Mnemonic>AT</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Lid ACTR.value">
+        <Mnemonic>AT</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Leak Detection Pump.value">
+        <Mnemonic>AT</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Bypass Valve.param">
+        <Mnemonic>AT</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Lid ACTR.param">
+        <Mnemonic>AT</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Leak Detection Pump.param">
+        <Mnemonic>AT</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="Fuel Tank Isolation Valve.param">
+        <Mnemonic>AT</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DataRead.FFD_$0404_#004_bit0_ENG RPM">
+        <Mnemonic>FFD</Mnemonic>
+        <Bits>
+          <Scaled Unit="rpm" Step=" 25" DivideBy=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="DataRead.FFD_$0406_#004_bit0_External Temp">
+        <Mnemonic>FFD</Mnemonic>
+        <Bits>
+          <Scaled Unit="°C" Offset="-40"/>
+        </Bits>
+      </Data>
+      <Data Name="DataRead.FFD_$0407_#004_bit0_ENG Calculated Load">
+        <Mnemonic>FFD</Mnemonic>
+        <Bits>
+          <Scaled Unit="%" Step=" 100" DivideBy=" 255"/>
+        </Bits>
+      </Data>
+      <Data Name="DataRead_$1002_#004_bit0_Tank Pressure Sensor_Abs">
+        <Mnemonic>DM</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="kPa" Step=" 26" Offset=" 1330" DivideBy=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="DataRead_$1003_#004_bit0_EVAP Pressure Sensor">
+        <Mnemonic>DM</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="kPa" Step=" 2" Offset=" 6000" DivideBy=" 100"/>
+        </Bits>
+      </Data>
+      <Data Name="OutputControlCommand">
+        <Comment><![CDATA[Input Output control parameter list]]></Comment>
+        <Mnemonic>COR_IOCP</Mnemonic>
+        <Bits>
+          <List>
+            <Item Value="0" Text="Stop"/>
+            <Item Value="1" Text="resetToDefault"/>
+            <Item Value="2" Text="freezeCurrentState"/>
+            <Item Value="3" Text="Start Permanent"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="SecondaryOperationalRefference">
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="BootVersion.NumberOfModule">
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="BootVersion.SupplierCoding">
+        <Bytes count="31" ascii="1"/>
+      </Data>
+      <Data Name="DataRead_$1004._#004_bit7_Refuel Switch Status">
+        <Mnemonic>DM</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="OFF"/>
+            <Item Value="1" Text="ON"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="DataRead_$1004._#004_bit6_Lid Switch Status">
+        <Mnemonic>DM</Mnemonic>
+        <Bits count="1">
+          <List>
+            <Item Value="0" Text="HIGH"/>
+            <Item Value="1" Text="LOW"/>
+          </List>
+        </Bits>
+      </Data>
+      <Data Name="VDIAG">
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="vehicleManufacturerECUSoftwareNumber">
+        <Mnemonic>DID_$F188</Mnemonic>
+        <Bytes count="10" ascii="1"/>
+      </Data>
+      <Data Name="diagnosticVersion">
+        <Comment><![CDATA[VDIAG]]></Comment>
+        <Mnemonic>DID_$F1A0</Mnemonic>
+        <Description><![CDATA[<P><FONT size=2>This value shall be used to reference the diagnostic version of the ECU.</FONT></P>
+<P><FONT size=2>It is defined by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>Refer to manufacture ECU designer.</FONT></P>]]></Description>
+        <Bytes count="1"/>
+      </Data>
+      <Data Name="DataRead_$1011_#004_bit0_Internal Atmospheric temp Sensor for Cross Check">
+        <Mnemonic>DM</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="°C" Step=" 125" Offset="-50000" DivideBy=" 1000"/>
+        </Bits>
+      </Data>
+      <Data Name="DataRead_$1010_#004_bit0_Internal Atmospheric temp Sensor">
+        <Mnemonic>DM</Mnemonic>
+        <Bits count="16">
+          <Scaled Unit="°C" Step=" 125" Offset="-50000" DivideBy=" 1000"/>
+        </Bits>
+      </Data>
+    </Datas>
+    <Requests Endian="Big">
+      <Request Name="StartDiagnosticSession">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[SDS]]></Comment>
+        <Sent>
+          <SentBytes>1000</SentBytes>
+          <DataItem Name="SessionName" FirstByte="2"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5000</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.DefaultSession">
+        <ManuelSend/>
+        <Comment><![CDATA[SDS]]></Comment>
+        <Sent>
+          <SentBytes>1001</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>500100000000</ReplyBytes>
+          <DataItem Name="SessionParameterRecord#1[P2max]" FirstByte="3"/>
+          <DataItem Name="SessionParameterRecord#2[P2*max]" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.ReprogrammingSession">
+        <ManuelSend/>
+        <Comment><![CDATA[SDS]]></Comment>
+        <Sent>
+          <SentBytes>1002</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>500200000000</ReplyBytes>
+          <DataItem Name="SessionParameterRecord#1[P2max]" FirstByte="3"/>
+          <DataItem Name="SessionParameterRecord#2[P2*max]" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="StartDiagnosticSession.ExtendedDiagSession">
+        <ManuelSend/>
+        <Comment><![CDATA[SDS]]></Comment>
+        <Sent>
+          <SentBytes>1003</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>500300000000</ReplyBytes>
+          <DataItem Name="SessionParameterRecord#1[P2max]" FirstByte="3"/>
+          <DataItem Name="SessionParameterRecord#2[P2*max]" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="ClearDiagnosticInformation.All">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[ClearDiagnosticInformation]]></Comment>
+        <Sent>
+          <SentBytes>14FFFFFF</SentBytes>
+        </Sent>
+        <Received MinBytes="1">
+          <ReplyBytes>54</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report number of DTC]]></Comment>
+        <Sent>
+          <SentBytes>1901FF</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>5901FF000000</ReplyBytes>
+          <DataItem Name="DTCCount" FirstByte="5"/>
+          <DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportSupportedDTC">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Report supported DTC]]></Comment>
+        <Sent>
+          <SentBytes>190A</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>590AFF00000000</ReplyBytes>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.OperationnalReference">
+        <Sent>
+          <SentBytes>22F012</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F01200000000000000000000</ReplyBytes>
+          <DataItem Name="OperationnalReference" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierIdentifier">
+        <Sent>
+          <SentBytes>22F18A</SentBytes>
+        </Sent>
+        <Received MinBytes="67">
+          <ReplyBytes>62F18A00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="systemSupplierIdentifier" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.ECUSerialNumber">
+        <Sent>
+          <SentBytes>22F18C</SentBytes>
+        </Sent>
+        <Received MinBytes="23">
+          <ReplyBytes>62F18C0000000000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="ECUSerialNumber" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.VIN">
+        <Sent>
+          <SentBytes>22F190</SentBytes>
+        </Sent>
+        <Received MinBytes="20">
+          <ReplyBytes>62F1900000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="VIN" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUHardwareNumber">
+        <Sent>
+          <SentBytes>22F191</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F19100000000000000000000</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUHardwareNumber" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareNumber">
+        <Sent>
+          <SentBytes>22F194</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62F1940000000000000000000000000000000000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareNumber" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+        <Sent>
+          <SentBytes>22F195</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62F1950000000000000000000000000000000000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="systemSupplierECUSoftwareVersionNumber" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerSparePartNumber_N">
+        <Sent>
+          <SentBytes>22F1A1</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F1A100000000000000000000</ReplyBytes>
+          <DataItem Name="vehicleManufacturerSparePartNumber_N" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="TesterPresent.WithResponse">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[TesterPresent]]></Comment>
+        <Sent>
+          <SentBytes>3E00</SentBytes>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>7E00</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="RoutineControl">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Comment><![CDATA[Routine Control]]></Comment>
+        <Sent>
+          <SentBytes>31000000</SentBytes>
+          <DataItem Name="RoutineControlType" FirstByte="2"/>
+          <DataItem Name="RoutineIdentifier" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>7100000000</ReplyBytes>
+          <DataItem Name="RoutineStatusRecord" FirstByte="5" BitOffset="4"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDTCInformation]]></Comment>
+        <Sent>
+          <SentBytes>190600000080</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5906</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.Occurrence counter">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDTCInformation]]></Comment>
+        <Sent>
+          <SentBytes>190600000084</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5906</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.Last disappeared mileage">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDTCInformation]]></Comment>
+        <Sent>
+          <SentBytes>190600000085</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5906</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.Distance default present">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDTCInformation]]></Comment>
+        <Sent>
+          <SentBytes>190600000086</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5906</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.1st occurrence mileage">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDTCInformation]]></Comment>
+        <Sent>
+          <SentBytes>190600000087</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5906</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.IUPR numerator">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDTCInformation]]></Comment>
+        <Sent>
+          <SentBytes>190600000088</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5906</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportExtendedData.IUPR denominator">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[ReadDTCInformation]]></Comment>
+        <Sent>
+          <SentBytes>190600000089</SentBytes>
+          <DataItem Name="DTCMaskRecord" FirstByte="3"/>
+        </Sent>
+        <Received MinBytes="2">
+          <ReplyBytes>5906</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Digest">
+        <Sent>
+          <SentBytes>22FD00</SentBytes>
+        </Sent>
+        <Received MinBytes="23">
+          <ReplyBytes>62FD000000000000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="Digest" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.Fingerprint">
+        <Sent>
+          <SentBytes>22F010</SentBytes>
+        </Sent>
+        <Received MinBytes="19">
+          <ReplyBytes>62F01000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="Fingerprint" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.IndexSrvData">
+        <Sent>
+          <SentBytes>22F011</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F01100000000000000000000</ReplyBytes>
+          <DataItem Name="IndexSrvData" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.CalibrationNumber">
+        <Sent>
+          <SentBytes>22F182</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>62F1820000</ReplyBytes>
+          <DataItem Name="CalibrationNumber" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.exhaustRegulationOrTypeApprovalNumberDataIdentifier">
+        <Sent>
+          <SentBytes>22F196</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F19600000000000000000000</ReplyBytes>
+          <DataItem Name="exhaustRegulationOrTypeApprovalNumberDataIdentifier" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.BootVersion">
+        <Sent>
+          <SentBytes>22F180</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62F1800000000000000000000000000000000000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="BootVersion.NumberOfModule" FirstByte="4"/>
+          <DataItem Name="BootVersion.SupplierCoding" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.SystemNameOrEngineType">
+        <Sent>
+          <SentBytes>22F197</SentBytes>
+        </Sent>
+        <Received MinBytes="35">
+          <ReplyBytes>62F1970000000000000000000000000000000000000000000000000000000000000000</ReplyBytes>
+          <DataItem Name="SystemNameOrEngineType" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="OutputControl">
+        <DossierMaintenabilite/>
+        <Sent>
+          <SentBytes>2F00000000</SentBytes>
+          <DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+          <DataItem Name="OutputControlCommand" FirstByte="4"/>
+          <DataItem Name="Switching Valve.param" FirstByte="5"/>
+          <DataItem Name="Bypass Valve.param" FirstByte="5"/>
+          <DataItem Name="Fuel Tank Isolation Valve.param" FirstByte="5"/>
+          <DataItem Name="Lid ACTR.param" FirstByte="5"/>
+          <DataItem Name="Leak Detection Pump.param" FirstByte="5"/>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6F00000000</ReplyBytes>
+          <DataItem Name="IOCTL.DataIdentifier" FirstByte="2"/>
+          <DataItem Name="IOCTL.StatusRecord.Parameter" FirstByte="4"/>
+          <DataItem Name="Fuel Tank Isolation Valve.value" FirstByte="5"/>
+          <DataItem Name="Switching Valve.value" FirstByte="5"/>
+          <DataItem Name="Bypass Valve.value" FirstByte="5"/>
+          <DataItem Name="Lid ACTR.value" FirstByte="5"/>
+          <DataItem Name="Leak Detection Pump.value" FirstByte="5"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.SecondaryOperationalRefference">
+        <Sent>
+          <SentBytes>22F013</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F01300000000000000000000</ReplyBytes>
+          <DataItem Name="SecondaryOperationalRefference" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead.FFD_$0401_#004_bit0_ENG Coolant Temp">
+        <Sent>
+          <SentBytes>220401</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62040100</ReplyBytes>
+          <DataItem Name="DataRead.FFD_$0401_#004_bit0_ENG Coolant Temp" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead.FFD_$0402_#004_bit6_Atom Pressure">
+        <Sent>
+          <SentBytes>220402</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6204020000</ReplyBytes>
+          <DataItem Name="DataRead.FFD_$0402_#004_bit6_Atom Pressure" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead.FFD_$0403_#004_bit0_ENG RPM">
+        <Sent>
+          <SentBytes>220403</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6204030000</ReplyBytes>
+          <DataItem Name="DataRead.FFD_$0403_#004_bit0_ENG RPM" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead.FFD_$0404_#004_bit0_ENG RPM">
+        <Sent>
+          <SentBytes>220404</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62040400</ReplyBytes>
+          <DataItem Name="DataRead.FFD_$0404_#004_bit0_ENG RPM" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead.FFD_$0405_#004_bit0_Vehicle Speed">
+        <Sent>
+          <SentBytes>220405</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6204050000</ReplyBytes>
+          <DataItem Name="DataRead.FFD_$0405_#004_bit0_Vehicle Speed" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead.FFD_$0406_#004_bit0_External Temp">
+        <Sent>
+          <SentBytes>220406</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62040600</ReplyBytes>
+          <DataItem Name="DataRead.FFD_$0406_#004_bit0_External Temp" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead.FFD_$0407_#004_bit0_ENG Calculated Load">
+        <Sent>
+          <SentBytes>220404</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62040400</ReplyBytes>
+          <DataItem Name="DataRead.FFD_$0407_#004_bit0_ENG Calculated Load" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead_$1001_#004_bit0_Tank Pressure Sensor_Rel">
+        <Sent>
+          <SentBytes>221001</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6210010000</ReplyBytes>
+          <DataItem Name="DataRead_$1001_#004_bit0_Tank Pressure Sensor_Rel" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead_$1002_#004_bit0_Tank Pressure Sensor_Abs">
+        <Sent>
+          <SentBytes>221002</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6210020000</ReplyBytes>
+          <DataItem Name="DataRead_$1002_#004_bit0_Tank Pressure Sensor_Abs" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead_$1005_#004_bit7_Fuel Tank Isolation Valve">
+        <Sent>
+          <SentBytes>221005</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62100500</ReplyBytes>
+          <DataItem Name="DataRead_$1005_#004_bit7_Fuel Tank Isolation Valve" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead_$1006_#004_bit7_Bypass Valve Status">
+        <Sent>
+          <SentBytes>221006</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62100600</ReplyBytes>
+          <DataItem Name="DataRead_$1006_#004_bit7_Bypass Valve Status" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead_$1007_#004_bit7_Switching Valve Status">
+        <Sent>
+          <SentBytes>221007</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62100700</ReplyBytes>
+          <DataItem Name="DataRead_$1007_#004_bit7_Switching Valve Status" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead_$1008_#004_bit7_Leak Detection Pump Status">
+        <Sent>
+          <SentBytes>221008</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62100800</ReplyBytes>
+          <DataItem Name="DataRead_$1008_#004_bit7_Leak Detection Pump Status" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead_$1009_#004_bit7_Lid ACTR Status">
+        <Sent>
+          <SentBytes>221009</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62100900</ReplyBytes>
+          <DataItem Name="DataRead_$1009_#004_bit7_Lid ACTR Status" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead.FFD_$F0D0_#004_bit0_ODO/TRIP METER">
+        <Sent>
+          <SentBytes>22F0D0</SentBytes>
+        </Sent>
+        <Received MinBytes="6">
+          <ReplyBytes>62F0D0000000</ReplyBytes>
+          <DataItem Name="DataRead.FFD_$F0D0_#004_bit0_ODO/TRIP METER" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead.FFD_$F0D1_#004_bit0_DTC count">
+        <Sent>
+          <SentBytes>22F0D1</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F0D100</ReplyBytes>
+          <DataItem Name="DataRead.FFD_$F0D1_#004_bit0_DTC count" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead_$1003_#004_bit0_EVAP Pressure Sensor">
+        <Sent>
+          <SentBytes>221003</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>6210030000</ReplyBytes>
+          <DataItem Name="DataRead_$1003_#004_bit0_EVAP Pressure Sensor" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead_$1004">
+        <Sent>
+          <SentBytes>221004</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62100400</ReplyBytes>
+          <DataItem Name="DataRead_$1004._#004_bit6_Lid Switch Status" Ref="1" FirstByte="4" BitOffset="1"/>
+          <DataItem Name="DataRead_$1004._#004_bit7_Refuel Switch Status" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerSparePartNumber">
+        <Sent>
+          <SentBytes>22F187</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F18700000000000000000000</ReplyBytes>
+          <DataItem Name="vehicleManufacturerSparePartNumber" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.vehicleManufacturerECUSoftwareNumber">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read autoconfigurationFingerPrint]]></Comment>
+        <Sent>
+          <SentBytes>22F188</SentBytes>
+        </Sent>
+        <Received MinBytes="13">
+          <ReplyBytes>62F188</ReplyBytes>
+          <DataItem Name="vehicleManufacturerECUSoftwareNumber" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.diagnosticVersion">
+        <DossierMaintenabilite/>
+        <Comment><![CDATA[Read diagnosticVersion]]></Comment>
+        <Sent>
+          <SentBytes>22F1A0</SentBytes>
+        </Sent>
+        <Received MinBytes="4">
+          <ReplyBytes>62F1A0</ReplyBytes>
+          <DataItem Name="diagnosticVersion" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="ReadDTCInformation.ReportDTC">
+        <Comment><![CDATA[DDT2000 Failures page requests / DDT : Unusable for Clip import]]></Comment>
+        <Sent>
+          <SentBytes>1902FF</SentBytes>
+        </Sent>
+        <Received MinBytes="3">
+          <ShiftBytesCount>4</ShiftBytesCount>
+          <ReplyBytes>59020000000000</ReplyBytes>
+          <DataItem Name="StatusOfDTC" FirstByte="7"/>
+          <DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+          <DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+          <DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+          <DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+          <DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+          <DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+          <DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+          <DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+          <DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+          <DataItem Name="DTCFailureType" FirstByte="6"/>
+          <DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+          <DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+          <DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+          <DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+        </Received>
+      </Request>
+      <Request Name="DataWrite.VIN">
+        <DossierMaintenabilite/>
+        <ManuelSend/>
+        <Sent>
+          <SentBytes>2EF1900000000000000000000000000000000000</SentBytes>
+          <DataItem Name="VIN" FirstByte="4"/>
+        </Sent>
+        <Received MinBytes="3">
+          <ReplyBytes>6EF190</ReplyBytes>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead_$1011_#004_bit0_Internal Atmospheric temp Sensor for Cross Check">
+        <Sent>
+          <SentBytes>221011</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>621011</ReplyBytes>
+          <DataItem Name="DataRead_$1011_#004_bit0_Internal Atmospheric temp Sensor for Cross Check" FirstByte="4"/>
+        </Received>
+      </Request>
+      <Request Name="DataRead.DataRead_$1010_#004_bit0_Internal Atmospheric temp Sensor">
+        <Sent>
+          <SentBytes>221010</SentBytes>
+        </Sent>
+        <Received MinBytes="5">
+          <ReplyBytes>621010</ReplyBytes>
+          <DataItem Name="DataRead_$1010_#004_bit0_Internal Atmospheric temp Sensor" Ref="1" FirstByte="4"/>
+        </Received>
+      </Request>
+    </Requests>
+    <Devices>
+      <Device Name="[P043E]EVAP System Leak Detection Reference Orifice Low Flow" DTC="1086" OBD="1086">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P043F]EVAP System Leak Detection Reference Orifice High Flow" DTC="1087" OBD="1087">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P04B1]Refueling Vapor Control Valve Circuit Low" DTC="1201" OBD="1201">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P04B2]Refueling Vapor Control Valve Circuit High" DTC="1202" OBD="1202">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P04B3]Refueling Vapor Control Valve Stuck Performance/Stuck Open" DTC="1203" OBD="1203">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P04B4]Refueling Vapor Control Valve Stuck Closed" DTC="1204" OBD="1204">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P04B6]Fuel Fill Door Stuck Closed" DTC="1206" OBD="1206">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P04BB]Fuel Fill Door Unlock Control Circuit/Open" DTC="1211" OBD="1211">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P04BD]Fuel Fill Door Unlock Control Circuit Low" DTC="1213" OBD="1213">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P04BE]Fuel Fill Door Unlock Control Circuit High" DTC="1214" OBD="1214">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P04EC]EVAP System Large Leak Detected - Fuel Tank Side" DTC="1260" OBD="1260">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P04ED]EVAP System Large Leak Detected - Fresh Air Side" DTC="1261" OBD="1261">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P04EE]EVAP System Very Small Leak Detected - Fuel Tank Side" DTC="1262" OBD="1262">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P04EF]EVAP System Very Small Leak Detected - Fresh Air Side" DTC="1263" OBD="1263">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P0603]Internal Control Module Keep Alive Memory (KAM) Error" DTC="1539" OBD="1539">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P0604]Internal Control Module Random Access Memory (RAM) Error" DTC="1540" OBD="1540">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P0605]Internal Control Module Read Only Memory (ROM) Error" DTC="1541" OBD="1541">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P0606]Control Module Processor" DTC="1542" OBD="1542">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P0607]Control Module Performance" DTC="1543" OBD="1543">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P060A]Internal Control Module Monitoring Processor Performance" DTC="1546" OBD="1546">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P060B]Internal Control Module A/D Processing Performance" DTC="1547" OBD="1547">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P062F]Internal Control Module EEPROM Error" DTC="1583" OBD="1583">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P0667]Control Module Internal Temperature Sensor &quot;A&quot; Range/Performance" DTC="1639" OBD="1639">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P0668]Control Module Internal Temperature Sensor &quot;A&quot; Circuit Low" DTC="1640" OBD="1640">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P0669]Control Module Internal Temperature Sensor &quot;A&quot; Circuit High" DTC="1641" OBD="1641">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P1603]Internal Control Module EEPROM Error (Reading EEPROM not OBD Related)" DTC="5635" OBD="5635">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P2400]EVAP System Leak Detection Pump Control Circuit/Open" DTC="9216" OBD="9216">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P2401]EVAP System Leak Detection Pump Control Circuit Low" DTC="9217" OBD="9217">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P2402]EVAP System Leak Detection Pump Control Circuit High" DTC="9218" OBD="9218">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P2419]EVAP System Switching Valve Control Circuit Low" DTC="9241" OBD="9241">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P2420]EVAP System Switching Valve Control Circuit High" DTC="9248" OBD="9248">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P2450]EVAP System Switching Valve Performance/Stuck Open" DTC="9296" OBD="9296">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P24B9]EVAP System Leak Detection Pump Pressure Sensor Circuit Range/Performance" DTC="9401" OBD="9401">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P24BA]EVAP System Leak Detection Pump Pressure Sensor Circuit Low" DTC="9402" OBD="9402">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P24BB]EVAP System Leak Detection Pump Pressure Sensor Circuit High" DTC="9403" OBD="9403">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P24BC]EVAP System Leak Detection Pump Pressure Sensor Circuit Intermittent" DTC="9404" OBD="9404">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P24BE]EVAP System Leak Detection Pump Switching Valve Control Circuit Low" DTC="9406" OBD="9406">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P24BF]EVAP System Leak Detection Pump Switching Valve Control Circuit High" DTC="9407" OBD="9407">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P24C0]EVAP System Leak Detection Pump Switching Valve Stuck On" DTC="9408" OBD="9408">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P24C1]EVAP System Leak Detection Pump Switching Valve Performance/Stuck Off" DTC="9409" OBD="9409">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P24D6]EVAP System Pressure Sensor/Switch &quot;B&quot; Circuit Range/Performance" DTC="9430" OBD="9430">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P24D7]EVAP System Pressure Sensor/Switch &quot;B&quot; Circuit Low" DTC="9431" OBD="9431">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P24D8]EVAP System Pressure Sensor/Switch &quot;B&quot; Circuit High" DTC="9432" OBD="9432">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P24D9]EVAP System Pressure Sensor/Switch &quot;B&quot; Circuit Intermittent" DTC="9433" OBD="9433">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P2610]ECM/PCM Engine Off Timer Performance" DTC="9744" OBD="9744">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P2B7B]EVAP System Pressure Sensor/Switch &quot;C&quot; Circuit Range/Performance" DTC="11131" OBD="11131">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P2B7C]EVAP System Pressure Sensor/Switch &quot;C&quot; Circuit Low" DTC="11132" OBD="11132">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[P2B7D]EVAP System Pressure Sensor/Switch &quot;C&quot; Circuit High" DTC="11133" OBD="11133">
+        <Test Type="0" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U2140]CAN comm err (ECM)" DTC="57664" OBD="57664">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U2143]CAN comm err (VCM/HCM)" DTC="57667" OBD="57667">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U2148]CAN comm err (brake control unit)" DTC="57672" OBD="57672">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U214E]CAN comm err (combination meter)" DTC="57678" OBD="57678">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U214F]CAN comm err (BCM)" DTC="57679" OBD="57679">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+      <Device Name="[U215B]CAN comm err (IPDM E/R)" DTC="57691" OBD="57691">
+        <Test Type="135" Severity="0">
+        </Test>
+      </Device>
+    </Devices>
+    <ds:Categories xmlns="http://www-diag.renault.com/2002/screens">
+      <Category Name="Read">
+        <Screen Name="Data Read" Color="11513775" WindowState="0" Width="9000" Height="6000">
+          <Display Width="5045" Color="16777215" DataName="DataRead_$1001_#004_bit0_Tank Pressure Sensor_Rel" RequestName="DataRead.DataRead_$1001_#004_bit0_Tank Pressure Sensor_Rel">
+            <Rectangle Left="960" Top="840" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5045" Color="16777215" DataName="DataRead_$1002_#004_bit0_Tank Pressure Sensor_Abs" RequestName="DataRead.DataRead_$1002_#004_bit0_Tank Pressure Sensor_Abs">
+            <Rectangle Left="960" Top="1320" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5045" Color="16777215" DataName="DataRead_$1003_#004_bit0_EVAP Pressure Sensor" RequestName="DataRead.DataRead_$1003_#004_bit0_EVAP Pressure Sensor">
+            <Rectangle Left="960" Top="1800" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5045" Color="16777215" DataName="DataRead_$1004._#004_bit7_Refuel Switch Status" RequestName="DataRead.DataRead_$1004">
+            <Rectangle Left="960" Top="2760" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5045" Color="16777215" DataName="DataRead_$1004._#004_bit6_Lid Switch Status" RequestName="DataRead.DataRead_$1004">
+            <Rectangle Left="960" Top="2280" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5040" Color="16777215" DataName="DataRead_$1006_#004_bit7_Bypass Valve Status" RequestName="DataRead.DataRead_$1006_#004_bit7_Bypass Valve Status">
+            <Rectangle Left="960" Top="3720" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5045" Color="16777215" DataName="DataRead_$1007_#004_bit7_Switching Valve Status" RequestName="DataRead.DataRead_$1007_#004_bit7_Switching Valve Status">
+            <Rectangle Left="960" Top="4200" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5045" Color="16777215" DataName="DataRead_$1008_#004_bit7_Leak Detection Pump Status" RequestName="DataRead.DataRead_$1008_#004_bit7_Leak Detection Pump Status">
+            <Rectangle Left="960" Top="4680" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5045" Color="16777215" DataName="DataRead_$1009_#004_bit7_Lid ACTR Status" RequestName="DataRead.DataRead_$1009_#004_bit7_Lid ACTR Status">
+            <Rectangle Left="960" Top="5160" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="5060" Color="16777215" DataName="DataRead_$1005_#004_bit7_Fuel Tank Isolation Valve" RequestName="DataRead.DataRead_$1005_#004_bit7_Fuel Tank Isolation Valve">
+            <Rectangle Left="960" Top="3240" Height="300" Width="7200"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+        <Screen Name="Ident" Color="11513775" WindowState="0" Width="9000" Height="6000">
+          <Display Width="3515" Color="16777215" DataName="VIN" RequestName="DataRead.VIN">
+            <Rectangle Left="1560" Top="480" Height="300" Width="5880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3530" Color="16777215" DataName="OperationnalReference" RequestName="DataRead.OperationnalReference">
+            <Rectangle Left="1560" Top="960" Height="300" Width="5880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3530" Color="16777215" DataName="vehicleManufacturerSparePartNumber" RequestName="DataRead.vehicleManufacturerSparePartNumber">
+            <Rectangle Left="1560" Top="1920" Height="300" Width="5880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3875" Color="16777215" DataName="vehicleManufacturerECUSoftwareNumber" RequestName="DataRead.vehicleManufacturerECUSoftwareNumber">
+            <Rectangle Left="1560" Top="2880" Height="300" Width="5880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3530" Color="16777215" DataName="systemSupplierIdentifier" RequestName="DataRead.systemSupplierIdentifier">
+            <Rectangle Left="1560" Top="4800" Height="300" Width="5880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3530" Color="16777215" DataName="ECUSerialNumber" RequestName="DataRead.ECUSerialNumber">
+            <Rectangle Left="1560" Top="4320" Height="300" Width="5880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3890" Color="16777215" DataName="vehicleManufacturerECUHardwareNumber" RequestName="DataRead.vehicleManufacturerECUHardwareNumber">
+            <Rectangle Left="1560" Top="3840" Height="300" Width="5880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3515" Color="16777215" DataName="systemSupplierECUSoftwareNumber" RequestName="DataRead.systemSupplierECUSoftwareNumber">
+            <Rectangle Left="1560" Top="2400" Height="300" Width="5880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3890" Color="16777215" DataName="systemSupplierECUSoftwareVersionNumber" RequestName="DataRead.systemSupplierECUSoftwareVersionNumber">
+            <Rectangle Left="1560" Top="3360" Height="300" Width="5880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3515" Color="16777215" DataName="diagnosticVersion" RequestName="DataRead.diagnosticVersion">
+            <Rectangle Left="1560" Top="5280" Height="300" Width="5880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+          <Display Width="3530" Color="16777215" DataName="vehicleManufacturerSparePartNumber_N" RequestName="DataRead.vehicleManufacturerSparePartNumber_N">
+            <Rectangle Left="1560" Top="1440" Height="300" Width="5880"/>
+            <Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/>
+          </Display>
+        </Screen>
+      </Category>
+    </ds:Categories>
+  </ddt:Target>
+</xml>

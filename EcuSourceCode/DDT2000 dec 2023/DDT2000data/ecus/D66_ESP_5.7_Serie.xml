@@ -1,0 +1,2201 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<ddt:Target Name="ESP D66_5.7 Série" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" upload="5/14/01">
+<Projects xmlns=""><x66/></Projects><Function Name="ABS" Address="1"/>
+<Language Name="Français" Reference="1"/>
+<!--Diagnostic ESP 5.7 Bosch
+
+version basée sur ESPJ64 du 15/02/2001 créée par Bidard Tel: 57729
+modifiée le 01/03/2001 par MICHEL Christophe pour D66
+Mis à jour le 09/04/2001 par G. VENANT (ALTEN) % CdC : 0 265 T10 017e / 03-->
+<DateOfficialisation/><Failures Name="Pannes DTC" Id="3"/><PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<K BaudRate="10400">
+<KWP Multipoint="0">
+<FastInit><KW1 Value="208"/>
+<KW2 Value="143"/></FastInit>
+</KWP>
+<InterByte Delay="1"/>
+<ReplyToRequest Delay="5"/>
+<RequestToReply Timeout="300"/>
+<TesterPresent Delay="3000"/>
+<OnError Delay="300"/>
+</K>
+<AutoIdents>
+</AutoIdents>
+<Datas>
+
+<Data Name="Accélération latérale">
+<Bits signed="1">
+<Scaled Unit="m/s²" Step=" .192" Format="####.###"/>
+</Bits>
+</Data>
+<Data Name="Angle au volant">
+<Bits count="16" signed="1">
+<Scaled Unit="°" Step=" 2.5" Format="####.#"/>
+</Bits>
+</Data>
+<Data Name="CAN message code">
+<Bytes count="2"/>
+</Data>
+<Data Name="Code Fonction">
+<Bytes count="1"/>
+</Data>
+<Data Name="Contacteur feux stop">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Pédale relachée"/>
+<Item Value="1" Text="Pédale appuyée"/></List>
+</Bits>
+</Data>
+<Data Name="Contacteur feux stop (filtré)">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Pédale relachée"/>
+<Item Value="1" Text="Pédale appuyée"/></List>
+</Bits>
+</Data>
+<Data Name="Couple demandé par conducteur">
+<Bits>
+<Scaled Unit="%" Step=" .39"/>
+</Bits>
+</Data>
+<Data Name="Couple friction">
+<Bits>
+<Scaled Unit="%" Step=" .39"/>
+</Bits>
+</Data>
+<Data Name="Couple moteur">
+<Bits>
+<Scaled Unit="N/m" Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Couple moteur actuel">
+<Bits>
+<Scaled Unit="%" Step=" 3.125"/>
+</Bits>
+</Data>
+<Data Name="Développée maxi">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Développée mini">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Développée réelle">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Etat ESP">
+<Bits count="1">
+<List>
+<Item Value="0" Text="En Service"/>
+<Item Value="1" Text="Hors Service"/></List>
+</Bits>
+</Data>
+<Data Name="Etat Relais Valves">
+<Bits>
+<List>
+<Item Value="0" Text="Inactif"/>
+<Item Value="255" Text="Actif"/></List>
+</Bits>
+</Data>
+<Data Name="FaultStatus">
+<Bytes count="1"/>
+</Data>
+<Data Name="FirstDTC">
+<Bits count="16">
+<List>
+<Item Value="20481" Text="Défaut Ohmique capteur AVD"/>
+<Item Value="20483" Text="Défaut long terme capteur de vitesse AVD"/>
+<Item Value="20486" Text="Défaut plausibilité-Capteur AVD"/>
+<Item Value="20495" Text="Défaillance capteur AVD"/>
+<Item Value="20496" Text="Défaut ohmique capteur AVG"/>
+<Item Value="20499" Text="Défaut long terme capteur de vitesse AVG"/>
+<Item Value="20502" Text="Défaut plausibilité-Capteur AVG"/>
+<Item Value="20511" Text="Défaillance capteur AVG"/>
+<Item Value="20512" Text="Défaut ohmique capteur ARD"/>
+<Item Value="20515" Text="Défaut long terme capteur de vitesse ARD"/>
+<Item Value="20518" Text="Défaut plausibilité-Capteur ARD"/>
+<Item Value="20527" Text="Défaillance capteur ARD"/>
+<Item Value="20528" Text="Défaut ohmique capteur ARG"/>
+<Item Value="20531" Text="Défaut long terme capteur de vitesse ARG"/>
+<Item Value="20534" Text="Défaut plausibilité-Capteur ARG"/>
+<Item Value="20543" Text="Défaillance capteur ARG"/>
+<Item Value="20549" Text="Perturbation signal capteur de vitesse roue"/>
+<Item Value="20560" Text="Défaut valve AD AVD"/>
+<Item Value="20563" Text="Défaut valve  EC AVD"/>
+<Item Value="20568" Text="Défaut temporaire valve AD AVD"/>
+<Item Value="20571" Text="Défaut temporaire valve EC AVD"/>
+<Item Value="20576" Text="Défaut valve AD AVG"/>
+<Item Value="20579" Text="Défaut valve EC AVG"/>
+<Item Value="20584" Text="Défaut temporaire Valve AD AVG"/>
+<Item Value="20587" Text="Défaut temporaire valve EC AVG"/>
+<Item Value="20592" Text="Défaut valve AD ARD"/>
+<Item Value="20595" Text="Défaut valve EC ARD"/>
+<Item Value="20600" Text="Défaut temporaire valve AD ARD"/>
+<Item Value="20603" Text="Défaut temporaire valve EC ARD"/>
+<Item Value="20608" Text="Défaut valve AD ARG"/>
+<Item Value="20611" Text="Défaut valve EC ARG"/>
+<Item Value="20616" Text="Défaut temporaire valve AD ARG"/>
+<Item Value="20619" Text="Défaut temporaire valve EC ARG"/>
+<Item Value="20624" Text="Défaut valve ASV1"/>
+<Item Value="20627" Text="Défaut valve USV1"/>
+<Item Value="20632" Text="Défaut temporaire valve ASV1"/>
+<Item Value="20635" Text="Défaut temporaire valve USV1"/>
+<Item Value="20640" Text="Défaut valve ASV2"/>
+<Item Value="20643" Text="Défaut valve USV2"/>
+<Item Value="20648" Text="Défaut temporaire valve ASV2"/>
+<Item Value="20651" Text="Défaut temporaire valve USV2"/>
+<Item Value="20672" Text="Défaut tension d'alimentation"/>
+<Item Value="20673" Text="Surtension"/>
+<Item Value="20675" Text="Défaut calculateur"/>
+<Item Value="20676" Text="Défaut relais valve"/>
+<Item Value="20677" Text="Absence Programmation-Index-variante-LWS"/>
+<Item Value="20678" Text="Défaut contacteur Stop"/>
+<Item Value="20680" Text="Niveau liquide de frein"/>
+<Item Value="20685" Text="Défaut contacteur feux stop permanent"/>
+<Item Value="20686" Text="Défaut plausibilité capteur pression / contacteur stop"/>
+<Item Value="20688" Text="Défaut Pompe de refoulement"/>
+<Item Value="20690" Text="Pompe de précharge"/>
+<Item Value="20692" Text="Défaut freinage _urgence"/>
+<Item Value="20704" Text="Défaut général CAN"/>
+<Item Value="20705" Text="Défaut Can Bus Off"/>
+<Item Value="20706" Text="Défaut de communication avec le calculateur Moteur"/>
+<Item Value="20707" Text="Absence BVA"/>
+<Item Value="20708" Text="UCH  absent"/>
+<Item Value="20710" Text="CAN_ plausibilité données injection"/>
+<Item Value="20714" Text="CAN Bus muet"/>
+<Item Value="20715" Text="CAN bus off message trop court"/>
+<Item Value="20721" Text="Défaut capteur accélération latérale"/>
+<Item Value="20722" Text="Défaut circuit capteur de Lacet"/>
+<Item Value="20739" Text="Défaut électrique capteur accélération latérale"/>
+<Item Value="20740" Text="Défaut signal capteur accélération latérale"/>
+<Item Value="20741" Text="Défaut électrique capteur de lacet"/>
+<Item Value="20742" Text="Défaut signal capteur de lacet"/>
+<Item Value="20743" Text="Défaut permanent capteur de lacet"/>
+<Item Value="20744" Text="Défaut plausibilité capteur de lacet"/>
+<Item Value="20745" Text="Défaut alimentation capteur de lacet / accel latérale"/>
+<Item Value="20751" Text="Défaut plausibilité capteur accélération latérale"/>
+<Item Value="20752" Text="Défaut capteur angle au volant"/>
+<Item Value="20753" Text="Défaut signal capteur angle au volant"/>
+<Item Value="20755" Text="Défaut plausibilité capteur angle au volant"/>
+<Item Value="20756" Text="Défaut calibration capteur angle au volant"/>
+<Item Value="20767" Text="Pas de message can capteur angle volant"/>
+<Item Value="20768" Text="Défaut capteur de pression"/>
+<Item Value="20770" Text="Défaut plausibilité capteur de pression"/>
+<Item Value="20771" Text="Défaut électrique capteur de pression"/>
+<Item Value="20800" Text="Défaut VSO_Index mal programmé"/>
+<Item Value="20802" Text="Variante moteur mal programmée"/>
+<Item Value="20803" Text="Capteur angle au volant pas encore calibré"/></List>
+</Bits>
+</Data>
+<Data Name="GROUPE HYDRAULIQUE">
+<Bits>
+<List>
+<Item Value="0" Text="Rempli"/>
+<Item Value="255" Text="Non Rempli"/></List>
+</Bits>
+</Data>
+<Data Name="Identification version du Soft">
+<Bits count="4">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Index du pneu">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="MoreDTC">
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="NDTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Niveau Liquide de Frein">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Mini"/>
+<Item Value="1" Text="Normal"/></List>
+</Bits>
+</Data>
+<Data Name="Numéro calibration">
+<Bytes count="2"/>
+</Data>
+<Data Name="Numéro de version">
+<Bytes count="2"/>
+</Data>
+<Data Name="Numéro DIAG">
+<Bytes count="1"/>
+</Data>
+<Data Name="Numéro fournisseur">
+<Bytes count="3"/>
+</Data>
+<Data Name="Numéro Hardware R.Bosch">
+<Bytes count="5"/>
+</Data>
+<Data Name="Numéro MPR">
+<Bytes count="5"/>
+</Data>
+<Data Name="Numéro Software R.Bosch">
+<Bytes count="2"/>
+</Data>
+<Data Name="Octet 2">
+<Bytes count="1"/>
+</Data>
+<Data Name="Octet 3">
+<Bytes count="1"/>
+</Data>
+<Data Name="Octet 4">
+<Bytes count="1"/>
+</Data>
+<Data Name="Octet 5">
+<Bytes count="1"/>
+</Data>
+<Data Name="Octet 6">
+<Bytes count="1"/>
+</Data>
+<Data Name="Octet 7">
+<Bytes count="1"/>
+</Data>
+<Data Name="Octet 8">
+<Bytes count="1"/>
+</Data>
+<Data Name="Octet 9">
+<Bytes count="1"/>
+</Data>
+<Data Name="OffsetLWS">
+<Bits count="16" signed="1">
+<Scaled Unit="°" Step=" .0012" Format="##.##"/>
+</Bits>
+</Data>
+<Data Name="Paramètre Moteur">
+<Bits count="16">
+<List>
+<Item Value="14853" Text="G9T PK6"/>
+<Item Value="15108" Text="F4Rt SU1"/>
+<Item Value="15363" Text="F4Rt PK6"/>
+<Item Value="15618" Text="L7X SU1"/>
+<Item Value="15873" Text="L7X PK6"/></List>
+</Bits>
+</Data>
+<Data Name="Paramètre Moteur / seuil">
+<Bits count="24">
+<List>
+<Item Value="3802560" Text="G9T PK6 - Seuil 3"/>
+<Item Value="3867840" Text="F4Rt SU1 - Seuil 3"/>
+<Item Value="3933120" Text="F4Rt PK6 - Seuil 3"/>
+<Item Value="3998400" Text="L7X SU1 - Seuil 3"/>
+<Item Value="4063680" Text="L7X PK6 - Seuil 3"/>
+<Item Value="7996800" Text="G9T PK6 - Seuil 2"/>
+<Item Value="8062080" Text="F4Rt SU1 - Seuil 2"/>
+<Item Value="8127360" Text="F4Rt PK6 - Seuil 2"/>
+<Item Value="8192640" Text="L7X SU1 - Seuil 2"/>
+<Item Value="8257920" Text="L7X PK6 - Seuil 2"/>
+<Item Value="12191040" Text="G9T PK6 - Seuil 1"/>
+<Item Value="12256320" Text="F4Rt SU1 - Seuil 1"/>
+<Item Value="12321600" Text="F4Rt PK6 - Seuil 1"/>
+<Item Value="12386880" Text="L7X SU1 - Seuil 1"/>
+<Item Value="12452160" Text="L7X PK6 - Seuil 1"/></List>
+</Bits>
+</Data>
+<Data Name="Pompe de refoulement">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inactive"/>
+<Item Value="1" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="Pression">
+<Bits count="16" signed="1">
+<Scaled Unit="bar" Step=" .3255" Format="####.###"/>
+</Bits>
+</Data>
+<Data Name="Regime Moteur">
+<Bits count="16">
+<Scaled Unit="t/min"/>
+</Bits>
+</Data>
+<Data Name="Status DTC">
+<Bits count="2">
+<List>
+<Item Value="1" Text="Défaut mémorisé"/>
+<Item Value="3" Text="Défaut présent"/></List>
+</Bits>
+</Data>
+<Data Name="Tension Contacteur de stop">
+<Bits>
+<Scaled Unit="V" Step=" .078" Format="###.##"/>
+</Bits>
+</Data>
+<Data Name="Tension d'alimentation">
+<Bits>
+<Scaled Unit="V" Step=" .078" Format="###.##"/>
+</Bits>
+</Data>
+<Data Name="Type de Pneu">
+<Bits>
+<List>
+<Item Value="0" Text="no index0"/>
+<Item Value="74" Text="215_55_R16"/>
+<Item Value="121" Text="225_55_R16"/>
+<Item Value="136" Text="225_50_R17"/>
+<Item Value="175" Text="235_50_R17"/>
+<Item Value="255" Text="no index255"/></List>
+</Bits>
+</Data>
+<Data Name="Valeur capteur de lacet">
+<Bits count="16" signed="1">
+<Scaled Unit="°/s" Step=" .2715" Format="###.###"/>
+</Bits>
+</Data>
+<Data Name="Valve AD ARD">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inactive"/>
+<Item Value="1" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="Valve AD ARG">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inactive"/>
+<Item Value="1" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="Valve AD AVD">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inactive"/>
+<Item Value="1" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="Valve AD AVG">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inactive"/>
+<Item Value="1" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="Valve EC ARD">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inactive"/>
+<Item Value="1" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="Valve EC ARG">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inactive"/>
+<Item Value="1" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="Valve EC AVD">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inactive"/>
+<Item Value="1" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="Valve EC AVG">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inactive"/>
+<Item Value="1" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="Valve USV1">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inactive"/>
+<Item Value="1" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="Valve USV2">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inactive"/>
+<Item Value="1" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="Valve VLV1">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inactive"/>
+<Item Value="1" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="Valve VLV2">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Inactive"/>
+<Item Value="1" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="Variante Codage HBA">
+<Bits>
+<List>
+<Item Value="0" Text="désactivé"/>
+<Item Value="64" Text="variante1 : seuil 6000 bars/s"/>
+<Item Value="128" Text="variante2 : seuil 4000 bars/s"/>
+<Item Value="192" Text="variante3 : seuil  3000 bars/s"/></List>
+</Bits>
+</Data>
+<Data Name="Variante Codage Moteur">
+<Bits>
+<List>
+<Item Value="1" Text="L7X PK6"/>
+<Item Value="2" Text="L7X SU1"/>
+<Item Value="3" Text="F4Rt PK6"/>
+<Item Value="4" Text="F4Rt SU1"/>
+<Item Value="5" Text="G9T PK6"/></List>
+</Bits>
+</Data>
+<Data Name="Vitesse roue ARD">
+<Bits count="16">
+<Scaled Unit="km/h" Step=" .0625" Format="###.##"/>
+</Bits>
+</Data>
+<Data Name="Vitesse roue ARG">
+<Bits count="16">
+<Scaled Unit="km/h" Step=" .0625" Format="###.##"/>
+</Bits>
+</Data>
+<Data Name="Vitesse roue AVD">
+<Bits count="16">
+<Scaled Unit="km/h" Step=" .0625" Format="###.##"/>
+</Bits>
+</Data>
+<Data Name="Vitesse roue AVG">
+<Bits count="16">
+<Scaled Unit="km/h" Step=" .0625" Format="###.##"/>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="Arrêt_pompe_refoulement">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>31010000220022000000220022</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="ClearDiagnosticInformationRequest">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="copie de Test_hydraulique_AVG_TR3">
+
+<Sent>
+<SentBytes>310400FF4EFF32D007FF4EFF32D007</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Copy SRBLI_ecr_var_mot">
+
+<Sent>
+<SentBytes>310700800004A53E01C0</SentBytes>
+<DataItem Name="Paramètre Moteur / seuil" FirstByte="8"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Démarrage_pompe_refoulement">
+
+<Sent>
+<SentBytes>310100FF22FF220000FF22FF22</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_15118_1">
+
+<Sent>
+<SentBytes>41000008BB0A7D0A710A717D00B10224A1A4202CA1FF002EE82C28E92C0200002AA27922E8291E88001EDF4051FE1E1D78231DD7EF51F81F1C08021CA1B420</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_15118_2">
+
+<Sent>
+<SentBytes>41003C2CA1A1FF002EE82C28E92C0200002A641C28A4002AE8281CA101012071071F091F20921C203A2203942120C61C20E024A1A279602039E900AA20FF1C</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_15118_3">
+
+<Sent>
+<SentBytes>410078681C60D32EF0B1041EA1B8202CA1FF002EE82C28E92C0200002AA07A20E82922A22222990340DF056A20220322C22122E01EEA0740F0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECBBNR.779">
+
+<Sent>
+<SentBytes>4108000601000500A1AC2024A1FF0026E82428E9240200002AE900A820FF1EB10620EA2922C61E22F1651BFFB21E23C27B22E020ED0740F0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="download_ECDYNT_119_1">
+
+<Sent>
+<SentBytes>41040008BB0B0B6F0B6F7B6F7B00B10224A1A4202CA1FF002EE82C28E92C0200002AA27922E8291E88001EDF4051FE1E1D78231DD7EF51F81F1C08021CA1B4</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="download_ECDYNT_119_2">
+
+<Sent>
+<SentBytes>41043C202CA1FF002EE82C28E92C0200002A641C28A4002AE8281CA101012071071F091F20921C203A2203942120C61C20E024A1203CE900AA20FF1C681C60</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="download_ECDYNT_119_3">
+
+<Sent>
+<SentBytes>410478D334F0B1041EA1B8202CA1FF002EE82C28E92C0100002AA07A20A21D22E82922A22222990740DF056A20220322C22122E01EE7A279600740F0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECEOL.911_1">
+
+<Sent>
+<SentBytes>4100000107081B5D006678B1FF28C66628E9009E20FF20B1011DC6201DF0B27962B2791CB27960E9009E20FF20A07A66B1011DC6201D0740A1687F24742462</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECEOL_911_2">
+
+<Sent>
+<SentBytes>41003CDB0B54606226DB05982526D108B1FF28C67A282024C67B00371C0B74601DC6201DA07A64200A07400740B18160A07864F11B1BFF980064D7020740F0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECEOL_911_3">
+
+<Sent>
+<SentBytes>410078B10160A07A64F1091BFF980064D7270540E9009C20FF1CB31C021EE01E020540C71C021EB2791C9A7A1CDF08057AB1801CC67B1C1762F0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECEPRM_778_1">
+
+<Sent>
+<SentBytes>4107000007000828003143B27962B2791CB27960E9009E20FF2050601C1D171DC6201D0740C67B00371C05A07A64200A07400740B18160A07864F1501BFF98</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECEPRM_778_2">
+
+<Sent>
+<SentBytes>41073C0064D7020740F0B10160A07A64F13E1BFF980064D72A0540E9009C20FF1CB31C021EE01E020540C71C021EB2791C9A7A1CDF0B057AB0621C91801CC6</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECEPRM_778_3">
+
+<Sent>
+<SentBytes>4107787B1C1762F0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECIODIA.776_1">
+
+<Sent>
+<SentBytes>41110000010004A1040060A27920A1A02030A1FF0032E9009E20FF28283CDF1B742561B22C1D6501002C38240870231DDF03B1FF1DC67B1DE025E8281DDF12</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECIODIA.776_2">
+
+<Sent>
+<SentBytes>41113C38240C922C233A2003942223B02320C62C20E060B7C628610540F0E8301CE9300200001E65040030A40032E9300C00002CE9300E00002EE81C22E81C</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECIODIA.776_3">
+
+<Sent>
+<SentBytes>411178246502001CA4001E61FEF822DF21942122D7E8080A2264222CA4002EE82C2C710725A1010122092522382403B10125F0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECR_pneu_1">
+
+<Sent>
+<SentBytes>41000003030007476F00E9004021FF26E9004221FF24682624AE7822C77802224C222420B10025EB004421FF248C2420642620C27820EB00BF20FF62B10063</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECR_pneu_2">
+
+<Sent>
+<SentBytes>41003C65FDFF62B1036101660740E900AA20FF1C681C66D91C990161DB030740F0A078640778B18160F1251BFFA132006615610762F0A07A64B10360EB00BF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECR_pneu_3">
+
+<Sent>
+<SentBytes>41007820FF62B1006365FDFF62F1051BFF0740F0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECSTGL.782_1">
+
+<Sent>
+<SentBytes>41010000BB0707890700B10224A1A4202CA1FF002EE82C28E92C0200002AA27922E8281E65020028A4002A88001EDF4651FE1E1D78231DD7E851F81F1C0802</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECSTGL.782_2">
+
+<Sent>
+<SentBytes>41013C1CA1B4202CA1FF002EE82C28E92C0200002A641C28A4002AE8281C381E16A101012071071F091F20921C203A2203942120B02022C61C22E024940740</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECSTGL.782_3">
+
+<Sent>
+<SentBytes>4101789A4000DF19A27960880060D7040740277EE900AA20FF62686260D9020740F0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_ECSWVER_780">
+
+<Sent>
+<SentBytes>4109000301000500A183201CA1FF001EB10320EA1D22C67B22E020F70740F0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_Lec_Pneu_1">
+
+<Sent>
+<SentBytes>410000080300062000A07A64B10360EB00BF20FF62B1006365FDFF62F16E1BFF0740F06502007AB27A60E9004021FF22C27B22E9004221FF22C27B22EB0044</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Download_Lec_Pneu_2">
+
+<Sent>
+<SentBytes>41003C21FF22C67B22C67B600740F0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="download_vitesse_roue_1">
+
+<Sent>
+<SentBytes>410800085D00061900A278600740B10420A1FF001CC27B1CE020FAF0E9009A20FF7AA1B8202CA1FF002EE82C28E92C02002AB10420E8281C65020028A4002A</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="download_vitesse_roue_2">
+
+<Sent>
+<SentBytes>3B053CA21C1C90001DDF03B1FF1C9B7A011CD104C77A011C9A7A1CD903C67A1C077A077AE020D2E900AA20FF1C681C60DB020740F0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Ecriture Identification ECU_1">
+
+<Sent>
+<SentBytes>310700E00009770104780804000307</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Ecriture Identification ECU_2">
+
+<Sent>
+<SentBytes>310700E90009026595002102591401</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Ecriture Identification ECU_3">
+
+<Sent>
+<SentBytes>310700F30006000000000097</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Effacement_1">
+
+<Sent>
+<SentBytes>310700000009FFFFFFFFFFFFFFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Effacement_2">
+
+<Sent>
+<SentBytes>310700090009FFFFFFFFFFFFFFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="effacement_3">
+
+<Sent>
+<SentBytes>310700120002FFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Effacement_4">
+
+<Sent>
+<SentBytes>3107001200020EA5</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Infosys_can_mot">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C3</SentBytes>
+</Sent>
+<Received MinBytes="14">
+<DataItem Name="Couple demandé par conducteur" FirstByte="10" Endian="Little"/>
+<DataItem Name="Couple friction" FirstByte="6"/>
+<DataItem Name="Couple moteur" FirstByte="7" Endian="Little"/>
+<DataItem Name="Couple moteur actuel" FirstByte="8" Endian="Little"/>
+<DataItem Name="Regime Moteur" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="Infosys_capteurs_esp">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C1</SentBytes>
+</Sent>
+<Received MinBytes="14">
+<DataItem Name="Accélération latérale" Ref="1" FirstByte="10" Endian="Little"/>
+<DataItem Name="Angle au volant" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="Pression" Ref="1" FirstByte="8" Endian="Little"/>
+<DataItem Name="Tension Contacteur de stop" Ref="1" FirstByte="12"/>
+<DataItem Name="Tension d'alimentation" Ref="1" FirstByte="13"/>
+<DataItem Name="Valeur capteur de lacet" Ref="1" FirstByte="6" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="Infosys_valve_entrées">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C2</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<DataItem Name="Contacteur feux stop" Ref="1" FirstByte="4" BitOffset="7"/>
+<DataItem Name="Contacteur feux stop (filtré)" Ref="1" FirstByte="6" BitOffset="6"/>
+<DataItem Name="Etat ESP" Ref="1" FirstByte="6" BitOffset="3"/>
+<DataItem Name="Etat Relais Valves" Ref="1" FirstByte="7"/>
+<DataItem Name="Niveau Liquide de Frein" FirstByte="5" BitOffset="6"/>
+<DataItem Name="Pompe de refoulement" Ref="1" FirstByte="9" BitOffset="2"/>
+<DataItem Name="Valve AD ARD" Ref="1" FirstByte="8" BitOffset="5"/>
+<DataItem Name="Valve AD ARG" Ref="1" FirstByte="8" BitOffset="1"/>
+<DataItem Name="Valve AD AVD" Ref="1" FirstByte="8" BitOffset="3"/>
+<DataItem Name="Valve AD AVG" Ref="1" FirstByte="8" BitOffset="7"/>
+<DataItem Name="Valve EC ARD" Ref="1" FirstByte="8" BitOffset="4"/>
+<DataItem Name="Valve EC ARG" Ref="1" FirstByte="8"/>
+<DataItem Name="Valve EC AVD" Ref="1" FirstByte="8" BitOffset="2"/>
+<DataItem Name="Valve EC AVG" Ref="1" FirstByte="8" BitOffset="6"/>
+<DataItem Name="Valve USV1" Ref="1" FirstByte="9" BitOffset="7"/>
+<DataItem Name="Valve USV2" Ref="1" FirstByte="9" BitOffset="6"/>
+<DataItem Name="Valve VLV1" Ref="1" FirstByte="9" BitOffset="5"/>
+<DataItem Name="Valve VLV2" Ref="1" FirstByte="9" BitOffset="4"/>
+</Received>
+</Request>
+<Request Name="Infosys_vitesse_roue">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>21C0</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<DataItem Name="Vitesse roue ARD" Ref="1" FirstByte="10" Endian="Little"/>
+<DataItem Name="Vitesse roue ARG" Ref="1" FirstByte="8" Endian="Little"/>
+<DataItem Name="Vitesse roue AVD" Ref="1" FirstByte="6" Endian="Little"/>
+<DataItem Name="Vitesse roue AVG" Ref="1" FirstByte="4" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="Message_EVAC1">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3101000000FF62000000640000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_EVAC2">
+
+<Sent>
+<SentBytes>310100FF52FF54000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_EVAC3">
+
+<Sent>
+<SentBytes>310100FF30FF320000FF34FF36</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_EVAC4">
+
+<Sent>
+<SentBytes>310100FF38FF3A0000FF3CFF3E</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_EVAC5">
+
+<Sent>
+<SentBytes>31010000520054000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_EVAC6">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>31010000300032000000340036</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_EVAC7">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3101000038003A0000003C003E</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_EVAC8">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>310100000000620000FF640000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_REMPLISSAGE1">
+
+<Sent>
+<SentBytes>310100FF22FF62000000640000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_REMPLISSAGE2">
+
+<Sent>
+<SentBytes>310100FFFF52FF5400000000FF42</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_REMPLISSAGE3">
+
+<Sent>
+<SentBytes>310100FF30FF320000FF34FF36</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_REMPLISSAGE4">
+
+<Sent>
+<SentBytes>310100FF38FF3A0000FF3CFF3E</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_REMPLISSAGE5">
+
+<Sent>
+<SentBytes>31010000520054000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_REMPLISSAGE6">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>31010000300032000000340036</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_REMPLISSAGE7">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3101000038003A0000003C003E</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message_REMPLISSAGE8">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>310100002200620000FF640000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message1_Precharge">
+
+<Sent>
+<SentBytes>310100FF24FF84000000640000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message1_Purge_AR_AV">
+
+<Sent>
+<SentBytes>310100FF22FF62000000640000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message2_precharge">
+
+<Sent>
+<SentBytes>310100FF640000000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message2_Purge_ARD">
+
+<Sent>
+<SentBytes>310100FF30FF32E80300300032</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message2_Purge_ARG">
+
+<Sent>
+<SentBytes>310100FF34FF36E80300340036</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message3_precharge">
+
+<Sent>
+<SentBytes>31010000640000000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message3_Purge_ASV1">
+
+<Sent>
+<SentBytes>310100FF520000E80300520000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message3_Purge_AVG">
+
+<Sent>
+<SentBytes>310100FF38FF3AE8030038003A</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message4_precharge">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>310100002400000000FF640000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message4_Purge_ARG_AVD">
+
+<Sent>
+<SentBytes>310100FF540000E80300540000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message4_Purge_ASV2">
+
+<Sent>
+<SentBytes>310100FF540000E80300540000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message4_Purge_AVD">
+
+<Sent>
+<SentBytes>310100FF3CFF3EE803003C003E</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Message6_Purge_ARD_ARG">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>310100002200620000FF640000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RDBLIR_Identif">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="CAN message code" Ref="1" FirstByte="24"/>
+<DataItem Name="Code Fonction" Ref="1" FirstByte="23"/>
+<DataItem Name="Numéro calibration" Ref="1" FirstByte="21"/>
+<DataItem Name="Numéro de version" Ref="1" FirstByte="19"/>
+<DataItem Name="Numéro DIAG" Ref="1" FirstByte="8"/>
+<DataItem Name="Numéro fournisseur" Ref="1" FirstByte="9"/>
+<DataItem Name="Numéro Hardware R.Bosch" Ref="1" FirstByte="12"/>
+<DataItem Name="Numéro MPR" Ref="1" FirstByte="3"/>
+<DataItem Name="Numéro Software R.Bosch" Ref="1" FirstByte="17"/>
+</Received>
+</Request>
+<Request Name="ReadDataByLocalIdentifier_Date">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="17">
+</Received>
+</Request>
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+<DataItem Name="MoreDTC" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<DataItem Name="FirstDTC" FirstByte="3"/>
+<DataItem Name="NDTC" FirstByte="2"/>
+<DataItem Name="Status DTC" FirstByte="5" BitOffset="1"/>
+</Received>
+</Request>
+<Request Name="ReadProcessByte">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>31000000FF01</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RequestRoutineByLocalIdentifier_11">
+
+<Sent>
+<SentBytes>331100</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RequestRoutineResultsByLocalIdent_1">
+
+<Sent>
+<SentBytes>3301</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RequestRoutineResultsByLocalIdentier_08">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3308</SentBytes>
+</Sent>
+<Received MinBytes="9">
+<DataItem Name="Octet 2" Ref="1" FirstByte="2"/>
+<DataItem Name="Octet 3" Ref="1" FirstByte="3"/>
+<DataItem Name="Octet 4" Ref="1" FirstByte="4"/>
+<DataItem Name="Octet 5" Ref="1" FirstByte="5"/>
+<DataItem Name="Octet 6" Ref="1" FirstByte="6"/>
+<DataItem Name="Octet 7" Ref="1" FirstByte="7"/>
+<DataItem Name="Octet 8" Ref="1" FirstByte="8"/>
+<DataItem Name="Octet 9" Ref="1" FirstByte="9"/>
+</Received>
+</Request>
+<Request Name="RequestRoutineResultsByLocalIdentifier_07">
+
+<Sent>
+<SentBytes>3307</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RequestRoutineResultsByLocalIdentifier_09">
+
+<Sent>
+<SentBytes>3300</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RequestRoutineResultsByLocalIdentifier_Process">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3300</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<DataItem Name="GROUPE HYDRAULIQUE" Ref="1" FirstByte="5"/>
+</Received>
+</Request>
+<Request Name="RRBLI_lect_offset_LWS">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3307</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<DataItem Name="FaultStatus" FirstByte="5"/>
+<DataItem Name="OffsetLWS" FirstByte="6" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="RRRBLI_00">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3300</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RRRBLI_09">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>330900</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<DataItem Name="Identification version du Soft" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RRRBLI_codage_HBA">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3307</SentBytes>
+</Sent>
+<Received MinBytes="8">
+<DataItem Name="Variante Codage HBA" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="RRRBLI_codage_Moteur">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3307</SentBytes>
+</Sent>
+<Received MinBytes="8">
+<DataItem Name="Variante Codage HBA" FirstByte="8"/>
+<DataItem Name="Variante Codage Moteur" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="RRRBLI_Dynamique">
+
+<Sent>
+<SentBytes>3304</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="RRRBLI_Tachy">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>3300</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<DataItem Name="Développée maxi" Ref="1" FirstByte="8" Endian="Little"/>
+<DataItem Name="Développée mini" Ref="1" FirstByte="6" Endian="Little"/>
+<DataItem Name="Développée réelle" Ref="1" FirstByte="4" Endian="Little"/>
+<DataItem Name="Index du pneu" Ref="1" FirstByte="11"/>
+</Received>
+</Request>
+<Request Name="SRBLI_09">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>310900</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="SRBLI_ecr_var_mot">
+
+<Sent>
+<SentBytes>310700800004A53E01C0</SentBytes>
+<DataItem Name="Paramètre Moteur" FirstByte="8"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="SRBLI_lect_cod_moteur">
+
+<Sent>
+<SentBytes>31070080FF04</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="SRBLI_lect_offset_lws">
+
+<Sent>
+<SentBytes>31070099FF03</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="SRBLI_LECT_pneu">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>310000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="StartRoutineByLocalIdentifier_01">
+
+<Sent>
+<SentBytes>310100FF22FF62000000640000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="StartRoutineByLocalIdentifier_08">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>310800</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="StopCommunication">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>82</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="STRBLI_11">
+
+<Sent>
+<SentBytes>311100FF880000000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="STRBLI_11_DecalAV">
+
+<Sent>
+<SentBytes>311100FF88FF000000000000</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Test_hydraulique_ARD_TR1">
+
+<Sent>
+<SentBytes>310100FF4EFF520000FF30FF22</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Test_hydraulique_ARD_TR2">
+
+<Sent>
+<SentBytes>3101000052004E0000FF38FF3A</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Test_hydraulique_ARD_TR3">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3101000038003A000000220030</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Test_hydraulique_ARG_TR1">
+
+<Sent>
+<SentBytes>310100FF50FF540000FF34FF22</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Test_hydraulique_ARG_TR2">
+
+<Sent>
+<SentBytes>310100005000540000FF3CFF3E</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Test_hydraulique_ARG_TR3">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>310100003C003E000000220034</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Test_hydraulique_AVD_TR1">
+
+<Sent>
+<SentBytes>310100FF50FF540000FF3CFF22</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Test_hydraulique_AVD_TR2">
+
+<Sent>
+<SentBytes>310100005000540000FF34FF36</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Test_hydraulique_AVD_TR3">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3101000034003600000022003C</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Test_hydraulique_AVG_TR1">
+
+<Sent>
+<SentBytes>310100FF4EFF520000FF38FF22</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Test_hydraulique_AVG_TR2">
+
+<Sent>
+<SentBytes>3101000052004E0000FF30FF32</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Test_hydraulique_AVG_TR3">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>31010000300032000000220038</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="Testeur_Present">
+
+<Sent>
+<SentBytes>3E</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WDBLI_Tachy">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>31000000</SentBytes>
+<DataItem Name="Type de Pneu" Ref="1" FirstByte="4"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WriteDataByLocalIdentifier_VerECU">
+
+<Sent>
+<SentBytes>41080601000100A1AC2024A1FF0026E42428E9240200002AE900A820FF1E23C27B22E020ED0740F0</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="WriteProcessByte">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>31000000000100</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Absence BVA" DTC="20707">
+
+</Device>
+<Device Name="Absence Programmation-Index-variante-LWS" DTC="20677">
+
+</Device>
+<Device Name="CAN Bus muet" DTC="20714">
+
+</Device>
+<Device Name="CAN bus off message trop court" DTC="20715">
+
+</Device>
+<Device Name="CAN_ plausibilité données injection" DTC="20710">
+
+</Device>
+<Device Name="Capteur angle au volant pas encore calibré" DTC="20803">
+
+</Device>
+<Device Name="Défaillance capteur ARD" DTC="20527">
+
+</Device>
+<Device Name="Défaillance capteur ARG" DTC="20543">
+
+</Device>
+<Device Name="Défaillance capteur AVD" DTC="20495">
+
+</Device>
+<Device Name="Défaillance capteur AVG" DTC="20511">
+
+</Device>
+<Device Name="Défaut alimentation capteur de lacet / accel latérale" DTC="20745">
+
+</Device>
+<Device Name="Défaut calculateur" DTC="20675">
+
+</Device>
+<Device Name="Défaut calibration capteur angle au volant" DTC="20756">
+
+</Device>
+<Device Name="Défaut Can Bus Off" DTC="20705">
+
+</Device>
+<Device Name="Défaut capteur accélération latérale" DTC="20721">
+
+</Device>
+<Device Name="Défaut capteur angle au volant" DTC="20752">
+
+</Device>
+<Device Name="Défaut capteur de pression" DTC="20768">
+
+</Device>
+<Device Name="Défaut circuit capteur de Lacet" DTC="20722">
+
+</Device>
+<Device Name="Défaut contacteur feux stop permanent" DTC="20685">
+
+</Device>
+<Device Name="Défaut contacteur Stop" DTC="20678">
+
+</Device>
+<Device Name="Défaut de communication avec le calculateur Moteur" DTC="20706">
+
+</Device>
+<Device Name="Défaut électrique capteur accélération latérale" DTC="20739">
+
+</Device>
+<Device Name="Défaut électrique capteur de lacet" DTC="20741">
+
+</Device>
+<Device Name="Défaut électrique capteur de pression" DTC="20771">
+
+</Device>
+<Device Name="Défaut freinage _urgence" DTC="20692">
+
+</Device>
+<Device Name="Défaut général CAN" DTC="20704">
+
+</Device>
+<Device Name="Défaut long terme capteur de vitesse ARD" DTC="20515">
+
+</Device>
+<Device Name="Défaut long terme capteur de vitesse ARG" DTC="20531">
+
+</Device>
+<Device Name="Défaut long terme capteur de vitesse AVD" DTC="20483">
+
+</Device>
+<Device Name="Défaut long terme capteur de vitesse AVG" DTC="20499">
+
+</Device>
+<Device Name="Défaut ohmique capteur ARD" DTC="20512">
+
+</Device>
+<Device Name="Défaut ohmique capteur ARG" DTC="20528">
+
+</Device>
+<Device Name="Défaut Ohmique capteur AVD" DTC="20481">
+
+</Device>
+<Device Name="Défaut ohmique capteur AVG" DTC="20496">
+
+</Device>
+<Device Name="Défaut permanent capteur de lacet" DTC="20743">
+
+</Device>
+<Device Name="Défaut plausibilité capteur accélération latérale" DTC="20751">
+
+</Device>
+<Device Name="Défaut plausibilité capteur angle au volant" DTC="20755">
+
+</Device>
+<Device Name="Défaut plausibilité capteur de lacet" DTC="20744">
+
+</Device>
+<Device Name="Défaut plausibilité capteur de pression" DTC="20770">
+
+</Device>
+<Device Name="Défaut plausibilité capteur pression / contacteur stop" DTC="20686">
+
+</Device>
+<Device Name="Défaut plausibilité-Capteur ARD" DTC="20518">
+
+</Device>
+<Device Name="Défaut plausibilité-Capteur ARG" DTC="20534">
+
+</Device>
+<Device Name="Défaut plausibilité-Capteur AVD" DTC="20486">
+
+</Device>
+<Device Name="Défaut plausibilité-Capteur AVG" DTC="20502">
+
+</Device>
+<Device Name="Défaut Pompe de refoulement" DTC="20688">
+
+</Device>
+<Device Name="Défaut relais valve" DTC="20676">
+
+</Device>
+<Device Name="Défaut signal capteur accélération latérale" DTC="20740">
+
+</Device>
+<Device Name="Défaut signal capteur angle au volant" DTC="20753">
+
+</Device>
+<Device Name="Défaut signal capteur de lacet" DTC="20742">
+
+</Device>
+<Device Name="Défaut temporaire valve AD ARD" DTC="20600">
+
+</Device>
+<Device Name="Défaut temporaire valve AD ARG" DTC="20616">
+
+</Device>
+<Device Name="Défaut temporaire valve AD AVD" DTC="20568">
+
+</Device>
+<Device Name="Défaut temporaire Valve AD AVG" DTC="20584">
+
+</Device>
+<Device Name="Défaut temporaire valve ASV1" DTC="20632">
+
+</Device>
+<Device Name="Défaut temporaire valve ASV2" DTC="20648">
+
+</Device>
+<Device Name="Défaut temporaire valve EC ARD" DTC="20603">
+
+</Device>
+<Device Name="Défaut temporaire valve EC ARG" DTC="20619">
+
+</Device>
+<Device Name="Défaut temporaire valve EC AVD" DTC="20571">
+
+</Device>
+<Device Name="Défaut temporaire valve EC AVG" DTC="20587">
+
+</Device>
+<Device Name="Défaut temporaire valve USV1" DTC="20635">
+
+</Device>
+<Device Name="Défaut temporaire valve USV2" DTC="20651">
+
+</Device>
+<Device Name="Défaut tension d'alimentation" DTC="20672">
+
+</Device>
+<Device Name="Défaut valve  EC AVD" DTC="20563">
+
+</Device>
+<Device Name="Défaut valve AD ARD" DTC="20592">
+
+</Device>
+<Device Name="Défaut valve AD ARG" DTC="20608">
+
+</Device>
+<Device Name="Défaut valve AD AVD" DTC="20560">
+
+</Device>
+<Device Name="Défaut valve AD AVG" DTC="20576">
+
+</Device>
+<Device Name="Défaut valve ASV1" DTC="20624">
+
+</Device>
+<Device Name="Défaut valve ASV2" DTC="20640">
+
+</Device>
+<Device Name="Défaut valve EC ARD" DTC="20595">
+
+</Device>
+<Device Name="Défaut valve EC ARG" DTC="20611">
+
+</Device>
+<Device Name="Défaut valve EC AVG" DTC="20579">
+
+</Device>
+<Device Name="Défaut valve USV1" DTC="20627">
+
+</Device>
+<Device Name="Défaut valve USV2" DTC="20643">
+
+</Device>
+<Device Name="Défaut VSO_Index mal programmé" DTC="20800">
+
+</Device>
+<Device Name="Défauut temporaire valve USV2" DTC="20651">
+
+</Device>
+<Device Name="Niveau liquide de frein" DTC="20680">
+
+</Device>
+<Device Name="Pas de message can capteur angle volant" DTC="20767">
+
+</Device>
+<Device Name="Perturbation signal capteur de vitesse roue" DTC="20549">
+
+</Device>
+<Device Name="Pompe de précharge" DTC="20690">
+
+</Device>
+<Device Name="Surtension" DTC="20673">
+
+</Device>
+<Device Name="UCH  absent" DTC="20708">
+
+</Device>
+<Device Name="Variante moteur mal programmée" DTC="20802">
+
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Diagnostic">
+
+<Screen Name="Configuration (APV)" Color="16744576" WindowState="0" Width="11610" Height="3570">
+
+<Label Text="" Color="8454143" Alignment="2">
+<Rectangle Left="240" Top="1080" Height="1680" Width="5160"/>
+<Font Name="Arial" Size="12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="" Color="8454143" Alignment="2">
+<Rectangle Left="5640" Top="1080" Height="1680" Width="5760"/>
+<Font Name="Arial" Size="12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="CONFIGURATIONS et COMMANDES" Color="16744576" Alignment="2">
+<Rectangle Left="2040" Top="120" Height="480" Width="7080"/>
+<Font Name="MS Sans Serif" Size="18" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text="ECRITURE..." Color="16744576" Alignment="0">
+<Rectangle Left="1920" Top="720" Height="300" Width="2040"/>
+<Font Name="MS Sans Serif" Size="14" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="LECTURE..." Color="16744576" Alignment="0">
+<Rectangle Left="7560" Top="720" Height="300" Width="2040"/>
+<Font Name="MS Sans Serif" Size="14" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Ecriture Codage Moteur">
+<Rectangle Left="1080" Top="2160" Height="480" Width="3120"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECEPRM_778_1"/><Send Delay="0" RequestName="Download_ECEPRM_778_2"/><Send Delay="0" RequestName="Download_ECEPRM_778_3"/><Send Delay="300" RequestName="Copy SRBLI_ecr_var_mot"/>
+</Button>
+<Button Text="Lecture Codage Moteur">
+<Rectangle Left="6960" Top="2160" Height="480" Width="2850"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECEPRM_778_1"/><Send Delay="0" RequestName="Download_ECEPRM_778_2"/><Send Delay="0" RequestName="Download_ECEPRM_778_3"/><Send Delay="300" RequestName="SRBLI_lect_cod_moteur"/><Send Delay="300" RequestName="RRRBLI_codage_Moteur"/>
+</Button>
+
+<Input Width="2180" Color="16777215" DataName="Paramètre Moteur / seuil" RequestName="Copy SRBLI_ecr_var_mot">
+<Rectangle Left="480" Top="1200" Height="360" Width="4800"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2630" Color="16777215" DataName="Variante Codage Moteur" RequestName="RRRBLI_codage_Moteur">
+<Rectangle Left="5760" Top="1200" Height="360" Width="5280"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2390" Color="16777215" DataName="Variante Codage HBA" RequestName="RRRBLI_codage_Moteur">
+<Rectangle Left="5760" Top="1680" Height="360" Width="5280"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Configurations et commandes" Color="16744576" WindowState="0" Width="11610" Height="8370">
+
+<Label Text="" Color="8454143" Alignment="2">
+<Rectangle Left="5520" Top="1080" Height="1680" Width="5760"/>
+<Font Name="Arial" Size="12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="" Color="8421631" Alignment="2">
+<Rectangle Left="5520" Top="2880" Height="2280" Width="5760"/>
+<Font Name="Arial" Size="12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="" Color="8454143" Alignment="2">
+<Rectangle Left="240" Top="1080" Height="1680" Width="5040"/>
+<Font Name="Arial" Size="12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="" Color="8421631" Alignment="2">
+<Rectangle Left="240" Top="2880" Height="2280" Width="5040"/>
+<Font Name="Arial" Size="12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="*" Color="16744576" Alignment="0">
+<Rectangle Left="8040" Top="5400" Height="240" Width="240"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="121 : pneu 225_55_R16" Color="16744576" Alignment="0">
+<Rectangle Left="8280" Top="5400" Height="240" Width="1920"/>
+<Font Name="MS Sans Serif" Size="8.25" Bold="0" Italic="0" Color="65535"/></Label>
+<Label Text="136 : pneu 225_50_R17" Color="16744576" Alignment="0">
+<Rectangle Left="8280" Top="5640" Height="240" Width="1920"/>
+<Font Name="MS Sans Serif" Size="8.25" Bold="0" Italic="0" Color="65535"/></Label>
+<Label Text="175 : pneu 235_50_R17" Color="16744576" Alignment="0">
+<Rectangle Left="8280" Top="5880" Height="240" Width="1920"/>
+<Font Name="MS Sans Serif" Size="8.25" Bold="0" Italic="0" Color="65535"/></Label>
+<Label Text="255 : Pas d'index programmé" Color="16744576" Alignment="0">
+<Rectangle Left="8280" Top="6120" Height="315" Width="2310"/>
+<Font Name="MS Sans Serif" Size="8.25" Bold="0" Italic="0" Color="65535"/></Label>
+<Label Text="cliquer 2 fois pour effacer" Color="255" Alignment="0">
+<Rectangle Left="4800" Top="7560" Height="360" Width="2760"/>
+<Font Name="MS Sans Serif" Size="10" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="CONFIGURATIONS et COMMANDES" Color="16744576" Alignment="2">
+<Rectangle Left="2040" Top="120" Height="480" Width="7080"/>
+<Font Name="MS Sans Serif" Size="18" Bold="0" Italic="0" Color="16777215"/></Label>
+<Label Text="ECRITURE..." Color="16744576" Alignment="0">
+<Rectangle Left="1920" Top="720" Height="300" Width="2040"/>
+<Font Name="MS Sans Serif" Size="14" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="LECTURE..." Color="16744576" Alignment="0">
+<Rectangle Left="7560" Top="720" Height="300" Width="2040"/>
+<Font Name="MS Sans Serif" Size="14" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Ecriture Codage Moteur">
+<Rectangle Left="1080" Top="2160" Height="480" Width="3120"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECEPRM_778_1"/><Send Delay="0" RequestName="Download_ECEPRM_778_2"/><Send Delay="0" RequestName="Download_ECEPRM_778_3"/><Send Delay="300" RequestName="SRBLI_ecr_var_mot"/>
+</Button>
+<Button Text="Ecriture développée ">
+<Rectangle Left="1200" Top="4560" Height="480" Width="3120"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECR_pneu_1"/><Send Delay="0" RequestName="Download_ECR_pneu_2"/><Send Delay="0" RequestName="Download_ECR_pneu_3"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="100" RequestName="WDBLI_Tachy"/><Send Delay="100" RequestName="RRRBLI_00"/>
+</Button>
+<Button Text="Ecriture Process byte">
+<Rectangle Left="840" Top="5400" Height="720" Width="3570"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECEOL.911_1"/><Send Delay="0" RequestName="Download_ECEOL_911_2"/><Send Delay="0" RequestName="Download_ECEOL_911_3"/><Send Delay="1000" RequestName="WriteProcessByte"/><Send Delay="0" RequestName="RRRBLI_00"/>
+</Button>
+<Button Text="Effacement">
+<Rectangle Left="840" Top="7440" Height="600" Width="3630"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="ClearDiagnosticInformationRequest"/>
+</Button>
+<Button Text="Initialisation Angle au volant">
+<Rectangle Left="840" Top="6360" Height="720" Width="3600"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0"/>
+<Message Text="Attention, lors de l'initialisation les roues doivent être droites !"/>
+<Send Delay="0" RequestName="Download_ECIODIA.776_1"/><Send Delay="0" RequestName="Download_ECIODIA.776_2"/><Send Delay="0" RequestName="Download_ECIODIA.776_3"/><Send Delay="0" RequestName="STRBLI_11"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineByLocalIdentifier_11"/>
+</Button>
+<Button Text="Lecture Codage Moteur">
+<Rectangle Left="6960" Top="2160" Height="480" Width="2850"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECEPRM_778_1"/><Send Delay="0" RequestName="Download_ECEPRM_778_2"/><Send Delay="0" RequestName="Download_ECEPRM_778_3"/><Send Delay="300" RequestName="SRBLI_lect_cod_moteur"/><Send Delay="300" RequestName="RRRBLI_codage_Moteur"/>
+</Button>
+<Button Text="Lecture Index Tachy *">
+<Rectangle Left="6960" Top="4560" Height="480" Width="2850"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_Lec_Pneu_1"/><Send Delay="0" RequestName="Download_Lec_Pneu_2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="600" RequestName="SRBLI_LECT_pneu"/><Send Delay="600" RequestName="RRRBLI_Tachy"/>
+</Button>
+
+<Input Width="2000" Color="16777215" DataName="Paramètre Moteur" RequestName="SRBLI_ecr_var_mot">
+<Rectangle Left="480" Top="1200" Height="360" Width="4560"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="1545" Color="16777215" DataName="Type de Pneu" RequestName="WDBLI_Tachy">
+<Rectangle Left="480" Top="3120" Height="360" Width="4560"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Input>
+<Display Width="2630" Color="16777215" DataName="Variante Codage Moteur" RequestName="RRRBLI_codage_Moteur">
+<Rectangle Left="5760" Top="1200" Height="360" Width="5280"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2390" Color="16777215" DataName="Variante Codage HBA" RequestName="RRRBLI_codage_Moteur">
+<Rectangle Left="5760" Top="1680" Height="360" Width="5280"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2055" Color="16777215" DataName="Index du pneu" RequestName="RRRBLI_Tachy">
+<Rectangle Left="5880" Top="3120" Height="360" Width="5040"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="Développée mini" RequestName="RRRBLI_Tachy">
+<Rectangle Left="5880" Top="3600" Height="360" Width="2400"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1565" Color="16777215" DataName="Développée réelle" RequestName="RRRBLI_Tachy">
+<Rectangle Left="7200" Top="4080" Height="360" Width="2400"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1560" Color="16777215" DataName="Développée maxi" RequestName="RRRBLI_Tachy">
+<Rectangle Left="8520" Top="3600" Height="360" Width="2400"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Controle en Zone de retouche" Color="16744576" WindowState="0" Width="12120" Height="6450">
+
+<Label Text="Contrôle en Retouche" Color="16711680" Alignment="2">
+<Rectangle Left="3990" Top="720" Height="600" Width="4140"/>
+<Font Name="MS Sans Serif" Size="18" Bold="0" Italic="0" Color="16777215"/></Label>
+
+<Button Text="Commande Pompe de refoulement">
+<Rectangle Left="3960" Top="4440" Height="660" Width="4200"/>
+<Font Name="MS Sans Serif" Size="12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECSTGL.782_1"/><Send Delay="0" RequestName="Download_ECSTGL.782_2"/><Send Delay="0" RequestName="Download_ECSTGL.782_3"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="2000" RequestName="Démarrage_pompe_refoulement"/><Send Delay="0" RequestName="Arrêt_pompe_refoulement"/>
+</Button>
+<Button Text="Controle hydraulique roue ARD">
+<Rectangle Left="6360" Top="3000" Height="660" Width="3600"/>
+<Font Name="MS Sans Serif" Size="12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECSTGL.782_1"/><Send Delay="0" RequestName="Download_ECSTGL.782_2"/><Send Delay="0" RequestName="Download_ECSTGL.782_3"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="4000" RequestName="Test_hydraulique_ARD_TR1"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="4000" RequestName="Test_hydraulique_ARD_TR2"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="4000" RequestName="Test_hydraulique_ARD_TR3"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="0" RequestName="Testeur_Present"/>
+</Button>
+<Button Text="Controle hydraulique roue ARG">
+<Rectangle Left="1800" Top="3000" Height="660" Width="3600"/>
+<Font Name="MS Sans Serif" Size="12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECSTGL.782_1"/><Send Delay="0" RequestName="Download_ECSTGL.782_2"/><Send Delay="0" RequestName="Download_ECSTGL.782_3"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="4000" RequestName="Test_hydraulique_ARG_TR1"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="4000" RequestName="Test_hydraulique_ARG_TR2"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="4000" RequestName="Test_hydraulique_ARG_TR3"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="0" RequestName="Testeur_Present"/>
+</Button>
+<Button Text="Controle hydraulique roue AVD">
+<Rectangle Left="6360" Top="2040" Height="660" Width="3600"/>
+<Font Name="MS Sans Serif" Size="12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECSTGL.782_1"/><Send Delay="0" RequestName="Download_ECSTGL.782_2"/><Send Delay="0" RequestName="Download_ECSTGL.782_3"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="4000" RequestName="Test_hydraulique_AVD_TR1"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="4000" RequestName="Test_hydraulique_AVD_TR2"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="4000" RequestName="Test_hydraulique_AVD_TR3"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="0" RequestName="Testeur_Present"/>
+</Button>
+<Button Text="Controle hydraulique Roue AVG">
+<Rectangle Left="1800" Top="2040" Height="660" Width="3600"/>
+<Font Name="MS Sans Serif" Size="12" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECSTGL.782_1"/><Send Delay="0" RequestName="Download_ECSTGL.782_2"/><Send Delay="0" RequestName="Download_ECSTGL.782_3"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="4000" RequestName="Test_hydraulique_AVG_TR1"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="4000" RequestName="Test_hydraulique_AVG_TR2"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="4000" RequestName="Test_hydraulique_AVG_TR3"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="0" RequestName="Testeur_Present"/>
+</Button>
+
+</Screen>
+<Screen Name="Identification calculateur" Color="16744576" WindowState="0" Width="11130" Height="7290">
+
+<Label Text="IDENTIFICATION ECU" Color="12566463" Alignment="2">
+<Rectangle Left="2295" Top="960" Height="4800" Width="6540"/>
+<Font Name="Arial" Size="18" Bold="0" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="RDBLIR_Identif"/>
+
+<Display Width="2145" Color="16777215" DataName="Numéro MPR" RequestName="RDBLIR_Identif">
+<Rectangle Left="3000" Top="1920" Height="360" Width="5040"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3225" Color="16777215" DataName="Numéro DIAG" RequestName="RDBLIR_Identif">
+<Rectangle Left="3000" Top="2400" Height="360" Width="5040"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3225" Color="16777215" DataName="Numéro fournisseur" RequestName="RDBLIR_Identif">
+<Rectangle Left="3000" Top="2880" Height="360" Width="5040"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3225" Color="16777215" DataName="Numéro Hardware R.Bosch" RequestName="RDBLIR_Identif">
+<Rectangle Left="3000" Top="3360" Height="360" Width="5040"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3225" Color="16777215" DataName="Numéro Software R.Bosch" RequestName="RDBLIR_Identif">
+<Rectangle Left="3000" Top="3840" Height="360" Width="4035"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3225" Color="16777215" DataName="Code Fonction" RequestName="RDBLIR_Identif">
+<Rectangle Left="3000" Top="4320" Height="360" Width="5040"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3225" Color="16777215" DataName="Numéro calibration" RequestName="RDBLIR_Identif">
+<Rectangle Left="3000" Top="4800" Height="360" Width="5040"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Numéro de version" RequestName="RDBLIR_Identif">
+<Rectangle Left="6960" Top="3840" Height="360" Width="1080"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Identification du logiciel" Color="16744576" WindowState="2" Width="9780" Height="3570">
+
+<Label Text="IDENTIFICATION DU LOGICIEL" Color="8454143" Alignment="0">
+<Rectangle Left="3030" Top="600" Height="360" Width="3720"/>
+<Font Name="Arial" Size="12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Micro esclave" Color="11513775" Alignment="0">
+<Rectangle Left="1920" Top="1800" Height="300" Width="1200"/>
+<Font Name="MS Sans Serif" Size="8.25" Bold="0" Italic="0" Color="-2147483630"/></Label>
+<Label Text="Micro Maître" Color="11513775" Alignment="0">
+<Rectangle Left="1920" Top="1320" Height="300" Width="1200"/>
+<Font Name="Arial" Size="8" Bold="0" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="Download_ECBBNR.779"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="100" RequestName="StartRoutineByLocalIdentifier_08"/><Send Delay="100" RequestName="RequestRoutineResultsByLocalIdentier_08"/><Send Delay="0" RequestName="Download_ECSWVER_780"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="100" RequestName="SRBLI_09"/><Send Delay="100" RequestName="RRRBLI_09"/>
+
+<Display Width="600" Color="16777215" DataName="Octet 8" RequestName="RequestRoutineResultsByLocalIdentier_08">
+<Rectangle Left="3480" Top="1320" Height="300" Width="1320"/>
+<Font Name="Arial" Size="8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="600" Color="16777215" DataName="Octet 9" RequestName="RequestRoutineResultsByLocalIdentier_08">
+<Rectangle Left="3480" Top="1800" Height="300" Width="1320"/>
+<Font Name="Arial" Size="8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="600" Color="16777215" DataName="Octet 6" RequestName="RequestRoutineResultsByLocalIdentier_08">
+<Rectangle Left="5040" Top="1320" Height="300" Width="1320"/>
+<Font Name="Arial" Size="8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="600" Color="16777215" DataName="Octet 7" RequestName="RequestRoutineResultsByLocalIdentier_08">
+<Rectangle Left="5040" Top="1800" Height="300" Width="1320"/>
+<Font Name="Arial" Size="8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="600" Color="16777215" DataName="Octet 4" RequestName="RequestRoutineResultsByLocalIdentier_08">
+<Rectangle Left="6480" Top="1320" Height="300" Width="1320"/>
+<Font Name="Arial" Size="8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="600" Color="16777215" DataName="Octet 5" RequestName="RequestRoutineResultsByLocalIdentier_08">
+<Rectangle Left="6480" Top="1800" Height="300" Width="1320"/>
+<Font Name="Arial" Size="8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Infosystème" Color="16744576" WindowState="2" Width="12180" Height="9180">
+
+<Label Text="  " Color="8421504" Alignment="0">
+<Rectangle Left="240" Top="840" Height="1680" Width="11640"/>
+<Font Name="Arial" Size="8" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text=" " Color="10790052" Alignment="0">
+<Rectangle Left="240" Top="2760" Height="5760" Width="11640"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="TRAME INFOSYSTEME ESP D66" Color="16744576" Alignment="0">
+<Rectangle Left="2880" Top="240" Height="420" Width="6600"/>
+<Font Name="Arial" Size="20" Bold="0" Italic="0" Color="0"/></Label>
+<Send Delay="10" RequestName="Infosys_vitesse_roue"/><Send Delay="10" RequestName="Infosys_capteurs_esp"/><Send Delay="10" RequestName="Infosys_valve_entrées"/><Send Delay="10" RequestName="Infosys_can_mot"/>
+
+<Display Width="2310" Color="16777215" DataName="Valeur capteur de lacet" RequestName="Infosys_capteurs_esp">
+<Rectangle Left="480" Top="3000" Height="360" Width="3600"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2310" Color="16777215" DataName="Angle au volant" RequestName="Infosys_capteurs_esp">
+<Rectangle Left="480" Top="3480" Height="360" Width="3600"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2310" Color="16777215" DataName="Accélération latérale" RequestName="Infosys_capteurs_esp">
+<Rectangle Left="480" Top="3960" Height="360" Width="3600"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1275" Color="16777215" DataName="Valve AD AVG" RequestName="Infosys_valve_entrées">
+<Rectangle Left="480" Top="4800" Height="360" Width="2160"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 1" Color="8453888"/></Display>
+<Display Width="1275" Color="16777215" DataName="Valve EC AVG" RequestName="Infosys_valve_entrées">
+<Rectangle Left="480" Top="5280" Height="360" Width="2160"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 1" Color="8453888"/></Display>
+<Display Width="1275" Color="16777215" DataName="Valve AD ARG" RequestName="Infosys_valve_entrées">
+<Rectangle Left="480" Top="5880" Height="360" Width="2160"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 1" Color="8453888"/></Display>
+<Display Width="1275" Color="16777215" DataName="Valve EC ARG" RequestName="Infosys_valve_entrées">
+<Rectangle Left="480" Top="6360" Height="360" Width="2160"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 1" Color="8453888"/></Display>
+<Display Width="1275" Color="16777215" DataName="Valve USV1" RequestName="Infosys_valve_entrées">
+<Rectangle Left="480" Top="6960" Height="360" Width="2160"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 1" Color="8453888"/></Display>
+<Display Width="1275" Color="16777215" DataName="Valve VLV1" RequestName="Infosys_valve_entrées">
+<Rectangle Left="480" Top="7440" Height="360" Width="2160"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 1" Color="8453888"/></Display>
+<Display Width="2280" Color="16777215" DataName="Vitesse roue AVG" RequestName="Infosys_vitesse_roue">
+<Rectangle Left="2760" Top="1200" Height="360" Width="3240"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2265" Color="16777215" DataName="Vitesse roue ARG" RequestName="Infosys_vitesse_roue">
+<Rectangle Left="2760" Top="1800" Height="360" Width="3240"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1275" Color="16777215" DataName="Valve AD AVD" RequestName="Infosys_valve_entrées">
+<Rectangle Left="2880" Top="4800" Height="360" Width="2160"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 1" Color="8453888"/></Display>
+<Display Width="1275" Color="16777215" DataName="Valve EC AVD" RequestName="Infosys_valve_entrées">
+<Rectangle Left="2880" Top="5280" Height="360" Width="2160"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 1" Color="8453888"/></Display>
+<Display Width="1275" Color="16777215" DataName="Valve AD ARD" RequestName="Infosys_valve_entrées">
+<Rectangle Left="2880" Top="5880" Height="360" Width="2160"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 1" Color="8453888"/></Display>
+<Display Width="1275" Color="16777215" DataName="Valve EC ARD" RequestName="Infosys_valve_entrées">
+<Rectangle Left="2880" Top="6360" Height="360" Width="2160"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 1" Color="8453888"/></Display>
+<Display Width="1275" Color="16777215" DataName="Valve USV2" RequestName="Infosys_valve_entrées">
+<Rectangle Left="2880" Top="6960" Height="360" Width="2160"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 1" Color="8453888"/></Display>
+<Display Width="1275" Color="16777215" DataName="Valve VLV2" RequestName="Infosys_valve_entrées">
+<Rectangle Left="2880" Top="7440" Height="360" Width="2160"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="8421631"/><Threshold Value=" 1" Color="8453888"/></Display>
+<Display Width="2010" Color="16777215" DataName="Pression" RequestName="Infosys_capteurs_esp">
+<Rectangle Left="4320" Top="3000" Height="360" Width="3120"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2010" Color="16777215" DataName="Etat Relais Valves" RequestName="Infosys_valve_entrées">
+<Rectangle Left="4320" Top="3480" Height="360" Width="3120"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2010" Color="16777215" DataName="Pompe de refoulement" RequestName="Infosys_valve_entrées">
+<Rectangle Left="4320" Top="3960" Height="360" Width="3120"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2280" Color="16777215" DataName="Vitesse roue AVD" RequestName="Infosys_vitesse_roue">
+<Rectangle Left="6480" Top="1200" Height="360" Width="3240"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2280" Color="16777215" DataName="Vitesse roue ARD" RequestName="Infosys_vitesse_roue">
+<Rectangle Left="6480" Top="1800" Height="360" Width="3240"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1970" Color="16777215" DataName="Etat ESP" RequestName="Infosys_valve_entrées">
+<Rectangle Left="6600" Top="4560" Height="360" Width="3960"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="4259584"/><Threshold Value=" 1" Color="8421631"/></Display>
+<Display Width="2670" Color="16777215" DataName="Tension d'alimentation" RequestName="Infosys_capteurs_esp">
+<Rectangle Left="6600" Top="5040" Height="360" Width="3960"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2330" Color="16777215" DataName="Regime Moteur" RequestName="Infosys_can_mot">
+<Rectangle Left="6600" Top="5520" Height="360" Width="3960"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2315" Color="16777215" DataName="Couple moteur" RequestName="Infosys_can_mot">
+<Rectangle Left="6600" Top="6000" Height="360" Width="3960"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2315" Color="16777215" DataName="Couple moteur actuel" RequestName="Infosys_can_mot">
+<Rectangle Left="6600" Top="6480" Height="360" Width="3960"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3185" Color="16777215" DataName="Couple demandé par conducteur" RequestName="Infosys_can_mot">
+<Rectangle Left="6600" Top="6960" Height="360" Width="3960"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2315" Color="16777215" DataName="Couple friction" RequestName="Infosys_can_mot">
+<Rectangle Left="6600" Top="7440" Height="360" Width="3960"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1755" Color="16777215" DataName="Contacteur feux stop" RequestName="Infosys_valve_entrées">
+<Rectangle Left="7680" Top="3000" Height="360" Width="3960"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="12632256"/><Threshold Value=" 1" Color="8421504"/></Display>
+<Display Width="2375" Color="16777215" DataName="Contacteur feux stop (filtré)" RequestName="Infosys_valve_entrées">
+<Rectangle Left="7680" Top="3480" Height="360" Width="3960"/>
+<Font Name="Arial" Size="10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="12632256"/><Threshold Value=" 1" Color="8421504"/></Display>
+<Display Width="2670" Color="16777215" DataName="Tension Contacteur de stop" RequestName="Infosys_capteurs_esp">
+<Rectangle Left="7680" Top="3960" Height="360" Width="3960"/>
+<Font Name="Arial" Size="9" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture Défauts" Color="16744576" WindowState="0" Width="10650" Height="7410">
+
+<Label Text="Pour lire les défauts," Color="16744576" Alignment="0">
+<Rectangle Left="1800" Top="840" Height="480" Width="2886"/>
+<Font Name="Arial" Size="16" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="utilisez la fonction &quot;FAILURES&quot;" Color="16744576" Alignment="0">
+<Rectangle Left="4800" Top="840" Height="480" Width="5034"/>
+<Font Name="Arial" Size="16" Bold="0" Italic="0" Color="0"/></Label>
+
+
+</Screen>
+<Screen Name="Lecture OffsetLWS" Color="16744576" WindowState="0" Width="10530" Height="6450">
+
+<Label Text="Lecture Offset LWS calculé" Color="12632256" Alignment="2">
+<Rectangle Left="1695" Top="1080" Height="1920" Width="7140"/>
+<Font Name="MS Sans Serif" Size="18" Bold="0" Italic="0" Color="16711680"/></Label>
+<Send Delay="0" RequestName="Download_ECEPRM_778_1"/><Send Delay="0" RequestName="Download_ECEPRM_778_2"/><Send Delay="0" RequestName="Download_ECEPRM_778_3"/><Send Delay="300" RequestName="SRBLI_lect_offset_lws"/><Send Delay="300" RequestName="RRBLI_lect_offset_LWS"/>
+
+<Display Width="1565" Color="16777215" DataName="OffsetLWS" RequestName="RRBLI_lect_offset_LWS">
+<Rectangle Left="3825" Top="1800" Height="360" Width="2880"/>
+<Font Name="Arial" Size="12" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Lecture Process Byte" Color="16744576" WindowState="0" Width="10890" Height="6810">
+
+<Label Text="Lecture Process Byte" Color="12632256" Alignment="2">
+<Rectangle Left="1875" Top="1620" Height="3180" Width="7140"/>
+<Font Name="MS Sans Serif" Size="18" Bold="0" Italic="0" Color="16711680"/></Label>
+<Send Delay="0" RequestName="Download_ECEOL.911_1"/><Send Delay="0" RequestName="Download_ECEOL_911_2"/><Send Delay="0" RequestName="Download_ECEOL_911_3"/><Send Delay="10" RequestName="Testeur_Present"/><Send Delay="100" RequestName="ReadProcessByte"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdentifier_Process"/>
+
+<Display Width="3540" Color="16777215" DataName="GROUPE HYDRAULIQUE" RequestName="RequestRoutineResultsByLocalIdentifier_Process">
+<Rectangle Left="2235" Top="3000" Height="480" Width="6420"/>
+<Font Name="Arial" Size="14" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="PURGEen Retouche" Color="16744576" WindowState="2" Width="11490" Height="6930">
+
+<Label Text="PURGE D66 ESP" Color="8421504" Alignment="2">
+<Rectangle Left="3375" Top="480" Height="3840" Width="4740"/>
+<Font Name="Arial" Size="18" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Démarrage purge roue ARD">
+<Rectangle Left="3675" Top="1200" Height="540" Width="4140"/>
+<Font Name="Arial" Size="14" Bold="0" Italic="0"/>
+<Message Text="Procédure de remplissage en Retouche roue par roue"/>
+<Send Delay="10" RequestName="Download_ECSTGL.782_1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="10" RequestName="Download_ECSTGL.782_2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="10" RequestName="Download_ECSTGL.782_3"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="1000" RequestName="Message1_Purge_AR_AV"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="1000" RequestName="Message2_Purge_ARD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="0" RequestName="Message6_Purge_ARD_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/>
+</Button>
+<Button Text="Démarrage purge roue ARG">
+<Rectangle Left="3675" Top="1860" Height="540" Width="4140"/>
+<Font Name="Arial" Size="14.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECSTGL.782_1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="Download_ECSTGL.782_2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="Download_ECSTGL.782_3"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="1000" RequestName="Message1_Purge_AR_AV"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message2_Purge_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="0" RequestName="Message6_Purge_ARD_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/>
+</Button>
+<Button Text="Démarrage purge roue AVD">
+<Rectangle Left="3675" Top="3180" Height="540" Width="4140"/>
+<Font Name="Arial" Size="14.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECSTGL.782_1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="Download_ECSTGL.782_2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="Download_ECSTGL.782_3"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="1000" RequestName="Message1_Purge_AR_AV"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_AVD"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message4_Purge_ASV2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="0" RequestName="Message6_Purge_ARD_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/>
+</Button>
+<Button Text="Démarrage purge roue AVG">
+<Rectangle Left="3675" Top="2520" Height="540" Width="4140"/>
+<Font Name="Arial" Size="14.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="Download_ECSTGL.782_1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="Download_ECSTGL.782_2"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="Download_ECSTGL.782_3"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="Message1_Purge_AR_AV"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_AVG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="1000" RequestName="Message3_Purge_ASV1"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/><Send Delay="0" RequestName="Message6_Purge_ARD_ARG"/><Send Delay="0" RequestName="Testeur_Present"/><Send Delay="0" RequestName="RequestRoutineResultsByLocalIdent_1"/>
+</Button>
+
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

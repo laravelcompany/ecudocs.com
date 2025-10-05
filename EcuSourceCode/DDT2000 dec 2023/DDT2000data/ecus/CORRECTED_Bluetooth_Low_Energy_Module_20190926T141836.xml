@@ -1,0 +1,2413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.2.0.0" date="2019-09-20T14:04"/>
+<ddt:Target Name="Bluetooth Low Energy Module" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" group="BLM" upload="9/26/2019" href="CORRECTED_Bluetooth_Low_Energy_Module_20190926T141836.xml" email="PEREZ Maria-Gabriela (renexter) &lt;maria-gabriela.perez-extern@renault.com&gt;"><Description><![CDATA[]]></Description>
+<Projects xmlns=""><x82Ph2/><xCB/><xFK/><xHC/><xHN/></Projects>
+<Function Name="BLE VK" Address="171" Type=""/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation/>
+<Failures Name="No failures" Id="0"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="416984050" Extended="1"/>
+</SendId><ReceiveId>
+<CANId Value="417002155" Extended="1"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="1" Supplier="valeo" Soft="0001" Version="0001"/></AutoIdents>
+<Datas>
+
+<Data Name="VIN">
+<Comment><![CDATA[serial number of car]]></Comment>
+<Mnemonic>VIN</Mnemonic>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="VKSuspendStatus">
+<Comment><![CDATA[Vk current state: Suspended ?]]></Comment>
+<Mnemonic>VKSuspendStatus</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not suspended"/>
+<Item Value="1" Text="suspended"/></List>
+</Bits>
+</Data>
+<Data Name="VKfunctionActivation">
+<Comment><![CDATA[Is VK function Activated or not; VK function is activated by default]]></Comment>
+<Mnemonic>VKFunctionActivation</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="desactivated"/>
+<Item Value="1" Text="activated"/></List>
+</Bits>
+</Data>
+<Data Name="RefreshAccesCodePeriod">
+<Comment><![CDATA[Switching period between broadcast of accesscode A and B.]]></Comment>
+<Mnemonic>RefreshAccesCodePeriod</Mnemonic>
+<Bits count="24">
+<Scaled Unit="min"/>
+</Bits>
+</Data>
+<Data Name="RTCDesync">
+<Comment><![CDATA[If no time synchro between BLM & Cloud for more than 'RTCDesync', then BLM considers time has not sy]]></Comment>
+<Mnemonic>RTCDesync</Mnemonic>
+<Bits count="16">
+<Scaled Unit="h"/>
+</Bits>
+</Data>
+<Data Name="DefaultTokenValidityPeriod">
+<Comment><![CDATA[Token carries is validity but this is needed to check if Token is not valid for a too long period]]></Comment>
+<Mnemonic>DefaultTokenValidityPeriod</Mnemonic>
+<Bits>
+<Scaled Unit="h"/>
+</Bits>
+</Data>
+<Data Name="VKServiceState">
+<Comment><![CDATA[B2B or B2C or NotSet]]></Comment>
+<Mnemonic>VKServiceState</Mnemonic>
+<Bytes count="6" ascii="1"/>
+</Data>
+<Data Name="VKIdlePowerBudget">
+<Comment><![CDATA[Time Period in which BLM stays in Indle mode (BLE broadcast) instead of going to DeepSleep (RequestT]]></Comment>
+<Mnemonic>VKIdlePowerBudget</Mnemonic>
+<Bits count="16">
+<Scaled Unit="h"/>
+</Bits>
+</Data>
+<Data Name="CloseRental">
+<Comment><![CDATA[Duration between engine start revocation and doors permanently locked]]></Comment>
+<Mnemonic>CloseRental</Mnemonic>
+<Bits>
+<Scaled Unit="min"/>
+</Bits>
+</Data>
+<Data Name="CloudPuK">
+<Comment><![CDATA[Kamereon Public Key that enables BLM to Check Kamereon Token signatures. 2 Options: RSA and EC => 2]]></Comment>
+<Mnemonic>CloudPuK</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="MaxTimeDrift">
+<Comment><![CDATA[Max clock drift to consider time is sync]]></Comment>
+<Mnemonic>MaxTimeDrift</Mnemonic>
+<Bits count="16">
+<Scaled Unit="min"/>
+</Bits>
+</Data>
+<Data Name="CleanupB2CPeriod">
+<Comment><![CDATA[BLM shall clean-up all data related to a SP when this SP is not used during a long time ]]></Comment>
+<Mnemonic>CleanupB2CPeriod</Mnemonic>
+<Bits count="16">
+<Scaled Unit="d"/>
+</Bits>
+</Data>
+<Data Name="MaxTokenSize">
+<Comment><![CDATA[MaxTokenSize]]></Comment>
+<Mnemonic>MaxTokenSize</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="TokenUploadTimeout">
+<Comment><![CDATA[First Token upload timeout]]></Comment>
+<Mnemonic>TokenUploadTimeout</Mnemonic>
+<Bits count="16">
+<Scaled Unit="ms"/>
+</Bits>
+</Data>
+<Data Name="MaxSPBoundingTries">
+<Comment><![CDATA[Excessive number of tries]]></Comment>
+<Mnemonic>MaxSPBoundingTries</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="MaxSPBoundingTime">
+<Comment><![CDATA[MaxSBBoundingTries in MaxSPBoundingTime]]></Comment>
+<Mnemonic>MaxSPBoundingTime</Mnemonic>
+<Bits>
+<Scaled Unit="min"/>
+</Bits>
+</Data>
+<Data Name="SimultaneousSPBoundingBanTime">
+<Comment><![CDATA[SP ban duration]]></Comment>
+<Mnemonic>SimultaneousSPBoundingBanTime</Mnemonic>
+<Bits count="16">
+<Scaled Unit="min"/>
+</Bits>
+</Data>
+<Data Name="SPBoundingBanTime">
+<Comment><![CDATA[SP ban duration ]]></Comment>
+<Mnemonic>SPBoundingBanTime</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="MaxSimultaneousSPBoundingTime">
+<Comment><![CDATA[MaxSBSimultaneousBoundingTries in MaxSimultaneousSPBoundingTime]]></Comment>
+<Mnemonic>MaxSimultaneousSPBoundingTime</Mnemonic>
+<Bits>
+<Scaled Unit="min"/>
+</Bits>
+</Data>
+<Data Name="MaxSimultaneousSPBoundingTries">
+<Comment><![CDATA[Excessive number of tries for simultaneous SP]]></Comment>
+<Mnemonic>MaxSimultaneousSPBoundingTries</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="MaxLogStorage">
+<Comment><![CDATA[Max nb of logs stored in mem]]></Comment>
+<Mnemonic>MaxLogStorage</Mnemonic>
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SecureCmdAntiDelay">
+<Comment><![CDATA[Delay after which a secure cmd is refused]]></Comment>
+<Mnemonic>SecureCmdAntiDelay</Mnemonic>
+<Bits count="16">
+<Scaled Unit="ms"/>
+</Bits>
+</Data>
+<Data Name="SuspendDelayTimer">
+<Comment><![CDATA[BLM waits <SuspendDelayTimer> before entering Suspend state]]></Comment>
+<Mnemonic>SuspendDelayTimer</Mnemonic>
+<Bits>
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="Manufacturing Data">
+<Comment><![CDATA[Renault or Nissan could buy a manuaturing ID from the BT signal.]]></Comment>
+<Mnemonic>Manufacturing Data </Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Wrongrights">
+<Comment><![CDATA[This DID increments each time a command is refused because of invalid rights (Trying to start the vh]]></Comment>
+<Mnemonic>Wrongrights</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="VKState">
+<Comment><![CDATA[Current VK state; used for Diagnostics]]></Comment>
+<Mnemonic>VKState</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="SWVersion">
+<Comment><![CDATA[Current SW version; used for Diag]]></Comment>
+<Mnemonic>SWVersion</Mnemonic>
+<Bytes count="8" ascii="1"/>
+</Data>
+<Data Name="NbOfSPListed">
+<Comment><![CDATA[Current number of SP listed; used for diag]]></Comment>
+<Mnemonic>NbOfSPListed</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="HFMSecureKeyStatus">
+<Comment><![CDATA[Hold if there is a valid secured key for BLM cyphered channel]]></Comment>
+<Mnemonic>HFMSecureKeyStatus</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="not activated"/>
+<Item Value="1" Text="activated"/></List>
+</Bits>
+</Data>
+<Data Name="VKCurrentIdlePowerBudget">
+<Comment><![CDATA[Current value of the power budget]]></Comment>
+<Mnemonic>VKCurrentIdlePowerBudget</Mnemonic>
+<Bits count="16">
+<Scaled Unit="h"/>
+</Bits>
+</Data>
+<Data Name="Enable Superlock">
+<Comment><![CDATA[The customer shall be able to accede to the “superlock” button only for Right Hand Drive vehicles ma]]></Comment>
+<Mnemonic>Enable Superlock</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="not activated"/>
+<Item Value="1" Text="activated"/></List>
+</Bits>
+</Data>
+<Data Name="vehicleManufacturerECUHardwareNumber">
+<Comment><![CDATA[VEHICLE_MANUFACTURER_ECUHARDWARE_NUMBER]]></Comment>
+<Mnemonic>VEHICLE_MANUFACTURER_ECUHARDWARE_NUMBER</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="OperationnalReference">
+<Mnemonic>OPERATIONNAL_REFERENCE</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="Fingerprint">
+<Mnemonic>FINGERPRINT</Mnemonic>
+<Bytes count="16" ascii="1"/>
+</Data>
+<Data Name="IndexSrvData">
+<Mnemonic>INDEX_SRV_DATA</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="systemSupplierIdentifier">
+<Mnemonic>SYSTEM_SUPPLIER_IDENTIFIER</Mnemonic>
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="systemSupplierECUSoftwareNumber">
+<Mnemonic>SYSTEM_SUPPLIER_ECUSOFTWARE_NUMBER</Mnemonic>
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="systemSupplierECUSoftwareVersionNumber">
+<Mnemonic>SYSTEM_SUPPLIER_ECUSOFTWARE_VERSION_NUMBER</Mnemonic>
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="SPBatteryWarningLevel">
+<Comment><![CDATA[Level at which superlock is forbidden]]></Comment>
+<Mnemonic>SPBatteryWarningLevel</Mnemonic>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="VKIdlePowerBudgetWarningLevel">
+<Comment><![CDATA[Level at which superlock is forbidden]]></Comment>
+<Mnemonic>VKIdlePowerBudgetWarningLevel</Mnemonic>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="VehicleManufacturerSparePartNumberNissan">
+<Comment><![CDATA[used for Nissan]]></Comment>
+<Mnemonic>VEHICLE_MANUFACTURER_SPARE_PART_NUMBER_Nissan</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="vehicleManufacturerKitAssemblyPartNumber">
+<Comment><![CDATA[Ordered Part Number - This value shall contain the number of the part ordered by OEM.]]></Comment>
+<Mnemonic>DID_$F18E</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer order number for a kit (assembled parts bought as a whole for production e.g. cockpit), when the spare part number designates only the server (e.g. for aftersales).</FONT></P>
+<P><FONT size=2>The record data content and format shall be server specific and defined by the vehicle manufacturer.<BR></FONT></P>]]></Description>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="TheoricalMaxtimeDrift">
+<Comment><![CDATA[TheoricalMaxTimeDrift]]></Comment>
+<Mnemonic>TheoricalMaxTimeDrift</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SupplierFaultCode">
+<Comment><![CDATA[SupplierFaultCode]]></Comment>
+<Mnemonic>EF01</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="latest_sent_message">
+<Comment><![CDATA[latest_sent_message]]></Comment>
+<Mnemonic>latest_sent_message</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="latest_received_message">
+<Comment><![CDATA[latest_received_message]]></Comment>
+<Mnemonic>latest_received_message</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="VehicleManufacturerECUHardwareNumber_DAI">
+<Comment><![CDATA[VehicleManufacturerECUHardwareNumber_DAI]]></Comment>
+<Mnemonic>VehicleManufacturerECUHardwareNumber_DAI</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="VehicleManufacturerECUSoftwareNumber_DAI">
+<Comment><![CDATA[VehicleManufacturerECUSoftwareNumber_DAI]]></Comment>
+<Mnemonic>VehicleManufacturerECUSoftwareNumber_DAI</Mnemonic>
+<Bytes count="20" ascii="1"/>
+</Data>
+<Data Name="StatusOfDTC">
+<Comment><![CDATA[DTCASR_SODTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="mileage">
+<Mnemonic>mileage</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="MoreDTC">
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="NDTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Bits count="16">
+<List>
+<Item Value="41896" Text="DTC_BLM_ground_Short circuit to battery"/>
+<Item Value="41897" Text="DTC_BLM_ground_Short circuit to ground or open"/>
+<Item Value="41898" Text="DTC_BLM_token_expired"/>
+<Item Value="41899" Text="DTC_BLM_SecurePairingNOK"/>
+<Item Value="41900" Text="DTC_BLM_TokenBlacklisted"/>
+<Item Value="41901" Text="DTC_BLM_BLMNotWakenUp"/>
+<Item Value="41902" Text="DTC_BLM_BadgeStatusNotReceived"/>
+<Item Value="41903" Text="DTC_BLM_HFMPairingNotDone"/>
+<Item Value="41904" Text="DTC_BLM_TransmissionError"/>
+<Item Value="41905" Text="DTC_BLM_InvalidSecureKey"/>
+<Item Value="41906" Text="DTC_BLM_TokenFormatNOK"/>
+<Item Value="41907" Text="DTC_BLM_CloudSignatureNOK"/>
+<Item Value="41908" Text="DTC_BLM_PartnerSignatureNOK"/>
+<Item Value="41909" Text="DTC_BLM_InvalidMPUConfig"/>
+<Item Value="57679" Text="BCM_CRC_error"/>
+<Item Value="57678" Text="Cluster_CRC_error"/>
+<Item Value="57672" Text="VDC_CRC_error"/>
+<Item Value="49273" Text="Bus off"/>
+<Item Value="41912" Text="DTC_BLM_Internal_failure"/>
+<Item Value="41913" Text="DTC_Under_Voltage_BLE-chip"/>
+<Item Value="41914" Text="DTC_Internal_failure ASIC"/>
+<Item Value="41915" Text="DTC_BLM_'CPU"/>
+<Item Value="41916" Text="DTC_BLM_internal_failure_antennas"/>
+<Item Value="41917" Text="Bluetooth comunication error failure"/>
+<Item Value="41918" Text="DTC_BLM_supply_short circuit to battery"/>
+<Item Value="41919" Text="DTC_BLM_supply_short circuit to ground or open"/>
+<Item Value="57684" Text="IVI_CRC_error"/></List>
+</Bits>
+</Data>
+<Data Name="Historical Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Current Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="BootVersion">
+<Comment><![CDATA[BootVersion generic DID]]></Comment>
+<Mnemonic>DID_$F180</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="Renault Nissan">
+<Comment><![CDATA[Renault  Nissan]]></Comment>
+<Mnemonic>Renault  Nissan</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="SPLockCmdDelay">
+<Comment><![CDATA[During this delay the SP (performing the command) is not locked (PIN code activation)]]></Comment>
+<Mnemonic>SPLockCmdDelay</Mnemonic>
+<Bits>
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="IVI_CLUSTER">
+<Comment><![CDATA[IVI  CLUSTER]]></Comment>
+<Mnemonic>IVI  CLUSTER</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="DTCOccurrenceCounter">
+<Comment><![CDATA[DTCOcurrenceCounter]]></Comment>
+<Mnemonic>$F0D1</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Conf_cipher_secured_comm_timeout">
+<Comment><![CDATA[Conf_cipher_secured_comm_timeout]]></Comment>
+<Mnemonic>Conf_cipher_secured_comm_timeout</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Conf_cipher_secured_retry">
+<Comment><![CDATA[Conf_cipher_secured_retry]]></Comment>
+<Mnemonic>Conf_cipher_secured_retry</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="SessionName">
+<Comment><![CDATA[for Start diagnostic session]]></Comment>
+<Mnemonic>SDS</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="DefaultSession"/>
+<Item Value="2" Text="ReprogrammingSession"/>
+<Item Value="3" Text="ExtendedDiagSession"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.Category">
+<Mnemonic>DF</Mnemonic>
+<Bits count="4">
+<List>
+<Item Value="0" Text="General Failure Information"/>
+<Item Value="1" Text="General Electrical Failures"/>
+<Item Value="2" Text="General Signal Failures"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="15" Text="Vehicle manufacturer / System supplier specific"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+<Comment><![CDATA[TNCTMC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedSinceLastClear">
+<Comment><![CDATA[TFSLC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.confirmedDTC">
+<Comment><![CDATA[CDTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.pendingDTC">
+<Comment><![CDATA[PDTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailed">
+<Comment><![CDATA[TF]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCRecord">
+<Comment><![CDATA[DTCASR_DTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCCount">
+<Comment><![CDATA[DTC count]]></Comment>
+<Mnemonic>DTCC</Mnemonic>
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCFormatIdentifier">
+<Comment><![CDATA[DTC format - Renault/Nissan use value 0 (3 bytes DTC)]]></Comment>
+<Mnemonic>DTLIDIDlist</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="SAE_J2012-DA_DTC"/>
+<Item Value="1" Text="ISO_14229-1_DTC"/>
+<Item Value="2" Text="SAE_J1939-73_DTC"/>
+<Item Value="3" Text="ISO_11992-4_DTC"/>
+<Item Value="4" Text="SAE_J2012-DA_WWHOBD_DTC"/></List>
+</Bits>
+</Data>
+<Data Name="Standard Fault">
+<Bits count="5">
+<List>
+<Item Value="0" Text="No possible classification about the type of fault"/>
+<Item Value="1" Text="Open circuit"/>
+<Item Value="2" Text="Short circuit to ground"/>
+<Item Value="3" Text="Short circuit at battery +"/>
+<Item Value="4" Text="Parameter at min limit"/>
+<Item Value="5" Text="Parameter at max limit"/>
+<Item Value="6" Text="Incoherency, not plausible"/>
+<Item Value="7" Text="No signal"/>
+<Item Value="8" Text="Below min. threshold"/>
+<Item Value="9" Text="Above max. threshold"/>
+<Item Value="10" Text="Permanent Low Level"/>
+<Item Value="11" Text="Permanent High Level"/>
+<Item Value="12" Text="Lines short-circuited"/>
+<Item Value="13" Text="Internal electronic anomaly"/>
+<Item Value="14" Text="Network default"/>
+<Item Value="15" Text="Remote diagnostic"/>
+<Item Value="16" Text="Disturbed communication"/>
+<Item Value="17" Text="Microcuts"/>
+<Item Value="18" Text="Abnormal voltage"/>
+<Item Value="19" Text="Value out of range"/>
+<Item Value="20" Text="Open circuit or Short circuit to ground"/>
+<Item Value="21" Text="Open circuit or Short circuit to battery"/>
+<Item Value="22" Text="Initialization / configuration not valid"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedThisMonitoringCycle">
+<Comment><![CDATA[TFTMC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedSinceLastClear">
+<Comment><![CDATA[TNCSLC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.warningIndicatorRequested">
+<Comment><![CDATA[WIR]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceIdentifier">
+<Mnemonic>DF</Mnemonic>
+<Bits count="16">
+<List>
+<Item Value="41917" Text="Bluetooth comunication error failure"/>
+<Item Value="49273" Text="Bus off"/>
+<Item Value="57678" Text="Cluster_CRC_error"/>
+<Item Value="41902" Text="DTC_BLM_BadgeStatusNotReceived"/>
+<Item Value="41901" Text="DTC_BLM_BLMNotWakenUp"/>
+<Item Value="41907" Text="DTC_BLM_CloudSignatureNOK"/>
+<Item Value="41915" Text="DTC_BLM_'CPU"/>
+<Item Value="41896" Text="DTC_BLM_ground_Short circuit to battery"/>
+<Item Value="41897" Text="DTC_BLM_ground_Short circuit to ground or open"/>
+<Item Value="41903" Text="DTC_BLM_HFMPairingNotDone"/>
+<Item Value="41912" Text="DTC_BLM_Internal_failure"/>
+<Item Value="41916" Text="DTC_BLM_internal_failure_antennas"/>
+<Item Value="41909" Text="DTC_BLM_InvalidMPUConfig"/>
+<Item Value="41905" Text="DTC_BLM_InvalidSecureKey"/>
+<Item Value="41908" Text="DTC_BLM_PartnerSignatureNOK"/>
+<Item Value="41899" Text="DTC_BLM_SecurePairingNOK"/>
+<Item Value="41918" Text="DTC_BLM_supply_short circuit to battery"/>
+<Item Value="41919" Text="DTC_BLM_supply_short circuit to ground or open"/>
+<Item Value="41898" Text="DTC_BLM_token_expired"/>
+<Item Value="41900" Text="DTC_BLM_TokenBlacklisted"/>
+<Item Value="41906" Text="DTC_BLM_TokenFormatNOK"/>
+<Item Value="41904" Text="DTC_BLM_TransmissionError"/>
+<Item Value="41914" Text="DTC_Internal_failure ASIC"/>
+<Item Value="41913" Text="DTC_Under_Voltage_BLE-chip"/>
+<Item Value="57679" Text="BCM_CRC_error"/>
+<Item Value="57672" Text="VDC_CRC_error"/>
+<Item Value="57684" Text="IVI_CRC_error"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatusAvailabilityMask">
+<Comment><![CDATA[DTCSAM]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCFailureType">
+<Comment><![CDATA[Pending]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Device and failure type ODB codding"/>
+<Item Value="1" Text="General Electrical Failure"/>
+<Item Value="2" Text="General signal failure"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="17" Text="circuit short to ground"/>
+<Item Value="18" Text="circuit short to battery"/>
+<Item Value="19" Text="circuit open"/>
+<Item Value="20" Text="circuit short to ground or open"/>
+<Item Value="21" Text="circuit short to battery or open"/>
+<Item Value="22" Text="circuit voltage below threshold"/>
+<Item Value="23" Text="circuit voltage above threshold"/>
+<Item Value="24" Text="circuit current below threshold"/>
+<Item Value="25" Text="circuit current above threshold"/>
+<Item Value="26" Text="circuit resistance below threshold"/>
+<Item Value="27" Text="circuit resistance above threshold"/>
+<Item Value="28" Text="circuit voltage out of range"/>
+<Item Value="29" Text="circuit current out of range"/>
+<Item Value="30" Text="circuit resistance out of range"/>
+<Item Value="31" Text="circuit intermittent"/>
+<Item Value="33" Text="signal amplitude &lt; minimum"/>
+<Item Value="34" Text="signal amplitude &gt; maximum"/>
+<Item Value="35" Text="signal stuck low"/>
+<Item Value="36" Text="signal stuck high"/>
+<Item Value="37" Text="signal shape / waveform failure"/>
+<Item Value="38" Text="signal rate of change below threshold"/>
+<Item Value="39" Text="signal rate of change above threshold"/>
+<Item Value="40" Text="signal bias level out of range / zero adjustment failure"/>
+<Item Value="41" Text="signal signal invalid"/>
+<Item Value="47" Text="signal erratic"/>
+<Item Value="49" Text="no signal"/>
+<Item Value="50" Text="signal low time &lt; minimum"/>
+<Item Value="51" Text="signal low time &gt; maximum"/>
+<Item Value="52" Text="signal high time &lt; minimum"/>
+<Item Value="53" Text="signal high time &gt; maximum"/>
+<Item Value="54" Text="signal frequency too low"/>
+<Item Value="55" Text="signal frequency too high"/>
+<Item Value="56" Text="signal frequency incorrect"/>
+<Item Value="57" Text="incorrect has too few pulses"/>
+<Item Value="58" Text="incorrect has too many pulses"/>
+<Item Value="65" Text="general checksum failure"/>
+<Item Value="66" Text="general memory failure"/>
+<Item Value="67" Text="special memory failure"/>
+<Item Value="68" Text="data memory failure"/>
+<Item Value="69" Text="program memory failure"/>
+<Item Value="70" Text="calibration / parameter memory failure"/>
+<Item Value="71" Text="watchdog / safety µC failure"/>
+<Item Value="72" Text="supervision software failure"/>
+<Item Value="73" Text="internal electronic failure"/>
+<Item Value="74" Text="incorrect component installed"/>
+<Item Value="75" Text="over temperature"/>
+<Item Value="81" Text="not programmed"/>
+<Item Value="82" Text="not activated"/>
+<Item Value="83" Text="deactivated"/>
+<Item Value="84" Text="missing calibration"/>
+<Item Value="85" Text="not configured"/>
+<Item Value="97" Text="signal calculation failure"/>
+<Item Value="98" Text="signal compare failure"/>
+<Item Value="99" Text="circuit / component protection time-out"/>
+<Item Value="100" Text="signal plausibility failure"/>
+<Item Value="101" Text="signal has too few transitions / events"/>
+<Item Value="102" Text="signal has too many transitions / events"/>
+<Item Value="103" Text="signal incorrect after event"/>
+<Item Value="104" Text="event information"/>
+<Item Value="113" Text="actuator stuck"/>
+<Item Value="114" Text="actuator stuck open"/>
+<Item Value="115" Text="actuator stuck closed"/>
+<Item Value="116" Text="actuator slipping"/>
+<Item Value="117" Text="emergency position not reachable"/>
+<Item Value="118" Text="wrong mounting position"/>
+<Item Value="119" Text="commanded position not reachable"/>
+<Item Value="120" Text="alignment or adjustment incorrect"/>
+<Item Value="121" Text="mechanical linkage failure"/>
+<Item Value="122" Text="fluid leak or seal failure"/>
+<Item Value="123" Text="low fluid level"/>
+<Item Value="129" Text="invalid serial data received"/>
+<Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+<Item Value="131" Text="value of signal protection calculation incorrect"/>
+<Item Value="132" Text="signal below allowable range"/>
+<Item Value="133" Text="signal above allowable range"/>
+<Item Value="134" Text="signal invalid"/>
+<Item Value="135" Text="missing message"/>
+<Item Value="136" Text="bus off"/>
+<Item Value="143" Text="erratic"/>
+<Item Value="145" Text="parametric"/>
+<Item Value="146" Text="performance or incorrect operation"/>
+<Item Value="147" Text="no operation"/>
+<Item Value="148" Text="unexpected operation"/>
+<Item Value="149" Text="incorrect assembly"/>
+<Item Value="150" Text="component internal failure"/>
+<Item Value="151" Text="Component or system operation obstructed or blocked"/>
+<Item Value="152" Text="component or system over temperature"/></List>
+</Bits>
+</Data>
+<Data Name="DTCMaskRecord">
+<Comment><![CDATA[DTCMREC_DTC]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCExtendedData.Mileage">
+<Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>MILEAGE</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedDataRecordNumber">
+<Mnemonic>DTCEDRN</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Mileage"/>
+<Item Value="129" Text="AgingCounter"/>
+<Item Value="130" Text="DTCOccurrenceCounter"/></List>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.AgingCounter">
+<Comment><![CDATA[Description of the extendedData AgingCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>AGINGCOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.DTCOccurrenceCounter">
+<Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCFaultDetectionCounter">
+<Comment><![CDATA[DTC fault detction counter]]></Comment>
+<Mnemonic>DTCFDC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCSnapshotRecordNumber">
+<Bytes count="1"/>
+</Data>
+<Data Name="vehicleManufacturerECUSoftwareNumber">
+<Comment><![CDATA[ConfigurationFileReferenceLink]]></Comment>
+<Mnemonic>DID_$F188</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="ECUSerialNumber">
+<Comment><![CDATA[ECU serial number]]></Comment>
+<Mnemonic>DID F18C</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the ECU (server) serial number.</FONT></P>
+<P><FONT size=2>Record data content and format shall be server specific.</FONT></P>]]></Description>
+<Bytes count="20" ascii="1"/>
+</Data>
+<Data Name="diagnosticVersion">
+<Comment><![CDATA[VDIAG]]></Comment>
+<Mnemonic>DID_$F1A0</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the diagnostic version of the ECU.</FONT></P>
+<P><FONT size=2>It is defined by the vehicle manufacturer.</FONT></P>
+<P><FONT size=2>Refer to manufacture ECU designer.</FONT></P>]]></Description>
+<Bytes count="1"/>
+</Data>
+<Data Name="applicationSoftwareIdentification">
+<Comment><![CDATA[Software Number]]></Comment>
+<Mnemonic>DID_$F181</Mnemonic>
+<Description><![CDATA[<P><FONT size=2>This value shall be used to reference the vehicle manufacturer specific ECU application software number(s).</FONT></P>
+<P><FONT size=2>The format of the application software identification structure shall be ECU specific and defined by the vehicle manufacturer.</FONT></P>]]></Description>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="LockedSatusTimer">
+<Comment><![CDATA[BLM waits until <LockedStatusTimer > when checking the status locked from BCM. After timer expiry, B]]></Comment>
+<Mnemonic>LockedSatusTimer</Mnemonic>
+<Bits>
+<Scaled Unit="s"/>
+</Bits>
+</Data>
+<Data Name="Architecture">
+<Comment><![CDATA[Describe current architecture (C1A,C1AHS,Sweet100,sweet200,sweet400)]]></Comment>
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="BLMHFM pairing">
+<Mnemonic>BLM/HFM pairing</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="pairing not done"/>
+<Item Value="1" Text="pairing done"/></List>
+</Bits>
+</Data>
+<Data Name="vehicleManufacturerSparePartNumber">
+<Comment><![CDATA[used for renault]]></Comment>
+<Mnemonic>VEHICLE_MANUFACTURER_SPARE_PART_NUMBER</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="DataRead.VKfunctionActivation">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220104</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620104</ReplyBytes>
+<DataItem Name="VKfunctionActivation" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VKSuspendStatus">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VKSuspendStatus]]></Comment>
+<Sent>
+<SentBytes>22011B</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011B</ReplyBytes>
+<DataItem Name="VKSuspendStatus" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.OperationnalReference">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read OperationnalReference]]></Comment>
+<Sent>
+<SentBytes>22F012</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F012</ReplyBytes>
+<DataItem Name="OperationnalReference" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Fingerprint">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read Fingerprint]]></Comment>
+<Sent>
+<SentBytes>22F010</SentBytes>
+</Sent>
+<Received MinBytes="19">
+<ReplyBytes>62F010</ReplyBytes>
+<DataItem Name="Fingerprint" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.IndexSrvData">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Read IndexSrvData]]></Comment>
+<Sent>
+<SentBytes>22F011</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F011</ReplyBytes>
+<DataItem Name="IndexSrvData" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierIdentifier">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read systemSupplierIdentifier]]></Comment>
+<Sent>
+<SentBytes>22F18A</SentBytes>
+</Sent>
+<Received MinBytes="67">
+<ReplyBytes>62F18A</ReplyBytes>
+<DataItem Name="systemSupplierIdentifier" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierECUSoftwareNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read systemSupplierECUSoftwareNumber]]></Comment>
+<Sent>
+<SentBytes>22F194</SentBytes>
+</Sent>
+<Received MinBytes="35">
+<ReplyBytes>62F194</ReplyBytes>
+<DataItem Name="systemSupplierECUSoftwareNumber" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.systemSupplierECUSoftwareVersionNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read systemSupplierECUSoftwareVersionNumber]]></Comment>
+<Sent>
+<SentBytes>22F195</SentBytes>
+</Sent>
+<Received MinBytes="35">
+<ReplyBytes>62F195</ReplyBytes>
+<DataItem Name="systemSupplierECUSoftwareVersionNumber" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VIN">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VIN]]></Comment>
+<Sent>
+<SentBytes>22F190</SentBytes>
+</Sent>
+<Received MinBytes="20">
+<ReplyBytes>62F190</ReplyBytes>
+<DataItem Name="VIN" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.RefreshAccesCodePeriod">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read RefreshAccesCodePeriod]]></Comment>
+<Sent>
+<SentBytes>220101</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>620101</ReplyBytes>
+<DataItem Name="RefreshAccesCodePeriod" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.RefreshAccesCodePeriod">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write RefreshAccesCodePeriod]]></Comment>
+<Sent>
+<SentBytes>2E0101000000</SentBytes>
+<DataItem Name="RefreshAccesCodePeriod" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0101</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.RTCDesync">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read RTCDesync]]></Comment>
+<Sent>
+<SentBytes>220102</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620102</ReplyBytes>
+<DataItem Name="RTCDesync" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.RTCDesync">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write RTCDesync]]></Comment>
+<Sent>
+<SentBytes>2E01020000</SentBytes>
+<DataItem Name="RTCDesync" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0102</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.DefaultTokenValidityPeriod">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read DefaultTokenValidityPeriod]]></Comment>
+<Sent>
+<SentBytes>220103</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620103</ReplyBytes>
+<DataItem Name="DefaultTokenValidityPeriod" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.DefaultTokenValidityPeriod">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write DefaultTokenValidityPeriod]]></Comment>
+<Sent>
+<SentBytes>2E010300</SentBytes>
+<DataItem Name="DefaultTokenValidityPeriod" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0103</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.VKServiceState">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VKServiceState]]></Comment>
+<Sent>
+<SentBytes>220105</SentBytes>
+</Sent>
+<Received MinBytes="9">
+<ReplyBytes>620105</ReplyBytes>
+<DataItem Name="VKServiceState" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.VKServiceState">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write VKServiceState]]></Comment>
+<Sent>
+<SentBytes>2E0105000000000000</SentBytes>
+<DataItem Name="VKServiceState" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0105</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.VKIdlePowerBudget">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VKIdlePowerBudget]]></Comment>
+<Sent>
+<SentBytes>220106</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620106</ReplyBytes>
+<DataItem Name="VKIdlePowerBudget" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.VKIdlePowerBudget">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write VKIdlePowerBudget]]></Comment>
+<Sent>
+<SentBytes>2E01060000</SentBytes>
+<DataItem Name="VKIdlePowerBudget" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0106</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SPBatteryWarningLevel">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read SPBatteryWarningLevel]]></Comment>
+<Sent>
+<SentBytes>220107</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620107</ReplyBytes>
+<DataItem Name="SPBatteryWarningLevel" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SPBatteryWarningLevel">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write SPBatteryWarningLevel]]></Comment>
+<Sent>
+<SentBytes>2E010700</SentBytes>
+<DataItem Name="SPBatteryWarningLevel" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0107</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.VKIdlePowerBudgetWarningLevel">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VKIdlePowerBudgetWarningLevel]]></Comment>
+<Sent>
+<SentBytes>220108</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620108</ReplyBytes>
+<DataItem Name="VKIdlePowerBudgetWarningLevel" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.VKIdlePowerBudgetWarningLevel">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write VKIdlePowerBudgetWarningLevel]]></Comment>
+<Sent>
+<SentBytes>2E010800</SentBytes>
+<DataItem Name="VKIdlePowerBudgetWarningLevel" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0108</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.CloseRental">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read CloseRental]]></Comment>
+<Sent>
+<SentBytes>220109</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620109</ReplyBytes>
+<DataItem Name="CloseRental" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.CloseRental">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write CloseRental]]></Comment>
+<Sent>
+<SentBytes>2E010900</SentBytes>
+<DataItem Name="CloseRental" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0109</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.MaxTimeDrift">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read MaxTimeDrift]]></Comment>
+<Sent>
+<SentBytes>22010B</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62010B</ReplyBytes>
+<DataItem Name="MaxTimeDrift" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.MaxTimeDrift">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write MaxTimeDrift]]></Comment>
+<Sent>
+<SentBytes>2E010B0000</SentBytes>
+<DataItem Name="MaxTimeDrift" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E010B</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.CleanupB2CPeriod">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read CleanupB2CPeriod]]></Comment>
+<Sent>
+<SentBytes>22010D</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62010D</ReplyBytes>
+<DataItem Name="CleanupB2CPeriod" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.CleanupB2CPeriod">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write CleanupB2CPeriod]]></Comment>
+<Sent>
+<SentBytes>2E010D0000</SentBytes>
+<DataItem Name="CleanupB2CPeriod" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E010D</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.TokenUploadTimeout">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read TokenUploadTimeout]]></Comment>
+<Sent>
+<SentBytes>22010F</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62010F</ReplyBytes>
+<DataItem Name="TokenUploadTimeout" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.TokenUploadTimeout">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write TokenUploadTimeout]]></Comment>
+<Sent>
+<SentBytes>2E010F0000</SentBytes>
+<DataItem Name="TokenUploadTimeout" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E010F</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.MaxSPBoundingTries">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read MaxSPBoundingTries]]></Comment>
+<Sent>
+<SentBytes>220110</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620110</ReplyBytes>
+<DataItem Name="MaxSPBoundingTries" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.MaxSPBoundingTries">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write MaxSPBoundingTries]]></Comment>
+<Sent>
+<SentBytes>2E011000</SentBytes>
+<DataItem Name="MaxSPBoundingTries" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0110</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.MaxSPBoundingTime">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read MaxSPBoundingTime]]></Comment>
+<Sent>
+<SentBytes>220111</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620111</ReplyBytes>
+<DataItem Name="MaxSPBoundingTime" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.MaxSPBoundingTime">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write MaxSPBoundingTime]]></Comment>
+<Sent>
+<SentBytes>2E011100</SentBytes>
+<DataItem Name="MaxSPBoundingTime" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0111</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SPBoundingBanTime">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read SPBoundingBanTime]]></Comment>
+<Sent>
+<SentBytes>220112</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620112</ReplyBytes>
+<DataItem Name="SPBoundingBanTime" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SPBoundingBanTime">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Write SPBoundingBanTime]]></Comment>
+<Sent>
+<SentBytes>2E011200</SentBytes>
+<DataItem Name="SPBoundingBanTime" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0112</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.MaxSimultaneousSPBoundingTries">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read MaxSimultaneousSPBoundingTries]]></Comment>
+<Sent>
+<SentBytes>220113</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620113</ReplyBytes>
+<DataItem Name="MaxSimultaneousSPBoundingTries" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.MaxSimultaneousSPBoundingTries">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write MaxSimultaneousSPBoundingTries]]></Comment>
+<Sent>
+<SentBytes>2E011300</SentBytes>
+<DataItem Name="MaxSimultaneousSPBoundingTries" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0113</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.MaxSimultaneousSPBoundingTime">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read MaxSimultaneousSPBoundingTime]]></Comment>
+<Sent>
+<SentBytes>220114</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620114</ReplyBytes>
+<DataItem Name="MaxSimultaneousSPBoundingTime" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.MaxSimultaneousSPBoundingTime">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write MaxSimultaneousSPBoundingTime]]></Comment>
+<Sent>
+<SentBytes>2E011400</SentBytes>
+<DataItem Name="MaxSimultaneousSPBoundingTime" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0114</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SimultaneousSPBoundingBanTime">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read SimultaneousSPBoundingBanTime]]></Comment>
+<Sent>
+<SentBytes>220115</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620115</ReplyBytes>
+<DataItem Name="SimultaneousSPBoundingBanTime" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SimultaneousSPBoundingBanTime">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write SimultaneousSPBoundingBanTime]]></Comment>
+<Sent>
+<SentBytes>2E01150000</SentBytes>
+<DataItem Name="SimultaneousSPBoundingBanTime" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0115</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.MaxLogStorage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read MaxLogStorage]]></Comment>
+<Sent>
+<SentBytes>220116</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620116</ReplyBytes>
+<DataItem Name="MaxLogStorage" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.MaxLogStorage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write MaxLogStorage]]></Comment>
+<Sent>
+<SentBytes>2E01160000</SentBytes>
+<DataItem Name="MaxLogStorage" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0116</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SecureCmdAntiDelay">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read SecureCmdAntiDelay]]></Comment>
+<Sent>
+<SentBytes>220117</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>620117</ReplyBytes>
+<DataItem Name="SecureCmdAntiDelay" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SecureCmdAntiDelay">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write SecureCmdAntiDelay]]></Comment>
+<Sent>
+<SentBytes>2E01170000</SentBytes>
+<DataItem Name="SecureCmdAntiDelay" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0117</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.SuspendDelayTimer">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read SuspendDelayTimer]]></Comment>
+<Sent>
+<SentBytes>220118</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620118</ReplyBytes>
+<DataItem Name="SuspendDelayTimer" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SuspendDelayTimer">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write SuspendDelayTimer]]></Comment>
+<Sent>
+<SentBytes>2E011800</SentBytes>
+<DataItem Name="SuspendDelayTimer" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0118</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Manufacturing Data">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read Manufacturing Data]]></Comment>
+<Sent>
+<SentBytes>220119</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620119</ReplyBytes>
+<DataItem Name="Manufacturing Data" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Manufacturing Data">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write Manufacturing Data]]></Comment>
+<Sent>
+<SentBytes>2E011900</SentBytes>
+<DataItem Name="Manufacturing Data" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0119</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Wrongrights">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read Wrongrights]]></Comment>
+<Sent>
+<SentBytes>22011C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011C</ReplyBytes>
+<DataItem Name="Wrongrights" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.Wrongrights">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Write Wrongrights]]></Comment>
+<Sent>
+<SentBytes>2E011C00</SentBytes>
+<DataItem Name="Wrongrights" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E011C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.VKState">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VKState]]></Comment>
+<Sent>
+<SentBytes>226001</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>626001</ReplyBytes>
+<DataItem Name="VKState" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.SWVersion">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read SWVersion]]></Comment>
+<Sent>
+<SentBytes>226002</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<ReplyBytes>626002</ReplyBytes>
+<DataItem Name="SWVersion" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.NbOfSPListed">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read NbOfSPListed]]></Comment>
+<Sent>
+<SentBytes>226003</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>626003</ReplyBytes>
+<DataItem Name="NbOfSPListed" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.HFMSecureKeyStatus">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read HFMSecureKeyStatus]]></Comment>
+<Sent>
+<SentBytes>226004</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>626004</ReplyBytes>
+<DataItem Name="HFMSecureKeyStatus" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VKCurrentIdlePowerBudget">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VKCurrentIdlePowerBudget]]></Comment>
+<Sent>
+<SentBytes>226006</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>626006</ReplyBytes>
+<DataItem Name="VKCurrentIdlePowerBudget" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Enable Superlock">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read Enable Superlock]]></Comment>
+<Sent>
+<SentBytes>226009</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>626009</ReplyBytes>
+<DataItem Name="Enable Superlock" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.MaxTokenSize">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read MaxTokenSize]]></Comment>
+<Sent>
+<SentBytes>22010E</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62010E</ReplyBytes>
+<DataItem Name="MaxTokenSize" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.MaxTokenSize">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Write MaxTokenSize]]></Comment>
+<Sent>
+<SentBytes>2E010E00</SentBytes>
+<DataItem Name="MaxTokenSize" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E010E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.CloudPuK">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read CloudPuK]]></Comment>
+<Sent>
+<SentBytes>22010A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62010A</ReplyBytes>
+<DataItem Name="CloudPuK" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.BootVersion">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read BootVersion]]></Comment>
+<Sent>
+<SentBytes>22F180</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>62F180</ReplyBytes>
+<DataItem Name="BootVersion" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerECUHardwareNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read vehicleManufacturerECUHardwareNumber]]></Comment>
+<Sent>
+<SentBytes>22F191</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F191</ReplyBytes>
+<DataItem Name="vehicleManufacturerECUHardwareNumber" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.TheoricalMaxtimeDrift">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read TheoricalMaxtimeDrift]]></Comment>
+<Sent>
+<SentBytes>22011A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011A</ReplyBytes>
+<DataItem Name="TheoricalMaxtimeDrift" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.TheoricalMaxtimeDrift">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Write TheoricalMaxtimeDrift]]></Comment>
+<Sent>
+<SentBytes>2E011A00</SentBytes>
+<DataItem Name="TheoricalMaxtimeDrift" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E011A</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.mileage">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Read mileage]]></Comment>
+<Sent>
+<SentBytes>22F0D0</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>62F0D0</ReplyBytes>
+<DataItem Name="mileage" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.IVI_CLUSTER">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read IVI_CLUSTER]]></Comment>
+<Sent>
+<SentBytes>226008</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>626008</ReplyBytes>
+<DataItem Name="IVI_CLUSTER" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.SPLockCmdDelay">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadSPLockCmdDelay]]></Comment>
+<Sent>
+<SentBytes>22010C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62010C</ReplyBytes>
+<DataItem Name="SPLockCmdDelay" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.SPLockCmdDelay">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[WriteSPLockCmdDelay]]></Comment>
+<Sent>
+<SentBytes>2E010C00</SentBytes>
+<DataItem Name="SPLockCmdDelay" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E010C</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.VKSuspendStatus">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E011B00</SentBytes>
+<DataItem Name="VKSuspendStatus" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E011B</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerKitAssemblyPartNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read vehicleManufacturerKitAssemblyPartNumber]]></Comment>
+<Sent>
+<SentBytes>22F18E</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F18E</ReplyBytes>
+<DataItem Name="vehicleManufacturerKitAssemblyPartNumber" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.DTCOccurrenceCounter">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Read DTCOccurrenceCounter]]></Comment>
+<Sent>
+<SentBytes>22F0D1</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62F0D1</ReplyBytes>
+<DataItem Name="DTCOccurrenceCounter" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.SupplierFaultCode">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read SupplierFaultCode]]></Comment>
+<Sent>
+<SentBytes>22EF01</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62EF01</ReplyBytes>
+<DataItem Name="SupplierFaultCode" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.CloudPuK">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E010A00</SentBytes>
+<DataItem Name="CloudPuK" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E010A</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.BootVersion">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2EF18000000000</SentBytes>
+<DataItem Name="BootVersion" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6EF180</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.VKfunctionActivation">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E010400</SentBytes>
+<DataItem Name="VKfunctionActivation" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0104</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.Enable Superlock">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E600900</SentBytes>
+<DataItem Name="Enable Superlock" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E6009</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Renault Nissan">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read Renault_Nissan]]></Comment>
+<Sent>
+<SentBytes>226007</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>626007</ReplyBytes>
+<DataItem Name="Renault Nissan" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VehicleManufacturerSparePartNumberNissan">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VehicleManufacturerSparePartNumberN]]></Comment>
+<Sent>
+<SentBytes>22F1A1</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F1A1</ReplyBytes>
+<DataItem Name="VehicleManufacturerSparePartNumberNissan" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VehicleManufacturerECUHardwareNumber_DAI">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VehicleManufacturerECUHardwareNumber_DAI]]></Comment>
+<Sent>
+<SentBytes>22F111</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F111</ReplyBytes>
+<DataItem Name="VehicleManufacturerECUHardwareNumber_DAI" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VehicleManufacturerECUSoftwareNumber_DAI">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VehicleManufacturerECUSoftwareNumber_DAI]]></Comment>
+<Sent>
+<SentBytes>22F121</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<ReplyBytes>62F121</ReplyBytes>
+<DataItem Name="VehicleManufacturerECUSoftwareNumber_DAI" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportNumberOfDTCByStatusMask">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report number of DTC]]></Comment>
+<Sent>
+<SentBytes>1901FF</SentBytes>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>5901FF000000</ReplyBytes>
+<DataItem Name="DTCCount" FirstByte="5"/>
+<DataItem Name="DTCFormatIdentifier" FirstByte="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+<Sent>
+<SentBytes>3E00</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1003</SentBytes>
+<DataItem Name="SessionName" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5003</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.ExtendedDiagnostic">
+
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1003</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5003</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Default">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1001</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5001</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Programming">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1002</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5002</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ClearDiagnosticInformation.All">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+<Sent>
+<SentBytes>14FFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>54</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC">
+
+<Comment><![CDATA[DDT2000 Failures page requests / DDT : Unusable for Clip import]]></Comment>
+<Sent>
+<SentBytes>1902FF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC_CPDD Import">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT]]></Comment>
+<Sent>
+<SentBytes>1902FF</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSnapshot">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1904000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590400000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000080</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>59060000000080000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.AgingCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000081</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="8">
+<ReplyBytes>5906000000008100</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.DTCOccurrenceCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000082</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="8">
+<ReplyBytes>5906000000008200</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData">
+
+<Comment><![CDATA[DDT2000 Failures page requests : Unusable in the standard tools of DDT2000 nor for Clip import]]></Comment>
+<Sent>
+<SentBytes>1906000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>590600000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSupportedDTC">
+
+<Comment><![CDATA[Report supported DTC]]></Comment>
+<Sent>
+<SentBytes>190A</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>590AFF00000000</ReplyBytes>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ReportDTCInformation.ReportDTCFaultDetectionCounter">
+
+<Comment><![CDATA[Report DTC fault detection]]></Comment>
+<Sent>
+<SentBytes>1914</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>591400000000</ReplyBytes>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="3"/>
+<DataItem Name="DTCFailureType" FirstByte="5"/>
+<DataItem Name="DTCFaultDetectionCounter" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSupportedDTC_CPDD Import">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report supported DTC for Clip import]]></Comment>
+<Sent>
+<SentBytes>190A</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>590AFF00000000</ReplyBytes>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTCSnapshotIdentification">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Report snapshot identification]]></Comment>
+<Sent>
+<SentBytes>1903000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>590300000001</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="DTCSnapshotRecordNumber" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerSparePartNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read vehicleManufacturerSparePartNumberRenault]]></Comment>
+<Sent>
+<SentBytes>22F187</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F187</ReplyBytes>
+<DataItem Name="vehicleManufacturerSparePartNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.vehicleManufacturerECUSoftwareNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read ConfigurationFileReferenceLink]]></Comment>
+<Sent>
+<SentBytes>22F188</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F188</ReplyBytes>
+<DataItem Name="vehicleManufacturerECUSoftwareNumber" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ECUSerialNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read ECUSerialNumber]]></Comment>
+<Sent>
+<SentBytes>22F18C</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<ReplyBytes>62F18C</ReplyBytes>
+<DataItem Name="ECUSerialNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.diagnosticVersion">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read VDIAG diagnosticVersion]]></Comment>
+<Sent>
+<SentBytes>22F1A0</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62F1A0</ReplyBytes>
+<DataItem Name="diagnosticVersion" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.applicationSoftwareIdentification">
+
+<Comment><![CDATA[Read applicationSoftwareIdentification]]></Comment>
+<Sent>
+<SentBytes>22F181</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F181</ReplyBytes>
+<DataItem Name="applicationSoftwareIdentification" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.LockedSatusTimer">
+
+<Comment><![CDATA[Read LockedSatusTimer]]></Comment>
+<Sent>
+<SentBytes>22011E</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011E</ReplyBytes>
+<DataItem Name="LockedSatusTimer" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.LockedSatusTimer">
+
+<ManuelSend/>
+<Comment><![CDATA[Write LockedSatusTimer]]></Comment>
+<Sent>
+<SentBytes>2E011E00</SentBytes>
+<DataItem Name="LockedSatusTimer" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E011E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.BLMHFM pairing">
+
+<Comment><![CDATA[Read BLMHFM pairing]]></Comment>
+<Sent>
+<SentBytes>22600B</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62600B</ReplyBytes>
+<DataItem Name="BLMHFM pairing" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.BLMHFM pairing">
+
+<ManuelSend/>
+<Comment><![CDATA[Write BLMHFM pairing]]></Comment>
+<Sent>
+<SentBytes>2E600B00</SentBytes>
+<DataItem Name="BLMHFM pairing" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E600B</ReplyBytes>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="DTC_BLM_token_expired" DTC="41898">
+<Mnemonic>DTC_BLM_TokenExpired</Mnemonic>
+
+<Test Type="103" Severity="0" Autocheck="0">
+<Description>BLM_TokenExpired. </Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_TokenBlacklisted" DTC="41900">
+<Mnemonic>DTC_BLM_TokenBlacklisted</Mnemonic>
+
+<Test Type="103" Severity="0">
+<Description>Action (lock, Unlock, start etc) refused because token is blacklisted</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_BLMNotWakenUp" DTC="41901">
+<Mnemonic>DTC_BLM_BLMNotWakenUp</Mnemonic>
+
+<Test Type="103" Severity="0">
+<Description>BCM sends wake-up request to BLM but BLM does not wake-up. This DTC is for BCM</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_BadgeStatusNotReceived" DTC="41902">
+<Mnemonic>DTC_BLM_BadgeStatusNotReceived</Mnemonic>
+
+<Test Type="41" Severity="0">
+<Description>BLM can request the badge status to HFM/BCM. This DTC is raised when no answer is received from HFM/BLM. NO answer received from BCM on 'CID status' request</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_HFMPairingNotDone" DTC="41903">
+<Mnemonic>DTC_BLM_HFMPairingNotDone</Mnemonic>
+
+<Test Type="104" Severity="0">
+<Description>This DTC is high until pairing with HFM has been succesfully performed</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_TransmissionError" DTC="41904">
+<Mnemonic>DTC_BLM_TransmissionError</Mnemonic>
+
+<Test Type="41" Severity="0">
+<Description>A message received from HFM is incorrect</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_InvalidSecureKey" DTC="41905">
+<Mnemonic>DTC_BLM_InvalidSecureKey</Mnemonic>
+
+<Test Type="41" Severity="0">
+<Description>Cyphered channel secured key send by HFM is invalid (wrong size, etc)</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_SecurePairingNOK" DTC="41899">
+<Mnemonic>DTC_BLM_SecurePairingNOK</Mnemonic>
+
+<Test Type="103" Severity="0">
+<Description>BLE secure paring with a SP has failed for any reason</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_TokenFormatNOK" DTC="41906">
+<Mnemonic>DTC_BLM_TokenFormatNOK</Mnemonic>
+
+<Test Type="103" Severity="0">
+<Description>Token is uncorrectly formated: missing fields,  fields are out of range, uncorrectly formatted etc and verification is impossible</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_CloudSignatureNOK" DTC="41907">
+<Mnemonic>DTC_BLM_CloudSignatureNOK</Mnemonic>
+
+<Test Type="103" Severity="0">
+<Description>A token received is rejected because signature check fails</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_PartnerSignatureNOK" DTC="41908">
+<Mnemonic>DTC_BLM_PartnerSignatureNOK</Mnemonic>
+
+<Test Type="103" Severity="0">
+<Description>A token received is rejected because partner signature check fails</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_InvalidMPUConfig" DTC="41909">
+<Mnemonic>DTC_BLM_InvalidMPUConfig</Mnemonic>
+
+<Test Type="85" Severity="0">
+<Description>A suspend or resume is received while BLM is configured in B2B</Description>
+</Test>
+</Device>
+<Device Name="BCM_CRC_error" DTC="57679">
+<Mnemonic>BCM_CRC_error</Mnemonic>
+
+<Test Type="131" Severity="0">
+<Description>'BCM_CRC_error</Description>
+</Test>
+</Device>
+<Device Name="IVI_CRC_error" DTC="57684">
+<Mnemonic>IVI_CRC_error</Mnemonic>
+
+<Test Type="131" Severity="0">
+<Description>IVI_CRC_error</Description>
+</Test>
+</Device>
+<Device Name="Cluster_CRC_error" DTC="57678">
+<Mnemonic>Cluster_CRC_error</Mnemonic>
+
+<Test Type="131" Severity="0">
+<Description>Cluster_CRC_error</Description>
+</Test>
+</Device>
+<Device Name="VDC_CRC_error" DTC="57672">
+<Mnemonic>VDC_CRC_error</Mnemonic>
+
+<Test Type="131" Severity="0">
+<Description>VDC_CRC_error</Description>
+</Test>
+</Device>
+<Device Name="Bus off" DTC="49273">
+<Mnemonic>Bus off </Mnemonic>
+
+<Test Type="0" Severity="0">
+<Description>Bus off </Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_Internal_failure" DTC="41912">
+<Mnemonic>DTC_BLM_Internal_failure</Mnemonic>
+
+<Test Type="68" Severity="0">
+<Description>DTC_BLM_Internal_failure_RAM</Description>
+</Test><Test Type="69" Severity="0">
+<Description>DTC_BLM_Internal_failure_ROM</Description>
+</Test><Test Type="70" Severity="0">
+<Description>DTC_BLM_Internal_failure_EEPROM</Description>
+</Test><Test Type="71" Severity="0">
+<Description>DTC_BLM_Internal_failure_watchdogFailure</Description>
+</Test><Test Type="1" Severity="0">
+<Description>DTC_BLM_Internal_failure_DATAFLASH </Description>
+</Test><Test Type="85" Severity="0">
+<Description>DTC_BLM_notconfigured</Description>
+</Test><Test Type="73" Severity="0">
+<Description>DTC_BLM_Internal_failure_system</Description>
+</Test>
+</Device>
+<Device Name="DTC_Under_Voltage_BLE-chip" DTC="41913">
+<Mnemonic>DTC_internal_failure</Mnemonic>
+
+<Test Type="162" Severity="0">
+<Description>Voltage under the threshold</Description>
+</Test><Test Type="1" Severity="0">
+<Description>DTC_Internal_failure_BLEchip </Description>
+</Test>
+</Device>
+<Device Name="DTC_Internal_failure ASIC" DTC="41914">
+<Mnemonic>DTC_Internal_failure ASIC </Mnemonic>
+
+<Test Type="71" Severity="0">
+<Description>DTC_Internal_failure ASIC </Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_'CPU" DTC="41915">
+<Mnemonic>DTC_BLM_'CPU</Mnemonic>
+
+<Test Type="71" Severity="0">
+<Description>DTC_BLM_'CPU</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_internal_failure_antennas" DTC="41916">
+<Mnemonic>DTC_BLM_intenal _failure_Anthennas</Mnemonic>
+
+<Test Type="1" Severity="0">
+<Description>DTC_BLM_intenal _failure_Anthennas</Description>
+</Test>
+</Device>
+<Device Name="Bluetooth comunication error failure" DTC="41917">
+<Mnemonic>Bluetooth comunication error failure </Mnemonic>
+
+<Test Type="49" Severity="0">
+<Description>Bluetooth comunication error failure </Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_supply_short circuit to battery" DTC="41918">
+<Mnemonic>DTC_BLM_supply_short circuit to battery</Mnemonic>
+
+<Test Type="18" Severity="0">
+<Description>DTC_BLM_supply_short circuit to battery</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_supply_short circuit to ground or open" DTC="41919">
+<Mnemonic>DTC_BLM_supply_short circuit to ground or open</Mnemonic>
+
+<Test Type="20" Severity="0">
+<Description>DTC_BLM_supply_short circuit to ground or open</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_ground_Short circuit to ground or open" DTC="41897">
+<Mnemonic>DTC_BLM_ground_Short circuit to ground or open</Mnemonic>
+
+<Test Type="20" Severity="0">
+<Description>DTC_BLM_ground_Short circuit to ground or open</Description>
+</Test>
+</Device>
+<Device Name="DTC_BLM_ground_Short circuit to battery" DTC="41896">
+<Mnemonic>DTC_BLM_ground_Short circuit to battery</Mnemonic>
+
+<Test Type="18" Severity="0">
+<Description>DTC_BLM_ground_Short circuit to battery</Description>
+</Test>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"/></ddt:Target></xml>

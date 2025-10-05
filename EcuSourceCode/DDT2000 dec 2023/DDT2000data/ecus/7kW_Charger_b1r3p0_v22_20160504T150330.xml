@@ -1,0 +1,2389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.2.0.0" date="2016-05-04T14:45"/>
+<ddt:Target Name="7kW_Charger_b1r3p0_v22" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="stefan.monin@renault.com" href="7kW_Charger_b1r3p0_v22_20160504T150330.xml" upload="5/4/2016" group="7kW_Charger"><Description><![CDATA[Source : Central database / Engineering / Norme 36-00-013b :
+	Request for reading service 19 in specification B
+
+	By Christophe CANDAS
+	Sce : 65676
+
+	2011-04-20 : Add Template description in receive request
+
+================================================================
+
+v1.0 (09/02/2015) : Created by Gilles BRUST for 7kW charger project (b1r2p0 sw, soft number = 0103 or 0104)
+v2.0 (11/02/2015) : G.BRUST.  For 7kW charger project (>= b1r3p0 sw, soft number = 0105)
+test
+v2.1 (25/01/2016) : S. MONIN.
+     7kW_Charger_b1r3p0_v20-->7kW_Charger_b1r3p0_v21 (Feb 12, 2016 SMO)
+     - Correction Supplier number 147 --> 93H
+     - Addition of SWs (0105.0100, 0200.0000, 0300.0000, 0300.0100, 0400.0000, 0400.0100, 0401.0000, 0401.0100, 0500.0000, 0500.0100, 0500.0200)
+     - Maintenability removed for some services
+v2.2 (03/05/2016) : S. Monin
+     7kW_Charger_b1r3p0_v20-->7kW_Charger_b1r3p0_v22 (May 3, 2016 SMO)
+     - Maintenability added for DID data
+     - HardwareNumber.BasicPartList and PartNumber.BasicPartList corrected
+     - Addition of SWs (0600.0000, 0600.0100)
+]]></Description>
+<Projects xmlns=""><x07/><x61/><x61Ph2/></Projects>
+<Function Name="BCB" Address="103"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>05/05/2015 08:39:17</DateOfficialisation>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="1938"/>
+</SendId><ReceiveId>
+<CANId Value="1939"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="4" Supplier="93H" Soft="0105" Version="0000"/><AutoIdent DiagVersion="4" Supplier="93H" Soft="0105" Version="0100"/><AutoIdent DiagVersion="4" Supplier="93H" Soft="0200" Version="0000"/><AutoIdent DiagVersion="4" Supplier="93H" Soft="0300" Version="0000"/><AutoIdent DiagVersion="4" Supplier="93H" Soft="0300" Version="0100"/><AutoIdent DiagVersion="4" Supplier="93H" Soft="0400" Version="0000"/><AutoIdent DiagVersion="4" Supplier="93H" Soft="0400" Version="0100"/><AutoIdent DiagVersion="4" Supplier="93H" Soft="0401" Version="0000"/><AutoIdent DiagVersion="4" Supplier="93H" Soft="0401" Version="0100"/><AutoIdent DiagVersion="4" Supplier="93H" Soft="0500" Version="0000"/><AutoIdent DiagVersion="4" Supplier="93H" Soft="0500" Version="0100"/><AutoIdent DiagVersion="4" Supplier="93H" Soft="0500" Version="0200"/><AutoIdent DiagVersion="68" Supplier="93H" Soft="0501" Version="0000"/><AutoIdent DiagVersion="68" Supplier="93H" Soft="0501" Version="0100"/><AutoIdent DiagVersion="4" Supplier="147" Soft="0105" Version="0000"/><AutoIdent DiagVersion="68" Supplier="93H" Soft="0600" Version="0000"/><AutoIdent DiagVersion="68" Supplier="93H" Soft="0600" Version="0100"/></AutoIdents>
+<Datas>
+
+<Data Name="DTCStatusAvailabilityMask">
+<Mnemonic>DTCSAM</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCRecord">
+<Mnemonic>DTCASR_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCMaskRecord">
+<Mnemonic>DTCMREC_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCFailureType.Category">
+<Bits count="4">
+<List>
+<Item Value="0" Text="General Failure Information"/>
+<Item Value="1" Text="General Electrical Failures"/>
+<Item Value="2" Text="General Signal Failures"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="15" Text="Vehicle manufacturer / System supplier specific"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType">
+<Bits>
+<List>
+<Item Value="0" Text="Device and failure type ODB codding"/>
+<Item Value="1" Text="General Electrical Failure"/>
+<Item Value="2" Text="General signal failure"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="17" Text="circuit short to ground"/>
+<Item Value="18" Text="circuit short to battery"/>
+<Item Value="19" Text="circuit open"/>
+<Item Value="20" Text="circuit short to ground or open"/>
+<Item Value="21" Text="circuit short to battery or open"/>
+<Item Value="22" Text="circuit voltage below threshold"/>
+<Item Value="23" Text="circuit voltage above threshold"/>
+<Item Value="24" Text="circuit current below threshold"/>
+<Item Value="25" Text="circuit current above threshold"/>
+<Item Value="26" Text="circuit resistance below threshold"/>
+<Item Value="27" Text="circuit resistance above threshold"/>
+<Item Value="28" Text="circuit voltage out of range"/>
+<Item Value="29" Text="circuit current out of range"/>
+<Item Value="30" Text="circuit resistance out of range"/>
+<Item Value="31" Text="circuit intermittent"/>
+<Item Value="33" Text="signal amplitude &lt; minimum"/>
+<Item Value="34" Text="signal amplitude &gt; maximum"/>
+<Item Value="35" Text="signal stuck low"/>
+<Item Value="36" Text="signal stuck high"/>
+<Item Value="37" Text="signal shape / waveform failure"/>
+<Item Value="38" Text="signal rate of change below threshold"/>
+<Item Value="39" Text="signal rate of change above threshold"/>
+<Item Value="40" Text="signal bias level out of range / zero adjustment failure"/>
+<Item Value="41" Text="signal signal invalid"/>
+<Item Value="47" Text="signal erratic"/>
+<Item Value="49" Text="no signal"/>
+<Item Value="50" Text="signal low time &lt; minimum"/>
+<Item Value="51" Text="signal low time &gt; maximum"/>
+<Item Value="52" Text="signal high time &lt; minimum"/>
+<Item Value="53" Text="signal high time &gt; maximum"/>
+<Item Value="54" Text="signal frequency too low"/>
+<Item Value="55" Text="signal frequency too high"/>
+<Item Value="56" Text="signal frequency incorrect"/>
+<Item Value="57" Text="incorrect has too few pulses"/>
+<Item Value="58" Text="incorrect has too many pulses"/>
+<Item Value="65" Text="general checksum failure"/>
+<Item Value="66" Text="general memory failure"/>
+<Item Value="67" Text="special memory failure"/>
+<Item Value="68" Text="data memory failure"/>
+<Item Value="69" Text="program memory failure"/>
+<Item Value="70" Text="calibration / parameter memory failure"/>
+<Item Value="71" Text="watchdog / safety µC failure"/>
+<Item Value="72" Text="supervision software failure"/>
+<Item Value="73" Text="internal electronic failure"/>
+<Item Value="74" Text="incorrect component installed"/>
+<Item Value="75" Text="over temperature"/>
+<Item Value="81" Text="not programmed"/>
+<Item Value="82" Text="not activated"/>
+<Item Value="83" Text="deactivated"/>
+<Item Value="84" Text="missing calibration"/>
+<Item Value="85" Text="not configured"/>
+<Item Value="97" Text="signal calculation failure"/>
+<Item Value="98" Text="signal compare failure"/>
+<Item Value="99" Text="circuit / component protection time-out"/>
+<Item Value="100" Text="signal plausibility failure"/>
+<Item Value="101" Text="signal has too few transitions / events"/>
+<Item Value="102" Text="signal has too many transitions / events"/>
+<Item Value="103" Text="signal incorrect after event"/>
+<Item Value="104" Text="event information"/>
+<Item Value="113" Text="actuator stuck"/>
+<Item Value="114" Text="actuator stuck open"/>
+<Item Value="115" Text="actuator stuck closed"/>
+<Item Value="116" Text="actuator slipping"/>
+<Item Value="117" Text="emergency position not reachable"/>
+<Item Value="118" Text="wrong mounting position"/>
+<Item Value="119" Text="commanded position not reachable"/>
+<Item Value="120" Text="alignment or adjustment incorrect"/>
+<Item Value="121" Text="mechanical linkage failure"/>
+<Item Value="122" Text="fluid leak or seal failure"/>
+<Item Value="123" Text="low fluid level"/>
+<Item Value="129" Text="invalid serial data received"/>
+<Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+<Item Value="131" Text="value of signal protection calculation incorrect"/>
+<Item Value="132" Text="signal below allowable range"/>
+<Item Value="133" Text="signal above allowable range"/>
+<Item Value="134" Text="signal invalid"/>
+<Item Value="135" Text="missing message"/>
+<Item Value="136" Text="bus off"/>
+<Item Value="143" Text="erratic"/>
+<Item Value="145" Text="parametric"/>
+<Item Value="146" Text="performance or incorrect operation"/>
+<Item Value="147" Text="no operation"/>
+<Item Value="148" Text="unexpected operation"/>
+<Item Value="149" Text="incorrect assembly"/>
+<Item Value="150" Text="component internal failure"/>
+<Item Value="151" Text="Component or system operation obstructed or blocked"/>
+<Item Value="152" Text="component or system over temperature"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.pendingDTC">
+<Mnemonic>PDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.confirmedDTC">
+<Mnemonic>CDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedSinceLastClear">
+<Mnemonic>TNCSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedSinceLastClear">
+<Mnemonic>TFSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+<Mnemonic>TNCTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.warningIndicatorRequested">
+<Mnemonic>WIR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCExtendedDataRecordNumber">
+<Mnemonic>DTCEDRN</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Mileage"/>
+<Item Value="129" Text="AgingCounter"/>
+<Item Value="130" Text="DTCOccurrenceCounter"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceAndFailureTypeOBD">
+<Bits count="16">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCDeviceIdentifier">
+<Bits count="16">
+<List>
+<Item Value="1616" Text="Supply voltage"/>
+<Item Value="1617" Text="AC input"/>
+<Item Value="1618" Text="DC Interlock"/>
+<Item Value="1619" Text="AC Interlock"/>
+<Item Value="1620" Text="HVDC"/>
+<Item Value="1621" Text="Water temperature"/>
+<Item Value="1622" Text="Magnetic temperature"/>
+<Item Value="1623" Text="Charging unit"/>
+<Item Value="1624" Text="PFC - Bulk"/>
+<Item Value="1625" Text="LLC"/>
+<Item Value="1626" Text="Rectifier"/>
+<Item Value="1627" Text="CAN ETS"/>
+<Item Value="1628" Text="Sacha"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedThisMonitoringCycle">
+<Mnemonic>TFTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailed">
+<Mnemonic>TF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.ManufacturerOrSupplier">
+<Bits count="4">
+<List/>
+</Bits>
+</Data>
+<Data Name="StatusOfDTC">
+<Mnemonic>DTCASR_SODTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.Mileage">
+<Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>MILEAGE</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.AgingCounter">
+<Comment><![CDATA[Description of the extendedData AgingCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>AGINGCOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.DTCOccurrenceCounter">
+<Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="RoutineEntryOption">
+<Comment><![CDATA[= "Routine" input parameters]]></Comment>
+<Mnemonic>RENTOPT1</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Start"/>
+<Item Value="1" Text="Status"/></List>
+</Bits>
+</Data>
+<Data Name="RoutineEntryStatus">
+<Mnemonic>RENTSTAT1</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="In progress"/>
+<Item Value="2" Text="Complete and OK"/>
+<Item Value="3" Text="Complete and not OK"/></List>
+</Bits>
+</Data>
+<Data Name="WaterInletTemperature">
+<Mnemonic>WaterInletTemperature</Mnemonic>
+<Bits>
+<Scaled Unit="°C" Offset="-50"/>
+</Bits>
+</Data>
+<Data Name="WaterOutletTemperature">
+<Mnemonic>WaterOutletTemperature</Mnemonic>
+<Bits>
+<Scaled Unit="°C" Offset="-50"/>
+</Bits>
+</Data>
+<Data Name="VehicleManufacturerSparePartNumber">
+<Mnemonic>VehicleManufacturerSparePartNumber</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="bootSoftwareIdentification">
+<Bytes count="5"/>
+</Data>
+<Data Name="SessionName">
+<Bits>
+<List>
+<Item Value="129" Text="DefaultSession"/>
+<Item Value="133" Text="ProgrammingSession"/>
+<Item Value="134" Text="DevelopmentSession"/>
+<Item Value="192" Text="ExtendedDiagnosticSession"/></List>
+</Bits>
+</Data>
+<Data Name="ApprovalNumber.BasicPartList">
+<Mnemonic>APPROVAL_NUMBER_BASIC_PART_LIST</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="1" Text="8200x"/></List>
+</Bits>
+</Data>
+<Data Name="CalibrationNumber">
+<Mnemonic>CALIBRATION_NUMBER</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="DiagnosticIdentificationCode">
+<Comment><![CDATA[Diag evolution number]]></Comment>
+<Mnemonic>DIAGNOSTIC_IDENTIFICATION_CODE</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="EditionNumber">
+<Comment><![CDATA[Software version(edition) number]]></Comment>
+<Mnemonic>EDITION_NUMBER</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="HardwareNumber.BasicPartList">
+<Mnemonic>HARDWARE_NUMBER_BASIC_PART_LIST</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="1" Text="29609"/></List>
+</Bits>
+</Data>
+<Data Name="HardwareNumber.LowerPart">
+<Mnemonic>HARDWARE_NUMBER_LOWER_PART</Mnemonic>
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="ManufacturerIdentificationCode">
+<Mnemonic>MANUFACTURER_IDENTIFICATION_CODE</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Renault R1"/>
+<Item Value="128" Text="Nissan N1"/>
+<Item Value="129" Text="Nissan N2"/>
+<Item Value="130" Text="Nissan N3"/>
+<Item Value="136" Text="5DIGITS"/>
+<Item Value="255" Text="Renault R3"/></List>
+</Bits>
+</Data>
+<Data Name="PartNumber.BasicPartList">
+<Mnemonic>PART_NUMBER_BASIC_PART_LIST</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="1" Text="296A1"/>
+<Item Value="2" Text="296C7"/></List>
+</Bits>
+</Data>
+<Data Name="PartNumber.LowerPart">
+<Mnemonic>PART_NUMBER_LOWER_PART</Mnemonic>
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="SoftwareNumber">
+<Comment><![CDATA[Software identification number]]></Comment>
+<Mnemonic>SOFTWARE_NUMBER</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="SupplierNumber.ITG">
+<Comment><![CDATA[Supplier ITG code]]></Comment>
+<Mnemonic>SUPPLIER_NUMBER_ITG</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Hardware Part Number 1">
+<Comment><![CDATA[Daimler Hardware Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Hardware Part Number 2">
+<Comment><![CDATA[Daimler Hardware Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Hardware Part Number 3">
+<Comment><![CDATA[Daimler Hardware Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Hardware Part Number 4">
+<Comment><![CDATA[Daimler Hardware Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Hardware Part Number 5">
+<Comment><![CDATA[Daimler Hardware Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Hardware Part Number 6">
+<Comment><![CDATA[Daimler Hardware Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Hardware Part Number 7">
+<Comment><![CDATA[Daimler Hardware Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Hardware Part Number 8">
+<Comment><![CDATA[Daimler Hardware Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Hardware Part Number 9">
+<Comment><![CDATA[Daimler Hardware Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Hardware Part Number 10">
+<Comment><![CDATA[Daimler Hardware Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Software Part Number 1">
+<Comment><![CDATA[Daimler Software Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Software Part Number 2">
+<Comment><![CDATA[Daimler Software Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Software Part Number 3">
+<Comment><![CDATA[Daimler Software Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Software Part Number 4">
+<Comment><![CDATA[Daimler Software Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Software Part Number 5">
+<Comment><![CDATA[Daimler Software Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Software Part Number 6">
+<Comment><![CDATA[Daimler Software Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Software Part Number 7">
+<Comment><![CDATA[Daimler Software Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Software Part Number 8">
+<Comment><![CDATA[Daimler Software Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Software Part Number 9">
+<Comment><![CDATA[Daimler Software Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="DELTA internal _ AC input.ACInputCurrentRail1">
+<Mnemonic>DI_ACInputCurrentRail1</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ AC input.ACInputCurrentRail2">
+<Mnemonic>DI_ACInputCurrentRail2</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ AC input.ACInputFrequency">
+<Mnemonic>DI_ACInputFrequency</Mnemonic>
+<Bits count="16">
+<Scaled Unit="Hz"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ AC input.ACInputPowerRail1">
+<Mnemonic>DI_ACInputPowerRail1</Mnemonic>
+<Bits count="16">
+<Scaled Unit="W" Step=" .5"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ AC input.ACInputPowerRail2">
+<Mnemonic>DI_ACInputPowerRail2</Mnemonic>
+<Bits count="16">
+<Scaled Unit="W" Step=" .5"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ AC input.ACInputVoltage">
+<Mnemonic>DI_ACInputVoltage</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ AC input.BulkVoltageRail1">
+<Mnemonic>DI_BulkVoltageRail1</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ AC input.BulkVoltageRail2">
+<Mnemonic>DI_BulkVoltageRail2</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ Access KEY">
+<Mnemonic>DI_Access KEY</Mnemonic>
+<Bytes count="6"/>
+</Data>
+<Data Name="DELTA internal _ Class E Fault">
+<Mnemonic>DI_Class E Fault</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="DELTA internal _ DEBUG status">
+<Mnemonic>DI_DEBUG status</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="DELTA internal _ HSK status">
+<Mnemonic>DI_HSK status</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="DELTA internal _ HVDC output.HVOutputCurrent">
+<Mnemonic>DI_HVOutputCurrent</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ HVDC output.HVOutputCurrentRail1">
+<Mnemonic>DI_HVOutputCurrentRail1</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ HVDC output.HVOutputCurrentRail2">
+<Mnemonic>DI_HVOutputCurrentRail2</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ HVDC output.HVOutputPower">
+<Mnemonic>DI_HVOutputPower</Mnemonic>
+<Bits count="16">
+<Scaled Unit="W" Step=" .5"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ HVDC output.HVVoltage">
+<Mnemonic>DI_HVVoltage</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ HVDC output.HVVoltageRail1">
+<Mnemonic>DI_HVVoltageRail1</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ HVDC output.HVVoltageRail2">
+<Mnemonic>DI_HVVoltageRail2</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ OBC Status.ChargeModeStatus">
+<Mnemonic>DI_ChargeModeStatus</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="DELTA internal _ OBC Status.HSKStatus">
+<Mnemonic>DI_HSKStatus</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="DELTA internal _ OBC Status.HVCurrentSetValue">
+<Mnemonic>DI_HVCurrentSetValue</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ OBC Status.HVVoltageSetValue">
+<Mnemonic>DI_HVVoltageSetValue</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ OBC Status.PowerControlState">
+<Mnemonic>DI_PowerControlState</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Unavailable"/>
+<Item Value="1" Text="Not Ready"/>
+<Item Value="2" Text="Ready"/>
+<Item Value="3" Text="Error C"/>
+<Item Value="4" Text="Error D"/>
+<Item Value="5" Text="Error E"/>
+<Item Value="255" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ OBC Status.PowerDeratingStatus">
+<Mnemonic>DI_PowerDeratingStatus</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Unavailable"/>
+<Item Value="1" Text="OFF"/>
+<Item Value="2" Text="AC Temperature"/>
+<Item Value="3" Text="AC OverTemperature"/>
+<Item Value="4" Text="AC Voltage"/>
+<Item Value="5" Text="HV Voltage"/>
+<Item Value="6" Text="HV OverTemperature"/>
+<Item Value="7" Text="AC UnderVoltage"/>
+<Item Value="8" Text="AC OverVoltage"/>
+<Item Value="9" Text="HV UnderVoltage"/>
+<Item Value="10" Text="HV OverVoltage"/>
+<Item Value="11" Text="AC OverVoltage Error"/>
+<Item Value="12" Text="HV OverVoltage Error"/>
+<Item Value="13" Text="HV Temperature"/>
+<Item Value="14" Text="HV neg. Temperature"/></List>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ OBC Status.PowerStageState">
+<Mnemonic>DI_PowerStageState</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Unavailable"/>
+<Item Value="1" Text="Disabled"/>
+<Item Value="2" Text="Ready"/>
+<Item Value="4" Text="Fault"/>
+<Item Value="85" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ Software version.BootloaderVersion">
+<Mnemonic>DI_BootloaderVersion</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="DELTA internal _ Software version.SoftwareVersion">
+<Mnemonic>DI_SoftwareVersion</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="DELTA internal _ Temperature.AmbientTemperature">
+<Mnemonic>DI_AmbientTemperature</Mnemonic>
+<Bits>
+<Scaled Unit="°C" Offset="-50"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ Temperature.LLCMagneticTemperature">
+<Mnemonic>DI_LLCMagneticTemperature</Mnemonic>
+<Bits>
+<Scaled Unit="°C" Offset="-50"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ Temperature.WaterInletTemperature">
+<Mnemonic>DI_WaterInletTemperature</Mnemonic>
+<Bits>
+<Scaled Unit="°C" Offset="-50"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ Temperature.WaterOutletTemperature">
+<Mnemonic>DI_WaterOutletTemperature</Mnemonic>
+<Bits>
+<Scaled Unit="°C" Offset="-50"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ Terminal 30 voltage">
+<Mnemonic>DI_Terminal30Voltage</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="DELTA internal _ Traceability.BuildingDay">
+<Mnemonic>DI_BuildingDay</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="DELTA internal _ Traceability.BuildingYear">
+<Mnemonic>DI_BuildingYear</Mnemonic>
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="DELTA internal _ Traceability.IncrementNumberInTheDay">
+<Mnemonic>DI_IncrementNumberInTheDay</Mnemonic>
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="DELTA internal _ Traceability.PaddingCharacter">
+<Mnemonic>DI_PaddingCharacter</Mnemonic>
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="DELTA internal _ Traceability.RefOfLineAB">
+<Mnemonic>DI_RefOfLineAB</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="DELTA internal _ VIN.VIN">
+<Mnemonic>DI_VIN</Mnemonic>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="DELTA internal _ VIN.VINCRC">
+<Mnemonic>DI_VINCRC</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="DELTA internal _ XCP status">
+<Mnemonic>DI_XCP status</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="Software Part Number 10">
+<Comment><![CDATA[Daimler Software Part Number]]></Comment>
+<Mnemonic>LID $EF</Mnemonic>
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="CRC">
+<Comment><![CDATA[Vehicle Identification Number Checksum]]></Comment>
+<Mnemonic>VIN_CKS</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="V.I.N">
+<Comment><![CDATA[Vehicle Identification Number : 17 bytes]]></Comment>
+<Mnemonic>VIN_i</Mnemonic>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="ITG Supplier Number">
+<Bytes count="3"/>
+</Data>
+<Data Name="Traceability Factory Code">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="Terminal 30 voltage">
+<Mnemonic>Terminal30Voltage</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="SafeState">
+<Mnemonic>SafeState</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="PowerStageState">
+<Mnemonic>PowerStageState</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Unavailable"/>
+<Item Value="1" Text="Disabled"/>
+<Item Value="2" Text="Ready"/>
+<Item Value="4" Text="Fault"/>
+<Item Value="85" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="PowerControlState">
+<Mnemonic>PowerControlState</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Unavailable"/>
+<Item Value="1" Text="Not Ready"/>
+<Item Value="2" Text="Ready"/>
+<Item Value="3" Text="Error C"/>
+<Item Value="4" Text="Error D"/>
+<Item Value="5" Text="Error E"/>
+<Item Value="255" Text="Active"/></List>
+</Bits>
+</Data>
+<Data Name="SignalWaveformFailureIndicator">
+<Mnemonic>SignalWaveformFailureIndicator</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Not active"/>
+<Item Value="1" Text="Active"/>
+<Item Value="2" Text="SNA"/></List>
+</Bits>
+</Data>
+<Data Name="HVVoltage">
+<Mnemonic>HVVoltage</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="HVVoltageRail1">
+<Mnemonic>HVVoltageRail1</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="HVVoltageRail2">
+<Mnemonic>HVVoltageRail2</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="HVOutputCurrent">
+<Mnemonic>HVOutputCurrent</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="HVOutputCurrentRail1">
+<Mnemonic>HVOutputCurrentRail1</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="HVOutputCurrentRail2">
+<Mnemonic>HVOutputCurrentRail2</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="HVOutputPower">
+<Mnemonic>HVOutputPower</Mnemonic>
+<Bits count="16">
+<Scaled Unit="W" Step=" .5"/>
+</Bits>
+</Data>
+<Data Name="LLCMagneticTemperature">
+<Mnemonic>LLCMagneticTemperature</Mnemonic>
+<Bits>
+<Scaled Unit="°C" Offset="-50"/>
+</Bits>
+</Data>
+<Data Name="SACHA_WakeUpSleepCommand">
+<Mnemonic>SACHA_WakeUpSleepCommand</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Go to sleep"/>
+<Item Value="3" Text="Wake up"/></List>
+</Bits>
+</Data>
+<Data Name="PowerDeratingStatus">
+<Mnemonic>PowerDeratingStatus</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Unavailable"/>
+<Item Value="1" Text="OFF"/>
+<Item Value="2" Text="AC Temperature"/>
+<Item Value="3" Text="AC OverTemperature"/>
+<Item Value="4" Text="AC Voltage"/>
+<Item Value="5" Text="HV Voltage"/>
+<Item Value="6" Text="HV OverTemperature"/>
+<Item Value="7" Text="AC UnderVoltage"/>
+<Item Value="8" Text="AC OverVoltage"/>
+<Item Value="9" Text="HV UnderVoltage"/>
+<Item Value="10" Text="HV OverVoltage"/>
+<Item Value="11" Text="AC OverVoltage Error"/>
+<Item Value="12" Text="HV OverVoltage Error"/>
+<Item Value="13" Text="HV Temperature"/>
+<Item Value="14" Text="HV neg. Temperature"/></List>
+</Bits>
+</Data>
+<Data Name="MainsRMSCurrent">
+<Mnemonic>MainsRMSCurrent</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="MainsRMSVoltage">
+<Mnemonic>MainsRMSVoltage</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .5"/>
+</Bits>
+</Data>
+<Data Name="SoftwareVersion">
+<Mnemonic>SoftwareVersion</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="Traceability Serial Number">
+<Bytes count="12" ascii="1"/>
+</Data>
+<Data Name="DTCExtendedData.DTCOccurrenceCounter_2">
+<Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>DTCOCCURENCECOUNTER:Stx_frq_dyn</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.DTCLastDiseappearMileage">
+<Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>MILEAGE:Stx_km_pass_dyn</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.DTCTravelledDistanceFailurePresent">
+<Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>MILEAGE:Stx_dist_fail_dyn</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="CHGFailure">
+<Mnemonic>CHGFailure</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="No CHG Failure"/>
+<Item Value="1" Text="Warning CHG Failure"/>
+<Item Value="2" Text="High CHG Failure"/>
+<Item Value="3" Text="Unavailable value"/></List>
+</Bits>
+</Data>
+<Data Name="CHGFault_Type">
+<Mnemonic>CHGFault_Type</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="CHGLoadState">
+<Mnemonic>CHGLoadState</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Unavailable value"/>
+<Item Value="1" Text="Charge"/>
+<Item Value="4" Text="Standby"/></List>
+</Bits>
+</Data>
+<Data Name="CHGRequestFromSacha">
+<Mnemonic>CHGRequestFromSacha</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="Charge"/>
+<Item Value="2" Text="Power ON"/>
+<Item Value="4" Text="Standby"/>
+<Item Value="7" Text="Unavailable value"/></List>
+</Bits>
+</Data>
+<Data Name="BulkVoltageRail1">
+<Mnemonic>BulkVoltageRail1</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="BulkVoltageRail2">
+<Mnemonic>BulkVoltageRail2</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="ACInputCurrentRail1">
+<Mnemonic>ACInputCurrentRail1</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="ACInputCurrentRail2">
+<Mnemonic>ACInputCurrentRail2</Mnemonic>
+<Bits count="16">
+<Scaled Unit="A" Step=" .1"/>
+</Bits>
+</Data>
+<Data Name="ACInputFrequency">
+<Mnemonic>ACInputFrequency</Mnemonic>
+<Bits count="16">
+<Scaled Unit="Hz"/>
+</Bits>
+</Data>
+<Data Name="CHGDCOutInterlockState">
+<Mnemonic>CHGDCOutInterlockState</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Unavailable value"/>
+<Item Value="1" Text="Interlock OPEN"/>
+<Item Value="2" Text="Interlock CLOSED"/></List>
+</Bits>
+</Data>
+<Data Name="CHGDCOutInterlockValue">
+<Mnemonic>CHGDCOutInterlockValue</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="CHGLoadingInterlockState">
+<Mnemonic>CHGLoadingInterlockState</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Unavailable value"/>
+<Item Value="1" Text="Interlock OPEN"/>
+<Item Value="2" Text="Interlock CLOSED"/></List>
+</Bits>
+</Data>
+<Data Name="CHGLoadingInterlockValue">
+<Mnemonic>CHGLoadingInterlockValue</Mnemonic>
+<Bits count="16">
+<Scaled Unit="V" Step=" .01"/>
+</Bits>
+</Data>
+<Data Name="ACInputPowerRail1">
+<Mnemonic>ACInputPowerRail1</Mnemonic>
+<Bits count="16">
+<Scaled Unit="W" Step=" .5"/>
+</Bits>
+</Data>
+<Data Name="ACInputPowerRail2">
+<Mnemonic>ACInputPowerRail2</Mnemonic>
+<Bits count="16">
+<Scaled Unit="W" Step=" .5"/>
+</Bits>
+</Data>
+<Data Name="CHGWaterTemp">
+<Mnemonic>CHGWaterTemp</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CHGTemp">
+<Mnemonic>CHGTemp</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="CHGAvailableChargingPower">
+<Mnemonic>CHGAvailableChargingPower</Mnemonic>
+<Bits count="16">
+<Scaled Unit="W" Step=" .025"/>
+</Bits>
+</Data>
+<Data Name="CANHardwareErrorCounter">
+<Mnemonic>CANHardwareErrorCounter</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BootloaderVersion">
+<Mnemonic>BootloaderVersion</Mnemonic>
+<Bytes count="4"/>
+</Data>
+<Data Name="DTCExtendedData.DTCFirstAppearMileage">
+<Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>MILEAGE:Stx_km_mf_dyn</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="ReadDTCInformation.ReportDTC">
+
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1902FF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+<DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData">
+
+<Comment><![CDATA[DDT2000 Failures page requests : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1906000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590600000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter_2" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.DTCFirstAppearMileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.DTCLastDiseappearMileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.DTCTravelledDistanceFailurePresent" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSnapshot">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1904000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590400000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ClearDiagnosticInformation.All">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+<Sent>
+<SentBytes>14FFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>54</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.bootSoftwareIdentification">
+
+<Comment><![CDATA[Service 22 request begin by DataRead.]]></Comment>
+<Sent>
+<SentBytes>22F180</SentBytes>
+</Sent>
+<Received MinBytes="8">
+<ReplyBytes>62F1800000000000</ReplyBytes>
+<DataItem Name="bootSoftwareIdentification" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="FailuresDetect.All">
+
+<ManuelSend/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import (Conditional)]]></Comment>
+<Sent>
+<SentBytes>310100</SentBytes>
+<DataItem Name="RoutineEntryOption" FirstByte="3"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710100</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000080</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>59060000000080000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.AgingCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000081</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="8">
+<ReplyBytes>5906000000008100</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.DTCOccurrenceCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000082</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="8">
+<ReplyBytes>5906000000008200</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+<Sent>
+<SentBytes>3E01</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="SessionName" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50C0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Default">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1081</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5081</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Programming">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>1085</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5085</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportDTC_CPDD Import">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT]]></Comment>
+<Sent>
+<SentBytes>1902FF</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+<DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="DataRead.Identification.RenaultR2">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>6180000000000000000000000000000000000000000000000000</ReplyBytes>
+<DataItem Name="ApprovalNumber.BasicPartList" Ref="1" FirstByte="25"/>
+<DataItem Name="CalibrationNumber" Ref="1" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" Ref="1" FirstByte="8"/>
+<DataItem Name="EditionNumber" Ref="1" FirstByte="19"/>
+<DataItem Name="HardwareNumber.BasicPartList" Ref="1" FirstByte="24"/>
+<DataItem Name="HardwareNumber.LowerPart" Ref="1" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" Ref="1" FirstByte="26"/>
+<DataItem Name="PartNumber.BasicPartList" Ref="1" FirstByte="23"/>
+<DataItem Name="PartNumber.LowerPart" Ref="1" FirstByte="3"/>
+<DataItem Name="SoftwareNumber" Ref="1" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" Ref="1" FirstByte="9"/>
+</Received>
+</Request>
+<Request Name="DataRead.Daimler system identification">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDataByLocalIdentifier - Daimler system identification]]></Comment>
+<Sent>
+<SentBytes>21EF</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>61EF0000000000000000000000000000000000000000</ReplyBytes>
+<DataItem Name="Hardware Part Number 1" Ref="1" FirstByte="3"/>
+<DataItem Name="Hardware Part Number 2" Ref="1" FirstByte="4"/>
+<DataItem Name="Hardware Part Number 3" Ref="1" FirstByte="5"/>
+<DataItem Name="Hardware Part Number 4" Ref="1" FirstByte="6"/>
+<DataItem Name="Hardware Part Number 5" Ref="1" FirstByte="7"/>
+<DataItem Name="Hardware Part Number 6" Ref="1" FirstByte="8"/>
+<DataItem Name="Hardware Part Number 7" Ref="1" FirstByte="9"/>
+<DataItem Name="Hardware Part Number 8" Ref="1" FirstByte="10"/>
+<DataItem Name="Hardware Part Number 9" Ref="1" FirstByte="11"/>
+<DataItem Name="Hardware Part Number 10" Ref="1" FirstByte="12"/>
+<DataItem Name="Software Part Number 1" Ref="1" FirstByte="13"/>
+<DataItem Name="Software Part Number 2" Ref="1" FirstByte="14"/>
+<DataItem Name="Software Part Number 3" Ref="1" FirstByte="15"/>
+<DataItem Name="Software Part Number 4" Ref="1" FirstByte="16"/>
+<DataItem Name="Software Part Number 5" Ref="1" FirstByte="17"/>
+<DataItem Name="Software Part Number 6" Ref="1" FirstByte="18"/>
+<DataItem Name="Software Part Number 7" Ref="1" FirstByte="19"/>
+<DataItem Name="Software Part Number 8" Ref="1" FirstByte="20"/>
+<DataItem Name="Software Part Number 9" Ref="1" FirstByte="21"/>
+<DataItem Name="Software Part Number 10" Ref="1" FirstByte="22"/>
+</Received>
+</Request>
+<Request Name="DataRead.DELTA internal _ AC input">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>227303</SentBytes>
+</Sent>
+<Received MinBytes="19">
+<ReplyBytes>627303</ReplyBytes>
+<DataItem Name="DELTA internal _ AC input.ACInputVoltage" Ref="1" FirstByte="4"/>
+<DataItem Name="DELTA internal _ AC input.BulkVoltageRail1" Ref="1" FirstByte="6"/>
+<DataItem Name="DELTA internal _ AC input.BulkVoltageRail2" Ref="1" FirstByte="8"/>
+<DataItem Name="DELTA internal _ AC input.ACInputCurrentRail1" Ref="1" FirstByte="10"/>
+<DataItem Name="DELTA internal _ AC input.ACInputCurrentRail2" Ref="1" FirstByte="12"/>
+<DataItem Name="DELTA internal _ AC input.ACInputFrequency" Ref="1" FirstByte="14"/>
+<DataItem Name="DELTA internal _ AC input.ACInputPowerRail1" Ref="1" FirstByte="16"/>
+<DataItem Name="DELTA internal _ AC input.ACInputPowerRail2" Ref="1" FirstByte="18"/>
+</Received>
+</Request>
+<Request Name="DataRead.DELTA internal _ Software version">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220120</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<ReplyBytes>620120</ReplyBytes>
+<DataItem Name="DELTA internal _ Software version.SoftwareVersion" Ref="1" FirstByte="4"/>
+<DataItem Name="DELTA internal _ Software version.BootloaderVersion" Ref="1" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="DataRead.DELTA internal _ Access KEY">
+
+<Comment><![CDATA[Read DELTA internal - Access KEY]]></Comment>
+<Sent>
+<SentBytes>227000</SentBytes>
+</Sent>
+<Received MinBytes="9">
+<ReplyBytes>627000</ReplyBytes>
+<DataItem Name="DELTA internal _ Access KEY" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.DELTA internal _ Access KEY">
+
+<ManuelSend/>
+<Comment><![CDATA[Write DELTA internal - Access KEY]]></Comment>
+<Sent>
+<SentBytes>2E7000000000000000</SentBytes>
+<DataItem Name="DELTA internal _ Access KEY" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E7000</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.DELTA internal _ Traceability">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>227201</SentBytes>
+</Sent>
+<Received MinBytes="23">
+<ReplyBytes>627201</ReplyBytes>
+<DataItem Name="DELTA internal _ Traceability.BuildingYear" Ref="1" FirstByte="4"/>
+<DataItem Name="DELTA internal _ Traceability.BuildingDay" Ref="1" FirstByte="6"/>
+<DataItem Name="DELTA internal _ Traceability.IncrementNumberInTheDay" Ref="1" FirstByte="9"/>
+<DataItem Name="DELTA internal _ Traceability.RefOfLineAB" Ref="1" FirstByte="13"/>
+<DataItem Name="DELTA internal _ Traceability.PaddingCharacter" Ref="1" FirstByte="14"/>
+</Received>
+</Request>
+<Request Name="DataRead.DELTA internal _ VIN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>227202</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>627202</ReplyBytes>
+<DataItem Name="DELTA internal _ VIN.VIN" Ref="1" FirstByte="4"/>
+<DataItem Name="DELTA internal _ VIN.VINCRC" Ref="1" FirstByte="21"/>
+</Received>
+</Request>
+<Request Name="DataRead.DELTA internal _ XCP status">
+
+<Comment><![CDATA[Read DELTA internal - XCP status]]></Comment>
+<Sent>
+<SentBytes>227210</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>627210</ReplyBytes>
+<DataItem Name="DELTA internal _ XCP status" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.DELTA internal _ XCP status">
+
+<ManuelSend/>
+<Comment><![CDATA[Write DELTA internal - XCP status]]></Comment>
+<Sent>
+<SentBytes>2E721000</SentBytes>
+<DataItem Name="DELTA internal _ XCP status" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E7210</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.DELTA internal _ DEBUG status">
+
+<Comment><![CDATA[Read DELTA internal - DEBUG status]]></Comment>
+<Sent>
+<SentBytes>227211</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>627211</ReplyBytes>
+<DataItem Name="DELTA internal _ DEBUG status" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.DELTA internal _ DEBUG status">
+
+<ManuelSend/>
+<Comment><![CDATA[Write DELTA internal - DEBUG status]]></Comment>
+<Sent>
+<SentBytes>2E721100</SentBytes>
+<DataItem Name="DELTA internal _ DEBUG status" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E7211</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.DELTA internal _ HSK status">
+
+<Comment><![CDATA[Read DELTA internal - HSK status]]></Comment>
+<Sent>
+<SentBytes>227212</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>627212</ReplyBytes>
+<DataItem Name="DELTA internal _ HSK status" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.DELTA internal _ HSK status">
+
+<ManuelSend/>
+<Comment><![CDATA[Write DELTA internal - HSK status]]></Comment>
+<Sent>
+<SentBytes>2E721200</SentBytes>
+<DataItem Name="DELTA internal _ HSK status" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E7212</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.DELTA internal _ Class E Fault">
+
+<Comment><![CDATA[Read DELTA internal - Class E Fault]]></Comment>
+<Sent>
+<SentBytes>227213</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>627213</ReplyBytes>
+<DataItem Name="DELTA internal _ Class E Fault" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataWrite.DELTA internal _ Class E Fault">
+
+<ManuelSend/>
+<Comment><![CDATA[Write DELTA internal - Class E Fault]]></Comment>
+<Sent>
+<SentBytes>2E721300</SentBytes>
+<DataItem Name="DELTA internal _ Class E Fault" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E7213</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.DELTA internal _ Temperature">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>227300</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>627300</ReplyBytes>
+<DataItem Name="DELTA internal _ Temperature.WaterInletTemperature" Ref="1" FirstByte="4"/>
+<DataItem Name="DELTA internal _ Temperature.WaterOutletTemperature" Ref="1" FirstByte="5"/>
+<DataItem Name="DELTA internal _ Temperature.LLCMagneticTemperature" Ref="1" FirstByte="6"/>
+<DataItem Name="DELTA internal _ Temperature.AmbientTemperature" Ref="1" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.DELTA internal _ Terminal 30 voltage">
+
+<Comment><![CDATA[Read DELTA internal - Terminal 30 voltage]]></Comment>
+<Sent>
+<SentBytes>227301</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>627301</ReplyBytes>
+<DataItem Name="DELTA internal _ Terminal 30 voltage" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.DELTA internal _ HVDC output">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>227304</SentBytes>
+</Sent>
+<Received MinBytes="17">
+<ReplyBytes>627304</ReplyBytes>
+<DataItem Name="DELTA internal _ HVDC output.HVVoltage" Ref="1" FirstByte="4"/>
+<DataItem Name="DELTA internal _ HVDC output.HVVoltageRail1" Ref="1" FirstByte="6"/>
+<DataItem Name="DELTA internal _ HVDC output.HVVoltageRail2" Ref="1" FirstByte="8"/>
+<DataItem Name="DELTA internal _ HVDC output.HVOutputCurrent" Ref="1" FirstByte="10"/>
+<DataItem Name="DELTA internal _ HVDC output.HVOutputCurrentRail1" Ref="1" FirstByte="12"/>
+<DataItem Name="DELTA internal _ HVDC output.HVOutputCurrentRail2" Ref="1" FirstByte="14"/>
+<DataItem Name="DELTA internal _ HVDC output.HVOutputPower" Ref="1" FirstByte="16"/>
+</Received>
+</Request>
+<Request Name="DataRead.DELTA internal _ OBC Status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>227305</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>627305</ReplyBytes>
+<DataItem Name="DELTA internal _ OBC Status.PowerControlState" Ref="1" FirstByte="4"/>
+<DataItem Name="DELTA internal _ OBC Status.PowerStageState" Ref="1" FirstByte="5"/>
+<DataItem Name="DELTA internal _ OBC Status.ChargeModeStatus" Ref="1" FirstByte="6"/>
+<DataItem Name="DELTA internal _ OBC Status.PowerDeratingStatus" Ref="1" FirstByte="7"/>
+<DataItem Name="DELTA internal _ OBC Status.HVCurrentSetValue" Ref="1" FirstByte="8"/>
+<DataItem Name="DELTA internal _ OBC Status.HVVoltageSetValue" Ref="1" FirstByte="10"/>
+<DataItem Name="DELTA internal _ OBC Status.HSKStatus" Ref="1" FirstByte="12"/>
+</Received>
+</Request>
+<Request Name="Read Frame VIN">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<ReplyBytes>618100000000000000000000000000000000000000</ReplyBytes>
+<DataItem Name="CRC" Ref="1" FirstByte="20"/>
+<DataItem Name="V.I.N" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Frame Traceability Information">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>61840000000000000000000000000000000000000000</ReplyBytes>
+<DataItem Name="ITG Supplier Number" Ref="1" FirstByte="3"/>
+<DataItem Name="Traceability Factory Code" Ref="1" FirstByte="6"/>
+<DataItem Name="Traceability Serial Number" Ref="1" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.DTCOccurrenceCounter_2">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000084</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="8">
+<ReplyBytes>5906000000008400</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter_2" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.DTCLastDiseappearMileage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000085</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>59060000000085000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.DTCLastDiseappearMileage" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.DTCTravelledDistanceFailureType">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000086</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>59060000000086000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.DTCTravelledDistanceFailurePresent" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.DTCFirstAppearMileage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000087</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="10">
+<ReplyBytes>59060000000087000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.DTCFirstAppearMileage" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="DataRead.Software version.SoftwareVersion">
+
+<Comment><![CDATA[Read Software version.SoftwareVersion]]></Comment>
+<Sent>
+<SentBytes>220120</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>620120</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Terminal 30 voltage">
+
+<Comment><![CDATA[Read Terminal 30 voltage]]></Comment>
+<Sent>
+<SentBytes>223001</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623001</ReplyBytes>
+<DataItem Name="Terminal 30 voltage" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CHGFailure">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read CHGFailure]]></Comment>
+<Sent>
+<SentBytes>223002</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>623002</ReplyBytes>
+<DataItem Name="CHGFailure" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CHGFault_Type">
+
+<Comment><![CDATA[Read CHGFault_Type]]></Comment>
+<Sent>
+<SentBytes>223003</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>623003</ReplyBytes>
+<DataItem Name="CHGFault_Type" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.SafeState">
+
+<Comment><![CDATA[Read SafeState]]></Comment>
+<Sent>
+<SentBytes>223004</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>623004</ReplyBytes>
+<DataItem Name="SafeState" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.PowerControlState">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read PowerControlState]]></Comment>
+<Sent>
+<SentBytes>223006</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>623006</ReplyBytes>
+<DataItem Name="PowerControlState" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.PowerStageState">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read PowerStageState]]></Comment>
+<Sent>
+<SentBytes>223005</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>623005</ReplyBytes>
+<DataItem Name="PowerStageState" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CHGLoadState">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read CHGLoadState]]></Comment>
+<Sent>
+<SentBytes>223007</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>623007</ReplyBytes>
+<DataItem Name="CHGLoadState" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.BulkVoltageRail1">
+
+<Comment><![CDATA[Read BulkVoltageRail1]]></Comment>
+<Sent>
+<SentBytes>223009</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623009</ReplyBytes>
+<DataItem Name="BulkVoltageRail1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CHGRequestFromSacha">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read CHGRequestFromSacha]]></Comment>
+<Sent>
+<SentBytes>223008</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>623008</ReplyBytes>
+<DataItem Name="CHGRequestFromSacha" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.BulkVoltageRail2">
+
+<Comment><![CDATA[Read BulkVoltageRail2]]></Comment>
+<Sent>
+<SentBytes>22300A</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62300A</ReplyBytes>
+<DataItem Name="BulkVoltageRail2" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ACInputCurrentRail1">
+
+<Comment><![CDATA[Read ACInputCurrentRail1]]></Comment>
+<Sent>
+<SentBytes>22300B</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62300B</ReplyBytes>
+<DataItem Name="ACInputCurrentRail1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ACInputCurrentRail2">
+
+<Comment><![CDATA[Read ACInputCurrentRail2]]></Comment>
+<Sent>
+<SentBytes>22300C</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62300C</ReplyBytes>
+<DataItem Name="ACInputCurrentRail2" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ACInputFrequency">
+
+<Comment><![CDATA[Read ACInputFrequency]]></Comment>
+<Sent>
+<SentBytes>22300D</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62300D</ReplyBytes>
+<DataItem Name="ACInputFrequency" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.SignalWaveformFailureIndicator">
+
+<Comment><![CDATA[Read SignalWaveformFailureIndicator]]></Comment>
+<Sent>
+<SentBytes>22300E</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62300E</ReplyBytes>
+<DataItem Name="SignalWaveformFailureIndicator" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CHGDCOutInterlockState">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read CHGDCOutInterlockState]]></Comment>
+<Sent>
+<SentBytes>22300F</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62300F</ReplyBytes>
+<DataItem Name="CHGDCOutInterlockState" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CHGDCOutInterlockValue">
+
+<Comment><![CDATA[Read CHGDCOutInterlockValue]]></Comment>
+<Sent>
+<SentBytes>223010</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623010</ReplyBytes>
+<DataItem Name="CHGDCOutInterlockValue" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CHGLoadingInterlockState">
+
+<Comment><![CDATA[Read CHGLoadingInterlockState]]></Comment>
+<Sent>
+<SentBytes>223011</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>623011</ReplyBytes>
+<DataItem Name="CHGLoadingInterlockState" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CHGLoadingInterlockValue">
+
+<Comment><![CDATA[Read CHGLoadingInterlockValue]]></Comment>
+<Sent>
+<SentBytes>223012</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623012</ReplyBytes>
+<DataItem Name="CHGLoadingInterlockValue" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.HVVoltage">
+
+<Comment><![CDATA[Read HVVoltage]]></Comment>
+<Sent>
+<SentBytes>223013</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623013</ReplyBytes>
+<DataItem Name="HVVoltage" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.HVVoltageRail1">
+
+<Comment><![CDATA[Read HVVoltageRail1]]></Comment>
+<Sent>
+<SentBytes>223014</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623014</ReplyBytes>
+<DataItem Name="HVVoltageRail1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.HVVoltageRail2">
+
+<Comment><![CDATA[Read HVVoltageRail2]]></Comment>
+<Sent>
+<SentBytes>223015</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623015</ReplyBytes>
+<DataItem Name="HVVoltageRail2" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.HVOutputCurrent">
+
+<Comment><![CDATA[Read HVOutputCurrent]]></Comment>
+<Sent>
+<SentBytes>223016</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623016</ReplyBytes>
+<DataItem Name="HVOutputCurrent" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.HVOutputCurrentRail1">
+
+<Comment><![CDATA[Read HVOutputCurrentRail1]]></Comment>
+<Sent>
+<SentBytes>223017</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623017</ReplyBytes>
+<DataItem Name="HVOutputCurrentRail1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.HVOutputCurrentRail2">
+
+<Comment><![CDATA[Read HVOutputCurrentRail2]]></Comment>
+<Sent>
+<SentBytes>223018</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623018</ReplyBytes>
+<DataItem Name="HVOutputCurrentRail2" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.HVOutputPower">
+
+<Comment><![CDATA[Read HVOutputPower]]></Comment>
+<Sent>
+<SentBytes>223019</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623019</ReplyBytes>
+<DataItem Name="HVOutputPower" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.WaterInletTemperature">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read WaterInletTemperature]]></Comment>
+<Sent>
+<SentBytes>22301A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62301A</ReplyBytes>
+<DataItem Name="WaterInletTemperature" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.WaterOutletTemperature">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read WaterOutletTemperature]]></Comment>
+<Sent>
+<SentBytes>22301B</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62301B</ReplyBytes>
+<DataItem Name="WaterOutletTemperature" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.LLCMagneticTemperature">
+
+<Comment><![CDATA[Read LLCMagneticTemperature]]></Comment>
+<Sent>
+<SentBytes>22301C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62301C</ReplyBytes>
+<DataItem Name="LLCMagneticTemperature" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ACInputPowerRail1">
+
+<Comment><![CDATA[Read ACInputPowerRail1]]></Comment>
+<Sent>
+<SentBytes>22301D</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62301D</ReplyBytes>
+<DataItem Name="ACInputPowerRail1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ACInputPowerRail2">
+
+<Comment><![CDATA[Read ACInputPowerRail2]]></Comment>
+<Sent>
+<SentBytes>22301E</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62301E</ReplyBytes>
+<DataItem Name="ACInputPowerRail2" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.SACHA_WakeUpSleepCommand">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Read SACHA_WakeUpSleepCommand]]></Comment>
+<Sent>
+<SentBytes>22301F</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62301F</ReplyBytes>
+<DataItem Name="SACHA_WakeUpSleepCommand" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.PowerDeratingStatus">
+
+<Comment><![CDATA[Read PowerDeratingStatus]]></Comment>
+<Sent>
+<SentBytes>223021</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>623021</ReplyBytes>
+<DataItem Name="PowerDeratingStatus" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CHGWaterTemp">
+
+<Comment><![CDATA[Read CHGWaterTemp]]></Comment>
+<Sent>
+<SentBytes>223022</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>623022</ReplyBytes>
+<DataItem Name="CHGWaterTemp" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CHGTemp">
+
+<Comment><![CDATA[Read CHGTemp]]></Comment>
+<Sent>
+<SentBytes>223023</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>623023</ReplyBytes>
+<DataItem Name="CHGTemp" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CHGAvailableChargingPower">
+
+<Comment><![CDATA[Read CHGAvailableChargingPower]]></Comment>
+<Sent>
+<SentBytes>223024</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623024</ReplyBytes>
+<DataItem Name="CHGAvailableChargingPower" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.MainsRMSCurrent">
+
+<Comment><![CDATA[Read MainsRMSCurrent]]></Comment>
+<Sent>
+<SentBytes>223025</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623025</ReplyBytes>
+<DataItem Name="MainsRMSCurrent" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.MainsRMSVoltage">
+
+<Comment><![CDATA[Read MainsRMSVoltage]]></Comment>
+<Sent>
+<SentBytes>223026</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>623026</ReplyBytes>
+<DataItem Name="MainsRMSVoltage" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.CANHardwareErrorCounter">
+
+<Comment><![CDATA[Read CANHardwareErrorCounter]]></Comment>
+<Sent>
+<SentBytes>223027</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>623027</ReplyBytes>
+<DataItem Name="CANHardwareErrorCounter" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.SoftwareVersion">
+
+<Comment><![CDATA[Read SoftwareVersion]]></Comment>
+<Sent>
+<SentBytes>22303B</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>62303B</ReplyBytes>
+<DataItem Name="SoftwareVersion" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.BootloaderVersion">
+
+<Comment><![CDATA[Read BootloaderVersion]]></Comment>
+<Sent>
+<SentBytes>22303C</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>62303C</ReplyBytes>
+<DataItem Name="BootloaderVersion" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.VehicleManufacturerSparePartNumber">
+
+<Comment><![CDATA[Read VehicleManufacturerSparePartNumber]]></Comment>
+<Sent>
+<SentBytes>22F187</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F187</ReplyBytes>
+<DataItem Name="VehicleManufacturerSparePartNumber" FirstByte="4"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Supply voltage" DTC="1616">
+<Mnemonic>Supply voltage</Mnemonic>
+
+<Test Type="22">
+</Test><Test Type="23">
+</Test>
+</Device>
+<Device Name="AC input" DTC="1617">
+<Mnemonic>Mains input voltage</Mnemonic>
+
+<Test Type="22">
+</Test><Test Type="23">
+</Test><Test Type="19">
+</Test><Test Type="34">
+</Test><Test Type="25">
+</Test><Test Type="37">
+</Test><Test Type="56">
+</Test>
+</Device>
+<Device Name="DC Interlock" DTC="1618">
+<Mnemonic>DC Interlock</Mnemonic>
+
+<Test Type="17">
+</Test><Test Type="18">
+</Test>
+</Device>
+<Device Name="AC Interlock" DTC="1619">
+<Mnemonic>AC Interlock</Mnemonic>
+
+<Test Type="17">
+</Test><Test Type="18">
+</Test>
+</Device>
+<Device Name="HVDC" DTC="1620" Type="3">
+<Mnemonic>HV DC output</Mnemonic>
+
+<Test Type="19">
+</Test><Test Type="22">
+</Test><Test Type="23">
+</Test><Test Type="34">
+</Test><Test Type="145">
+</Test>
+</Device>
+<Device Name="Water temperature" DTC="1621" Type="2">
+<Mnemonic>Water temperature</Mnemonic>
+
+<Test Type="34">
+</Test><Test Type="152">
+</Test><Test Type="251">
+</Test><Test Type="33">
+</Test>
+</Device>
+<Device Name="Magnetic temperature" DTC="1622" Type="2">
+<Mnemonic>Magnetic temperature</Mnemonic>
+
+<Test Type="33">
+</Test><Test Type="34">
+</Test><Test Type="152">
+</Test><Test Type="244">
+</Test><Test Type="251">
+</Test>
+</Device>
+<Device Name="Charging unit" DTC="1623" Type="2">
+<Mnemonic>Charging unit</Mnemonic>
+
+<Test Type="129">
+</Test><Test Type="148">
+</Test>
+</Device>
+<Device Name="PFC - Bulk" DTC="1624" Type="2">
+<Mnemonic>PFC - Bulk</Mnemonic>
+
+<Test Type="23">
+</Test><Test Type="35">
+</Test><Test Type="148">
+</Test><Test Type="150">
+</Test>
+</Device>
+<Device Name="LLC" DTC="1625" Type="2">
+<Mnemonic>LLC</Mnemonic>
+
+<Test Type="35">
+</Test>
+</Device>
+<Device Name="Rectifier" DTC="1626" Type="2">
+<Mnemonic>Rectifier</Mnemonic>
+
+<Test Type="150">
+</Test>
+</Device>
+<Device Name="CAN ETS" DTC="1627">
+<Mnemonic>CAN ETS</Mnemonic>
+
+<Test Type="136">
+</Test>
+</Device>
+<Device Name="Sacha" DTC="1628">
+<Mnemonic>Sacha</Mnemonic>
+
+<Test Type="135">
+</Test>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Charger">
+
+<Screen Name="Software Version" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+
+
+<Display Width="4790" Color="16777215" DataName="DELTA internal _ Software version.SoftwareVersion" RequestName="DataRead.DELTA internal _ Software version">
+<Rectangle Left="960" Top="600" Height="300" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4790" Color="16777215" DataName="DELTA internal _ Software version.BootloaderVersion" RequestName="DataRead.DELTA internal _ Software version">
+<Rectangle Left="960" Top="960" Height="300" Width="7560"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Traceability" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+
+
+<Display Width="5255" Color="16777215" DataName="DELTA internal _ Traceability.BuildingYear" RequestName="DataRead.DELTA internal _ Traceability">
+<Rectangle Left="240" Top="480" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5255" Color="16777215" DataName="DELTA internal _ Traceability.BuildingDay" RequestName="DataRead.DELTA internal _ Traceability">
+<Rectangle Left="240" Top="780" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5255" Color="16777215" DataName="DELTA internal _ Traceability.IncrementNumberInTheDay" RequestName="DataRead.DELTA internal _ Traceability">
+<Rectangle Left="240" Top="1080" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5255" Color="16777215" DataName="DELTA internal _ Traceability.RefOfLineAB" RequestName="DataRead.DELTA internal _ Traceability">
+<Rectangle Left="240" Top="1380" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5255" Color="16777215" DataName="DELTA internal _ Traceability.PaddingCharacter" RequestName="DataRead.DELTA internal _ Traceability">
+<Rectangle Left="240" Top="1680" Height="300" Width="8400"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="VIN" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+
+
+<Display Width="3365" Color="16777215" DataName="DELTA internal _ VIN.VIN" RequestName="DataRead.DELTA internal _ VIN">
+<Rectangle Left="600" Top="1080" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3365" Color="16777215" DataName="DELTA internal _ VIN.VINCRC" RequestName="DataRead.DELTA internal _ VIN">
+<Rectangle Left="600" Top="1440" Height="300" Width="7800"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Temperature" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+
+
+<Display Width="5660" Color="16777215" DataName="DELTA internal _ Temperature.WaterInletTemperature" RequestName="DataRead.DELTA internal _ Temperature">
+<Rectangle Left="480" Top="780" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5660" Color="16777215" DataName="DELTA internal _ Temperature.WaterOutletTemperature" RequestName="DataRead.DELTA internal _ Temperature">
+<Rectangle Left="480" Top="1080" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5660" Color="16777215" DataName="DELTA internal _ Temperature.LLCMagneticTemperature" RequestName="DataRead.DELTA internal _ Temperature">
+<Rectangle Left="480" Top="1380" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5660" Color="16777215" DataName="DELTA internal _ Temperature.AmbientTemperature" RequestName="DataRead.DELTA internal _ Temperature">
+<Rectangle Left="480" Top="1680" Height="300" Width="8160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="AC input" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+
+
+<Display Width="4655" Color="16777215" DataName="DELTA internal _ AC input.ACInputVoltage" RequestName="DataRead.DELTA internal _ AC input">
+<Rectangle Left="600" Top="480" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4655" Color="16777215" DataName="DELTA internal _ AC input.BulkVoltageRail1" RequestName="DataRead.DELTA internal _ AC input">
+<Rectangle Left="600" Top="780" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4655" Color="16777215" DataName="DELTA internal _ AC input.BulkVoltageRail2" RequestName="DataRead.DELTA internal _ AC input">
+<Rectangle Left="600" Top="1080" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4655" Color="16777215" DataName="DELTA internal _ AC input.ACInputCurrentRail1" RequestName="DataRead.DELTA internal _ AC input">
+<Rectangle Left="600" Top="1380" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4655" Color="16777215" DataName="DELTA internal _ AC input.ACInputCurrentRail2" RequestName="DataRead.DELTA internal _ AC input">
+<Rectangle Left="600" Top="1680" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4655" Color="16777215" DataName="DELTA internal _ AC input.ACInputFrequency" RequestName="DataRead.DELTA internal _ AC input">
+<Rectangle Left="600" Top="1980" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4655" Color="16777215" DataName="DELTA internal _ AC input.ACInputPowerRail1" RequestName="DataRead.DELTA internal _ AC input">
+<Rectangle Left="600" Top="2280" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4655" Color="16777215" DataName="DELTA internal _ AC input.ACInputPowerRail2" RequestName="DataRead.DELTA internal _ AC input">
+<Rectangle Left="600" Top="2580" Height="300" Width="6240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="HVDC output" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+
+
+<Display Width="5240" Color="16777215" DataName="DELTA internal _ HVDC output.HVVoltage" RequestName="DataRead.DELTA internal _ HVDC output">
+<Rectangle Left="600" Top="720" Height="300" Width="6720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5240" Color="16777215" DataName="DELTA internal _ HVDC output.HVVoltageRail1" RequestName="DataRead.DELTA internal _ HVDC output">
+<Rectangle Left="600" Top="1020" Height="300" Width="6720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5240" Color="16777215" DataName="DELTA internal _ HVDC output.HVVoltageRail2" RequestName="DataRead.DELTA internal _ HVDC output">
+<Rectangle Left="600" Top="1320" Height="300" Width="6720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5240" Color="16777215" DataName="DELTA internal _ HVDC output.HVOutputCurrent" RequestName="DataRead.DELTA internal _ HVDC output">
+<Rectangle Left="600" Top="1620" Height="300" Width="6720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5240" Color="16777215" DataName="DELTA internal _ HVDC output.HVOutputCurrentRail1" RequestName="DataRead.DELTA internal _ HVDC output">
+<Rectangle Left="600" Top="1920" Height="300" Width="6720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5240" Color="16777215" DataName="DELTA internal _ HVDC output.HVOutputCurrentRail2" RequestName="DataRead.DELTA internal _ HVDC output">
+<Rectangle Left="600" Top="2220" Height="300" Width="6720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5240" Color="16777215" DataName="DELTA internal _ HVDC output.HVOutputPower" RequestName="DataRead.DELTA internal _ HVDC output">
+<Rectangle Left="600" Top="2520" Height="300" Width="6720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="OBC Status" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+
+
+<Display Width="4985" Color="16777215" DataName="DELTA internal _ OBC Status.PowerControlState" RequestName="DataRead.DELTA internal _ OBC Status">
+<Rectangle Left="600" Top="720" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4985" Color="16777215" DataName="DELTA internal _ OBC Status.PowerStageState" RequestName="DataRead.DELTA internal _ OBC Status">
+<Rectangle Left="600" Top="1020" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4985" Color="16777215" DataName="DELTA internal _ OBC Status.ChargeModeStatus" RequestName="DataRead.DELTA internal _ OBC Status">
+<Rectangle Left="600" Top="1320" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4985" Color="16777215" DataName="DELTA internal _ OBC Status.PowerDeratingStatus" RequestName="DataRead.DELTA internal _ OBC Status">
+<Rectangle Left="600" Top="1620" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4985" Color="16777215" DataName="DELTA internal _ OBC Status.HVCurrentSetValue" RequestName="DataRead.DELTA internal _ OBC Status">
+<Rectangle Left="600" Top="1920" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4985" Color="16777215" DataName="DELTA internal _ OBC Status.HVVoltageSetValue" RequestName="DataRead.DELTA internal _ OBC Status">
+<Rectangle Left="600" Top="2220" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="4985" Color="16777215" DataName="DELTA internal _ OBC Status.HSKStatus" RequestName="DataRead.DELTA internal _ OBC Status">
+<Rectangle Left="600" Top="2520" Height="300" Width="7440"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

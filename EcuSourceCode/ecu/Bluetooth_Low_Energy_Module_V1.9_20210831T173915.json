@@ -1,0 +1,2656 @@
+{
+"autoidents": [
+	{
+	"diagversion": "46",
+	"supplier": "5BL0",
+	"soft": "SW03.03.21",
+	"version": "SW03.03.21"
+	},
+	{
+	"diagversion": "46",
+	"supplier": "5BL0",
+	"soft": "SW04.02.00",
+	"version": "SW04.02.00"
+	},
+	{
+	"diagversion": "46",
+	"supplier": "5BL0",
+	"soft": "SW04.08.04",
+	"version": "SW04.08.04"
+	},
+	{
+	"diagversion": "46",
+	"supplier": "5BL0",
+	"soft": "SW04.10.00",
+	"version": "SW04.01.00"
+	}
+],
+"ecuname": "Bluetooth Low Energy Module_V1.9",
+"obd": {
+	"protocol": "CAN",
+	"send_id": "18DAABF2",
+	"recv_id": "18DAF2AB",
+	"baudrate": 10400,
+	"funcaddr": "AB",
+	"funcname": "BLE VK"
+},
+"data": {
+	"VIN": {
+	"bitscount": 136,
+	"byte": true,
+	"bytescount": 17,
+	"bytesascii": true,
+	"comment": "serial number of car"
+	},
+	"VKSuspendStatus": {
+	"lists": {
+		"0": "Not suspended",
+		"1": "suspended"
+	},
+	"comment": "Vk current state: Suspended ?"
+	},
+	"VKfunctionActivation": {
+	"lists": {
+		"0": "desactivated",
+		"1": "activated"
+	},
+	"comment": "Is VK function Activated or not; VK function is activated by default"
+	},
+	"RefreshAccesCodePeriod": {
+	"bitscount": 24,
+	"scaled": true,
+	"bytescount": 3,
+	"unit": "min",
+	"comment": "Switching period between broadcast of accesscode A and B."
+	},
+	"RTCDesync": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"unit": "h",
+	"comment": "If no time synchro between BLM & Cloud for more than 'RTCDesync', then BLM considers time has not sy"
+	},
+	"DefaultTokenValidityPeriod": {
+	"scaled": true,
+	"unit": "h",
+	"comment": "Token carries is validity but this is needed to check if Token is not valid for a too long period"
+	},
+	"VKServiceState": {
+	"bitscount": 48,
+	"byte": true,
+	"bytescount": 6,
+	"comment": "B2B or B2C or NotSet"
+	},
+	"VKIdlePowerBudget": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"unit": "h",
+	"comment": "Time Period in which BLM stays in Indle mode (BLE broadcast) instead of going to DeepSleep (RequestT"
+	},
+	"CloseRental": {
+	"scaled": true,
+	"unit": "min",
+	"comment": "Duration between engine start revocation and doors permanently locked"
+	},
+	"CloudPuK": {
+	"scaled": true,
+	"comment": "Kamereon Public Key that enables BLM to Check Kamereon Token signatures. 2 Options: RSA and EC => 2"
+	},
+	"MaxTimeDrift": {
+	"scaled": true,
+	"unit": "min",
+	"comment": "Max clock drift to consider time is sync"
+	},
+	"CleanupB2CPeriod": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"unit": "d",
+	"comment": "BLM shall clean-up all data related to a SP when this SP is not used during a long time\u00a0"
+	},
+	"MaxTokenSize": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"comment": "MaxTokenSize"
+	},
+	"TokenUploadTimeout": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"unit": "ms",
+	"comment": "First Token upload timeout"
+	},
+	"MaxSPBoundingTries": {
+	"scaled": true,
+	"comment": "Excessive number of tries"
+	},
+	"MaxSPBoundingTime": {
+	"scaled": true,
+	"unit": "min",
+	"comment": "MaxSBBoundingTries in MaxSPBoundingTime"
+	},
+	"SimultaneousSPBoundingBanTime": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"unit": "min",
+	"comment": "SP ban duration"
+	},
+	"SPBoundingBanTime": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"unit": "min",
+	"comment": "SP ban duration\u00a0"
+	},
+	"MaxSimultaneousSPBoundingTime": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"unit": "min",
+	"comment": "MaxSBSimultaneousBoundingTries in MaxSimultaneousSPBoundingTime"
+	},
+	"MaxSimultaneousSPBoundingTries": {
+	"scaled": true,
+	"comment": "Excessive number of tries for simultaneous SP"
+	},
+	"MaxLogStorage": {
+	"scaled": true,
+	"comment": "Max nb of logs stored in mem"
+	},
+	"SecureCmdAntiDelay": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"unit": "ms",
+	"comment": "Delay after which a secure cmd is refused"
+	},
+	"SuspendDelayTimer": {
+	"scaled": true,
+	"unit": "s",
+	"comment": "BLM waits  before entering Suspend state"
+	},
+	"Manufacturing Data": {
+	"scaled": true,
+	"comment": "Renault or Nissan could buy a manuaturing ID from the BT signal."
+	},
+	"Wrongrights": {
+	"scaled": true,
+	"comment": "This DID increments each time a command is refused because of invalid rights (Trying to start the vh"
+	},
+	"VKState": {
+	"bitscount": 16,
+	"bytescount": 2,
+	"lists": {
+		"0": "ON",
+		"1": "IDLE",
+		"2": "DEEP SLEEP",
+		"3": "SUSPEND"
+	},
+	"comment": "Current VK state; used for Diagnostics"
+	},
+	"SWVersion": {
+	"bitscount": 64,
+	"byte": true,
+	"bytescount": 8,
+	"comment": "Current SW version; used for Diag"
+	},
+	"NbOfSPListed": {
+	"scaled": true,
+	"comment": "Current number of SP listed; used for diag"
+	},
+	"HFMSecureKeyStatus": {
+	"lists": {
+		"0": "not activated",
+		"1": "activated"
+	},
+	"comment": "Hold if there is a valid secured key for BLM cyphered channel"
+	},
+	"VKCurrentIdlePowerBudget": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"unit": "h",
+	"comment": "Current value of the power budget"
+	},
+	"Enable Superlock": {
+	"lists": {
+		"0": "not activated",
+		"1": "activated"
+	},
+	"comment": "The customer shall be able to accede to the Superlock button only for Right Hand Drive vehicles ma"
+	},
+	"vehicleManufacturerECUHardwareNumber": {
+	"bitscount": 80,
+	"byte": true,
+	"bytescount": 10,
+	"bytesascii": true,
+	"comment": "VEHICLE_MANUFACTURER_ECUHARDWARE_NUMBER"
+	},
+	"OperationnalReference": {
+	"bitscount": 80,
+	"byte": true,
+	"bytescount": 10,
+	"bytesascii": true
+	},
+	"Fingerprint": {
+	"bitscount": 128,
+	"byte": true,
+	"bytescount": 16,
+	"bytesascii": true
+	},
+	"IndexSrvData": {
+	"bitscount": 80,
+	"byte": true,
+	"bytescount": 10,
+	"bytesascii": true
+	},
+	"systemSupplierIdentifier": {
+	"bitscount": 32,
+	"byte": true,
+	"bytescount": 4,
+	"bytesascii": true
+	},
+	"systemSupplierECUSoftwareNumber": {
+	"bitscount": 80,
+	"byte": true,
+	"bytescount": 10,
+	"bytesascii": true
+	},
+	"systemSupplierECUSoftwareVersionNumber": {
+	"bitscount": 80,
+	"byte": true,
+	"bytescount": 10,
+	"bytesascii": true
+	},
+	"SPBatteryWarningLevel": {
+	"scaled": true,
+	"unit": "%",
+	"comment": "Level at which superlock is forbidden"
+	},
+	"VKIdlePowerBudgetWarningLevel": {
+	"scaled": true,
+	"unit": "%",
+	"comment": "Level at which superlock is forbidden"
+	},
+	"VehicleManufacturerSparePartNumberNissan": {
+	"bitscount": 80,
+	"byte": true,
+	"bytescount": 10,
+	"bytesascii": true,
+	"comment": "used for Nissan"
+	},
+	"vehicleManufacturerKitAssemblyPartNumber": {
+	"bitscount": 80,
+	"byte": true,
+	"bytescount": 10,
+	"bytesascii": true,
+	"comment": "Ordered Part Number - This value shall contain the number of the part ordered by OEM."
+	},
+	"TheoricalMaxtimeDrift": {
+	"scaled": true,
+	"comment": "TheoricalMaxTimeDrift"
+	},
+	"SupplierFaultCode": {
+	"scaled": true,
+	"comment": "SupplierFaultCode"
+	},
+	"latest_sent_message": {
+	"scaled": true,
+	"comment": "latest_sent_message"
+	},
+	"latest_received_message": {
+	"scaled": true,
+	"comment": "latest_received_message"
+	},
+	"VehicleManufacturerECUHardwareNumber_DAI": {
+	"bitscount": 80,
+	"byte": true,
+	"bytescount": 10,
+	"bytesascii": true,
+	"comment": "VehicleManufacturerECUHardwareNumber_DAI"
+	},
+	"VehicleManufacturerECUSoftwareNumber_DAI": {
+	"bitscount": 160,
+	"byte": true,
+	"bytescount": 20,
+	"bytesascii": true,
+	"comment": "VehicleManufacturerECUSoftwareNumber_DAI"
+	},
+	"StatusOfDTC": {
+	"scaled": true,
+	"comment": "DTCASR_SODTC"
+	},
+	"mileage": {
+	"bitscount": 24,
+	"scaled": true,
+	"bytescount": 3,
+	"unit": "km"
+	},
+	"MoreDTC": {
+	"scaled": true,
+	"signed": true
+	},
+	"NDTC": {
+	"scaled": true
+	},
+	"FirstDTC": {
+	"bitscount": 16,
+	"bytescount": 2,
+	"lists": {
+		"41896": "DTC_BLM_ground_Short circuit to battery",
+		"41897": "DTC_BLM_ground_Short circuit to ground or open",
+		"41898": "DTC_BLM_token_expired",
+		"41899": "DTC_BLM_SecurePairingNOK",
+		"41900": "DTC_BLM_TokenBlacklisted",
+		"41901": "DTC_BLM_BLMNotWakenUp",
+		"41902": "DTC_BLM_BadgeStatusNotReceived",
+		"41903": "DTC_BLM_HFMPairingNotDone",
+		"41904": "DTC_BLM_TransmissionError",
+		"41905": "DTC_BLM_InvalidSecureKey",
+		"41906": "DTC_BLM_TokenFormatNOK",
+		"41907": "DTC_BLM_CloudSignatureNOK",
+		"41908": "DTC_BLM_PartnerSignatureNOK",
+		"41909": "DTC_BLM_InvalidMPUConfig",
+		"57679": "BCM_CRC_error",
+		"57678": "Cluster_CRC_error",
+		"57672": "VDC_CRC_error",
+		"49273": "Bus off",
+		"41912": "DTC_BLM_Internal_failure",
+		"41913": "DTC_Under_Voltage_BLE-chip",
+		"41914": "DTC_Internal_failure ASIC",
+		"41915": "DTC_BLM_'CPU",
+		"41916": "DTC_BLM_internal_failure_antennas",
+		"41917": "Bluetooth comunication error failure",
+		"41918": "DTC_BLM_supply_short circuit to battery",
+		"41919": "DTC_BLM_supply_short circuit to ground or open",
+		"57684": "IVI_CRC_error"
+	}
+	},
+	"Historical Failure": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	}
+	},
+	"Current Failure": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	}
+	},
+	"BootVersion": {
+	"bitscount": 32,
+	"byte": true,
+	"bytescount": 4,
+	"comment": "BootVersion generic DID"
+	},
+	"Renault Nissan": {
+	"lists": {
+		"78": "Nissan",
+		"82": "Renault"
+	},
+	"comment": "Renault  Nissan"
+	},
+	"SPLockCmdDelay": {
+	"scaled": true,
+	"unit": "s",
+	"comment": "During this delay the SP (performing the command) is not locked (PIN code activation)"
+	},
+	"IVI_CLUSTER": {
+	"byte": true,
+	"bytesascii": true,
+	"comment": "IVI  CLUSTER"
+	},
+	"DTCOccurrenceCounter": {
+	"scaled": true,
+	"comment": "DTCOcurrenceCounter"
+	},
+	"Conf_cipher_secured_comm_timeout": {
+	"scaled": true,
+	"comment": "Conf_cipher_secured_comm_timeout"
+	},
+	"Conf_cipher_secured_retry": {
+	"scaled": true,
+	"comment": "Conf_cipher_secured_retry"
+	},
+	"SessionName": {
+	"lists": {
+		"1": "DefaultSession",
+		"2": "ReprogrammingSession",
+		"3": "ExtendedDiagSession"
+	},
+	"comment": "for Start diagnostic session"
+	},
+	"DTCFailureType.Category": {
+	"bitscount": 4,
+	"lists": {
+		"0": "General Failure Information",
+		"1": "General Electrical Failures",
+		"2": "General Signal Failures",
+		"3": "FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures",
+		"4": "System Internal Failures",
+		"5": "System Programming Failures",
+		"6": "Algorithm Based Failures",
+		"7": "Mechanical Failures",
+		"8": "Bus Signal / Message Failures",
+		"9": "Component Failures",
+		"15": "Vehicle manufacturer / System supplier specific"
+	}
+	},
+	"DTCStatus.testNotCompletedThisMonitoringCycle": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	},
+	"comment": "TNCTMC"
+	},
+	"DTCStatus.testFailedSinceLastClear": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	},
+	"comment": "TFSLC"
+	},
+	"DTCStatus.confirmedDTC": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	},
+	"comment": "CDTC"
+	},
+	"DTCStatus.pendingDTC": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	},
+	"comment": "PDTC"
+	},
+	"DTCStatus.testFailed": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	},
+	"comment": "TF"
+	},
+	"DTCRecord": {
+	"bitscount": 24,
+	"byte": true,
+	"bytescount": 3,
+	"comment": "DTCASR_DTC"
+	},
+	"DTCCount": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"comment": "DTC count"
+	},
+	"DTCFormatIdentifier": {
+	"lists": {
+		"0": "SAE_J2012-DA_DTC",
+		"1": "ISO_14229-1_DTC",
+		"2": "SAE_J1939-73_DTC",
+		"3": "ISO_11992-4_DTC",
+		"4": "SAE_J2012-DA_WWHOBD_DTC"
+	},
+	"comment": "DTC format - Renault/Nissan use value 0 (3 bytes DTC)"
+	},
+	"Standard Fault": {
+	"bitscount": 5,
+	"lists": {
+		"0": "No possible classification about the type of fault",
+		"1": "Open circuit",
+		"2": "Short circuit to ground",
+		"3": "Short circuit at battery +",
+		"4": "Parameter at min limit",
+		"5": "Parameter at max limit",
+		"6": "Incoherency, not plausible",
+		"7": "No signal",
+		"8": "Below min. threshold",
+		"9": "Above max. threshold",
+		"10": "Permanent Low Level",
+		"11": "Permanent High Level",
+		"12": "Lines short-circuited",
+		"13": "Internal electronic anomaly",
+		"14": "Network default",
+		"15": "Remote diagnostic",
+		"16": "Disturbed communication",
+		"17": "Microcuts",
+		"18": "Abnormal voltage",
+		"19": "Value out of range",
+		"20": "Open circuit or Short circuit to ground",
+		"21": "Open circuit or Short circuit to battery",
+		"22": "Initialization / configuration not valid"
+	}
+	},
+	"DTCStatus.testFailedThisMonitoringCycle": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	},
+	"comment": "TFTMC"
+	},
+	"DTCStatus.testNotCompletedSinceLastClear": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	},
+	"comment": "TNCSLC"
+	},
+	"DTCStatus.warningIndicatorRequested": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	},
+	"comment": "WIR"
+	},
+	"DTCDeviceIdentifier": {
+	"bitscount": 16,
+	"bytescount": 2,
+	"lists": {
+		"41896": "DTC_BLM_ground_Short circuit to battery",
+		"41897": "DTC_BLM_ground_Short circuit to ground or open",
+		"41898": "DTC_BLM_token_expired",
+		"41899": "DTC_BLM_SecurePairingNOK",
+		"41900": "DTC_BLM_TokenBlacklisted",
+		"41902": "DTC_BLM_BadgeStatusNotReceived",
+		"41903": "DTC_BLM_HFMPairingNotDone",
+		"41904": "DTC_BLM_TransmissionError",
+		"41905": "DTC_BLM_InvalidSecureKey",
+		"41906": "DTC_BLM_TokenFormatNOK",
+		"41907": "DTC_BLM_CloudSignatureNOK",
+		"41908": "DTC_BLM_PartnerSignatureNOK",
+		"41909": "DTC_BLM_InvalidMPUConfig",
+		"41912": "DTC_BLM_Internal_failure",
+		"41913": "DTC_Under_Voltage_BLE-chip",
+		"41914": "DTC_Internal_failure ASIC",
+		"41915": "DTC_BLM_'CPU",
+		"41918": "DTC_BLM_supply_short circuit to battery",
+		"41919": "DTC_BLM_supply_short circuit to ground or open",
+		"49273": "Bus off",
+		"57672": "VDC_CRC_error",
+		"57678": "Cluster_CRC_error",
+		"57679": "BCM_CRC_error",
+		"57684": "IVI_CRC_error"
+	}
+	},
+	"DTCStatusAvailabilityMask": {
+	"scaled": true,
+	"comment": "DTCSAM"
+	},
+	"DTCFailureType": {
+	"lists": {
+		"0": "Device and failure type ODB codding",
+		"1": "General Electrical Failure",
+		"2": "General signal failure",
+		"3": "FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures",
+		"4": "System Internal Failures",
+		"5": "System Programming Failures",
+		"6": "Algorithm Based Failures",
+		"7": "Mechanical Failures",
+		"8": "Bus Signal / Message Failures",
+		"9": "Component Failures",
+		"17": "circuit short to ground",
+		"18": "circuit short to battery",
+		"19": "circuit open",
+		"20": "circuit short to ground or open",
+		"21": "circuit short to battery or open",
+		"22": "circuit voltage below threshold",
+		"23": "circuit voltage above threshold",
+		"24": "circuit current below threshold",
+		"25": "circuit current above threshold",
+		"26": "circuit resistance below threshold",
+		"27": "circuit resistance above threshold",
+		"28": "circuit voltage out of range",
+		"29": "circuit current out of range",
+		"30": "circuit resistance out of range",
+		"31": "circuit intermittent",
+		"33": "signal amplitude < minimum",
+		"34": "signal amplitude > maximum",
+		"35": "signal stuck low",
+		"36": "signal stuck high",
+		"37": "signal shape / waveform failure",
+		"38": "signal rate of change below threshold",
+		"39": "signal rate of change above threshold",
+		"40": "signal bias level out of range / zero adjustment failure",
+		"41": "signal signal invalid",
+		"47": "signal erratic",
+		"49": "no signal",
+		"50": "signal low time < minimum",
+		"51": "signal low time > maximum",
+		"52": "signal high time < minimum",
+		"53": "signal high time > maximum",
+		"54": "signal frequency too low",
+		"55": "signal frequency too high",
+		"56": "signal frequency incorrect",
+		"57": "incorrect has too few pulses",
+		"58": "incorrect has too many pulses",
+		"65": "general checksum failure",
+		"66": "general memory failure",
+		"67": "special memory failure",
+		"68": "data memory failure",
+		"69": "program memory failure",
+		"70": "calibration / parameter memory failure",
+		"71": "watchdog / safety \u00b5C failure",
+		"72": "supervision software failure",
+		"73": "internal electronic failure",
+		"74": "incorrect component installed",
+		"75": "over temperature",
+		"81": "not programmed",
+		"82": "not activated",
+		"83": "deactivated",
+		"84": "missing calibration",
+		"85": "not configured",
+		"97": "signal calculation failure",
+		"98": "signal compare failure",
+		"99": "circuit / component protection time-out",
+		"100": "signal plausibility failure",
+		"101": "signal has too few transitions / events",
+		"102": "signal has too many transitions / events",
+		"103": "signal incorrect after event",
+		"104": "event information",
+		"113": "actuator stuck",
+		"114": "actuator stuck open",
+		"115": "actuator stuck closed",
+		"116": "actuator slipping",
+		"117": "emergency position not reachable",
+		"118": "wrong mounting position",
+		"119": "commanded position not reachable",
+		"120": "alignment or adjustment incorrect",
+		"121": "mechanical linkage failure",
+		"122": "fluid leak or seal failure",
+		"123": "low fluid level",
+		"129": "invalid serial data received",
+		"130": "alive / sequence counter incorrect / not updated",
+		"131": "value of signal protection calculation incorrect",
+		"132": "signal below allowable range",
+		"133": "signal above allowable range",
+		"134": "signal invalid",
+		"135": "missing message",
+		"136": "bus off",
+		"143": "erratic",
+		"145": "parametric",
+		"146": "performance or incorrect operation",
+		"147": "no operation",
+		"148": "unexpected operation",
+		"149": "incorrect assembly",
+		"150": "component internal failure",
+		"151": "Component or system operation obstructed or blocked",
+		"152": "component or system over temperature"
+	},
+	"comment": "Pending"
+	},
+	"DTCMaskRecord": {
+	"bitscount": 24,
+	"byte": true,
+	"bytescount": 3,
+	"comment": "DTCMREC_DTC"
+	},
+	"DTCExtendedData.Mileage": {
+	"bitscount": 24,
+	"scaled": true,
+	"bytescount": 3,
+	"unit": "km",
+	"comment": "Description of the extendedData Mileage (use by Failure Page to decode data)"
+	},
+	"DTCExtendedDataRecordNumber": {
+	"lists": {
+		"128": "Mileage",
+		"129": "AgingCounter",
+		"130": "DTCOccurrenceCounter"
+	}
+	},
+	"DTCExtendedData.AgingCounter": {
+	"scaled": true,
+	"comment": "Description of the extendedData AgingCounter (use by Failure Page to decode data)"
+	},
+	"DTCExtendedData.DTCOccurrenceCounter": {
+	"scaled": true,
+	"comment": "Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)"
+	},
+	"DTCFaultDetectionCounter": {
+	"scaled": true,
+	"comment": "DTC fault detction counter"
+	},
+	"DTCSnapshotRecordNumber": {
+	"byte": true
+	},
+	"vehicleManufacturerECUSoftwareNumber": {
+	"bitscount": 80,
+	"byte": true,
+	"bytescount": 10,
+	"bytesascii": true,
+	"comment": "ConfigurationFileReferenceLink"
+	},
+	"ECUSerialNumber": {
+	"bitscount": 160,
+	"byte": true,
+	"bytescount": 20,
+	"bytesascii": true,
+	"comment": "ECU serial number"
+	},
+	"diagnosticVersion": {
+	"byte": true,
+	"comment": "VDIAG"
+	},
+	"applicationSoftwareIdentification": {
+	"bitscount": 80,
+	"byte": true,
+	"bytescount": 10,
+	"bytesascii": true,
+	"comment": "Software Number"
+	},
+	"LockedSatusTimer": {
+	"scaled": true,
+	"unit": "s",
+	"comment": "BLM waits until  when checking the status locked from BCM. After timer expiry, B"
+	},
+	"Architecture": {
+	"lists": {
+		"0": "not configured",
+		"1": "C1A",
+		"2": "C1AHS",
+		"3": "C1AHSRUN2",
+		"4": "sweet500"
+	},
+	"comment": "Describe current architecture (C1A,C1AHS,Sweet100,sweet200,sweet400)"
+	},
+	"BLMHFM pairing": {
+	"lists": {
+		"0": "pairing not done",
+		"1": "pairing done"
+	}
+	},
+	"SuperLockConfTimer": {
+	"scaled": true,
+	"unit": "s",
+	"comment": "Max delay between SuperLockAck (BLM -> SP) and SuperLockConf (SP -> BLM). After the timer expires, B"
+	},
+	"Enable disable bugs": {
+	"lists": {
+		"0": "None",
+		"1": "Error",
+		"2": "Event",
+		"3": "Debug"
+	},
+	"comment": "DID requested by Valeo for Enable/disable debug capabilites."
+	},
+	"DTCFailureType.ManufacturerOrSupplier": {
+	"bitscount": 4
+	},
+	"DTCDeviceAndFailureTypeOBD": {
+	"bitscount": 16,
+	"bytescount": 2
+	},
+	"GlobalSecureCommandTimeout": {
+	"scaled": true,
+	"unit": "s",
+	"comment": "Maximum time betwwen secure command sending and answer received in BLM"
+	},
+	"SMPCalibrationConfig": {
+	"lists": {
+		"0": "No vendorNotif calibration enhancement",
+		"1": "VendorNotif calibration enhancement 50% only",
+		"2": "Default configuration (33 and 66) %",
+		"3": "VendorNotif calibration enhancement 25, 50, 75%",
+		"4": "VendorNotif calibration enhancement 20, 40, 60, 80 %",
+		"5": "VendorNotif calibration enhancement 10, 2\u00e0, 30, ..., 90%"
+	},
+	"comment": "DID requested by Valeo for Smartphone Calibration purpose."
+	},
+	"ConfigurationDataReferenceAfterConfigurationProcess": {
+	"bitscount": 80,
+	"byte": true,
+	"bytescount": 10,
+	"bytesascii": true
+	},
+	"MaxBufferedCommand": {
+	"scaled": true,
+	"comment": "Maximum number of commands buffered"
+	},
+	"vehicleManufacturerSparePartNumber": {
+	"bitscount": 80,
+	"byte": true,
+	"bytescount": 10,
+	"bytesascii": true,
+	"comment": "used for renault"
+	}
+},
+"requests": [
+	{
+	"minbytes": 4,
+	"replybytes": "620104",
+	"sentbytes": "220104",
+	"name": "DataRead.VKfunctionActivation",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"VKfunctionActivation": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "62011B",
+	"sentbytes": "22011B",
+	"name": "DataRead.VKSuspendStatus",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"VKSuspendStatus": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 13,
+	"replybytes": "62F012",
+	"sentbytes": "22F012",
+	"name": "DataRead.OperationnalReference",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"OperationnalReference": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 19,
+	"replybytes": "62F010",
+	"sentbytes": "22F010",
+	"name": "DataRead.Fingerprint",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"Fingerprint": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 13,
+	"replybytes": "62F011",
+	"manualsend": true,
+	"sentbytes": "22F011",
+	"name": "DataRead.IndexSrvData",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"IndexSrvData": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 67,
+	"replybytes": "62F18A",
+	"sentbytes": "22F18A",
+	"name": "DataRead.systemSupplierIdentifier",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"systemSupplierIdentifier": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 35,
+	"replybytes": "62F194",
+	"sentbytes": "22F194",
+	"name": "DataRead.systemSupplierECUSoftwareNumber",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"systemSupplierECUSoftwareNumber": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 35,
+	"replybytes": "62F195",
+	"sentbytes": "22F195",
+	"name": "DataRead.systemSupplierECUSoftwareVersionNumber",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"systemSupplierECUSoftwareVersionNumber": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 20,
+	"replybytes": "62F190",
+	"sentbytes": "22F190",
+	"name": "DataRead.VIN",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"VIN": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 6,
+	"replybytes": "620101",
+	"sentbytes": "220101",
+	"name": "DataRead.RefreshAccesCodePeriod",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"RefreshAccesCodePeriod": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0101",
+	"sentbytes": "2E0101000000",
+	"name": "DataWrite.RefreshAccesCodePeriod",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"RefreshAccesCodePeriod": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 5,
+	"replybytes": "620102",
+	"sentbytes": "220102",
+	"name": "DataRead.RTCDesync",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"RTCDesync": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0102",
+	"sentbytes": "2E01020000",
+	"name": "DataWrite.RTCDesync",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"RTCDesync": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "620103",
+	"sentbytes": "220103",
+	"name": "DataRead.DefaultTokenValidityPeriod",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"DefaultTokenValidityPeriod": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0103",
+	"sentbytes": "2E010300",
+	"name": "DataWrite.DefaultTokenValidityPeriod",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"DefaultTokenValidityPeriod": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 9,
+	"replybytes": "620105",
+	"sentbytes": "220105",
+	"name": "DataRead.VKServiceState",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"VKServiceState": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0105",
+	"sentbytes": "2E0105000000000000",
+	"name": "DataWrite.VKServiceState",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"VKServiceState": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 5,
+	"replybytes": "620106",
+	"sentbytes": "220106",
+	"name": "DataRead.VKIdlePowerBudget",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"VKIdlePowerBudget": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0106",
+	"sentbytes": "2E01060000",
+	"name": "DataWrite.VKIdlePowerBudget",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"VKIdlePowerBudget": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "620107",
+	"sentbytes": "220107",
+	"name": "DataRead.SPBatteryWarningLevel",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"SPBatteryWarningLevel": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0107",
+	"sentbytes": "2E010700",
+	"name": "DataWrite.SPBatteryWarningLevel",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"SPBatteryWarningLevel": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "620108",
+	"sentbytes": "220108",
+	"name": "DataRead.VKIdlePowerBudgetWarningLevel",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"VKIdlePowerBudgetWarningLevel": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0108",
+	"sentbytes": "2E010800",
+	"name": "DataWrite.VKIdlePowerBudgetWarningLevel",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"VKIdlePowerBudgetWarningLevel": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "620109",
+	"sentbytes": "220109",
+	"name": "DataRead.CloseRental",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"CloseRental": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0109",
+	"sentbytes": "2E010900",
+	"name": "DataWrite.CloseRental",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"CloseRental": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "62010B",
+	"sentbytes": "22010B",
+	"name": "DataRead.MaxTimeDrift",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"MaxTimeDrift": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E010B",
+	"sentbytes": "2E010B00",
+	"name": "DataWrite.MaxTimeDrift",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"MaxTimeDrift": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 5,
+	"replybytes": "62010D",
+	"sentbytes": "22010D",
+	"name": "DataRead.CleanupB2CPeriod",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"CleanupB2CPeriod": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E010D",
+	"sentbytes": "2E010D0000",
+	"name": "DataWrite.CleanupB2CPeriod",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"CleanupB2CPeriod": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 5,
+	"replybytes": "62010F",
+	"sentbytes": "22010F",
+	"name": "DataRead.TokenUploadTimeout",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"TokenUploadTimeout": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E010F",
+	"sentbytes": "2E010F0000",
+	"name": "DataWrite.TokenUploadTimeout",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"TokenUploadTimeout": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "620110",
+	"sentbytes": "220110",
+	"name": "DataRead.MaxSPBoundingTries",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"MaxSPBoundingTries": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0110",
+	"sentbytes": "2E011000",
+	"name": "DataWrite.MaxSPBoundingTries",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"MaxSPBoundingTries": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "620111",
+	"sentbytes": "220111",
+	"name": "DataRead.MaxSPBoundingTime",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"MaxSPBoundingTime": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0111",
+	"sentbytes": "2E011100",
+	"name": "DataWrite.MaxSPBoundingTime",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"MaxSPBoundingTime": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 5,
+	"replybytes": "620112",
+	"sentbytes": "220112",
+	"name": "DataRead.SPBoundingBanTime",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"SPBoundingBanTime": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0112",
+	"manualsend": true,
+	"sentbytes": "2E01120000",
+	"name": "DataWrite.SPBoundingBanTime",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"SPBoundingBanTime": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "620113",
+	"sentbytes": "220113",
+	"name": "DataRead.MaxSimultaneousSPBoundingTries",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"MaxSimultaneousSPBoundingTries": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0113",
+	"sentbytes": "2E011300",
+	"name": "DataWrite.MaxSimultaneousSPBoundingTries",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"MaxSimultaneousSPBoundingTries": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 5,
+	"replybytes": "620114",
+	"sentbytes": "220114",
+	"name": "DataRead.MaxSimultaneousSPBoundingTime",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"MaxSimultaneousSPBoundingTime": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0114",
+	"sentbytes": "2E01140000",
+	"name": "DataWrite.MaxSimultaneousSPBoundingTime",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"MaxSimultaneousSPBoundingTime": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 5,
+	"replybytes": "620115",
+	"sentbytes": "220115",
+	"name": "DataRead.SimultaneousSPBoundingBanTime",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"SimultaneousSPBoundingBanTime": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0115",
+	"sentbytes": "2E01150000",
+	"name": "DataWrite.SimultaneousSPBoundingBanTime",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"SimultaneousSPBoundingBanTime": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "620116",
+	"sentbytes": "220116",
+	"name": "DataRead.MaxLogStorage",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"MaxLogStorage": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0116",
+	"sentbytes": "2E011600",
+	"name": "DataWrite.MaxLogStorage",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"MaxLogStorage": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 5,
+	"replybytes": "620117",
+	"sentbytes": "220117",
+	"name": "DataRead.SecureCmdAntiDelay",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"SecureCmdAntiDelay": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0117",
+	"sentbytes": "2E01170000",
+	"name": "DataWrite.SecureCmdAntiDelay",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"SecureCmdAntiDelay": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "620118",
+	"sentbytes": "220118",
+	"name": "DataRead.SuspendDelayTimer",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"SuspendDelayTimer": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0118",
+	"sentbytes": "2E011800",
+	"name": "DataWrite.SuspendDelayTimer",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"SuspendDelayTimer": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "620119",
+	"sentbytes": "220119",
+	"name": "DataRead.Manufacturing Data",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"Manufacturing Data": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0119",
+	"sentbytes": "2E011900",
+	"name": "DataWrite.Manufacturing Data",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"Manufacturing Data": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "62011C",
+	"sentbytes": "22011C",
+	"name": "DataRead.Wrongrights",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"Wrongrights": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E011C",
+	"manualsend": true,
+	"sentbytes": "2E011C00",
+	"name": "DataWrite.Wrongrights",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"Wrongrights": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 13,
+	"replybytes": "626001",
+	"sentbytes": "226001",
+	"name": "DataRead.VKState",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"VKState": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 11,
+	"replybytes": "626002",
+	"sentbytes": "226002",
+	"name": "DataRead.SWVersion",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"SWVersion": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "626003",
+	"sentbytes": "226003",
+	"name": "DataRead.NbOfSPListed",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"NbOfSPListed": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "626004",
+	"sentbytes": "226004",
+	"name": "DataRead.HFMSecureKeyStatus",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"HFMSecureKeyStatus": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 5,
+	"replybytes": "626006",
+	"sentbytes": "226006",
+	"name": "DataRead.VKCurrentIdlePowerBudget",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"VKCurrentIdlePowerBudget": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "626009",
+	"sentbytes": "226009",
+	"name": "DataRead.Enable Superlock",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"Enable Superlock": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 5,
+	"replybytes": "62010E",
+	"sentbytes": "22010E",
+	"name": "DataRead.MaxTokenSize",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"MaxTokenSize": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E010E",
+	"manualsend": true,
+	"sentbytes": "2E010E0000",
+	"name": "DataWrite.MaxTokenSize",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"MaxTokenSize": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "62010A",
+	"sentbytes": "22010A",
+	"name": "DataRead.CloudPuK",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"CloudPuK": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 7,
+	"replybytes": "62F180",
+	"sentbytes": "22F180",
+	"name": "DataRead.BootVersion",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"BootVersion": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 13,
+	"replybytes": "62F191",
+	"sentbytes": "22F191",
+	"name": "DataRead.vehicleManufacturerECUHardwareNumber",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"vehicleManufacturerECUHardwareNumber": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "62011A",
+	"sentbytes": "22011A",
+	"name": "DataRead.TheoricalMaxtimeDrift",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"TheoricalMaxtimeDrift": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E011A",
+	"manualsend": true,
+	"sentbytes": "2E011A00",
+	"name": "DataWrite.TheoricalMaxtimeDrift",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"TheoricalMaxtimeDrift": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 6,
+	"replybytes": "62F0D0",
+	"manualsend": true,
+	"sentbytes": "22F0D0",
+	"name": "DataRead.mileage",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"mileage": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "626008",
+	"sentbytes": "226008",
+	"name": "DataRead.IVI_CLUSTER",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"IVI_CLUSTER": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "62010C",
+	"sentbytes": "22010C",
+	"name": "DataRead.SPLockCmdDelay",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"SPLockCmdDelay": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E010C",
+	"manualsend": true,
+	"sentbytes": "2E010C00",
+	"name": "DataWrite.SPLockCmdDelay",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"SPLockCmdDelay": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E011B",
+	"manualsend": true,
+	"sentbytes": "2E011B00",
+	"name": "DataWrite.VKSuspendStatus",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"VKSuspendStatus": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 13,
+	"replybytes": "62F18E",
+	"sentbytes": "22F18E",
+	"name": "DataRead.vehicleManufacturerKitAssemblyPartNumber",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"vehicleManufacturerKitAssemblyPartNumber": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "62F0D1",
+	"manualsend": true,
+	"sentbytes": "22F0D1",
+	"name": "DataRead.DTCOccurrenceCounter",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"DTCOccurrenceCounter": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "62EF01",
+	"sentbytes": "22EF01",
+	"name": "DataRead.SupplierFaultCode",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"SupplierFaultCode": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E010A",
+	"manualsend": true,
+	"sentbytes": "2E010A00",
+	"name": "DataWrite.CloudPuK",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"CloudPuK": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6EF180",
+	"manualsend": true,
+	"sentbytes": "2EF18000000000",
+	"name": "DataWrite.BootVersion",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"BootVersion": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E0104",
+	"manualsend": true,
+	"sentbytes": "2E010400",
+	"name": "DataWrite.VKfunctionActivation",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"VKfunctionActivation": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E6009",
+	"manualsend": true,
+	"sentbytes": "2E600900",
+	"name": "DataWrite.Enable Superlock",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"Enable Superlock": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "626007",
+	"sentbytes": "226007",
+	"name": "DataRead.Renault Nissan",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"Renault Nissan": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 13,
+	"replybytes": "62F1A1",
+	"sentbytes": "22F1A1",
+	"name": "DataRead.VehicleManufacturerSparePartNumberNissan",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"VehicleManufacturerSparePartNumberNissan": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 13,
+	"replybytes": "62F111",
+	"sentbytes": "22F111",
+	"name": "DataRead.VehicleManufacturerECUHardwareNumber_DAI",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"VehicleManufacturerECUHardwareNumber_DAI": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 23,
+	"replybytes": "62F121",
+	"sentbytes": "22F121",
+	"name": "DataRead.VehicleManufacturerECUSoftwareNumber_DAI",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"VehicleManufacturerECUSoftwareNumber_DAI": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 6,
+	"replybytes": "5901FF000000",
+	"sentbytes": "1901FF",
+	"name": "ReadDTCInformation.ReportNumberOfDTCByStatusMask",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"DTCCount": {
+		"firstbyte": 5
+		},
+		"DTCFormatIdentifier": {
+		"firstbyte": 4
+		},
+		"DTCStatusAvailabilityMask": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 1,
+	"replybytes": "7E",
+	"sentbytes": "3E00",
+	"name": "TesterPresent.WithResponse",
+	"deny_sds": []
+	},
+	{
+	"minbytes": 2,
+	"replybytes": "5003",
+	"manualsend": true,
+	"sentbytes": "1003",
+	"name": "StartDiagnosticSession",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"SessionName": {
+		"firstbyte": 2
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"replybytes": "5003",
+	"manualsend": true,
+	"sentbytes": "1003",
+	"name": "StartDiagnosticSession.ExtendedDiagnostic",
+	"deny_sds": []
+	},
+	{
+	"minbytes": 2,
+	"replybytes": "5001",
+	"manualsend": true,
+	"sentbytes": "1001",
+	"name": "StartDiagnosticSession.Default",
+	"deny_sds": []
+	},
+	{
+	"minbytes": 2,
+	"replybytes": "5002",
+	"manualsend": true,
+	"sentbytes": "1002",
+	"name": "StartDiagnosticSession.Programming",
+	"deny_sds": []
+	},
+	{
+	"minbytes": 1,
+	"replybytes": "54",
+	"sentbytes": "14FFFFFF",
+	"name": "ClearDiagnosticInformation.All",
+	"deny_sds": []
+	},
+	{
+	"minbytes": 3,
+	"shiftbytescount": 4,
+	"replybytes": "59020000000000",
+	"sentbytes": "1902FF",
+	"name": "ReadDTCInformation.ReportDTC",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"StatusOfDTC": {
+		"firstbyte": 7
+		},
+		"DTCStatus.testFailed": {
+		"firstbyte": 7,
+		"bitoffset": 7
+		},
+		"DTCStatus.testFailedThisMonitoringCycle": {
+		"firstbyte": 7,
+		"bitoffset": 6
+		},
+		"DTCStatus.pendingDTC": {
+		"firstbyte": 7,
+		"bitoffset": 5
+		},
+		"DTCStatus.confirmedDTC": {
+		"firstbyte": 7,
+		"bitoffset": 4
+		},
+		"DTCStatus.testNotCompletedSinceLastClear": {
+		"firstbyte": 7,
+		"bitoffset": 3
+		},
+		"DTCStatus.testFailedSinceLastClear": {
+		"firstbyte": 7,
+		"bitoffset": 2
+		},
+		"DTCStatus.testNotCompletedThisMonitoringCycle": {
+		"firstbyte": 7,
+		"bitoffset": 1
+		},
+		"DTCStatus.warningIndicatorRequested": {
+		"firstbyte": 7
+		},
+		"DTCFailureType.Category": {
+		"firstbyte": 6
+		},
+		"DTCFailureType": {
+		"firstbyte": 6
+		},
+		"DTCDeviceIdentifier": {
+		"firstbyte": 4
+		},
+		"DTCStatusAvailabilityMask": {
+		"firstbyte": 3
+		},
+		"DTCDeviceAndFailureTypeOBD": {
+		"firstbyte": 4
+		},
+		"DTCFailureType.ManufacturerOrSupplier": {
+		"firstbyte": 6,
+		"bitoffset": 4
+		}
+	}
+	},
+	{
+	"minbytes": 7,
+	"replybytes": "59020000000000",
+	"sentbytes": "1902FF",
+	"name": "ReadDTCInformation.ReportDTC_CPDD Import",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"StatusOfDTC": {
+		"firstbyte": 7
+		},
+		"DTCStatus.testFailed": {
+		"firstbyte": 7,
+		"bitoffset": 7
+		},
+		"DTCStatus.testFailedThisMonitoringCycle": {
+		"firstbyte": 7,
+		"bitoffset": 6
+		},
+		"DTCStatus.pendingDTC": {
+		"firstbyte": 7,
+		"bitoffset": 5
+		},
+		"DTCStatus.confirmedDTC": {
+		"firstbyte": 7,
+		"bitoffset": 4
+		},
+		"DTCStatus.testNotCompletedSinceLastClear": {
+		"firstbyte": 7,
+		"bitoffset": 3
+		},
+		"DTCStatus.testFailedSinceLastClear": {
+		"firstbyte": 7,
+		"bitoffset": 2
+		},
+		"DTCStatus.testNotCompletedThisMonitoringCycle": {
+		"firstbyte": 7,
+		"bitoffset": 1
+		},
+		"DTCStatus.warningIndicatorRequested": {
+		"firstbyte": 7
+		},
+		"DTCFailureType.Category": {
+		"firstbyte": 6
+		},
+		"DTCFailureType": {
+		"firstbyte": 6
+		},
+		"DTCDeviceIdentifier": {
+		"firstbyte": 4
+		},
+		"DTCStatusAvailabilityMask": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 6,
+	"replybytes": "590400000000",
+	"sentbytes": "1904000000FF",
+	"name": "ReadDTCInformation.ReportSnapshot",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"DTCMaskRecord": {
+		"firstbyte": 3
+		}
+	},
+	"receivebyte_dataitems": {
+		"DTCRecord": {
+		"firstbyte": 3
+		},
+		"StatusOfDTC": {
+		"firstbyte": 6
+		}
+	}
+	},
+	{
+	"minbytes": 10,
+	"replybytes": "59060000000080000000",
+	"sentbytes": "190600000080",
+	"name": "ReadDTCInformation.ReportExtendedData.Mileage",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"DTCMaskRecord": {
+		"firstbyte": 3
+		}
+	},
+	"receivebyte_dataitems": {
+		"DTCRecord": {
+		"firstbyte": 3
+		},
+		"StatusOfDTC": {
+		"firstbyte": 6
+		},
+		"DTCExtendedData.Mileage": {
+		"firstbyte": 8
+		},
+		"DTCExtendedDataRecordNumber": {
+		"firstbyte": 7
+		}
+	}
+	},
+	{
+	"minbytes": 8,
+	"replybytes": "5906000000008100",
+	"sentbytes": "190600000081",
+	"name": "ReadDTCInformation.ReportExtendedData.AgingCounter",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"DTCMaskRecord": {
+		"firstbyte": 3
+		}
+	},
+	"receivebyte_dataitems": {
+		"DTCRecord": {
+		"firstbyte": 3
+		},
+		"StatusOfDTC": {
+		"firstbyte": 6
+		},
+		"DTCExtendedData.AgingCounter": {
+		"firstbyte": 8
+		},
+		"DTCExtendedDataRecordNumber": {
+		"firstbyte": 7
+		}
+	}
+	},
+	{
+	"minbytes": 8,
+	"replybytes": "5906000000008200",
+	"sentbytes": "190600000082",
+	"name": "ReadDTCInformation.ReportExtendedData.DTCOccurrenceCounter",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"DTCMaskRecord": {
+		"firstbyte": 3
+		}
+	},
+	"receivebyte_dataitems": {
+		"DTCRecord": {
+		"firstbyte": 3
+		},
+		"StatusOfDTC": {
+		"firstbyte": 6
+		},
+		"DTCExtendedData.DTCOccurrenceCounter": {
+		"firstbyte": 8
+		},
+		"DTCExtendedDataRecordNumber": {
+		"firstbyte": 7
+		}
+	}
+	},
+	{
+	"minbytes": 10,
+	"replybytes": "590600000000",
+	"sentbytes": "1906000000FF",
+	"name": "ReadDTCInformation.ReportExtendedData",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"DTCMaskRecord": {
+		"firstbyte": 3
+		}
+	},
+	"receivebyte_dataitems": {
+		"DTCRecord": {
+		"firstbyte": 3
+		},
+		"StatusOfDTC": {
+		"firstbyte": 6
+		},
+		"DTCExtendedData.AgingCounter": {
+		"firstbyte": 8
+		},
+		"DTCExtendedData.DTCOccurrenceCounter": {
+		"firstbyte": 8
+		},
+		"DTCExtendedData.Mileage": {
+		"firstbyte": 8
+		},
+		"DTCExtendedDataRecordNumber": {
+		"firstbyte": 7
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"shiftbytescount": 4,
+	"replybytes": "590AFF00000000",
+	"sentbytes": "190A",
+	"name": "ReadDTCInformation.ReportSupportedDTC",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"DTCStatusAvailabilityMask": {
+		"firstbyte": 3
+		},
+		"StatusOfDTC": {
+		"firstbyte": 7
+		},
+		"DTCDeviceIdentifier": {
+		"firstbyte": 4
+		},
+		"DTCFailureType": {
+		"firstbyte": 6
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"shiftbytescount": 4,
+	"replybytes": "591400000000",
+	"sentbytes": "1914",
+	"name": "ReportDTCInformation.ReportDTCFaultDetectionCounter",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"DTCDeviceIdentifier": {
+		"firstbyte": 3
+		},
+		"DTCFailureType": {
+		"firstbyte": 5
+		},
+		"DTCFaultDetectionCounter": {
+		"firstbyte": 6
+		}
+	}
+	},
+	{
+	"minbytes": 7,
+	"replybytes": "590AFF00000000",
+	"sentbytes": "190A",
+	"name": "ReadDTCInformation.ReportSupportedDTC_CPDD Import",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"DTCStatusAvailabilityMask": {
+		"firstbyte": 3
+		},
+		"StatusOfDTC": {
+		"firstbyte": 7
+		},
+		"DTCDeviceIdentifier": {
+		"firstbyte": 4
+		},
+		"DTCFailureType": {
+		"firstbyte": 6
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"shiftbytescount": 4,
+	"replybytes": "590300000001",
+	"sentbytes": "1903000000FF",
+	"name": "ReadDTCInformation.ReportDTCSnapshotIdentification",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"DTCMaskRecord": {
+		"firstbyte": 3
+		}
+	},
+	"receivebyte_dataitems": {
+		"DTCRecord": {
+		"firstbyte": 3
+		},
+		"DTCSnapshotRecordNumber": {
+		"firstbyte": 6
+		}
+	}
+	},
+	{
+	"minbytes": 13,
+	"replybytes": "62F187",
+	"sentbytes": "22F187",
+	"name": "DataRead.vehicleManufacturerSparePartNumber",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"vehicleManufacturerSparePartNumber": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 13,
+	"replybytes": "62F188",
+	"sentbytes": "22F188",
+	"name": "DataRead.vehicleManufacturerECUSoftwareNumber",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"vehicleManufacturerECUSoftwareNumber": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 23,
+	"replybytes": "62F18C",
+	"sentbytes": "22F18C",
+	"name": "DataRead.ECUSerialNumber",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"ECUSerialNumber": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "62F1A0",
+	"sentbytes": "22F1A0",
+	"name": "DataRead.diagnosticVersion",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"diagnosticVersion": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 13,
+	"replybytes": "62F181",
+	"sentbytes": "22F181",
+	"name": "DataRead.applicationSoftwareIdentification",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"applicationSoftwareIdentification": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "62011E",
+	"sentbytes": "22011E",
+	"name": "DataRead.LockedSatusTimer",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"LockedSatusTimer": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E011E",
+	"manualsend": true,
+	"sentbytes": "2E011E00",
+	"name": "DataWrite.LockedSatusTimer",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"LockedSatusTimer": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "62600A",
+	"sentbytes": "22600A",
+	"name": "DataRead.Architecture",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"Architecture": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E600A",
+	"manualsend": true,
+	"sentbytes": "2E600A00",
+	"name": "DataWrite.Architecture",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"Architecture": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "62011F",
+	"sentbytes": "22011F",
+	"name": "DataRead.SuperLockConfTimer",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"SuperLockConfTimer": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E011F",
+	"manualsend": true,
+	"sentbytes": "2E011F00",
+	"name": "DataWrite.SuperLockConfTimer",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"SuperLockConfTimer": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "626005",
+	"sentbytes": "226005",
+	"name": "DataRead.Enable disable bugs",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"Enable disable bugs": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E6005",
+	"manualsend": true,
+	"sentbytes": "2E600500",
+	"name": "DataWrite.Enable disable bugs",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"Enable disable bugs": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "626010",
+	"manualsend": true,
+	"sentbytes": "226010",
+	"name": "DataRead.GlobalSecureCommandTimeout",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"GlobalSecureCommandTimeout": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "62600B",
+	"sentbytes": "22600B",
+	"name": "DataRead.SMPCalibrationConfig",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"SMPCalibrationConfig": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 13,
+	"replybytes": "62F1A2",
+	"sentbytes": "22F1A2",
+	"name": "DataRead.ConfigurationDataReferenceAfterConfigurationProcess",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"ConfigurationDataReferenceAfterConfigurationProcess": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6EF1A2",
+	"manualsend": true,
+	"sentbytes": "2EF1A200000000000000000000",
+	"name": "DataWrite.ConfigurationDataReferenceAfterConfigurationProcess",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"ConfigurationDataReferenceAfterConfigurationProcess": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E600B",
+	"manualsend": true,
+	"sentbytes": "2E600B00",
+	"name": "DataWrite.SMPCalibrationConfig",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"SMPCalibrationConfig": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E6011",
+	"manualsend": true,
+	"sentbytes": "2E601100",
+	"name": "DataWrite.MaxBufferedCommand",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"MaxBufferedCommand": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "6E6010",
+	"sentbytes": "2E601000",
+	"name": "DataWrite.GlobalSecureCommandTimeout",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"GlobalSecureCommandTimeout": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "626011",
+	"sentbytes": "226011",
+	"name": "DataRead.MaxBufferedCommand",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"MaxBufferedCommand": {
+		"firstbyte": 4,
+		"ref": true
+		}
+	}
+	}
+],
+"devices": [
+	{
+	"dtc": 41898,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_token_expired"
+	},
+	{
+	"dtc": 41900,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_TokenBlacklisted"
+	},
+	{
+	"dtc": 41902,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_BadgeStatusNotReceived"
+	},
+	{
+	"dtc": 41903,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_HFMPairingNotDone"
+	},
+	{
+	"dtc": 41904,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_TransmissionError"
+	},
+	{
+	"dtc": 41905,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_InvalidSecureKey"
+	},
+	{
+	"dtc": 41899,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_SecurePairingNOK"
+	},
+	{
+	"dtc": 41906,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_TokenFormatNOK"
+	},
+	{
+	"dtc": 41907,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_CloudSignatureNOK"
+	},
+	{
+	"dtc": 41908,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_PartnerSignatureNOK"
+	},
+	{
+	"dtc": 41909,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_InvalidMPUConfig"
+	},
+	{
+	"dtc": 57679,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "BCM_CRC_error"
+	},
+	{
+	"dtc": 57684,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "IVI_CRC_error"
+	},
+	{
+	"dtc": 57678,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Cluster_CRC_error"
+	},
+	{
+	"dtc": 57672,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "VDC_CRC_error"
+	},
+	{
+	"dtc": 49273,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Bus off"
+	},
+	{
+	"dtc": 41912,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_Internal_failure"
+	},
+	{
+	"dtc": 41913,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_Under_Voltage_BLE-chip"
+	},
+	{
+	"dtc": 41914,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_Internal_failure ASIC"
+	},
+	{
+	"dtc": 41915,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_'CPU"
+	},
+	{
+	"dtc": 41918,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_supply_short circuit to battery"
+	},
+	{
+	"dtc": 41919,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_supply_short circuit to ground or open"
+	},
+	{
+	"dtc": 41897,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_ground_Short circuit to ground or open"
+	},
+	{
+	"dtc": 41896,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DTC_BLM_ground_Short circuit to battery"
+	}
+],
+"endian": "Big"
+}

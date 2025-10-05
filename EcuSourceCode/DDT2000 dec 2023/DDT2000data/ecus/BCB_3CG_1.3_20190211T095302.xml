@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.2.0.0" date="2019-02-06T10:11"/>
+<ddt:Target Name="BCB_3CG_1.3" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="ramses.revuelta@renault.com" href="BCB_3CG_1.3_20190211T095302.xml" upload="2/11/2019" group="BCB_3CG"><Description><![CDATA[Base DDT pour reprog chargeur
+
+Surname : REVUELTA ORTEGA
+Name : Ramsés
+
+A partir du index15
+
+Mod : Introduced calibration for trapdoor management behaviour.]]></Description>
+<Projects xmlns=""><x09/></Projects>
+<Function Name="BCB" Address="103" Type=""/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation/>
+<Failures Name="No failures" Id="0"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="1938"/>
+</SendId><ReceiveId>
+<CANId Value="1939"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="4" Supplier="AAY" Soft="1151" Version="1000"/></AutoIdents>
+<Datas>
+
+<Data Name="CalibrationNumber">
+<Comment><![CDATA[Numero de calibration en Hexa]]></Comment>
+<Mnemonic>NCAL</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="DiagnosticIdentificationCode">
+<Comment><![CDATA[Diag evolution number]]></Comment>
+<Mnemonic>VDIAG</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="SoftwareNumber">
+<Comment><![CDATA[Software identification number]]></Comment>
+<Mnemonic>NPGRGM</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="SupplierNumber.ITG">
+<Comment><![CDATA[Supplier ITG code]]></Comment>
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="EditionNumber">
+<Comment><![CDATA[Software version(edition) number]]></Comment>
+<Mnemonic>NVERS</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="PartNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="2" Text="29605"/></List>
+</Bits>
+</Data>
+<Data Name="HardwareNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="1" Text="291A5"/></List>
+</Bits>
+</Data>
+<Data Name="ApprovalNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/></List>
+</Bits>
+</Data>
+<Data Name="PartNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="HardwareNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="ManufacturerIdentificationCode">
+<Bits>
+<List>
+<Item Value="0" Text="Renault R1"/>
+<Item Value="128" Text="Nissan N1"/>
+<Item Value="129" Text="Nissan N2"/>
+<Item Value="130" Text="Nissan N3"/>
+<Item Value="136" Text="5DIGITS"/>
+<Item Value="255" Text="Renault R3"/></List>
+</Bits>
+</Data>
+<Data Name="SupplierNumber">
+<Comment><![CDATA[Supplier code (hexa)]]></Comment>
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="NDTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Bits count="16">
+<List/>
+</Bits>
+</Data>
+<Data Name="Historical Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Current Failure">
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Standard Fault">
+<Bits count="5">
+<List/>
+</Bits>
+</Data>
+<Data Name="TrapdoorMode">
+<Mnemonic>TRAPMODE</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="Not enabled"/>
+<Item Value="1" Text="Enabled - Korea mode"/>
+<Item Value="2" Text="Enabled - EU mode"/></List>
+</Bits>
+</Data>
+<Data Name="TrapdoorModeInput">
+<Mnemonic>TRAPMODEIN</Mnemonic>
+<Bits count="2">
+<List>
+<Item Value="0" Text="Not enabled"/>
+<Item Value="1" Text="Enabled - Korea mode"/>
+<Item Value="2" Text="Enabled - EU mode"/>
+<Item Value="3" Text="Not used"/></List>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="StartOfSectionDefaut">
+
+<Sent>
+<SentBytes>1081</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5081</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Programmation">
+
+<Sent>
+<SentBytes>1085</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5085</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagSection">
+
+<Sent>
+<SentBytes>10C0</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50C0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="TesterPresent">
+
+<Sent>
+<SentBytes>3E01</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Identification.RenaultR2">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request  for old ECU]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>6180</ReplyBytes>
+<DataItem Name="CalibrationNumber" Ref="1" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" Ref="1" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" Ref="1" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" Ref="1" FirstByte="9"/>
+<DataItem Name="EditionNumber" Ref="1" FirstByte="19"/>
+<DataItem Name="PartNumber.BasicPartList" Ref="1" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" Ref="1" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" Ref="1" FirstByte="25"/>
+<DataItem Name="PartNumber.LowerPart" Ref="1" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" Ref="1" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" Ref="1" FirstByte="26"/>
+<DataItem Name="SupplierNumber" Ref="1" FirstByte="9"/>
+</Received>
+</Request>
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>17FF00</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<ReplyBytes>5700</ReplyBytes>
+<DataItem Name="NDTC" FirstByte="2"/>
+<DataItem Name="FirstDTC" FirstByte="3"/>
+<DataItem Name="Historical Failure" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Current Failure" FirstByte="5" BitOffset="2"/>
+<DataItem Name="Standard Fault" FirstByte="5" BitOffset="3"/>
+</Received>
+</Request>
+<Request Name="DataRead.Trapdoor">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220001</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>620001</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.Trapdoor">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E000100</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>6E0001</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadTrapdoorMode">
+
+<Sent>
+<SentBytes>21F2</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>61F2</ReplyBytes>
+<DataItem Name="TrapdoorMode" FirstByte="3" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="WriteTrapdoorMode">
+
+<Sent>
+<SentBytes>3BF200</SentBytes>
+<DataItem Name="TrapdoorModeInput" FirstByte="3" Endian="Little"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7BF2</ReplyBytes>
+</Received>
+</Request>
+</Requests>
+<Devices>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="Configuration">
+
+<Screen Name="Trapdoor management" Color="16777215" WindowState="0" Width="9660" Height="7020">
+
+<Label Text="Trapdoor" Color="8454016" Alignment="2">
+<Rectangle Left="3600" Top="720" Height="645" Width="2280"/>
+<Font Name="MS Sans Serif" Size=" 23" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="New value" Color="16777215" Alignment="2">
+<Rectangle Left="4800" Top="1800" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Read">
+<Rectangle Left="3720" Top="1800" Height="300" Width="600"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Read TrapdoorMode"/>
+
+</Button>
+<Button Text="Write">
+<Rectangle Left="8280" Top="1800" Height="300" Width="600"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text="Write TrapdoorMode"/>
+<Send Delay="0" RequestName="WriteTrapdoorMode"/>
+</Button>
+
+<Display Width="1355" Color="16777215" DataName="TrapdoorMode" RequestName="ReadTrapdoorMode">
+<Rectangle Left="360" Top="1800" Height="300" Width="3240"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="0" Color="16777215" DataName="TrapdoorModeInput" RequestName="WriteTrapdoorMode">
+<Rectangle Left="6000" Top="1800" Height="300" Width="2160"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

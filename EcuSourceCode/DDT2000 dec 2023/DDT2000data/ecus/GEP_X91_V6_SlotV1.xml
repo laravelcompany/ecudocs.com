@@ -1,0 +1,2161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<ddt:Target Name="GEP_X91_V6_SlotV1" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" email="eric.chauvelier@renault.com" href="GEP_X91_V6_SlotV1.xml" upload="4/11/06" group="GEP">
+<Projects xmlns=""><x91/></Projects>
+<Function Name="Direction assistée" Address="4"/>
+<Language Name="Français" Reference="1"/>
+<Description><![CDATA[Base DDT2000 GEP (Groupe Electro-Pompe) 
+
+Projet: X91
+
+Author : Eric Chauvelier, Sce 65630, Tél : 58739 
+Email : eric.chauvelier@renault.com
+
+Modification par C.CANDAS le 2 mars 2006
+- officialisation de la base
+- correction des organes avec le DTC codage OBD
+
+V5: le 17 Mars, version modifiee et non validee
+V6: modification données pour 2101]]></Description>
+<DateOfficialisation>11/04/2006 09:57:41</DateOfficialisation>
+<Failures Name="Pannes DTC" Id="3"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="1858"/>
+</SendId><ReceiveId>
+<CANId Value="1890"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="4" Supplier="373" Soft="50A0" Version="0011"/><AutoIdent DiagVersion="4" Supplier="373" Soft="A03A" Version="0012"/><AutoIdent DiagVersion="4" Supplier="373" Soft="0000" Version="0000"/></AutoIdents>
+<Datas>
+
+<Data Name="Année">
+<Bytes count="1"/>
+</Data>
+<Data Name="CRC VIN">
+<Comment><![CDATA[Check]]></Comment>
+<Bytes count="2" ascii="1"/>
+</Data>
+<Data Name="Jour">
+<Bytes count="1"/>
+</Data>
+<Data Name="Mois">
+<Bytes count="1"/>
+</Data>
+<Data Name="VIN">
+<Comment><![CDATA[Vehicle Identification Number]]></Comment>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="Koyo-HPI serial number">
+<Bytes count="4"/>
+</Data>
+<Data Name="CEM Number">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="StatusOfDTC">
+<Mnemonic>DTCASR_SODTC</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailed">
+<Mnemonic>TF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedThisMonitoringCycle">
+<Mnemonic>TFTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.pendingDTC">
+<Mnemonic>PDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.confirmedDTC">
+<Mnemonic>CDTC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedSinceLastClear">
+<Mnemonic>TNCSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testFailedSinceLastClear">
+<Mnemonic>TFSLC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.testNotCompletedThisMonitoringCycle">
+<Mnemonic>TNCTMC</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCStatus.warningIndicatorRequested">
+<Mnemonic>WIR</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.Category">
+<Bits count="4">
+<List>
+<Item Value="0" Text="General Failure Information"/>
+<Item Value="1" Text="General Electrical Failures"/>
+<Item Value="2" Text="General Signal Failures"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="15" Text="Vehicle manufacturer / System supplier specific"/></List>
+</Bits>
+</Data>
+<Data Name="DTCFailureType">
+<Bits>
+<List>
+<Item Value="0" Text="Device and failure type ODB codding"/>
+<Item Value="1" Text="General Electrical Failure"/>
+<Item Value="2" Text="General signal failure"/>
+<Item Value="3" Text="FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures"/>
+<Item Value="4" Text="System Internal Failures"/>
+<Item Value="5" Text="System Programming Failures"/>
+<Item Value="6" Text="Algorithm Based Failures"/>
+<Item Value="7" Text="Mechanical Failures"/>
+<Item Value="8" Text="Bus Signal / Message Failures"/>
+<Item Value="9" Text="Component Failures"/>
+<Item Value="17" Text="circuit short to ground"/>
+<Item Value="18" Text="circuit short to battery"/>
+<Item Value="19" Text="circuit open"/>
+<Item Value="20" Text="circuit short to ground or open"/>
+<Item Value="21" Text="circuit short to battery or open"/>
+<Item Value="22" Text="circuit voltage below threshold"/>
+<Item Value="23" Text="circuit voltage above threshold"/>
+<Item Value="24" Text="circuit current below threshold"/>
+<Item Value="25" Text="circuit current above threshold"/>
+<Item Value="26" Text="circuit resistance below threshold"/>
+<Item Value="27" Text="circuit resistance above threshold"/>
+<Item Value="28" Text="circuit voltage out of range"/>
+<Item Value="29" Text="circuit current out of range"/>
+<Item Value="30" Text="circuit resistance out of range"/>
+<Item Value="31" Text="circuit intermittent"/>
+<Item Value="33" Text="signal amplitude &lt; minimum"/>
+<Item Value="34" Text="signal amplitude &gt; maximum"/>
+<Item Value="35" Text="signal stuck low"/>
+<Item Value="36" Text="signal stuck high"/>
+<Item Value="37" Text="signal shape / waveform failure"/>
+<Item Value="38" Text="signal rate of change below threshold"/>
+<Item Value="39" Text="signal rate of change above threshold"/>
+<Item Value="40" Text="signal bias level out of range / zero adjustment failure"/>
+<Item Value="41" Text="signal signal invalid"/>
+<Item Value="47" Text="signal erratic"/>
+<Item Value="49" Text="no signal"/>
+<Item Value="50" Text="signal low time &lt; minimum"/>
+<Item Value="51" Text="signal low time &gt; maximum"/>
+<Item Value="52" Text="signal high time &lt; minimum"/>
+<Item Value="53" Text="signal high time &gt; maximum"/>
+<Item Value="54" Text="signal frequency too low"/>
+<Item Value="55" Text="signal frequency too high"/>
+<Item Value="56" Text="signal frequency incorrect"/>
+<Item Value="57" Text="incorrect has too few pulses"/>
+<Item Value="58" Text="incorrect has too many pulses"/>
+<Item Value="65" Text="general checksum failure"/>
+<Item Value="66" Text="general memory failure"/>
+<Item Value="67" Text="special memory failure"/>
+<Item Value="68" Text="data memory failure"/>
+<Item Value="69" Text="program memory failure"/>
+<Item Value="70" Text="calibration / parameter memory failure"/>
+<Item Value="71" Text="watchdog / safety µC failure"/>
+<Item Value="72" Text="supervision software failure"/>
+<Item Value="73" Text="internal electronic failure"/>
+<Item Value="74" Text="incorrect component installed"/>
+<Item Value="75" Text="over temperature"/>
+<Item Value="81" Text="not programmed"/>
+<Item Value="82" Text="not activated"/>
+<Item Value="83" Text="deactivated"/>
+<Item Value="84" Text="missing calibration"/>
+<Item Value="85" Text="not configured"/>
+<Item Value="97" Text="signal calculation failure"/>
+<Item Value="98" Text="signal compare failure"/>
+<Item Value="99" Text="circuit / component protection time-out"/>
+<Item Value="100" Text="signal plausibility failure"/>
+<Item Value="101" Text="signal has too few transitions / events"/>
+<Item Value="102" Text="signal has too many transitions / events"/>
+<Item Value="103" Text="signal incorrect after event"/>
+<Item Value="104" Text="event information"/>
+<Item Value="113" Text="actuator stuck"/>
+<Item Value="114" Text="actuator stuck open"/>
+<Item Value="115" Text="actuator stuck closed"/>
+<Item Value="116" Text="actuator slipping"/>
+<Item Value="117" Text="emergency position not reachable"/>
+<Item Value="118" Text="wrong mounting position"/>
+<Item Value="119" Text="commanded position not reachable"/>
+<Item Value="120" Text="alignment or adjustment incorrect"/>
+<Item Value="121" Text="mechanical linkage failure"/>
+<Item Value="122" Text="fluid leak or seal failure"/>
+<Item Value="123" Text="low fluid level"/>
+<Item Value="129" Text="invalid serial data received"/>
+<Item Value="130" Text="alive / sequence counter incorrect / not updated"/>
+<Item Value="131" Text="value of signal protection calculation incorrect"/>
+<Item Value="132" Text="signal below allowable range"/>
+<Item Value="133" Text="signal above allowable range"/>
+<Item Value="134" Text="signal invalid"/>
+<Item Value="135" Text="missing message"/>
+<Item Value="136" Text="bus off"/>
+<Item Value="143" Text="erratic"/>
+<Item Value="145" Text="parametric"/>
+<Item Value="146" Text="performance or incorrect operation"/>
+<Item Value="147" Text="no operation"/>
+<Item Value="148" Text="unexpected operation"/>
+<Item Value="149" Text="incorrect assembly"/>
+<Item Value="150" Text="component internal failure"/>
+<Item Value="151" Text="Component or system operation obstructed or blocked"/>
+<Item Value="152" Text="component or system over temperature"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceIdentifier">
+<Bits count="16">
+<List>
+<Item Value="22021" Text="Angle sensor"/>
+<Item Value="53248" Text="CAN Bus Fault"/>
+<Item Value="22036" Text="Derating"/>
+<Item Value="22024" Text="HEPS_ECU_Fault"/>
+<Item Value="22025" Text="HEPS_Fault _ Hall effect"/>
+<Item Value="61443" Text="Battery Voltage"/></List>
+</Bits>
+</Data>
+<Data Name="DTCDeviceAndFailureTypeOBD">
+<Bits count="16">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCFailureType.ManufacturerOrSupplier">
+<Bits count="4">
+<List/>
+</Bits>
+</Data>
+<Data Name="DTCStatusAvailabilityMask">
+<Mnemonic>DTCSAM</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCMaskRecord">
+<Mnemonic>DTCMREC_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCRecord">
+<Mnemonic>DTCASR_DTC</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="DTCExtendedData.AgingCounter">
+<Comment><![CDATA[Description of the extendedData AgingCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>AGINGCOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.DTCOccurrenceCounter">
+<Comment><![CDATA[Description of the extendedData DTCOccurenceCounter (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>DTCOCCURENCECOUNTER</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedData.Mileage">
+<Comment><![CDATA[Description of the extendedData Mileage (use by Failure Page to decode data)]]></Comment>
+<Mnemonic>MILEAGE</Mnemonic>
+<Bits count="24">
+<Scaled Unit="km"/>
+</Bits>
+</Data>
+<Data Name="DTCExtendedDataRecordNumber">
+<Mnemonic>DTCEDRN</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Mileage"/>
+<Item Value="129" Text="AgingCounter"/>
+<Item Value="130" Text="DTCOccurrenceCounter"/></List>
+</Bits>
+</Data>
+<Data Name="Velocity_ST">
+<Comment><![CDATA[Steering wheel rotation speed]]></Comment>
+<Bits count="16">
+<Scaled Unit="deg/s" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Power_ST">
+<Comment><![CDATA[Value of the motor current supplied]]></Comment>
+<Bits signed="1">
+<Scaled Unit="A"/>
+</Bits>
+</Data>
+<Data Name="Consigned_Power_ST">
+<Comment><![CDATA[Value of the calculated motor current (current demand)]]></Comment>
+<Bits signed="1">
+<Scaled Unit="A"/>
+</Bits>
+</Data>
+<Data Name="Consigned_torque_ST">
+<Comment><![CDATA[value of the calculated torque]]></Comment>
+<Bits signed="1">
+<Scaled Unit="N.m"/>
+</Bits>
+</Data>
+<Data Name="Consigned_Speed_ST">
+<Comment><![CDATA[value of the motor rotation speed]]></Comment>
+<Bits count="16">
+<Scaled Unit="rpm"/>
+</Bits>
+</Data>
+<Data Name="ECU_Temperature">
+<Comment><![CDATA[ECU temperature measured]]></Comment>
+<Bits>
+<Scaled Unit="°C"/>
+</Bits>
+</Data>
+<Data Name="Power_module_temperature">
+<Comment><![CDATA[Power module temperature measured]]></Comment>
+<Bits>
+<Scaled Unit="°C"/>
+</Bits>
+</Data>
+<Data Name="Assistance_level">
+<Comment><![CDATA[Pourcentage of assistance available]]></Comment>
+<Bits>
+<Scaled Unit="%"/>
+</Bits>
+</Data>
+<Data Name="Vehicle_speed">
+<Comment><![CDATA[Vehicle speed signal]]></Comment>
+<Bits count="16">
+<Scaled Unit="km/h" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Filtered_Vehicle_speed">
+<Comment><![CDATA[Vehicle speed filtered]]></Comment>
+<Bits>
+<Scaled Unit="km/h"/>
+</Bits>
+</Data>
+<Data Name="Fault_indicator_ST">
+<Comment><![CDATA[Status of the fault lamp requested]]></Comment>
+<Bits count="2">
+<List>
+<Item Value="0" Text="No failure"/>
+<Item Value="1" Text="Minor failure"/>
+<Item Value="2" Text="Major failure"/>
+<Item Value="3" Text="Reserved"/></List>
+</Bits>
+</Data>
+<Data Name="Ignition_Status">
+<Comment><![CDATA[State of ignition signal]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="Ignition is off"/>
+<Item Value="1" Text="Ignition is on"/></List>
+</Bits>
+</Data>
+<Data Name="Engine_status">
+<Comment><![CDATA[State of vehicle engine]]></Comment>
+<Bits count="2">
+<List>
+<Item Value="0" Text="engine stopped"/>
+<Item Value="1" Text="Reserved"/>
+<Item Value="2" Text="Independant running engine"/>
+<Item Value="3" Text="Running engine-driven"/></List>
+</Bits>
+</Data>
+<Data Name="GADE">
+<Comment><![CDATA[General Applicative Diag Enable]]></Comment>
+<Bits count="2">
+<List>
+<Item Value="0" Text="Faults reports and alerts active during cranking are enabled"/>
+<Item Value="1" Text="Faults reports and alerts not related to APC are enabled"/>
+<Item Value="2" Text="Faults reports and alerts are enabled"/>
+<Item Value="3" Text="unavailable"/></List>
+</Bits>
+</Data>
+<Data Name="HEPS Tuning Selection">
+<Bits>
+<List>
+<Item Value="1" Text="tuning 1"/>
+<Item Value="2" Text="tuning 2"/>
+<Item Value="3" Text="tuning 3"/>
+<Item Value="4" Text="tuning 4"/>
+<Item Value="5" Text="tuning 5"/></List>
+</Bits>
+</Data>
+<Data Name="Ignition off delay timer">
+<Comment><![CDATA[temps arrêt GEP]]></Comment>
+<Mnemonic>Ignition off delay timer</Mnemonic>
+<Bits count="16">
+<Scaled Unit="s."/>
+</Bits>
+</Data>
+<Data Name="MUX messaging reference">
+<Bytes count="2"/>
+</Data>
+<Data Name="BUS OFF parameter">
+<Bytes count="1"/>
+</Data>
+<Data Name="Mute module parameter">
+<Bytes count="1" ascii="1"/>
+</Data>
+<Data Name="ABS_ESP absent">
+<Bytes count="1"/>
+</Data>
+<Data Name="ECM_absent">
+<Bytes count="1"/>
+</Data>
+<Data Name="Voltage_ST">
+<Comment><![CDATA[Battery voltage measured within ECU]]></Comment>
+<Bits count="16">
+<Scaled Unit="V" DivideBy=" 256" Format="0.0"/>
+</Bits>
+</Data>
+<Data Name="CalibrationNumber">
+<Comment><![CDATA[Numero de calibration en Hexa]]></Comment>
+<Mnemonic>NCAL</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="DiagnosticIdentificationCode">
+<Comment><![CDATA[Diag evolution number]]></Comment>
+<Mnemonic>VDIAG</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="SoftwareNumber">
+<Comment><![CDATA[Software identification number]]></Comment>
+<Mnemonic>NPGRGM</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="SupplierNumber.ITG">
+<Comment><![CDATA[Supplier ITG code]]></Comment>
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="EditionNumber">
+<Comment><![CDATA[Software version(edition) number]]></Comment>
+<Mnemonic>NVERS</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="PartNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="1" Text="xxxxx"/></List>
+</Bits>
+</Data>
+<Data Name="HardwareNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="1" Text="47660"/>
+<Item Value="2" Text="HARDW"/></List>
+</Bits>
+</Data>
+<Data Name="ApprovalNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="1" Text="RENO."/>
+<Item Value="2" Text="NISS."/></List>
+</Bits>
+</Data>
+<Data Name="PartNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="HardwareNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="ManufacturerIdentificationCode">
+<Bits>
+<List>
+<Item Value="0" Text="Renault R1"/>
+<Item Value="128" Text="Nissan N1"/>
+<Item Value="129" Text="Nissan N2"/>
+<Item Value="130" Text="Nissan N3"/>
+<Item Value="136" Text="BOMC"/></List>
+</Bits>
+</Data>
+<Data Name="RPM 1">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 10">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 11">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 12">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 13">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 14">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 15">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 16">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 17">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 18">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 19">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 2">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 20">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 21">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 22">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 23">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 24">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 25">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 26">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 27">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 28">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 29">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 3">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 30">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 31">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 32">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 33">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 34">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 35">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 36">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 4">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 5">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 6">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 7">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 8">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="RPM 9">
+<Bits count="16">
+<Scaled Step=" 78125" DivideBy=" 100000"/>
+</Bits>
+</Data>
+<Data Name="Motor_rotation_speed">
+<Bits count="16">
+<Scaled Unit="rpm"/>
+</Bits>
+</Data>
+<Data Name="SupplierNumber">
+<Comment><![CDATA[Supplier code (hexa)]]></Comment>
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3"/>
+</Data>
+<Data Name="Vsp0">
+<Bits count="16">
+<Scaled DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Vsp1">
+<Bits count="16">
+<Scaled DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Vsp2">
+<Bits count="16">
+<Scaled DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Vsp3">
+<Bits count="16">
+<Scaled DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Vsp4">
+<Bits count="16">
+<Scaled DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Vit ang0">
+<Bits count="16">
+<Scaled DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Vit ang1">
+<Bits count="16">
+<Scaled DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Vit ang2">
+<Bits count="16">
+<Scaled DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Vit ang3">
+<Bits count="16">
+<Scaled DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Vit ang4">
+<Bits count="16">
+<Scaled DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Vit ang5">
+<Bits count="16">
+<Scaled DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="SessionName">
+<Bits>
+<List>
+<Item Value="128" Text="Defaut"/>
+<Item Value="160" Text="Bureau d'étude"/>
+<Item Value="192" Text="Après vente"/></List>
+</Bits>
+</Data>
+<Data Name="Vehicle speed default value">
+<Bits count="16">
+<Scaled DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Vehicle speed falling slope">
+<Bits count="16">
+<Scaled Step=" 125" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Vehicle speed rising slope">
+<Bits count="16">
+<Scaled Step=" 125" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Steering speed default value">
+<Bits count="16">
+<Scaled DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Steering speed high threshold">
+<Bits count="16">
+<Scaled DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Steering speed low threshold">
+<Bits count="16">
+<Scaled DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Soft ramp down falling time">
+<Bits count="16">
+<Scaled Step=" 382" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Soft ramp up rising time">
+<Bits count="16">
+<Scaled Step=" 1527" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="SoftWare Number">
+<Comment><![CDATA[version du soft sur 2 octets]]></Comment>
+<Bytes count="2"/>
+</Data>
+<Data Name="Absent engine status confirmation time">
+<Bits count="16">
+<Scaled Step=" 8"/>
+</Bits>
+</Data>
+<Data Name="Absent vehicle speed confirmation time">
+<Bits count="16">
+<Scaled Step=" 8"/>
+</Bits>
+</Data>
+<Data Name="Angle speed falling slope">
+<Bits count="16">
+<Scaled Step=" 125" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="Angle speed rising slope">
+<Bits count="16">
+<Scaled Step=" 125" DivideBy=" 10"/>
+</Bits>
+</Data>
+<Data Name="BUS MUTE confirmation time">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="BUS OFF confirmation time">
+<Bits count="16">
+<Scaled Step=" 8"/>
+</Bits>
+</Data>
+<Data Name="Engine status default value">
+<Bits count="16">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Invalid vehicle speed confirmation time">
+<Bits count="16">
+<Scaled Step=" 8"/>
+</Bits>
+</Data>
+<Data Name="Max speed falling slew rate">
+<Bits count="16">
+<Scaled Step=" 9765" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Ramp down falling rate">
+<Bits count="16">
+<Scaled Step=" 10"/>
+</Bits>
+</Data>
+<Data Name="Ramp up rising time">
+<Bits count="16">
+<Scaled Step=" 1527" DivideBy=" 100"/>
+</Bits>
+</Data>
+<Data Name="Very soft ramp down falling time">
+<Bits count="16">
+<Scaled Step=" 6818"/>
+</Bits>
+</Data>
+<Data Name="Flag wheel steering angle sensor present">
+<Comment><![CDATA[Wheel angle sensor present after writing the boost curve]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="absent"/>
+<Item Value="1" Text="present"/></List>
+</Bits>
+</Data>
+<Data Name="SparePartNumber">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="Default_vehicle_speed_mode">
+<Comment><![CDATA[State of the default vehicle speed mode]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not running"/>
+<Item Value="1" Text="running"/></List>
+</Bits>
+</Data>
+<Data Name="Ignition_off_delay_state">
+<Comment><![CDATA[State of the ignition OFF delay mode]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not running"/>
+<Item Value="1" Text="running"/></List>
+</Bits>
+</Data>
+<Data Name="Engine_stalled_function_state">
+<Comment><![CDATA[State of the engine stalled mode]]></Comment>
+<Bits count="1">
+<List>
+<Item Value="0" Text="not running"/>
+<Item Value="1" Text="running"/></List>
+</Bits>
+</Data>
+<Data Name="Vsp5">
+<Bits count="16">
+<Scaled DivideBy=" 100"/>
+</Bits>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="ReadDTCInformation.ReportDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1902FF</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ShiftBytesCount>4</ShiftBytesCount>
+<ReplyBytes>59020000000000</ReplyBytes>
+<DataItem Name="StatusOfDTC" FirstByte="7"/>
+<DataItem Name="DTCStatus.testFailed" FirstByte="7" BitOffset="7"/>
+<DataItem Name="DTCStatus.testFailedThisMonitoringCycle" FirstByte="7" BitOffset="6"/>
+<DataItem Name="DTCStatus.pendingDTC" FirstByte="7" BitOffset="5"/>
+<DataItem Name="DTCStatus.confirmedDTC" FirstByte="7" BitOffset="4"/>
+<DataItem Name="DTCStatus.testNotCompletedSinceLastClear" FirstByte="7" BitOffset="3"/>
+<DataItem Name="DTCStatus.testFailedSinceLastClear" FirstByte="7" BitOffset="2"/>
+<DataItem Name="DTCStatus.testNotCompletedThisMonitoringCycle" FirstByte="7" BitOffset="1"/>
+<DataItem Name="DTCStatus.warningIndicatorRequested" FirstByte="7"/>
+<DataItem Name="DTCFailureType.Category" FirstByte="6"/>
+<DataItem Name="DTCFailureType" FirstByte="6"/>
+<DataItem Name="DTCDeviceIdentifier" FirstByte="4"/>
+<DataItem Name="DTCDeviceAndFailureTypeOBD" FirstByte="4"/>
+<DataItem Name="DTCFailureType.ManufacturerOrSupplier" FirstByte="6" BitOffset="4"/>
+<DataItem Name="DTCStatusAvailabilityMask" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1906000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590600000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.DTCOccurrenceCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportSnapshot">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[DDT2000 Failures page requests / Clip import : Unusable in the standard tools of DDT2000]]></Comment>
+<Sent>
+<SentBytes>1904000000FF</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>590400000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+</Received>
+</Request>
+<Request Name="ClearDiagnosticInformation.All">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+<Sent>
+<SentBytes>14FFFFFF</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>54</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.Mileage">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000080</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>59060000000080000000</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.Mileage" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[This request enable P2P tester present for tool (Screen, IOctl, ...)]]></Comment>
+<Sent>
+<SentBytes>3E01</SentBytes>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="DataRead.Voltage">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22012F</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62012F0000</ReplyBytes>
+<DataItem Name="Voltage_ST" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Velocity">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220101</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>6201010000</ReplyBytes>
+<DataItem Name="Velocity_ST" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="ReadDTCInformation.ReportExtendedData.AgingCounter">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Request for the import in the Clip]]></Comment>
+<Sent>
+<SentBytes>190600000081</SentBytes>
+<DataItem Name="DTCMaskRecord" FirstByte="3"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>5906000000008100</ReplyBytes>
+<DataItem Name="DTCRecord" FirstByte="3"/>
+<DataItem Name="StatusOfDTC" FirstByte="6"/>
+<DataItem Name="DTCExtendedData.AgingCounter" FirstByte="8"/>
+<DataItem Name="DTCExtendedDataRecordNumber" FirstByte="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.Power_ST">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22012C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62012C00</ReplyBytes>
+<DataItem Name="Power_ST" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Motor_rotation_speed">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22011D</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>62011D0000</ReplyBytes>
+<DataItem Name="Motor_rotation_speed" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Consigned_power_ST">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220113</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>6201130000</ReplyBytes>
+<DataItem Name="Consigned_Power_ST" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Consigned_speed_ST">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22011B</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011B00</ReplyBytes>
+<DataItem Name="Consigned_Speed_ST" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.ECU_Temperature">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22012E</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62012E00</ReplyBytes>
+<DataItem Name="ECU_Temperature" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Power_module_Temperature">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22011C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011C00</ReplyBytes>
+<DataItem Name="Power_module_temperature" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Assistance_level">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220115</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011500</ReplyBytes>
+<DataItem Name="Assistance_level" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Vehicle_speed">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220204</SentBytes>
+</Sent>
+<Received MinBytes="5">
+<ReplyBytes>6202040000</ReplyBytes>
+<DataItem Name="Vehicle_speed" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Filtered_vehicle_speed">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220116</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011600</ReplyBytes>
+<DataItem Name="Filtered_Vehicle_speed" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Fault_indicator_ST">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22011A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62011A00</ReplyBytes>
+<DataItem Name="Fault_indicator_ST" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Ignition_status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220131</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62013100</ReplyBytes>
+<DataItem Name="Ignition_Status" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.Engine_status">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>220501</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62050100</ReplyBytes>
+<DataItem Name="Engine_status" Ref="1" FirstByte="4" BitOffset="6"/>
+</Received>
+</Request>
+<Request Name="DataRead.Boost curve0">
+
+<Sent>
+<SentBytes>21210000</SentBytes>
+</Sent>
+<Received MinBytes="16">
+<ReplyBytes>61210600</ReplyBytes>
+<DataItem Name="RPM 1" Ref="1" FirstByte="5"/>
+<DataItem Name="RPM 2" Ref="1" FirstByte="7"/>
+<DataItem Name="RPM 3" Ref="1" FirstByte="9"/>
+<DataItem Name="RPM 4" Ref="1" FirstByte="11"/>
+<DataItem Name="RPM 5" Ref="1" FirstByte="13"/>
+<DataItem Name="RPM 6" Ref="1" FirstByte="15"/>
+</Received>
+</Request>
+<Request Name="DataRead.Boost curve1">
+
+<Sent>
+<SentBytes>21210001</SentBytes>
+</Sent>
+<Received MinBytes="16">
+<ReplyBytes>61210601</ReplyBytes>
+<DataItem Name="RPM 7" Ref="1" FirstByte="5"/>
+<DataItem Name="RPM 8" Ref="1" FirstByte="7"/>
+<DataItem Name="RPM 9" Ref="1" FirstByte="9"/>
+<DataItem Name="RPM 10" Ref="1" FirstByte="11"/>
+<DataItem Name="RPM 11" Ref="1" FirstByte="13"/>
+<DataItem Name="RPM 12" Ref="1" FirstByte="15"/>
+</Received>
+</Request>
+<Request Name="DataRead.Boost curve2">
+
+<Sent>
+<SentBytes>21210002</SentBytes>
+</Sent>
+<Received MinBytes="16">
+<ReplyBytes>61210602</ReplyBytes>
+<DataItem Name="RPM 13" Ref="1" FirstByte="5"/>
+<DataItem Name="RPM 14" Ref="1" FirstByte="7"/>
+<DataItem Name="RPM 15" Ref="1" FirstByte="9"/>
+<DataItem Name="RPM 16" Ref="1" FirstByte="11"/>
+<DataItem Name="RPM 17" Ref="1" FirstByte="13"/>
+<DataItem Name="RPM 18" Ref="1" FirstByte="15"/>
+</Received>
+</Request>
+<Request Name="DataRead.Boost curve3">
+
+<Sent>
+<SentBytes>21210003</SentBytes>
+</Sent>
+<Received MinBytes="16">
+<ReplyBytes>61210603</ReplyBytes>
+<DataItem Name="RPM 19" Ref="1" FirstByte="5"/>
+<DataItem Name="RPM 20" Ref="1" FirstByte="7"/>
+<DataItem Name="RPM 21" Ref="1" FirstByte="9"/>
+<DataItem Name="RPM 22" Ref="1" FirstByte="11"/>
+<DataItem Name="RPM 23" Ref="1" FirstByte="13"/>
+<DataItem Name="RPM 24" Ref="1" FirstByte="15"/>
+</Received>
+</Request>
+<Request Name="DataRead.Boost curve4">
+
+<Sent>
+<SentBytes>21210004</SentBytes>
+</Sent>
+<Received MinBytes="16">
+<ReplyBytes>61210604</ReplyBytes>
+<DataItem Name="RPM 25" Ref="1" FirstByte="5"/>
+<DataItem Name="RPM 26" Ref="1" FirstByte="7"/>
+<DataItem Name="RPM 27" Ref="1" FirstByte="9"/>
+<DataItem Name="RPM 28" Ref="1" FirstByte="11"/>
+<DataItem Name="RPM 29" Ref="1" FirstByte="13"/>
+<DataItem Name="RPM 30" Ref="1" FirstByte="15"/>
+</Received>
+</Request>
+<Request Name="DataRead.Boost curve5">
+
+<Sent>
+<SentBytes>21210005</SentBytes>
+</Sent>
+<Received MinBytes="16">
+<ReplyBytes>61210605</ReplyBytes>
+<DataItem Name="RPM 31" Ref="1" FirstByte="5"/>
+<DataItem Name="RPM 32" Ref="1" FirstByte="7"/>
+<DataItem Name="RPM 33" Ref="1" FirstByte="9"/>
+<DataItem Name="RPM 34" Ref="1" FirstByte="11"/>
+<DataItem Name="RPM 35" Ref="1" FirstByte="13"/>
+<DataItem Name="RPM 36" Ref="1" FirstByte="15"/>
+</Received>
+</Request>
+<Request Name="DataRead Vsp">
+
+<Sent>
+<SentBytes>2121000F</SentBytes>
+</Sent>
+<Received MinBytes="16">
+<ReplyBytes>61210B00</ReplyBytes>
+<DataItem Name="Vsp0" Ref="1" FirstByte="5"/>
+<DataItem Name="Vsp1" Ref="1" FirstByte="7"/>
+<DataItem Name="Vsp2" Ref="1" FirstByte="9"/>
+<DataItem Name="Vsp3" Ref="1" FirstByte="11"/>
+<DataItem Name="Vsp4" Ref="1" FirstByte="13"/>
+<DataItem Name="Vsp5" Ref="1" FirstByte="15"/>
+</Received>
+</Request>
+<Request Name="DataRead Vit ang">
+
+<Sent>
+<SentBytes>2121000E</SentBytes>
+</Sent>
+<Received MinBytes="16">
+<ReplyBytes>61210A00</ReplyBytes>
+<DataItem Name="Vit ang0" Ref="1" FirstByte="5"/>
+<DataItem Name="Vit ang1" Ref="1" FirstByte="7"/>
+<DataItem Name="Vit ang2" Ref="1" FirstByte="9"/>
+<DataItem Name="Vit ang3" Ref="1" FirstByte="11"/>
+<DataItem Name="Vit ang4" Ref="1" FirstByte="13"/>
+<DataItem Name="Vit ang5" Ref="1" FirstByte="15"/>
+</Received>
+</Request>
+<Request Name="Read memory rotation speed">
+
+<Sent>
+<SentBytes>23000008220002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>63</ReplyBytes>
+<DataItem Name="Motor_rotation_speed" FirstByte="2" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="Read memory consigne rotation speed">
+
+<Sent>
+<SentBytes>23000007BC0002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>63</ReplyBytes>
+<DataItem Name="Consigned_Speed_ST" FirstByte="2" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="Read memory Temperature MOS">
+
+<Sent>
+<SentBytes>23000007380002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>63</ReplyBytes>
+<DataItem Name="ECU_Temperature" FirstByte="2" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="Read memory Temperature ELEC">
+
+<Sent>
+<SentBytes>230000073A0002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>63</ReplyBytes>
+<DataItem Name="Power_module_temperature" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Read memory Tension">
+
+<Sent>
+<SentBytes>23000007060002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>63</ReplyBytes>
+<DataItem Name="Voltage_ST" FirstByte="2" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="Read memory PWM">
+
+<Sent>
+<SentBytes>23000007F40002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>63</ReplyBytes>
+<DataItem Name="Assistance_level" FirstByte="2" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="Read memory Vitesse angulaire">
+
+<Sent>
+<SentBytes>230000074E0002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>63</ReplyBytes>
+<DataItem Name="Velocity_ST" FirstByte="2" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="Read memory Vitesse véhicule">
+
+<Sent>
+<SentBytes>230000085C0002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>63</ReplyBytes>
+<DataItem Name="Vehicle_speed" FirstByte="2" Endian="Little"/>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Standard definition for DDT2000 automatic screen]]></Comment>
+<Sent>
+<SentBytes>10C0</SentBytes>
+<DataItem Name="SessionName" FirstByte="2"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Default">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[mode diagnostic par defaut]]></Comment>
+<Sent>
+<SentBytes>1081</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5081</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.ExtendedDiagnostic">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[mode après-vente]]></Comment>
+<Sent>
+<SentBytes>10C0</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50C0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Programming">
+
+<ManuelSend/>
+<Comment><![CDATA[session reprogrammation]]></Comment>
+<Sent>
+<SentBytes>1085</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>5085</ReplyBytes>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession.Supplier">
+
+<ManuelSend/>
+<Comment><![CDATA[mode après-vente]]></Comment>
+<Sent>
+<SentBytes>10FA</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50FA</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.Identification.5digits">
+
+<DossierMaintenabilite/>
+<DenyAccess><NoSDS/></DenyAccess>
+<Comment><![CDATA[ReadDataByLocalIdentifier]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<DataItem Name="CalibrationNumber" Ref="1" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" Ref="1" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" Ref="1" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" Ref="1" FirstByte="9"/>
+<DataItem Name="EditionNumber" Ref="1" FirstByte="19"/>
+<DataItem Name="PartNumber.BasicPartList" Ref="1" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" Ref="1" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" Ref="1" FirstByte="25"/>
+<DataItem Name="PartNumber.LowerPart" Ref="1" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" Ref="1" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" Ref="1" FirstByte="26"/>
+<DataItem Name="SupplierNumber" Ref="1" FirstByte="9"/>
+</Received>
+</Request>
+<Request Name="DataRead.VIN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<ReplyBytes>6181</ReplyBytes>
+<DataItem Name="CRC VIN" Ref="1" FirstByte="20"/>
+<DataItem Name="VIN" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="DataRead.Intersystem multiplex network">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2182</SentBytes>
+</Sent>
+<Received MinBytes="8">
+<ReplyBytes>6182</ReplyBytes>
+<DataItem Name="MUX messaging reference" Ref="1" FirstByte="3"/>
+<DataItem Name="BUS OFF parameter" Ref="1" FirstByte="5"/>
+<DataItem Name="Mute module parameter" Ref="1" FirstByte="6"/>
+<DataItem Name="ABS_ESP absent" Ref="1" FirstByte="7"/>
+<DataItem Name="ECM_absent" Ref="1" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="DataRead.Traceability Information">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Supported Local Identifiers for Reading]]></Comment>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<DataItem Name="Mois" Ref="1" FirstByte="8"/>
+<DataItem Name="Jour" Ref="1" FirstByte="7"/>
+<DataItem Name="Année" Ref="1" FirstByte="9"/>
+<DataItem Name="CEM Number" Ref="1" FirstByte="10"/>
+<DataItem Name="Koyo-HPI serial number" Ref="1" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="DataWrite.HEPS tuning selection">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[HEPS tuning selection]]></Comment>
+<Sent>
+<SentBytes>3B0200000000000000000000000000000000000000</SentBytes>
+<DataItem Name="HEPS Tuning Selection" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="DataWrite.Boost curve0">
+
+<ManuelSend/>
+<Comment><![CDATA[Boost curve]]></Comment>
+<Sent>
+<SentBytes>3B210000000000000000000000000000</SentBytes>
+<DataItem Name="RPM 1" FirstByte="5"/>
+<DataItem Name="RPM 2" FirstByte="7"/>
+<DataItem Name="RPM 3" FirstByte="9"/>
+<DataItem Name="RPM 4" FirstByte="11"/>
+<DataItem Name="RPM 5" FirstByte="13"/>
+<DataItem Name="RPM 6" FirstByte="15"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B21</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.Boost curve1">
+
+<ManuelSend/>
+<Comment><![CDATA[Boost curve]]></Comment>
+<Sent>
+<SentBytes>3B210001000000000000000000000000</SentBytes>
+<DataItem Name="RPM 7" FirstByte="5"/>
+<DataItem Name="RPM 8" FirstByte="7"/>
+<DataItem Name="RPM 9" FirstByte="9"/>
+<DataItem Name="RPM 10" FirstByte="11"/>
+<DataItem Name="RPM 11" FirstByte="13"/>
+<DataItem Name="RPM 12" FirstByte="15"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B21</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.Boost curve2">
+
+<ManuelSend/>
+<Comment><![CDATA[Boost curve]]></Comment>
+<Sent>
+<SentBytes>3B210002000000000000000000000000</SentBytes>
+<DataItem Name="RPM 13" FirstByte="5"/>
+<DataItem Name="RPM 14" FirstByte="7"/>
+<DataItem Name="RPM 15" FirstByte="9"/>
+<DataItem Name="RPM 16" FirstByte="11"/>
+<DataItem Name="RPM 17" FirstByte="13"/>
+<DataItem Name="RPM 18" FirstByte="15"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B21</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.Boost curve3">
+
+<ManuelSend/>
+<Comment><![CDATA[Boost curve]]></Comment>
+<Sent>
+<SentBytes>3B210003000000000000000000000000</SentBytes>
+<DataItem Name="RPM 19" FirstByte="5"/>
+<DataItem Name="RPM 20" FirstByte="7"/>
+<DataItem Name="RPM 21" FirstByte="9"/>
+<DataItem Name="RPM 22" FirstByte="11"/>
+<DataItem Name="RPM 23" FirstByte="13"/>
+<DataItem Name="RPM 24" FirstByte="15"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B21</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.Boost curve4">
+
+<ManuelSend/>
+<Comment><![CDATA[Boost curve]]></Comment>
+<Sent>
+<SentBytes>3B210004000000000000000000000000</SentBytes>
+<DataItem Name="RPM 25" FirstByte="5"/>
+<DataItem Name="RPM 26" FirstByte="7"/>
+<DataItem Name="RPM 27" FirstByte="9"/>
+<DataItem Name="RPM 28" FirstByte="11"/>
+<DataItem Name="RPM 29" FirstByte="13"/>
+<DataItem Name="RPM 30" FirstByte="15"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B21</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.Boost curve5">
+
+<ManuelSend/>
+<Comment><![CDATA[Boost curve]]></Comment>
+<Sent>
+<SentBytes>3B210005000000000000000000000000</SentBytes>
+<DataItem Name="RPM 31" FirstByte="5"/>
+<DataItem Name="RPM 32" FirstByte="7"/>
+<DataItem Name="RPM 33" FirstByte="9"/>
+<DataItem Name="RPM 34" FirstByte="11"/>
+<DataItem Name="RPM 35" FirstByte="13"/>
+<DataItem Name="RPM 36" FirstByte="15"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B21</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.Vit ang">
+
+<ManuelSend/>
+<Comment><![CDATA[Boost curve]]></Comment>
+<Sent>
+<SentBytes>3B21000E000000000000000000000000</SentBytes>
+<DataItem Name="Vit ang0" FirstByte="5"/>
+<DataItem Name="Vit ang1" FirstByte="7"/>
+<DataItem Name="Vit ang2" FirstByte="9"/>
+<DataItem Name="Vit ang3" FirstByte="11"/>
+<DataItem Name="Vit ang4" FirstByte="13"/>
+<DataItem Name="Vit ang5" FirstByte="15"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B21</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.Vsp">
+
+<ManuelSend/>
+<Comment><![CDATA[Boost curve]]></Comment>
+<Sent>
+<SentBytes>3B21000F000000000000000000000000</SentBytes>
+<DataItem Name="Vsp0" FirstByte="5"/>
+<DataItem Name="Vsp1" FirstByte="7"/>
+<DataItem Name="Vsp2" FirstByte="9"/>
+<DataItem Name="Vsp3" FirstByte="11"/>
+<DataItem Name="Vsp4" FirstByte="13"/>
+<DataItem Name="Vsp5" FirstByte="15"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B21</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataWrite.VIN">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[VIN Writing]]></Comment>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="CRC VIN" FirstByte="19"/>
+<DataItem Name="VIN" FirstByte="2"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="DataWrite.Date of After-Sales">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[Writing of the last date of after-sales]]></Comment>
+<Sent>
+<SentBytes>3BC0000000000000</SentBytes>
+<DataItem Name="Année" FirstByte="3"/>
+<DataItem Name="Jour" FirstByte="4"/>
+<DataItem Name="Mois" FirstByte="5"/>
+</Sent>
+<Received MinBytes="1">
+</Received>
+</Request>
+<Request Name="DataWrite.ignition off delay timer">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2E000000</SentBytes>
+<DataItem Name="Ignition off delay timer" FirstByte="3"/>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>6E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="DataRead.status of the system frame">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2101</SentBytes>
+</Sent>
+<Received MinBytes="19">
+<ReplyBytes>6101</ReplyBytes>
+<DataItem Name="Voltage_ST" FirstByte="3"/>
+<DataItem Name="Velocity_ST" FirstByte="5"/>
+<DataItem Name="Power_ST" FirstByte="7"/>
+<DataItem Name="Consigned_Power_ST" FirstByte="8"/>
+<DataItem Name="Consigned_torque_ST" Ref="1" FirstByte="9"/>
+<DataItem Name="Consigned_Speed_ST" FirstByte="10"/>
+<DataItem Name="ECU_Temperature" FirstByte="12"/>
+<DataItem Name="Power_module_temperature" FirstByte="13"/>
+<DataItem Name="Assistance_level" FirstByte="14"/>
+<DataItem Name="Vehicle_speed" FirstByte="15"/>
+<DataItem Name="Filtered_Vehicle_speed" FirstByte="17"/>
+<DataItem Name="Fault_indicator_ST" FirstByte="18"/>
+<DataItem Name="Ignition_Status" FirstByte="18" BitOffset="2"/>
+<DataItem Name="Engine_status" FirstByte="18" BitOffset="3"/>
+<DataItem Name="GADE" Ref="1" FirstByte="18" BitOffset="6"/>
+<DataItem Name="Default_vehicle_speed_mode" FirstByte="19"/>
+<DataItem Name="Ignition_off_delay_state" FirstByte="19" BitOffset="1"/>
+<DataItem Name="Engine_stalled_function_state" FirstByte="19" BitOffset="3"/>
+<DataItem Name="Flag wheel steering angle sensor present" FirstByte="19" BitOffset="5"/>
+</Received>
+</Request>
+<Request Name="DataRead.flag wheel stering angle">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22015A</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>62015A00</ReplyBytes>
+<DataItem Name="Flag wheel steering angle sensor present" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="DataRead.SparePartNumber">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>22F187</SentBytes>
+</Sent>
+<Received MinBytes="12">
+<ReplyBytes>62F18700000000000000000000</ReplyBytes>
+<DataItem Name="SparePartNumber" FirstByte="4"/>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="Battery Voltage" DTC="61443">
+
+<Test Type="24">
+</Test><Test Type="23">
+</Test>
+</Device>
+<Device Name="Angle sensor" DTC="22021">
+
+<Test Type="17">
+</Test><Test Type="41">
+</Test><Test Type="102">
+</Test><Test Type="103">
+</Test><Test Type="21">
+</Test>
+</Device>
+<Device Name="HEPS_ECU_Fault" DTC="22024" Type="2">
+
+<Test Type="66">
+</Test><Test Type="68">
+</Test><Test Type="73">
+</Test><Test Type="84">
+</Test><Test Type="69">
+</Test><Test Type="113">
+</Test>
+</Device>
+<Device Name="HEPS_Fault _ Hall effect" DTC="22025" Type="2">
+
+<Test Type="150">
+</Test>
+</Device>
+<Device Name="Derating" DTC="22036" Type="2">
+
+<Test Type="75">
+</Test>
+</Device>
+<Device Name="CAN Bus Fault" DTC="53248">
+
+<Test Type="136">
+</Test>
+</Device>
+<Device Name="IS-ECM">
+
+<Test Type="135" OBD="49408">
+</Test>
+</Device>
+<Device Name="IS-ABS">
+
+<Test Type="134" OBD="50200">
+</Test><Test Type="135" OBD="49449">
+</Test>
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="MAP">
+
+<Screen Name="Lecture Matrice" Color="16744448" WindowState="0" Width="9660" Height="6660">
+
+<Label Text="Lecture de la matrice présente sur véhicule" Color="8454143" Alignment="2">
+<Rectangle Left="2040" Top="360" Height="480" Width="5400"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Vitesse véhicule" Color="8454143" Alignment="0">
+<Rectangle Left="120" Top="3360" Height="300" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Lecture">
+<Rectangle Left="4080" Top="3840" Height="480" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="20" RequestName="DataRead.Boost curve0"/><Send Delay="20" RequestName="DataRead.Boost curve1"/><Send Delay="20" RequestName="DataRead.Boost curve2"/><Send Delay="20" RequestName="DataRead.Boost curve3"/><Send Delay="20" RequestName="DataRead.Boost curve4"/><Send Delay="20" RequestName="DataRead.Boost curve5"/><Send Delay="20" RequestName="DataRead Vit ang"/><Send Delay="20" RequestName="DataRead Vsp"/>
+</Button>
+
+<Display Width="0" Color="16777215" DataName="RPM 1" RequestName="DataRead.Boost curve0">
+<Rectangle Left="1440" Top="1680" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 2" RequestName="DataRead.Boost curve0">
+<Rectangle Left="2760" Top="1680" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 3" RequestName="DataRead.Boost curve0">
+<Rectangle Left="4080" Top="1680" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="5" Color="16777215" DataName="RPM 4" RequestName="DataRead.Boost curve0">
+<Rectangle Left="5400" Top="1680" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 5" RequestName="DataRead.Boost curve0">
+<Rectangle Left="6720" Top="1680" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 6" RequestName="DataRead.Boost curve0">
+<Rectangle Left="8040" Top="1680" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 7" RequestName="DataRead.Boost curve1">
+<Rectangle Left="1440" Top="1920" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 8" RequestName="DataRead.Boost curve1">
+<Rectangle Left="2760" Top="1920" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 9" RequestName="DataRead.Boost curve1">
+<Rectangle Left="4080" Top="1920" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 10" RequestName="DataRead.Boost curve1">
+<Rectangle Left="5400" Top="1920" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 11" RequestName="DataRead.Boost curve1">
+<Rectangle Left="6720" Top="1920" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 12" RequestName="DataRead.Boost curve1">
+<Rectangle Left="8040" Top="1920" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 13" RequestName="DataRead.Boost curve2">
+<Rectangle Left="1440" Top="2160" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 14" RequestName="DataRead.Boost curve2">
+<Rectangle Left="2760" Top="2160" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 15" RequestName="DataRead.Boost curve2">
+<Rectangle Left="4080" Top="2160" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 16" RequestName="DataRead.Boost curve2">
+<Rectangle Left="5400" Top="2160" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 17" RequestName="DataRead.Boost curve2">
+<Rectangle Left="6720" Top="2160" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 18" RequestName="DataRead.Boost curve2">
+<Rectangle Left="8040" Top="2160" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 19" RequestName="DataRead.Boost curve3">
+<Rectangle Left="1440" Top="2400" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 20" RequestName="DataRead.Boost curve3">
+<Rectangle Left="2760" Top="2400" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 21" RequestName="DataRead.Boost curve3">
+<Rectangle Left="4080" Top="2400" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 22" RequestName="DataRead.Boost curve3">
+<Rectangle Left="5400" Top="2400" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 23" RequestName="DataRead.Boost curve3">
+<Rectangle Left="6720" Top="2400" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 24" RequestName="DataRead.Boost curve3">
+<Rectangle Left="8040" Top="2400" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 25" RequestName="DataRead.Boost curve4">
+<Rectangle Left="1440" Top="2640" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 26" RequestName="DataRead.Boost curve4">
+<Rectangle Left="2760" Top="2640" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 27" RequestName="DataRead.Boost curve4">
+<Rectangle Left="4080" Top="2640" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 28" RequestName="DataRead.Boost curve4">
+<Rectangle Left="5400" Top="2640" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 29" RequestName="DataRead.Boost curve4">
+<Rectangle Left="6720" Top="2640" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 30" RequestName="DataRead.Boost curve4">
+<Rectangle Left="8040" Top="2640" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 31" RequestName="DataRead.Boost curve5">
+<Rectangle Left="1440" Top="2880" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 32" RequestName="DataRead.Boost curve5">
+<Rectangle Left="2760" Top="2880" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 33" RequestName="DataRead.Boost curve5">
+<Rectangle Left="4080" Top="2880" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 34" RequestName="DataRead.Boost curve5">
+<Rectangle Left="5400" Top="2880" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 35" RequestName="DataRead.Boost curve5">
+<Rectangle Left="6720" Top="2880" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RPM 36" RequestName="DataRead.Boost curve5">
+<Rectangle Left="8040" Top="2880" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Vsp0" RequestName="DataRead Vsp">
+<Rectangle Left="240" Top="1680" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Vsp1" RequestName="DataRead Vsp">
+<Rectangle Left="240" Top="1920" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Vsp2" RequestName="DataRead Vsp">
+<Rectangle Left="240" Top="2160" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Vsp3" RequestName="DataRead Vsp">
+<Rectangle Left="240" Top="2400" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Vsp4" RequestName="DataRead Vsp">
+<Rectangle Left="240" Top="2640" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Vsp5" RequestName="DataRead Vsp">
+<Rectangle Left="240" Top="2880" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Vit ang0" RequestName="DataRead Vit ang">
+<Rectangle Left="1440" Top="1320" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Vit ang1" RequestName="DataRead Vit ang">
+<Rectangle Left="2760" Top="1320" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Vit ang2" RequestName="DataRead Vit ang">
+<Rectangle Left="4080" Top="1320" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Vit ang3" RequestName="DataRead Vit ang">
+<Rectangle Left="5400" Top="1320" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Vit ang4" RequestName="DataRead Vit ang">
+<Rectangle Left="6720" Top="1320" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Vit ang5" RequestName="DataRead Vit ang">
+<Rectangle Left="8040" Top="1320" Height="300" Width="1320"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+<Screen Name="Ecriture Matrice" Color="12615680" WindowState="0" Width="9660" Height="6660">
+
+<Label Text="Ecriture de la matrice en mémoire" Color="8454143" Alignment="2">
+<Rectangle Left="3240" Top="480" Height="375" Width="4125"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Vitesse véhicule" Color="8454143" Alignment="2">
+<Rectangle Left="360" Top="3720" Height="300" Width="1320"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+<Button Text="Ecriture">
+<Rectangle Left="4200" Top="4440" Height="480" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="20" RequestName="StartDiagnosticSession.ExtendedDiagnostic"/><Send Delay="20" RequestName="DataWrite.Boost curve0"/><Send Delay="20" RequestName="DataWrite.Boost curve1"/><Send Delay="20" RequestName="DataWrite.Boost curve2"/><Send Delay="20" RequestName="DataWrite.Boost curve3"/><Send Delay="20" RequestName="DataWrite.Boost curve4"/><Send Delay="20" RequestName="DataWrite.Boost curve5"/><Send Delay="20" RequestName="DataWrite.Vit ang"/><Send Delay="20" RequestName="DataWrite.Vsp"/>
+</Button>
+
+<Input Width="0" Color="16777215" DataName="RPM 1" RequestName="DataWrite.Boost curve0">
+<Rectangle Left="1800" Top="2040" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 2" RequestName="DataWrite.Boost curve0">
+<Rectangle Left="3000" Top="2040" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 3" RequestName="DataWrite.Boost curve0">
+<Rectangle Left="4200" Top="2040" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 4" RequestName="DataWrite.Boost curve0">
+<Rectangle Left="5400" Top="2040" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 5" RequestName="DataWrite.Boost curve0">
+<Rectangle Left="6600" Top="2040" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 6" RequestName="DataWrite.Boost curve0">
+<Rectangle Left="7800" Top="2040" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 7" RequestName="DataWrite.Boost curve1">
+<Rectangle Left="1800" Top="2280" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 8" RequestName="DataWrite.Boost curve1">
+<Rectangle Left="3000" Top="2280" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 9" RequestName="DataWrite.Boost curve1">
+<Rectangle Left="4200" Top="2280" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 10" RequestName="DataWrite.Boost curve1">
+<Rectangle Left="5400" Top="2280" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 11" RequestName="DataWrite.Boost curve1">
+<Rectangle Left="6600" Top="2280" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 12" RequestName="DataWrite.Boost curve1">
+<Rectangle Left="7800" Top="2280" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 13" RequestName="DataWrite.Boost curve2">
+<Rectangle Left="1800" Top="2520" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 14" RequestName="DataWrite.Boost curve2">
+<Rectangle Left="3000" Top="2520" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 15" RequestName="DataWrite.Boost curve2">
+<Rectangle Left="4200" Top="2520" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 16" RequestName="DataWrite.Boost curve2">
+<Rectangle Left="5400" Top="2520" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 17" RequestName="DataWrite.Boost curve2">
+<Rectangle Left="6600" Top="2520" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 18" RequestName="DataWrite.Boost curve2">
+<Rectangle Left="7800" Top="2520" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 19" RequestName="DataWrite.Boost curve3">
+<Rectangle Left="1800" Top="2760" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 20" RequestName="DataWrite.Boost curve3">
+<Rectangle Left="3000" Top="2760" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 21" RequestName="DataWrite.Boost curve3">
+<Rectangle Left="4200" Top="2760" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 22" RequestName="DataWrite.Boost curve3">
+<Rectangle Left="5400" Top="2760" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 23" RequestName="DataWrite.Boost curve3">
+<Rectangle Left="6600" Top="2760" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 24" RequestName="DataWrite.Boost curve3">
+<Rectangle Left="7800" Top="2760" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 25" RequestName="DataWrite.Boost curve4">
+<Rectangle Left="1800" Top="3000" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 27" RequestName="DataWrite.Boost curve4">
+<Rectangle Left="4200" Top="3000" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 28" RequestName="DataWrite.Boost curve4">
+<Rectangle Left="5400" Top="3000" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 29" RequestName="DataWrite.Boost curve4">
+<Rectangle Left="6600" Top="3000" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 30" RequestName="DataWrite.Boost curve4">
+<Rectangle Left="7800" Top="3000" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 26" RequestName="DataWrite.Boost curve4">
+<Rectangle Left="3000" Top="3000" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 31" RequestName="DataWrite.Boost curve5">
+<Rectangle Left="1800" Top="3240" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 32" RequestName="DataWrite.Boost curve5">
+<Rectangle Left="3000" Top="3240" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 33" RequestName="DataWrite.Boost curve5">
+<Rectangle Left="4200" Top="3240" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 34" RequestName="DataWrite.Boost curve5">
+<Rectangle Left="5400" Top="3240" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 35" RequestName="DataWrite.Boost curve5">
+<Rectangle Left="6600" Top="3240" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="RPM 36" RequestName="DataWrite.Boost curve5">
+<Rectangle Left="7800" Top="3240" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vsp0" RequestName="DataWrite.Vsp">
+<Rectangle Left="480" Top="2040" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vsp1" RequestName="DataWrite.Vsp">
+<Rectangle Left="480" Top="2280" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vsp2" RequestName="DataWrite.Vsp">
+<Rectangle Left="480" Top="2520" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vsp3" RequestName="DataWrite.Vsp">
+<Rectangle Left="480" Top="2760" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vsp4" RequestName="DataWrite.Vsp">
+<Rectangle Left="480" Top="3000" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vsp5" RequestName="DataWrite.Vsp">
+<Rectangle Left="480" Top="3240" Height="300" Width="1080"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vit ang0" RequestName="DataWrite.Vit ang">
+<Rectangle Left="1800" Top="1560" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vit ang1" RequestName="DataWrite.Vit ang">
+<Rectangle Left="3000" Top="1560" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vit ang2" RequestName="DataWrite.Vit ang">
+<Rectangle Left="4200" Top="1560" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vit ang3" RequestName="DataWrite.Vit ang">
+<Rectangle Left="5400" Top="1560" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vit ang4" RequestName="DataWrite.Vit ang">
+<Rectangle Left="6600" Top="1560" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+<Input Width="0" Color="16777215" DataName="Vit ang5" RequestName="DataWrite.Vit ang">
+<Rectangle Left="7800" Top="1560" Height="300" Width="1200"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+</Category><Category Name="Monitoring">
+
+<Screen Name="Sensor" Color="16777215" WindowState="0" Width="9000" Height="6000">
+
+
+
+<Display Width="2030" Color="16744448" DataName="Voltage_ST" RequestName="DataRead.Voltage">
+<Rectangle Left="240" Top="120" Height="300" Width="3960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1985" Color="8454143" DataName="Motor_rotation_speed" RequestName="DataRead.Motor_rotation_speed">
+<Rectangle Left="4560" Top="1560" Height="600" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2015" Color="12566463" DataName="Velocity_ST" RequestName="DataRead.Velocity">
+<Rectangle Left="240" Top="480" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1980" Color="16777215" DataName="Consigned_Speed_ST" RequestName="DataRead.Consigned_speed_ST">
+<Rectangle Left="240" Top="1560" Height="600" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="13619151" DataName="Vehicle_speed" RequestName="DataRead.Vehicle_speed">
+<Rectangle Left="240" Top="840" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="255" DataName="ECU_Temperature" RequestName="DataRead.ECU_Temperature">
+<Rectangle Left="120" Top="3840" Height="660" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2435" Color="4227327" DataName="Power_module_temperature" RequestName="DataRead.Power_module_Temperature">
+<Rectangle Left="4560" Top="3840" Height="600" Width="3960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="Consigned_Power_ST" RequestName="DataRead.Consigned_power_ST">
+<Rectangle Left="240" Top="2520" Height="600" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1940" Color="8454143" DataName="Power_ST" RequestName="DataRead.Power_ST">
+<Rectangle Left="4560" Top="2520" Height="540" Width="3960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/><Threshold Value=" 0" Color="255"/></Display>
+<Display Width="2000" Color="4259584" DataName="Assistance_level" RequestName="DataRead.Assistance_level">
+<Rectangle Left="4560" Top="3360" Height="300" Width="4000"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="8421504" DataName="Engine_status" RequestName="DataRead.Engine_status">
+<Rectangle Left="240" Top="3360" Height="300" Width="3960"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>

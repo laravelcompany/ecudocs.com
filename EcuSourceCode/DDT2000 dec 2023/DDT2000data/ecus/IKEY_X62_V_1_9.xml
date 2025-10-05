@@ -1,0 +1,2792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www-diag.intra.renault.fr/DDT2000/DDTECUPreview.xsl"?>
+<xml xmlns:ddt="http://www-diag.renault.com/2002/ECU">
+<Generator name="DDT2000 XML library" version="2.0.0.0" date="2008-09-19T14:34"/>
+<ddt:Target Name="IKEY_X62_V_1_9" xmlns="http://www-diag.renault.com/2002/ECU" xmlns:ds="http://www-diag.renault.com/2002/screens" group="IDVU_AML" upload="9/19/08" href="IKEY_X62_V_1_9.xml" email="denis.popielski-polymont@renault.com"><Description><![CDATA[Version 1.7
+Valid for Software : SW1.3
+
+Version 1.0 :  Initial Release for X62 SW1
+=================================
+Reste à faire :
+- Metre à jour BP pièce et Hardware
+- Mettre à jour les LIDs en lecture avec la définition X62 et dénommer "Left" and "right" au lieu de DR and AS
+
+Version 1.1 : MaJ
+.  Ecran CAN network management
+.  Ecran Traceability identification
+
+Version 1.2 : MaJ
+.  Ecran Keyfob learning
+.  Ecran I_O_Control antenna
+
+Version 1.4 : MaJ
+- Suppression de la requête 30 00
+- Suppression de la requête  21 00
+- Suppression "Manuel Send" de la trame  21 01
+- Suppression de la donnée "ManufacturerIdentificationCode"
+
+Version1.5 : MaJ
+- Ajout de la trame 21 0B permettant de lire l'historique
+- Optimisation nom des data et noms des requetes
+
+Version1.6 : MaJ
+- La requête 3B 81 a été modifiée en "Manuel send"
+- La requête 21 01 a été modifiée en "Manuel send"
+
+Version 1.7 : MaJ
+- La requête 31 06 01 a été ajoutée
+- La requête 31 01 11 a été modifiée en 31 01 11 00
+- La requête 30 08 11 20 a été modifiée en 30 03 11 20
+- La requête 30 03 11 20 a été modifiée en 30 08 11 20
+- La requête 3B 13 01 a été modifié en 3B 13 00 01
+- Ajout écran et requêtes "Memory 1 and 2 deletion"
+- Modification écran et requêtes "VIN"
+- MaJ des DTC
+
+Version 1.8 : MaJ
+- La réponse 7813 a été modifiée en 7B 13
+- MaJ de la désignation "StartDiagnosticSession"
+- Utilisation de la requête "DataRead.Identification.RenaultR2"
+- Suppression de la requête "Renault Identification System"
+- MaJ de l'écran "Traceability identification"
+
+
+Version 1.9 : MaJ
+- Ajout de la requête "Traceability information"
+- MaJ de l'écran "Traceability identification"
+- Ajout de l'écran "History"]]></Description><Projects xmlns=""><x62Ph2/></Projects>
+
+<Function Name="IKEY" Address="47"/>
+<Language Name="Français" Reference="1"/>
+
+<DateOfficialisation>19/09/2008 15:44:31</DateOfficialisation>
+<Failures Name="Pannes DTC" Id="3"/>
+<Boot Name="NO FLASH PROG"/>
+<PowerSupply>
+<Ground/>
+<Vbat/>
+<AfterContact/>
+</PowerSupply>
+<CAN BaudRate="10400" Multipoint="1">
+<SendId>
+<CANId Value="1868"/>
+</SendId><ReceiveId>
+<CANId Value="1900"/>
+</ReceiveId></CAN>
+<AutoIdents>
+<AutoIdent DiagVersion="4" Supplier="A10" Soft="4101" Version="0003"/><AutoIdent DiagVersion="4" Supplier="A10" Soft="4106" Version="0003"/><AutoIdent DiagVersion="4" Supplier="A10" Soft="4102" Version="0202"/><AutoIdent DiagVersion="4" Supplier="A10" Soft="4105" Version="0001"/></AutoIdents>
+<Datas>
+
+<Data Name="Requested LID">
+<Bits>
+<List>
+<Item Value="0" Text="Corresponding LID(01...20)"/>
+<Item Value="32" Text="Corresponding LID(21...40)"/>
+<Item Value="64" Text="Corresponding LID(41...60)"/>
+<Item Value="96" Text="Corresponding LID(61...80)"/></List>
+</Bits>
+</Data>
+<Data Name="Not registered">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Received ID has been registered or non ID received"/>
+<Item Value="1" Text="Received ID has not been registered"/></List>
+</Bits>
+</Data>
+<Data Name="Memory2">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not regisered"/>
+<Item Value="1" Text="regisered"/></List>
+</Bits>
+</Data>
+<Data Name="Memory1">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not registered"/>
+<Item Value="1" Text="registered"/></List>
+</Bits>
+</Data>
+<Data Name="IGN SW">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="ACC SW">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="OTHER DOOR LOCK ACTR OPERATION COMM">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="OPERATE ACCORDING TO SMART COMM">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="BACK DOOR STATE">
+<Bits count="2">
+<List>
+<Item Value="0" Text="lock state"/>
+<Item Value="1" Text="ready to all door unlock"/>
+<Item Value="2" Text="unlock state"/></List>
+</Bits>
+</Data>
+<Data Name="FOB IN FLAG">
+<Bits count="1">
+<List>
+<Item Value="0" Text="reset"/>
+<Item Value="1" Text="set"/></List>
+</Bits>
+</Data>
+<Data Name="NUMBER OF ROOM ANT RECEIVE TIMES">
+<Bits count="13">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="NUMBER OF ROOM ANT SENT TIMES">
+<Bits count="13">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="FirstDTC">
+<Bits count="16">
+<List>
+<Item Value="42327" Text="BACK Request SW stuck in active position"/>
+<Item Value="53248" Text="CAN communication inferiority"/>
+<Item Value="42324" Text="I-Key has not registered any keyfob"/>
+<Item Value="42325" Text="FRONT LEFT Request SW stuck in active position"/>
+<Item Value="42326" Text="FRONT RIGHT Request SW stuck in active position"/>
+<Item Value="42322" Text="I-Key internal abnormality"/>
+<Item Value="42384" Text="Response NG from BCM"/>
+<Item Value="53264" Text="CAN initial diagnosis result inferiority"/></List>
+</Bits>
+</Data>
+<Data Name="NDTC">
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="MoreDTC">
+<Comment><![CDATA[readDTC]]></Comment>
+<Mnemonic>SELF-DIAG</Mnemonic>
+<Bits signed="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="OutputControlCommand">
+<Bits>
+<List>
+<Item Value="0" Text="Start Temporary"/>
+<Item Value="1" Text="Status"/>
+<Item Value="17" Text="Stop"/>
+<Item Value="32" Text="Start Permanent"/></List>
+</Bits>
+</Data>
+<Data Name="OutputPermanentControlList">
+<Bits>
+<List>
+<Item Value="3" Text="LF ANT"/>
+<Item Value="1" Text="CHECK NUMBER OF KEY FOB LEARNED"/>
+<Item Value="8" Text="LF ANT PLANT"/></List>
+</Bits>
+</Data>
+<Data Name="OutputControlStatus">
+<Bits>
+<List>
+<Item Value="1" Text="Running"/>
+<Item Value="2" Text="Stopped"/>
+<Item Value="17" Text="Stopped by 'Stop Control'"/>
+<Item Value="117" Text="PSD_TEST"/></List>
+</Bits>
+</Data>
+<Data Name="RoutineEntryStatus">
+<Bits>
+<List>
+<Item Value="0" Text="not activated"/>
+<Item Value="1" Text="in progress"/>
+<Item Value="2" Text="Complete and OK"/>
+<Item Value="3" Text="Complete and not OK"/>
+<Item Value="4" Text="completed and not OK"/>
+<Item Value="8" Text="completed and not OK:repro"/>
+<Item Value="16" Text="writing error"/></List>
+</Bits>
+</Data>
+<Data Name="RoutineStatusIDs">
+<Mnemonic>WS</Mnemonic>
+<Bits>
+<List>
+<Item Value="1" Text="ID 1 DELETE"/>
+<Item Value="2" Text="ID 2 DELETE"/>
+<Item Value="3" Text="ID 3 DELETE"/>
+<Item Value="4" Text="ID 4 DELETE"/>
+<Item Value="5" Text="ID 5 DELETE"/>
+<Item Value="6" Text="ID ALL DELETE"/>
+<Item Value="7" Text="ID REGISTRATION"/></List>
+</Bits>
+</Data>
+<Data Name="LF ANT.param">
+<Bits>
+<List>
+<Item Value="16" Text="Front Right door ANT sending mode"/>
+<Item Value="8" Text="Front Left door ANT sending mode"/>
+<Item Value="2" Text="Room ANT2 sending mode"/>
+<Item Value="1" Text="Room ANT1 sending mode"/>
+<Item Value="0" Text="Not operate"/>
+<Item Value="32" Text="Back door ANT sending mode"/></List>
+</Bits>
+</Data>
+<Data Name="INITIAL DIAG">
+<Comment><![CDATA[CAN Monitor]]></Comment>
+<Mnemonic>V-CAN</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="NG"/>
+<Item Value="1" Text="UNKWN"/></List>
+</Bits>
+</Data>
+<Data Name="TRANSMIT DIAG">
+<Comment><![CDATA[CAN Monitor]]></Comment>
+<Mnemonic>V-CAN</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="UNKNOWN"/>
+<Item Value="1" Text="OK"/></List>
+</Bits>
+</Data>
+<Data Name="ECM">
+<Comment><![CDATA[CAN Monitor]]></Comment>
+<Mnemonic>V-CAN</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="UNKNOWN"/>
+<Item Value="1" Text="OK"/></List>
+</Bits>
+</Data>
+<Data Name="Historical Failure">
+<Comment><![CDATA[25953NDS07[N] standard]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Current Failure">
+<Comment><![CDATA[25953NDS07[N] standard]]></Comment>
+<Mnemonic>DF</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="No"/>
+<Item Value="1" Text="Yes"/></List>
+</Bits>
+</Data>
+<Data Name="Code VIN">
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="Crc">
+<Bytes count="2"/>
+</Data>
+<Data Name="CalibrationNumber">
+<Comment><![CDATA[Numero de calibration en Hexa]]></Comment>
+<Mnemonic>NCAL</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="DiagnosticIdentificationCode">
+<Comment><![CDATA[Diag evolution number]]></Comment>
+<Mnemonic>VDIAG</Mnemonic>
+<Bytes count="1"/>
+</Data>
+<Data Name="SoftwareNumber">
+<Comment><![CDATA[Software identification number]]></Comment>
+<Mnemonic>NPGRGM</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="SupplierNumber.ITG">
+<Comment><![CDATA[Supplier ITG code]]></Comment>
+<Mnemonic>NFOUR</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="EditionNumber">
+<Comment><![CDATA[Software version(edition) number]]></Comment>
+<Mnemonic>NVERS</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="PartNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="1" Text="285E2"/></List>
+</Bits>
+</Data>
+<Data Name="HardwareNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/>
+<Item Value="1" Text="20000"/></List>
+</Bits>
+</Data>
+<Data Name="ApprovalNumber.BasicPartList">
+<Bits>
+<List>
+<Item Value="0" Text="N/A"/></List>
+</Bits>
+</Data>
+<Data Name="PartNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="HardwareNumber.LowerPart">
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="VehiculeManufacturerSparPartNumber">
+<Bytes count="10" ascii="1"/>
+</Data>
+<Data Name="VIN">
+<Comment><![CDATA[V.I.N. to be written: 17 characters (in ASCII)]]></Comment>
+<Mnemonic>V.I.N</Mnemonic>
+<Bytes count="17" ascii="1"/>
+</Data>
+<Data Name="FOB1_Low_battery_counter">
+<Comment><![CDATA[Number of received FOB1 "battery low command"]]></Comment>
+<Mnemonic>FOB1_Low_battery_counter</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="FOB2_Low_battery_counter">
+<Comment><![CDATA[Number of received FOB2 "battery low command"]]></Comment>
+<Mnemonic>FOB2_Low_battery_counter</Mnemonic>
+<Bits>
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Fob Battery Low counter clear">
+<Comment><![CDATA[Fob Battery Low counter clear]]></Comment>
+<Mnemonic>CLEAR_LOW_BATTERY_COUNTERS</Mnemonic>
+<Bits>
+<List>
+<Item Value="0" Text="Do nothing"/>
+<Item Value="1" Text="Reset FOB Low Battery Counters"/></List>
+</Bits>
+</Data>
+<Data Name="VIN_CRC">
+<Comment><![CDATA[Vehicle Identification Number_CRC]]></Comment>
+<Mnemonic>CRC</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Message CAN reference minor">
+<Comment><![CDATA[Message Can Reference minor byte]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="Message CAN reference major">
+<Comment><![CDATA[Message Can Reference major byte]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="Bus OFF">
+<Bytes count="1"/>
+</Data>
+<Data Name="Mute">
+<Bytes count="1"/>
+</Data>
+<Data Name="Frames monitoring Status of ECM E.C.U.">
+<Bytes count="1"/>
+</Data>
+<Data Name="Frames monitoring Status of CLUSTER E.C.U.">
+<Bytes count="1"/>
+</Data>
+<Data Name="Frames monitoring Status of USM E.C.U.">
+<Bytes count="1"/>
+</Data>
+<Data Name="CAN_failure_record_USM">
+<Comment><![CDATA[This flag tells if USM ECU has been recorded absent on CAN network]]></Comment>
+<Mnemonic>CAN_failure_record_USM</Mnemonic>
+<Bits count="1">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="Part Number">
+<Comment><![CDATA[Parts No (ASCII) 5 Digit Lower Part, Provided by Renault]]></Comment>
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="Prog Number">
+<Comment><![CDATA[Prog No (Hex)]]></Comment>
+<Bytes count="1"/>
+</Data>
+<Data Name="Standard Fault">
+<Mnemonic>DF</Mnemonic>
+<Bits count="5">
+<List>
+<Item Value="0" Text="No possible classification about the type of fault"/>
+<Item Value="1" Text="Open circuit"/>
+<Item Value="2" Text="Short circuit to ground"/>
+<Item Value="3" Text="Short circuit at battery +"/>
+<Item Value="4" Text="Parameter at min limit"/>
+<Item Value="5" Text="Parameter at max limit"/>
+<Item Value="6" Text="Incoherency, not plausible"/>
+<Item Value="7" Text="No signal"/>
+<Item Value="8" Text="Below min. threshold"/>
+<Item Value="9" Text="Above max. threshold"/>
+<Item Value="10" Text="Permanent Low Level"/>
+<Item Value="11" Text="Permanent High Level"/>
+<Item Value="12" Text="Lines short-circuited"/>
+<Item Value="13" Text="Internal electronic anomaly"/>
+<Item Value="14" Text="Network default"/>
+<Item Value="15" Text="Remote diagnostic"/>
+<Item Value="16" Text="Disturbed communication"/>
+<Item Value="17" Text="Microcuts"/>
+<Item Value="18" Text="Abnormal voltage"/>
+<Item Value="19" Text="Value out of range"/>
+<Item Value="20" Text="Open circuit or Short circuit to ground"/>
+<Item Value="21" Text="Open circuit or Short circuit to battery"/>
+<Item Value="22" Text="Initialization / configuration not valid"/></List>
+</Bits>
+</Data>
+<Data Name="Supplier Number">
+<Comment><![CDATA[Supplier Number]]></Comment>
+<Mnemonic>SUPPLIER_NB</Mnemonic>
+<Bits count="24">
+<List>
+<Item Value="2576" Text="ALPS"/></List>
+</Bits>
+</Data>
+<Data Name="Hardware Number">
+<Comment><![CDATA[Parts No (ASCII) Unique Lower Part reference given by renault]]></Comment>
+<Bytes count="5" ascii="1"/>
+</Data>
+<Data Name="Exit_RoutineStatus">
+<Bits>
+<List>
+<Item Value="0" Text="Exit"/></List>
+</Bits>
+</Data>
+<Data Name="Frames monitoring Status of BCM E.C.U.">
+<Bytes count="1"/>
+</Data>
+<Data Name="FRONT LEFT LOCK UNLOCK SW">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="FRONT RIGHT LOCK UNLOCK SW">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="FRONT LEFT DOOR STATE">
+<Bits count="2">
+<List>
+<Item Value="0" Text="lock state"/>
+<Item Value="1" Text="ready to all door unlock"/>
+<Item Value="2" Text="unlock state"/></List>
+</Bits>
+</Data>
+<Data Name="FRONT RIGHT DOOR STATE">
+<Bits count="2">
+<List>
+<Item Value="0" Text="lock state"/>
+<Item Value="1" Text="ready o all door unlock"/>
+<Item Value="2" Text="unlock state"/></List>
+</Bits>
+</Data>
+<Data Name="FRONT LEFT DR LOCK ACTR OPERATION COMM">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="FRONT LEFT DOOR OPEN_CLOSE STATUS">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Front left door close"/>
+<Item Value="1" Text="Front left door open"/></List>
+</Bits>
+</Data>
+<Data Name="METER_M_A">
+<Comment><![CDATA[CAN Monitor]]></Comment>
+<Mnemonic>V-CAN</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="UNKNOWN"/>
+<Item Value="1" Text="OK"/></List>
+</Bits>
+</Data>
+<Data Name="RL DOOR OPEN_CLOSE STATUS">
+<Bits count="1">
+<List>
+<Item Value="0" Text="RL door close"/>
+<Item Value="1" Text="RL door open"/></List>
+</Bits>
+</Data>
+<Data Name="RR DOOR OPEN_CLOSE STATUS">
+<Bits count="1">
+<List>
+<Item Value="0" Text="RR door close"/>
+<Item Value="1" Text="RR door open"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_01">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_02">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_03">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_04">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_05">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_06">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_07">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_08">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_09">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_0A">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_0B">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_0C">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_0D">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_0E">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_0F">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_10">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_11">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_12">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_13">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_14">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_15">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_16">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID17">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_18">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_19">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_1A">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_1B">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_1C">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_1D">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_1E">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_1F">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SPRBLID_20">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_01">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_02">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_03">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_04">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_05">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_06">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_07">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_08">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_09">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_0A">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_0B">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_0C">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_0D">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_0E">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_0F">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_10">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_11">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_12">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_13">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_14">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_15">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_16">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_17">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_18">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_19">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_1A">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_1B">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_1C">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_1D">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_1E">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_1F">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="SRBLID_20">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="Software Number">
+<Comment><![CDATA[Software  Number]]></Comment>
+<Mnemonic>SOFT_NB</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="Data history A">
+<Bits>
+<List>
+<Item Value="17" Text="Front left request SW : lock"/>
+<Item Value="18" Text="Front right request SW : lock"/>
+<Item Value="19" Text="Back door request SW : lock"/>
+<Item Value="24" Text="Other lock"/>
+<Item Value="32" Text="Other unlock"/>
+<Item Value="33" Text="Front left request SW : All door unlock"/>
+<Item Value="34" Text="Front right request SW : All door unlock"/>
+<Item Value="35" Text="Back request SW : All door unlock"/>
+<Item Value="98" Text="IGN : OFF -&gt; ON"/>
+<Item Value="99" Text="ACC : OFF -&gt; ON"/>
+<Item Value="114" Text="IGN : ON -&gt; OFF"/>
+<Item Value="115" Text="ACC : ON -&gt; OFF"/>
+<Item Value="255" Text="All door close"/></List>
+</Bits>
+</Data>
+<Data Name="Data history B">
+<Bits>
+<List>
+<Item Value="17" Text="Front left request SW : lock"/>
+<Item Value="18" Text="Front right request SW : lock"/>
+<Item Value="19" Text="Back door request SW : lock"/>
+<Item Value="24" Text="Other lock"/>
+<Item Value="32" Text="Other unlock"/>
+<Item Value="33" Text="Front left request SW : All door unlock"/>
+<Item Value="34" Text="Front right request SW : All door unlock"/>
+<Item Value="35" Text="Back request SW : All door unlock"/>
+<Item Value="98" Text="IGN : OFF -&gt; ON"/>
+<Item Value="99" Text="ACC : OFF -&gt; ON"/>
+<Item Value="114" Text="IGN : ON -&gt; OFF"/>
+<Item Value="115" Text="ACC : ON -&gt; OFF"/>
+<Item Value="255" Text="All door close"/></List>
+</Bits>
+</Data>
+<Data Name="Data history C">
+<Bits>
+<List>
+<Item Value="17" Text="Front left request SW : lock"/>
+<Item Value="18" Text="Front right request SW : lock"/>
+<Item Value="19" Text="Back door request SW : lock"/>
+<Item Value="24" Text="Other lock"/>
+<Item Value="32" Text="Other unlock"/>
+<Item Value="33" Text="Front left request SW : All door unlock"/>
+<Item Value="34" Text="Front right request SW : All door unlock"/>
+<Item Value="35" Text="Back request SW : All door unlock"/>
+<Item Value="98" Text="IGN : OFF -&gt; ON"/>
+<Item Value="99" Text="ACC : OFF -&gt; ON"/>
+<Item Value="114" Text="IGN : ON -&gt; OFF"/>
+<Item Value="115" Text="ACC : ON -&gt; OFF"/>
+<Item Value="255" Text="All door close"/></List>
+</Bits>
+</Data>
+<Data Name="Data history D">
+<Bits>
+<List>
+<Item Value="17" Text="Front left request SW : lock"/>
+<Item Value="18" Text="Front right request SW : lock"/>
+<Item Value="19" Text="Back door request SW : lock"/>
+<Item Value="24" Text="Other lock"/>
+<Item Value="32" Text="Other unlock"/>
+<Item Value="33" Text="Front left request SW : All door unlock"/>
+<Item Value="34" Text="Front right request SW : All door unlock"/>
+<Item Value="35" Text="Back request SW : All door unlock"/>
+<Item Value="98" Text="IGN : OFF -&gt; ON"/>
+<Item Value="99" Text="ACC : OFF -&gt; ON"/>
+<Item Value="114" Text="IGN : ON -&gt; OFF"/>
+<Item Value="115" Text="ACC : ON -&gt; OFF"/>
+<Item Value="255" Text="All door close"/></List>
+</Bits>
+</Data>
+<Data Name="Data history E">
+<Bits>
+<List>
+<Item Value="17" Text="Front left request SW : lock"/>
+<Item Value="18" Text="Front right request SW : lock"/>
+<Item Value="19" Text="Back door request SW : lock"/>
+<Item Value="24" Text="Other lock"/>
+<Item Value="32" Text="Other unlock"/>
+<Item Value="33" Text="Front left request SW : All door unlock"/>
+<Item Value="34" Text="Front right request SW : All door unlock"/>
+<Item Value="35" Text="Back request SW : All door unlock"/>
+<Item Value="98" Text="IGN : OFF -&gt; ON"/>
+<Item Value="99" Text="ACC : OFF -&gt; ON"/>
+<Item Value="114" Text="IGN : ON -&gt; OFF"/>
+<Item Value="115" Text="ACC : ON -&gt; OFF"/>
+<Item Value="255" Text="All door close"/></List>
+</Bits>
+</Data>
+<Data Name="Data history F">
+<Bits>
+<List>
+<Item Value="17" Text="Front left request SW : lock"/>
+<Item Value="18" Text="Front right request SW : lock"/>
+<Item Value="19" Text="Back door request SW : lock"/>
+<Item Value="24" Text="Other lock"/>
+<Item Value="32" Text="Other unlock"/>
+<Item Value="33" Text="Front left request SW : All door unlock"/>
+<Item Value="34" Text="Front right request SW : All door unlock"/>
+<Item Value="35" Text="Back request SW : All door unlock"/>
+<Item Value="98" Text="IGN : OFF -&gt; ON"/>
+<Item Value="99" Text="ACC : OFF -&gt; ON"/>
+<Item Value="114" Text="IGN : ON -&gt; OFF"/>
+<Item Value="115" Text="ACC : ON -&gt; OFF"/>
+<Item Value="255" Text="All door close"/></List>
+</Bits>
+</Data>
+<Data Name="Edition Number">
+<Comment><![CDATA[Edition  Number]]></Comment>
+<Mnemonic>EDITION_NB</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="BACK DR LOCK UNLOCK SW">
+<Bits count="1">
+<List>
+<Item Value="0" Text="OFF"/>
+<Item Value="1" Text="ON"/></List>
+</Bits>
+</Data>
+<Data Name="BACK DOOR OPEN_CLOSE STATUS">
+<Bits count="1">
+<List>
+<Item Value="0" Text="BACK door close"/>
+<Item Value="1" Text="BACK door open"/></List>
+</Bits>
+</Data>
+<Data Name="BCM_SEC">
+<Comment><![CDATA[CAN Monitor]]></Comment>
+<Mnemonic>V-CAN</Mnemonic>
+<Bits count="1">
+<List>
+<Item Value="0" Text="UNKNOWN"/>
+<Item Value="1" Text="OK"/></List>
+</Bits>
+</Data>
+<Data Name="Calibration Number">
+<Comment><![CDATA[Calibration Number]]></Comment>
+<Mnemonic>CALIBRATION_NB</Mnemonic>
+<Bytes count="2"/>
+</Data>
+<Data Name="WDBLID_01">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_02">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_03">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_04">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_05">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_06">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_07">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_08">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_09">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_0A">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_0B">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_0C">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_0D">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_0E">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_0F">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_10">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_11">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_12">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_13">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_14">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_15">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_16">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_17">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_18">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_19">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_1A">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_1B">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_1C">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_1D">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_1E">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="WDBLID_1F">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="FRONT RIGHT DOOR OPEN_CLOSE STATUS">
+<Bits count="1">
+<List>
+<Item Value="0" Text="Front Right door close"/>
+<Item Value="1" Text="Front Right door open"/></List>
+</Bits>
+</Data>
+<Data Name="NUMBER OF ROOM ANT RECEIVE TIMES _TID FIXED CALL">
+<Bits count="13">
+<Scaled/>
+</Bits>
+</Data>
+<Data Name="WDBLID_20">
+<Bits count="1">
+<List>
+<Item Value="0" Text="not supported"/>
+<Item Value="1" Text="supported"/></List>
+</Bits>
+</Data>
+<Data Name="Initial Software version number">
+<Comment><![CDATA[Software version]]></Comment>
+<Mnemonic>SN_Software</Mnemonic>
+<Bytes count="3" ascii="1"/>
+</Data>
+<Data Name="Information_RESERVED">
+<Comment><![CDATA[All bytes shall be set to $20]]></Comment>
+<Bytes count="4" ascii="1"/>
+</Data>
+<Data Name="ManufacturerIdentificationCode">
+<Comment><![CDATA[Nissan's system identification]]></Comment>
+<Mnemonic>ReadDataByLocalID</Mnemonic>
+<Bits>
+<List>
+<Item Value="128" Text="Nissan N1"/>
+<Item Value="129" Text="Nissan N2"/>
+<Item Value="130" Text="Nissan N3"/></List>
+</Bits>
+</Data>
+<Data Name="Production unique serial number">
+<Comment><![CDATA[BCM production unique serial number]]></Comment>
+<Mnemonic>SN_PROD</Mnemonic>
+<Bytes count="13" ascii="1"/>
+</Data></Datas>
+<Requests Endian="Big">
+<Request Name="ClearDTC">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[The ClearDiagnosticInformation service is used by the tool to clear diagnostic information in an ECUs memory]]></Comment>
+<Sent>
+<SentBytes>14FF00</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>54FF00</ReplyBytes>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithResponse">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[TesterPresent]]></Comment>
+<Sent>
+<SentBytes>3E01</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="OutputControl">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>30010001</SentBytes>
+<DataItem Name="OutputControlCommand" FirstByte="3"/>
+<DataItem Name="OutputPermanentControlList" FirstByte="2"/>
+<DataItem Name="LF ANT.param" FirstByte="4"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700000</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RoutineStatus.RoutineStatusIDs">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[WS]]></Comment>
+<Sent>
+<SentBytes>310001</SentBytes>
+<DataItem Name="RoutineStatusIDs" FirstByte="2"/>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710100</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="TesterPresent.WithoutResponse">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[TesterPresent]]></Comment>
+<Sent>
+<SentBytes>3E02</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7E</ReplyBytes>
+</Received>
+</Request>
+<Request Name="ReadDTC">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[DF]]></Comment>
+<Sent>
+<VariableLength/>
+<SentBytes>17FF00</SentBytes>
+<DataItem Name="MoreDTC" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ShiftBytesCount>3</ShiftBytesCount>
+<ReplyBytes>5700000000</ReplyBytes>
+<DataItem Name="FirstDTC" FirstByte="3"/>
+<DataItem Name="NDTC" FirstByte="2"/>
+<DataItem Name="Standard Fault" FirstByte="5" BitOffset="3"/>
+<DataItem Name="Historical Failure" FirstByte="5" BitOffset="1"/>
+<DataItem Name="Current Failure" FirstByte="5" BitOffset="2"/>
+</Received>
+</Request>
+<Request Name="CanSupportMonitor">
+
+<Sent>
+<SentBytes>2103</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>61030000000000</ReplyBytes>
+<DataItem Name="INITIAL DIAG" FirstByte="4" BitOffset="3"/>
+<DataItem Name="TRANSMIT DIAG" FirstByte="4" BitOffset="4"/>
+<DataItem Name="BCM_SEC" FirstByte="4" BitOffset="5"/>
+<DataItem Name="METER_M_A" FirstByte="4" BitOffset="6"/>
+<DataItem Name="ECM" FirstByte="4" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.VehiculeManufacturerSparPartNumber">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[Full identification of control unit]]></Comment>
+<Sent>
+<SentBytes>22F187</SentBytes>
+</Sent>
+<Received MinBytes="13">
+<ReplyBytes>62F187</ReplyBytes>
+<DataItem Name="VehiculeManufacturerSparPartNumber" Ref="1" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="Vehicle Identification Number_Record">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>3B8100000000000000000000000000000000000000</SentBytes>
+<DataItem Name="VIN" FirstByte="3"/>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>7B81</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Data.Read.RDBLID_Low_Battery_counter">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>210C</SentBytes>
+</Sent>
+<Received MinBytes="4">
+<ReplyBytes>610C0000</ReplyBytes>
+<DataItem Name="FOB1_Low_battery_counter" FirstByte="3"/>
+<DataItem Name="FOB2_Low_battery_counter" FirstByte="4"/>
+</Received>
+</Request>
+<Request Name="CAN Network Managment">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2182</SentBytes>
+</Sent>
+<Received MinBytes="62">
+<ReplyBytes>6182</ReplyBytes>
+<DataItem Name="Message CAN reference minor" Ref="1" FirstByte="4"/>
+<DataItem Name="Message CAN reference major" Ref="1" FirstByte="3"/>
+<DataItem Name="Bus OFF" Ref="1" FirstByte="5"/>
+<DataItem Name="Mute" Ref="1" FirstByte="6"/>
+<DataItem Name="Frames monitoring Status of ECM E.C.U." Ref="1" FirstByte="7"/>
+<DataItem Name="Frames monitoring Status of CLUSTER E.C.U." Ref="1" FirstByte="9"/>
+<DataItem Name="Frames monitoring Status of USM E.C.U." Ref="1" FirstByte="26"/>
+<DataItem Name="CAN_failure_record_USM" Ref="1" FirstByte="26" BitOffset="1"/>
+<DataItem Name="Frames monitoring Status of BCM E.C.U." Ref="1" FirstByte="10"/>
+</Received>
+</Request>
+<Request Name="DataRead.Identification.RenaultR2">
+
+<DossierMaintenabilite/>
+<Comment><![CDATA[ReadDataByLocalIdentifier : Use this request if ECU use Coding Renault R2 or 5DIGITS]]></Comment>
+<Sent>
+<SentBytes>2180</SentBytes>
+</Sent>
+<Received MinBytes="26">
+<ReplyBytes>6180000000000000000000000000000000000000000001010000</ReplyBytes>
+<DataItem Name="CalibrationNumber" Ref="1" FirstByte="21"/>
+<DataItem Name="DiagnosticIdentificationCode" Ref="1" FirstByte="8"/>
+<DataItem Name="SoftwareNumber" Ref="1" FirstByte="17"/>
+<DataItem Name="SupplierNumber.ITG" Ref="1" FirstByte="9"/>
+<DataItem Name="EditionNumber" Ref="1" FirstByte="19"/>
+<DataItem Name="PartNumber.BasicPartList" Ref="1" FirstByte="23"/>
+<DataItem Name="HardwareNumber.BasicPartList" Ref="1" FirstByte="24"/>
+<DataItem Name="ApprovalNumber.BasicPartList" Ref="1" FirstByte="25"/>
+<DataItem Name="PartNumber.LowerPart" Ref="1" FirstByte="3"/>
+<DataItem Name="HardwareNumber.LowerPart" Ref="1" FirstByte="12"/>
+<DataItem Name="ManufacturerIdentificationCode" Ref="1" FirstByte="26"/>
+</Received>
+</Request>
+<Request Name="DataRead.RDBLID_01h">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>2101</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>610100</ReplyBytes>
+<DataItem Name="Not registered" FirstByte="3"/>
+<DataItem Name="Memory2" FirstByte="3" BitOffset="6"/>
+<DataItem Name="Memory1" FirstByte="3" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.RDBLID_02h">
+
+<Sent>
+<SentBytes>2102</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>610200</ReplyBytes>
+<DataItem Name="Memory2" Ref="1" FirstByte="3" BitOffset="6"/>
+<DataItem Name="Memory1" Ref="1" FirstByte="3" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="DataRead.RDBLID_08h">
+
+<Sent>
+<SentBytes>2108</SentBytes>
+</Sent>
+<Received MinBytes="11">
+<ReplyBytes>6108000000000000000000</ReplyBytes>
+<DataItem Name="FRONT LEFT LOCK UNLOCK SW" FirstByte="3" BitOffset="3"/>
+<DataItem Name="FRONT RIGHT LOCK UNLOCK SW" FirstByte="3" BitOffset="4"/>
+<DataItem Name="BACK DR LOCK UNLOCK SW" FirstByte="3" BitOffset="5"/>
+<DataItem Name="IGN SW" FirstByte="4"/>
+<DataItem Name="ACC SW" FirstByte="4" BitOffset="1"/>
+<DataItem Name="FRONT LEFT DOOR OPEN_CLOSE STATUS" FirstByte="6"/>
+<DataItem Name="FRONT RIGHT DOOR OPEN_CLOSE STATUS" FirstByte="6" BitOffset="1"/>
+<DataItem Name="RR DOOR OPEN_CLOSE STATUS" FirstByte="6" BitOffset="2"/>
+<DataItem Name="RL DOOR OPEN_CLOSE STATUS" FirstByte="6" BitOffset="3"/>
+<DataItem Name="BACK DOOR OPEN_CLOSE STATUS" FirstByte="6" BitOffset="4"/>
+<DataItem Name="FRONT LEFT DR LOCK ACTR OPERATION COMM" FirstByte="7"/>
+<DataItem Name="OTHER DOOR LOCK ACTR OPERATION COMM" FirstByte="7" BitOffset="1"/>
+<DataItem Name="OPERATE ACCORDING TO SMART COMM" FirstByte="7" BitOffset="2"/>
+<DataItem Name="FRONT LEFT DOOR STATE" FirstByte="9"/>
+<DataItem Name="FRONT RIGHT DOOR STATE" FirstByte="9" BitOffset="2"/>
+<DataItem Name="BACK DOOR STATE" FirstByte="9" BitOffset="4"/>
+<DataItem Name="FOB IN FLAG" FirstByte="10"/>
+</Received>
+</Request>
+<Request Name="DataRead.RDBLID_0Ah">
+
+<Sent>
+<SentBytes>210A</SentBytes>
+</Sent>
+<Received MinBytes="7">
+<ReplyBytes>610A0000000000</ReplyBytes>
+<DataItem Name="NUMBER OF ROOM ANT SENT TIMES" FirstByte="3"/>
+<DataItem Name="NUMBER OF ROOM ANT RECEIVE TIMES" FirstByte="4" BitOffset="5"/>
+<DataItem Name="NUMBER OF ROOM ANT RECEIVE TIMES _TID FIXED CALL" FirstByte="6" BitOffset="2"/>
+</Received>
+</Request>
+<Request Name="DataRead.RDBLID_0Bh">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>210B</SentBytes>
+</Sent>
+<Received MinBytes="127">
+<ReplyBytes>610B</ReplyBytes>
+<DataItem Name="Data history A" FirstByte="3"/>
+<DataItem Name="Data history B" FirstByte="4"/>
+<DataItem Name="Data history C" FirstByte="5"/>
+<DataItem Name="Data history D" FirstByte="6"/>
+<DataItem Name="Data history E" FirstByte="7"/>
+<DataItem Name="Data history F" FirstByte="8"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Stop_VerifyNumberRegisteredKeyFob">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>30011100</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700100</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Start_VerifyNumberRegisteredKeyFob">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>300120</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700100</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Stop_LF ANT ROOM 1">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30031101</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Stop_LF ANT ROOM 2">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30031102</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Stop_LF ANT FRONT LEFT DR">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30031108</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Stop_LF ANT FRONT RIGHT DR">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30031110</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Stop_LF ANT BACK DR PLANT">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30081120</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Start_LF ANT ROOM 1">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30032001</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Start_LF ANT ROOM 2">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30032002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Start_LF ANT FRONT LEFT DR">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30032008</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Start_LF ANT FRONT RIGHT DR">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30032010</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Start_LF ANT BACK DR">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30032020</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Stop_LF ANT ROOM 1 PLANT">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30081101</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Stop_LF ANT ROOM 2 PLANT">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30081102</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Stop_LF ANT FRONT LEFT DR PLANT">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30081108</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700800</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Stop_LF ANT FRONT RIGHT DR PLANT">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30081110</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700800</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Stop_LF ANT BACK DR">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30031120</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Start_LF ANT ROOM 1 PLANT">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30082001</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Start_LF ANT ROOM 2 PLANT">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30082002</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700300</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Start_LF ANT FRONT LEFT DR PLANT">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30082008</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700800</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Start_LF ANT FRONT RIGHT DR PLANT">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30082010</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700800</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="I_OCtrl_Start_LF ANT BACK DR PLANT">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Comment><![CDATA[AT]]></Comment>
+<Sent>
+<SentBytes>30082020</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>700800</ReplyBytes>
+<DataItem Name="OutputControlStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Supported Lid for SRBLID_00">
+
+<Sent>
+<SentBytes>3100</SentBytes>
+<DataItem Name="Requested LID" FirstByte="2"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>710000000000</ReplyBytes>
+<DataItem Name="SRBLID_01" FirstByte="3"/>
+<DataItem Name="SRBLID_02" FirstByte="3" BitOffset="1"/>
+<DataItem Name="SRBLID_03" FirstByte="3" BitOffset="2"/>
+<DataItem Name="SRBLID_04" FirstByte="3" BitOffset="3"/>
+<DataItem Name="SRBLID_05" FirstByte="3" BitOffset="4"/>
+<DataItem Name="SRBLID_06" FirstByte="3" BitOffset="5"/>
+<DataItem Name="SRBLID_07" FirstByte="3" BitOffset="6"/>
+<DataItem Name="SRBLID_08" FirstByte="3" BitOffset="7"/>
+<DataItem Name="SRBLID_09" FirstByte="4"/>
+<DataItem Name="SRBLID_0A" FirstByte="4" BitOffset="1"/>
+<DataItem Name="SRBLID_0B" FirstByte="4" BitOffset="2"/>
+<DataItem Name="SRBLID_0C" FirstByte="4" BitOffset="3"/>
+<DataItem Name="SRBLID_0D" FirstByte="4" BitOffset="4"/>
+<DataItem Name="SRBLID_0E" FirstByte="4" BitOffset="5"/>
+<DataItem Name="SRBLID_0F" FirstByte="4" BitOffset="6"/>
+<DataItem Name="SRBLID_10" FirstByte="4" BitOffset="7"/>
+<DataItem Name="SRBLID_11" FirstByte="5"/>
+<DataItem Name="SRBLID_12" FirstByte="5" BitOffset="1"/>
+<DataItem Name="SRBLID_13" FirstByte="5" BitOffset="2"/>
+<DataItem Name="SRBLID_14" FirstByte="5" BitOffset="3"/>
+<DataItem Name="SRBLID_15" FirstByte="5" BitOffset="4"/>
+<DataItem Name="SRBLID_16" FirstByte="5" BitOffset="5"/>
+<DataItem Name="SRBLID_17" FirstByte="5" BitOffset="6"/>
+<DataItem Name="SRBLID_18" FirstByte="5" BitOffset="7"/>
+<DataItem Name="SRBLID_19" FirstByte="6"/>
+<DataItem Name="SRBLID_1A" FirstByte="6" BitOffset="1"/>
+<DataItem Name="SRBLID_1B" FirstByte="6" BitOffset="2"/>
+<DataItem Name="SRBLID_1C" FirstByte="6" BitOffset="3"/>
+<DataItem Name="SRBLID_1D" FirstByte="6" BitOffset="4"/>
+<DataItem Name="SRBLID_1E" FirstByte="6" BitOffset="5"/>
+<DataItem Name="SRBLID_1F" FirstByte="6" BitOffset="6"/>
+<DataItem Name="SRBLID_20" FirstByte="6" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="RoutineStart.SRBLID_01h_Erase_Key1">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>310100</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710100</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RoutineStart.SRBLID_02h_Erase_Key2">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>310200</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710200</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RoutineStart.SRBLID_02h_Erase_Key2_FeedBack">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>310201</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710200</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RoutineStart.SRBLID_05h_Erase_All_Keys">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>310500</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710500</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RoutineStart.SRBLID_06h_Enter_Register_Key_Fob">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>310600</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710600</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RoutineStart.SRBLID_06h_Register_Key_Fob">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>310602</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710600</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Supported Lid for SPRBLID_00">
+
+<Sent>
+<SentBytes>3200</SentBytes>
+<DataItem Name="Requested LID" FirstByte="2"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>720000000000</ReplyBytes>
+<DataItem Name="SPRBLID_01" FirstByte="3"/>
+<DataItem Name="SPRBLID_02" FirstByte="3" BitOffset="1"/>
+<DataItem Name="SPRBLID_03" FirstByte="3" BitOffset="2"/>
+<DataItem Name="SPRBLID_04" FirstByte="3" BitOffset="3"/>
+<DataItem Name="SPRBLID_05" FirstByte="3" BitOffset="4"/>
+<DataItem Name="SPRBLID_06" FirstByte="3" BitOffset="5"/>
+<DataItem Name="SPRBLID_07" FirstByte="3" BitOffset="6"/>
+<DataItem Name="SPRBLID_08" FirstByte="3" BitOffset="7"/>
+<DataItem Name="SPRBLID_09" FirstByte="4"/>
+<DataItem Name="SPRBLID_0A" FirstByte="4" BitOffset="1"/>
+<DataItem Name="SPRBLID_0B" FirstByte="4" BitOffset="2"/>
+<DataItem Name="SPRBLID_0C" FirstByte="4" BitOffset="3"/>
+<DataItem Name="SPRBLID_0D" FirstByte="4" BitOffset="4"/>
+<DataItem Name="SPRBLID_0E" FirstByte="4" BitOffset="5"/>
+<DataItem Name="SPRBLID_0F" FirstByte="4" BitOffset="6"/>
+<DataItem Name="SPRBLID_10" FirstByte="4" BitOffset="7"/>
+<DataItem Name="SPRBLID_11" FirstByte="5"/>
+<DataItem Name="SPRBLID_12" FirstByte="5" BitOffset="1"/>
+<DataItem Name="SPRBLID_13" FirstByte="5" BitOffset="2"/>
+<DataItem Name="SPRBLID_14" FirstByte="5" BitOffset="3"/>
+<DataItem Name="SPRBLID_15" FirstByte="5" BitOffset="4"/>
+<DataItem Name="SPRBLID_16" FirstByte="5" BitOffset="5"/>
+<DataItem Name="SPRBLID17" FirstByte="5" BitOffset="6"/>
+<DataItem Name="SPRBLID_18" FirstByte="5" BitOffset="7"/>
+<DataItem Name="SPRBLID_19" FirstByte="6"/>
+<DataItem Name="SPRBLID_1A" FirstByte="6" BitOffset="1"/>
+<DataItem Name="SPRBLID_1B" FirstByte="6" BitOffset="2"/>
+<DataItem Name="SPRBLID_1C" FirstByte="6" BitOffset="3"/>
+<DataItem Name="SPRBLID_1D" FirstByte="6" BitOffset="4"/>
+<DataItem Name="SPRBLID_1E" FirstByte="6" BitOffset="5"/>
+<DataItem Name="SPRBLID_1F" FirstByte="6" BitOffset="6"/>
+<DataItem Name="SPRBLID_20" FirstByte="6" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="RoutineStop.SPRBLID_01h">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>320100</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>720100</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RoutineStop.SPRBLID_02h">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>320200</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>720200</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RoutineStop.SPRBLID_05h">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>320500</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>720500</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RoutineStop.SPRBLID_06h">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>320600</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>720600</ReplyBytes>
+<DataItem Name="Exit_RoutineStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="Supported Lid for WDBLID_00">
+
+<Sent>
+<SentBytes>3B00</SentBytes>
+<DataItem Name="Requested LID" FirstByte="2"/>
+</Sent>
+<Received MinBytes="6">
+<ReplyBytes>7B0000000000</ReplyBytes>
+<DataItem Name="WDBLID_01" FirstByte="3"/>
+<DataItem Name="WDBLID_02" FirstByte="3" BitOffset="1"/>
+<DataItem Name="WDBLID_03" FirstByte="3" BitOffset="2"/>
+<DataItem Name="WDBLID_04" FirstByte="3" BitOffset="3"/>
+<DataItem Name="WDBLID_05" FirstByte="3" BitOffset="4"/>
+<DataItem Name="WDBLID_06" FirstByte="3" BitOffset="5"/>
+<DataItem Name="WDBLID_07" FirstByte="3" BitOffset="6"/>
+<DataItem Name="WDBLID_08" FirstByte="3" BitOffset="7"/>
+<DataItem Name="WDBLID_09" FirstByte="4"/>
+<DataItem Name="WDBLID_0A" FirstByte="4" BitOffset="1"/>
+<DataItem Name="WDBLID_0B" FirstByte="4" BitOffset="2"/>
+<DataItem Name="WDBLID_0C" FirstByte="4" BitOffset="3"/>
+<DataItem Name="WDBLID_0D" FirstByte="4" BitOffset="4"/>
+<DataItem Name="WDBLID_0E" FirstByte="4" BitOffset="5"/>
+<DataItem Name="WDBLID_0F" FirstByte="4" BitOffset="6"/>
+<DataItem Name="WDBLID_10" FirstByte="4" BitOffset="7"/>
+<DataItem Name="WDBLID_11" FirstByte="5"/>
+<DataItem Name="WDBLID_12" FirstByte="5" BitOffset="1"/>
+<DataItem Name="WDBLID_13" FirstByte="5" BitOffset="2"/>
+<DataItem Name="WDBLID_14" FirstByte="5" BitOffset="3"/>
+<DataItem Name="WDBLID_15" FirstByte="5" BitOffset="4"/>
+<DataItem Name="WDBLID_16" FirstByte="5" BitOffset="5"/>
+<DataItem Name="WDBLID_17" FirstByte="5" BitOffset="6"/>
+<DataItem Name="WDBLID_18" FirstByte="5" BitOffset="7"/>
+<DataItem Name="WDBLID_19" FirstByte="6"/>
+<DataItem Name="WDBLID_1A" FirstByte="6" BitOffset="1"/>
+<DataItem Name="WDBLID_1B" FirstByte="6" BitOffset="2"/>
+<DataItem Name="WDBLID_1C" FirstByte="6" BitOffset="3"/>
+<DataItem Name="WDBLID_1D" FirstByte="6" BitOffset="4"/>
+<DataItem Name="WDBLID_1E" FirstByte="6" BitOffset="5"/>
+<DataItem Name="WDBLID_1F" FirstByte="6" BitOffset="6"/>
+<DataItem Name="WDBLID_20" FirstByte="6" BitOffset="7"/>
+</Received>
+</Request>
+<Request Name="RW_RDBLI_VIN">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2181</SentBytes>
+</Sent>
+<Received MinBytes="21">
+<ReplyBytes>6181</ReplyBytes>
+<DataItem Name="Code VIN" Ref="1" FirstByte="3"/>
+<DataItem Name="Crc" Ref="1" FirstByte="20"/>
+</Received>
+</Request>
+<Request Name="RoutineStart.SRBLID_06h_KeyFOB registration result">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>310601</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710600</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RoutineStart.SRBLID_01h_Erase_Key1_FeedBack">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>310101</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710100</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="RoutineStart.SRBLID_05h_Erase_All_Keys_FeedBack">
+
+<DossierMaintenabilite/>
+<ManuelSend/>
+<Sent>
+<SentBytes>310501</SentBytes>
+</Sent>
+<Received MinBytes="3">
+<ReplyBytes>710100</ReplyBytes>
+<DataItem Name="RoutineEntryStatus" FirstByte="3"/>
+</Received>
+</Request>
+<Request Name="StartDiagnosticSession">
+
+<ManuelSend/>
+<Sent>
+<SentBytes>10C0</SentBytes>
+</Sent>
+<Received MinBytes="2">
+<ReplyBytes>50C0</ReplyBytes>
+</Received>
+</Request>
+<Request Name="Traceability information">
+
+<DossierMaintenabilite/>
+<Sent>
+<SentBytes>2184</SentBytes>
+</Sent>
+<Received MinBytes="22">
+<ReplyBytes>6184</ReplyBytes>
+<DataItem Name="Information_RESERVED" Ref="1" FirstByte="19"/>
+<DataItem Name="Production unique serial number" Ref="1" FirstByte="3"/>
+<DataItem Name="Initial Software version number" Ref="1" FirstByte="16"/>
+</Received>
+</Request>
+<Request Name="DataWrite.WRBLID_ClearBatteryCounter">
+
+<Sent>
+<SentBytes>3B130001</SentBytes>
+</Sent>
+<Received MinBytes="1">
+<ReplyBytes>7B13</ReplyBytes>
+</Received>
+</Request>
+</Requests>
+<Devices>
+<Device Name="CAN communication inferiority" DTC="53248">
+
+
+</Device>
+<Device Name="CAN initial diagnosis result inferiority" DTC="53264">
+
+
+</Device>
+<Device Name="Response NG from BCM" DTC="42384">
+
+
+</Device>
+<Device Name="FRONT LEFT Request SW stuck in active position" DTC="42325">
+
+
+</Device>
+<Device Name="FRONT RIGHT Request SW stuck in active position" DTC="42326">
+
+
+</Device>
+<Device Name="Traceability" Type="2">
+<DeviceData Name="DiagnosticIdentificationCode" FailureFlag="0"/><DeviceData Name="HardwareNumber.BasicPartList" FailureFlag="0"/><DeviceData Name="HardwareNumber.LowerPart" FailureFlag="0"/><DeviceData Name="PartNumber.BasicPartList" FailureFlag="0"/><DeviceData Name="PartNumber.LowerPart" FailureFlag="0"/><DeviceData Name="SoftwareNumber" FailureFlag="0"/><DeviceData Name="SupplierNumber.ITG" FailureFlag="0"/><DeviceData Name="VehiculeManufacturerSparPartNumber" FailureFlag="0"/><DeviceData Name="CalibrationNumber" FailureFlag="0"/>
+
+</Device>
+<Device Name="I-Key internal abnormality" DTC="42322">
+
+
+</Device>
+<Device Name="BACK Request SW stuck in active position" DTC="42327">
+
+
+</Device>
+<Device Name="I-Key has not registered any keyfob" DTC="42324">
+
+
+</Device>
+
+</Devices>
+<ds:Categories xmlns="http://www-diag.renault.com/2002/screens"><Category Name="I / O Read">
+
+<Screen Name="Input / Output" Color="8421440" WindowState="0" Width="10380" Height="7260">
+
+<Label Text="Key Fob Battery" Color="4227327" Alignment="2">
+<Rectangle Left="5520" Top="2400" Height="1920" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Internal IKey doors locking status" Color="4227327" Alignment="2">
+<Rectangle Left="5520" Top="4440" Height="1680" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Input - Ouput IKey" Color="33023" Alignment="2">
+<Rectangle Left="240" Top="240" Height="2880" Width="5160"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Internal IKey data" Color="33023" Alignment="2">
+<Rectangle Left="5520" Top="240" Height="2040" Width="4680"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Internal IKey doors closing status" Color="4227327" Alignment="2">
+<Rectangle Left="240" Top="3240" Height="2880" Width="5160"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Read - Write VIN Code" Color="33023" Alignment="2">
+<Rectangle Left="240" Top="6240" Height="960" Width="9960"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="Clear Battery Counter">
+<Rectangle Left="6120" Top="3720" Height="420" Width="3360"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/><Send Delay="50" RequestName="DataWrite.WRBLID_ClearBatteryCounter"/>
+</Button>
+<Button Text="Write VIN">
+<Rectangle Left="9120" Top="6720" Height="300" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/><Send Delay="50" RequestName="Vehicle Identification Number_Record"/>
+</Button>
+
+<Display Width="1325" Color="16777215" DataName="Memory2" RequestName="DataRead.RDBLID_02h">
+<Rectangle Left="5640" Top="720" Height="300" Width="4440"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="986895"/></Display>
+<Display Width="1325" Color="16777215" DataName="Memory1" RequestName="DataRead.RDBLID_02h">
+<Rectangle Left="5640" Top="1080" Height="300" Width="4440"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="986895"/></Display>
+<Display Width="3170" Color="16777215" DataName="FRONT LEFT DOOR OPEN_CLOSE STATUS" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="360" Top="3720" Height="298" Width="4920"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="986895"/></Display>
+<Display Width="3185" Color="16777215" DataName="FRONT RIGHT DOOR OPEN_CLOSE STATUS" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="360" Top="4200" Height="298" Width="4920"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="986895"/></Display>
+<Display Width="3170" Color="16777215" DataName="OPERATE ACCORDING TO SMART COMM" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="5640" Top="1800" Height="298" Width="4440"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="986895"/></Display>
+<Display Width="2225" Color="16777215" DataName="FRONT LEFT DOOR STATE" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="5760" Top="4920" Height="298" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2225" Color="16777215" DataName="FRONT RIGHT DOOR STATE" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="5760" Top="5280" Height="298" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2240" Color="16777215" DataName="BACK DOOR STATE" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="5760" Top="5640" Height="298" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1325" Color="16777215" DataName="FOB IN FLAG" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="5640" Top="1440" Height="298" Width="4440"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="986895"/></Display>
+<Display Width="3185" Color="16777215" DataName="RR DOOR OPEN_CLOSE STATUS" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="360" Top="5160" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3185" Color="16777215" DataName="RL DOOR OPEN_CLOSE STATUS" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="360" Top="4680" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3185" Color="16777215" DataName="BACK DOOR OPEN_CLOSE STATUS" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="360" Top="5640" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2705" Color="16777215" DataName="FRONT LEFT LOCK UNLOCK SW" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="360" Top="1680" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2705" Color="16777215" DataName="FRONT RIGHT LOCK UNLOCK SW" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="360" Top="2160" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2705" Color="16777215" DataName="BACK DR LOCK UNLOCK SW" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="360" Top="2640" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2705" Color="16777215" DataName="IGN SW" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="360" Top="720" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2705" Color="16777215" DataName="ACC SW" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="360" Top="1200" Height="300" Width="4920"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2345" Color="16777215" DataName="FOB1_Low_battery_counter" RequestName="Data.Read.RDBLID_Low_Battery_counter">
+<Rectangle Left="5640" Top="2880" Height="300" Width="4440"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2345" Color="16777215" DataName="FOB2_Low_battery_counter" RequestName="Data.Read.RDBLID_Low_Battery_counter">
+<Rectangle Left="5640" Top="3240" Height="300" Width="4440"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="980" Color="16777215" DataName="Code VIN" RequestName="RW_RDBLI_VIN">
+<Rectangle Left="360" Top="6720" Height="300" Width="4680"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Input Width="0" Color="16777215" DataName="VIN" RequestName="Vehicle Identification Number_Record">
+<Rectangle Left="5280" Top="6720" Height="300" Width="3720"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Input>
+</Screen>
+</Category><Category Name="I / O Control">
+
+<Screen Name="I_O_Control_Antenna" Color="8421440" WindowState="0" Width="9060" Height="6660">
+
+<Label Text="I_O_Control_Antenna" Color="255" Alignment="2">
+<Rectangle Left="240" Top="480" Height="360" Width="8520"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="Number of receive times ( TID CALL )" Color="16777215" Alignment="0">
+<Rectangle Left="5520" Top="1320" Height="240" Width="3240"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Number of receive times ( TID FIXED CALL )" Color="16777215" Alignment="0">
+<Rectangle Left="5520" Top="1680" Height="240" Width="3240"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Number of send times" Color="16777215" Alignment="0">
+<Rectangle Left="5520" Top="960" Height="240" Width="3240"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="FRONT RIGHT DR LF ANTENA" Color="8454143" Alignment="2">
+<Rectangle Left="6000" Top="2160" Height="1320" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="ROOM 2 LF ANTENA" Color="8454143" Alignment="2">
+<Rectangle Left="3120" Top="3600" Height="1320" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="FRONT LEFT DR LF ANTENA" Color="8454143" Alignment="2">
+<Rectangle Left="240" Top="2160" Height="1320" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="BACK DR LF ANTENA" Color="8454143" Alignment="2">
+<Rectangle Left="3120" Top="5040" Height="1320" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="ROOM 1 LF ANTENA" Color="8454143" Alignment="2">
+<Rectangle Left="3120" Top="2160" Height="1320" Width="2760"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+
+<Button Text="START">
+<Rectangle Left="3360" Top="5400" Height="360" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Start_LF ANT BACK DR"/>
+</Button>
+<Button Text="STOP">
+<Rectangle Left="4560" Top="5400" Height="360" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Stop_LF ANT BACK DR"/>
+</Button>
+<Button Text="START">
+<Rectangle Left="480" Top="2520" Height="360" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Start_LF ANT FRONT LEFT DR"/>
+</Button>
+<Button Text="STOP">
+<Rectangle Left="1680" Top="2520" Height="360" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Stop_LF ANT FRONT LEFT DR"/>
+</Button>
+<Button Text="START">
+<Rectangle Left="6240" Top="2520" Height="360" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Start_LF ANT FRONT RIGHT DR"/>
+</Button>
+<Button Text="STOP">
+<Rectangle Left="7440" Top="2520" Height="360" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Stop_LF ANT FRONT RIGHT DR"/>
+</Button>
+<Button Text="START">
+<Rectangle Left="3360" Top="2520" Height="360" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Start_LF ANT ROOM 1"/>
+</Button>
+<Button Text="STOP">
+<Rectangle Left="4560" Top="2520" Height="360" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Stop_LF ANT ROOM 1"/>
+</Button>
+<Button Text="START">
+<Rectangle Left="3360" Top="3960" Height="360" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Start_LF ANT ROOM 2"/>
+</Button>
+<Button Text="STOP">
+<Rectangle Left="4560" Top="3960" Height="360" Width="1080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Stop_LF ANT ROOM 2"/>
+</Button>
+<Button Text="START Plant">
+<Rectangle Left="360" Top="3000" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Start_LF ANT FRONT LEFT DR PLANT"/>
+</Button>
+<Button Text="STOP Plant">
+<Rectangle Left="1680" Top="3000" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Stop_LF ANT FRONT LEFT DR PLANT"/>
+</Button>
+<Button Text="START Plant">
+<Rectangle Left="6120" Top="3000" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Start_LF ANT FRONT RIGHT DR PLANT"/>
+</Button>
+<Button Text="STOP Plant">
+<Rectangle Left="7440" Top="3000" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Stop_LF ANT FRONT RIGHT DR PLANT"/>
+</Button>
+<Button Text="START Plant">
+<Rectangle Left="3240" Top="3000" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Start_LF ANT ROOM 1 PLANT"/>
+</Button>
+<Button Text="STOP Plant">
+<Rectangle Left="4560" Top="3000" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Stop_LF ANT ROOM 1 PLANT"/>
+</Button>
+<Button Text="START Plant">
+<Rectangle Left="3240" Top="4440" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Start_LF ANT ROOM 2 PLANT"/>
+</Button>
+<Button Text="STOP Plant">
+<Rectangle Left="4560" Top="4440" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Stop_LF ANT ROOM 2 PLANT"/>
+</Button>
+<Button Text="START Plant">
+<Rectangle Left="3240" Top="5880" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Start_LF ANT BACK DR PLANT"/>
+</Button>
+<Button Text="STOP Plant">
+<Rectangle Left="4560" Top="5880" Height="360" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="I_OCtrl_Stop_LF ANT BACK DR PLANT"/>
+</Button>
+
+<Display Width="2915" Color="16777215" DataName="NUMBER OF ROOM ANT SENT TIMES" RequestName="DataRead.RDBLID_0Ah">
+<Rectangle Left="240" Top="960" Height="240" Width="5280"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2915" Color="16777215" DataName="NUMBER OF ROOM ANT RECEIVE TIMES" RequestName="DataRead.RDBLID_0Ah">
+<Rectangle Left="240" Top="1320" Height="240" Width="5280"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2915" Color="16777215" DataName="NUMBER OF ROOM ANT RECEIVE TIMES _TID FIXED CALL" RequestName="DataRead.RDBLID_0Ah">
+<Rectangle Left="240" Top="1680" Height="240" Width="5280"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Identification I-Key">
+
+<Screen Name="Traceability identification" Color="8421440" WindowState="0" Width="8940" Height="5940">
+
+<Label Text="Renault's identification system" Color="255" Alignment="2">
+<Rectangle Left="240" Top="480" Height="360" Width="8520"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+
+
+<Display Width="2480" Color="16777215" DataName="PartNumber.LowerPart" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="2520" Top="1320" Height="240" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2480" Color="16777215" DataName="DiagnosticIdentificationCode" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="2520" Top="5160" Height="240" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2480" Color="16777215" DataName="SupplierNumber.ITG" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="2520" Top="4800" Height="240" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2480" Color="16777215" DataName="HardwareNumber.LowerPart" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="2520" Top="3600" Height="240" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2480" Color="16777215" DataName="SoftwareNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="2520" Top="1920" Height="240" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2480" Color="16777215" DataName="EditionNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="2520" Top="2280" Height="240" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2480" Color="16777215" DataName="CalibrationNumber" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="2520" Top="2640" Height="240" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2480" Color="16777215" DataName="PartNumber.BasicPartList" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="2520" Top="960" Height="240" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2480" Color="16777215" DataName="ManufacturerIdentificationCode" RequestName="DataRead.Identification.RenaultR2">
+<Rectangle Left="2520" Top="5520" Height="240" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2480" Color="16777215" DataName="Production unique serial number" RequestName="Traceability information">
+<Rectangle Left="2520" Top="4200" Height="240" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2480" Color="16777215" DataName="Initial Software version number" RequestName="Traceability information">
+<Rectangle Left="2520" Top="3000" Height="240" Width="3960"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="CAN management">
+
+<Screen Name="CAN network management" Color="8421440" WindowState="0" Width="8940" Height="5460">
+
+<Label Text="CAN network management" Color="255" Alignment="2">
+<Rectangle Left="240" Top="480" Height="360" Width="8520"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+
+
+<Display Width="3005" Color="16777215" DataName="Message CAN reference major" RequestName="CAN Network Managment">
+<Rectangle Left="2160" Top="2760" Height="240" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3005" Color="16777215" DataName="Message CAN reference minor" RequestName="CAN Network Managment">
+<Rectangle Left="2160" Top="3120" Height="240" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3005" Color="16777215" DataName="Bus OFF" RequestName="CAN Network Managment">
+<Rectangle Left="2160" Top="1560" Height="240" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3000" Color="16777215" DataName="Mute" RequestName="CAN Network Managment">
+<Rectangle Left="2160" Top="1200" Height="240" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="3005" Color="16777215" DataName="Frames monitoring Status of BCM E.C.U." RequestName="CAN Network Managment">
+<Rectangle Left="2160" Top="2160" Height="240" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="Keyfob">
+
+<Screen Name="Keyfob learning" Color="8421440" WindowState="0" Width="11460" Height="7500">
+
+<Label Text="Key cylinder" Color="4227327" Alignment="2">
+<Rectangle Left="480" Top="840" Height="1320" Width="5160"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="Keyfob learning" Color="255" Alignment="2">
+<Rectangle Left="480" Top="240" Height="360" Width="9720"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="Keyfob registration" Color="16744576" Alignment="2">
+<Rectangle Left="480" Top="2280" Height="2160" Width="5160"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="Which ID is learnt by IKey and in which memory" Color="8454016" Alignment="2">
+<Rectangle Left="5760" Top="840" Height="2280" Width="4560"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="ID must by placed near room antenna" Color="255" Alignment="2">
+<Rectangle Left="8880" Top="1920" Height="720" Width="1200"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Memory 1 and 2 deletion" Color="8454016" Alignment="2">
+<Rectangle Left="5760" Top="5880" Height="1200" Width="4560"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Memory 1 deletion" Color="8454016" Alignment="2">
+<Rectangle Left="5760" Top="3240" Height="1200" Width="4560"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Label Text="Memory 2 deletion" Color="8454016" Alignment="2">
+<Rectangle Left="5760" Top="4560" Height="1200" Width="4560"/>
+<Font Name="MS Sans Serif" Size=" 12" Bold="1" Italic="0" Color="0"/></Label>
+<Send Delay="0" RequestName="StartDiagnosticSession"/>
+<Button Text="Start Keyfob learning mode">
+<Rectangle Left="600" Top="2760" Height="360" Width="2520"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/><Send Delay="50" RequestName="RoutineStart.SRBLID_06h_Enter_Register_Key_Fob"/>
+</Button>
+<Button Text="Stop Keyfob learning mode">
+<Rectangle Left="600" Top="3720" Height="360" Width="2520"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/><Send Delay="50" RequestName="RoutineStop.SPRBLID_06h"/>
+</Button>
+<Button Text="Keyfob registration">
+<Rectangle Left="600" Top="3240" Height="360" Width="2520"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/><Send Delay="50" RequestName="RoutineStart.SRBLID_06h_Register_Key_Fob"/><Send Delay="50" RequestName="RoutineStart.SRBLID_06h_KeyFOB registration result"/><Send Delay="2000" RequestName="RoutineStart.SRBLID_06h_KeyFOB registration result"/><Send Delay="50" RequestName="RoutineStart.SRBLID_06h_KeyFOB registration result"/>
+</Button>
+<Button Text="I/O Ctrl Verify number of registered keyfob ">
+<Rectangle Left="6000" Top="1560" Height="240" Width="4080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/><Send Delay="50" RequestName="I_OCtrl_Start_VerifyNumberRegisteredKeyFob"/><Send Delay="100" RequestName="DataRead.RDBLID_01h"/><Send Delay="500" RequestName="DataRead.RDBLID_01h"/>
+</Button>
+<Button Text="Stop Verify number of registered key fob ">
+<Rectangle Left="6000" Top="2760" Height="240" Width="4080"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/><Send Delay="50" RequestName="I_OCtrl_Stop_VerifyNumberRegisteredKeyFob"/>
+</Button>
+<Button Text="Start Delete memory 1">
+<Rectangle Left="6120" Top="3600" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/><Send Delay="50" RequestName="RoutineStart.SRBLID_01h_Erase_Key1"/><Send Delay="100" RequestName="RoutineStart.SRBLID_01h_Erase_Key1_FeedBack"/><Send Delay="500" RequestName="RoutineStart.SRBLID_01h_Erase_Key1_FeedBack"/><Send Delay="1000" RequestName="RoutineStart.SRBLID_01h_Erase_Key1_FeedBack"/>
+</Button>
+<Button Text="Start Delete memory 2">
+<Rectangle Left="6120" Top="4920" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/><Send Delay="50" RequestName="RoutineStart.SRBLID_02h_Erase_Key2"/><Send Delay="100" RequestName="RoutineStart.SRBLID_02h_Erase_Key2_FeedBack"/><Send Delay="500" RequestName="RoutineStart.SRBLID_02h_Erase_Key2_FeedBack"/><Send Delay="1000" RequestName="RoutineStart.SRBLID_02h_Erase_Key2_FeedBack"/>
+</Button>
+<Button Text="Stop Delete memory 1">
+<Rectangle Left="8160" Top="3600" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/><Send Delay="50" RequestName="RoutineStop.SPRBLID_01h"/>
+</Button>
+<Button Text="Stop Delete memory 2">
+<Rectangle Left="8280" Top="4920" Height="360" Width="1680"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/><Send Delay="50" RequestName="RoutineStop.SPRBLID_02h"/>
+</Button>
+<Button Text="Start Delete memory 1 and 2">
+<Rectangle Left="5880" Top="6240" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/><Send Delay="50" RequestName="RoutineStart.SRBLID_05h_Erase_All_Keys"/><Send Delay="100" RequestName="RoutineStart.SRBLID_05h_Erase_All_Keys_FeedBack"/><Send Delay="500" RequestName="RoutineStart.SRBLID_05h_Erase_All_Keys_FeedBack"/><Send Delay="1000" RequestName="RoutineStart.SRBLID_05h_Erase_All_Keys_FeedBack"/>
+</Button>
+<Button Text="Stop Delete memory 1 and 2">
+<Rectangle Left="8040" Top="6240" Height="360" Width="2160"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0"/>
+<Message Text=""/>
+<Send Delay="0" RequestName="StartDiagnosticSession"/><Send Delay="50" RequestName="RoutineStop.SPRBLID_05h"/><Send Delay="100" RequestName="RoutineStart.SRBLID_02h_Erase_Key2_FeedBack"/>
+</Button>
+
+<Display Width="1995" Color="16777215" DataName="IGN SW" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="720" Top="1680" Height="360" Width="4800"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="2000" Color="16777215" DataName="ACC SW" RequestName="DataRead.RDBLID_08h">
+<Rectangle Left="720" Top="1200" Height="360" Width="4800"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RoutineEntryStatus" RequestName="RoutineStart.SRBLID_06h_Enter_Register_Key_Fob">
+<Rectangle Left="3240" Top="2760" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="875" Color="16777215" DataName="Memory1" RequestName="DataRead.RDBLID_01h">
+<Rectangle Left="6120" Top="1920" Height="240" Width="2520"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="875" Color="16777215" DataName="Memory2" RequestName="DataRead.RDBLID_01h">
+<Rectangle Left="6120" Top="2400" Height="240" Width="2520"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RoutineEntryStatus" RequestName="RoutineStart.SRBLID_01h_Erase_Key1_FeedBack">
+<Rectangle Left="7080" Top="4080" Height="300" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RoutineEntryStatus" RequestName="RoutineStart.SRBLID_02h_Erase_Key2_FeedBack">
+<Rectangle Left="7080" Top="5400" Height="300" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="Exit_RoutineStatus" RequestName="RoutineStop.SPRBLID_06h">
+<Rectangle Left="3240" Top="3720" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="15" Color="16777215" DataName="RoutineEntryStatus" RequestName="RoutineStart.SRBLID_05h_Erase_All_Keys_FeedBack">
+<Rectangle Left="7080" Top="6720" Height="300" Width="1920"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="0" Color="16777215" DataName="RoutineEntryStatus" RequestName="RoutineStart.SRBLID_06h_KeyFOB registration result">
+<Rectangle Left="3240" Top="3240" Height="360" Width="2280"/>
+<Font Name="Arial" Size=" 10" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category><Category Name="History">
+
+<Screen Name="Actions memorized" Color="8421440" WindowState="0" Width="8940" Height="5460">
+
+<Label Text="Actions which are memorised in history" Color="255" Alignment="2">
+<Rectangle Left="240" Top="480" Height="360" Width="8520"/>
+<Font Name="Arial" Size=" 12" Bold="1" Italic="0" Color="16777215"/></Label>
+<Label Text="Latest history" Color="12615935" Alignment="0">
+<Rectangle Left="1080" Top="1320" Height="240" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+<Label Text="Oldest history" Color="12615935" Alignment="0">
+<Rectangle Left="1080" Top="4320" Height="240" Width="960"/>
+<Font Name="MS Sans Serif" Size=" 8.25" Bold="0" Italic="0" Color="0"/></Label>
+
+
+<Display Width="1220" Color="16777215" DataName="Data history A" RequestName="DataRead.RDBLID_0Bh">
+<Rectangle Left="2160" Top="1320" Height="240" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1220" Color="16777215" DataName="Data history B" RequestName="DataRead.RDBLID_0Bh">
+<Rectangle Left="2160" Top="1920" Height="240" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1220" Color="16777215" DataName="Data history C" RequestName="DataRead.RDBLID_0Bh">
+<Rectangle Left="2160" Top="2520" Height="240" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1220" Color="16777215" DataName="Data history D" RequestName="DataRead.RDBLID_0Bh">
+<Rectangle Left="2160" Top="3120" Height="240" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1220" Color="16777215" DataName="Data history E" RequestName="DataRead.RDBLID_0Bh">
+<Rectangle Left="2160" Top="3720" Height="240" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+<Display Width="1220" Color="16777215" DataName="Data history F" RequestName="DataRead.RDBLID_0Bh">
+<Rectangle Left="2160" Top="4320" Height="240" Width="4320"/>
+<Font Name="Arial" Size=" 8" Bold="0" Italic="0" Color="0"/></Display>
+</Screen>
+</Category></ds:Categories></ddt:Target></xml>
