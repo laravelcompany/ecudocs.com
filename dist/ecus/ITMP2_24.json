@@ -1,0 +1,2272 @@
+{
+"autoidents": [
+	{
+	"diagversion": "4",
+	"supplier": "AP9",
+	"soft": "0703",
+	"version": "0102"
+	}
+],
+"ecuname": "ITM P2 V2.4",
+"obd": {
+	"protocol": "CAN",
+	"send_id": "747",
+	"recv_id": "767",
+	"baudrate": 10400,
+	"funcaddr": "58",
+	"funcname": "Navigation"
+},
+"data": {
+	"CRC": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2
+	},
+	"V.I.N": {
+	"bitscount": 136,
+	"byte": true,
+	"bytescount": 17,
+	"bytesascii": true,
+	"comment": "Vehicle identification number"
+	},
+	"parameter: SPEED": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"format": "#000",
+	"unit": "km/h",
+	"comment": "speed value from speed line"
+	},
+	"config VEHICLE": {
+	"bitscount": 16,
+	"bytescount": 2,
+	"lists": {
+		"0": "d\u00e9fault value",
+		"8": "X73 phase 2",
+		"21": "J84 phase 2",
+		"22": "X91",
+		"23": "X92",
+		"24": "X93",
+		"65535": "no change"
+	},
+	"comment": "vehicle type configuration number"
+	},
+	"config PRECODE": {
+	"bitscount": 32,
+	"byte": true,
+	"bytescount": 4,
+	"bytesascii": true,
+	"comment": "antitheft pre-code"
+	},
+	"TEST control": {
+	"lists": {
+		"1": "Status request",
+		"17": "test stop",
+		"32": "test start query"
+	},
+	"comment": "test control"
+	},
+	"TEST tel type": {
+	"lists": {
+		"43": "audio link test",
+		"42": "data serial link test",
+		"44": "current cunsumption test"
+	},
+	"comment": "phone test type"
+	},
+	"FirstDTC": {
+	"bitscount": 16,
+	"bytescount": 2,
+	"lists": {
+		"39424": "GPS antenna open circuit",
+		"39425": "GPS disturbed communication",
+		"39426": "GPS ROM internal electronic abnormality",
+		"39427": "GPS RAM internal electronic abnormality",
+		"39428": "GPS RTC internal electronic abnormality",
+		"39430": "Front display error",
+		"39431": "Flash ROM error of control unit",
+		"39432": "Gyro open circuit",
+		"39436": "DVD-ROM disc error",
+		"39437": "DVD-ROM drive error",
+		"39439": "HFCK connection problem",
+		"49507": "Main keyboard connection problem",
+		"49542": "Audio unit connection problem",
+		"49545": "CD changer connection problem",
+		"49920": "Incorrect settings",
+		"39440": "Bluetooth error",
+		"39441": "CSW button error",
+		"39442": "Antitheft lock",
+		"49492": "Gateway connection problem",
+		"53265": "MM CAN controller problem"
+	}
+	},
+	"Status: phone ON/OFF": {
+	"bitscount": 1,
+	"lists": {
+		"0": "phone set off",
+		"1": "phone set on"
+	},
+	"comment": "phone set working status"
+	},
+	"Status: phone PIN": {
+	"bitscount": 1,
+	"lists": {
+		"0": "PIN code not entered",
+		"1": "PIN code entered"
+	},
+	"comment": "phone set PIN code status"
+	},
+	"Status: phone SIM": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not valid",
+		"1": "valid"
+	},
+	"comment": "SIM card status"
+	},
+	"Status: phone NETWORK": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not connected",
+		"1": "connected"
+	},
+	"comment": "phone set network connection status"
+	},
+	"Status: phone PRESENT": {
+	"bitscount": 1,
+	"lists": {
+		"0": "absent",
+		"1": "t\u00e9l\u00e9phone pr\u00e9sent"
+	},
+	"comment": "phone set presence status"
+	},
+	"Output Control Command": {
+	"lists": {
+		"0": "Start Temporary",
+		"1": "Status",
+		"17": "Stop",
+		"32": "Start Permanent"
+	},
+	"comment": "Testing output : Command enumeration"
+	},
+	"Output Control Parameters": {
+	"comment": "Testing output : Number of cycle"
+	},
+	"Output Permanent Control List": {
+	"lists": {
+		"33": "Loud speaker"
+	},
+	"comment": "Testing output : List of all output with permanent test"
+	},
+	"Output Temporary Control List": {
+	"comment": "Testing output : List of all output with temporary test"
+	},
+	"Output Control Status": {
+	"lists": {
+		"1": "Running",
+		"2": "Stopped",
+		"17": "Manually Stopped"
+	},
+	"comment": "Testing output : Status"
+	},
+	"DTC status": {
+	"lists": {
+		"0": "reserved",
+		"1": "open circuit",
+		"2": "short circuit to ground",
+		"3": "short circuit to battery",
+		"4": "parameter at minimum value",
+		"5": "parameter at maximum value",
+		"6": "unconsistency",
+		"7": "no signal",
+		"8": "under minimum thereshold level",
+		"9": "above maximum thereshold level",
+		"10": "permanent low level",
+		"11": "permanent high level",
+		"12": "short circuited lines",
+		"13": "internal electronic problem",
+		"14": "network preoblem",
+		"15": "remote diagnosis",
+		"16": "perturbated communication",
+		"17": "micro-cuts",
+		"18": "abnormal voltage",
+		"19": "out of range value",
+		"20": "open circuit or short circuit to ground",
+		"21": "open circuit or short circuit to battery",
+		"22": "invalid settings or initialisation"
+	},
+	"comment": "device"
+	},
+	"NDTC": {
+	"scaled": true
+	},
+	"MMux Ref Messagerie": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2
+	},
+	"Response tester": {
+	"lists": {
+		"1": "reponse waited",
+		"2": "No response waited"
+	},
+	"comment": "tester present response query"
+	},
+	"TEST microphone status": {
+	"lists": {
+		"0": "no test in progress",
+		"1": "tone test in progress",
+		"2": "test OK",
+		"4": "test NOK",
+		"255": "problem during test"
+	},
+	"comment": "microphone test status"
+	},
+	"TEST display test card": {
+	"lists": {
+		"1": "test card number 1 color bars",
+		"2": "test card number 2 grey scales",
+		"3": "test card number 3 white screen"
+	},
+	"comment": "test card to be displayed"
+	},
+	"TEST display status": {
+	"lists": {
+		"0": "no test on progress",
+		"1": "test card 1 color bars on progress",
+		"2": "test card 2 grey scales on progress",
+		"3": "test card 3 white screen on progress",
+		"255": "problem during test"
+	},
+	"comment": "display test status"
+	},
+	"MMux Produce Bus Mute": {
+	"bitscount": 2,
+	"lists": {
+		"0": "Present",
+		"2": "Missing",
+		"3": "Missing Confirmed"
+	}
+	},
+	"MMux Produce Bus Mute Counter": {
+	"bitscount": 6,
+	"lists": {
+		"0": "0",
+		"1": "1",
+		"2": "2",
+		"3": "3",
+		"4": "4",
+		"5": "5",
+		"6": "6",
+		"7": "7",
+		"8": "8",
+		"9": "9",
+		"10": "10",
+		"11": "11",
+		"12": "12",
+		"13": "13",
+		"14": "14",
+		"15": "15",
+		"16": "16",
+		"17": "17",
+		"18": "18",
+		"19": "19",
+		"20": "20",
+		"21": "21",
+		"22": "22",
+		"23": "23",
+		"24": "24",
+		"25": "25",
+		"26": "26",
+		"27": "27",
+		"28": "28",
+		"29": "29",
+		"30": "30",
+		"31": "31",
+		"32": "32",
+		"33": "33",
+		"34": "34",
+		"35": "35",
+		"36": "36",
+		"37": "37",
+		"38": "38",
+		"39": "39",
+		"40": "40",
+		"63": "No Checked"
+	}
+	},
+	"MMux Produce Bus Off": {
+	"bitscount": 2,
+	"lists": {
+		"0": "Present",
+		"2": "Missing",
+		"3": "Missing Confirmed"
+	}
+	},
+	"MMUX keyboard counter": {
+	"bitscount": 6,
+	"lists": {
+		"0": "0",
+		"1": "1",
+		"2": "2",
+		"3": "3",
+		"4": "4",
+		"5": "5",
+		"6": "6",
+		"7": "7",
+		"8": "8",
+		"9": "9",
+		"10": "10",
+		"11": "11",
+		"12": "12",
+		"13": "13",
+		"14": "14",
+		"15": "15",
+		"16": "16",
+		"17": "17",
+		"18": "18",
+		"19": "19",
+		"20": "20",
+		"21": "21",
+		"22": "22",
+		"23": "23",
+		"24": "24",
+		"25": "25",
+		"26": "26",
+		"27": "27",
+		"28": "28",
+		"29": "29",
+		"30": "30",
+		"31": "31",
+		"32": "32",
+		"33": "33",
+		"34": "34",
+		"35": "35",
+		"36": "36",
+		"37": "37",
+		"38": "38",
+		"39": "39",
+		"40": "40",
+		"63": "No Checked"
+	}
+	},
+	"MMux Produce Bus Off Counter": {
+	"bitscount": 6,
+	"lists": {
+		"0": "0",
+		"1": "1",
+		"2": "2",
+		"3": "3",
+		"4": "4",
+		"5": "5",
+		"6": "6",
+		"7": "7",
+		"8": "8",
+		"9": "9",
+		"10": "10",
+		"11": "11",
+		"12": "12",
+		"13": "13",
+		"14": "14",
+		"15": "15",
+		"16": "16",
+		"17": "17",
+		"18": "18",
+		"19": "19",
+		"20": "20",
+		"21": "21",
+		"22": "22",
+		"23": "23",
+		"24": "24",
+		"25": "25",
+		"26": "26",
+		"27": "27",
+		"28": "28",
+		"29": "29",
+		"30": "30",
+		"31": "31",
+		"32": "32",
+		"33": "33",
+		"34": "34",
+		"35": "35",
+		"36": "36",
+		"37": "37",
+		"38": "38",
+		"39": "39",
+		"40": "40",
+		"63": "No Checked"
+	}
+	},
+	"MMUX ITM": {
+	"lists": {
+		"0": "IT master present"
+	},
+	"comment": "CAN-M management ECU IT master"
+	},
+	"MMUX ITM counter": {
+	"bitscount": 6,
+	"lists": {
+		"0": "0",
+		"1": "1",
+		"2": "2",
+		"3": "3",
+		"4": "4",
+		"5": "5",
+		"6": "6",
+		"7": "7",
+		"8": "8",
+		"9": "9",
+		"10": "10",
+		"11": "11",
+		"12": "12",
+		"13": "13",
+		"14": "14",
+		"15": "15",
+		"16": "16",
+		"17": "17",
+		"18": "18",
+		"19": "19",
+		"20": "20",
+		"21": "21",
+		"22": "22",
+		"23": "23",
+		"24": "24",
+		"25": "25",
+		"26": "26",
+		"27": "27",
+		"28": "28",
+		"29": "29",
+		"30": "30",
+		"31": "31",
+		"32": "32",
+		"33": "33",
+		"34": "34",
+		"35": "35",
+		"36": "36",
+		"37": "37",
+		"38": "38",
+		"39": "39",
+		"40": "40",
+		"63": "No Checked"
+	}
+	},
+	"MMUX keyboard": {
+	"bitscount": 2,
+	"lists": {
+		"0": "present",
+		"2": "missing",
+		"3": "missing confirmed"
+	},
+	"comment": "CAN-M management ECU keyboard"
+	},
+	"traceability ITG": {
+	"bitscount": 24,
+	"byte": true,
+	"bytescount": 3,
+	"bytesascii": true,
+	"comment": "serial numbers"
+	},
+	"traceability month": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2,
+	"bytesascii": true,
+	"comment": "serial numbers"
+	},
+	"traceability manufacturing code": {
+	"bitscount": 40,
+	"byte": true,
+	"bytescount": 5,
+	"bytesascii": true,
+	"comment": "serial numbers"
+	},
+	"TEST tel status": {
+	"lists": {
+		"0": "routine not activated",
+		"1": "routine in progress",
+		"2": "routine completed and OK",
+		"4": "routine completed and NOK",
+		"255": "problem in the test"
+	},
+	"comment": "phone test status"
+	},
+	"TEST tel type status": {
+	"lists": {
+		"42": "data serial link test",
+		"43": "audio link test",
+		"44": "current cunsumption test"
+	},
+	"comment": "phone test type"
+	},
+	"traceability blank 2": {
+	"bitscount": 40,
+	"byte": true,
+	"bytescount": 5,
+	"bytesascii": true,
+	"comment": "blanking spaces"
+	},
+	"traceability blank": {
+	"bitscount": 32,
+	"byte": true,
+	"bytescount": 4,
+	"bytesascii": true,
+	"comment": "blanking spaces"
+	},
+	"Session Name": {
+	"lists": {
+		"129": "Session par d\u00e9faut (1081)",
+		"134": "Etudes",
+		"192": "Usines et APV",
+		"196": "Fonction climatisation",
+		"200": "Fonction VSC acc\u00e8s-d\u00e9marrage",
+		"250": "Fournisseur"
+	},
+	"comment": "Mode d'ouverture de la section diag"
+	},
+	"Current Failure": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	}
+	},
+	"config reset": {
+	"lists": {
+		"254": "data memory zone",
+		"255": "system parameters"
+	},
+	"comment": "reset type"
+	},
+	"Status: CSW: right": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not shifted",
+		"1": "shifted"
+	},
+	"comment": "rotary right"
+	},
+	"Status: CSW: left": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not shifted",
+		"1": "shifted"
+	},
+	"comment": "rotary left"
+	},
+	"Status: CSW: turn left": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not turned",
+		"1": "turned"
+	},
+	"comment": "rotary turn left"
+	},
+	"Status: CSW: turn right": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not turned",
+		"1": "turned"
+	},
+	"comment": "rotary turn right"
+	},
+	"Status: CSW: up": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not shifted",
+		"1": "shifted"
+	},
+	"comment": "rotary up"
+	},
+	"Status: CSW: down": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not shifted",
+		"1": "shifted"
+	},
+	"comment": "rotary down"
+	},
+	"Status: CSW: push": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not pushed",
+		"1": "pushed"
+	},
+	"comment": "rotary push"
+	},
+	"Status: CSW: map": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not pressed",
+		"1": "pressed"
+	},
+	"comment": "map button"
+	},
+	"Status: CSW: route": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not pressed",
+		"1": "pressed"
+	},
+	"comment": "route button"
+	},
+	"Status: CSW: zoom": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not pressed",
+		"1": "pressed"
+	},
+	"comment": "zoom button"
+	},
+	"Status: CSW: light": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not pressed",
+		"1": "pressed"
+	},
+	"comment": "light button"
+	},
+	"Status: CSW: set": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not pressed",
+		"1": "pressed"
+	},
+	"comment": "set button"
+	},
+	"Status: CSW: info": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not pressed",
+		"1": "pressed"
+	},
+	"comment": "info button"
+	},
+	"Status: CSW: tel": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not pressed",
+		"1": "pressed"
+	},
+	"comment": "tel button"
+	},
+	"Status: CSW: back": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not pressed",
+		"1": "pressed"
+	},
+	"comment": "back button"
+	},
+	"Status: CSW: dest": {
+	"bitscount": 1,
+	"lists": {
+		"0": "not pressed",
+		"1": "pressed"
+	},
+	"comment": "dest button"
+	},
+	"Status: close": {
+	"bitscount": 1,
+	"lists": {
+		"0": "open",
+		"1": "closed"
+	},
+	"comment": "open / close button for map DVD"
+	},
+	"parameter: GPSSTAT: positionning": {
+	"bitscount": 1,
+	"lists": {
+		"0": "---",
+		"1": "positionning in progress"
+	},
+	"comment": "niveau de r\u00e9ception GPS: positionning status"
+	},
+	"parameter: GPSSTAT: 2D positionning": {
+	"bitscount": 1,
+	"lists": {
+		"0": "---",
+		"1": "positionned 2D"
+	},
+	"comment": "niveau de r\u00e9ception GPS: 2D positionning status"
+	},
+	"parameter: GPSSTAT: 3D positionning": {
+	"bitscount": 1,
+	"lists": {
+		"0": "---",
+		"1": "positionned 3D"
+	},
+	"comment": "niveau de r\u00e9ception GPS: 3D positionning status"
+	},
+	"parameter: GPSSTAT: number": {
+	"scaled": true,
+	"comment": "niveau de r\u00e9ception GPS: number of satellites"
+	},
+	"config display view": {
+	"lists": {
+		"0": "12 o'clock",
+		"128": "6 o'clock",
+		"255": "no change"
+	},
+	"comment": "display orientation configuration"
+	},
+	"config display contrast": {
+	"lists": {
+		"0": "table number 1",
+		"1": "table number 2",
+		"255": "no change"
+	},
+	"comment": "display contrast table configuration"
+	},
+	"config legal": {
+	"lists": {
+		"0": "un-restricted use",
+		"128": "restricted use",
+		"255": "no change"
+	},
+	"comment": "legal mode configuration"
+	},
+	"config CSW soft": {
+	"bitscount": 24,
+	"byte": true,
+	"bytescount": 3,
+	"comment": "central switch software version"
+	},
+	"config CSW hard": {
+	"bitscount": 24,
+	"byte": true,
+	"bytescount": 3,
+	"comment": "central switch hardware version"
+	},
+	"config :VehicleIdentifierFirstValue": {
+	"bitscount": 32,
+	"byte": true,
+	"bytescount": 4,
+	"comment": "last 7th digit of VIN"
+	},
+	"config :VehicleIdentifierLastBut1Value": {
+	"bitscount": 32,
+	"byte": true,
+	"bytescount": 4,
+	"comment": "last 7th digit of VIN"
+	},
+	"config :VehicleIdentifierLastBut2Value": {
+	"bitscount": 32,
+	"byte": true,
+	"bytescount": 4,
+	"comment": "last 7th digit of VIN"
+	},
+	"config :VehicleIdentifierLastValue": {
+	"bitscount": 32,
+	"byte": true,
+	"bytescount": 4,
+	"comment": "last 7th digit of VIN"
+	},
+	"TEST voice status": {
+	"lists": {
+		"0": "no test in progress",
+		"1": "tone test in progress",
+		"255": "problem during test"
+	},
+	"comment": "tel_voice and guide_voic test status"
+	},
+	"TEST Bluetooth status": {
+	"lists": {
+		"0": "no Bluetooth update in progress",
+		"1": "Bluetooth update in progress",
+		"2": "Bluetooth update OK",
+		"255": "problem in the test"
+	},
+	"comment": "Bluetooth test status"
+	},
+	"TEST Bluetooth control": {
+	"lists": {
+		"0": "temporary test start query",
+		"1": "Status request",
+		"17": "test stop"
+	},
+	"comment": "test control"
+	},
+	"parameter: Bluetooth device 05 address": {
+	"bitscount": 56,
+	"byte": true,
+	"bytescount": 7,
+	"comment": "adresse Bluetooth de l'\u00e9quipement le plus fort"
+	},
+	"parameter: Bluetooth device 05 level": {
+	"scaled": true,
+	"signed": true,
+	"comment": "niveau de r\u00e9ception Bluetooth de l'\u00e9quipement le plus fort"
+	},
+	"parameter: Bluetooth device 05 name": {
+	"bitscount": 384,
+	"byte": true,
+	"bytescount": 48,
+	"bytesascii": true,
+	"comment": "nom Bluetooth de l'\u00e9quipement le plus fort"
+	},
+	"parameter: Bluetooth device 04 address": {
+	"bitscount": 56,
+	"byte": true,
+	"bytescount": 7,
+	"comment": "adresse Bluetooth de l'\u00e9quipement"
+	},
+	"parameter: Bluetooth device 04 level": {
+	"scaled": true,
+	"signed": true,
+	"comment": "niveau de r\u00e9ception Bluetooth"
+	},
+	"parameter: Bluetooth device 04 name": {
+	"bitscount": 384,
+	"byte": true,
+	"bytescount": 48,
+	"bytesascii": true,
+	"comment": "nom Bluetooth de l'\u00e9quipement"
+	},
+	"parameter: Bluetooth device 03 address": {
+	"bitscount": 56,
+	"byte": true,
+	"bytescount": 7,
+	"comment": "adresse Bluetooth de l'\u00e9quipement"
+	},
+	"parameter: Bluetooth device 03 level": {
+	"scaled": true,
+	"signed": true,
+	"comment": "niveau de r\u00e9ception Bluetooth"
+	},
+	"parameter: Bluetooth device 03 name": {
+	"bitscount": 384,
+	"byte": true,
+	"bytescount": 48,
+	"bytesascii": true,
+	"comment": "nom Bluetooth de l'\u00e9quipement"
+	},
+	"parameter: Bluetooth device 02 address": {
+	"bitscount": 56,
+	"byte": true,
+	"bytescount": 7,
+	"comment": "adresse Bluetooth de l'\u00e9quipement 4"
+	},
+	"parameter: Bluetooth device 02 level": {
+	"scaled": true,
+	"signed": true,
+	"comment": "niveau de r\u00e9ception Bluetooth"
+	},
+	"parameter: Bluetooth device 02 name": {
+	"bitscount": 384,
+	"byte": true,
+	"bytescount": 48,
+	"bytesascii": true,
+	"comment": "nom Bluetooth de l'\u00e9quipement 4"
+	},
+	"parameter: Bluetooth device 01 address": {
+	"bitscount": 56,
+	"byte": true,
+	"bytescount": 7,
+	"comment": "adresse Bluetooth de l'\u00e9quipement le plus faible"
+	},
+	"parameter: Bluetooth device 01 level": {
+	"scaled": true,
+	"signed": true,
+	"comment": "niveau de r\u00e9ception Bluetooth de l'\u00e9quipement le plus faible"
+	},
+	"parameter: Bluetooth device 01 name": {
+	"bitscount": 384,
+	"byte": true,
+	"bytescount": 48,
+	"bytesascii": true,
+	"comment": "nom Bluetooth de l'\u00e9quipement le plus faible"
+	},
+	"traceability year": {
+	"byte": true,
+	"bytesascii": true,
+	"comment": "serial numbers"
+	},
+	"Historical Failure": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	}
+	},
+	"MMUX audio": {
+	"bitscount": 2,
+	"lists": {
+		"0": "present",
+		"2": "missing",
+		"3": "missing confirmed"
+	},
+	"comment": "CAN-M management ECU audio"
+	},
+	"MMUX audio counter": {
+	"bitscount": 6,
+	"lists": {
+		"0": "0",
+		"1": "1",
+		"2": "2",
+		"3": "3",
+		"4": "4",
+		"5": "5",
+		"6": "6",
+		"7": "7",
+		"8": "8",
+		"9": "9",
+		"10": "10",
+		"11": "11",
+		"12": "12",
+		"13": "13",
+		"14": "14",
+		"15": "15",
+		"16": "16",
+		"17": "17",
+		"18": "18",
+		"19": "19",
+		"20": "20",
+		"21": "21",
+		"22": "22",
+		"23": "23",
+		"24": "24",
+		"25": "25",
+		"26": "26",
+		"27": "27",
+		"28": "28",
+		"29": "29",
+		"30": "30",
+		"31": "31",
+		"32": "32",
+		"33": "33",
+		"34": "34",
+		"35": "35",
+		"36": "36",
+		"37": "37",
+		"38": "38",
+		"39": "39",
+		"40": "40",
+		"63": "No Checked"
+	}
+	},
+	"MMUX gateway": {
+	"bitscount": 2,
+	"lists": {
+		"0": "present",
+		"2": "missing",
+		"3": "missing confirmed"
+	},
+	"comment": "CAN-M management ECU gateway"
+	},
+	"MMUX gateway counter": {
+	"bitscount": 6,
+	"lists": {
+		"0": "0",
+		"1": "1",
+		"2": "2",
+		"3": "3",
+		"4": "4",
+		"5": "5",
+		"6": "6",
+		"7": "7",
+		"8": "8",
+		"9": "9",
+		"10": "10",
+		"11": "11",
+		"12": "12",
+		"13": "13",
+		"14": "14",
+		"15": "15",
+		"16": "16",
+		"17": "17",
+		"18": "18",
+		"19": "19",
+		"20": "20",
+		"21": "21",
+		"22": "22",
+		"23": "23",
+		"24": "24",
+		"25": "25",
+		"26": "26",
+		"27": "27",
+		"28": "28",
+		"29": "29",
+		"30": "30",
+		"31": "31",
+		"32": "32",
+		"33": "33",
+		"34": "34",
+		"35": "35",
+		"36": "36",
+		"37": "37",
+		"38": "38",
+		"39": "39",
+		"40": "40",
+		"63": "No Checked"
+	}
+	},
+	"Standard Fault": {
+	"bitscount": 5,
+	"lists": {
+		"0": "No possible classification about the type of fault",
+		"1": "Open circuit",
+		"2": "Short circuit to ground",
+		"3": "Short circuit at battery +",
+		"4": "Parameter at min limit",
+		"5": "Parameter at max limit",
+		"6": "Incoherency, not plausible",
+		"7": "No signal",
+		"8": "Below min. threshold",
+		"9": "Above max. threshold",
+		"10": "Permanent Low Level",
+		"11": "Permanent High Level",
+		"12": "Lines short-circuited",
+		"13": "Internal electronic anomaly",
+		"14": "Network default",
+		"15": "Remote diagnostic",
+		"16": "Disturbed communication",
+		"17": "Microcuts",
+		"18": "Abnormal voltage",
+		"19": "Value out of range",
+		"20": "Open circuit or Short circuit to ground",
+		"21": "Open circuit or Short circuit to battery",
+		"22": "Initialization / configuration not valid"
+	}
+	},
+	"CalibrationNumber": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2,
+	"comment": "Numero de DVD de Navigation en Hexa"
+	},
+	"DiagnosticIdentificationCode": {
+	"byte": true,
+	"comment": "Diag evolution number"
+	},
+	"SoftwareNumber": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2,
+	"comment": "Software identification number"
+	},
+	"SupplierNumber.ITG": {
+	"bitscount": 24,
+	"byte": true,
+	"bytescount": 3,
+	"bytesascii": true,
+	"comment": "Supplier ITG code"
+	},
+	"EditionNumber": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2,
+	"comment": "Software version(edition) number"
+	},
+	"PartNumber.BasicPartList": {
+	"lists": {
+		"0": "N/A",
+		"1": "25915"
+	}
+	},
+	"HardwareNumber.BasicPartList": {
+	"lists": {
+		"0": "HARDW"
+	}
+	},
+	"ApprovalNumber.BasicPartList": {
+	"lists": {
+		"0": "N/A"
+	}
+	},
+	"PartNumber.LowerPart": {
+	"bitscount": 40,
+	"byte": true,
+	"bytescount": 5,
+	"bytesascii": true
+	},
+	"HardwareNumber.LowerPart": {
+	"bitscount": 40,
+	"byte": true,
+	"bytescount": 5,
+	"bytesascii": true
+	},
+	"ManufacturerIdentificationCode": {
+	"lists": {
+		"0": "Renault R1",
+		"128": "Nissan N1",
+		"129": "Nissan N2",
+		"130": "Nissan N3",
+		"136": "5DIGITS",
+		"255": "Renault R3"
+	}
+	}
+},
+"requests": [
+	{
+	"minbytes": 2,
+	"replybytes": "7B61",
+	"manualsend": true,
+	"sentbytes": "3B61FFFFFFFFFF",
+	"name": "Ecr System configuration",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"sendbyte_dataitems": {
+		"config VEHICLE": {
+		"firstbyte": 3
+		},
+		"config display view": {
+		"firstbyte": 5
+		},
+		"config legal": {
+		"firstbyte": 7
+		},
+		"config display contrast": {
+		"firstbyte": 6
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"replybytes": "7B81",
+	"manualsend": true,
+	"sentbytes": "3B8100000000000000000000000000000000000000",
+	"name": "Ecr VIN",
+	"deny_sds": [
+		"nosds"
+	],
+	"sendbyte_dataitems": {
+		"V.I.N": {
+		"firstbyte": 3
+		},
+		"CRC": {
+		"firstbyte": 20
+		}
+	}
+	},
+	{
+	"minbytes": 33,
+	"replybytes": "6161",
+	"sentbytes": "2161",
+	"name": "Lect System configuration",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"config VEHICLE": {
+		"firstbyte": 3,
+		"ref": true
+		},
+		"config display view": {
+		"firstbyte": 5,
+		"ref": true
+		},
+		"config legal": {
+		"firstbyte": 7,
+		"ref": true
+		},
+		"config PRECODE": {
+		"firstbyte": 8,
+		"ref": true
+		},
+		"config CSW hard": {
+		"firstbyte": 12,
+		"ref": true
+		},
+		"config CSW soft": {
+		"firstbyte": 15,
+		"ref": true
+		},
+		"config :VehicleIdentifierFirstValue": {
+		"firstbyte": 18,
+		"ref": true
+		},
+		"config :VehicleIdentifierLastBut2Value": {
+		"firstbyte": 22,
+		"ref": true
+		},
+		"config :VehicleIdentifierLastBut1Value": {
+		"firstbyte": 26,
+		"ref": true
+		},
+		"config :VehicleIdentifierLastValue": {
+		"firstbyte": 30,
+		"ref": true
+		},
+		"config display contrast": {
+		"firstbyte": 6,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 21,
+	"sentbytes": "2181",
+	"name": "Lect VIN",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"CRC": {
+		"firstbyte": 20,
+		"ref": true
+		},
+		"V.I.N": {
+		"firstbyte": 3,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "54FF00",
+	"sentbytes": "14FF00",
+	"name": "RAZ DTC",
+	"deny_sds": []
+	},
+	{
+	"minbytes": 7,
+	"replybytes": "6142",
+	"sentbytes": "2142",
+	"name": "System parameter",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"parameter: SPEED": {
+		"firstbyte": 3,
+		"ref": true
+		},
+		"parameter: GPSSTAT: 3D positionning": {
+		"firstbyte": 5,
+		"bitoffset": 5,
+		"ref": true
+		},
+		"parameter: GPSSTAT: 2D positionning": {
+		"firstbyte": 5,
+		"bitoffset": 6,
+		"ref": true
+		},
+		"parameter: GPSSTAT: positionning": {
+		"firstbyte": 5,
+		"bitoffset": 7,
+		"ref": true
+		},
+		"parameter: GPSSTAT: number": {
+		"firstbyte": 7,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 6,
+	"replybytes": "6141",
+	"sentbytes": "2141",
+	"name": "System status",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"Status: phone NETWORK": {
+		"firstbyte": 3,
+		"bitoffset": 3,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: phone PIN": {
+		"firstbyte": 3,
+		"bitoffset": 4,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: phone SIM": {
+		"firstbyte": 3,
+		"bitoffset": 5,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: phone ON/OFF": {
+		"firstbyte": 3,
+		"bitoffset": 6,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: phone PRESENT": {
+		"firstbyte": 3,
+		"bitoffset": 7,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: turn left": {
+		"firstbyte": 4,
+		"bitoffset": 6,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: turn right": {
+		"firstbyte": 4,
+		"bitoffset": 7,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: right": {
+		"firstbyte": 4,
+		"bitoffset": 5,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: left": {
+		"firstbyte": 4,
+		"bitoffset": 4,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: down": {
+		"firstbyte": 4,
+		"bitoffset": 3,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: up": {
+		"firstbyte": 4,
+		"bitoffset": 2,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: push": {
+		"firstbyte": 4,
+		"bitoffset": 1,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: map": {
+		"firstbyte": 4,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: route": {
+		"firstbyte": 5,
+		"bitoffset": 7,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: zoom": {
+		"firstbyte": 5,
+		"bitoffset": 6,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: light": {
+		"firstbyte": 5,
+		"bitoffset": 5,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: set": {
+		"firstbyte": 5,
+		"bitoffset": 4,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: info": {
+		"firstbyte": 5,
+		"bitoffset": 3,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: tel": {
+		"firstbyte": 5,
+		"bitoffset": 2,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: back": {
+		"firstbyte": 5,
+		"bitoffset": 1,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: CSW: dest": {
+		"firstbyte": 5,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Status: close": {
+		"firstbyte": 6,
+		"ref": true,
+		"endian": "Little"
+		}
+	}
+	},
+	{
+	"minbytes": 22,
+	"replybytes": "6184",
+	"sentbytes": "2184",
+	"name": "System traceability",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"traceability blank 2": {
+		"firstbyte": 14,
+		"ref": true
+		},
+		"traceability ITG": {
+		"firstbyte": 3,
+		"ref": true
+		},
+		"traceability year": {
+		"firstbyte": 6,
+		"ref": true
+		},
+		"traceability month": {
+		"firstbyte": 7,
+		"ref": true
+		},
+		"traceability manufacturing code": {
+		"firstbyte": 9,
+		"ref": true
+		},
+		"traceability blank": {
+		"firstbyte": 19,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 1,
+	"replybytes": "7E",
+	"manualsend": true,
+	"sentbytes": "3E01",
+	"name": "TesterPresent",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"sendbyte_dataitems": {
+		"Response tester": {
+		"firstbyte": 2
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7061",
+	"manualsend": true,
+	"sentbytes": "306120",
+	"name": "Test microphone",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"sendbyte_dataitems": {
+		"TEST control": {
+		"firstbyte": 3
+		}
+	},
+	"receivebyte_dataitems": {
+		"TEST microphone status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "700000",
+	"manualsend": true,
+	"sentbytes": "30000000",
+	"name": "Output Control",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"Output Control Command": {
+		"firstbyte": 3
+		},
+		"Output Control Parameters": {
+		"firstbyte": 4
+		},
+		"Output Permanent Control List": {
+		"firstbyte": 2
+		},
+		"Output Temporary Control List": {
+		"firstbyte": 2
+		}
+	},
+	"receivebyte_dataitems": {
+		"Output Control Status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"shiftbytescount": 3,
+	"sentbytes": "17FF00",
+	"name": "ReadDTC",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"FirstDTC": {
+		"firstbyte": 3
+		},
+		"NDTC": {
+		"firstbyte": 2
+		},
+		"Historical Failure": {
+		"firstbyte": 5,
+		"bitoffset": 1
+		},
+		"Current Failure": {
+		"firstbyte": 5,
+		"bitoffset": 2
+		},
+		"Standard Fault": {
+		"firstbyte": 5,
+		"bitoffset": 3
+		}
+	}
+	},
+	{
+	"minbytes": 62,
+	"replybytes": "6185",
+	"sentbytes": "2185",
+	"name": "Frame diag multimedia mux",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"MMUX ITM": {
+		"firstbyte": 7,
+		"ref": true
+		},
+		"MMUX keyboard": {
+		"firstbyte": 8,
+		"ref": true
+		},
+		"MMUX audio": {
+		"firstbyte": 12,
+		"ref": true
+		},
+		"MMux Ref Messagerie": {
+		"firstbyte": 3,
+		"ref": true
+		},
+		"MMux Produce Bus Mute": {
+		"firstbyte": 6,
+		"ref": true
+		},
+		"MMux Produce Bus Off Counter": {
+		"firstbyte": 5,
+		"bitoffset": 2,
+		"ref": true
+		},
+		"MMux Produce Bus Off": {
+		"firstbyte": 5,
+		"ref": true
+		},
+		"MMux Produce Bus Mute Counter": {
+		"firstbyte": 6,
+		"bitoffset": 2,
+		"ref": true
+		},
+		"MMUX ITM counter": {
+		"firstbyte": 7,
+		"bitoffset": 2,
+		"ref": true
+		},
+		"MMUX keyboard counter": {
+		"firstbyte": 8,
+		"bitoffset": 2,
+		"ref": true
+		},
+		"MMUX audio counter": {
+		"firstbyte": 12,
+		"bitoffset": 2,
+		"ref": true
+		},
+		"MMUX gateway": {
+		"firstbyte": 20,
+		"ref": true
+		},
+		"MMUX gateway counter": {
+		"firstbyte": 20,
+		"bitoffset": 2,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7041",
+	"manualsend": true,
+	"sentbytes": "30412001",
+	"name": "Test display",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"sendbyte_dataitems": {
+		"TEST control": {
+		"firstbyte": 3
+		},
+		"TEST display test card": {
+		"firstbyte": 4
+		}
+	},
+	"receivebyte_dataitems": {
+		"TEST display status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "7122",
+	"manualsend": true,
+	"sentbytes": "3122202C",
+	"name": "Test phone",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"sendbyte_dataitems": {
+		"TEST control": {
+		"firstbyte": 3
+		},
+		"TEST tel type": {
+		"firstbyte": 4
+		}
+	},
+	"receivebyte_dataitems": {
+		"TEST tel status": {
+		"firstbyte": 3
+		},
+		"TEST tel type status": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7041",
+	"manualsend": true,
+	"sentbytes": "30412001",
+	"name": "Test display color test card",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST display status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7041",
+	"manualsend": true,
+	"sentbytes": "30412002",
+	"name": "Test display grey scale test card",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST display status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7041",
+	"manualsend": true,
+	"sentbytes": "30412003",
+	"name": "Test display white test card",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST display status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "7122",
+	"manualsend": true,
+	"sentbytes": "3122202B",
+	"name": "Test phone: start audio",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST tel status": {
+		"firstbyte": 3
+		},
+		"TEST tel type status": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "7122",
+	"manualsend": true,
+	"sentbytes": "3122112B",
+	"name": "Test phone: stop audio",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST tel status": {
+		"firstbyte": 3
+		},
+		"TEST tel type status": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"replybytes": "50C0",
+	"manualsend": true,
+	"sentbytes": "10C0",
+	"name": "Start Diagnostic Session",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"sendbyte_dataitems": {
+		"Session Name": {
+		"firstbyte": 2,
+		"endian": "Little"
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7041",
+	"manualsend": true,
+	"sentbytes": "30411101",
+	"name": "Test display stop color",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST display status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7041",
+	"manualsend": true,
+	"sentbytes": "30411102",
+	"name": "Test display stop grey scale",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST display status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7041",
+	"manualsend": true,
+	"sentbytes": "30411103",
+	"name": "Test display stop white",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST display status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "7122",
+	"manualsend": true,
+	"sentbytes": "3122202A",
+	"name": "Test phone: start data",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST tel status": {
+		"firstbyte": 3
+		},
+		"TEST tel type status": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "7122",
+	"manualsend": true,
+	"sentbytes": "3122112A",
+	"name": "Test phone: stop data",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST tel status": {
+		"firstbyte": 3
+		},
+		"TEST tel type status": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "7122",
+	"manualsend": true,
+	"sentbytes": "3122202C",
+	"name": "Test phone: start presence",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST tel status": {
+		"firstbyte": 3
+		},
+		"TEST tel type status": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 4,
+	"replybytes": "7122",
+	"manualsend": true,
+	"sentbytes": "3122112C",
+	"name": "Test phone: stop presence",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST tel status": {
+		"firstbyte": 3
+		},
+		"TEST tel type status": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"replybytes": "5100",
+	"manualsend": true,
+	"sentbytes": "11FF",
+	"name": "ECUreset conf",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"sendbyte_dataitems": {
+		"config reset": {
+		"firstbyte": 2
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"replybytes": "5100",
+	"manualsend": true,
+	"sentbytes": "11FE",
+	"name": "ECUreset mem",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"sendbyte_dataitems": {
+		"config reset": {
+		"firstbyte": 2
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "706201",
+	"manualsend": true,
+	"sentbytes": "306320",
+	"name": "Test guide_voice",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"sendbyte_dataitems": {
+		"TEST control": {
+		"firstbyte": 3
+		}
+	},
+	"receivebyte_dataitems": {
+		"TEST voice status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "706201",
+	"manualsend": true,
+	"sentbytes": "306320",
+	"name": "Test guide_voice: Start",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST voice status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "706201",
+	"manualsend": true,
+	"sentbytes": "306311",
+	"name": "Test guide_voice: Stop",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST voice status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 282,
+	"replybytes": "6143",
+	"sentbytes": "2143",
+	"name": "Bluetooth level",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"parameter: Bluetooth device 05 level": {
+		"firstbyte": 282
+		},
+		"parameter: Bluetooth device 05 address": {
+		"firstbyte": 275
+		},
+		"parameter: Bluetooth device 05 name": {
+		"firstbyte": 227
+		},
+		"parameter: Bluetooth device 04 level": {
+		"firstbyte": 226
+		},
+		"parameter: Bluetooth device 04 address": {
+		"firstbyte": 219
+		},
+		"parameter: Bluetooth device 04 name": {
+		"firstbyte": 171
+		},
+		"parameter: Bluetooth device 03 level": {
+		"firstbyte": 170
+		},
+		"parameter: Bluetooth device 03 address": {
+		"firstbyte": 163
+		},
+		"parameter: Bluetooth device 03 name": {
+		"firstbyte": 115
+		},
+		"parameter: Bluetooth device 02 level": {
+		"firstbyte": 114
+		},
+		"parameter: Bluetooth device 02 address": {
+		"firstbyte": 107
+		},
+		"parameter: Bluetooth device 02 name": {
+		"firstbyte": 59
+		},
+		"parameter: Bluetooth device 01 level": {
+		"firstbyte": 58
+		},
+		"parameter: Bluetooth device 01 address": {
+		"firstbyte": 51
+		},
+		"parameter: Bluetooth device 01 name": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7072",
+	"manualsend": true,
+	"sentbytes": "307200",
+	"name": "Test update Bluetooth",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"sendbyte_dataitems": {
+		"TEST Bluetooth control": {
+		"firstbyte": 3
+		}
+	},
+	"receivebyte_dataitems": {
+		"TEST Bluetooth status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7072",
+	"manualsend": true,
+	"sentbytes": "307200",
+	"name": "Test update Bluetooth Start",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"receivebyte_dataitems": {
+		"TEST Bluetooth status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 26,
+	"sentbytes": "2180",
+	"name": "DataRead.Identification.RenaultR2",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"CalibrationNumber": {
+		"firstbyte": 21,
+		"ref": true
+		},
+		"DiagnosticIdentificationCode": {
+		"firstbyte": 8,
+		"ref": true
+		},
+		"SoftwareNumber": {
+		"firstbyte": 17,
+		"ref": true
+		},
+		"SupplierNumber.ITG": {
+		"firstbyte": 9,
+		"ref": true
+		},
+		"EditionNumber": {
+		"firstbyte": 19,
+		"ref": true
+		},
+		"PartNumber.BasicPartList": {
+		"firstbyte": 23,
+		"ref": true
+		},
+		"HardwareNumber.BasicPartList": {
+		"firstbyte": 24,
+		"ref": true
+		},
+		"ApprovalNumber.BasicPartList": {
+		"firstbyte": 25,
+		"ref": true
+		},
+		"PartNumber.LowerPart": {
+		"firstbyte": 3,
+		"ref": true
+		},
+		"HardwareNumber.LowerPart": {
+		"firstbyte": 12,
+		"ref": true
+		},
+		"ManufacturerIdentificationCode": {
+		"firstbyte": 26,
+		"ref": true
+		}
+	}
+	}
+],
+"devices": [
+	{
+	"dtc": 39424,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "GPS antenna open circuit"
+	},
+	{
+	"dtc": 39425,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "GPS disturbed communication"
+	},
+	{
+	"dtc": 39430,
+	"dtctype": 0,
+	"devicedata": {
+		"config display view": "0"
+	},
+	"name": "Front display error"
+	},
+	{
+	"dtc": 39431,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Flash ROM error of control unit"
+	},
+	{
+	"dtc": 39432,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Gyro open circuit"
+	},
+	{
+	"dtc": 49542,
+	"dtctype": 0,
+	"devicedata": {
+		"MMUX audio": "0",
+		"MMUX audio counter": "0"
+	},
+	"name": "Audio unit connection problem"
+	},
+	{
+	"dtc": 49545,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "CD changer connection problem"
+	},
+	{
+	"dtc": 49920,
+	"dtctype": 4,
+	"devicedata": {
+		"config VEHICLE": "0"
+	},
+	"name": "Incorrect settings"
+	},
+	{
+	"dtc": 53265,
+	"dtctype": 0,
+	"devicedata": {
+		"MMux Produce Bus Mute": "0",
+		"MMux Produce Bus Mute Counter": "0",
+		"MMux Produce Bus Off": "0",
+		"MMux Produce Bus Off Counter": "0"
+	},
+	"name": "MM CAN controller problem"
+	},
+	{
+	"dtc": 39436,
+	"dtctype": 4,
+	"devicedata": {},
+	"name": "DVD-ROM disc error"
+	},
+	{
+	"dtc": 39437,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "DVD-ROM drive error"
+	},
+	{
+	"dtc": 49507,
+	"dtctype": 0,
+	"devicedata": {
+		"MMUX keyboard": "0",
+		"MMUX keyboard counter": "0"
+	},
+	"name": "Main keyboard connection problem"
+	},
+	{
+	"dtc": 39428,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "GPS RTC internal electronic abnormality"
+	},
+	{
+	"dtc": 39427,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "GPS RAM internal electronic abnormality"
+	},
+	{
+	"dtc": 39426,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "GPS ROM internal electronic abnormality"
+	},
+	{
+	"dtc": 49492,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Gateway connection problem"
+	},
+	{
+	"dtc": 39439,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "HFCK connection problem"
+	},
+	{
+	"dtc": 39440,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Bluetooth error"
+	},
+	{
+	"dtc": 39441,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "CSW button error"
+	},
+	{
+	"dtc": 39442,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Antitheft lock"
+	}
+],
+"endian": "Big"
+}

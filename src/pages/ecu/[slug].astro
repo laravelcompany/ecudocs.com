@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import * as fs from 'node:fs';
+
+export function getStaticPaths() {
+  const files = fs.readdirSync('/home/stefan/Projects/website.ecudocs.com/public/ecus');
+  
+  return files
+    .filter(f => f.endsWith('.json'))
+    .map((file) => {
+      return {
+        params: { slug: file },
+        props: { file },
+      };
+    });
+}
+
+const { file } = Astro.props;
+const filePath = `/home/stefan/Projects/website.ecudocs.com/public/ecus/${file}`;
+const content = fs.readFileSync(filePath, 'utf-8');
+const data = JSON.parse(content);
+const slug = file.replace('.json', '');
+---
+
+<BaseLayout title={`${data.ecuname || slug} - ECU Documentation`}>
+  <main>
+    <div class="ecu-header">
+      <h1>{data.ecuname || slug}</h1>
+    </div>
+
+    <div class="content">
+      {data.obd && (
+        <section class="obd-info">
+          <h2>OBD Information</h2>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="label">Protocol:</span>
+              <span class="value">{data.obd.protocol}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Send ID:</span>
+              <span class="value">{data.obd.send_id}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Recv ID:</span>
+              <span class="value">{data.obd.recv_id}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Baudrate:</span>
+              <span class="value">{data.obd.baudrate}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Func Addr:</span>
+              <span class="value">{data.obd.funcaddr}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Func Name:</span>
+              <span class="value">{data.obd.funcname}</span>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {data.autoidents && data.autoidents.length > 0 && (
+        <section class="autoidents">
+          <h2>Auto IDents</h2>
+          <pre>{JSON.stringify(data.autoidents, null, 2)}</pre>
+        </section>
+      )}
+
+      {data.devices && data.devices.length > 0 && (
+        <section class="devices">
+          <h2>Devices</h2>
+          <pre>{JSON.stringify(data.devices, null, 2)}</pre>
+        </section>
+      )}
+
+      {data.requests && data.requests.length > 0 && (
+        <section class="requests">
+          <h2>Requests</h2>
+          <pre>{JSON.stringify(data.requests, null, 2)}</pre>
+        </section>
+      )}
+    </div>
+
+    <div class="navigation">
+      <a href="/" class="back-link">← Back to Home</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .ecu-header {
+    background: #f5f5f5;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  section {
+    margin-bottom: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .info-item {
+    background: #f9f9f9;
+    padding: 0.75rem;
+    border-radius: 4px;
+  }
+  .label {
+    font-weight: bold;
+    display: block;
+    color: #666;
+    font-size: 0.875rem;
+  }
+  .value {
+    font-size: 1.125rem;
+  }
+  pre {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  .navigation {
+    padding: 2rem;
+  }
+  .back-link {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  .back-link:hover {
+    text-decoration: underline;
+  }
+</style>

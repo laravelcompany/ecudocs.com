@@ -1,0 +1,239 @@
+{
+"autoidents": [
+	{
+	"diagversion": "4",
+	"supplier": "AAY",
+	"soft": "0942",
+	"version": "0700"
+	}
+],
+"ecuname": "BCB_3CG_1.2",
+"obd": {
+	"protocol": "CAN",
+	"send_id": "792",
+	"recv_id": "793",
+	"baudrate": 10400,
+	"funcaddr": "67",
+	"funcname": "BCB"
+},
+"data": {
+	"CalibrationNumber": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2,
+	"comment": "Numero de calibration en Hexa"
+	},
+	"DiagnosticIdentificationCode": {
+	"byte": true,
+	"comment": "Diag evolution number"
+	},
+	"SoftwareNumber": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2,
+	"comment": "Software identification number"
+	},
+	"SupplierNumber.ITG": {
+	"bitscount": 24,
+	"byte": true,
+	"bytescount": 3,
+	"bytesascii": true,
+	"comment": "Supplier ITG code"
+	},
+	"EditionNumber": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2,
+	"comment": "Software version(edition) number"
+	},
+	"PartNumber.BasicPartList": {
+	"lists": {
+		"0": "N/A",
+		"2": "29605"
+	}
+	},
+	"HardwareNumber.BasicPartList": {
+	"lists": {
+		"0": "N/A",
+		"1": "291A5"
+	}
+	},
+	"ApprovalNumber.BasicPartList": {
+	"lists": {
+		"0": "N/A"
+	}
+	},
+	"PartNumber.LowerPart": {
+	"bitscount": 40,
+	"byte": true,
+	"bytescount": 5,
+	"bytesascii": true
+	},
+	"HardwareNumber.LowerPart": {
+	"bitscount": 40,
+	"byte": true,
+	"bytescount": 5,
+	"bytesascii": true
+	},
+	"ManufacturerIdentificationCode": {
+	"lists": {
+		"0": "Renault R1",
+		"128": "Nissan N1",
+		"129": "Nissan N2",
+		"130": "Nissan N3",
+		"136": "5DIGITS",
+		"255": "Renault R3"
+	}
+	},
+	"SupplierNumber": {
+	"bitscount": 24,
+	"byte": true,
+	"bytescount": 3,
+	"comment": "Supplier code (hexa)"
+	},
+	"NDTC": {
+	"scaled": true
+	},
+	"FirstDTC": {
+	"bitscount": 16,
+	"bytescount": 2
+	},
+	"Historical Failure": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	}
+	},
+	"Current Failure": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	}
+	},
+	"Standard Fault": {
+	"bitscount": 5
+	}
+},
+"requests": [
+	{
+	"minbytes": 2,
+	"replybytes": "5081",
+	"sentbytes": "1081",
+	"name": "StartOfSectionDefaut",
+	"deny_sds": []
+	},
+	{
+	"minbytes": 2,
+	"replybytes": "5085",
+	"sentbytes": "1085",
+	"name": "Programmation",
+	"deny_sds": []
+	},
+	{
+	"minbytes": 2,
+	"replybytes": "50C0",
+	"sentbytes": "10C0",
+	"name": "StartDiagSection",
+	"deny_sds": []
+	},
+	{
+	"minbytes": 1,
+	"replybytes": "7E",
+	"sentbytes": "3E01",
+	"name": "TesterPresent",
+	"deny_sds": []
+	},
+	{
+	"minbytes": 26,
+	"replybytes": "6180",
+	"sentbytes": "2180",
+	"name": "DataRead.Identification.RenaultR2",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"CalibrationNumber": {
+		"firstbyte": 21,
+		"ref": true
+		},
+		"DiagnosticIdentificationCode": {
+		"firstbyte": 8,
+		"ref": true
+		},
+		"SoftwareNumber": {
+		"firstbyte": 17,
+		"ref": true
+		},
+		"SupplierNumber.ITG": {
+		"firstbyte": 9,
+		"ref": true
+		},
+		"EditionNumber": {
+		"firstbyte": 19,
+		"ref": true
+		},
+		"PartNumber.BasicPartList": {
+		"firstbyte": 23,
+		"ref": true
+		},
+		"HardwareNumber.BasicPartList": {
+		"firstbyte": 24,
+		"ref": true
+		},
+		"ApprovalNumber.BasicPartList": {
+		"firstbyte": 25,
+		"ref": true
+		},
+		"PartNumber.LowerPart": {
+		"firstbyte": 3,
+		"ref": true
+		},
+		"HardwareNumber.LowerPart": {
+		"firstbyte": 12,
+		"ref": true
+		},
+		"ManufacturerIdentificationCode": {
+		"firstbyte": 26,
+		"ref": true
+		},
+		"SupplierNumber": {
+		"firstbyte": 9,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"shiftbytescount": 3,
+	"replybytes": "5700",
+	"manualsend": true,
+	"sentbytes": "17FF00",
+	"name": "ReadDTC",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"NDTC": {
+		"firstbyte": 2
+		},
+		"FirstDTC": {
+		"firstbyte": 3
+		},
+		"Historical Failure": {
+		"firstbyte": 5,
+		"bitoffset": 1
+		},
+		"Current Failure": {
+		"firstbyte": 5,
+		"bitoffset": 2
+		},
+		"Standard Fault": {
+		"firstbyte": 5,
+		"bitoffset": 3
+		}
+	}
+	}
+],
+"devices": [],
+"endian": "Big"
+}

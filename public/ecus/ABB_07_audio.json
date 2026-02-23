@@ -1,0 +1,919 @@
+{
+"autoidents": [
+	{
+	"diagversion": "4",
+	"supplier": "000",
+	"soft": "0020",
+	"version": "0002"
+	}
+],
+"ecuname": "ABB V0.7",
+"obd": {
+	"protocol": "CAN",
+	"send_id": "712",
+	"recv_id": "732",
+	"baudrate": 10400,
+	"funcaddr": "13",
+	"funcname": "Audio"
+},
+"data": {
+	"Ident Hardware": {
+	"bitscount": 40,
+	"byte": true,
+	"bytescount": 5,
+	"comment": "B.C.D coded hardware identification number"
+	},
+	"Ident Software": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2,
+	"comment": "Hexa coded software identification number"
+	},
+	"Ident Navigation": {
+	"bitscount": 24,
+	"byte": true,
+	"bytescount": 3,
+	"comment": "navigation DVD-ROM release number"
+	},
+	"Ident PART": {
+	"bitscount": 40,
+	"byte": true,
+	"bytescount": 5,
+	"comment": "ECU reference (hard + soft + calib)"
+	},
+	"Ident DIAGNOSIS": {
+	"byte": true,
+	"comment": "Diag evolution number"
+	},
+	"Ident release": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2,
+	"comment": "software release"
+	},
+	"Ident supplier": {
+	"bitscount": 24,
+	"byte": true,
+	"bytescount": 3,
+	"bytesascii": true,
+	"comment": "supplier ITG Number (ASCII)"
+	},
+	"Ident car maker": {
+	"lists": {
+		"0": "Renault R1",
+		"128": "Nissan N1",
+		"129": "Nissan N2",
+		"130": "Nissan N3"
+	},
+	"comment": "car maker Identification"
+	},
+	"ECU Log text": {
+	"bitscount": 192,
+	"byte": true,
+	"bytescount": 24,
+	"comment": "ECU log zone"
+	},
+	"ECU Log number response": {
+	"lists": {
+		"254": "zone FE",
+		"253": "zone FD",
+		"252": "zone FC",
+		"251": "zone FB",
+		"250": "zone FA",
+		"249": "zone F9",
+		"248": "zone F8",
+		"247": "zone F7",
+		"246": "zone F6",
+		"245": "zone F5",
+		"244": "zone F4",
+		"243": "zone F3",
+		"242": "zone F2",
+		"241": "zone F1",
+		"240": "zone F0",
+		"255": "zone FF"
+	},
+	"comment": "ECU log zone"
+	},
+	"ECU Log number request": {
+	"lists": {
+		"254": "zone FE",
+		"253": "zone FD",
+		"252": "zone FC",
+		"251": "zone FB",
+		"250": "zone FA",
+		"249": "zone F9",
+		"248": "zone F8",
+		"247": "zone F7",
+		"246": "zone F6",
+		"245": "zone F5",
+		"244": "zone F4",
+		"243": "zone F3",
+		"242": "zone F2",
+		"241": "zone F1",
+		"240": "zone F0",
+		"255": "zone FF"
+	},
+	"comment": "ECU log zone"
+	},
+	"Response tester": {
+	"lists": {
+		"1": "reponse waited",
+		"2": "No response waited"
+	},
+	"comment": "tester present response query"
+	},
+	"param: Radio min field": {
+	"scaled": true,
+	"divideby": 2.55,
+	"format": "0.00",
+	"unit": "dBuV",
+	"comment": "radio current reception minimum field level"
+	},
+	"param: Radio mean field": {
+	"scaled": true,
+	"divideby": 2.55,
+	"format": "0.00",
+	"unit": "dBuV",
+	"comment": "radio current reception mean field level"
+	},
+	"param: Radio max field": {
+	"scaled": true,
+	"divideby": 2.55,
+	"format": "0.00",
+	"unit": "dBuV",
+	"comment": "radio current reception maximum field level"
+	},
+	"IOC: test control": {
+	"lists": {
+		"1": "Status request",
+		"17": "Stop test",
+		"32": "Start test"
+	},
+	"comment": "test control"
+	},
+	"IOC: loudspeaker number": {
+	"lists": {
+		"1": "front left loudspeaker line",
+		"2": "front right loudspeaker line",
+		"3": "rear right loudspeaker line",
+		"4": "rear left loudspeaker line"
+	},
+	"comment": "loudspeaker line"
+	},
+	"IOC: tone frequency": {
+	"scaled": true,
+	"unit": "X100Hz",
+	"comment": "tone frequency"
+	},
+	"IOC: tone level": {
+	"scaled": true,
+	"unit": "/32",
+	"comment": "tone level"
+	},
+	"IOC: control status": {
+	"lists": {
+		"1": "Test in progress",
+		"2": "Test completed"
+	},
+	"comment": "control status"
+	},
+	"param: Radio frequency FM": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"divideby": 10.0,
+	"format": "000.0",
+	"unit": "MHz",
+	"comment": "radio current reception frequency tune"
+	},
+	"param: Radio frequency LW": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"step": 3.0,
+	"format": "000",
+	"unit": "kHz",
+	"comment": "radio current reception frequency tune"
+	},
+	"param: Radio frequency MW": {
+	"bitscount": 16,
+	"scaled": true,
+	"bytescount": 2,
+	"step": 9.0,
+	"format": "000",
+	"unit": "kHz",
+	"comment": "radio current reception frequency tune"
+	},
+	"param: Radio reception range": {
+	"lists": {
+		"1": "FM",
+		"2": "MW",
+		"3": "LW"
+	},
+	"comment": "radio current reception frequency range"
+	},
+	"Session Name": {
+	"lists": {
+		"160": "Enginering",
+		"192": "After sale"
+	}
+	},
+	"NDTC": {
+	"scaled": true
+	},
+	"FirstDTC": {
+	"bitscount": 16,
+	"bytescount": 2,
+	"lists": {
+		"39424": "GPS antenna open circuit",
+		"39425": "GPS disturbed communication",
+		"39426": "GPS ROM internel electronic abnormality",
+		"39427": "GPS RAM internel electronic abnormality",
+		"39428": "GPS RTC internel electronic abnormality",
+		"39430": "Front display error",
+		"39431": "Flash ROM error of control unit",
+		"39432": "Gyro open circuit",
+		"39434": "DVD-ROM disturbed communication",
+		"39435": "no DVD-ROM",
+		"39436": "invalid DVD-ROM",
+		"39437": "DVD-ROM read error",
+		"39438": "DVD-ROM response error",
+		"49493": "dashboard cluster connection problem",
+		"49507": "keyboard connection problem",
+		"49542": "Audio unit connection problem",
+		"49543": "CD changer connection problem",
+		"49544": "UCD connection problem",
+		"49920": "Incorrect settings",
+		"53248": "Vehicle CAN controller problem",
+		"53249": "MM CAN controller problem"
+	}
+	},
+	"Historical Failure": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	}
+	},
+	"Current Failure": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	}
+	},
+	"Standard Fault": {
+	"bitscount": 5,
+	"lists": {
+		"0": "No possible classification about the type of fault",
+		"1": "Open circuit",
+		"2": "Short circuit to ground",
+		"3": "Short circuit at battery +",
+		"4": "Parameter at min limit",
+		"5": "Parameter at max limit",
+		"6": "Incoherency, not plausible",
+		"7": "No signal",
+		"8": "Below min. threshold",
+		"9": "Above max. threshold",
+		"10": "Permanent Low Level",
+		"11": "Permanent High Level",
+		"12": "Lines short-circuited",
+		"13": "Internal electronic anomaly",
+		"14": "Network default",
+		"15": "Remote diagnostic",
+		"16": "Disturbed communication",
+		"17": "Microcuts",
+		"18": "Abnormal voltage",
+		"19": "Value out of range",
+		"20": "Open circuit or Short circuit to ground",
+		"21": "Open circuit or Short circuit to battery",
+		"22": "Initialization / configuration not valid"
+	}
+	}
+},
+"requests": [
+	{
+	"minbytes": 26,
+	"replybytes": "6180",
+	"sentbytes": "2180",
+	"name": "Identification",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"Ident Navigation": {
+		"firstbyte": 23,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Ident DIAGNOSIS": {
+		"firstbyte": 8,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Ident Hardware": {
+		"firstbyte": 12,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Ident PART": {
+		"firstbyte": 3,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Ident Software": {
+		"firstbyte": 17,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Ident supplier": {
+		"firstbyte": 9,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Ident release": {
+		"firstbyte": 19,
+		"ref": true,
+		"endian": "Little"
+		},
+		"Ident car maker": {
+		"firstbyte": 26,
+		"ref": true,
+		"endian": "Little"
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"replybytes": "50C0",
+	"manualsend": true,
+	"sentbytes": "10C0",
+	"name": "Start diag",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	]
+	},
+	{
+	"minbytes": 2,
+	"replybytes": "5085",
+	"manualsend": true,
+	"sentbytes": "1085",
+	"name": "Start reprog",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	]
+	},
+	{
+	"minbytes": 1,
+	"replybytes": "7E",
+	"sentbytes": "3E01",
+	"name": "TesterPresent",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	],
+	"sendbyte_dataitems": {
+		"Response tester": {
+		"firstbyte": 2
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"replybytes": "5081",
+	"sentbytes": "1081",
+	"name": "Start default",
+	"deny_sds": [
+		"nosds",
+		"engineering",
+		"supplier"
+	]
+	},
+	{
+	"minbytes": 26,
+	"sentbytes": "21F0",
+	"name": "ECU log",
+	"deny_sds": [
+		"nosds"
+	],
+	"sendbyte_dataitems": {
+		"ECU Log number request": {
+		"firstbyte": 2
+		}
+	},
+	"receivebyte_dataitems": {
+		"ECU Log text": {
+		"firstbyte": 3
+		},
+		"ECU Log number response": {
+		"firstbyte": 2
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302120010410",
+	"name": "Loudspeaker test",
+	"deny_sds": [
+		"nosds"
+	],
+	"sendbyte_dataitems": {
+		"IOC: test control": {
+		"firstbyte": 3
+		},
+		"IOC: loudspeaker number": {
+		"firstbyte": 4
+		},
+		"IOC: tone frequency": {
+		"firstbyte": 5
+		},
+		"IOC: tone level": {
+		"firstbyte": 6
+		}
+	},
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 8,
+	"replybytes": "6142",
+	"sentbytes": "2142",
+	"name": "System parameter FM",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"param: Radio reception range": {
+		"firstbyte": 3
+		},
+		"param: Radio frequency FM": {
+		"firstbyte": 4
+		},
+		"param: Radio min field": {
+		"firstbyte": 6
+		},
+		"param: Radio mean field": {
+		"firstbyte": 7
+		},
+		"param: Radio max field": {
+		"firstbyte": 8
+		}
+	}
+	},
+	{
+	"minbytes": 8,
+	"replybytes": "6142",
+	"sentbytes": "2142",
+	"name": "System parameter LW",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"param: Radio reception range": {
+		"firstbyte": 3
+		},
+		"param: Radio min field": {
+		"firstbyte": 6
+		},
+		"param: Radio mean field": {
+		"firstbyte": 7
+		},
+		"param: Radio max field": {
+		"firstbyte": 8
+		},
+		"param: Radio frequency LW": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 8,
+	"replybytes": "6142",
+	"sentbytes": "2142",
+	"name": "System parameter MW",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"param: Radio reception range": {
+		"firstbyte": 3
+		},
+		"param: Radio min field": {
+		"firstbyte": 6
+		},
+		"param: Radio mean field": {
+		"firstbyte": 7
+		},
+		"param: Radio max field": {
+		"firstbyte": 8
+		},
+		"param: Radio frequency MW": {
+		"firstbyte": 4
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302120011E09",
+	"name": "Front left tweeter start",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302120021E09",
+	"name": "Front right tweeter start",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302120043209",
+	"name": "Rear left tweeter start",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302120033209",
+	"name": "Rear right tweeter start",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302120010309",
+	"name": "Front left boomer start",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302120020309",
+	"name": "Front right boomer start",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302120030A09",
+	"name": "Rear right boomer start",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302120040A09",
+	"name": "Rear left boomer start",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302111011E09",
+	"name": "Front left tweeter stop",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302111021E09",
+	"name": "Front right tweeter stop",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302111043209",
+	"name": "Rear left tweeter stop",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302111033209",
+	"name": "Rear right tweeter stop",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302111010309",
+	"name": "Front left boomer stop",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302111020309",
+	"name": "Front right boomer stop",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302111030A09",
+	"name": "Rear right boomer stop",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"replybytes": "7021",
+	"sentbytes": "302111040A09",
+	"name": "Rear left boomer stop",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"IOC: control status": {
+		"firstbyte": 3
+		}
+	}
+	},
+	{
+	"minbytes": 1,
+	"manualsend": true,
+	"sentbytes": "10C0",
+	"name": "Start Diagnostic Session",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"Session Name": {
+		"firstbyte": 2
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"shiftbytescount": 3,
+	"replybytes": "5700",
+	"manualsend": true,
+	"sentbytes": "17FF00",
+	"name": "ReadDTC",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"NDTC": {
+		"firstbyte": 2
+		},
+		"FirstDTC": {
+		"firstbyte": 3
+		},
+		"Historical Failure": {
+		"firstbyte": 5,
+		"bitoffset": 1
+		},
+		"Current Failure": {
+		"firstbyte": 5,
+		"bitoffset": 2
+		},
+		"Standard Fault": {
+		"firstbyte": 5,
+		"bitoffset": 3
+		}
+	}
+	}
+],
+"devices": [
+	{
+	"dtc": 39424,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "GPS antenna open circuit"
+	},
+	{
+	"dtc": 39425,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "GPS disturbed communication"
+	},
+	{
+	"dtc": 39426,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "GPS ROM internel electronic abnormality"
+	},
+	{
+	"dtc": 39427,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "GPS RAM internel electronic abnormality"
+	},
+	{
+	"dtc": 39428,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "GPS RTC internel electronic abnormality"
+	},
+	{
+	"dtc": 39430,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Front display error"
+	},
+	{
+	"dtc": 39431,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Flash ROM error of control unit"
+	},
+	{
+	"dtc": 39432,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Gyro open circuit"
+	},
+	{
+	"dtc": 39434,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DVD-ROM disturbed communication"
+	},
+	{
+	"dtc": 39435,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "no DVD-ROM"
+	},
+	{
+	"dtc": 39436,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "invalid DVD-ROM"
+	},
+	{
+	"dtc": 39437,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DVD-ROM read error"
+	},
+	{
+	"dtc": 39438,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "DVD-ROM response error"
+	},
+	{
+	"dtc": 49493,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "dashboard cluster connection problem"
+	},
+	{
+	"dtc": 49507,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "keyboard connection problem"
+	},
+	{
+	"dtc": 49542,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Audio unit connection problem"
+	},
+	{
+	"dtc": 49543,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "CD changer connection problem"
+	},
+	{
+	"dtc": 49544,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "UCD connection problem"
+	},
+	{
+	"dtc": 49920,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Incorrect settings"
+	},
+	{
+	"dtc": 53248,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Vehicle CAN controller problem"
+	},
+	{
+	"dtc": 53249,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "MM CAN controller problem"
+	}
+],
+"endian": "Big"
+}

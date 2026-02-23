@@ -1,0 +1,420 @@
+{
+"autoidents": [
+	{
+	"diagversion": "0",
+	"supplier": "CML",
+	"soft": "0000",
+	"version": "0000"
+	}
+],
+"ecuname": "STIC",
+"obd": {
+	"protocol": "CAN",
+	"send_id": "7CD",
+	"recv_id": "7CF",
+	"baudrate": 10400,
+	"funcaddr": "46",
+	"funcname": "Engineering"
+},
+"data": {
+	"NDTC": {
+	"scaled": true
+	},
+	"FirstDTC": {
+	"bitscount": 16,
+	"bytescount": 2,
+	"lists": {
+		"4096": "CAN open failed",
+		"4097": "CAN1 not accessible",
+		"4098": "CAN2 not accessible",
+		"4352": "PIC open failed",
+		"4353": "PIC error on read powerstate value",
+		"6144": "Missing Speed signal",
+		"6145": "Invalid Speed signal",
+		"6656": "Connect to CAN1 failed",
+		"6657": "Connect to CAN2 failed",
+		"6672": "Diag VIN start session failed",
+		"6673": "Diag VIN start session timed out",
+		"6674": "Diag VIN read local ID failed",
+		"6675": "Diag VIN read local ID timed out",
+		"6676": "Diag VIN K-Line timeout",
+		"8208": "Error on Read XML File",
+		"8213": "configuration file had wrong version",
+		"8224": "Diag Enable failed",
+		"8240": "Diag Disable failed",
+		"8256": "CAN Table configuration write failed",
+		"8272": "Task description file write failed",
+		"12304": "Modem read IMEI failed",
+		"12320": "SIM read IMSI failed",
+		"12336": "SIM missing or unreadable",
+		"12352": "SIM wrong PIN code",
+		"12368": "SIM Locked",
+		"12373": "Less than 3 retries for PIN entry, no connection established",
+		"12384": "GSM Module error / not responding",
+		"12400": "Bad signal detected, maybe antenna not connected",
+		"16384": "No valid VIN read",
+		"20480": "UpDownload failed",
+		"24576": "Install Configuration failed"
+	}
+	},
+	"Historical Failure": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	}
+	},
+	"Current Failure": {
+	"bitscount": 1,
+	"lists": {
+		"0": "No",
+		"1": "Yes"
+	}
+	},
+	"Standard Fault": {
+	"bitscount": 5,
+	"lists": {
+		"0": "No possible classification about the type of fault"
+	}
+	},
+	"MoreDTC": {
+	"scaled": true,
+	"signed": true
+	},
+	"SessionName": {
+	"lists": {
+		"129": "DefaultSession",
+		"160": "EngineeringSession",
+		"192": "AfterSaleSession"
+	}
+	},
+	"CalibrationNumber": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2,
+	"comment": "Numero de calibration en Hexa"
+	},
+	"DiagnosticIdentificationCode": {
+	"byte": true,
+	"comment": "Diag evolution number"
+	},
+	"SoftwareNumber": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2,
+	"comment": "Software identification number"
+	},
+	"SupplierNumber.ITG": {
+	"bitscount": 24,
+	"byte": true,
+	"bytescount": 3,
+	"bytesascii": true,
+	"comment": "Supplier ITG code"
+	},
+	"EditionNumber": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2,
+	"comment": "Software version(edition) number"
+	},
+	"PartNumber": {
+	"bitscount": 40,
+	"byte": true,
+	"bytescount": 5
+	},
+	"HardwareNumber": {
+	"bitscount": 40,
+	"byte": true,
+	"bytescount": 5
+	},
+	"ManufacturerIdentificationCode": {
+	"lists": {
+		"0": "Renault R1",
+		"128": "Nissan N1",
+		"129": "Nissan N2",
+		"130": "Nissan N3",
+		"136": "5DIGITS",
+		"255": "Renault R3"
+	}
+	},
+	"OtherSystemFeatures": {
+	"bitscount": 24,
+	"byte": true,
+	"bytescount": 3
+	}
+},
+"requests": [
+	{
+	"minbytes": 2,
+	"shiftbytescount": 3,
+	"replybytes": "5700",
+	"manualsend": true,
+	"sentbytes": "17FF00",
+	"name": "ReadDTC",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"MoreDTC": {
+		"firstbyte": 3
+		}
+	},
+	"receivebyte_dataitems": {
+		"NDTC": {
+		"firstbyte": 2
+		},
+		"FirstDTC": {
+		"firstbyte": 3
+		},
+		"Historical Failure": {
+		"firstbyte": 5,
+		"bitoffset": 1
+		},
+		"Current Failure": {
+		"firstbyte": 5,
+		"bitoffset": 2
+		},
+		"Standard Fault": {
+		"firstbyte": 5,
+		"bitoffset": 3
+		}
+	}
+	},
+	{
+	"minbytes": 1,
+	"manualsend": true,
+	"sentbytes": "10C0",
+	"name": "StartDiagnosticSession",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"SessionName": {
+		"firstbyte": 2
+		}
+	}
+	},
+	{
+	"minbytes": 26,
+	"sentbytes": "2180",
+	"name": "DataRead.Identification.RenaultR1",
+	"deny_sds": [
+		"nosds"
+	],
+	"receivebyte_dataitems": {
+		"CalibrationNumber": {
+		"firstbyte": 21
+		},
+		"DiagnosticIdentificationCode": {
+		"firstbyte": 8
+		},
+		"SoftwareNumber": {
+		"firstbyte": 17
+		},
+		"SupplierNumber.ITG": {
+		"firstbyte": 9
+		},
+		"EditionNumber": {
+		"firstbyte": 19
+		},
+		"PartNumber": {
+		"firstbyte": 3
+		},
+		"HardwareNumber": {
+		"firstbyte": 12
+		},
+		"ManufacturerIdentificationCode": {
+		"firstbyte": 26
+		},
+		"OtherSystemFeatures": {
+		"firstbyte": 23
+		}
+	}
+	}
+],
+"devices": [
+	{
+	"dtc": 4096,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "CAN open failed"
+	},
+	{
+	"dtc": 4097,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "CAN1 not accessible"
+	},
+	{
+	"dtc": 4098,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "CAN2 not accessible"
+	},
+	{
+	"dtc": 4352,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "PIC open failed"
+	},
+	{
+	"dtc": 4353,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "PIC error on read powerstate value"
+	},
+	{
+	"dtc": 6144,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Missing Speed signal"
+	},
+	{
+	"dtc": 6145,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Invalid Speed signal"
+	},
+	{
+	"dtc": 8208,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Error on Read XML File"
+	},
+	{
+	"dtc": 8213,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "configuration file had wrong version"
+	},
+	{
+	"dtc": 8224,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Diag Enable failed"
+	},
+	{
+	"dtc": 8240,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Diag Disable failed"
+	},
+	{
+	"dtc": 8256,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "CAN Table configuration write failed"
+	},
+	{
+	"dtc": 8272,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Task description file write failed"
+	},
+	{
+	"dtc": 16384,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "No valid VIN read"
+	},
+	{
+	"dtc": 20480,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "UpDownload failed"
+	},
+	{
+	"dtc": 24576,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Install Configuration failed"
+	},
+	{
+	"dtc": 6656,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Connect to CAN1 failed"
+	},
+	{
+	"dtc": 6657,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Connect to CAN2 failed"
+	},
+	{
+	"dtc": 6672,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Diag VIN start session failed"
+	},
+	{
+	"dtc": 6673,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Diag VIN start session timed out"
+	},
+	{
+	"dtc": 6674,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Diag VIN read local ID failed"
+	},
+	{
+	"dtc": 6675,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Diag VIN read local ID timed out"
+	},
+	{
+	"dtc": 6676,
+	"dtctype": 0,
+	"devicedata": {},
+	"name": "Diag VIN K-Line timeout"
+	},
+	{
+	"dtc": 12304,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Modem read IMEI failed"
+	},
+	{
+	"dtc": 12320,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "SIM read IMSI failed"
+	},
+	{
+	"dtc": 12336,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "SIM missing or unreadable"
+	},
+	{
+	"dtc": 12352,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "SIM wrong PIN code"
+	},
+	{
+	"dtc": 12368,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "SIM Locked"
+	},
+	{
+	"dtc": 12373,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Less than 3 retries for PIN entry, no connection established"
+	},
+	{
+	"dtc": 12384,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "GSM Module error / not responding"
+	},
+	{
+	"dtc": 12400,
+	"dtctype": 2,
+	"devicedata": {},
+	"name": "Bad signal detected, maybe antenna not connected"
+	}
+],
+"endian": "Big"
+}

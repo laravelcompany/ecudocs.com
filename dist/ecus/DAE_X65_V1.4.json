@@ -1,0 +1,492 @@
+{
+"autoidents": [],
+"ecuname": "DAE X65 V1.4",
+"obd": {
+	"protocol": "KWP2000",
+	"fastinit": true,
+	"funcaddr": "04",
+	"funcname": "Direction assist\u00e9e",
+	"kw1": "F1",
+	"kw2": "4"
+},
+"data": {
+	"Calibration N\u00b0": {
+	"byte": true,
+	"bytesascii": true
+	},
+	"ClearDiaginfosOK 54": {
+	"byte": true
+	},
+	"Code ITG": {
+	"bitscount": 24,
+	"byte": true,
+	"bytescount": 3,
+	"bytesascii": true
+	},
+	"Code MPR": {
+	"bitscount": 40,
+	"byte": true,
+	"bytescount": 5
+	},
+	"Consigned power": {
+	"scaled": true,
+	"step": 0.225,
+	"format": "#0.0##",
+	"unit": "A"
+	},
+	"DD": {
+	"scaled": true
+	},
+	"DD After Sales intervention": {
+	"scaled": true
+	},
+	"DD manufacturing": {
+	"scaled": true
+	},
+	"Deleting command": {
+	"byte": true
+	},
+	"Diagnostic Identification Code": {
+	"byte": true
+	},
+	"ECU version N\u00b0": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2,
+	"bytesascii": true
+	},
+	"Engine rate": {
+	"scaled": true,
+	"step": 20.0,
+	"unit": "tr/min"
+	},
+	"EPS calibration": {
+	"byte": true
+	},
+	"EPS calibration function completed D0": {
+	"byte": true
+	},
+	"Fault Indicator State": {
+	"lists": {
+		"0": "No Fault",
+		"1": "Fault"
+	}
+	},
+	"Function completed": {
+	"byte": true
+	},
+	"Hardware N\u00b0": {
+	"bitscount": 40,
+	"byte": true,
+	"bytescount": 5
+	},
+	"Identification command 80": {
+	"byte": true
+	},
+	"Information command C2": {
+	"byte": true
+	},
+	"Key byte 1": {
+	"byte": true
+	},
+	"Key byte 2": {
+	"byte": true
+	},
+	"MM": {
+	"scaled": true
+	},
+	"MM After Sales intervention": {
+	"scaled": true
+	},
+	"MM manufacturing": {
+	"scaled": true
+	},
+	"Motor assistance torque": {
+	"scaled": true,
+	"step": 0.225,
+	"format": "##0.0##",
+	"unit": "A"
+	},
+	"Number of defect": {
+	"scaled": true
+	},
+	"Read data command C5": {
+	"byte": true
+	},
+	"ReadDataByLocalIdentifierOK 61": {
+	"byte": true
+	},
+	"ReadstatusOfDiagTroubleCodesOK 57": {
+	"byte": true
+	},
+	"Reserved": {
+	"bitscount": 32,
+	"byte": true,
+	"bytescount": 4
+	},
+	"Session": {
+	"lists": {
+		"160": "Supplier diag",
+		"176": "Production after sale diag",
+		"192": "After market"
+	}
+	},
+	"Software N\u00b0": {
+	"bitscount": 16,
+	"byte": true,
+	"bytescount": 2
+	},
+	"StartCommOK C1": {
+	"byte": true
+	},
+	"StartDiagCommOK 50": {
+	"byte": true
+	},
+	"Steering Wheel angle": {
+	"scaled": true,
+	"step": 3.0,
+	"offset": -384.0,
+	"unit": "\u00b0"
+	},
+	"StopCommOK C2": {
+	"byte": true
+	},
+	"Supply Voltage": {
+	"scaled": true,
+	"step": 0.118,
+	"format": "##.###",
+	"unit": "V"
+	},
+	"TesterPresentOK 7E": {
+	"byte": true
+	},
+	"Torque sensor": {
+	"scaled": true,
+	"step": 0.153,
+	"offset": -19.6,
+	"format": "#0.0##",
+	"unit": "Nm"
+	},
+	"TR_ID_EPS_OK 61": {
+	"byte": true
+	},
+	"TR_INFO_SYS_EPS_OK 61": {
+	"byte": true
+	},
+	"Vehicle speed": {
+	"scaled": true,
+	"unit": "km/h"
+	},
+	"Write EPS calibration OK 7B": {
+	"byte": true
+	},
+	"WriteDataOK 7B": {
+	"byte": true
+	},
+	"WriteFunction": {
+	"lists": {
+		"144": "Manufacturing Data",
+		"192": "After-sales intervention"
+	}
+	},
+	"YY": {
+	"scaled": true
+	},
+	"YY After Sales intervention": {
+	"scaled": true
+	},
+	"YY manufacturing": {
+	"scaled": true
+	}
+},
+"requests": [
+	{
+	"minbytes": 2,
+	"sentbytes": "14FF00",
+	"name": "ClearDiagInfos",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"ClearDiaginfosOK 54": {
+		"firstbyte": 1,
+		"ref": true
+		},
+		"Deleting command": {
+		"firstbyte": 2,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 8,
+	"sentbytes": "21C5",
+	"name": "ReadDataByLocalIdentifier",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"DD After Sales intervention": {
+		"firstbyte": 8,
+		"ref": true
+		},
+		"DD manufacturing": {
+		"firstbyte": 5,
+		"ref": true
+		},
+		"MM After Sales intervention": {
+		"firstbyte": 7,
+		"ref": true
+		},
+		"MM manufacturing": {
+		"firstbyte": 4,
+		"ref": true
+		},
+		"Read data command C5": {
+		"firstbyte": 2,
+		"ref": true
+		},
+		"ReadDataByLocalIdentifierOK 61": {
+		"firstbyte": 1,
+		"ref": true
+		},
+		"YY After Sales intervention": {
+		"firstbyte": 6,
+		"ref": true
+		},
+		"YY manufacturing": {
+		"firstbyte": 3,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"sentbytes": "17FF00",
+	"name": "ReadStatusOfDiagTroubleCodes",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"Number of defect": {
+		"firstbyte": 2,
+		"ref": true
+		},
+		"ReadstatusOfDiagTroubleCodesOK 57": {
+		"firstbyte": 1,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 3,
+	"sentbytes": "81",
+	"name": "StartComm",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"Key byte 1": {
+		"firstbyte": 2,
+		"ref": true
+		},
+		"Key byte 2": {
+		"firstbyte": 3,
+		"ref": true
+		},
+		"StartCommOK C1": {
+		"firstbyte": 1,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 1,
+	"sentbytes": "1000",
+	"name": "StartDiagSession",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"Session": {
+		"firstbyte": 2,
+		"ref": true
+		}
+	},
+	"receivebyte_dataitems": {
+		"StartDiagCommOK 50": {
+		"firstbyte": 1,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 1,
+	"sentbytes": "82",
+	"name": "StopComm",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"StopCommOK C2": {
+		"firstbyte": 1,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 1,
+	"sentbytes": "3E",
+	"name": "TesterPresent",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"TesterPresentOK 7E": {
+		"firstbyte": 1,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 24,
+	"sentbytes": "2180",
+	"name": "TR_ID_EPS",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"Calibration N\u00b0": {
+		"firstbyte": 21,
+		"ref": true
+		},
+		"Code ITG": {
+		"firstbyte": 9,
+		"ref": true
+		},
+		"Code MPR": {
+		"firstbyte": 3,
+		"ref": true
+		},
+		"Diagnostic Identification Code": {
+		"firstbyte": 8,
+		"ref": true
+		},
+		"ECU version N\u00b0": {
+		"firstbyte": 19,
+		"ref": true
+		},
+		"Hardware N\u00b0": {
+		"firstbyte": 12,
+		"ref": true
+		},
+		"Identification command 80": {
+		"firstbyte": 2,
+		"ref": true
+		},
+		"Reserved": {
+		"firstbyte": 23,
+		"ref": true
+		},
+		"Software N\u00b0": {
+		"firstbyte": 17,
+		"ref": true
+		},
+		"TR_ID_EPS_OK 61": {
+		"firstbyte": 1,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 10,
+	"sentbytes": "21C2",
+	"name": "TR_INFO_SYS_EPS",
+	"deny_sds": [],
+	"receivebyte_dataitems": {
+		"Consigned power": {
+		"firstbyte": 10,
+		"ref": true
+		},
+		"Engine rate": {
+		"firstbyte": 7,
+		"ref": true
+		},
+		"Fault Indicator State": {
+		"firstbyte": 8,
+		"ref": true
+		},
+		"Information command C2": {
+		"firstbyte": 2,
+		"ref": true
+		},
+		"Motor assistance torque": {
+		"firstbyte": 5,
+		"ref": true
+		},
+		"Steering Wheel angle": {
+		"firstbyte": 9,
+		"ref": true
+		},
+		"Supply Voltage": {
+		"firstbyte": 3,
+		"ref": true
+		},
+		"Torque sensor": {
+		"firstbyte": 4,
+		"ref": true
+		},
+		"TR_INFO_SYS_EPS_OK 61": {
+		"firstbyte": 1,
+		"ref": true
+		},
+		"Vehicle speed": {
+		"firstbyte": 6,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"sentbytes": "3BD000",
+	"name": "Write EPS calibration",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"EPS calibration": {
+		"firstbyte": 2,
+		"ref": true
+		}
+	},
+	"receivebyte_dataitems": {
+		"EPS calibration function completed D0": {
+		"firstbyte": 2,
+		"ref": true
+		},
+		"Write EPS calibration OK 7B": {
+		"firstbyte": 1,
+		"ref": true
+		}
+	}
+	},
+	{
+	"minbytes": 2,
+	"sentbytes": "3B00000000",
+	"name": "WriteDataByLocalIdentifier",
+	"deny_sds": [],
+	"sendbyte_dataitems": {
+		"DD": {
+		"firstbyte": 5,
+		"ref": true
+		},
+		"MM": {
+		"firstbyte": 4,
+		"ref": true
+		},
+		"WriteFunction": {
+		"firstbyte": 2,
+		"ref": true
+		},
+		"YY": {
+		"firstbyte": 3,
+		"ref": true
+		}
+	},
+	"receivebyte_dataitems": {
+		"Function completed": {
+		"firstbyte": 2,
+		"ref": true
+		},
+		"WriteDataOK 7B": {
+		"firstbyte": 1,
+		"ref": true
+		}
+	}
+	}
+],
+"devices": [],
+"endian": "Big"
+}

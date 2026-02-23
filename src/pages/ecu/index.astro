@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import * as fs from 'node:fs';
+
+const PAGE_SIZE = 50;
+const files = fs.readdirSync('/home/stefan/Projects/website.ecudocs.com/public/ecus');
+const allEcus = files.filter(f => f.endsWith('.json'));
+const totalPages = Math.ceil(allEcus.length / PAGE_SIZE);
+
+const currentPage = Number(Astro.url.searchParams.get('page') || 1);
+const searchQuery = Astro.url.searchParams.get('q') || '';
+
+const start = (currentPage - 1) * PAGE_SIZE;
+const pageFiles = allEcus.slice(start, start + PAGE_SIZE);
+
+const ecus = pageFiles.map(file => {
+  const content = fs.readFileSync(`/home/stefan/Projects/website.ecudocs.com/public/ecus/${file}`, 'utf-8');
+  return { file, slug: file, data: JSON.parse(content) };
+});
+
+const allEcusMeta = allEcus.map(file => {
+  const content = fs.readFileSync(`/home/stefan/Projects/website.ecudocs.com/public/ecus/${file}`, 'utf-8');
+  const data = JSON.parse(content);
+  return { 
+    file, 
+    slug: file,
+    ecuname: data.ecuname || file.replace('.json', ''),
+    protocol: data.obd?.protocol || '',
+    baudrate: data.obd?.baudrate || ''
+  };
+});
+---
+
+<BaseLayout title="ECU Files - ECU Documentation">
+  <main>
+    <div class="header">
+      <h1>ECU Files</h1>
+      <p>Browse all available ECU configuration files ({allEcus.length} total)</p>
+    </div>
+
+    <div class="search-container">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search ECUs by name, protocol, or baudrate..." 
+        value={searchQuery}
+        class="search-input"
+      />
+    </div>
+
+    <div id="resultsInfo" class="results-info"></div>
+
+    <div class="ecu-grid" id="ecuGrid">
+      {ecus.map(({ file, data }) => (
+        <a href={`/ecu/${file}`} class="ecu-card" data-search={(`${data.ecuname || file.replace('.json', '')} ${data.obd?.protocol || ''} ${data.obd?.baudrate || ''}`).toLowerCase()}>
+          <h3>{data.ecuname || file.replace('.json', '')}</h3>
+          {data.obd && (
+            <div class="ecu-info">
+              <span>Protocol: {data.obd.protocol}</span>
+              <span>Baudrate: {data.obd.baudrate}</span>
+            </div>
+          )}
+        </a>
+      ))}
+    </div>
+
+    <div class="pagination" id="pagination">
+      {currentPage > 1 && (
+        <a href={`/ecu?page=${currentPage - 1}${searchQuery ? `&q=${searchQuery}` : ''}`} class="page-link">← Previous</a>
+      )}
+      <span class="page-info">Page {currentPage} of {totalPages}</span>
+      {currentPage < totalPages && (
+        <a href={`/ecu?page=${currentPage + 1}${searchQuery ? `&q=${searchQuery}` : ''}`} class="page-link">Next →</a>
+      )}
+    </div>
+  </main>
+
+  <script define:vars={{ allEcusMeta, PAGE_SIZE }}>
+    const searchInput = document.getElementById('searchInput');
+    const ecuGrid = document.getElementById('ecuGrid');
+    const resultsInfo = document.getElementById('resultsInfo');
+    const pagination = document.getElementById('pagination');
+    
+    let filteredEcus = [...allEcusMeta];
+    let currentSearchPage = 1;
+
+    function renderECUs(ecus, page = 1) {
+      const start = (page - 1) * PAGE_SIZE;
+      const pageEcus = ecus.slice(start, start + PAGE_SIZE);
+      const totalPages = Math.ceil(ecus.length / PAGE_SIZE);
+
+      if (pageEcus.length === 0) {
+        ecuGrid.innerHTML = '<p class="no-results">No ECUs found matching your search.</p>';
+        pagination.innerHTML = '';
+        return;
+      }
+
+      ecuGrid.innerHTML = pageEcus.map(ecu => `
+        <a href="/ecu/${ecu.file}" class="ecu-card" data-search="${(ecu.ecuname + ' ' + ecu.protocol + ' ' + ecu.baudrate).toLowerCase()}">
+          <h3>${ecu.ecuname}</h3>
+          <div class="ecu-info">
+            <span>Protocol: ${ecu.protocol || 'N/A'}</span>
+            <span>Baudrate: ${ecu.baudrate || 'N/A'}</span>
+          </div>
+        </a>
+      `).join('');
+
+      let paginationHtml = '';
+      if (totalPages > 1) {
+        if (page > 1) {
+          paginationHtml += `<a href="?q=${searchInput.value}&page=${page - 1}" class="page-link">← Previous</a>`;
+        }
+        paginationHtml += `<span class="page-info">Page ${page} of ${totalPages}</span>`;
+        if (page < totalPages) {
+          paginationHtml += `<a href="?q=${searchInput.value}&page=${page + 1}" class="page-link">Next →</a>`;
+        }
+      }
+      pagination.innerHTML = paginationHtml;
+    }
+
+    function performSearch(query) {
+      const q = query.toLowerCase();
+      filteredEcus = allEcusMeta.filter(ecu => 
+        ecu.ecuname.toLowerCase().includes(q) ||
+        ecu.protocol.toLowerCase().includes(q) ||
+        ecu.baudrate.toLowerCase().includes(q)
+      );
+      
+      const newUrl = query ? `?q=${encodeURIComponent(query)}` : '/ecu';
+      window.history.replaceState({}, '', newUrl);
+      
+      renderECUs(filteredEcus, 1);
+      
+      resultsInfo.textContent = query ? `Found ${filteredEcus.length} ECU${filteredEcus.length !== 1 ? 's' : ''} matching "${query}"` : '';
+    }
+
+    let debounceTimer;
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        performSearch(e.target.value);
+      }, 300);
+    });
+
+    if (searchInput.value) {
+      performSearch(searchInput.value);
+    }
+  </script>
+</BaseLayout>
+
+<style>
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+  }
+  .page-link {
+    padding: 0.5rem 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+  }
+  .page-link:hover {
+    background: #e0e0e0;
+  }
+  .page-info {
+    color: #666;
+  }
+  .search-container {
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    padding: 0 1rem;
+  }
+  .search-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #e5e5e5;
+    border-radius: 8px;
+    transition: border-color 0.2s;
+  }
+  .search-input:focus {
+    outline: none;
+    border-color: #0066cc;
+  }
+  .results-info {
+    text-align: center;
+    color: #666;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+  }
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #666;
+    padding: 2rem;
+  }
+</style>
+
+<style>
+  .header {
+    text-align: center;
+    padding: 2rem;
+    background: #f5f5f5;
+    margin-bottom: 2rem;
+  }
+  .ecu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  .ecu-card {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .ecu-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .ecu-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.125rem;
+  }
+  .ecu-info {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: #666;
+  }
+</style>
