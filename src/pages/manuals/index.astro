@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const manuals = await getCollection('manuals');
+---
+
+<BaseLayout title="Technical Manuals Library | EcuDocs.com">
+  <main class="min-h-screen bg-gray-50 dark:bg-charcoal-900 pb-20">
+    <!-- Manuals Hero Header -->
+    <header class="bg-charcoal-500 py-16 text-white text-center">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-extrabold tracking-tight mb-4 tracking-tight">
+          Technical <span class="text-tomato-500">Manuals</span> Library
+        </h1>
+        <p class="text-charcoal-100 max-w-2xl mx-auto">
+          Explore our collection of {manuals?.length || 0} official technical training guides, system documentations, and engineering principles.
+        </p>
+      </div>
+    </header>
+
+    <!-- Manuals Grid -->
+    <div class="container mx-auto px-4 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {manuals && manuals.map(manual => (
+          <a href={`/manuals/${manual.slug}`} class="group bg-white dark:bg-charcoal-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-charcoal-700 hover:shadow-2xl hover:-translate-y-1 transition-all flex flex-col h-full">
+            <div class="mb-6 h-12 w-12 rounded-xl bg-tomato-100 dark:bg-tomato-900/30 text-tomato-500 flex items-center justify-center">
+               <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            </div>
+            <h3 class="text-xl font-black mb-3 text-gray-900 dark:text-white group-hover:text-tomato-500 transition-colors line-clamp-2">{manual.data.title}</h3>
+            <p class="text-sm text-gray-500 dark:text-charcoal-300 leading-relaxed mb-6 flex-grow">{manual.data.description}</p>
+            <div class="flex items-center justify-between border-t border-gray-50 dark:border-charcoal-700 pt-4 mt-auto">
+               <span class="text-[10px] font-black uppercase tracking-widest text-charcoal-400">Read Document</span>
+               <span class="text-tomato-500 group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+</BaseLayout>
