@@ -1,15 +1,14 @@
 ---
 import Layout from '../../../layouts/BaseLayout.astro';
-import ProductCard from '../../../components/ProductCard.astro';
-import { getCollection } from 'astro:content';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import brandsData from '../../../data/brands.json';
 
-export async function getStaticPaths() {
-  // Get all brands from the content collection
-  const brands = await getCollection('brands');
-  
-  return brands.map((brand) => {
-    // Create URL-friendly slug from the brand name or use the collection slug
-    const slug = brand.slug || brand.data.name.toLowerCase()
+export function getStaticPaths() {
+  return brandsData.map((brand) => {
+    const [id, uuid, url, name, imageUrl, desc, createdAt, updatedAt] = brand;
+    const slug = name
+      .toLowerCase()
       .replace(/\s+/g, '-')
       .replace(/[^\w-]/g, '')
       .replace(/--+/g, '-')
@@ -18,25 +17,28 @@ export async function getStaticPaths() {
     return {
       params: { brand: slug },
       props: { 
-        brandData: brand,
-        brandName: brand.data.name,
-        brandUrl: brand.data.url,
-        brandLogo: brand.data.logo,
+        brandName: name,
+        brandUrl: url,
+        brandLogo: `/images/brands/${slug}.jpg`,
         brandSlug: slug
       }
     };
   });
 }
 
-// Get the brand parameter and props
 const { brand } = Astro.params;
-const { brandData, brandName, brandUrl, brandLogo, brandSlug } = Astro.props;
+const { brandName, brandUrl, brandLogo, brandSlug } = Astro.props;
 
-// Get all automobiles for this brand
-const automobiles = await getCollection('automobiles', ({ data }) => {
-  return data.brand.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '') === brand;
-});
-
+// Load models for this brand from src/data/[brandSlug]/models.json
+let models = [];
+const modelsPath = path.join(process.cwd(), 'src', 'data', brandSlug, 'models.json');
+if (fs.existsSync(modelsPath)) {
+  try {
+    models = JSON.parse(fs.readFileSync(modelsPath, 'utf-8'));
+  } catch (e) {
+    console.error(`Error loading models for ${brandSlug}:`, e);
+  }
+}
 ---
 
 <Layout title={`${brandName} ECU Documentation`}>
@@ -69,18 +71,18 @@ const automobiles = await getCollection('automobiles', ({ data }) => {
       <!-- Automobiles List -->
       <section class="automobiles-section">
         <h2>{brandName} Vehicles</h2>
-        {automobiles.length > 0 ? (
+        {models.length > 0 ? (
           <div class="automobiles-grid">
-            {automobiles.map((auto) => (
+            {models.map((model) => (
               <div class="automobile-card">
-                <h3 class="automobile-name">{auto.data.name}</h3>
-                {auto.data.engine_name && (
-                  <p class="engine-info">Engine: {auto.data.engine_name}</p>
+                <h3 class="automobile-name">{model.name}</h3>
+                {model.engine_name && (
+                  <p class="engine-info">Engine: {model.engine_name}</p>
                 )}
-                {auto.data.description && (
-                  <p class="automobile-description">{auto.data.description}</p>
+                {model.description && (
+                  <p class="automobile-description">{model.description}</p>
                 )}
-                <a href={`/automobiles/${auto.slug}`} class="view-details">
+                <a href={`/automobiles/${model.slug || model.id}`} class="view-details">
                   View ECU Details →
                 </a>
               </div>

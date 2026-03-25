@@ -1,26 +1,10 @@
 ---
-// src/pages/index.astro
-
 import Brands from '@/components/Brands.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import brandsData from '../../../data/brands.json';
 
-
-// Get some featured brands for stats
-const allBrands = await getCollection('brands');
-const allAutomobiles = await getCollection('automobiles');
-
-// Get featured brands (first 8)
-const featuredBrands = allBrands.slice(0, 8);
-
-// Calculate some stats
-const totalModels = allAutomobiles.length;
-const totalBrands = allBrands.length;
-const featuredModels = allAutomobiles.filter(auto => 
-  featuredBrands.some(brand => 
-    brand.data.name.toLowerCase() === auto.data.brand.toLowerCase()
-  )
-).length;
+const totalBrands = brandsData.length;
+const totalModels = 0; // We don't have a global models count easily available yet without scanning folders
 ---
 
 <BaseLayout title="ECU Docs - Engine Control Unit Documentation">
@@ -39,10 +23,6 @@ const featuredModels = allAutomobiles.filter(auto =>
           <div class="stat">
             <div class="stat-number">{totalBrands}+</div>
             <div class="stat-label">Brands</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">{totalModels}+</div>
-            <div class="stat-label">Models</div>
           </div>
           <div class="stat">
             <div class="stat-number">24/7</div>
@@ -70,7 +50,6 @@ const featuredModels = allAutomobiles.filter(auto =>
       <!-- Use Brands component to display featured brands -->
       <Brands
         limit={25} 
-        gridCols={4} 
         className="featured-brands-grid"
       />
       
@@ -124,38 +103,6 @@ const featuredModels = allAutomobiles.filter(auto =>
           <h3>Reference Materials</h3>
           <p>Technical manuals, service bulletins, and manufacturer documentation all in one place.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- Latest Updates Section -->
-    <section class="latest-updates">
-      <div class="section-header">
-        <h2>Recently Added</h2>
-        <p>Latest ECU documentation and updates</p>
-      </div>
-      
-      <div class="updates-grid">
-        {allAutomobiles.slice(0, 6).map((auto) => (
-          <div class="update-card">
-            <div class="update-brand">{auto.data.brand}</div>
-            <h3 class="update-title">{auto.data.name}</h3>
-            {auto.data.engine_name && (
-              <p class="update-engine">Engine: {auto.data.engine_name}</p>
-            )}
-            {auto.data.description && (
-              <p class="update-description">{auto.data.description}</p>
-            )}
-            <a href={`/automobiles/${auto.slug}`} class="update-link">
-              View Documentation →
-            </a>
-          </div>
-        ))}
-      </div>
-      
-      <div class="section-footer">
-        <a href="/automobiles" class="view-all-link">
-          View All Models →
-        </a>
       </div>
     </section>
 

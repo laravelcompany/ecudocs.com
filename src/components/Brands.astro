@@ -10,9 +10,9 @@ import brandsData from "../data/brands.json";
 
 const { limit, className = "" } = Astro.props;
 
-// Process the brands data (skip header row)
-const allBrands = brandsData.slice(1).map((row) => {
-    const [id, url_hash, url, name, logo, created_at, updated_at] = row;
+// Process the brands data
+const allBrands = brandsData.map((row) => {
+    const [id, uuid, url, name, imageUrl, desc, created_at, updated_at] = row;
 
     const slug = name
         .toLowerCase()
@@ -21,7 +21,15 @@ const allBrands = brandsData.slice(1).map((row) => {
         .replace(/--+/g, "-")
         .replace(/^-|-$/g, "");
 
-    return { id, url_hash, url, name, logo, slug, created_at, updated_at };
+    return { 
+        id, 
+        name, 
+        slug, 
+        logo: `/images/brands/${slug}.jpg`,
+        url,
+        created_at, 
+        updated_at 
+    };
 });
 
 const brands = limit ? allBrands.slice(0, limit) : allBrands;
