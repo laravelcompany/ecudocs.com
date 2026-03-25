@@ -26,125 +26,162 @@ const data = JSON.parse(content);
 const slug = file.replace('.json', '');
 ---
 
-<BaseLayout title={`${data.ecuname || slug} - ECU Documentation`}>
-  <main>
-    <div class="ecu-header">
-      <h1>{data.ecuname || slug}</h1>
-    </div>
+<BaseLayout title={`${data.ecuname || slug} Technical Specifications | EcuDocs.com`}>
+  <main class="min-h-screen bg-gray-50 dark:bg-charcoal-900 pb-20">
+    <!-- ECU Detail Hero -->
+    <header class="bg-charcoal-500 py-12 text-white overflow-hidden relative">
+       <div class="absolute right-0 top-0 h-32 w-32 bg-tomato-500/20 blur-3xl rounded-full translate-x-12 -translate-y-12"></div>
+       
+       <div class="container mx-auto px-4 relative z-10">
+        <nav class="mb-6 flex text-xs font-bold uppercase tracking-widest text-charcoal-300" aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-2">
+            <li><a href="/ecu" class="hover:text-white transition-colors">Database</a></li>
+            <li><span class="px-2">/</span></li>
+            <li class="text-white" aria-current="page">{data.ecuname || slug}</li>
+          </ol>
+        </nav>
 
-    <div class="content">
-      {data.obd && (
-        <section class="obd-info">
-          <h2>OBD Information</h2>
-          <div class="info-grid">
-            <div class="info-item">
-              <span class="label">Protocol:</span>
-              <span class="value">{data.obd.protocol}</span>
-            </div>
-            <div class="info-item">
-              <span class="label">Send ID:</span>
-              <span class="value">{data.obd.send_id}</span>
-            </div>
-            <div class="info-item">
-              <span class="label">Recv ID:</span>
-              <span class="value">{data.obd.recv_id}</span>
-            </div>
-            <div class="info-item">
-              <span class="label">Baudrate:</span>
-              <span class="value">{data.obd.baudrate}</span>
-            </div>
-            <div class="info-item">
-              <span class="label">Func Addr:</span>
-              <span class="value">{data.obd.funcaddr}</span>
-            </div>
-            <div class="info-item">
-              <span class="label">Func Name:</span>
-              <span class="value">{data.obd.funcname}</span>
-            </div>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <span class="inline-block px-3 py-1 rounded-full bg-tomato-500/20 text-tomato-400 text-[10px] font-black uppercase tracking-widest mb-4 border border-tomato-500/30">
+              Hardware Component File
+            </span>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight">{data.ecuname || slug}</h1>
+            <p class="text-charcoal-100 mt-2 font-medium opacity-80">System Identification and Configuration Data</p>
           </div>
-        </section>
-      )}
+          
+          <div class="flex gap-4">
+            <button onclick="window.print()" class="px-6 py-3 rounded-xl bg-charcoal-700/50 border border-charcoal-400 text-sm font-bold backdrop-blur-sm hover:bg-charcoal-600 transition-all flex items-center gap-2">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+              PDF Export
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
 
-      {data.autoidents && data.autoidents.length > 0 && (
-        <section class="autoidents">
-          <h2>Auto IDents</h2>
-          <pre>{JSON.stringify(data.autoidents, null, 2)}</pre>
-        </section>
-      )}
+    <div class="container mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+        
+        <!-- Technical Sidebar -->
+        <aside class="lg:col-span-1 space-y-8">
+           <div class="bg-white dark:bg-charcoal-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-charcoal-700">
+             <h3 class="text-xs font-black uppercase tracking-widest text-charcoal-400 mb-6">Metadata</h3>
+             <div class="space-y-6">
+                <div>
+                   <span class="block text-[10px] font-bold text-gray-400 uppercase tracking-tighter">File reference</span>
+                   <code class="text-xs font-mono text-tomato-500 break-all">{file}</code>
+                </div>
+                <div>
+                   <span class="block text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Source type</span>
+                   <span class="text-sm font-bold text-gray-900 dark:text-white uppercase">JSON Data Array</span>
+                </div>
+                <div>
+                   <span class="block text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Status</span>
+                   <div class="flex items-center gap-2 mt-1">
+                      <span class="h-2 w-2 rounded-full bg-green-500"></span>
+                      <span class="text-sm font-bold text-gray-900 dark:text-white">Validated</span>
+                   </div>
+                </div>
+             </div>
+           </div>
 
-      {data.devices && data.devices.length > 0 && (
-        <section class="devices">
-          <h2>Devices</h2>
-          <pre>{JSON.stringify(data.devices, null, 2)}</pre>
-        </section>
-      )}
+           <div class="bg-charcoal-900 p-8 rounded-3xl text-white shadow-2xl relative overflow-hidden group">
+             <div class="absolute -right-4 -bottom-4 opacity-10 group-hover:rotate-12 transition-transform duration-500">
+                <svg class="h-24 w-24" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+             </div>
+             <h4 class="text-lg font-black italic mb-2">Technical Warning</h4>
+             <p class="text-xs text-charcoal-200 leading-relaxed mb-4">Ensure specific OBD protocol matching before hardware implementation to avoid controller lockout.</p>
+             <a href="/contact" class="text-[10px] font-black uppercase tracking-widest text-tomato-400 hover:text-tomato-300 transition-colors">Safety Guidelines →</a>
+           </div>
+        </aside>
 
-      {data.requests && data.requests.length > 0 && (
-        <section class="requests">
-          <h2>Requests</h2>
-          <pre>{JSON.stringify(data.requests, null, 2)}</pre>
-        </section>
-      )}
-    </div>
+        <!-- Main Spec Content -->
+        <div class="lg:col-span-3 space-y-12">
+          
+          {data.obd && (
+            <section>
+              <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                <span class="h-8 w-1 bg-tomato-500 rounded-full"></span>
+                OBD Configuration Details
+              </h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                {[
+                  { label: "Protocol", value: data.obd.protocol },
+                  { label: "Baudrate", value: data.obd.baudrate },
+                  { label: "Send ID", value: data.obd.send_id },
+                  { label: "Receive ID", value: data.obd.recv_id },
+                  { label: "Functional Addr", value: data.obd.funcaddr },
+                  { label: "Functional Name", value: data.obd.funcname },
+                ].map(info => (
+                  <div class="bg-white dark:bg-charcoal-800 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-charcoal-700 transition-all hover:border-tomato-500/30">
+                    <span class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">{info.label}</span>
+                    <span class="text-lg font-mono font-bold text-gray-900 dark:text-white">{info.value || 'N/A'}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
-    <div class="navigation">
-      <a href="/" class="back-link">← Back to Home</a>
+          {data.autoidents && data.autoidents.length > 0 && (
+            <section>
+              <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                <span class="h-8 w-1 bg-charcoal-500 rounded-full"></span>
+                Automatic Identifiers
+              </h2>
+              <div class="rounded-2xl overflow-hidden bg-white dark:bg-charcoal-800 shadow-sm border border-gray-100 dark:border-charcoal-700">
+                 <div class="bg-gray-50 dark:bg-charcoal-700/50 px-6 py-2 border-b border-gray-100 dark:border-charcoal-700 flex justify-between items-center">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Array Listing</span>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-tomato-500">{data.autoidents.length} Entries</span>
+                 </div>
+                 <div class="p-6">
+                    <pre class="font-mono text-sm leading-relaxed overflow-x-auto text-gray-800 dark:text-charcoal-100 whitespace-pre-wrap">{JSON.stringify(data.autoidents, null, 2)}</pre>
+                 </div>
+              </div>
+            </section>
+          )}
+
+          {data.devices && data.devices.length > 0 && (
+            <section>
+              <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                <span class="h-8 w-1 bg-charcoal-500 rounded-full"></span>
+                Associated Devices
+              </h2>
+              <div class="grid grid-cols-1 gap-4">
+                 {data.devices.map((device) => (
+                    <div class="group bg-white dark:bg-charcoal-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-charcoal-700 flex justify-between items-center transition-all hover:bg-gray-50 dark:hover:bg-charcoal-700/30">
+                       <span class="text-base font-bold text-gray-900 dark:text-white">{device.name || 'Unnamed Device'}</span>
+                       <span class="text-xs font-mono text-charcoal-400 group-hover:text-tomato-500 uppercase tracking-tighter">ID: {device.id}</span>
+                    </div>
+                 ))}
+              </div>
+            </section>
+          )}
+
+          {data.requests && data.requests.length > 0 && (
+            <section>
+              <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                <span class="h-8 w-1 bg-tomato-500 rounded-full"></span>
+                Technical Requests (IO)
+              </h2>
+              <div class="bg-charcoal-900 rounded-2xl overflow-hidden shadow-2xl">
+                 <div class="bg-black/20 p-4 border-b border-white/5 flex items-center gap-2">
+                    <div class="flex gap-1.5">
+                       <div class="h-2 w-2 rounded-full bg-red-500/50"></div>
+                       <div class="h-2 w-2 rounded-full bg-yellow-500/50"></div>
+                       <div class="h-2 w-2 rounded-full bg-green-500/50"></div>
+                    </div>
+                    <span class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest ml-4">I/O Sequence Data</span>
+                 </div>
+                 <div class="p-6">
+                    <pre class="font-mono text-xs text-negroni-400 leading-relaxed overflow-x-auto whitespace-pre-wrap">{JSON.stringify(data.requests, null, 2)}</pre>
+                 </div>
+              </div>
+            </section>
+          )}
+
+        </div>
+      </div>
     </div>
   </main>
 </BaseLayout>
-
-<style>
-  .ecu-header {
-    background: #f5f5f5;
-    padding: 2rem;
-    margin-bottom: 2rem;
-  }
-  .content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  section {
-    margin-bottom: 2rem;
-  }
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-  }
-  .info-item {
-    background: #f9f9f9;
-    padding: 0.75rem;
-    border-radius: 4px;
-  }
-  .label {
-    font-weight: bold;
-    display: block;
-    color: #666;
-    font-size: 0.875rem;
-  }
-  .value {
-    font-size: 1.125rem;
-  }
-  pre {
-    background: #1e1e1e;
-    color: #d4d4d4;
-    padding: 1rem;
-    border-radius: 4px;
-    overflow-x: auto;
-  }
-  .navigation {
-    padding: 2rem;
-  }
-  .back-link {
-    color: #0066cc;
-    text-decoration: none;
-  }
-  .back-link:hover {
-    text-decoration: underline;
-  }
-</style>

@@ -1,10 +1,134 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Brands from "@/components/Brands.astro";
+import brandsData from "../data/brands.json";
+
+const totalBrands = brandsData.length;
 ---
 
-<BaseLayout>
+<BaseLayout title="EcuDocs.com | The First and Largest Database of ECU Documentation">
+  <main class="bg-gray-50 dark:bg-gray-900">
+    <!-- Premium Hero Section -->
+    <section class="relative bg-charcoal-500 py-24 sm:py-32 overflow-hidden">
+      <!-- Background pattern -->
+      <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <svg class="h-full w-full" fill="none" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="1200" cy="400" r="600" fill="url(#hero-gradient)" />
+          <defs>
+            <radialGradient id="hero-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1200 400) rotate(90) scale(600)">
+              <stop stop-color="#fd6043" />
+              <stop offset="1" stop-color="transparent" />
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
 
-  <Brands />
+      <div class="container mx-auto px-4 relative z-10 text-center text-white">
+        <div class="inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-tomato-400 mb-8 border border-white/10 backdrop-blur-sm">
+          <span class="mr-2 inline-block h-2 w-2 rounded-full bg-tomato-500 animate-ping"></span>
+          Now supporting {totalBrands} automotive brands
+        </div>
+        
+        <h1 class="mx-auto max-w-4xl text-5xl font-extrabold tracking-tight sm:text-7xl mb-8 leading-[1.1]">
+          Engine Control Unit <span class="text-tomato-500 font-black italic">Documentation</span> Hub
+        </h1>
+        
+        <p class="mx-auto max-w-2xl text-lg text-charcoal-100 sm:text-xl mb-12 leading-relaxed">
+          Access the industry's most comprehensive database for ECU wiring diagrams, pinouts, technical specs, 
+          and hardware documentation for thousands of vehicle models worldwide.
+        </p>
 
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+          <a href="/automobiles/brands" class="group relative inline-flex items-center rounded-2xl bg-white px-10 py-5 text-lg font-black text-charcoal-900 shadow-2xl transition-all hover:scale-105 hover:bg-gray-50">
+            Browse All Brands
+            <svg class="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          </a>
+          <a href="/marketplace" class="inline-flex items-center rounded-2xl bg-charcoal-700/50 border border-charcoal-400 px-10 py-5 text-lg font-bold text-white backdrop-blur-md hover:bg-charcoal-600 transition-colors">
+            Our Marketplace
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto border-t border-white/10 pt-12 text-center opacity-80">
+          <div>
+            <div class="text-3xl font-black">{totalBrands}</div>
+            <div class="text-xs font-bold uppercase tracking-wider text-charcoal-300">Brands Supported</div>
+          </div>
+          <div>
+            <div class="text-3xl font-black">10,000+</div>
+            <div class="text-xs font-bold uppercase tracking-wider text-charcoal-300">Wiring Diagrams</div>
+          </div>
+          <div>
+            <div class="text-3xl font-black">24/7</div>
+            <div class="text-xs font-bold uppercase tracking-wider text-charcoal-300">Technical Support</div>
+          </div>
+          <div>
+            <div class="text-3xl font-black">ISO 9001</div>
+            <div class="text-xs font-bold uppercase tracking-wider text-charcoal-300">Quality Assured</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Features Section -->
+    <section class="py-24 bg-white dark:bg-gray-800">
+      <div class="container mx-auto px-4 text-center mb-16">
+        <h2 class="text-xs font-black uppercase tracking-[0.2em] text-tomato-500 mb-4 italic">Capabilities</h2>
+        <h3 class="text-4xl font-black tracking-tight text-gray-900 dark:text-white sm:text-5xl">Engineered for Professionals</h3>
+      </div>
+      
+      <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="group rounded-3xl bg-gray-50 dark:bg-gray-900/50 p-10 transition-all hover:bg-gray-100 dark:hover:bg-gray-900 hover:-translate-y-2 border border-transparent hover:border-gray-200">
+          <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-tomato-100 text-tomato-500 dark:bg-tomato-900/30">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A2 2 0 013 15.487V6a2 2 0 011.106-1.789l5.447-2.724a2 2 0 011.894 0l5.447 2.724A2 2 0 0118 6v9.487a2 2 0 01-1.106 1.789L11.447 20a2 2 0 01-1.894 0z"></path></svg>
+          </div>
+          <h4 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white group-hover:text-tomato-500 transition-colors">ECU Pinouts</h4>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Detailed terminal configuration for every supported ECU hardware version, including sensor assignments and power lines.</p>
+        </div>
+
+        <div class="group rounded-3xl bg-gray-50 dark:bg-gray-900/50 p-10 transition-all hover:bg-gray-100 dark:hover:bg-gray-900 hover:-translate-y-2 border border-transparent hover:border-gray-200">
+          <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-charcoal-100 text-charcoal-500 dark:bg-charcoal-900/30">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <h4 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white group-hover:text-charcoal-500 transition-colors">Wiring Charts</h4>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">High-resolution vector diagrams for complex engine bay wiring, specifically color-coded for fast diagnostic reference.</p>
+        </div>
+
+        <div class="group rounded-3xl bg-gray-50 dark:bg-gray-900/50 p-10 transition-all hover:bg-gray-100 dark:hover:bg-gray-900 hover:-translate-y-2 border border-transparent hover:border-gray-200">
+          <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-negroni-100 text-negroni-700 dark:bg-negroni-900/30">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          </div>
+          <h4 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white group-hover:text-negroni-700 transition-colors">Component IDs</h4>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Identify every chip, capacitor, and regulator inside the ECU unit for deep hardware repair and component swapping.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brands Grid Showcase -->
+    <section class="py-24 bg-gray-50 dark:bg-gray-900/30 overflow-hidden">
+      <div class="container mx-auto px-4 mb-16 text-center">
+        <h3 class="text-3xl font-black text-gray-900 dark:text-white sm:text-4xl mb-6">Massive Database Infrastructure</h3>
+        <p class="max-w-xl mx-auto text-gray-500 dark:text-gray-400">Search through over {totalBrands} unique manufacturers from across the globe, from subcompact crossovers to commercial transport.</p>
+      </div>
+      
+      <div class="container mx-auto px-4">
+        <Brands limit={24} className="opacity-90 hover:opacity-100 transition-opacity" />
+        
+        <div class="mt-20 text-center">
+          <a href="/automobiles/brands" class="inline-flex items-center text-lg font-black text-tomato-500 hover:text-tomato-600">
+            Explores Every Single Manufacturer
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to action (Bottom) -->
+    <section class="py-24 bg-tomato-500">
+       <div class="container mx-auto px-4 text-center text-white">
+          <h2 class="text-4xl font-extrabold mb-8 italic">Ready to solve that diagnostic puzzle?</h2>
+          <p class="max-w-xl mx-auto mb-10 text-tomato-100 font-medium">Join thousands of technicians already using EcuDocs.com for their daily repair workflows.</p>
+          <a href="/contact" class="inline-flex items-center rounded-2xl bg-charcoal-900 px-12 py-6 text-xl font-black hover:bg-black transition-all">Get Full Access Now</a>
+       </div>
+    </section>
+  </main>
 </BaseLayout>

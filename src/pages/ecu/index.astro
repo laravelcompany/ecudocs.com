@@ -34,47 +34,88 @@ const allEcusMeta = allEcus.map(file => {
 });
 ---
 
-<BaseLayout title="ECU Files - ECU Documentation">
-  <main>
-    <div class="header">
-      <h1>ECU Files</h1>
-      <p>Browse all available ECU configuration files ({allEcus.length} total)</p>
+<BaseLayout title={`ECU Database | Hardware Engine Control Unit Hub`}>
+  <main class="min-h-screen bg-gray-50 dark:bg-charcoal-900 pb-20">
+    <!-- ECU Hero Header -->
+    <header class="bg-charcoal-500 py-16 text-white text-center">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-extrabold tracking-tight mb-4 tracking-tight">
+          ECU <span class="text-tomato-500">Database</span> Hub
+        </h1>
+        <p class="text-charcoal-100 max-w-2xl mx-auto">
+          Explore our massive collection of {allEcus.length} hardware ECU configuration files. 
+          Search by name, OBD protocol, or baudrate.
+        </p>
+      </div>
+    </header>
+
+    <div class="container mx-auto px-4 -mt-8 relative z-10">
+      <!-- Search Section -->
+      <div class="max-w-3xl mx-auto">
+        <div class="relative group">
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search ECUs by name, protocol, or baudrate..." 
+            value={searchQuery}
+            class="w-full pl-14 pr-6 py-5 bg-white dark:bg-charcoal-800 rounded-3xl shadow-2xl border-none text-lg dark:text-white focus:ring-4 focus:ring-tomato-500/20 transition-all outline-none"
+          />
+          <div class="absolute left-5 top-1/2 -translate-y-1/2 text-charcoal-300 group-focus-within:text-tomato-500 transition-colors">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </div>
+        </div>
+        <div id="resultsInfo" class="mt-4 text-center text-sm font-bold text-gray-500 dark:text-charcoal-300 uppercase tracking-widest"></div>
+      </div>
     </div>
 
-    <div class="search-container">
-      <input 
-        type="text" 
-        id="searchInput" 
-        placeholder="Search ECUs by name, protocol, or baudrate..." 
-        value={searchQuery}
-        class="search-input"
-      />
-    </div>
-
-    <div id="resultsInfo" class="results-info"></div>
-
-    <div class="ecu-grid" id="ecuGrid">
-      {ecus.map(({ file, data }) => (
-        <a href={`/ecu/${file}`} class="ecu-card" data-search={(`${data.ecuname || file.replace('.json', '')} ${data.obd?.protocol || ''} ${data.obd?.baudrate || ''}`).toLowerCase()}>
-          <h3>{data.ecuname || file.replace('.json', '')}</h3>
-          {data.obd && (
-            <div class="ecu-info">
-              <span>Protocol: {data.obd.protocol}</span>
-              <span>Baudrate: {data.obd.baudrate}</span>
+    <!-- ECU Grid -->
+    <div class="container mx-auto px-4 py-12">
+      <div id="ecuGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {ecus.map(({ file, data }) => (
+          <a 
+            href={`/ecu/${file}`} 
+            class="group bg-white dark:bg-charcoal-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-charcoal-700 hover:shadow-xl hover:-translate-y-1 transition-all"
+            data-search={(`${data.ecuname || file.replace('.json', '')} ${data.obd?.protocol || ''} ${data.obd?.baudrate || ''}`).toLowerCase()}
+          >
+            <div class="mb-4">
+              <span class="text-[10px] font-black uppercase tracking-widest text-tomato-500 mb-1 block">Hardware Config</span>
+              <h3 class="text-lg font-black text-gray-900 dark:text-white group-hover:text-tomato-500 transition-colors">
+                {data.ecuname || file.replace('.json', '')}
+              </h3>
             </div>
-          )}
-        </a>
-      ))}
-    </div>
+            
+            {data.obd && (
+              <div class="space-y-2 pt-4 border-t border-gray-50 dark:border-charcoal-700">
+                <div class="flex items-center text-xs text-gray-500 dark:text-charcoal-300">
+                  <span class="w-20 font-bold uppercase tracking-tighter opacity-50">Protocol</span>
+                  <span class="font-mono text-gray-900 dark:text-white">{data.obd.protocol}</span>
+                </div>
+                <div class="flex items-center text-xs text-gray-500 dark:text-charcoal-300">
+                  <span class="w-20 font-bold uppercase tracking-tighter opacity-50">Baudrate</span>
+                  <span class="font-mono text-gray-900 dark:text-white">{data.obd.baudrate}</span>
+                </div>
+              </div>
+            )}
+            
+            <div class="mt-6 flex justify-end">
+               <div class="text-xs font-black uppercase tracking-widest text-charcoal-400 group-hover:text-tomato-500 transition-colors flex items-center gap-1">
+                 View Data <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
+               </div>
+            </div>
+          </a>
+        ))}
+      </div>
 
-    <div class="pagination" id="pagination">
-      {currentPage > 1 && (
-        <a href={`/ecu?page=${currentPage - 1}${searchQuery ? `&q=${searchQuery}` : ''}`} class="page-link">← Previous</a>
-      )}
-      <span class="page-info">Page {currentPage} of {totalPages}</span>
-      {currentPage < totalPages && (
-        <a href={`/ecu?page=${currentPage + 1}${searchQuery ? `&q=${searchQuery}` : ''}`} class="page-link">Next →</a>
-      )}
+      <!-- Pagination -->
+      <div id="pagination" class="mt-16 flex justify-center items-center gap-4">
+        {currentPage > 1 && (
+          <a href={`/ecu?page=${currentPage - 1}${searchQuery ? `&q=${searchQuery}` : ''}`} class="px-6 py-3 rounded-xl bg-white dark:bg-charcoal-800 font-bold text-sm shadow-sm border border-gray-200 dark:border-charcoal-700 hover:bg-gray-50 transition-colors">← Earlier</a>
+        )}
+        <span class="text-xs font-black uppercase tracking-widest text-gray-400">Page {currentPage} of {totalPages}</span>
+        {currentPage < totalPages && (
+          <a href={`/ecu?page=${currentPage + 1}${searchQuery ? `&q=${searchQuery}` : ''}`} class="px-6 py-3 rounded-xl bg-white dark:bg-charcoal-800 font-bold text-sm shadow-sm border border-gray-200 dark:border-charcoal-700 hover:bg-gray-50 transition-colors">Later →</a>
+        )}
+      </div>
     </div>
   </main>
 
@@ -85,7 +126,6 @@ const allEcusMeta = allEcus.map(file => {
     const pagination = document.getElementById('pagination');
     
     let filteredEcus = [...allEcusMeta];
-    let currentSearchPage = 1;
 
     function renderECUs(ecus, page = 1) {
       const start = (page - 1) * PAGE_SIZE;
@@ -93,17 +133,39 @@ const allEcusMeta = allEcus.map(file => {
       const totalPages = Math.ceil(ecus.length / PAGE_SIZE);
 
       if (pageEcus.length === 0) {
-        ecuGrid.innerHTML = '<p class="no-results">No ECUs found matching your search.</p>';
+        ecuGrid.innerHTML = `
+          <div class="col-span-full py-20 text-center">
+            <div class="text-gray-300 mb-4 flex justify-center">
+              <svg class="h-20 w-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-600 dark:text-charcoal-300">Zero matches for your query</h3>
+            <p class="text-gray-400">Try searching for a specific protocol or partial name.</p>
+          </div>
+        `;
         pagination.innerHTML = '';
         return;
       }
 
       ecuGrid.innerHTML = pageEcus.map(ecu => `
-        <a href="/ecu/${ecu.file}" class="ecu-card" data-search="${(ecu.ecuname + ' ' + ecu.protocol + ' ' + ecu.baudrate).toLowerCase()}">
-          <h3>${ecu.ecuname}</h3>
-          <div class="ecu-info">
-            <span>Protocol: ${ecu.protocol || 'N/A'}</span>
-            <span>Baudrate: ${ecu.baudrate || 'N/A'}</span>
+        <a href="/ecu/${ecu.file}" class="group bg-white dark:bg-charcoal-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-charcoal-700 hover:shadow-xl hover:-translate-y-1 transition-all">
+          <div class="mb-4">
+            <span class="text-[10px] font-black uppercase tracking-widest text-tomato-500 mb-1 block">Hardware Config</span>
+            <h3 class="text-lg font-black text-gray-900 dark:text-white group-hover:text-tomato-500 transition-colors">${ecu.ecuname}</h3>
+          </div>
+          <div class="space-y-2 pt-4 border-t border-gray-50 dark:border-charcoal-700">
+            <div class="flex items-center text-xs text-gray-500 dark:text-charcoal-300">
+              <span class="w-20 font-bold uppercase tracking-tighter opacity-50">Protocol</span>
+              <span class="font-mono text-gray-900 dark:text-white">${ecu.protocol || '---'}</span>
+            </div>
+            <div class="flex items-center text-xs text-gray-500 dark:text-charcoal-300">
+              <span class="w-20 font-bold uppercase tracking-tighter opacity-50">Baudrate</span>
+              <span class="font-mono text-gray-900 dark:text-white">${ecu.baudrate || '---'}</span>
+            </div>
+          </div>
+          <div class="mt-6 flex justify-end">
+             <div class="text-xs font-black uppercase tracking-widest text-charcoal-400 group-hover:text-tomato-500 transition-colors flex items-center gap-1">
+               View Data <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
+             </div>
           </div>
         </a>
       `).join('');
@@ -111,14 +173,19 @@ const allEcusMeta = allEcus.map(file => {
       let paginationHtml = '';
       if (totalPages > 1) {
         if (page > 1) {
-          paginationHtml += `<a href="?q=${searchInput.value}&page=${page - 1}" class="page-link">← Previous</a>`;
+          paginationHtml += `<button onclick="window.renderSearchPage(${page - 1})" class="px-6 py-3 rounded-xl bg-white dark:bg-charcoal-800 font-bold text-sm shadow-sm border border-gray-200 dark:border-charcoal-700 hover:bg-gray-50 transition-colors">← Earlier</button>`;
         }
-        paginationHtml += `<span class="page-info">Page ${page} of ${totalPages}</span>`;
+        paginationHtml += `<span class="text-xs font-black uppercase tracking-widest text-gray-400">Page ${page} of ${totalPages}</span>`;
         if (page < totalPages) {
-          paginationHtml += `<a href="?q=${searchInput.value}&page=${page + 1}" class="page-link">Next →</a>`;
+          paginationHtml += `<button onclick="window.renderSearchPage(${page + 1})" class="px-6 py-3 rounded-xl bg-white dark:bg-charcoal-800 font-bold text-sm shadow-sm border border-gray-200 dark:border-charcoal-700 hover:bg-gray-50 transition-colors">Later →</button>`;
         }
       }
       pagination.innerHTML = paginationHtml;
+    }
+
+    window.renderSearchPage = (page) => {
+      renderECUs(filteredEcus, page);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function performSearch(query) {
@@ -134,7 +201,7 @@ const allEcusMeta = allEcus.map(file => {
       
       renderECUs(filteredEcus, 1);
       
-      resultsInfo.textContent = query ? `Found ${filteredEcus.length} ECU${filteredEcus.length !== 1 ? 's' : ''} matching "${query}"` : '';
+      resultsInfo.textContent = query ? `${filteredEcus.length} MATCHES FOUND` : '';
     }
 
     let debounceTimer;
@@ -150,94 +217,3 @@ const allEcusMeta = allEcus.map(file => {
     }
   </script>
 </BaseLayout>
-
-<style>
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding: 2rem;
-  }
-  .page-link {
-    padding: 0.5rem 1rem;
-    background: #f5f5f5;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #333;
-  }
-  .page-link:hover {
-    background: #e0e0e0;
-  }
-  .page-info {
-    color: #666;
-  }
-  .search-container {
-    max-width: 600px;
-    margin: 0 auto 1.5rem;
-    padding: 0 1rem;
-  }
-  .search-input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    border: 2px solid #e5e5e5;
-    border-radius: 8px;
-    transition: border-color 0.2s;
-  }
-  .search-input:focus {
-    outline: none;
-    border-color: #0066cc;
-  }
-  .results-info {
-    text-align: center;
-    color: #666;
-    margin-bottom: 1rem;
-    padding: 0 1rem;
-  }
-  .no-results {
-    grid-column: 1 / -1;
-    text-align: center;
-    color: #666;
-    padding: 2rem;
-  }
-</style>
-
-<style>
-  .header {
-    text-align: center;
-    padding: 2rem;
-    background: #f5f5f5;
-    margin-bottom: 2rem;
-  }
-  .ecu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  .ecu-card {
-    background: #f9f9f9;
-    padding: 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .ecu-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  .ecu-card h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.125rem;
-  }
-  .ecu-info {
-    display: flex;
-    gap: 1rem;
-    font-size: 0.875rem;
-    color: #666;
-  }
-</style>

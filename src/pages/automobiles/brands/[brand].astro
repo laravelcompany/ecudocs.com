@@ -41,65 +41,187 @@ if (fs.existsSync(modelsPath)) {
 }
 ---
 
-<Layout title={`${brandName} ECU Documentation`}>
-  <main>
-    <div class="brand-header">
-      {brandLogo && (
-        <img src={brandLogo} alt={`${brandName} logo`} class="brand-header-logo" />
-      )}
-      <div>
-        <h1>{brandName} ECU Documentation</h1>
-        <p class="brand-subtitle">Engine Control Unit documentation and guides</p>
+<Layout title={`${brandName} ECU Documentation | EcuDocs.com`}>
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <!-- Brand Hero Section -->
+    <header class="relative overflow-hidden bg-charcoal-500 py-16 text-white sm:py-24">
+      <div class="absolute inset-0 opacity-10">
+        <svg class="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M0 100 L100 0 L100 100 Z" fill="currentColor"></path>
+        </svg>
       </div>
-    </div>
-    
-    <div class="content-grid">
-      <!-- Brand Information -->
-      <section class="brand-info">
-        <h2>About {brandName}</h2>
-        <p>Comprehensive ECU documentation for {brandName} vehicles.</p>
-        
-        {brandUrl && (
-          <p>
-            <a href={brandUrl} target="_blank" rel="noopener noreferrer" class="external-link">
-              Visit {brandName} on AutoEvolution →
-            </a>
-          </p>
-        )}
-      </section>
       
-      <!-- Automobiles List -->
-      <section class="automobiles-section">
-        <h2>{brandName} Vehicles</h2>
-        {models.length > 0 ? (
-          <div class="automobiles-grid">
-            {models.map((model) => (
-              <div class="automobile-card">
-                <h3 class="automobile-name">{model.name}</h3>
-                {model.engine_name && (
-                  <p class="engine-info">Engine: {model.engine_name}</p>
-                )}
-                {model.description && (
-                  <p class="automobile-description">{model.description}</p>
-                )}
-                <a href={`/automobiles/${model.slug || model.id}`} class="view-details">
-                  View ECU Details →
+      <div class="container mx-auto px-4 relative z-10">
+        <nav class="mb-8 flex text-sm font-medium text-charcoal-200" aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-2">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li><span class="px-2">/</span></li>
+            <li><a href="/automobiles/brands" class="hover:text-white transition-colors">Brands</a></li>
+            <li><span class="px-2">/</span></li>
+            <li class="text-white" aria-current="page">{brandName}</li>
+          </ol>
+        </nav>
+
+        <div class="flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left gap-8">
+          <div class="relative h-32 w-32 shrink-0 rounded-2xl bg-white p-4 shadow-xl sm:h-40 sm:w-40">
+            {brandLogo && (
+              <img 
+                src={brandLogo} 
+                alt={`${brandName} logo`} 
+                class="h-full w-full object-contain"
+                onerror="this.src='https://i.imgur.com/GQePUq0.png'"
+              />
+            )}
+          </div>
+          <div class="max-w-3xl">
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-4">
+              {brandName} ECU Documentation
+            </h1>
+            <p class="text-lg text-charcoal-100 mb-6 max-w-2xl">
+              Access the largest database of hardware ECU information, wiring diagrams, 
+              and technical specifications for {brandName} vehicles. Everything you need 
+              for diagnostics and tuning.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center sm:justify-start">
+              {brandUrl && (
+                <a 
+                  href={brandUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="inline-flex items-center rounded-lg bg-tomato-500 px-6 py-3 text-sm font-bold shadow-lg hover:bg-tomato-600 transition-all transform hover:-translate-y-1"
+                >
+                  Official Model History →
                 </a>
+              )}
+              <div class="inline-flex items-center rounded-lg bg-charcoal-700/50 backdrop-blur px-6 py-3 text-sm font-medium border border-charcoal-400">
+                <span class="mr-2 h-2 w-2 rounded-full bg-green-400 animate-pulse"></span>
+                {models.length} Models Indexed
               </div>
-            ))}
+            </div>
           </div>
-        ) : (
-          <div class="no-data">
-            <p>No automobile data available for {brandName} yet.</p>
-            <p class="help-text">Check back later for ECU documentation updates.</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+        <!-- Sidebar and Info -->
+        <aside class="lg:col-span-1 space-y-8">
+          <div class="rounded-2xl bg-white dark:bg-gray-800 p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Brand Information</h3>
+            <div class="space-y-4">
+              <div>
+                <span class="block text-xs font-bold uppercase tracking-wider text-gray-400">Manufacturer</span>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">{brandName}</span>
+              </div>
+              <div>
+                <span class="block text-xs font-bold uppercase tracking-wider text-gray-400">Language</span>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">English (US)</span>
+              </div>
+              <div>
+                <span class="block text-xs font-bold uppercase tracking-wider text-gray-400">Update Frequency</span>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">Weekly</span>
+              </div>
+            </div>
           </div>
-        )}
-      </section>
-    </div>
-    
-    <!-- Back to brands link -->
-    <div class="navigation">
-      <a href="/automobiles/brands" class="back-link">← Back to All Brands</a>
-    </div>
-  </main>
+
+          <div class="rounded-2xl bg-gradient-to-br from-charcoal-800 to-charcoal-900 p-6 text-white shadow-lg">
+            <h3 class="text-lg font-bold mb-2">Need a Specific ECU?</h3>
+            <p class="text-sm text-charcoal-200 mb-4">If your {brandName} model is missing, contact our technical team for support.</p>
+            <a href="/contact" class="block w-full rounded-lg bg-white/10 py-2 text-center text-sm font-bold hover:bg-white/20 transition-colors">Request Documentation</a>
+          </div>
+        </aside>
+
+        <!-- Main Content (Models) -->
+        <div class="lg:col-span-3">
+          <div class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
+              {brandName} Vehicle Library
+            </h2>
+            <div class="flex items-center gap-2">
+              <span class="text-sm text-gray-500">View as:</span>
+              <button class="rounded-md bg-white dark:bg-gray-800 p-2 shadow-sm border border-gray-200 dark:border-gray-700">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          {models.length > 0 ? (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {models.map((model) => (
+                <div class="group relative flex flex-col rounded-2xl bg-white dark:bg-gray-800 p-6 shadow-sm border border-gray-100 dark:border-gray-700 transition-all hover:shadow-xl hover:-translate-y-1">
+                  <div class="mb-4 flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-tomato-500 transition-colors">
+                      {model.name}
+                    </h3>
+                    <span class="rounded-full bg-blue-50 dark:bg-blue-900/30 px-3 py-1 text-xs font-bold text-blue-600 dark:text-blue-400">
+                      ECU Ready
+                    </span>
+                  </div>
+                  
+                  {model.engine_name && (
+                    <div class="mb-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
+                      <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                      Engine: {model.engine_name}
+                    </div>
+                  )}
+                  
+                  <p class="mb-6 line-clamp-2 text-sm text-gray-600 dark:text-gray-400">
+                    {model.description || `Full hardware documentation for the ${model.name} ECU system.`}
+                  </p>
+                  
+                  <div class="mt-auto pt-4 border-t border-gray-50 dark:border-gray-700">
+                    <a 
+                      href={`/automobiles/${model.slug || model.id}`} 
+                      class="inline-flex items-center text-sm font-bold text-tomato-500 hover:text-tomato-600"
+                    >
+                      View Full Specifications
+                      <svg class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div class="rounded-3xl bg-charcoal-50 dark:bg-gray-800/50 p-12 text-center border-2 border-dashed border-gray-200 dark:border-gray-700">
+              <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-sm mb-6">
+                <svg class="h-10 w-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">No {brandName} Models Listed Yet</h3>
+              <p class="text-gray-500 dark:text-gray-400 mb-8 max-w-sm mx-auto">We are currently processing the ECU documentation for {brandName}. Check back soon or request a specific file.</p>
+              <a href="/contact" class="inline-flex items-center rounded-xl bg-charcoal-500 px-8 py-3 text-sm font-bold text-white hover:bg-charcoal-600 transition-colors shadow-lg">
+                Email Technical Support
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </main>
+
+    <!-- Brands Navigation Grid -->
+    <section class="border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">Other Popular Hardware ECU Brands</h2>
+        <div class="flex flex-wrap items-center justify-center gap-6 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+          <a href="/automobiles/brands/bmw" class="p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
+            <img src="/images/brands/bmw.jpg" class="h-12 w-auto" alt="BMW" />
+          </a>
+          <a href="/automobiles/brands/audi" class="p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
+            <img src="/images/brands/audi.jpg" class="h-12 w-auto" alt="Audi" />
+          </a>
+          <a href="/automobiles/brands/mercedes-benz" class="p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
+            <img src="/images/brands/mercedes-benz.jpg" class="h-12 w-auto" alt="Mercedes" />
+          </a>
+          <a href="/automobiles/brands/toyota" class="p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">
+            <img src="/images/brands/toyota.jpg" class="h-12 w-auto" alt="Toyota" />
+          </a>
+        </div>
+        <div class="mt-12">
+          <a href="/automobiles/brands" class="text-sm font-bold text-gray-500 hover:text-gray-900 dark:hover:text-white uppercase tracking-wider">
+            View All Brands +
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
 </Layout>
