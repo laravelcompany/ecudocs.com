@@ -13,12 +13,11 @@ export function getStaticPaths() {
     .filter(f => f.endsWith('.json'))
     .map((file) => {
       return {
-        params: { slug: file },
+        params: { slug: file.replace('.json', '') },
         props: { file },
       };
     });
 }
-
 const { file } = Astro.props;
 const filePath = path.join(ECUS_DIR, file);
 const content = fs.readFileSync(filePath, 'utf-8');
@@ -164,18 +163,38 @@ const slug = file.replace('.json', '');
                 <span class="h-8 w-1 bg-tomato-500 rounded-full"></span>
                 Technical Requests (IO)
               </h2>
-              <div class="bg-charcoal-900 rounded-2xl overflow-hidden shadow-2xl">
-                 <div class="bg-black/20 p-4 border-b border-white/5 flex items-center gap-2">
-                    <div class="flex gap-1.5">
-                       <div class="h-2 w-2 rounded-full bg-red-500/50"></div>
-                       <div class="h-2 w-2 rounded-full bg-yellow-500/50"></div>
-                       <div class="h-2 w-2 rounded-full bg-green-500/50"></div>
+              <div class="grid grid-cols-1 gap-4">
+                 {data.requests.map((req) => (
+                    <div class="bg-white dark:bg-charcoal-800 rounded-2xl shadow-sm border border-gray-100 dark:border-charcoal-700 overflow-hidden">
+                       <div class="bg-gray-50 dark:bg-charcoal-700/50 px-6 py-4 border-b border-gray-100 dark:border-charcoal-700 flex justify-between items-center">
+                          <span class="text-base font-bold text-gray-900 dark:text-white">{req.name || 'Unnamed Request'}</span>
+                          <span class="text-[10px] font-black uppercase tracking-widest text-tomato-500">I/O Sequence</span>
+                       </div>
+                       <div class="p-6">
+                          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                             <div>
+                                <span class="block text-[10px] font-bold text-gray-400 uppercase tracking-tighter mb-2">Sent Bytes</span>
+                                <code class="text-sm font-mono text-charcoal-500 dark:text-charcoal-200 break-all bg-gray-100 dark:bg-charcoal-900 px-3 py-2 rounded-xl block border border-gray-200 dark:border-charcoal-600">{req.sentbytes || 'N/A'}</code>
+                             </div>
+                             <div>
+                                <span class="block text-[10px] font-bold text-gray-400 uppercase tracking-tighter mb-2">Reply Bytes</span>
+                                <code class="text-sm font-mono text-tomato-500 break-all bg-tomato-50 dark:bg-tomato-900/20 px-3 py-2 rounded-xl block border border-tomato-100 dark:border-tomato-500/30">{req.replybytes || 'N/A'}</code>
+                             </div>
+                          </div>
+                          
+                          {req.receivebyte_dataitems && Object.keys(req.receivebyte_dataitems).length > 0 && (
+                             <div class="mt-6 pt-4 border-t border-gray-100 dark:border-charcoal-700">
+                               <span class="block text-[10px] font-bold text-gray-400 uppercase tracking-tighter mb-3">Data Items</span>
+                               <div class="flex flex-wrap gap-2">
+                                 {Object.keys(req.receivebyte_dataitems).map(key => (
+                                    <span class="text-xs px-2.5 py-1 rounded bg-gray-100 dark:bg-charcoal-700 text-gray-600 dark:text-gray-300 font-medium">{key}</span>
+                                 ))}
+                               </div>
+                             </div>
+                          )}
+                       </div>
                     </div>
-                    <span class="text-[10px] font-bold text-charcoal-400 uppercase tracking-widest ml-4">I/O Sequence Data</span>
-                 </div>
-                 <div class="p-6">
-                    <pre class="font-mono text-xs text-negroni-400 leading-relaxed overflow-x-auto whitespace-pre-wrap">{JSON.stringify(data.requests, null, 2)}</pre>
-                 </div>
+                 ))}
               </div>
             </section>
           )}
@@ -185,3 +204,4 @@ const slug = file.replace('.json', '');
     </div>
   </main>
 </BaseLayout>
+

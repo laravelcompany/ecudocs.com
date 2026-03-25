@@ -18,7 +18,7 @@ const pageFiles = allEcus.slice(start, start + PAGE_SIZE);
 
 const ecus = pageFiles.map(file => {
   const content = fs.readFileSync(path.join(ECUS_DIR, file), 'utf-8');
-  return { file, slug: file, data: JSON.parse(content) };
+  return { file, slug: file.replace('.json', ''), data: JSON.parse(content) };
 });
 
 const allEcusMeta = allEcus.map(file => {
@@ -26,7 +26,7 @@ const allEcusMeta = allEcus.map(file => {
   const data = JSON.parse(content);
   return { 
     file, 
-    slug: file,
+    slug: file.replace('.json', ''),
     ecuname: data.ecuname || file.replace('.json', ''),
     protocol: data.obd?.protocol || '',
     baudrate: data.obd?.baudrate || ''
@@ -71,9 +71,9 @@ const allEcusMeta = allEcus.map(file => {
     <!-- ECU Grid -->
     <div class="container mx-auto px-4 py-12">
       <div id="ecuGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {ecus.map(({ file, data }) => (
+        {ecus.map(({ slug, file, data }) => (
           <a 
-            href={`/ecu/${file}`} 
+            href={`/ecu/${slug}`} 
             class="group bg-white dark:bg-charcoal-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-charcoal-700 hover:shadow-xl hover:-translate-y-1 transition-all"
             data-search={(`${data.ecuname || file.replace('.json', '')} ${data.obd?.protocol || ''} ${data.obd?.baudrate || ''}`).toLowerCase()}
           >
@@ -147,7 +147,7 @@ const allEcusMeta = allEcus.map(file => {
       }
 
       ecuGrid.innerHTML = pageEcus.map(ecu => `
-        <a href="/ecu/${ecu.file}" class="group bg-white dark:bg-charcoal-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-charcoal-700 hover:shadow-xl hover:-translate-y-1 transition-all">
+        <a href="/ecu/${ecu.slug}" class="group bg-white dark:bg-charcoal-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-charcoal-700 hover:shadow-xl hover:-translate-y-1 transition-all">
           <div class="mb-4">
             <span class="text-[10px] font-black uppercase tracking-widest text-tomato-500 mb-1 block">Hardware Config</span>
             <h3 class="text-lg font-black text-gray-900 dark:text-white group-hover:text-tomato-500 transition-colors">${ecu.ecuname}</h3>
