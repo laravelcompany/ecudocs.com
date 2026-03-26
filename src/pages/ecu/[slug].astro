@@ -25,7 +25,11 @@ const data = JSON.parse(content);
 const slug = file.replace('.json', '');
 ---
 
-<BaseLayout title={`${data.ecuname || slug} Technical Specifications | EcuDocs.com`}>
+<BaseLayout
+  title={`${data.ecuname || slug} Technical Specifications | EcuDocs.com`}
+  description={`View detailed technical specifications for ${data.ecuname || slug}. Includes OBD configuration, protocols, and hardware parameters.`}
+  keywords={`${data.ecuname || slug}, ECU specs, OBD protocol, ${data.obd?.protocol || ''}, hardware configuration`}
+>
   <main class="min-h-screen bg-gray-50 dark:bg-charcoal-900 pb-20">
     <!-- ECU Detail Hero -->
     <header class="bg-charcoal-500 py-12 text-white overflow-hidden relative">

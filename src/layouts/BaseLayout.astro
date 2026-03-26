@@ -2,11 +2,36 @@
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/global/Footer.astro";
 import Menu from "../components/global/Menu.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  keywords?: string;
+  canonicalUrl?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+}
+
+const {
+  title,
+  description = "We provide the largest database of hardware ECU information and documentation for automotive professionals.",
+  keywords = "Hardware ecu, documentation, database, e-bikes, e-scootes, car ecu, trucks ecu database, ecu database, ecu motorbikes",
+  canonicalUrl,
+  ogTitle,
+  ogDescription,
+} = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead />
+    <BaseHead
+      title={title}
+      description={description}
+      keywords={keywords}
+      canonicalUrl={canonicalUrl}
+      ogTitle={ogTitle}
+      ogDescription={ogDescription}
+    />
   </head>
 
   <body>

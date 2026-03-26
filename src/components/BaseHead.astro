@@ -1,17 +1,37 @@
 ---
 import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  canonicalUrl?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+}
+
+const {
+  title,
+  description,
+  keywords = "Hardware ecu, documentation, database, e-bikes, e-scootes, car ecu, trucks ecu database, ecu database, ecu motorbikes",
+  canonicalUrl = "https://ecudocs.com/",
+  ogTitle,
+  ogDescription,
+} = Astro.props;
+
+const siteUrl = "https://ecudocs.com/";
+const fullTitle = title.includes("EcuDocs") ? title : `${title} | EcuDocs.com`;
+const canonical = canonicalUrl.startsWith("http") ? canonicalUrl : `${siteUrl}${canonicalUrl.replace(/^\//, "")}`;
+const ogTitleText = ogTitle || fullTitle;
+const ogDescText = ogDescription || description;
 ---
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Basic Meta Tags -->
-<title>Hardware Ecu Documentation</title>
-<meta
-  name="description"
-  content="We provide the largest database of hardware ecu information and documentation."
-/>
-<meta name="keywords" content="Hardware ecu, documentation, database, e-bikes, e-scootes, car ecu, trucks ecu database, ecu database , ecu motorbikes" />
-<meta name="author" content="Laravelc Company" />
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content="EcuDocs.com" />
 
 <!-- Favicons -->
 <link rel="icon" href="https://i.imgur.com/GQePUq0.png" sizes="any" />
@@ -29,16 +49,13 @@ import '../styles/global.css';
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://ecudocs.com/" />
-<meta property="og:title" content="Hardware ecu documentation for developers, tinkers, and makers" />
-<meta
-  property="og:description"
-  content="Hardware ecu friendly documentation for developers, tinkers, and makers"
-/>
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={ogTitleText} />
+<meta property="og:description" content={ogDescText} />
 
 
 <!-- Canonical URL -->
-<link rel="canonical" href="https://ecudocs.com/" />
+<link rel="canonical" href={canonical} />
 
 <!-- Additional SEO -->
 <meta name="robots" content="index, follow" />
