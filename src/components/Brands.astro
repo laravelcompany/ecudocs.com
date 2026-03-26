@@ -7,8 +7,22 @@ export interface Props {
 
 // Import your brands data
 import brandsData from "../data/brands.json";
+import * as fs from "node:fs";
+import * as path from "node:path";
 
 const { limit, className = "" } = Astro.props;
+
+function getBrandData(brandSlug: string) {
+    const brandJsonPath = path.join(process.cwd(), "src", "data", brandSlug, "brand.json");
+    if (fs.existsSync(brandJsonPath)) {
+        try {
+            return JSON.parse(fs.readFileSync(brandJsonPath, "utf-8"));
+        } catch {
+            return null;
+        }
+    }
+    return null;
+}
 
 // Process the brands data
 const allBrands = brandsData.map((row) => {
@@ -21,6 +35,8 @@ const allBrands = brandsData.map((row) => {
         .replace(/--+/g, "-")
         .replace(/^-|-$/g, "");
 
+    const brandData = getBrandData(slug);
+
     return { 
         id, 
         name, 
@@ -28,7 +44,10 @@ const allBrands = brandsData.map((row) => {
         logo: `/images/brands/${slug}.jpg`,
         url,
         created_at, 
-        updated_at 
+        updated_at,
+        description: brandData?.description || "",
+        productionModels: brandData?.productionModels || 0,
+        discontinuedModels: brandData?.discontinuedModels || 0
     };
 });
 
@@ -40,7 +59,7 @@ const brands = limit ? allBrands.slice(0, limit) : allBrands;
         <div class="break-inside-avoid mb-4">
             <a
                 href={`/automobiles/brands/${brand.slug}`}
-                class="block p-4 bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition-shadow"
+                class="block p-4 bg-white dark:bg-charcoal-800 border border-gray-200 dark:border-charcoal-700 rounded-lg shadow hover:shadow-md dark:hover:shadow-xl transition-shadow"
             >
                 {brand.logo && (
                     <img
@@ -50,8 +69,19 @@ const brands = limit ? allBrands.slice(0, limit) : allBrands;
                         loading="lazy"
                     />
                 )}
-                <h3 class="font-semibold text-gray-900 mb-1">{brand.name}</h3>
-                <span class="text-sm text-blue-600">View ECU Docs</span>
+                <h3 class="font-semibold text-gray-900 dark:text-white mb-1">{brand.name}</h3>
+                {brand.description && (
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3 line-clamp-2">{brand.description}</p>
+                )}
+                <div class="flex items-center gap-3 text-xs text-gray-400 dark:text-gray-500 mb-3">
+                    {brand.productionModels > 0 && (
+                        <span><span class="font-semibold text-green-500">{brand.productionModels}</span> Production</span>
+                    )}
+                    {brand.discontinuedModels > 0 && (
+                        <span><span class="font-semibold text-gray-500">{brand.discontinuedModels}</span> Discontinued</span>
+                    )}
+                </div>
+                <span class="text-sm text-blue-600 dark:text-tomato-500">View ECU Docs</span>
             </a>
         </div>
     ))}

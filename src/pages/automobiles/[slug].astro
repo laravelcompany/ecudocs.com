@@ -1,0 +1,128 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import brandsData from '../../data/brands.json';
+
+export function getStaticPaths() {
+  const paths = [];
+
+  brandsData.forEach((brand) => {
+    const [id, uuid, url, name, imageUrl, desc, createdAt, updatedAt] = brand;
+    const brandSlug = name
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w-]/g, '')
+      .replace(/--+/g, '-')
+      .replace(/^-|-$/g, '');
+
+    const modelsPath = path.join(process.cwd(), 'src', 'data', brandSlug, 'models.json');
+    if (fs.existsSync(modelsPath)) {
+      try {
+        const models = JSON.parse(fs.readFileSync(modelsPath, 'utf-8'));
+        models.forEach((model) => {
+          const modelSlug = model.slug || model.id;
+          const fullSlug = `${brandSlug}-${modelSlug}`;
+          
+          paths.push({
+            params: { slug: fullSlug },
+            props: {
+              brandSlug,
+              brandName: name,
+              model
+            }
+          });
+        });
+      } catch (e) {
+        console.error(`Error loading models for ${brandSlug}:`, e);
+      }
+    }
+  });
+
+  return paths;
+}
+
+const { slug } = Astro.params;
+const { brandSlug, brandName, model } = Astro.props;
+
+const brandLogo = `/images/brands/${brandSlug}.jpg`;
+---
+
+<BaseLayout
+  title={`${model.name} ECU Documentation | EcuDocs.com`}
+  description={`Access comprehensive ECU documentation for the ${model.name}. Detailed hardware specifications, wiring diagrams, and technical information for automotive professionals.`}
+  keywords={`${model.name} ECU, ${brandName} ECU documentation, ${model.name} specifications, ${brandName} wiring diagrams`}
+>
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <header class="relative overflow-hidden bg-charcoal-500 py-16 text-white sm:py-24">
+      <div class="absolute inset-0 opacity-10">
+        <svg class="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M0 100 L100 0 L100 100 Z" fill="currentColor"></path>
+        </svg>
+      </div>
+      
+      <div class="container mx-auto px-4 relative z-10">
+        <nav class="mb-8 flex text-sm font-medium text-charcoal-200" aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-2">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li><span class="px-2">/</span></li>
+            <li><a href="/automobiles/brands" class="hover:text-white transition-colors">Brands</a></li>
+            <li><span class="px-2">/</span></li>
+            <li><a href={`/automobiles/brands/${brandSlug}`} class="hover:text-white transition-colors">{brandName}</a></li>
+            <li><span class="px-2">/</span></li>
+            <li class="text-white" aria-current="page">{model.name}</li>
+          </ol>
+        </nav>
+
+        <div class="flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left gap-8">
+          <div class="relative h-32 w-32 shrink-0 rounded-2xl bg-white p-4 shadow-xl sm:h-40 sm:w-40">
+            <img 
+              src={brandLogo} 
+              alt={`${brandName} logo`} 
+              class="h-full w-full object-contain"
+              onerror="this.src='https://i.imgur.com/GQePUq0.png'"
+            />
+          </div>
+          <div class="max-w-3xl">
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-4">
+              {model.name}
+            </h1>
+            <p class="text-lg text-charcoal-100 mb-6 max-w-2xl">
+              {model.description || `Complete ECU documentation and technical specifications for the ${model.name}.`}
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center sm:justify-start">
+              <div class="inline-flex items-center rounded-lg bg-charcoal-700/50 backdrop-blur px-6 py-3 text-sm font-medium border border-charcoal-400">
+                <span class="mr-2 h-2 w-2 rounded-full bg-green-400 animate-pulse"></span>
+                ECU Documentation Available
+              </div>
+              {model.year_started && (
+                <div class="inline-flex items-center rounded-lg bg-charcoal-700/50 backdrop-blur px-6 py-3 text-sm font-medium border border-charcoal-400">
+                  {model.year_started}{model.year_ended ? ` - ${model.year_ended}` : ' - Present'}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+      <div class="max-w-4xl mx-auto">
+        <div class="rounded-3xl bg-white dark:bg-gray-800 p-8 md:p-12 shadow-sm border border-gray-100 dark:border-gray-700">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">ECU Documentation</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-8">
+            Detailed ECU hardware specifications, wiring diagrams, and technical documentation for the {model.name} is being processed and will be available soon.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href={`/automobiles/brands/${brandSlug}`} class="inline-flex items-center justify-center rounded-xl bg-tomato-500 px-8 py-3 text-sm font-bold text-white hover:bg-tomato-600 transition-colors shadow-lg">
+              View All {brandName} Models
+            </a>
+            <a href="/contact" class="inline-flex items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-700 px-8 py-3 text-sm font-bold text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+              Request This Documentation
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</BaseLayout>
