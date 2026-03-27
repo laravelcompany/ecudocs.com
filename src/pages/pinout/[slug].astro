@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+
+const PINOUT_DIR = path.join(process.cwd(), 'src/content/pinout');
+
+export function getStaticPaths() {
+  const PINOUT_DIR = path.join(process.cwd(), 'src/content/pinout');
+
+  function getAllPinouts() {
+    const folders = [];
+    
+    if (!fs.existsSync(PINOUT_DIR)) {
+      return folders;
+    }
+    
+    const manufacturers = fs.readdirSync(PINOUT_DIR);
+    
+    for (const manufacturer of manufacturers) {
+      const manufacturerPath = path.join(PINOUT_DIR, manufacturer);
+      const stat = fs.statSync(manufacturerPath);
+      
+      if (!stat.isDirectory()) continue;
+      
+      const models = fs.readdirSync(manufacturerPath);
+      
+      for (const model of models) {
+        const modelPath = path.join(manufacturerPath, model);
+        const modelStat = fs.statSync(modelPath);
+        
+        if (!modelStat.isDirectory()) continue;
+        
+        const slug = model.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        
+        folders.push({
+          manufacturer,
+          model,
+          slug,
+          fullPath: modelPath
+        });
+      }
+    }
+    
+    return folders;
+  }
+
+  const allPinouts = getAllPinouts();
+  return allPinouts.map(pinout => ({
+    params: { slug: pinout.slug },
+    props: { pinout }
+  }));
+}
+
+const { pinout } = Astro.props;
+
+const files = fs.readdirSync(pinout.fullPath);
+const images = files.filter(f => /\.(jpg|jpeg|png|gif|webp)$/i.test(f));
+const otherFiles = files.filter(f => !/\.(jpg|jpeg|png|gif|webp)$/i.test(f));
+
+const imageUrls = images.map(img => `/content/pinout/${pinout.manufacturer}/${pinout.model}/${img}`);
+---
+
+<BaseLayout
+  title={`${pinout.model} Pinout | EcuDocs.com`}
+  description={`View pinout diagram and images for ${pinout.model}. ECU terminal configuration and wiring details.`}
+  keywords={`${pinout.model}, pinout, ECU pinout, wiring diagram, ${pinout.manufacturer}`}
+>
+  <main class="min-h-screen bg-gray-50 dark:bg-charcoal-900 pb-20">
+    <header class="bg-charcoal-500 py-12 text-white overflow-hidden relative">
+      <div class="absolute right-0 top-0 h-32 w-32 bg-tomato-500/20 blur-3xl rounded-full translate-x-12 -translate-y-12"></div>
+      
+      <div class="container mx-auto px-4 relative z-10">
+        <nav class="mb-6 flex text-xs font-bold uppercase tracking-widest text-charcoal-300" aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-2">
+            <li><a href="/pinout" class="hover:text-white transition-colors">Pinout Database</a></li>
+            <li><span class="px-2">/</span></li>
+            <li class="text-white" aria-current="page">{pinout.model}</li>
+          </ol>
+        </nav>
+
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <span class="inline-block px-3 py-1 rounded-full bg-tomato-500/20 text-tomato-400 text-[10px] font-black uppercase tracking-widest mb-4 border border-tomato-500/30">
+              Pinout Diagram
+            </span>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight">{pinout.model}</h1>
+            <p class="text-charcoal-100 mt-2 font-medium opacity-80">{pinout.manufacturer} ECU Pin Configuration</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-12">
+      {images.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {imageUrls.map((url, index) => (
+            <div class="bg-white dark:bg-charcoal-800 rounded-2xl shadow-sm border border-gray-100 dark:border-charcoal-700 overflow-hidden">
+              <figure class="p-4">
+                <img 
+                  src={url} 
+                  alt={`${pinout.model} pinout diagram ${index + 1}`}
+                  class="w-full h-auto rounded-xl"
+                />
+                <figcaption class="mt-4 text-sm text-gray-500 dark:text-charcoal-300 text-center">
+                  {index + 1} of {images.length}
+                </figcaption>
+              </figure>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="bg-white dark:bg-charcoal-800 rounded-2xl shadow-sm border border-gray-100 dark:border-charcoal-700 p-12 text-center">
+          <p class="text-gray-500 dark:text-charcoal-300">No images available for this ECU model.</p>
+        </div>
+      )}
+
+      {otherFiles.length > 0 && (
+        <div class="mt-12">
+          <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+            <span class="h-8 w-1 bg-tomato-500 rounded-full"></span>
+            Additional Files
+          </h2>
+          <div class="bg-white dark:bg-charcoal-800 rounded-2xl shadow-sm border border-gray-100 dark:border-charcoal-700 overflow-hidden">
+            <ul class="divide-y divide-gray-100 dark:divide-charcoal-700">
+              {otherFiles.map(file => (
+                <li class="px-6 py-4">
+                  <span class="text-sm font-medium text-gray-700 dark:text-gray-200">{file}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+    </div>
+  </main>
+</BaseLayout>

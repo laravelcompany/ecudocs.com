@@ -183,6 +183,14 @@ declare module 'astro:content' {
   rendered?: RenderedContent;
   filePath?: string;
 }>;
+"pinout": Record<string, {
+  id: string;
+  body?: string;
+  collection: "pinout";
+  data: any;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
 
 	};
 
