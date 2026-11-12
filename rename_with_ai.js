@@ -89,7 +89,7 @@ async function extractPdfText(filePath, maxPages = 3) {
 
 async function generateAiFilename(filePath, metadata) {
   const ollamaUrl = getEnv('OLLAMA_URL', 'http://ai.izdrail.com');
-  const model = getEnv('OLLAMA_MODEL', 'mistral:7b');
+  const model = getEnv('OLLAMA_MODEL', 'qwen3:4b');
   
   if (!ollamaUrl) {
     console.log('  [AI] No OLLAMA_URL found, skipping AI generation');

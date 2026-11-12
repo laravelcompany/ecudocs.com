@@ -8,7 +8,7 @@ This script renames files in a directory with intelligent cleaning. It includes 
 
 - **Filename Cleaning**: Removes URL-encoded characters, strips prefixes/suffixes, normalizes whitespace
 - **PDF Metadata Extraction**: Uses `pdf-lib` to extract title, author, subject, keywords from PDFs
-- **AI-Powered Filenames**: Uses Ollama (mistral:7b) to generate descriptive filenames when PDF title is missing
+- **AI-Powered Filenames**: Uses Ollama (qwen3:4b) to generate descriptive filenames when PDF title is missing
 - **Duplicate Handling**: Automatically handles duplicate filenames with numeric suffixes
 - **Dry-Run Mode**: Preview changes without actually renaming files
 
@@ -28,7 +28,7 @@ npm install
 2. (Optional) Customize Ollama settings in `.env`:
    ```
    OLLAMA_URL=http://ai.izdrail.com
-   OLLAMA_MODEL=mistral:7b
+   OLLAMA_MODEL=qwen3:4b
    ```
    - Default uses the local Ollama server at `ai.izdrail.com`
    - **Note**: Without a running Ollama server, PDFs without titles will fall back to the original filename cleaning logic
