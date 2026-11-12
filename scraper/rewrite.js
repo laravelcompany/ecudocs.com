@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const CONFIG = {
   OLLAMA_BASE_URL: process.env.OLLAMA_BASE_URL || 'https://ai.izdrail.com',
-  MODEL: process.env.MODEL || 'mistral:7b',
+  MODEL: process.env.MODEL || 'qwen3:4b',
   MAX_RETRIES: parseInt(process.env.MAX_RETRIES) || 3,
   PRICE_INCREMENT: parseInt(process.env.PRICE_INCREMENT) || 100,
   TEMPERATURE: parseFloat(process.env.TEMPERATURE) || 0.3,

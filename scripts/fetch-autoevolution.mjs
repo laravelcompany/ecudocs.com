@@ -30,7 +30,7 @@ async function generateWithAI(prompt, retries = 3) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'mistral:7b',
+          model: 'qwen3:4b',
           prompt,
           stream: false,
           options: {
