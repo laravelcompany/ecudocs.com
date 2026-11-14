@@ -29,6 +29,6 @@ export default {
         return new Response("Blog temporarily unavailable", { status: 502 });
       }
     }
-    return env.ASSETS.fetch(request);
+    return env.STATIC.fetch(request);
   },
 };
