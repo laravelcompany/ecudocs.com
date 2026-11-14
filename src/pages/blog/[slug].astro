@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { marked } from 'marked';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+
+const avatarExists = (src?: string) =>
+  !!src && fs.existsSync(path.join(process.cwd(), 'public', src.replace(/^\//, '')));
+
+export async function getStaticPaths() {
+  const posts = await getCollection('qa');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const html = marked.parse(post.data.content);
+const description = (post.data.excerpt ?? post.data.content)
+  .replace(/^#+\s+/gm, '')
+  .replace(/[*_`>\[\]]/g, '')
+  .replace(/\s+/g, ' ')
+  .trim()
+  .slice(0, 160);
+---
+
+<BaseLayout title={post.data.title} description={description}>
+  <article class="bg-white dark:bg-charcoal-900 py-16">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-charcoal-400 mb-4">
+        <a href="/blog" class="text-tomato-500 hover:underline">Blog</a> &middot; {post.data.date.toISOString().slice(0, 10)}
+      </p>
+      <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-gray-900 dark:text-white leading-tight mb-8">
+        {post.data.title}
+      </h1>
+      <div class="flex items-center gap-3 mb-10">
+        {avatarExists(post.data.authorAvatar) && (
+          <img src={post.data.authorAvatar} alt={post.data.author} class="h-10 w-10 rounded-full object-cover" loading="lazy" />
+        )}
+        <div>
+          <p class="text-sm font-bold text-gray-900 dark:text-white">{post.data.author}</p>
+          {post.data.authorRole && <p class="text-xs text-charcoal-400">{post.data.authorRole}</p>}
+        </div>
+      </div>
+      <div class="prose prose-lg dark:prose-invert max-w-none" set:html={html} />
+      {post.data.tags.length > 0 && (
+        <div class="mt-10 flex flex-wrap gap-2">
+          {post.data.tags.map((tag: string) => (
+            <span class="rounded-full bg-gray-100 dark:bg-charcoal-800 px-3 py-1 text-xs font-bold text-charcoal-500 dark:text-charcoal-300">{tag}</span>
+          ))}
+        </div>
+      )}
+    </div>
+  </article>
+</BaseLayout>

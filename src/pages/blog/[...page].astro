@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import type { GetStaticPathsOptions, Page } from 'astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = (await getCollection('qa')).sort((a, b) => {
+    const d = b.data.date.getTime() - a.data.date.getTime();
+    return d !== 0 ? d : b.id.localeCompare(a.id);
+  });
+  return paginate(posts, { pageSize: 24 });
+}
+
+interface Props {
+  page: Page<any>;
+}
+
+const { page } = Astro.props;
+const plain = (s?: string) =>
+  (s ?? '')
+    .replace(/^#+\s+/gm, '')
+    .replace(/[*_`>\[\]]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+---
+
+<BaseLayout
+  title={page.currentPage === 1 ? 'Blog - ECU questions and answers' : `Blog - page ${page.currentPage}`}
+  description="Practical ECU, wiring, diagnostics and automotive electronics questions answered by the ECUDocs team."
+>
+  <section class="bg-gray-50 dark:bg-charcoal-900 py-16">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h1 class="text-4xl font-black tracking-tight text-gray-900 dark:text-white mb-2">
+        ECU<span class="text-tomato-500 italic">Docs</span> Blog
+      </h1>
+      <p class="text-gray-600 dark:text-charcoal-300 mb-10">
+        {page.total} questions and answers on ECU hardware, wiring, diagnostics and automotive electronics.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {page.data.map((post: any) => (
+          <a href={`/blog/${post.id}`} class="block group rounded-3xl bg-white dark:bg-charcoal-800 border border-gray-100 dark:border-charcoal-700 p-6 shadow-sm hover:shadow-lg transition-all">
+            <h2 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-tomato-500 transition-colors leading-snug">
+              {post.data.title}
+            </h2>
+            <p class="mt-3 text-sm text-gray-600 dark:text-charcoal-300 line-clamp-3">
+              {plain(post.data.excerpt).slice(0, 180)}
+            </p>
+            <p class="mt-4 text-xs font-bold uppercase tracking-widest text-charcoal-400">
+              {post.data.date.toISOString().slice(0, 10)}
+            </p>
+          </a>
+        ))}
+      </div>
+
+      <nav class="mt-12 flex items-center justify-between" aria-label="Blog pages">
+        {page.url.prev ? (
+          <a href={page.url.prev} class="font-bold text-tomato-500 hover:underline">&larr; Newer posts</a>
+        ) : <span />}
+        <span class="text-sm text-charcoal-400 font-medium">Page {page.currentPage} of {page.lastPage}</span>
+        {page.url.next ? (
+          <a href={page.url.next} class="font-bold text-tomato-500 hover:underline">Older posts &rarr;</a>
+        ) : <span />}
+      </nav>
+    </div>
+  </section>
+</BaseLayout>
