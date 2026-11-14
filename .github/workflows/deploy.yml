@@ -87,7 +87,7 @@ jobs:
           NS_ID=$(node -e "console.log(JSON.parse(require('fs').readFileSync('wrangler.worker.jsonc','utf8')).kv_namespaces[0].id)")
           for f in kv-bulk/chunk-*.json; do
             echo "uploading $f"
-            npx wrangler@4 kv bulk put --namespace-id "$NS_ID" "$f"
+            npx wrangler@4 kv bulk put --remote --namespace-id "$NS_ID" "$f"
           done
 
       - name: Deploy Worker (serves ecudocs.com)
