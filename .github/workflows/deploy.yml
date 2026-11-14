@@ -44,6 +44,12 @@ jobs:
       - name: Test blog section
         run: npm run test:blog
 
+      - name: Extract blog posts for KV
+        run: node scripts/extract-blog-posts.mjs
+
+      - name: Test KV bundle
+        run: npm run test:kv
+
       - name: Deploy to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -55,8 +61,36 @@ jobs:
             --commit-hash "${{ github.sha }}" \
             --commit-message "$(git log -1 --pretty=%s)"
 
+      - name: Prepare KV namespace
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          API="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/storage/kv/namespaces"
+          AUTH="Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+          NS_ID=$(curl -sf -H "$AUTH" "$API?per_page=100" | jq -r '.result[] | select(.title=="ecudocs-com-BLOG_KV") | .id' | head -1)
+          if [ -z "$NS_ID" ]; then
+            NS_ID=$(curl -sf -X POST -H "$AUTH" -H 'Content-Type: application/json' \
+              -d '{"title":"ecudocs-com-BLOG_KV"}' "$API" | jq -r '.result.id')
+          fi
+          test -n "$NS_ID"
+          echo "namespace: $NS_ID"
+          NS_ID="$NS_ID" node -e "const fs=require('fs');const p='wrangler.jsonc';fs.writeFileSync(p,fs.readFileSync(p,'utf8').replace('BLOG_KV_NAMESPACE_ID',process.env.NS_ID))"
+
+      - name: Upload blog posts to KV
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          NS_ID=$(node -e "console.log(JSON.parse(require('fs').readFileSync('wrangler.jsonc','utf8')).kv_namespaces[0].id)")
+          for f in kv-bulk/chunk-*.json; do
+            echo "uploading $f"
+            npx wrangler@4 kv bulk put --namespace-id "$NS_ID" "$f"
+          done
+
       - name: Deploy Worker (serves ecudocs.com)
-        continue-on-error: true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
