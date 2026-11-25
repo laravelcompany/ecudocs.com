@@ -41,3 +41,22 @@ test('category pages have ItemList JSON-LD', () => {
 test('unknown item has no page (404)', () => {
   assert.ok(!existsSync(join(dist, 'deals/nope/000/index.html')));
 });
+
+
+test('deal pages keep shared UX, breadcrumbs and accessible filters', () => {
+  const landing = read('deals/index.html');
+  assert.match(landing, /class="deals-page"/);
+  assert.match(landing, /aria-label="Breadcrumb"/);
+  assert.match(landing, /class="deals-category-card"/);
+  assert.match(landing, /id="cat-no-results"/);
+  for (const c of new Set(products.map((p) => p.category))) {
+    const html = read(`deals/${c}/index.html`);
+    for (const id of ['deal-q','deal-min','deal-max','deal-reset','deal-results','deal-no-results']) {
+      assert.ok(html.includes(`id="${id}"`), `missing ${id}`);
+    }
+    assert.match(html, /aria-label="Breadcrumb"/);
+    assert.match(html, /aria-current="page"/);
+    assert.match(html, /aria-live="polite"/);
+    assert.match(html, /class="deals-product-grid"/);
+  }
+});

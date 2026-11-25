@@ -1,19 +1,18 @@
-<form class="price-filter" onsubmit="return false" style="display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0">
-  <input id="deal-q" type="search" placeholder="Search keyword" aria-label="Search keyword" />
-  <input id="deal-min" type="number" min="0" step="0.01" placeholder="Min £" aria-label="Minimum price" />
-  <input id="deal-max" type="number" min="0" step="0.01" placeholder="Max £" aria-label="Maximum price" />
-</form>
+<form class="price-filter" onsubmit="return false" aria-label="Filter listings"><label class="deals-label deals-search-label" for="deal-q">Search listings<input class="deals-input" id="deal-q" type="search" placeholder="Search by tool or keyword" aria-label="Search keyword" /></label><label class="deals-label" for="deal-min">Min price (£)<input class="deals-input" id="deal-min" type="number" min="0" step="0.01" placeholder="No minimum" aria-label="Minimum price" /></label><label class="deals-label" for="deal-max">Max price (£)<input class="deals-input" id="deal-max" type="number" min="0" step="0.01" placeholder="No maximum" aria-label="Maximum price" /></label><button class="deals-reset" id="deal-reset" type="button">Reset filters</button></form>
 <script is:inline>
   (function () {
     var q = document.getElementById('deal-q'), mn = document.getElementById('deal-min'), mx = document.getElementById('deal-max');
     function run() {
       var t = q.value.toLowerCase(), lo = parseFloat(mn.value), hi = parseFloat(mx.value);
-      document.querySelectorAll('.deal-card').forEach(function (c) {
+      var count=0; document.querySelectorAll('.deal-card').forEach(function (c) {
         var p = parseFloat(c.dataset.price);
         var ok = (!t || c.dataset.title.indexOf(t) > -1) && (isNaN(lo) || p >= lo) && (isNaN(hi) || p <= hi);
-        c.style.display = ok ? '' : 'none';
+        c.hidden = !ok; if (ok) count++;
       });
+      document.getElementById('deal-results').textContent = count + ' listings shown';
+      document.getElementById('deal-no-results').hidden = count !== 0;
     }
+    document.getElementById('deal-reset').addEventListener('click', function(){ q.value='';mn.value='';mx.value='';run(); });
     [q, mn, mx].forEach(function (e) { e.addEventListener('input', run); });
   })();
 </script>

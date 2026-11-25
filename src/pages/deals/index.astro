@@ -1,26 +1,17 @@
 ---
+import "../../styles/deals.css";
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AffiliateDisclosure from '../../components/deals/AffiliateDisclosure.astro';
 import EmptyState from '../../components/deals/EmptyState.astro';
 import { categories } from '../../lib/deals.js';
 const cats = categories();
+const total = cats.reduce((n,c) => n+c.items.length,0);
 const canonical = 'https://ecudocs.com/deals';
 ---
 <BaseLayout title="ECU tools and parts deals | ecudocs" description="ECU programmers, scanners and tools found on eBay UK, grouped by category." canonicalUrl={canonical}>
-  <main class="container" style="max-width:960px;margin:0 auto;padding:1rem">
-    <h1 style="font-size:2rem;font-weight:700;line-height:1.2;margin:.5rem 0">Deals</h1>
-    <AffiliateDisclosure />
-    <input id="cat-q" type="search" placeholder="Filter categories" aria-label="Filter categories" />
-    {cats.length === 0 ? <EmptyState /> : (
-      <ul id="cat-list">
-        {cats.map((c) => <li data-name={c.name.toLowerCase()}><a href={`/deals/${c.slug}`}>{c.name}</a> ({c.items.length})</li>)}
-      </ul>
-    )}
-  </main>
-  <script is:inline>
-    var i = document.getElementById('cat-q');
-    if (i) i.addEventListener('input', function () {
-      document.querySelectorAll('#cat-list li').forEach(function (l) { l.style.display = l.dataset.name.indexOf(i.value.toLowerCase()) > -1 ? '' : 'none'; });
-    });
-  </script>
+<main class="deals-page"><header class="deals-hero"><div class="deals-wrap"><nav class="deals-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Deals</span></nav><p class="deals-eyebrow">Tools for the workshop</p><h1 class="deals-title">The right tools.<br/><em>A clearer choice.</em></h1><p class="deals-intro">Browse ECU programmers, diagnostic scanners and workshop accessories from eBay UK. Find your category, compare listings and check the details before you buy.</p><p class="deals-stat">{total} listings <span aria-hidden="true">·</span> {cats.length} categories</p></div></header>
+<div class="deals-wrap deals-content"><AffiliateDisclosure /><section aria-labelledby="browse-heading"><div class="deals-section-head"><div><h2 id="browse-heading">Browse by category</h2><p>Start with the tool you need.</p></div><label class="deals-label" for="cat-q">Find a category<input class="deals-input" id="cat-q" type="search" placeholder="Search categories" aria-label="Filter categories" /></label></div>
+{cats.length === 0 ? <EmptyState /> : <ul id="cat-list" class="deals-category-grid">{cats.map((c) => <li data-name={c.name.toLowerCase()}><a class="deals-category-card" href={`/deals/${c.slug}`}><span class="deals-category-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M8 6V4h8v2M3 12h18M10 11v4h4v-4"/></svg></span><h3>{c.name}</h3><p>Compare available listings on eBay UK.</p><div class="deals-card-bottom"><span>Explore listings →</span><span class="deals-count">{c.items.length} listings</span></div></a></li>)}</ul>}
+<p id="cat-no-results" class="deals-empty" role="status" hidden>No categories match your search. Try another keyword.</p></section></div></main>
+<script is:inline>var i=document.getElementById('cat-q');if(i)i.addEventListener('input',function(){var count=0;document.querySelectorAll('#cat-list li').forEach(function(l){var ok=l.dataset.name.indexOf(i.value.toLowerCase())>-1;l.hidden=!ok;if(ok)count++;});document.getElementById('cat-no-results').hidden=count!==0;});</script>
 </BaseLayout>

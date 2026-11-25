@@ -1,7 +1,5 @@
 ---
 import { categories } from '../../lib/deals.js';
+const { current } = Astro.props;
 ---
-<nav aria-label="Deal categories" style="display:flex;gap:.75rem;flex-wrap:wrap;margin:1rem 0">
-  <a href="/deals">All deals</a>
-  {categories().map((c) => <a href={`/deals/${c.slug}`}>{c.name} ({c.items.length})</a>)}
-</nav>
+<nav class="deals-categories" aria-label="Deal categories"><a href="/deals">All deals</a>{categories().map((c) => <a href={`/deals/${c.slug}`} aria-current={current === c.slug ? 'page' : undefined}>{c.name} <span>({c.items.length})</span></a>)}</nav>
