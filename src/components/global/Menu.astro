@@ -1,104 +1,37 @@
-<header class="sticky top-0 z-50">
-    <nav class="bg-white/80 dark:bg-charcoal-800/80 backdrop-blur-md border-b border-gray-100 dark:border-charcoal-700 px-4 lg:px-6 py-4">
-        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-            <a href="/" title="download ecu software" class="flex items-center group transition-transform hover:scale-105">
-                <img
-                    src="https://i.imgur.com/GQePUq0.png"
-                    class="mr-3 h-8 sm:h-10 transition-transform group-hover:rotate-12"
-                    alt="Ecu documentation"
-                />
-                <span class="self-center text-2xl font-black tracking-tight dark:text-white">
-                    ECU<span class="text-tomato-500 italic">Docs</span>
-                </span>
-            </a>
-            <div class="flex items-center lg:order-2">
-                <a
-                    href="/contact"
-                    class="text-white bg-charcoal-500 hover:bg-charcoal-600 focus:ring-4 focus:ring-charcoal-300 font-bold rounded-xl text-sm px-6 py-2.5 transition-all shadow-lg hover:shadow-charcoal-500/20"
-                >
-                    Get Support
-                </a>
-                <button
-                    data-collapse-toggle="mobile-menu-2"
-                    type="button"
-                    class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    aria-controls="mobile-menu-2"
-                    aria-expanded="false"
-                >
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                </button>
-            </div>
-            <div
-                class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-                id="mobile-menu-2"
-            >
-                <ul class="flex flex-col mt-4 font-bold lg:flex-row lg:space-x-10 lg:mt-0">
-                    <li>
-                        <a
-                            href="/"
-                            class="block py-2 pr-4 pl-3 text-gray-900 border-b border-transparent hover:text-tomato-500 lg:p-0 dark:text-white transition-colors"
-                            aria-current="page">Home</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/manufacturers"
-                            class="block py-2 pr-4 pl-3 text-gray-700 hover:text-tomato-500 lg:p-0 dark:text-gray-400 dark:hover:text-white transition-colors"
-                            >Manufacturers</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/automobiles/brands"
-                            class="block py-2 pr-4 pl-3 text-gray-700 hover:text-tomato-500 lg:p-0 dark:text-gray-400 dark:hover:text-white transition-colors"
-                            >Vehicle Brands</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/ecu"
-                            class="block py-2 pr-4 pl-3 text-gray-700 hover:text-tomato-500 lg:p-0 dark:text-gray-400 dark:hover:text-white transition-colors"
-                            >ECU Database</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/pinout"
-                            class="block py-2 pr-4 pl-3 text-gray-700 hover:text-tomato-500 lg:p-0 dark:text-gray-400 dark:hover:text-white transition-colors"
-                            >Pinouts</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/manuals"
-                            class="block py-2 pr-4 pl-3 text-gray-700 hover:text-tomato-500 lg:p-0 dark:text-gray-400 dark:hover:text-white transition-colors"
-                            >Technical Manuals</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/blog"
-                            class="block py-2 pr-4 pl-3 text-gray-700 hover:text-tomato-500 lg:p-0 dark:text-gray-400 dark:hover:text-white transition-colors"
-                            >Blog</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/deals"
-                            class="block py-2 pr-4 pl-3 text-gray-700 hover:text-tomato-500 lg:p-0 dark:text-gray-400 dark:hover:text-white transition-colors"
-                            >Deals</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/marketplace"
-                            class="block py-2 pr-4 pl-3 text-gray-700 hover:text-tomato-500 lg:p-0 dark:text-gray-400 dark:hover:text-white transition-colors"
-                            >Marketplace</a
-                        >
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+---
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const groups = [
+  { title: 'Databases', links: [ ['/manufacturers', 'Manufacturers'], ['/automobiles/brands', 'Vehicle brands'], ['/ecu', 'ECU database'] ] },
+  { title: 'Resources', links: [ ['/pinout', 'Pinouts'], ['/manuals', 'Technical manuals'], ['/blog', 'Blog'] ] },
+];
+const active = (url) => path === url || (url !== '/' && path.startsWith(url + '/'));
+---
+<header class="ecu-header">
+  <nav class="ecu-nav" aria-label="Main navigation">
+    <a class="ecu-brand" href="/" aria-label="ECUDocs home">ECU<span>Docs</span></a>
+    <div class="ecu-actions"><a href="/deals" class="ecu-deals" aria-current={active('/deals') ? 'page' : undefined}>Deals</a><a href="/contact" class="ecu-support">Get Support</a></div>
+    <details class="ecu-menu" open>
+      <summary>Menu <span aria-hidden="true">☰</span></summary>
+      <div class="ecu-menu-links">
+        <a href="/" aria-current={path === '/' ? 'page' : undefined}>Home</a>
+        {groups.map(group => <details class="ecu-group"><summary class:list={{selected: group.links.some(([url]) => active(url))}}>{group.title}<span aria-hidden="true">⌄</span></summary><ul>{group.links.map(([url, label]) => <li><a href={url} aria-current={active(url) ? 'page' : undefined}>{label}</a></li>)}</ul></details>)}
+        <a href="/marketplace" aria-current={active('/marketplace') ? 'page' : undefined}>Marketplace</a>
+      </div>
+    </details>
+  </nav>
 </header>
+<style>
+.ecu-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e5e7eb;color:#26313d}.ecu-nav{max-width:1280px;margin:auto;padding:16px 24px;display:flex;align-items:center;gap:28px}.ecu-brand{display:flex;align-items:center;gap:10px;font-size:26px;font-weight:900;text-decoration:none;color:#17202c;white-space:nowrap}.ecu-brand span{color:#e3533b;margin-left:-10px;font-style:italic}.ecu-brand img{width:36px;height:36px;object-fit:contain}.ecu-actions{order:3;margin-left:auto;display:flex;align-items:center;gap:20px;font-weight:700;white-space:nowrap}.ecu-actions a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center}.ecu-deals{color:#b53b28}.ecu-support{background:#26313d;color:white;padding:10px 18px;border-radius:10px}.ecu-menu{display:block}.ecu-menu>summary{display:none}.ecu-menu-links{display:flex!important;gap:24px;align-items:center;font-size:14px;font-weight:700}.ecu-menu-links>a{text-decoration:none;min-height:44px;display:flex;align-items:center}.ecu-group{position:relative}.ecu-group>summary{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer;list-style:none}.ecu-group>summary::-webkit-details-marker,.ecu-menu>summary::-webkit-details-marker{display:none}.ecu-group ul{position:absolute;top:100%;left:-14px;min-width:220px;padding:8px;list-style:none;margin:0;background:#fff;border:1px solid #dce0e5;border-radius:10px;box-shadow:0 12px 30px #17202c1f}.ecu-group li a{display:flex;align-items:center;min-height:44px;padding:9px 12px;border-radius:6px;text-decoration:none;white-space:nowrap}.ecu-group li a:hover{background:#f2f4f7}.ecu-nav [aria-current=page],.ecu-group .selected{color:#b53b28}.ecu-menu-links a{color:inherit}.ecu-nav a:focus-visible,.ecu-nav summary:focus-visible{outline:3px solid #cf563e;outline-offset:4px;border-radius:4px}
+@media(max-width:1000px){.ecu-nav{flex-wrap:wrap;gap:10px 20px;padding:12px 16px}.ecu-brand{font-size:23px}.ecu-actions{order:0;gap:12px}.ecu-support{font-size:13px;padding:9px 12px}.ecu-menu{width:100%;border-top:1px solid #e5e7eb;padding-top:6px}.ecu-menu>summary{display:flex;justify-content:space-between;align-items:center;min-height:44px;font-weight:700;cursor:pointer;list-style:none}.ecu-menu:not([open])>.ecu-menu-links{display:none!important}.ecu-menu-links{display:flex;flex-direction:column;align-items:stretch;gap:0;padding-bottom:8px}.ecu-menu-links>a,.ecu-group>summary{padding:8px 10px;min-height:44px}.ecu-group>summary{justify-content:space-between}.ecu-group ul{position:static;box-shadow:none;border:0;border-left:2px solid #e5e7eb;border-radius:0;margin-left:10px;padding:0 0 0 8px}.ecu-group li a{white-space:normal}.ecu-brand img{width:30px;height:30px}.ecu-actions a{font-size:13px}}
+@media(prefers-color-scheme:dark){.ecu-header,.ecu-group ul{background:#1f2732;color:#e5e7eb;border-color:#394250}.ecu-brand{color:white}.ecu-group li a:hover{background:#303b49}.ecu-deals,.ecu-nav [aria-current=page],.ecu-group .selected{color:#ff9c88}.ecu-support{background:#e5e7eb;color:#17202c}}
+</style>
+<script>
+const menu=document.querySelector('.ecu-menu');
+const groups=[...document.querySelectorAll('.ecu-group')];
+const desktop=matchMedia('(min-width:1001px)');
+menu.open=desktop.matches;
+desktop.addEventListener('change',()=>{menu.open=desktop.matches;});
+for(const group of groups) group.addEventListener('toggle',()=>{if(group.open) for(const other of groups) if(other!==group) other.open=false;});
+document.addEventListener('click',event=>{if(!event.target.closest('.ecu-group')) for(const group of groups) group.open=false;});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'){const open=groups.find(g=>g.open);if(open){open.open=false;open.querySelector('summary').focus();}else if(menu.open){menu.open=false;menu.querySelector('summary').focus();}}});
+</script>
