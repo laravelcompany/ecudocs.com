@@ -1,4 +1,4 @@
-import feed from './data/deals/products.json';
+import feed from './data/deals/products.json' with { type: 'json' };
 export function staleOfferResponse(request, now = Date.now()) {
   const path = new URL(request.url).pathname;
   const offerRoute = path === '/deals' || path.startsWith('/deals/');
