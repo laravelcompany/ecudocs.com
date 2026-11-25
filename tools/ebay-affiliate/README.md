@@ -14,5 +14,6 @@ If a run fails, the existing feed is untouched.
 
 Schedule: `.github/workflows/deals-refresh.yml` (daily 04:00 UTC, edit the cron line to change it; also runnable by hand via workflow_dispatch).
 Repo secrets needed: EBAY_CLIENT_ID, EBAY_CLIENT_SECRET, EPN_CAMPAIGN_ID.
-The refresh commits the new feed to main, which triggers the normal deploy.
+The refresh commits the new feed to main, then explicitly dispatches deploy.yml.
+GitHub token-authored pushes do not trigger another push workflow.
 Prices are shown as "at time of export". Rebuilt daily, so they are at most ~1 day old.

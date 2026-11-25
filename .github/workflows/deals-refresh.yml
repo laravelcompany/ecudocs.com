@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   refresh:
@@ -30,3 +31,8 @@ jobs:
           if git diff --cached --quiet; then echo "no change"; exit 0; fi
           git commit -m "Refresh eBay deals feed $(date -u +%F)"
           git push
+      # Pushes made with GITHUB_TOKEN do not start another push workflow.
+      - name: Deploy refreshed catalogue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main
