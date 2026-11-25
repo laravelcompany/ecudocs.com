@@ -12,7 +12,7 @@ If a run fails, the existing feed is untouched.
     python3 tools/ebay-affiliate/generate.py --dry-run  # config check
     python3 -m unittest discover tools/ebay-affiliate/tests
 
-Schedule: `.github/workflows/deals-refresh.yml` (daily 04:00 UTC, edit the cron line to change it; also runnable by hand via workflow_dispatch).
+Schedule: `.github/workflows/deals-refresh.yml` (every four hours at minute 17 UTC, edit the cron line to change it; also runnable by hand via workflow_dispatch).
 Repo secrets needed: EBAY_CLIENT_ID, EBAY_CLIENT_SECRET, EPN_CAMPAIGN_ID.
 The refresh commits the new feed to main, then explicitly dispatches deploy.yml.
 GitHub token-authored pushes do not trigger another push workflow.

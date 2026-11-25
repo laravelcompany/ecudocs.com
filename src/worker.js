@@ -1,3 +1,4 @@
+import { staleOfferResponse } from './deals-freshness.js';
 import { blogBatchKey } from "./blog-kv-hash.js";
 
 // ecudocs.com front door.
@@ -8,6 +9,7 @@ import { blogBatchKey } from "./blog-kv-hash.js";
 //   to the static assets binding (the Astro build output).
 export default {
   async fetch(request, env) {
+    const stale = staleOfferResponse(request); if (stale) return stale;
     const url = new URL(request.url);
     const m = url.pathname.match(/^\/blog\/([^\/.]+)\/?(?:index\.html)?$/);
     if (m && !/^\d+$/.test(m[1])) {

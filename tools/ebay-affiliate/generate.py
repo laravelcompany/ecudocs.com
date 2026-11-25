@@ -14,6 +14,8 @@ Env: EBAY_CLIENT_ID, EBAY_CLIENT_SECRET, EPN_CAMPAIGN_ID (required)
 Stdlib only. Usage: python generate.py [--keywords keywords.json] [--limit 50] [--dry-run]
 """
 import argparse, base64, csv, json, os, re, sqlite3, sys, time
+from html import unescape
+from html.parser import HTMLParser
 import urllib.error, urllib.parse, urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -22,7 +24,7 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent
 HOSTS = {"production": "https://api.ebay.com", "sandbox": "https://api.sandbox.ebay.com"}
 FIELDS = ["item_id", "category", "reference_id", "title", "price", "currency", "condition",
-          "seller", "affiliate_url", "item_url", "image_url", "location", "first_seen", "last_seen"]
+          "seller", "affiliate_url", "item_url", "image_url", "location", "first_seen", "last_seen", "short_description"]
 
 
 def slugify(text):
@@ -56,13 +58,30 @@ def get_token(host, cid, secret):
 
 
 def search(host, token, marketplace, campaign, reference_id, keyword, limit):
-    q = urllib.parse.urlencode({"q": keyword, "limit": limit, "filter": "buyingOptions:{FIXED_PRICE}"})
+    q = urllib.parse.urlencode({"q": keyword, "limit": limit, "filter": "buyingOptions:{FIXED_PRICE}", "fieldgroups": "EXTENDED"})
     req = urllib.request.Request(f"{host}/buy/browse/v1/item_summary/search?{q}", headers={
         "Authorization": f"Bearer {token}",
         "X-EBAY-C-MARKETPLACE-ID": marketplace,
         # EPN: campaign id + sub-id make the API return tracked itemAffiliateWebUrl
         "X-EBAY-C-ENDUSERCTX": f"affiliateCampaignId={campaign},affiliateReferenceId={reference_id}"})
     return http_json(req).get("itemSummaries", [])
+
+
+class PlainText(HTMLParser):
+    def __init__(self):
+        super().__init__(); self.parts = []; self.hidden = 0
+    def handle_starttag(self, tag, attrs):
+        if tag in ('script', 'style'): self.hidden += 1
+        elif tag in ('p', 'br', 'div', 'li'): self.parts.append(' ')
+    def handle_endtag(self, tag):
+        if tag in ('script', 'style'): self.hidden = max(0, self.hidden - 1)
+        else: self.parts.append(' ')
+    def handle_data(self, data):
+        if not self.hidden: self.parts.append(data)
+
+def plain_description(value):
+    parser = PlainText(); parser.feed(str(value or ''))
+    return ' '.join(unescape(''.join(parser.parts)).split())
 
 
 def to_row(item, category, reference_id, now):
@@ -79,7 +98,8 @@ def to_row(item, category, reference_id, now):
         "affiliate_url": affiliate, "item_url": item.get("itemWebUrl", ""),
         "image_url": (item.get("image") or {}).get("imageUrl", ""),
         "location": (item.get("itemLocation") or {}).get("country", ""),
-        "first_seen": now, "last_seen": now}
+        "first_seen": now, "last_seen": now,
+        "short_description": plain_description(item.get("shortDescription"))}
 
 
 def init_db(path):
@@ -88,17 +108,19 @@ def init_db(path):
         item_id TEXT PRIMARY KEY, category TEXT, reference_id TEXT, title TEXT, price TEXT,
         currency TEXT, condition TEXT, seller TEXT, affiliate_url TEXT NOT NULL, item_url TEXT,
         image_url TEXT, location TEXT, first_seen TEXT, last_seen TEXT)""")
+    if "short_description" not in [r[1] for r in db.execute("PRAGMA table_info(products)")]:
+        db.execute("ALTER TABLE products ADD COLUMN short_description TEXT DEFAULT ''")
     return db
 
 
 def persist(db, rows):
     """Upsert rows; keep first_seen of existing items. Dedupes globally by item_id."""
     for r in rows:
-        db.execute("""INSERT INTO products VALUES (:item_id,:category,:reference_id,:title,:price,
-            :currency,:condition,:seller,:affiliate_url,:item_url,:image_url,:location,:first_seen,:last_seen)
+        db.execute("""INSERT INTO products (item_id,category,reference_id,title,price,currency,condition,seller,affiliate_url,item_url,image_url,location,first_seen,last_seen,short_description) VALUES (:item_id,:category,:reference_id,:title,:price,
+            :currency,:condition,:seller,:affiliate_url,:item_url,:image_url,:location,:first_seen,:last_seen,:short_description)
             ON CONFLICT(item_id) DO UPDATE SET title=excluded.title, price=excluded.price,
             currency=excluded.currency, condition=excluded.condition, affiliate_url=excluded.affiliate_url,
-            item_url=excluded.item_url, image_url=excluded.image_url, last_seen=excluded.last_seen""", r)
+            item_url=excluded.item_url, image_url=excluded.image_url, last_seen=excluded.last_seen, short_description=excluded.short_description""", r)
     db.commit()
 
 

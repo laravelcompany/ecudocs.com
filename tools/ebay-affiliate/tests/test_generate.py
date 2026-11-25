@@ -7,6 +7,10 @@ ITEM = {"itemId": "v1|123|0", "title": "Thing", "price": {"value": "9.99", "curr
         "itemAffiliateWebUrl": "https://www.ebay.co.uk/itm/123?mkcid=1&campid=555&customid=ref", "itemWebUrl": "https://www.ebay.co.uk/itm/123"}
 
 class T(unittest.TestCase):
+    def test_description_is_plain_text(self):
+        self.assertEqual(g.plain_description('<p>Tank &amp; lid</p><script>alert(1)</script><p>200 litres</p>'), 'Tank & lid 200 litres')
+    def test_description_optional(self):
+        self.assertEqual(g.to_row(ITEM, 'c', 'r', 't')['short_description'], '')
     def test_slug(self): self.assertEqual(g.slugify("OBD2 Scanner!"), "obd2-scanner")
     def test_row_ok(self): self.assertEqual(g.to_row(ITEM, "c", "r", "now")["affiliate_url"], ITEM["itemAffiliateWebUrl"])
     def test_drops_without_affiliate_and_never_substitutes(self):
