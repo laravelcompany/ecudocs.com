@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AffiliateDisclosure from '../../components/deals/AffiliateDisclosure.astro';
+import EmptyState from '../../components/deals/EmptyState.astro';
+import { categories } from '../../lib/deals.js';
+const cats = categories();
+const canonical = 'https://ecudocs.com/deals';
+---
+<BaseLayout title="ECU tools and parts deals | ecudocs" description="ECU programmers, scanners and tools found on eBay UK, grouped by category." canonicalUrl={canonical}>
+  <main class="container" style="max-width:960px;margin:0 auto;padding:1rem">
+    <h1>Deals</h1>
+    <AffiliateDisclosure />
+    <input id="cat-q" type="search" placeholder="Filter categories" aria-label="Filter categories" />
+    {cats.length === 0 ? <EmptyState /> : (
+      <ul id="cat-list">
+        {cats.map((c) => <li data-name={c.name.toLowerCase()}><a href={`/deals/${c.slug}`}>{c.name}</a> ({c.items.length})</li>)}
+      </ul>
+    )}
+  </main>
+  <script is:inline>
+    var i = document.getElementById('cat-q');
+    if (i) i.addEventListener('input', function () {
+      document.querySelectorAll('#cat-list li').forEach(function (l) { l.style.display = l.dataset.name.indexOf(i.value.toLowerCase()) > -1 ? '' : 'none'; });
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,32 @@
+name: Refresh eBay deals feed
+
+on:
+  schedule:
+    - cron: '0 4 * * *'   # daily 04:00 UTC; edit here to change the schedule
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python tests
+        run: python3 -m unittest discover tools/ebay-affiliate/tests
+      - name: Generate feed (keeps old feed on failure)
+        env:
+          EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
+          EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
+          EPN_CAMPAIGN_ID: ${{ secrets.EPN_CAMPAIGN_ID }}
+        run: python3 tools/ebay-affiliate/generate.py
+      - name: Commit feed (triggers deploy)
+        run: |
+          git config user.name "deals-refresh"
+          git config user.email "deals-refresh@users.noreply.github.com"
+          git add src/data/deals/products.json
+          if git diff --cached --quiet; then echo "no change"; exit 0; fi
+          git commit -m "Refresh eBay deals feed $(date -u +%F)"
+          git push

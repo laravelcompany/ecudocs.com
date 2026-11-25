@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AffiliateDisclosure from '../../../components/deals/AffiliateDisclosure.astro';
+import { products, itemSlug, money, dateOnly, titleCase, truncate, AFFILIATE_REL } from '../../../lib/deals.js';
+export function getStaticPaths() {
+  return products.map((p) => ({ params: { category: p.category, item_id: itemSlug(p.item_id) }, props: { p } }));
+}
+const { p } = Astro.props;
+const canonical = `https://ecudocs.com/deals/${p.category}/${itemSlug(p.item_id)}`;
+const ld = {
+  '@context': 'https://schema.org', '@type': 'Product', name: p.title, ...(p.image_url && { image: p.image_url }), url: canonical,
+  offers: { '@type': 'Offer', price: p.price, priceCurrency: p.currency, url: p.affiliate_url,
+    itemCondition: /new/i.test(p.condition) ? 'https://schema.org/NewCondition' : 'https://schema.org/UsedCondition' },
+};
+---
+<BaseLayout title={`${truncate(p.title, 60)} | ecudocs`} description={`${p.title} on eBay UK, ${money(p)} at time of export.`} canonicalUrl={canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+  <main class="container" style="max-width:860px;margin:0 auto;padding:1rem">
+    <p><a href={`/deals/${p.category}`}>← {titleCase(p.category)}</a></p>
+    <h1>{p.title}</h1>
+    <AffiliateDisclosure />
+    {p.image_url && <img src={p.image_url} alt={p.title} loading="lazy" width="400" height="400" style="max-width:100%;height:auto" />}
+    <p><strong>{money(p)}</strong> <small>(price at time of export)</small></p>
+    <ul>
+      <li>Condition: {p.condition || 'not stated'}</li>
+      {p.seller && <li>Seller: {p.seller}</li>}
+      {p.location && <li>Location: {p.location}</li>}
+      <li>Last checked: {dateOnly(p.last_seen)}</li>
+    </ul>
+    <p><a href={p.affiliate_url} target="_blank" rel={AFFILIATE_REL} style="font-weight:700">Buy on eBay</a></p>
+    {p.item_url && <p><small><a href={p.item_url} target="_blank" rel="nofollow noopener">Plain listing link</a></small></p>}
+  </main>
+</BaseLayout>
