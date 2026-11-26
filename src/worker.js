@@ -1,4 +1,5 @@
 import { staleOfferResponse } from './deals-freshness.js';
+import { legacyRedirectResponse } from './legacy-redirects.js';
 import { blogBatchKey } from "./blog-kv-hash.js";
 
 // ecudocs.com front door.
@@ -10,6 +11,7 @@ import { blogBatchKey } from "./blog-kv-hash.js";
 export default {
   async fetch(request, env) {
     const stale = staleOfferResponse(request); if (stale) return stale;
+    const legacy = legacyRedirectResponse(request); if (legacy) return legacy;
     const url = new URL(request.url);
     const m = url.pathname.match(/^\/blog\/([^\/.]+)\/?(?:index\.html)?$/);
     if (m && !/^\d+$/.test(m[1])) {
