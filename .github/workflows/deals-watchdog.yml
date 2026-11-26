@@ -1,0 +1,34 @@
+name: Deals feed watchdog
+
+# GitHub can drop scheduled runs under Actions load; the daily
+# deals-refresh schedule is not guaranteed. This cheap hourly check
+# dispatches a refresh only when the feed is close to the 28-hour
+# staleness guard in src/deals-freshness.js.
+on:
+  schedule:
+    - cron: '47 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dispatch refresh if feed older than 26 hours
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          exported=$(python3 -c "import json; print(json.load(open('src/data/deals/products.json'))['exported_at'])")
+          age=$(( $(date -u +%s) - $(date -u -d "$exported" +%s) ))
+          echo "feed exported_at=$exported age=${age}s"
+          if [ "$age" -gt 93600 ]; then
+            echo "stale: dispatching deals-refresh"
+            gh workflow run deals-refresh.yml --ref main
+          else
+            echo "fresh: nothing to do"
+          fi

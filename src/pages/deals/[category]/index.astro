@@ -6,7 +6,7 @@ import ProductCard from '../../../components/deals/ProductCard.astro';
 import PriceFilter from '../../../components/deals/PriceFilter.astro';
 import CategoryNav from '../../../components/deals/CategoryNav.astro';
 import EmptyState from '../../../components/deals/EmptyState.astro';
-import { categories, detailPath } from '../../../lib/deals.js';
+import { categories, detailPath, exportedAt } from '../../../lib/deals.js';
 export function getStaticPaths() {
   return categories().map((c) => ({ params: { category: c.slug }, props: { c } }));
 }
@@ -20,4 +20,4 @@ const ld = {
 <BaseLayout title={`${c.name} deals | ecudocs`} description={`${c.items.length} ${c.name} listings from eBay UK.`} canonicalUrl={canonical}>
 <script type="application/ld+json" set:html={JSON.stringify(ld)} />
 <main class="deals-page"><header class="deals-hero"><div class="deals-wrap"><nav class="deals-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/deals">Deals</a><span aria-hidden="true">/</span><span aria-current="page">{c.name}</span></nav><p class="deals-eyebrow">Workshop deals</p><h1 class="deals-title">{c.name}</h1><p class="deals-intro">Compare {c.items.length} listings from eBay UK. Filter by keyword or price to find the right tool for your workshop.</p></div></header>
-<div class="deals-wrap deals-content"><AffiliateDisclosure /><CategoryNav current={c.slug}/><PriceFilter /><p id="deal-results" class="deals-results" role="status" aria-live="polite">{c.items.length} listings shown</p><p id="deal-no-results" class="deals-empty" hidden>No listings match these filters. Try a different keyword or reset your filters.</p>{c.items.length===0 ? <EmptyState/> : <div class="deals-product-grid">{c.items.map((p)=><ProductCard p={p}/>)}</div>}</div></main></BaseLayout>
+<div class="deals-wrap deals-content"><AffiliateDisclosure /><CategoryNav current={c.slug}/><PriceFilter /><p id="deal-results" class="deals-results" role="status" aria-live="polite">{c.items.length} listings shown</p><p class="deals-results">Listings last checked {new Date(exportedAt).toLocaleString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'UTC', timeZoneName: 'short' })}</p><p id="deal-no-results" class="deals-empty" hidden>No listings match these filters. Try a different keyword or reset your filters.</p>{c.items.length===0 ? <EmptyState/> : <div class="deals-product-grid">{c.items.map((p)=><ProductCard p={p}/>)}</div>}</div></main></BaseLayout>
